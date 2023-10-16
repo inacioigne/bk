@@ -2,6 +2,7 @@ version: '3'
 services:
   app:
     image: node:20-slim
+    container_name: bk-app
     volumes:
       # Mount the root folder that contains .git
       - .:/workspace:cached
@@ -12,8 +13,21 @@ services:
 
   api:
     image: python:3.12-slim
+    container_name: bk-api
     volumes:
       # Mount the root folder that contains .git
       - .:/workspace:cached
     command: /bin/sh -c "while sleep 1000; do :; done"
-    # ...
+
+  solr:
+    image: solr:9.3-slim
+    container_name: bk-solr
+    user: solr
+    ports:
+      - 8983:8983
+    volumes:
+      - ./solr/data:/var/solr/data
+      - ./solr/configsets:/opt/solr-9.3.0-slim/server/solr/configsets
+
+
+

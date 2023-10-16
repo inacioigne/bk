@@ -1,0 +1,6 @@
+# App
+/app/node_modules
+/app/.next/
+
+# Solr
+# /solr

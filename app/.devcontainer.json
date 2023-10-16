@@ -3,6 +3,5 @@
     "dockerComposeFile": ["../docker-compose.yml"],
     "service": "app",
     "shutdownAction": "none",
-    // "extensions": ["golang.go"],
     "workspaceFolder": "/workspace/app"
 }
