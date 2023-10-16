@@ -1,0 +1,9 @@
+{
+    "name": "App",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "app",
+    "shutdownAction": "none",
+    // "extensions": ["golang.go"],
+    // Open the sub-folder with the source code
+    "workspaceFolder": "/workspace/app"
+}
