@@ -3,6 +3,5 @@
     "dockerComposeFile": ["../docker-compose.yml"],
     "service": "api",
     "shutdownAction": "none",
-    // "extensions": ["dbaeumer.vscode-eslint"],
     "workspaceFolder": "/workspace/api"
 }
