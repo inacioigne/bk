@@ -4,3 +4,10 @@
 
 # Solr
 # /solr
+
+# DB
+/db
+
+# Api
+**/venv
+**/__pycache__/**

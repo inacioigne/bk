@@ -13,13 +13,21 @@ services:
       - api
       - solr
 
-  api:
-    image: python:3.12-slim
-    container_name: bk-api
+  db:
+    image: mariadb:11
+    container_name: bk-db
+    command: '--default-authentication-plugin=mysql_native_password'
+    environment:
+      MYSQL_ROOT_PASSWORD: bkpass
+      MYSQL_DATABASE: bk
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: bkpass
     volumes:
-      # Mount the root folder that contains .git
-      - .:/workspace:cached
-    command: /bin/sh -c "while sleep 1000; do :; done"
+      - ./db:/var/lib/mysql
+    restart: always
+    expose:
+      - 3306
+      - 33060
 
   solr:
     image: solr:9.3-slim
@@ -29,11 +37,32 @@ services:
       - 8983:8983
     volumes:
       # - ./solr/data:/var/solr/data
-      # /var/solr/data/configsets/authority
-      #- ./solr/configsets/authority:/opt/solr-9.3.0-slim/server/solr/configsets/authority
       - ./solr/configsets/authority:/var/solr/data/configsets/authority
     networks:
       - solr_network
+
+  api:
+    image: python:3.12-slim
+    container_name: bk-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    depends_on:
+      - db
+      - solr
+    links:
+      - db
+      - solr
+    environment:
+      DB_HOST: mariadb
+      DB_USER: admin
+      DB_PASSWORD: bkpass
+      DB_NAME: bk
+    
+
 networks:
   solr_network:
     driver: bridge
