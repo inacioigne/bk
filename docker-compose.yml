@@ -15,7 +15,7 @@ services:
 
   mariadb:
     image: mariadb:11
-    container_name: bk-db
+    container_name: bk-mariadb
     command: '--default-authentication-plugin=mysql_native_password'
     environment:
       MYSQL_ROOT_PASSWORD: bkpass

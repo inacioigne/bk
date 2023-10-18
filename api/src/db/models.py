@@ -1,10 +1,14 @@
-from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Date, DATETIME, ForeignKey, true
 from sqlalchemy.orm import relationship
 from datetime import datetime, timedelta
 from sqlalchemy.dialects.mysql import JSON
+from sqlalchemy.orm import DeclarativeBase
 
-Base = declarative_base()
+# Base = declarative_base()
+
+class Base(DeclarativeBase):
+    pass
 
 #Users
 class User(Base):
