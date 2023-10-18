@@ -13,7 +13,7 @@ services:
       - api
       - solr
 
-  db:
+  mariadb:
     image: mariadb:11
     container_name: bk-db
     command: '--default-authentication-plugin=mysql_native_password'
@@ -51,10 +51,10 @@ services:
       - .:/workspace:cached
     command: /bin/sh -c "while sleep 1000; do :; done"
     depends_on:
-      - db
+      - mariadb
       - solr
     links:
-      - db
+      - mariadb
       - solr
     environment:
       DB_HOST: mariadb
