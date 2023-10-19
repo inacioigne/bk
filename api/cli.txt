@@ -1,0 +1,8 @@
+apt-get install libmariadb-dev
+apt-get -y install gcc
+
+mariadb -u admin -p bkpassp
+
+engine = create_engine("mysql://admin:bkpass@mariadb/bk")
+
+engine = create_engine("mariadb+mariadbconnector://admin:bkpass@mariadb/bk")
