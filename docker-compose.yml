@@ -6,20 +6,27 @@ services:
     ports:
       - 3000:3000
     volumes:
-      # Mount the root folder that contains .git
       - .:/workspace:cached
     command: /bin/sh -c "while sleep 1000; do :; done"
     links:
       - api
       - solr
   
-  jena:
-    image: secoresearch/fuseki
-    container_name: bk-jena
+  fuseki:
+    build: ./fuseki
+      # context: ./fuseki
+      # dockerfile: ./fuseki/Dockerfile
+    # image: fuseki
+    container_name: bk-fuseki
     ports:
       - 3030:3030
-    environment:
-      ADMIN_PASSWORD: bkpass
+    volumes:
+      - ./fuseki/logs:/fuseki/logs
+      - ./fuseki/databases:/fuseki/databases
+    # command: /bin/sh -c "while sleep 1000; do :; done"
+    
+    # environment:
+    #   ADMIN_PASSWORD: bkpass
 
   mariadb:
     image: mariadb:11
