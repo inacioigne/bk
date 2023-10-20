@@ -12,6 +12,14 @@ services:
     links:
       - api
       - solr
+  
+  jena:
+    image: secoresearch/fuseki
+    container_name: bk-jena
+    ports:
+      - 3030:3030
+    environment:
+      ADMIN_PASSWORD: bkpass
 
   mariadb:
     image: mariadb:11
@@ -44,7 +52,8 @@ services:
       - solr_network
 
   api:
-    image: python:3.12-slim
+    build: ./api
+    # image: python:3.12-slim
     container_name: bk-api
     ports:
       - "8000:8000"
