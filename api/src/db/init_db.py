@@ -8,6 +8,5 @@ engine = create_engine(
 session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine))
 
-
 def initializeDatabase():
     Base.metadata.create_all(bind=engine)

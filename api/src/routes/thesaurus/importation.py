@@ -1,5 +1,6 @@
 from pyfuseki import FusekiQuery
 from src.schemas.settings import Settings
+from fastapi import APIRouter, HTTPException
 settings = Settings()
 
 router = APIRouter()
@@ -15,4 +16,4 @@ ASK {{ graph ?g {{ ?s identifiers:lccn "{identifiersLccn}" }} }}"""
     res = query.run_sparql(ask)
     exist = res.convert()['boolean'] 
     
-    return exist
+    return exist 
