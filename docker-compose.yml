@@ -14,19 +14,14 @@ services:
   
   fuseki:
     build: ./fuseki
-      # context: ./fuseki
-      # dockerfile: ./fuseki/Dockerfile
-    # image: fuseki
     container_name: bk-fuseki
     ports:
       - 3030:3030
     volumes:
-      - ./fuseki/logs:/fuseki/logs
-      - ./fuseki/databases:/fuseki/databases
+      - ./fuseki/database:/fuseki/database
     # command: /bin/sh -c "while sleep 1000; do :; done"
-    
-    # environment:
-    #   ADMIN_PASSWORD: bkpass
+    networks:
+      - bk-network
 
   mariadb:
     image: mariadb:11
@@ -60,7 +55,6 @@ services:
 
   api:
     build: ./api
-    # image: python:3.12-slim
     container_name: bk-api
     ports:
       - "8000:8000"
@@ -71,9 +65,11 @@ services:
     depends_on:
       - mariadb
       - solr
+      - fuseki
     links:
       - mariadb
       - solr
+      - fuseki
     environment:
       DB_HOST: mariadb
       DB_USER: admin
@@ -82,7 +78,6 @@ services:
     networks:
       - bk-network
     
-
 networks:
   bk-network:
   solr_network:

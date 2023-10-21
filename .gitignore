@@ -11,3 +11,6 @@
 # Api
 **/venv
 **/__pycache__/**
+
+# Fuseki
+/fuseki/database

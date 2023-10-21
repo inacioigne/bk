@@ -4,7 +4,7 @@ from fastapi import APIRouter, HTTPException
 settings = Settings()
 
 router = APIRouter()
-query = FusekiQuery(f'{settings.url}:3030', 'authority') 
+query = FusekiQuery(settings.fuseki, 'authority') 
 
 # Graph Exist
 @router.get("/exist/{identifiersLccn}", status_code=200) 
