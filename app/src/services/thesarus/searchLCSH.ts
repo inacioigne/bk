@@ -1,4 +1,4 @@
-import { loc } from "@/services/loc"
+import { loc } from "@/services/thesarus/loc"
 export function SearchLCSH(
   params: URLSearchParams,
   setHits: Function

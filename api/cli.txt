@@ -8,3 +8,5 @@ engine = create_engine("mysql://admin:bkpass@mariadb/bk")
 engine = create_engine("mariadb+mariadbconnector://admin:bkpass@mariadb/bk")
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' bk-mariadb
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' bk-fuseki

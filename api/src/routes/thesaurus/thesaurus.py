@@ -19,7 +19,7 @@ from src.schemas.thesaurus.mads import SchemaMads
 
 
 settings = Settings()
-authorityUpdate = FusekiUpdate(f'{settings.url}:3030', 'authority')
+authorityUpdate = FusekiUpdate(settings.fuseki, 'bk') 
 solr = Solr(f'{settings.url}:8983/solr/authority/', timeout=10)
 
 router = APIRouter() 

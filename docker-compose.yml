@@ -42,16 +42,21 @@ services:
       # - 33060
 
   solr:
-    image: solr:9.3-slim
+    # image: solr:9.3-slim
+    build: ./solr
     container_name: bk-solr
     user: solr
     ports:
       - 8983:8983
     volumes:
-      # - ./solr/data:/var/solr/data
-      - ./solr/configsets/authority:/var/solr/data/configsets/authority
-    networks:
-      - solr_network
+      - data:/var/solr/
+      # - ./solr/configsets/authority:/opt/solr-9.3.0-slim/server/solr/configsets/authority/
+    command:
+      - solr-precreate
+      - authority
+      - ./server/solr/configsets/authority
+    # networks:
+    #   - solr_network
 
   api:
     build: ./api
@@ -77,7 +82,10 @@ services:
       DB_NAME: bk
     networks:
       - bk-network
-    
+
+volumes:
+  data:
+
 networks:
   bk-network:
   solr_network:
