@@ -1,0 +1,1 @@
+./bin/solr create_core -c teste -d /opt/solr-9.3.0-slim/server/solr/configsets/authority

@@ -1,12 +1,11 @@
 import axios from "axios";
 
-function Api() {
+function search() {
     
     const api = axios.create({
-      baseURL: "http://localhost:8000/",
+      baseURL: "https://id.loc.gov/",
     });  
-  
     return api;
   }
   
-export const bkapi = Api() 
+export const loc = search()
