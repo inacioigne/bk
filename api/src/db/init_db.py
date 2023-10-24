@@ -1,9 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from src.db.models import *
+from src.schemas.settings import Settings
+
+settings = Settings()
 
 engine = create_engine(
-    "mariadb+mariadbconnector://admin:bkpass@192.168.128.2:3306/bk")
+    f"mariadb+mariadbconnector://admin:bkpass@{settings.mariadb}:3306/bk")
 
 session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine))

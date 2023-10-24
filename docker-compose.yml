@@ -42,7 +42,6 @@ services:
       # - 33060
 
   solr:
-    # image: solr:9.3-slim
     build: ./solr
     container_name: bk-solr
     user: solr
