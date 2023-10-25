@@ -17,14 +17,13 @@ export default function FormElementListVariant({ nestIndex, control, register }:
     });
 
     return (
-        <div>
+        <Box sx={{ display: 'flex', gap: "10px", flexDirection: "column" }}>
             {fields.map((field, index) => (
-                <Box key={field.id} sx={{ display: 'flex' }}>
+                <Box key={field.id} sx={{ display: 'flex', gap: "10px" }}>
                     <Grid item xs={2}>
                         <TextField
                             fullWidth
                             disabled={true}
-                            //   defaultValue={"FullNameElement"}
                             label="Tipo do Nome"
                             variant="outlined"
                             size="small"
@@ -47,7 +46,7 @@ export default function FormElementListVariant({ nestIndex, control, register }:
                 </Box>
             ))}
 
-        </div>
+        </Box>
     )
 
 }

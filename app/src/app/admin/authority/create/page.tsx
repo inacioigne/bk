@@ -24,6 +24,8 @@ import FormRWO from "@/components/madsrdf/forms/formRWO"
 import FormOccupation from "@/components/madsrdf/forms/formOccupation"
 import FormFieldOfActivity from "@/components/madsrdf/forms/formFieldOfActivity"
 import FormFullerName from "@/components/madsrdf/forms/formFullerName"
+import FormBirth from "@/components/madsrdf/forms/birth"
+import FormDeath from "@/components/madsrdf/forms/birth"
 
 // BiblioKeia Services
 import { bkapi } from "@/services/api";
@@ -56,6 +58,8 @@ import { z } from "zod";
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
+
+// Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
 
 
@@ -119,16 +123,6 @@ export default function Create() {
       type: "PersonalName",
       elementList: [{type: "FullNameElement", elementValue: {value: ""}}],
     }],
-    test: [
-      {
-          name: "useFieldArray1",
-          nestedArray: [{ field1: "field1", field2: "field2" }]
-      },
-      {
-          name: "useFieldArray2",
-          nestedArray: [{ field1: "field1", field2: "field2" }]
-      }
-  ],
     hasAffiliation: [{
       organization: { label: "", uri: "" },
       affiliationStart: "",
@@ -218,9 +212,6 @@ export default function Create() {
       
   }
 
-
-
-
   return (
     <Container maxWidth="xl">
       <Box my={"1rem"}>
@@ -255,125 +246,16 @@ export default function Create() {
               {/* FullerName */}
               <FormFullerName register={register} />
             </Grid>
-            <Grid item xs={6}>
-              <Typography variant="subtitle1" gutterBottom>
-                Nascimento:
-              </Typography>
-              <Box sx={{ display: "flex", gap: "10px" }}>
-                <TextField
-                  label="Local de Nascimento"
-                  variant="outlined"
-                  size="small"
-                  defaultValue=""
-                  {...register("birthPlace")}
-                />
-                <TextField
-                  label="Dia"
-                  variant="outlined"
-                  size="small"
-                  sx={{ minWidth: 40, maxWidth: 50 }}
-                  // focused={doc?.birthDayDate ? true : false}
-                  {...register("birthDayDate")}
-                />
-                <Controller
-                  name="birthMonthDate"
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <FormControl
-                      // focused={doc?.birthMonthDate ? true : false}
-                      sx={{ minWidth: 80 }}
-                      size="small"
-                    >
-                      <InputLabel id="label-month">Mês</InputLabel>
-                      <Select
-                        {...field}
-                        size="small"
-                        labelId="label-month"
-                        label="Mês"
-                      >
-                        {months.map((mes, index) => (
-                          <MenuItem key={index} value={mes.value}>
-                            {mes.label}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  )}
-                />
-                <TextField
-                  label="Ano"
-                  variant="outlined"
-                  sx={{ width: 100 }}
-                  size="small"
-                  // focused={doc?.birthYearDate ? true : false}
-                  {...register("birthYearDate")}
-                />
-              </Box>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography variant="subtitle1" gutterBottom>
-                Falecimento:
-              </Typography>
-              <Box sx={{ display: "flex", gap: "10px" }}>
-                <TextField
-                  label="Local de Falecimento"
-                  variant="outlined"
-                  size="small"
-                  // focused={doc?.deathPlace ? true : false}
-                  {...register("deathPlace")}
-                />
-                <TextField
-                  label="Dia"
-                  variant="outlined"
-                  sx={{ width: 100 }}
-                  size="small"
-                  // focused={doc?.deathDayDate ? true : false}
-                  {...register("deathDayDate")}
-                />
-                <Controller
-                  name="deathMonthDate"
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <FormControl
-                      sx={{ width: 100 }}
-                      size="small"
-                    // focused={doc?.deathMonthDate ? true : false}
-                    >
-                      <InputLabel id="label-month">Mês</InputLabel>
-                      <Select {...field} labelId="label-month" label="Mês">
-                        {months.map((mes, index) => (
-                          <MenuItem key={index} value={mes.value}>
-                            {mes.label}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  )}
-                />
-                <TextField
-                  label="Ano"
-                  variant="outlined"
-                  sx={{ width: 100 }}
-                  size="small"
-                  // focused={doc?.deathMonthDate ? true : false}
-                  {...register("deathYearDate")}
-                />
-              </Box>
-            </Grid>
+            <FormBirth register={register} control={control}  />
+            <FormDeath register={register} control={control}  />
             <Grid item xs={12}>
               <Typography variant="h6" gutterBottom>
                 Variantes do nome
               </Typography>
               <Divider />
             </Grid>
-            <FormVariant control={control} register={register} getValues={getValues} setValue={setValue} />
-            {/* <FieldArray
-                {...{ control, register, defaultValues, getValues, setValue, errors }}
-            /> */}
+            <FormVariant control={control} register={register}
+             getValues={getValues} setValue={setValue} />
             <Grid item xs={12}>
               <Typography variant="h6" gutterBottom>
                 Afiliação

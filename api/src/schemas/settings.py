@@ -3,5 +3,6 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     app_name: str = "BiblioKeia"
     url: str = "http://localhost"
-    fuseki: str = "http://172.24.0.2:3030" 
-    mariadb: str = "172.24.0.3"
+    fuseki: str = "http://192.168.128.3:3030" 
+    mariadb: str = "192.168.128.2"
+    solr: str = "http://192.168.128.4:8983"

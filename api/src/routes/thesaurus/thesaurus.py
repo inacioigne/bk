@@ -20,7 +20,7 @@ from src.schemas.thesaurus.mads import SchemaMads
 
 settings = Settings()
 authorityUpdate = FusekiUpdate(settings.fuseki, 'bk') 
-solr = Solr(f'{settings.url}:8983/solr/authority/', timeout=10)
+solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
 
 router = APIRouter() 
 
@@ -28,11 +28,12 @@ router = APIRouter()
 @router.post("/create", status_code=201) 
 async def post_authority(request: SchemaMads):
     item_id = NextId()
+    
     request.identifiersLocal = str(item_id)
 
     uri = f'https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}'
     if request.identifiersLccn:
-        # print("LCCN: ", request.identifiersLccn)
+        
         loc = GraphExistLoc(request.identifiersLccn)
         if loc:
             raise HTTPException(status_code=409, detail="Esse registro já existe")
@@ -43,21 +44,21 @@ async def post_authority(request: SchemaMads):
     session.add(a) 
     session.commit()
     
-    # Jena
+    # # Jena
     graph = MakeGraphName(request, request.identifiersLocal)
-    
-    response = authorityUpdate.run_sparql(graph)
+    response = authorityUpdate.run_sparql(graph)    
 
-    # Solr
+    # # Solr
     doc = MakeDoc(request, request.identifiersLocal)
-    
     responseSolr = solr.add([doc], commit=True)
+    # print('TESTE: ', responseSolr)
 
     return {
         "id": request.identifiersLocal,
          "jena": response.convert()['message'],
         "solr": responseSolr
         } 
+    # return request.model_dump()
 
 # Delete Autority
 @router.delete("/delete", status_code=200) 

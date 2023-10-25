@@ -54,7 +54,8 @@ services:
       - solr-precreate
       - authority
       - ./server/solr/configsets/authority
-    # networks:
+    networks:
+      - bk-network
     #   - solr_network
 
   api:

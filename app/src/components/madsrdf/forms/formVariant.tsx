@@ -94,6 +94,7 @@ interface Props {
 }
 
 export default function FormVariant({ control, register, getValues, setValue, }: Props) {
+  // console.log("loc", setValue);
 
 
   const { fields, append, remove, prepend } = useFieldArray({

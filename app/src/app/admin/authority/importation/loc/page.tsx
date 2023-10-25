@@ -11,6 +11,7 @@ import {
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormLCSH from "@/components/forms/formLocSearch"
 import CardLoc from "@/components/cards/cardLoc"
+import FormLocCreate from "@/components/forms/formLocCreate";
 
 // react-icons
 import { FcHome } from "react-icons/fc";
@@ -43,28 +44,34 @@ export default function LOC() {
       <Box my={"1rem"}>
         <BreadcrumbsBK previousPaths={previousPaths} currentPath="LOC" />
       </Box>
-      <Typography variant="h4" gutterBottom>
+      {/* <Typography variant="h4" gutterBottom>
         Importar Autoridades - Library of Congress
       </Typography>
-      <Divider />
-      <Grid container spacing={2}>
-        {!form ? (
-          <>
+      <Divider /> */}
+      {/* <Grid container spacing={2}> */}
+      {!form ? (
+        <Box>
+          <Typography variant="h4" gutterBottom>
+            Importar Autoridades - Library of Congress
+          </Typography>
+          <Divider />
+          <Grid container spacing={2}>
             <Grid item xs={5} sx={{ mt: "15px" }}>
               <FormLCSH setHit={setHit} />
             </Grid>
             <Grid item xs={7} sx={{ mt: "15px" }}>
               {hit && <CardLoc hit={hit} setHit={setHit} setForm={setForm} />}
             </Grid>
-          </>
+          </Grid>
+        </Box>
 
-        ) : (
-          <h1>Forms</h1>
-        )}
+      ) : (
+        <FormLocCreate hit={hit} setForm={setForm} />
+      )}
 
 
 
-      </Grid>
+      {/* </Grid> */}
     </Container>
   );
 }

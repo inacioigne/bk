@@ -58,7 +58,7 @@ export const MadsSchema = z.object({
             uri: z.string().nullable(),
             label: z.string(),
             base: z.string().nullable()
-        })
+        }).nullable()
     ),
     imagem: z.string().nullable()
 });
