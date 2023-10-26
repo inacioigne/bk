@@ -122,8 +122,6 @@ import { bkapi } from "@/services/api"
                 <IconButton
                   aria-label="settings"
                   onClick={() => {
-                    // 
-                    console.log(hit.identifiersLccn)
                     LocExist(hit.identifiersLccn)
   
                     // LocExist(hit.identifiersLccn)

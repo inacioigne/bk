@@ -106,7 +106,6 @@ export default function Authority() {
     // setProgress(true)
     // const url = `${pathname}?${searchParams}`;
 
-
     paramsAuthority.set("rows", "3");
     SearchNames(
       paramsAuthority,

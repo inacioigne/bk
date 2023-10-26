@@ -44,11 +44,7 @@ export default function LOC() {
       <Box my={"1rem"}>
         <BreadcrumbsBK previousPaths={previousPaths} currentPath="LOC" />
       </Box>
-      {/* <Typography variant="h4" gutterBottom>
-        Importar Autoridades - Library of Congress
-      </Typography>
-      <Divider /> */}
-      {/* <Grid container spacing={2}> */}
+     
       {!form ? (
         <Box>
           <Typography variant="h4" gutterBottom>

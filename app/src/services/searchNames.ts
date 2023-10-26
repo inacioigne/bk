@@ -36,7 +36,6 @@ export function SearchNames(
       const r = docs.map((doc: any, index: number) => {
         return { id: doc.id, authority: doc.authority[0], type: doc.type };
       });
-
       setRows(r);
       // Facets
       const fType = TransformFacet(

@@ -42,6 +42,10 @@ import { bkapi } from "@/services/api";
 // React Hooks
 import { useEffect, useState } from "react";
 
+// Providers BiblioKeia
+import { useProgress } from "@/providers/progress";
+import { useAlert } from "@/providers/alert";
+
 type SchemaCreateAuthority = z.infer<typeof MadsSchema>;
 
 interface Props {
@@ -80,9 +84,17 @@ function GetValue(hit: any) {
         deathDayDate: hit.deathDayDate,
         deathMonthDate: hit.deathMonthDate,
         deathYearDate: hit.deathYearDate,
-        hasVariant: hit.hasVariant,
-        hasAffiliation: hit.hasAffiliation,
-        occupation: hit.occupation,
+        hasVariant: hit.hasVariant ? hit.hasVariant : [{
+            type: "PersonalName",
+            elementList: [{ type: 'FullNameElement', elementValue: { value: "" } }]
+    
+          }],
+        hasAffiliation: hit.hasAffiliation ? hit.hasAffiliation : [{
+            organization: { label: "", uri: "" },
+            affiliationStart: "",
+            affiliationEnd: ""
+        }],
+        occupation: hit.occupation ? hit.occupation : uriDefault,
         fieldOfActivity: hit.fieldOfActivity ? hit.fieldOfActivity : uriDefault,
         identifiesRWO: hit.identifiesRWO ? hit.identifiesRWO : uriDefault,
         hasCloseExternalAuthority: hit.hasCloseExternalAuthority ? hit.hasCloseExternalAuthority : uriDefault,
@@ -93,6 +105,14 @@ function GetValue(hit: any) {
 
 export default function FormLocCreate({ hit, setForm }: Props) {
     const [id, setId] = useState(null);
+    const {
+        openSnack,
+        setOpenSnack,
+        message,
+        setMessage,
+        typeAlert,
+        setTypeAlert,
+      } = useAlert();
 
     useEffect(() => {
         bkapi
@@ -124,6 +144,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         resolver: zodResolver(MadsSchema),
         defaultValues,
     });
+
     // console.log(errors)
     function createAuthority(data: any) {
         let formData = ParserData(data)
@@ -141,15 +162,15 @@ export default function FormLocCreate({ hit, setForm }: Props) {
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }
         let request = { ...obj, ...formData };
-        console.log(request)
+        // console.log(request)
         bkapi
       .post("/thesarus/create", request, {
         headers: headers,
       })
       .then(function (response) {
         if (response.status === 201) {
-          console.log(response);
-        //   setMessage("Registro criado com sucesso!")
+        //   console.log(response);
+          setMessage("Registro criado com sucesso!")
         //   router.push(`/admin/authority/${response.data.id}`);
         }
       })
@@ -158,7 +179,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
       })
       .finally(function () {
         // setProgress(false)
-        // setOpenSnack(true)
+        setOpenSnack(true)
         //   setDoc(null)
       });
         // console.log(obj)
