@@ -27,7 +27,8 @@ import {
 import { bkapi } from "@/services/api"
   
   // BiblioKeia Components
-  import IdentifiesRWO from "@/components/madsrdf/view/identifiesRWO"
+  // import IdentifiesRWO from "@/components/madsrdf/view/identifiesRWO"
+  import MadsUri from "@/components/madsrdf/view/madsUri"
   import FieldOfActivity from "@/components/madsrdf/view/fieldOfActivity"
   import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
   import HasVariant from "@/components/madsrdf/view/hasVariant";
@@ -55,6 +56,7 @@ import { bkapi } from "@/services/api"
   }
   
   export default function CardLoc({ hit, setHit, setForm }: Props) {
+    // console.log(hit)
   
     const router = useRouter();
     const { setProgress } = useProgress();
@@ -214,7 +216,8 @@ import { bkapi } from "@/services/api"
             {/* identifiesRWO */}
             {hit?.identifiesRWO && (
               <Grid item xs={6}>
-                <IdentifiesRWO identifiesRWO={hit?.identifiesRWO} />
+                {/* <IdentifiesRWO identifiesRWO={hit?.identifiesRWO} /> */}
+                <MadsUri child={hit.identifiesRWO} label={"Identificado por:"} />
               </Grid>
             )}
   

@@ -41,6 +41,7 @@ import { bkapi } from "@/services/api";
 
 // React Hooks
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation';
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
@@ -104,6 +105,7 @@ function GetValue(hit: any) {
 }
 
 export default function FormLocCreate({ hit, setForm }: Props) {
+    const router = useRouter()
     const [id, setId] = useState(null);
     const {
         openSnack,
@@ -169,9 +171,8 @@ export default function FormLocCreate({ hit, setForm }: Props) {
       })
       .then(function (response) {
         if (response.status === 201) {
-        //   console.log(response);
           setMessage("Registro criado com sucesso!")
-        //   router.push(`/admin/authority/${response.data.id}`);
+          router.push(`/admin/authority/${response.data.id}`);
         }
       })
       .catch(function (error) {

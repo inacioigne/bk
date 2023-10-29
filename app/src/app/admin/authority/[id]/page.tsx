@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import {
     Container,
     Box,
@@ -12,7 +12,7 @@ import {
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import DeleteItem from "@/app/admin/authority/[id]/deleteItem";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
-import IdentifiesRWO from "@/components/madsrdf/view/identifiesRWO";
+// import IdentifiesRWO from "@/components/madsrdf/view/identifiesRWO";
 import MadsUri from "@/components/madsrdf/view/madsUri"
 import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
 
@@ -39,7 +39,7 @@ import axios from "axios";
 // React Hooks
 import { useState, useEffect, FormEvent } from "react";
 
-// import Loading from "@/app/admin/authority/[id]/loading";
+import Loading from "@/app/admin/authority/[id]/loading";
 
 const previousPaths = [
     {
@@ -54,42 +54,46 @@ const previousPaths = [
     },
 ];
 
-// async function getData(id: string) {
-//     const url = `http://localhost:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
-//     // const url = "https://api.adviceslip.com/advice"
+async function getData(id: string) {
+    // console.log(id)
+    const url = `http://127.0.0.1:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
+    // const url = "https://api.adviceslip.com/advice"
 
-//     const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { cache: "no-store" });
 
-//     if (!res.ok) {
-//         throw new Error("Failed to fetch data");
-//     }
-//     return res.json();
-// }
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+    return res.json();
+}
 
 
-// export default async function Page({ params }: { params: { id: string } }) {
-export default function Page({ params }: { params: { id: string } }) {
-    // const data = await getData(params.id);
+export default async function Page({ params }: { params: { id: string } }) {
+// export default function Page({ params }: { params: { id: string } }) {
+    const data = await getData(params.id);
+    const [doc] = data.response.docs;
+    // console.log(data)
     // const [doc] = data.response.docs;
-    const [doc, setDoc] = useState(null)
 
-    useEffect(() => {
-        solr.get(`authority/select?fl=*,[child]&indent=true&q.op=OR&q=id:${params.id}`)
-            .then(function (response) {
-                const [data] = response.data.response.docs;
-                setDoc(data)
-                // console.log(doc)
+    // const [doc, setDoc] = useState(null)
 
-            })
-            .catch(function (error) {
-                // manipula erros da requisição
-                console.error(error);
-            })
-            .finally(function () {
-                // setProgress(false)
-            });
+    // useEffect(() => {
+    //     solr.get(`authority/select?fl=*,[child]&indent=true&q.op=OR&q=id:${params.id}`)
+    //         .then(function (response) {
+    //             const [data] = response.data.response.docs;
+    //             setDoc(data)
+    //             // console.log(doc)
 
-    }, [])
+    //         })
+    //         .catch(function (error) {
+    //             // manipula erros da requisição
+    //             console.error(error);
+    //         })
+    //         .finally(function () {
+    //             // setProgress(false)
+    //         });
+
+    // }, [])
 
     return (
         <Container maxWidth="xl">
@@ -98,7 +102,7 @@ export default function Page({ params }: { params: { id: string } }) {
                     currentPath={params.id}
                 />
                 <Suspense fallback={"Item em espera..."}>
-                  <Box>
+                   <Box>
                         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                             <Typography variant="h4" gutterBottom>
                                 {doc.label}
@@ -238,7 +242,7 @@ export default function Page({ params }: { params: { id: string } }) {
                                     </Box>
 
                                 </Grid>
-                                {doc?.hasAffiliation && (
+                                 {doc?.hasAffiliation && (
                                     <Grid item xs={4}>
                                         <HasAffiliation hasAffiliation={doc.hasAffiliation} />
                                     </Grid>
@@ -247,15 +251,15 @@ export default function Page({ params }: { params: { id: string } }) {
                                     <Grid item xs={4}>
                                         <HasVariant hasVariant={doc.variant} />
                                     </Grid>
-                                )}
-                                {doc?.occupation && (
+                                )} 
+                               {doc?.occupation && (
                                     <Grid item xs={4}>
                                         <MadsUri child={doc.occupation} label={"Ocupações:"} />
                                     </Grid>
                                 )}
                                 {doc?.identifiesRWO && (
                                     <Grid item xs={4}>
-                                        <IdentifiesRWO identifiesRWO={doc.identifiesRWO} />
+                                        <MadsUri child={doc.identifiesRWO} label={"Identificado por:"} />
                                     </Grid>
                                 )}
                                 {doc?.fieldOfActivity && (
@@ -273,10 +277,10 @@ export default function Page({ params }: { params: { id: string } }) {
                                             label={"Ocorrência em outros bases:"}
                                         />
                                     </Grid>
-                                )}
+                                )} 
                             </Grid>
                         </Box>
-                    </Box> 
+                    </Box>  
                 </Suspense>
             </Box>
         </Container>

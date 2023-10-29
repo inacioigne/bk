@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 // MUI Components
 import { Typography, Box } from "@mui/material";
 import {
@@ -18,6 +18,7 @@ type Props = {
 };
 
 export default function HasVariant({ hasVariant }: Props) {
+  // console.log(hasVariant)
   return (
 
       <TreeView
@@ -43,7 +44,8 @@ export default function HasVariant({ hasVariant }: Props) {
             <StyledTreeItem
             key={index}
               nodeId={`${index + 5}`}
-              labelText={variant.variantLabel}
+              labelText={variant}
+              // labelText={variant.variantLabel}
               // labelIcon={BsLink45Deg}
               color={"#1a73e8"}
               bgColor="#e8f0fe"
@@ -53,6 +55,5 @@ export default function HasVariant({ hasVariant }: Props) {
           ))}
         </TreeItem>
       </TreeView>
-
   );
 }

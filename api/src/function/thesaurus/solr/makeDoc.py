@@ -72,11 +72,17 @@ def MakeDoc(request, id):
     # hasVariant
     if request.hasVariant:
         variants = list()
+        hasVariants = list()
         for i in request.hasVariant:
+            print(i) 
             label = [j.elementValue.value for j in i.elementList]
-            label = " ".join(label)
-            variants.append(label)
+            variantLabel = " ".join(label)
+            variants.append(variantLabel)
+            hasVariant = i.model_dump()
+            hasVariant['variantLabel'] = variantLabel
+            hasVariants.append(hasVariant)
         doc['variant'] = variants
+        doc['hasVariant'] = hasVariants
 
     # hasCloseExternalAuthority
     if request.hasCloseExternalAuthority:

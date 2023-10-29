@@ -22,7 +22,7 @@ export type schemaAffiliation = {
 }
 
 export type schemaVariant = {
-    type: string;
+    type: string; 
     elementList: element[];
     variantLabel: string;
 }
