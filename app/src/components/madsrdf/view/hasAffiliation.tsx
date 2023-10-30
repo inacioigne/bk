@@ -173,7 +173,11 @@ type Props = {
 };
 
 export default function HasAffiliation({ hasAffiliation }: Props) {
+<<<<<<< HEAD
   // console.log(hasAffiliation)
+=======
+  console.log(hasAffiliation)
+>>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
 
 
   return (
