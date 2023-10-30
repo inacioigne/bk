@@ -44,8 +44,8 @@ export default function HasVariant({ hasVariant }: Props) {
             <StyledTreeItem
             key={index}
               nodeId={`${index + 5}`}
-              labelText={variant}
-              // labelText={variant.variantLabel}
+              // labelText={variant}
+              labelText={variant.variantLabel}
               // labelIcon={BsLink45Deg}
               color={"#1a73e8"}
               bgColor="#e8f0fe"

@@ -58,7 +58,7 @@ import { bkapi } from "@/services/api"
   export default function CardLoc({ hit, setHit, setForm }: Props) {
     // console.log(hit)
   
-    const router = useRouter();
+    // const router = useRouter();
     const { setProgress } = useProgress();
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
   
@@ -216,7 +216,6 @@ import { bkapi } from "@/services/api"
             {/* identifiesRWO */}
             {hit?.identifiesRWO && (
               <Grid item xs={6}>
-                {/* <IdentifiesRWO identifiesRWO={hit?.identifiesRWO} /> */}
                 <MadsUri child={hit.identifiesRWO} label={"Identificado por:"} />
               </Grid>
             )}
@@ -224,9 +223,7 @@ import { bkapi } from "@/services/api"
             {/* hasAffiliation */}
             {hit?.hasAffiliation && (
               <Grid item xs={6}>
-                {/* <Box sx={{ pl: "10px" }}> */}
                 <HasAffiliation hasAffiliation={hit.hasAffiliation} />
-                {/* </Box> */}
               </Grid>
             )}
   

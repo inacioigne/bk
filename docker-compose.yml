@@ -8,9 +8,11 @@ services:
     volumes:
       - .:/workspace:cached
     command: /bin/sh -c "while sleep 1000; do :; done"
-    links:
-      - api
-      - solr
+    networks:
+      - bk-network
+    # links:
+    #   - api
+    #   - solr
   
   fuseki:
     build: ./fuseki
@@ -56,7 +58,7 @@ services:
       - ./server/solr/configsets/authority
     networks:
       - bk-network
-    #   - solr_network
+      # - solr_network
 
   api:
     build: ./api
@@ -88,8 +90,8 @@ volumes:
 
 networks:
   bk-network:
-  solr_network:
-    driver: bridge
+  # solr_network:
+  #   driver: bridge
 
 
 

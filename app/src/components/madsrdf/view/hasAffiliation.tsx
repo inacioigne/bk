@@ -173,13 +173,13 @@ type Props = {
 };
 
 export default function HasAffiliation({ hasAffiliation }: Props) {
-  console.log(hasAffiliation)
+  // console.log(hasAffiliation)
 
 
   return (
     <TreeView
       aria-label="hasAffiliation"
-      defaultExpanded={["3"]}
+      defaultExpanded={["1"]}
       defaultCollapseIcon={<AiOutlineArrowDown />}
       defaultExpandIcon={<AiOutlineArrowUp />}
       defaultEndIcon={<div style={{ width: 24 }} />}

@@ -64,10 +64,6 @@ export default function LOC() {
       ) : (
         <FormLocCreate hit={hit} setForm={setForm} />
       )}
-
-
-
-      {/* </Grid> */}
     </Container>
   );
 }

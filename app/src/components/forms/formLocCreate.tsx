@@ -1,26 +1,26 @@
 import {
-    Container,
     Box,
     Divider,
     Typography,
     Grid,
-    FormControl,
     Paper,
     TextField,
     Button,
 } from "@mui/material";
 
 // BiblioKeia Components
-import FormElementList from "@/components/madsrdf/forms/formElementList";
-import FormFullerName from "@/components/madsrdf/forms/formFullerName"
-import FormBirth from "@/components/madsrdf/forms/birth"
-import FormDeath from "@/components/madsrdf/forms/death"
-import FormVariant from "@/components/madsrdf/forms/formVariant"
-import FormAffiliation from "@/components/madsrdf/forms/formAffiliation"
-import FormOccupation from "@/components/madsrdf/forms/formOccupation"
-import FormFieldOfActivity from "@/components/madsrdf/forms/formFieldOfActivity"
-import FormRWO from "@/components/madsrdf/forms/formRWO"
-import FormHCEA from "@/components/madsrdf/forms/formHCEA"
+// import FormElementList from "@/components/madsrdf/forms/formElementList";
+// import FormFullerName from "@/components/madsrdf/forms/formFullerName"
+// import FormBirth from "@/components/madsrdf/forms/birth"
+// import FormDeath from "@/components/madsrdf/forms/death"
+// import FormVariant from "@/components/madsrdf/forms/formVariant"
+// import FormAffiliation from "@/components/madsrdf/forms/formAffiliation"
+// import FormOccupation from "@/components/madsrdf/forms/formOccupation"
+// import FormFieldOfActivity from "@/components/madsrdf/forms/formFieldOfActivity"
+// import FormRWO from "@/components/madsrdf/forms/formRWO"
+// import FormHCEA from "@/components/madsrdf/forms/formHCEA"
+
+import FormMads from "@/components/forms/formMads"
 
 
 // React-Hook-Form
@@ -34,6 +34,8 @@ import { schemaMads } from "@/schema/authority";
 
 // MUI Icons
 import { IoIosSave } from "react-icons/io";
+import { FcCancel } from "react-icons/fc";
+
 
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
@@ -41,7 +43,6 @@ import { bkapi } from "@/services/api";
 
 // React Hooks
 import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation';
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
@@ -49,6 +50,7 @@ import { useAlert } from "@/providers/alert";
 
 // Nextjs
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 type SchemaCreateAuthority = z.infer<typeof MadsSchema>;
 
@@ -60,7 +62,7 @@ interface Props {
 const headers = {
     accept: "application/json",
     "Content-Type": "application/json",
-  };
+};
 
 function GetValue(hit: any) {
 
@@ -91,8 +93,8 @@ function GetValue(hit: any) {
         hasVariant: hit.hasVariant ? hit.hasVariant : [{
             type: "PersonalName",
             elementList: [{ type: 'FullNameElement', elementValue: { value: "" } }]
-    
-          }],
+
+        }],
         hasAffiliation: hit.hasAffiliation ? hit.hasAffiliation : [{
             organization: { label: "", uri: "" },
             affiliationStart: "",
@@ -109,13 +111,7 @@ function GetValue(hit: any) {
 
 export default function FormLocCreate({ hit, setForm }: Props) {
     const router = useRouter()
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-=======
->>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
-=======
->>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
+
     const [id, setId] = useState(null);
     const {
         openSnack,
@@ -124,24 +120,24 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         setMessage,
         typeAlert,
         setTypeAlert,
-      } = useAlert();
+    } = useAlert();
 
     useEffect(() => {
         bkapi
-          .get(`/thesarus/next_id`)
-          .then(function (response) {
-            setId(response.data);
-    
-            console.log(response.data);
-          })
-          .catch(function (error) {
-            // manipula erros da requisição
-            console.error(error);
-          })
-          .finally(function () {
-            // setProgress(false)
-          });
-      }, [String(id)]);
+            .get(`/thesarus/next_id`)
+            .then(function (response) {
+                setId(response.data);
+
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                // manipula erros da requisição
+                console.error(error);
+            })
+            .finally(function () {
+                // setProgress(false)
+            });
+    }, [String(id)]);
 
     let defaultValues = GetValue(hit)
 
@@ -176,23 +172,23 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         let request = { ...obj, ...formData };
         // console.log(request)
         bkapi
-      .post("/thesarus/create", request, {
-        headers: headers,
-      })
-      .then(function (response) {
-        if (response.status === 201) {
-          setMessage("Registro criado com sucesso!")
-          router.push(`/admin/authority/${response.data.id}`);
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-      })
-      .finally(function () {
-        // setProgress(false)
-        setOpenSnack(true)
-        //   setDoc(null)
-      });
+            .post("/thesarus/create", request, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    setMessage("Registro criado com sucesso!")
+                    router.push(`/admin/authority/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                console.error(error);
+            })
+            .finally(function () {
+                // setProgress(false)
+                setOpenSnack(true)
+                //   setDoc(null)
+            });
         // console.log(obj)
 
     }
@@ -204,7 +200,18 @@ export default function FormLocCreate({ hit, setForm }: Props) {
                     <Typography variant="h4" gutterBottom>
                         Criar Autoridades
                     </Typography>
-                    <Box>
+                    <Box sx={{ display: "flex", gap: "10px", alignItems: "center"}}>
+                        <Link href={"/admin/authority/importation/loc"}>
+                        <Button
+                            type="submit"
+                            sx={{ textTransform: "none" }}
+                            variant="outlined"
+                            startIcon={<FcCancel />}
+                        >
+                            Cancelar
+                        </Button>
+                        </Link>
+                        
                         <Button
                             type="submit"
                             sx={{ textTransform: "none" }}
@@ -216,7 +223,13 @@ export default function FormLocCreate({ hit, setForm }: Props) {
                     </Box>
                 </Box>
                 <Divider />
-                <Paper sx={{ p: "15px", mt: "20px" }}>
+                <FormMads 
+                control={control}
+                register={register}
+                errors={errors}
+                getValues={getValues}
+                setValue={setValue} />
+                {/* <Paper sx={{ p: "15px", mt: "20px" }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <Typography variant="h6" gutterBottom>
@@ -289,7 +302,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
                             />
                         </Grid>
                     </Grid>
-                </Paper>
+                </Paper> */}
             </form>
         </Box>
     );

@@ -12,7 +12,6 @@ import {
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import DeleteItem from "@/app/admin/authority/[id]/deleteItem";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
-// import IdentifiesRWO from "@/components/madsrdf/view/identifiesRWO";
 import MadsUri from "@/components/madsrdf/view/madsUri"
 import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
 
@@ -32,14 +31,14 @@ import Image from "next/image";
 import { Suspense } from "react";
 
 // BiblioKeia Services
-import { solr } from "@/services/solr";
+// import { solr } from "@/services/solr";
 
-import axios from "axios";
+// import axios from "axios";
 
 // React Hooks
-import { useState, useEffect, FormEvent } from "react";
+// import { useState, useEffect, FormEvent } from "react";
 
-import Loading from "@/app/admin/authority/[id]/loading";
+// import Loading from "@/app/admin/authority/[id]/loading";
 
 const previousPaths = [
     {
@@ -55,9 +54,7 @@ const previousPaths = [
 ];
 
 async function getData(id: string) {
-    // console.log(id)
-    const url = `http://127.0.0.1:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
-    // const url = "https://api.adviceslip.com/advice"
+    const url = `http://solr:8983/solr/authority/select?fl=*,[child]&q=id:${id}`; 
 
     const res = await fetch(url, { cache: "no-store" });
 
@@ -69,7 +66,7 @@ async function getData(id: string) {
 
 
 export default async function Page({ params }: { params: { id: string } }) {
-// export default function Page({ params }: { params: { id: string } }) {
+
     const data = await getData(params.id);
     const [doc] = data.response.docs;
     // console.log(data)
@@ -154,8 +151,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                                 spacing={2}
                                 sx={{ alignItems: "flex-start", alignContent: "flex-start" }}
                             >
-                                <Grid item xs={4}>
+                                
                                     {doc?.fullerName && (
+                                        <Grid item xs={4}>
                                         <Box>
                                             <Typography
                                                 variant="subtitle2"
@@ -167,11 +165,12 @@ export default async function Page({ params }: { params: { id: string } }) {
                                                 {doc.fullerName}
                                             </Typography>
                                         </Box>
+                                        </Grid>
                                     )}
-                                </Grid>
+                                
                                 <Grid item xs={8}>
                                     <Box
-                                        sx={{ display: "flex", justifyContent: "flex-start", gap: "2rem" }}
+                                        sx={{ display: "flex", justifyContent: "space-between", gap: "2rem" }}
                                     >
                                         {(doc?.birthPlace || doc?.birthDate) && (
                                             <Box>
@@ -242,6 +241,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                     </Box>
 
                                 </Grid>
+
                                  {doc?.hasAffiliation && (
                                     <Grid item xs={4}>
                                         <HasAffiliation hasAffiliation={doc.hasAffiliation} />
@@ -249,7 +249,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                 )}
                                 {doc?.variant && (
                                     <Grid item xs={4}>
-                                        <HasVariant hasVariant={doc.variant} />
+                                        <HasVariant hasVariant={doc.hasVariant} />
                                     </Grid>
                                 )} 
                                {doc?.occupation && (
