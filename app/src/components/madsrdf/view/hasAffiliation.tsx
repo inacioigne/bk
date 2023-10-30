@@ -173,6 +173,7 @@ type Props = {
 };
 
 export default function HasAffiliation({ hasAffiliation }: Props) {
+  console.log(hasAffiliation)
 
 
   return (
@@ -190,20 +191,37 @@ export default function HasAffiliation({ hasAffiliation }: Props) {
     >
       <TreeItem nodeId="1" label={<Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
         Afiliação:
-      </Typography>}>
-        {hasAffiliation.map((affiliation, index) => (
-          <StyledTreeItemChild
-            key={index}
-            nodeId={`${index + 5}`}
-            labelText={affiliation.organization.label}
-            affiliationStart={affiliation?.affiliationStart}
-            affiliationEnd={affiliation?.affiliationEnd}
+      </Typography>}> 
+       {Array.isArray(hasAffiliation) ? (
+        <code>ARRAY</code>
+        //  {hasAffiliation.map((affiliation, index) => (
+        //   <StyledTreeItemChild
+        //     key={index}
+        //     nodeId={`${index + 5}`}
+        //     labelText={affiliation.organization.label}
+        //     affiliationStart={affiliation?.affiliationStart}
+        //     affiliationEnd={affiliation?.affiliationEnd}
+        //     color="#1a73e8"
+        //     bgColor="#e8f0fe"
+        //     colorForDarkMode="#B8E7FB"
+        //     bgColorForDarkMode="#071318"
+        //   />
+        // ))}
+
+      ): (
+        <StyledTreeItemChild
+            nodeId={"6"}
+            labelText={hasAffiliation.organization}
+            affiliationStart={hasAffiliation?.affiliationStart}
+            affiliationEnd={hasAffiliation?.affiliationEnd}
             color="#1a73e8"
             bgColor="#e8f0fe"
             colorForDarkMode="#B8E7FB"
             bgColorForDarkMode="#071318"
           />
-        ))}
+        
+
+      )} 
       </TreeItem>
     </TreeView>
   );

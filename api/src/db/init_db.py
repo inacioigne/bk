@@ -9,8 +9,11 @@ settings = Settings()
 #     f"mariadb+mariadbconnector://root:8486@{settings.mariadb}:3306/bk")
 engine = create_engine(
 <<<<<<< HEAD
+<<<<<<< HEAD
      f"mariadb+mariadbconnector://admin:bkpass@{settings.mariadb}:3306/bk")
 =======
+=======
+>>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
     f"mariadb+mariadbconnector://root:8486@{settings.mariadb}:3306/bk")
 
 >>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
