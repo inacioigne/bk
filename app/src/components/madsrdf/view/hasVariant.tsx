@@ -47,8 +47,13 @@ export default function HasVariant({ hasVariant }: Props) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               // labelText={variant}
               labelText={variant.variantLabel}
+=======
+              labelText={variant}
+              // labelText={variant.variantLabel}
+>>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
 =======
               labelText={variant}
               // labelText={variant.variantLabel}
