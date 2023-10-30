@@ -14,6 +14,10 @@ import DeleteItem from "@/app/admin/authority/[id]/deleteItem";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+// import IdentifiesRWO from "@/components/madsrdf/view/identifiesRWO";
+>>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
 =======
 // import IdentifiesRWO from "@/components/madsrdf/view/identifiesRWO";
 >>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
@@ -64,7 +68,13 @@ const previousPaths = [
 async function getData(id: string) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const url = `http://solr:8983/solr/authority/select?fl=*,[child]&q=id:${id}`; 
+=======
+    // console.log(id)
+    const url = `http://127.0.0.1:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
+    // const url = "https://api.adviceslip.com/advice"
+>>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
 =======
     // console.log(id)
     const url = `http://127.0.0.1:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
@@ -88,7 +98,11 @@ async function getData(id: string) {
 export default async function Page({ params }: { params: { id: string } }) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+// export default function Page({ params }: { params: { id: string } }) {
+>>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
 =======
 // export default function Page({ params }: { params: { id: string } }) {
 >>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
@@ -271,7 +285,10 @@ export default async function Page({ params }: { params: { id: string } }) {
                                 </Grid>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
 =======
 >>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
 =======
