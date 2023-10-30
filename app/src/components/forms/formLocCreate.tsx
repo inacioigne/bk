@@ -46,6 +46,9 @@ import { useEffect, useState } from "react";
 import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
 
+// Nextjs
+import { useRouter } from 'next/navigation'
+
 type SchemaCreateAuthority = z.infer<typeof MadsSchema>;
 
 interface Props {
@@ -104,6 +107,8 @@ function GetValue(hit: any) {
 }
 
 export default function FormLocCreate({ hit, setForm }: Props) {
+    const router = useRouter()
+    
     const [id, setId] = useState(null);
     const {
         openSnack,
@@ -171,7 +176,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         if (response.status === 201) {
         //   console.log(response);
           setMessage("Registro criado com sucesso!")
-        //   router.push(`/admin/authority/${response.data.id}`);
+          router.push(`/admin/authority/${response.data.id}`);
         }
       })
       .catch(function (error) {
