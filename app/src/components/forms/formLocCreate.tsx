@@ -110,7 +110,10 @@ function GetValue(hit: any) {
 export default function FormLocCreate({ hit, setForm }: Props) {
     const router = useRouter()
 <<<<<<< HEAD
+<<<<<<< HEAD
     
+=======
+>>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
 =======
 >>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
     const [id, setId] = useState(null);
