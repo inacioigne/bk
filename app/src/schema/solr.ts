@@ -26,6 +26,7 @@ export interface schemaAuthorityDoc {
     deathYearDate?: string;
     hasAffiliation: any;
     variant: string[];
+    hasVariant: any[],
     occupation: any;
     hasExactExternalAuthority: uri[] 
     hasCloseExternalAuthority?: uri[]  

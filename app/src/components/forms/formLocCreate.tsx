@@ -43,7 +43,6 @@ import { bkapi } from "@/services/api";
 
 // React Hooks
 import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation';
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
@@ -112,19 +111,6 @@ function GetValue(hit: any) {
 
 export default function FormLocCreate({ hit, setForm }: Props) {
     const router = useRouter()
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
-=======
->>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
-=======
->>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
-=======
->>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
     const [id, setId] = useState(null);
     const {
         openSnack,
@@ -184,27 +170,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         }
         let request = { ...obj, ...formData };
         // console.log(request)
-        bkapi
-<<<<<<< HEAD
-            .post("/thesarus/create", request, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    setMessage("Registro criado com sucesso!")
-                    router.push(`/admin/authority/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                console.error(error);
-            })
-            .finally(function () {
-                // setProgress(false)
-                setOpenSnack(true)
-                //   setDoc(null)
-            });
-=======
-      .post("/thesarus/create", request, {
+        bkapi.post("/thesarus/create", request, {
         headers: headers,
       })
       .then(function (response) {
@@ -221,8 +187,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         setOpenSnack(true)
         //   setDoc(null)
       });
->>>>>>> 8834fb335e24e2e6eafb1266f82f749cd3fccae1
-        // console.log(obj)
+
 
     }
 

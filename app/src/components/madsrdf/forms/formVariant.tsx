@@ -34,7 +34,7 @@ function ElementList({ nestIndex, control, register }: PropsElementList) {
     appendElementList({
       type: "FullNameElement",
       elementValue: { value: "" }
-    });
+    }); 
   };
   return (
     <div>
@@ -134,7 +134,7 @@ export default function FormVariant({ control, register, getValues, setValue, }:
               <IconButton
                 aria-label="add"
                 onClick={() => {
-                  removeVariant(index);
+                  remove(index);
                 }}
                 color="primary"
               >

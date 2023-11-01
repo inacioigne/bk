@@ -58,6 +58,8 @@ import FormBirth from "@/components/madsrdf/forms/birth"
 import FormDeath from "@/components/madsrdf/forms/death"
 // import FormHasVariant from "@/components/madsrdf/forms/formHasVariant"
 
+import FormMads from "@/components/forms/formMads"
+
 interface Props {
     doc: schemaAuthorityDoc;
 }
@@ -182,7 +184,8 @@ function TransForm(doc: schemaAuthorityDoc) {
         deathDayDate: doc.deathDayDate,
         deathMonthDate: doc.deathMonthDate,
         deathYearDate: doc.deathYearDate,
-        hasVariant: ParserVariant(doc.variant),
+        // hasVariant: ParserVariant(doc.variant),
+        hasVariant: doc.hasVariant,
         hasAffiliation: ParserAffiliation(doc.hasAffiliation),
         hasCloseExternalAuthority: ParserUri(doc.hasCloseExternalAuthority),
         identifiesRWO: ParserUri(doc.identifiesRWO),
@@ -311,7 +314,13 @@ export default function EditAuthority({ doc }: Props) {
                 </Box>
             </Box>
             <Divider />
-            <Paper sx={{ p: "15px", mt: "10px" }}>
+            <FormMads 
+                control={control}
+                register={register}
+                errors={errors}
+                getValues={getValues}
+                setValue={setValue} />
+            {/* <Paper sx={{ p: "15px", mt: "10px" }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Typography variant="h6" gutterBottom>
@@ -322,9 +331,9 @@ export default function EditAuthority({ doc }: Props) {
                     <Grid item xs={5}>
                         <FormFullerName register={register} />
                     </Grid>
-                    {/* Nascimento */}
+                  
                     <FormBirth {...{ control, register }} />
-                    {/* Falecimento */}
+            
                     <FormDeath  {...{ control, register }} />
                     <Grid item xs={12}>
                         <Typography variant="h6" gutterBottom>
@@ -335,7 +344,7 @@ export default function EditAuthority({ doc }: Props) {
                     <FormVariant
                         {...{ control, register, defaultValues, getValues, setValue, errors }}
                     />
-                    {/* hasVariant */}
+               
                     <Grid item xs={12}>
                         <Typography variant="h6" gutterBottom>
                             Afiliação
@@ -349,7 +358,7 @@ export default function EditAuthority({ doc }: Props) {
                         </Typography>
                         <Divider />
                     </Grid>
-                    <FormOccupation control={control} register={register} />
+                    <FormOccupation control={control} register={register} /> 
                     <Grid item xs={12}>
                         <Typography variant="h6" gutterBottom>
                             Campos de atividade
@@ -386,7 +395,7 @@ export default function EditAuthority({ doc }: Props) {
                     </Grid>
 
                 </Grid>
-            </Paper>
+            </Paper> */}
         </form>
     )
 }
