@@ -19,9 +19,6 @@ import {
 import { schemaAuthorityDoc } from "@/schema/solr";
 import { MadsSchema } from "@/schema/authority/madsSchema"
 
-// Share
-// import months from "@/share/months.json" assert { type: "json" };
-
 // Next
 import Link from "next/link";
 
@@ -33,31 +30,17 @@ import { FcCancel } from "react-icons/fc";
 // BiblioKeia Services
 import { bkapi } from "@/services/api";
 
-// import { useEffect, useState, Fragment, useMemo } from "react";
-
 // React-Hook-Form
 import {
     useForm,
-    useFieldArray,
-    Controller,
-    SubmitHandler,
+    // useFieldArray,
+    // Controller,
+    // SubmitHandler,
 } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // BiblioKea Components
-import FormElementList from "@/components/madsrdf/forms/formElementList"
-import FormAffiliation from "@/components/madsrdf/forms/formAffiliation"
-import FormVariant from "@/components/madsrdf/forms/formVariant"
-import FormHCEA from "@/components/madsrdf/forms/formHCEA"
-import FormRWO from "@/components/madsrdf/forms/formRWO"
-import FormOccupation from "@/components/madsrdf/forms/formOccupation"
-import FormFieldOfActivity from "@/components/madsrdf/forms/formFieldOfActivity"
-import FormFullerName from "@/components/madsrdf/forms/formFullerName"
-import FormBirth from "@/components/madsrdf/forms/birth"
-import FormDeath from "@/components/madsrdf/forms/death"
-// import FormHasVariant from "@/components/madsrdf/forms/formHasVariant"
-
 import FormMads from "@/components/forms/formMads"
 
 interface Props {
@@ -65,38 +48,6 @@ interface Props {
 }
 
 type EditAuthorityData = z.infer<typeof MadsSchema>;
-
-interface variantType {
-    fullNameElement: string;
-    dateNameElement?: string
-}
-
-interface organizationType {
-    label: string;
-    uri?: string;
-    //base?: string;
-}
-
-// interface affialiationType {
-//     organization: organizationType;
-//     affiliationStart?: string;
-//     affiliationEnd?: string;
-// }
-
-// interface DocType {
-//     authority: string;
-//     fullerName?: string;
-//     birthPlace?: string;
-//     birthDayDate: string;
-//     birthMonthDate: string;
-//     birthYearDate: string;
-//     deathPlace: string;
-//     deathDayDate: string;
-//     deathMonthDate: string;
-//     deathYearDate: string;
-//     variant: variantType[]
-//     hasAffiliation: affialiationType[]
-// }
 
 function ParserUri(uri: any) {
     if (uri) {
@@ -147,26 +98,20 @@ function ParserAffiliation(affiliation: any) {
 
 function ParserVariant(variant: any) {
     if (variant) {
-
-        let arr = variant.map((e: string) => {
-            let obj = {
-                type: "PersonalName",
-                elementList: [{ type: "FullNameElement", elementValue: { value: e } }],
-            }
-            return obj
-        })
+        let arr = [variant]
         return arr
     } else {
         let arr = [{
             type: "PersonalName",
             elementList: [{ type: "FullNameElement", elementValue: { value: "" } }],
-        }]
+          }]
         return arr
     }
 
 }
 
 function TransForm(doc: schemaAuthorityDoc) {
+    // console.log("HV:", doc.hasVariant)
 
     const obj: any = {
         elementList: [{
@@ -184,8 +129,7 @@ function TransForm(doc: schemaAuthorityDoc) {
         deathDayDate: doc.deathDayDate,
         deathMonthDate: doc.deathMonthDate,
         deathYearDate: doc.deathYearDate,
-        // hasVariant: ParserVariant(doc.variant),
-        hasVariant: doc.hasVariant,
+        hasVariant: ParserVariant(doc.hasVariant),
         hasAffiliation: ParserAffiliation(doc.hasAffiliation),
         hasCloseExternalAuthority: ParserUri(doc.hasCloseExternalAuthority),
         identifiesRWO: ParserUri(doc.identifiesRWO),
@@ -226,8 +170,7 @@ export default function EditAuthority({ doc }: Props) {
         resolver: zodResolver(MadsSchema),
         defaultValues
     });
-    // console.log(errors)
-
+    console.log("ER:", errors)
 
     function editAuthority(data: any) {
         setProgress(true)
@@ -238,7 +181,6 @@ export default function EditAuthority({ doc }: Props) {
 
         let obj = {
             type: doc.type,
-
             identifiersLocal: doc.id,
             adminMetadata: {
                 //   "assigner": "http://id.loc.gov/vocabulary/organizations/brmninpa",
@@ -258,8 +200,6 @@ export default function EditAuthority({ doc }: Props) {
         }
 
         let formData = ParserData(data)
-
-
         const request = { ...obj, ...formData };
         // console.log(request)
 
@@ -267,9 +207,8 @@ export default function EditAuthority({ doc }: Props) {
             headers: headers,
         })
             .then(function (response) {
-                // console.log(response);
                 if (response.status === 200) {
-                    console.log(response);
+                    // console.log(response);
                     setMessage("Registro criado com sucesso!")
                     router.push(`/admin/authority/${doc.id}`);
                 }
@@ -320,82 +259,6 @@ export default function EditAuthority({ doc }: Props) {
                 errors={errors}
                 getValues={getValues}
                 setValue={setValue} />
-            {/* <Paper sx={{ p: "15px", mt: "10px" }}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Autoridade
-                        </Typography>
-                    </Grid>
-                    <FormElementList control={control} register={register} error={errors.elementList} />
-                    <Grid item xs={5}>
-                        <FormFullerName register={register} />
-                    </Grid>
-                  
-                    <FormBirth {...{ control, register }} />
-            
-                    <FormDeath  {...{ control, register }} />
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Variantes do nome
-                        </Typography>
-                        <Divider />
-                    </Grid>
-                    <FormVariant
-                        {...{ control, register, defaultValues, getValues, setValue, errors }}
-                    />
-               
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Afiliação
-                        </Typography>
-                        <Divider />
-                    </Grid>
-                    <FormAffiliation control={control} register={register} />
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Ocupações
-                        </Typography>
-                        <Divider />
-                    </Grid>
-                    <FormOccupation control={control} register={register} /> 
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Campos de atividade
-                        </Typography>
-                        <Divider />
-                    </Grid>
-                    <FormFieldOfActivity control={control} register={register} />
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Identificadores
-                        </Typography>
-                        <Divider />
-                    </Grid>
-                    <FormRWO control={control} register={register} />
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Ocorrências em outra bases
-                        </Typography>
-                        <Divider />
-                    </Grid>
-                    <FormHCEA control={control} register={register} />
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom>
-                            Imagem
-                        </Typography>
-                        <Divider />
-                        <TextField
-                            fullWidth
-                            size="small"
-                            label="Imagem"
-                            variant="outlined"
-                            {...register("imagem")}
-                        />
-                    </Grid>
-
-                </Grid>
-            </Paper> */}
         </form>
     )
 }

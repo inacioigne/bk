@@ -55,9 +55,7 @@ import { bkapi } from "@/services/api"
     setForm: Function;
   }
   
-  export default function CardLoc({ hit, setHit, setForm }: Props) {
-    // console.log(hit)
-  
+  export default function CardLoc({ hit, setHit, setForm }: Props) {  
     // const router = useRouter();
     const { setProgress } = useProgress();
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
@@ -125,17 +123,6 @@ import { bkapi } from "@/services/api"
                   aria-label="settings"
                   onClick={() => {
                     LocExist(hit.identifiersLccn)
-  
-                    // LocExist(hit.identifiersLccn)
-                    // CreateAuthority(
-                    //   hit,
-                    //   setProgress,
-                    //   setTypeAlert,
-                    //   setMessage,
-                    //   setOpenSnack,
-                    //   router,
-                    //   setHit
-                    // )
                   }}
                 >
                   <CiImport />
@@ -216,7 +203,7 @@ import { bkapi } from "@/services/api"
             {/* identifiesRWO */}
             {hit?.identifiesRWO && (
               <Grid item xs={6}>
-                <MadsUri child={hit.identifiesRWO} label={"Identificado por:"} />
+                <MadsUri uri={hit.identifiesRWO} label={"Identificado por:"} />
               </Grid>
             )}
   
@@ -237,7 +224,8 @@ import { bkapi } from "@/services/api"
             {/* Occupation */}
             {hit?.occupation && (
               <Grid item xs={6}>
-                <Occupation occupation={hit.occupation} setHit={setHit} />
+                {/* <Occupation occupation={hit.occupation} setHit={setHit} /> */}
+                <MadsUri uri={hit.occupation} label={"Ocupações:"} />
               </Grid>
             )}
   

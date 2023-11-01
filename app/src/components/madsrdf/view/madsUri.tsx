@@ -14,12 +14,19 @@ import Link from "next/link";
 
 import { logos } from "@/share/objLogos";
 
+// type Uri = {
+//   base: string;
+//   label: string;
+//   uri: string;
+// }
+
 type Props = {
-  child: schemaUri | schemaUri[];
+  uri: schemaUri[] | schemaUri;
   label: string;
 };
 
-export default function MadsUri({ child, label }: Props) {
+export default function MadsUri({ uri, label }: Props) {
+  // console.log(uri)
   return (
     <TreeView
       defaultCollapseIcon={<AiOutlineArrowDown />}
@@ -38,9 +45,9 @@ export default function MadsUri({ child, label }: Props) {
           </Typography>
         }
       >
-        {Array.isArray(child) ? (
+        {Array.isArray(uri) ? (
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            {child.map((e, index) => (
+            {uri.map((e, index) => (
               <Link key={index} href={`${e.uri}`} target="_blank">
                 <StyledTreeItem
                   nodeId={`${index + 5}`}
@@ -55,11 +62,11 @@ export default function MadsUri({ child, label }: Props) {
             ))}
           </Box>
         ) : (
-          <Link href={`${child.uri}`} target="_blank">
+          <Link href={`${uri.uri}`} target="_blank">
             <StyledTreeItem
               nodeId={"5"}
-              labelText={child.label}
-              labelIcon={logos[`${child.base}`]}
+              labelText={uri.label}
+              labelIcon={logos[`${uri.base}`]}
               color="#1a73e8"
               bgColor="#e8f0fe"
               colorForDarkMode="#B8E7FB"

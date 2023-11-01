@@ -6,6 +6,7 @@ import {
     Button,
     Divider,
     Grid,
+    Paper
 } from "@mui/material";
 
 // BiblioKeia Components
@@ -30,15 +31,7 @@ import Image from "next/image";
 // React Hooks
 import { Suspense } from "react";
 
-// BiblioKeia Services
-// import { solr } from "@/services/solr";
-
-// import axios from "axios";
-
-// React Hooks
-// import { useState, useEffect, FormEvent } from "react";
-
-import Loading from "@/app/admin/authority/[id]/loading";
+// import Loading from "@/app/admin/authority/[id]/loading";
 
 const previousPaths = [
     {
@@ -55,8 +48,8 @@ const previousPaths = [
 
 async function getData(id: string) {
 
-    // const url = `http://solr:8983/solr/authority/select?fl=*,[child]&q=id:${id}`; 
-    const url = `http://127.0.0.1:8983/solr/authority/select?fl=*,[child]&q=id:${id}`; 
+    const url = `http://${process.env.SOLR}:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
+    // const url = `http://127.0.0.1:8983/solr/authority/select?fl=*,[child]&q=id:${id}`; 
 
     const res = await fetch(url, { cache: "no-store" });
 
@@ -71,28 +64,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     const data = await getData(params.id);
     const [doc] = data.response.docs;
-    // console.log(data)
-    // const [doc] = data.response.docs;
 
-    // const [doc, setDoc] = useState(null)
-
-    // useEffect(() => {
-    //     solr.get(`authority/select?fl=*,[child]&indent=true&q.op=OR&q=id:${params.id}`)
-    //         .then(function (response) {
-    //             const [data] = response.data.response.docs;
-    //             setDoc(data)
-    //             // console.log(doc)
-
-    //         })
-    //         .catch(function (error) {
-    //             // manipula erros da requisição
-    //             console.error(error);
-    //         })
-    //         .finally(function () {
-    //             // setProgress(false)
-    //         });
-
-    // }, [])
 
     return (
         <Container maxWidth="xl">
@@ -101,7 +73,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                     currentPath={params.id}
                 />
                 <Suspense fallback={"Item em espera..."}>
-                   <Box>
+                    <Box>
                         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                             <Typography variant="h4" gutterBottom>
                                 {doc.label}
@@ -139,7 +111,11 @@ export default async function Page({ params }: { params: { id: string } }) {
                             </Box>
                         </Box>
                         <Divider />
-                        <Box sx={{ mt: "5px", display: "flex", gap: "15px" }}>
+                        <Paper sx={{ mt: "15px"}}
+                        >
+                            <Box sx={{ p: "20px"}}>
+
+                           
                             {doc?.imagem && (
                                 <Image
                                     src={doc?.imagem}
@@ -153,9 +129,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                                 spacing={2}
                                 sx={{ alignItems: "flex-start", alignContent: "flex-start" }}
                             >
-                                
-                                    {doc?.fullerName && (
-                                        <Grid item xs={4}>
+
+                                {doc?.fullerName && (
+                                    <Grid item xs={4}>
                                         <Box>
                                             <Typography
                                                 variant="subtitle2"
@@ -167,9 +143,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                                                 {doc.fullerName}
                                             </Typography>
                                         </Box>
-                                        </Grid>
-                                    )}
-                                
+                                    </Grid>
+                                )}
+
                                 <Grid item xs={8}>
                                     <Box
                                         sx={{ display: "flex", justifyContent: "space-between", gap: "2rem" }}
@@ -207,7 +183,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                             </Box>
                                         )}
                                         {(doc?.deathPlace || doc?.deathDate) && (
-                                            <Box>
+                                            <Box sx={{ width: "50%" }}>
                                                 <Typography
                                                     variant="subtitle2"
                                                     sx={{ fontWeight: "bold" }}
@@ -215,7 +191,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                                     Falecimento:
                                                 </Typography>
 
-                                                <Box sx={{ display: "flex", gap: "5px" }}>
+                                                <Box sx={{ display: "flex", gap: "5px", }}>
                                                     {doc.deathPlace && (
                                                         <Button
                                                             startIcon={<GiTombstone />}
@@ -242,7 +218,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                         )}
                                     </Box>
                                 </Grid>
-                                 {doc?.hasAffiliation && (
+                                {doc?.hasAffiliation && (
                                     <Grid item xs={4}>
                                         <HasAffiliation hasAffiliation={doc.hasAffiliation} />
                                     </Grid>
@@ -251,21 +227,21 @@ export default async function Page({ params }: { params: { id: string } }) {
                                     <Grid item xs={4}>
                                         <HasVariant hasVariant={doc.hasVariant} />
                                     </Grid>
-                                )} 
-                               {doc?.occupation && (
+                                )}
+                                {doc?.occupation && (
                                     <Grid item xs={4}>
-                                        <MadsUri child={doc.occupation} label={"Ocupações:"} />
+                                        <MadsUri uri={doc.occupation} label={"Ocupações:"} />
                                     </Grid>
                                 )}
                                 {doc?.identifiesRWO && (
                                     <Grid item xs={4}>
-                                        <MadsUri child={doc.identifiesRWO} label={"Identificado por:"} />
+                                        <MadsUri uri={doc.identifiesRWO} label={"Identificado por:"} />
                                     </Grid>
                                 )}
                                 {doc?.fieldOfActivity && (
                                     <Grid item xs={4}>
                                         <MadsUri
-                                            child={doc.fieldOfActivity}
+                                            uri={doc.fieldOfActivity}
                                             label={"Campos de Atividade:"}
                                         />
                                     </Grid>
@@ -273,14 +249,15 @@ export default async function Page({ params }: { params: { id: string } }) {
                                 {doc?.hasCloseExternalAuthority && (
                                     <Grid item xs={4}>
                                         <MadsUri
-                                            child={doc.hasCloseExternalAuthority}
+                                            uri={doc.hasCloseExternalAuthority}
                                             label={"Ocorrência em outros bases:"}
                                         />
                                     </Grid>
-                                )} 
+                                )}
                             </Grid>
-                        </Box>
-                    </Box>  
+                            </Box>
+                        </Paper>
+                    </Box>
                 </Suspense>
             </Box>
         </Container>

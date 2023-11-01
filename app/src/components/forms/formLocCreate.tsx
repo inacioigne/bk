@@ -127,7 +127,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
             .then(function (response) {
                 setId(response.data);
 
-                console.log(response.data);
+                // console.log(response.data);
             })
             .catch(function (error) {
                 // manipula erros da requisição

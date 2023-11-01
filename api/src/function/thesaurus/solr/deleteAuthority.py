@@ -3,7 +3,7 @@ from src.schemas.settings import Settings
 
 settings = Settings()
 
-solr = Solr(f'{settings.url}:8983/solr/authority/', timeout=10)
+solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
 
 def DeleteAuthoritySolr(doc): 
     id = doc['id']

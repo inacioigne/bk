@@ -32,10 +32,10 @@ async def post_authority(request: SchemaMads):
     request.identifiersLocal = str(item_id)
 
     uri = f'https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}'
-    # if request.identifiersLccn:
-    #     loc = GraphExistLoc(request.identifiersLccn)
-    #     if loc:
-    #         raise HTTPException(status_code=409, detail="Esse registro já existe")
+    if request.identifiersLccn:
+        loc = GraphExistLoc(request.identifiersLccn)
+        if loc:
+            raise HTTPException(status_code=409, detail="Esse registro já existe")
 
 
     # MariaDB

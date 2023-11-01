@@ -11,7 +11,7 @@ export type schemaUri = {
     label: string
     base?: string
     uri?: string
-    type?: string
+    // type?: string
 }
 
 
@@ -41,7 +41,7 @@ export interface schemaMads {
     elementList: element[];
     fullerName?: string;
     hasVariant?: schemaVariant[];
-    identifiesRWO?: string[]
+    identifiesRWO?: schemaUri[]
     birthPlace?: string;
     birthDayDate?: string;
     birthMonthDate?: string;

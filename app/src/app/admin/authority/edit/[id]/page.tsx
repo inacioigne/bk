@@ -1,6 +1,5 @@
 import {
-    Container,
-    Box,
+    Container, Box,
 } from "@mui/material";
 
 // BiblioKeia Components
@@ -12,14 +11,12 @@ import { FcHome } from "react-icons/fc";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 
 async function getData(id: string) {
-    const url = `http://127.0.0.1:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
+    const url = `http://${process.env.SOLR}:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
     const res = await fetch(url, { cache: 'no-store' });
 
     if (!res.ok) {
-
         throw new Error("Failed to fetch data");
     }
-
     return res.json();
 }
 
@@ -39,7 +36,6 @@ const previousPaths = [
 export default async function Page({ params }: { params: { id: string } }) {
     const data = await getData(params.id);
     const [doc] = data.response.docs;
-
 
     return (
         <Container maxWidth="xl">
