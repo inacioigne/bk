@@ -12,7 +12,7 @@ import { FcHome } from "react-icons/fc";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 
 async function getData(id: string) {
-    const url = `http://solr:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
+    const url = `http://127.0.0.1:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
     const res = await fetch(url, { cache: 'no-store' });
 
     if (!res.ok) {
