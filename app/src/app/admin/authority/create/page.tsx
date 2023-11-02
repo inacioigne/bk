@@ -27,7 +27,7 @@ import FormFullerName from "@/components/madsrdf/forms/formFullerName"
 import FormBirth from "@/components/madsrdf/forms/birth"
 import FormDeath from "@/components/madsrdf/forms/birth"
 
-import FormMads from "@/components/forms/formMads"
+import FormMads from "@/components/forms/formMadsNames"
 
 // BiblioKeia Services
 import { bkapi } from "@/services/api";

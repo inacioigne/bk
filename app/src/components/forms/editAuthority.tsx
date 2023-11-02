@@ -41,7 +41,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // BiblioKea Components
-import FormMads from "@/components/forms/formMads"
+import FormMads from "@/components/forms/formMadsNames"
 
 interface Props {
     doc: schemaAuthorityDoc;
@@ -51,7 +51,7 @@ type EditAuthorityData = z.infer<typeof MadsSchema>;
 
 function ParserUri(uri: any) {
     if (uri) {
-        
+
         if (Array.isArray(uri)) {
             let arr = uri.map((e: any) => {
                 let obj = { uri: e.uri, label: e.label[0], base: e.base }
@@ -59,8 +59,8 @@ function ParserUri(uri: any) {
             })
             return arr
         } else {
-            
-            let arr = [{ label: uri.label[0], uri: uri.uri, base: uri.base }]           
+
+            let arr = [{ label: uri.label[0], uri: uri.uri, base: uri.base }]
             return arr
         }
     } else {
@@ -97,22 +97,27 @@ function ParserAffiliation(affiliation: any) {
 }
 
 function ParserVariant(variant: any) {
+    // console.log("HV:", doc.hasVariant)
     if (variant) {
-        let arr = [variant]
-        return arr
+        if (Array.isArray(variant)) {
+            return variant
+        } else {
+            let arr = [variant]
+            return arr
+
+        }
+
     } else {
         let arr = [{
             type: "PersonalName",
             elementList: [{ type: "FullNameElement", elementValue: { value: "" } }],
-          }]
+        }]
         return arr
     }
 
 }
 
 function TransForm(doc: schemaAuthorityDoc) {
-    // console.log("HV:", doc.hasVariant)
-
     const obj: any = {
         elementList: [{
             type: 'FullNameElement', elementValue: {
@@ -253,7 +258,7 @@ export default function EditAuthority({ doc }: Props) {
                 </Box>
             </Box>
             <Divider />
-            <FormMads 
+            <FormMads
                 control={control}
                 register={register}
                 errors={errors}

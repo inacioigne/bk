@@ -34,7 +34,7 @@ async def post_authority(request: SchemaMads):
     uri = f'https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}'
     if request.identifiersLccn:
         loc = GraphExistLoc(request.identifiersLccn)
-        if loc:
+        if loc["exist"]:
             raise HTTPException(status_code=409, detail="Esse registro já existe")
 
 

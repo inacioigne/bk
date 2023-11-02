@@ -8,7 +8,7 @@ settings = Settings()
 # engine = create_engine(
 #     f"mariadb+mariadbconnector://root:8486@{settings.mariadb}:3306/bk")
 engine = create_engine(
-     f"mariadb+mariadbconnector://admin:bkpass@{settings.mariadb}:3306/bk")
+     f"mariadb+mariadbconnector://{settings.db_user}:{settings.db_pass}@{settings.mariadb}:3306/bk")
 
 session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine))

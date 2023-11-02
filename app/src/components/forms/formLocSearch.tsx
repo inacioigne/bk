@@ -25,7 +25,6 @@ import { useState, FormEvent, ChangeEvent, ReactNode } from "react";
 
 // BiblioKeia Services
 import { SearchLCSH } from "@/services/thesarus/searchLCSH";
-// import { GetDataLoc } from "@/services/getDataLoc";
 import { LocAuthority } from "@/services/importation/locAuthority"
 
 // import { bkapi } from "src/services/api";

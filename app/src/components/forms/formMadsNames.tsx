@@ -31,7 +31,7 @@ interface Props {
 
 }
 
-export default function FormMads({ control, register, errors, getValues, setValue }: Props) {
+export default function FormMadsNames({ control, register, errors, getValues, setValue }: Props) {
 
 
     return (
