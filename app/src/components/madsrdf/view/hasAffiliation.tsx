@@ -173,6 +173,7 @@ type Props = {
 };
 
 export default function HasAffiliation({ hasAffiliation }: Props) {
+  console.log(hasAffiliation)
 
 
 
@@ -193,25 +194,26 @@ export default function HasAffiliation({ hasAffiliation }: Props) {
         Afiliação:
       </Typography>}> 
        {Array.isArray(hasAffiliation) ? (
-        <code>ARRAY</code>
-        //  {hasAffiliation.map((affiliation, index) => (
-        //   <StyledTreeItemChild
-        //     key={index}
-        //     nodeId={`${index + 5}`}
-        //     labelText={affiliation.organization.label}
-        //     affiliationStart={affiliation?.affiliationStart}
-        //     affiliationEnd={affiliation?.affiliationEnd}
-        //     color="#1a73e8"
-        //     bgColor="#e8f0fe"
-        //     colorForDarkMode="#B8E7FB"
-        //     bgColorForDarkMode="#071318"
-        //   />
-        // ))}
+
+         hasAffiliation.map((affiliation, index) => (
+          <StyledTreeItemChild
+            key={index}
+            nodeId={`${index + 5}`}
+            labelText={affiliation.organization.label}
+            affiliationStart={affiliation?.affiliationStart}
+            affiliationEnd={affiliation?.affiliationEnd}
+            color="#1a73e8"
+            bgColor="#e8f0fe"
+            colorForDarkMode="#B8E7FB"
+            bgColorForDarkMode="#071318"
+          />
+        ))
+        // <h1>ARRAY</h1>
 
       ): (
         <StyledTreeItemChild
             nodeId={"6"}
-            labelText={hasAffiliation.organization}
+            labelText={hasAffiliation.organization.label}
             affiliationStart={hasAffiliation?.affiliationStart}
             affiliationEnd={hasAffiliation?.affiliationEnd}
             color="#1a73e8"

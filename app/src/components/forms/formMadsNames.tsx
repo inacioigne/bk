@@ -22,8 +22,7 @@ import FormRWO from "@/components/madsrdf/forms/formRWO"
 import FormHCEA from "@/components/madsrdf/forms/formHCEA"
 
 interface Props {
-    // mads: schemaMads | null;
-    control: Function
+    control: any
     register: Function
     errors: any
     getValues: Function

@@ -54,13 +54,20 @@ def MakeDoc(request, id):
             if i.organization.uri:
                 a = {
                 'id': f"{id}/hasAffiliation#{i.organization.uri.split('/')[-1]}",
-                'organization': i.organization.label,
-                'uri': i.organization.uri,
+                'organization': {
+                    "label": i.organization.label,
+                    'uri': i.organization.uri,
+                    "base": i.organization.base
+                    },                
                 'affiliationStart': i.affiliationStart }
             else:
                 a = {
                 'id': f"{id}/hasAffiliation#{i.organization.label}",
-                'organization': i.organization.label,
+                'organization': {
+                    "label": i.organization.label,
+                    # 'uri': i.organization.uri,
+                    "base": i.organization.base
+                    },                
                 'affiliationStart': i.affiliationStart }
 
             if i.affiliationEnd:

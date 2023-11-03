@@ -19,8 +19,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Schema
-import { MadsSchema } from "@/schema/authority/madsSchema";
-import { schemaMads } from "@/schema/authority";
+// import { MadsSchema } from "@/schema/authority/madsSchema";
+// import { schemaMads } from "@/schema/authority";
+import { SchemaSubject } from "@/schema/mads/zodSubject"
+import { SchemaMads } from "@/schema/mads/schemaMads"
 
 // MUI Icons
 import { IoIosSave } from "react-icons/io";
@@ -42,10 +44,10 @@ import { useAlert } from "@/providers/alert";
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
 
-type SchemaCreateAuthority = z.infer<typeof MadsSchema>;
+type SchemaCreateAuthority = z.infer<typeof SchemaSubject>;
 
 interface Props {
-    hit: schemaMads | null;
+    hit: SchemaMads | null;
     setForm: Function;
 }
 
@@ -100,8 +102,8 @@ function GetValue(hit: any) {
     return obj
 }
 
-export default function FormLocCreate({ hit, setForm }: Props) {
-    // console.log("LOC:", hit)
+export default function FormLocSubject({ hit, setForm }: Props) {
+    console.log("LOC:", hit)
     const router = useRouter()
     const { progress, setProgress } = useProgress();
     const [id, setId] = useState(null);
@@ -141,11 +143,11 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         setValue,
         getValues,
     } = useForm<SchemaCreateAuthority>({
-        resolver: zodResolver(MadsSchema),
+        resolver: zodResolver(SchemaMads),
         defaultValues,
     });
 
-    // console.log(errors)
+    console.log(errors)
     function createAuthority(data: any) {
         let formData = ParserData(data)
         let obj = {
@@ -163,8 +165,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         }
         let request = { ...obj, ...formData };
         console.log("CR:", request)
-
-        // setProgress(true)
+        setProgress(true)
         // bkapi.post("/thesarus/create", request, {
         //     headers: headers,
         // })
@@ -181,8 +182,6 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         //         setProgress(false)
         //         setOpenSnack(true)
         //     });
-
-
     }
 
     return (
@@ -190,7 +189,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
             <form onSubmit={handleSubmit(createAuthority)}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
-                        Criar Autoridades
+                        Criar Autoridades - Assuntos
                     </Typography>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
                         <Button
@@ -213,22 +212,13 @@ export default function FormLocCreate({ hit, setForm }: Props) {
                     </Box>
                 </Box>
                 <Divider />
-                {hit?.type === "PersonalName" ? (
-                    <FormMadsNames
+                <FormMadsSubject
                         control={control}
                         register={register}
                         errors={errors}
                         getValues={getValues}
                         setValue={setValue} />
-
-                ) : (
-                    <FormMadsSubject
-                        control={control}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        setValue={setValue} />
-                )}
+                
 
             </form>
         </Box>

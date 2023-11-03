@@ -24,7 +24,7 @@ class Uri(BaseModel):
 class Organization(BaseModel):
     uri: Optional[str] = None
     label: str
-    base: Optional[str] = None
+    base: Optional[str] = None 
 
 class Affiliation(BaseModel):
     organization: Organization
