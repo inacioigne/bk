@@ -45,12 +45,13 @@ async def post_authority(request: SchemaMads):
     
     # # Jena
     graph = MakeGraphName(request, request.identifiersLocal)
+    # print(graph)
     response = authorityUpdate.run_sparql(graph)    
 
     # # Solr
     doc = MakeDoc(request, request.identifiersLocal)
     responseSolr = solr.add([doc], commit=True)
-    # print('TESTE: ', doc)
+    # print('TESTE: ', responseSolr)
 
     return {
         "id": request.identifiersLocal,

@@ -44,6 +44,7 @@ import {
     const obj: Types = {
       PersonalName: "Nome Pessoal",
       corporatename: "Nome Coorporativo",
+      Topic: "Topic"
     };
   
     const handleFacet = (facet: Facet, params: URLSearchParams) => {

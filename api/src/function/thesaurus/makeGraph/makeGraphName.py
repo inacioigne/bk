@@ -9,6 +9,8 @@ from src.function.thesaurus.makeGraph.makeElement import MakeElement
 from src.function.thesaurus.makeGraph.makeLabel import MakeLabel
 from src.function.thesaurus.makeGraph.hasVariant import HasVariant
 from src.function.thesaurus.makeGraph.identifiesRWO import IdentifiesRWO
+from src.function.thesaurus.makeGraph.listUri import ListUri
+
 
 from datetime import datetime
 
@@ -63,10 +65,14 @@ def MakeGraphName(request, id):
             { DeathPlace(request.deathPlace) if request.deathPlace else ''  }
             { HasAffiliation(request.hasAffiliation) if request.hasAffiliation else ''  }
             { Occupation(request.occupation) if request.occupation else '' }
+            { ListUri(request.hasBroaderAuthority, "hasBroaderAuthority") if request.hasBroaderAuthority else '' }
+            { ListUri(request.hasNarrowerAuthority, "hasNarrowerAuthority") if request.hasNarrowerAuthority else '' }
+            { ListUri(request.hasReciprocalAuthority, "hasReciprocalAuthority") if request.hasReciprocalAuthority else '' }
             { f'madsrdf:fieldOfActivity {", ".join([ f"<{i.uri}>" for i in request.fieldOfActivity])} ;' if request.fieldOfActivity else ''}
             { f'madsrdf:hasCloseExternalAuthority {", ".join([ f"<{i.uri}>" for i in request.hasCloseExternalAuthority])} ;' if request.hasCloseExternalAuthority else ''}
             { f'madsrdf:hasExactExternalAuthority {", ".join([ f"<{i.uri}>" for i in request.hasExactExternalAuthority])} ;' if request.hasExactExternalAuthority else ''}
             { f'madsrdf:identifiesRWO { IdentifiesRWO(request.identifiesRWO) } ;' if request.identifiesRWO else ''  }
+
              madsrdf:isMemberOfMADSCollection <https://bibliokeia.com/authority> .         
             }} 
         }}"""

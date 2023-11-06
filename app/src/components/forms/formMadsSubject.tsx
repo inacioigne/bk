@@ -11,16 +11,12 @@ import {
 import { schemaMads } from "@/schema/authority";
 
 import FormElementList from "@/components/madsrdf/forms/formElementList";
-import FormFullerName from "@/components/madsrdf/forms/formFullerName"
-import FormBirth from "@/components/madsrdf/forms/birth"
-import FormDeath from "@/components/madsrdf/forms/death"
-import FormVariant from "@/components/madsrdf/forms/formVariant"
-import FormAffiliation from "@/components/madsrdf/forms/formAffiliation"
-import FormOccupation from "@/components/madsrdf/forms/formOccupation"
-import FormFieldOfActivity from "@/components/madsrdf/forms/formFieldOfActivity"
-import FormRWO from "@/components/madsrdf/forms/formRWO"
 import FormHCEA from "@/components/madsrdf/forms/formHCEA"
 import FormHBA from "@/components/madsrdf/forms/formHBA";
+import FormHNA from "@/components/madsrdf/forms/formHNA";
+import FormHRA from "@/components/madsrdf/forms/formHRA";
+import FormVariant from "@/components/madsrdf/forms/formVariant"
+
 
 interface Props {
     control: any
@@ -49,12 +45,32 @@ export default function FormMadsSubject({ control, register, errors, getValues, 
                 />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
+                        Variantes do nome
+                    </Typography>
+                    <Divider />
+                </Grid>
+                <FormVariant control={control} register={register} getValues={getValues} setValue={setValue} />
+                <Grid item xs={12}>
+                    <Typography variant="h6" gutterBottom>
+                        Termo Relacionado
+                    </Typography>
+                    <Divider />
+                </Grid>
+                <FormHRA control={control} register={register} />                
+                <Grid item xs={12}>
+                    <Typography variant="h6" gutterBottom>
                         Termo Geral
                     </Typography>
                     <Divider />
                 </Grid>
                 <FormHBA control={control} register={register} />
-
+                <Grid item xs={12}>
+                    <Typography variant="h6" gutterBottom>
+                        Termo Específico
+                    </Typography>
+                    <Divider />
+                </Grid>
+                <FormHNA control={control} register={register} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Ocorrências em outra bases
@@ -62,19 +78,7 @@ export default function FormMadsSubject({ control, register, errors, getValues, 
                     <Divider />
                 </Grid>
                 <FormHCEA control={control} register={register} />
-                {/* <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Imagem
-                    </Typography>
-                    <Divider />
-                    <TextField
-                        fullWidth
-                        size="small"
-                        label="Imagem"
-                        variant="outlined"
-                        {...register("imagem")}
-                    />
-                </Grid> */}
+               
             </Grid>
 
         </Paper>

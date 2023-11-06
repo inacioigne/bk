@@ -103,6 +103,66 @@ def MakeDoc(request, id):
             uris.append(uri)
         doc['hasCloseExternalAuthority'] = uris
 
+    # Broader
+    if request.hasBroaderAuthority:
+        listMads = list()
+        for i in request.hasBroaderAuthority:
+            if i.uri:
+                uri = {
+                    'id': f"{id}/hasBroaderAuthority#{i.uri.split('/')[-1]}",
+                    'label': i.label,
+                    'uri': i.uri,
+                    'base': i.base }
+            else:
+                uri = {
+                    'id': f"{id}/hasBroaderAuthority#{i.label}",
+                    'label': i.label,
+                    'base': i.base }
+
+            listMads.append(uri)
+        doc['hasBroaderAuthority'] = listMads
+        doc['hasBroaderAuthorityLabels']  = [i['label'] for i in listMads]
+
+    # hasNarrowerAuthority
+    if request.hasNarrowerAuthority:
+        listMads = list()
+        for i in request.hasNarrowerAuthority:
+            if i.uri:
+                uri = {
+                    'id': f"{id}/hasNarrowerAuthority#{i.uri.split('/')[-1]}",
+                    'label': i.label,
+                    'uri': i.uri,
+                    'base': i.base }
+            else:
+                uri = {
+                    'id': f"{id}/hasNarrowerAuthority#{i.label}",
+                    'label': i.label,
+                    'base': i.base }
+
+            listMads.append(uri)
+        doc['hasNarrowerAuthority'] = listMads
+        doc['hasNarrowerAuthorityLabels']  = [i['label'] for i in listMads]
+
+    # hasReciprocalAuthority
+    if request.hasReciprocalAuthority:
+        listMads = list()
+        for i in request.hasReciprocalAuthority:
+            if i.uri:
+                uri = {
+                    'id': f"{id}/hasReciprocalAuthority#{i.uri.split('/')[-1]}",
+                    'label': i.label,
+                    'uri': i.uri,
+                    'base': i.base }
+            else:
+                uri = {
+                    'id': f"{id}/hasReciprocalAuthority#{i.label}",
+                    'label': i.label,
+                    'base': i.base }
+
+            listMads.append(uri)
+        doc['hasReciprocalAuthority'] = listMads
+        doc['hasReciprocalAuthorityLabels']  = [i['label'] for i in listMads]
+        
     # Occupation
     if request.occupation:
         occupations = list()

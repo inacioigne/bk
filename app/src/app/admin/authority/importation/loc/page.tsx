@@ -11,8 +11,8 @@ import {
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormLCSH from "@/components/forms/formLocSearch"
 import CardLoc from "@/components/cards/cardLoc"
-import FormLocCreate from "@/components/forms/formLocCreate";
-import FormLocSubject from "@/components/forms/formLocSubject";
+import FormLocName from "@/components/forms/loc/formLocName";
+import FormLocSubject from "@/components/forms/loc/formLocSubject";
 
 // react-icons
 import { FcHome } from "react-icons/fc";
@@ -63,14 +63,10 @@ export default function LOC() {
         </Box>
 
       ) :  
-      // <FormLocCreate hit={hit} setForm={setForm} /> 
      ( hit?.type === "PersonalName" ? 
-      <FormLocCreate hit={hit} setForm={setForm} /> : 
+      <FormLocName hit={hit} setForm={setForm} /> : 
       <FormLocSubject hit={hit} setForm={setForm} /> )
-
-}
-    
-  
+}  
     </Container>
   );
 }

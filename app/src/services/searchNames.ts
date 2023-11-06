@@ -28,9 +28,11 @@ export function SearchNames(
   setOccupation: Function
 ) {
 
+  // console.log("PR", params)
+
   solr.get("authority/query?", {params: params})
     .then(function (response) { 
-      // console.log(response)
+      console.log("RES:", response)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
       const r = docs.map((doc: any, index: number) => {

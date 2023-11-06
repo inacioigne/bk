@@ -1,17 +1,8 @@
-import {
-    Box,
-    Divider,
-    Typography,
-    // Grid,
-    // Paper,
-    // TextField,
-    Button,
-} from "@mui/material";
+import { Box, Divider, Typography, Button } from "@mui/material";
 
 // BiblioKeia Components
 import FormMadsNames from "@/components/forms/formMadsNames"
 import FormMadsSubject from "@/components/forms/formMadsSubject"
-
 
 // React-Hook-Form
 import { useForm, Controller } from "react-hook-form";
@@ -19,10 +10,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Schema
-// import { MadsSchema } from "@/schema/authority/madsSchema";
-// import { schemaMads } from "@/schema/authority";
-import { SchemaSubject } from "@/schema/mads/zodSubject"
-import { SchemaMads } from "@/schema/mads/schemaMads"
+import { MadsSchema } from "@/schema/mads/zodNames";
+import { schemaMads } from "@/schema/authority";
 
 // MUI Icons
 import { IoIosSave } from "react-icons/io";
@@ -44,10 +33,10 @@ import { useAlert } from "@/providers/alert";
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
 
-type SchemaCreateAuthority = z.infer<typeof SchemaSubject>;
+type SchemaCreateAuthority = z.infer<typeof MadsSchema>;
 
 interface Props {
-    hit: SchemaMads | null;
+    hit: schemaMads | null;
     setForm: Function;
 }
 
@@ -102,8 +91,8 @@ function GetValue(hit: any) {
     return obj
 }
 
-export default function FormLocSubject({ hit, setForm }: Props) {
-    console.log("LOC:", hit)
+export default function FormLocName({ hit, setForm }: Props) {
+    // console.log("LOC:", hit)
     const router = useRouter()
     const { progress, setProgress } = useProgress();
     const [id, setId] = useState(null);
@@ -121,7 +110,6 @@ export default function FormLocSubject({ hit, setForm }: Props) {
             .get(`/thesarus/next_id`)
             .then(function (response) {
                 setId(response.data);
-
                 // console.log(response.data);
             })
             .catch(function (error) {
@@ -143,11 +131,11 @@ export default function FormLocSubject({ hit, setForm }: Props) {
         setValue,
         getValues,
     } = useForm<SchemaCreateAuthority>({
-        resolver: zodResolver(SchemaMads),
+        resolver: zodResolver(MadsSchema),
         defaultValues,
     });
 
-    console.log(errors)
+    // console.log(errors)
     function createAuthority(data: any) {
         let formData = ParserData(data)
         let obj = {
@@ -164,24 +152,25 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }
         let request = { ...obj, ...formData };
-        console.log("CR:", request)
+        // console.log("CR:", request)
+
         setProgress(true)
-        // bkapi.post("/thesarus/create", request, {
-        //     headers: headers,
-        // })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             setMessage("Registro criado com sucesso!")
-        //             router.push(`/admin/authority/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.error(error);
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+        bkapi.post("/thesarus/create", request, {
+            headers: headers,
+        })
+            .then(function (response) {
+                if (response.status === 201) {
+                    setMessage("Registro criado com sucesso!")
+                    router.push(`/admin/authority/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                console.error(error);
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     return (
@@ -189,7 +178,7 @@ export default function FormLocSubject({ hit, setForm }: Props) {
             <form onSubmit={handleSubmit(createAuthority)}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
-                        Criar Autoridades - Assuntos
+                        Criar Autoridades
                     </Typography>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
                         <Button
@@ -212,13 +201,22 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                     </Box>
                 </Box>
                 <Divider />
-                <FormMadsSubject
+                {hit?.type === "PersonalName" ? (
+                    <FormMadsNames
                         control={control}
                         register={register}
                         errors={errors}
                         getValues={getValues}
                         setValue={setValue} />
-                
+
+                ) : (
+                    <FormMadsSubject
+                        control={control}
+                        register={register}
+                        errors={errors}
+                        getValues={getValues}
+                        setValue={setValue} />
+                )}
 
             </form>
         </Box>

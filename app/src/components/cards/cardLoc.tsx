@@ -35,8 +35,7 @@ import HasVariant from "@/components/madsrdf/view/hasVariant";
 // import Occupation from "@/components/madsrdf/view/occupation";
 import HasCloseExternalAuthority from "@/components/madsrdf/view/hasCloseExternalAuthority";
 import BtnIcon from "@/components/buttons/btnIcon";
-//   import HasBroaderAuthority from "@/components/madsrdf/view/hasBroaderAuthority";
-import ListMads from "@/components/madsrdf/view/listMads"
+import ListMads from "@/components/loc/listMads"
 import MadsLoc from "@/components/madsrdf/view/madsLoc";
 
 

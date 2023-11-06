@@ -74,7 +74,9 @@ class SchemaMads(BaseModel):
     occupation: Optional[list[Uri]] = None
     hasCloseExternalAuthority: Optional[list[Uri]] = None
     hasExactExternalAuthority: Optional[list[Uri]] = None
-    hasBroaderAuthority: Optional[Uri] = None
+    hasBroaderAuthority: Optional[list[Uri]] = None
+    hasNarrowerAuthority: Optional[list[Uri]] = None
+    hasReciprocalAuthority: Optional[list[Uri]] = None
     imagem: Optional[str] = None
 
     # subjectOf: Optional[list[Uri]] = None

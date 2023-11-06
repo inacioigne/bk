@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 // BiblioKeia Components
-import FormMadsNames from "@/components/forms/formMadsNames"
+// import FormMadsNames from "@/components/forms/formMadsNames"
 import FormMadsSubject from "@/components/forms/formMadsSubject"
 
 
@@ -19,8 +19,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Schema
-import { MadsSchema } from "@/schema/authority/madsSchema";
-import { schemaMads } from "@/schema/authority";
+import { SchemaSubject } from "@/schema/mads/zodSubject"
+import { SchemaMads } from "@/schema/mads/schemaMads"
 
 // MUI Icons
 import { IoIosSave } from "react-icons/io";
@@ -42,10 +42,10 @@ import { useAlert } from "@/providers/alert";
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
 
-type SchemaCreateAuthority = z.infer<typeof MadsSchema>;
+type SchemaCreateAuthority = z.infer<typeof SchemaSubject>;
 
 interface Props {
-    hit: schemaMads | null;
+    hit: SchemaMads | null;
     setForm: Function;
 }
 
@@ -70,38 +70,23 @@ function GetValue(hit: any) {
                 lang: elementList.elementValue.lang
             }
         }],
-        identifiersLccn: hit.identifiersLccn,
-        fullerName: hit.fullerName,
-        birthPlace: hit.birthPlace,
-        birthDayDate: hit.birthDayDate,
-        birthMonthDate: hit.birthMonthDate,
-        birthYearDate: hit.birthYearDate,
-        deathPlace: hit.deathPlace,
-        deathDayDate: hit.deathDayDate,
-        deathMonthDate: hit.deathMonthDate,
-        deathYearDate: hit.deathYearDate,
         hasVariant: hit.hasVariant ? hit.hasVariant : [{
-            type: "PersonalName",
-            elementList: [{ type: 'FullNameElement', elementValue: { value: "" } }]
+            type: "",
+            elementList: [{ type: '', elementValue: { value: "" } }]
 
         }],
-        hasAffiliation: hit.hasAffiliation ? hit.hasAffiliation : [{
-            organization: { label: "", uri: "" },
-            affiliationStart: "",
-            affiliationEnd: ""
-        }],
-        occupation: hit.occupation ? hit.occupation : uriDefault,
-        fieldOfActivity: hit.fieldOfActivity ? hit.fieldOfActivity : uriDefault,
-        identifiesRWO: hit.identifiesRWO ? hit.identifiesRWO : uriDefault,
+        identifiersLccn: hit.identifiersLccn,
         hasCloseExternalAuthority: hit.hasCloseExternalAuthority ? hit.hasCloseExternalAuthority : uriDefault,
-        hasBroaderAuthority: hit.hasBroaderAuthority
+        hasBroaderAuthority: hit.hasBroaderAuthority ? hit.hasBroaderAuthority : uriDefault,
+        hasNarrowerAuthority: hit.hasNarrowerAuthority ? hit.hasNarrowerAuthority : uriDefault,
+        hasReciprocalAuthority: hit.hasReciprocalAuthority ? hit.hasReciprocalAuthority : uriDefault,
     }
     // console.log("loc", hit);
     return obj
 }
 
-export default function FormLocCreate({ hit, setForm }: Props) {
-    // console.log("LOC:", hit)
+export default function FormLocSubject({ hit, setForm }: Props) {
+    // console.log("SUB:", hit)
     const router = useRouter()
     const { progress, setProgress } = useProgress();
     const [id, setId] = useState(null);
@@ -141,12 +126,13 @@ export default function FormLocCreate({ hit, setForm }: Props) {
         setValue,
         getValues,
     } = useForm<SchemaCreateAuthority>({
-        resolver: zodResolver(MadsSchema),
+        resolver: zodResolver(SchemaSubject),
         defaultValues,
     });
 
-    // console.log(errors)
+    // console.log("ER:", errors)
     function createAuthority(data: any) {
+        // console.log("DT:", data)
         let formData = ParserData(data)
         let obj = {
             type: hit?.type,
@@ -162,27 +148,26 @@ export default function FormLocCreate({ hit, setForm }: Props) {
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }
         let request = { ...obj, ...formData };
-        console.log("CR:", request)
+        // console.log("CR:", request)
+        setProgress(true)
+        bkapi.post("/thesarus/create", request, {
+            headers: headers,
+        })
+            .then(function (response) {
+                console.log("RES:", response)
 
-        // setProgress(true)
-        // bkapi.post("/thesarus/create", request, {
-        //     headers: headers,
-        // })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             setMessage("Registro criado com sucesso!")
-        //             router.push(`/admin/authority/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.error(error);
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
-
-
+                if (response.status === 201) {
+                    setMessage("Registro criado com sucesso!")
+                    router.push(`/admin/authority/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                console.error(error);
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     return (
@@ -190,7 +175,7 @@ export default function FormLocCreate({ hit, setForm }: Props) {
             <form onSubmit={handleSubmit(createAuthority)}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
-                        Criar Autoridades
+                        Criar Autoridades - Assuntos
                     </Typography>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
                         <Button
@@ -213,22 +198,13 @@ export default function FormLocCreate({ hit, setForm }: Props) {
                     </Box>
                 </Box>
                 <Divider />
-                {hit?.type === "PersonalName" ? (
-                    <FormMadsNames
-                        control={control}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        setValue={setValue} />
+                <FormMadsSubject
+                    control={control}
+                    register={register}
+                    errors={errors}
+                    getValues={getValues}
+                    setValue={setValue} />
 
-                ) : (
-                    <FormMadsSubject
-                        control={control}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        setValue={setValue} />
-                )}
 
             </form>
         </Box>

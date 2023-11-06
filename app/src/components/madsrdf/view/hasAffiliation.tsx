@@ -173,10 +173,7 @@ type Props = {
 };
 
 export default function HasAffiliation({ hasAffiliation }: Props) {
-  console.log(hasAffiliation)
-
-
-
+  // console.log(hasAffiliation)
   return (
     <TreeView
       aria-label="hasAffiliation"

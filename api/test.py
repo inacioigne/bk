@@ -1,7 +1,12 @@
 from src.schemas.settings import Settings
+from rdflib import Graph
 # from pysolr import Solr
 
 settings = Settings()
+
+graph = Graph()
+graph.parse('http://id.loc.gov/authorities/subjects/sh85014203')
+graph.serialize('subject.ttl')
 # solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
 # solr = Solr('http://192.168.128.4:8983/solr/authority', always_commit=True, timeout=10)
 
@@ -261,16 +266,16 @@ settings = Settings()
 # for i in request.hasVariant:
 #     v = i.model_dump()
 
-from pyfuseki import FusekiQuery
+# from pyfuseki import FusekiQuery
 
-query = FusekiQuery(settings.fuseki, 'bk') 
+# query = FusekiQuery(settings.fuseki, 'bk') 
 
-q = """PREFIX identifiers: <http://id.loc.gov/vocabulary/identifiers/>
-SELECT ?g 
-WHERE {{ GRAPH ?g {{ ?s identifiers:lccn  "{}" }} }}"""
+# q = """PREFIX identifiers: <http://id.loc.gov/vocabulary/identifiers/>
+# SELECT ?g 
+# WHERE {{ GRAPH ?g {{ ?s identifiers:lccn  "{}" }} }}"""
 
-res = query.run_sparql(q.format('n80002329'))
-bindings = res.convert()['results']['bindings']
+# res = query.run_sparql(q.format('n80002329'))
+# bindings = res.convert()['results']['bindings']
 
 
     

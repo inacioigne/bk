@@ -1,0 +1,1413 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix cs: <http://purl.org/vocab/changeset/schema#> .
+@prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
+@prefix lcc: <http://id.loc.gov/ontologies/lcc#> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ri: <http://id.loc.gov/ontologies/RecordInfo#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://id.loc.gov/resources/works/10002245> a bf:Work ;
+    bflc:aap "Oka, Asajirō, 1868-1944 Seibutsu jinsei tetsugaku" .
+
+<http://id.loc.gov/resources/works/10002754> a bf:Work ;
+    bflc:aap "Seibutsugaku ōrai" .
+
+<http://id.loc.gov/resources/works/10022132> a bf:Work ;
+    bflc:aap "Vangrieken, E. Natuurwetenschappen" .
+
+<http://id.loc.gov/resources/works/1006906> a bf:Work ;
+    bflc:aap "CRC Handbook of free radicals and antioxidants in biomedicine" .
+
+<http://id.loc.gov/resources/works/10070936> a bf:Work ;
+    bflc:aap "Le Dantec, Félix Alexandre, 1869-1917 L'unité dans l'être vivant" .
+
+<http://id.loc.gov/resources/works/10075082> a bf:Work ;
+    bflc:aap "Bell, A. N. (Agrippa Nelson), 1820-1911. knowledge of living things, with the laws of their existence" .
+
+<http://id.loc.gov/resources/works/10077684> a bf:Work ;
+    bflc:aap "Varigny, Henry de, 1855- nature et la vie" .
+
+<http://id.loc.gov/resources/works/10083974> a bf:Work ;
+    bflc:aap "Biological studies by the pupils of William Thompson Sedgwick. Published in commemoration of the twenty-fifth anniversary of his doctorate" .
+
+<http://id.loc.gov/resources/works/10096591> a bf:Work ;
+    bflc:aap "Björklund, Gustaf, 1846-1903. Death and resurrection from the point of view of the cell-theory," .
+
+<http://id.loc.gov/resources/works/10099055> a bf:Work ;
+    bflc:aap "Ostwald, Wilhelm, 1853-1932. relations of biology and the neighbouring sciences," .
+
+<http://id.loc.gov/resources/works/10119831> a bf:Work ;
+    bflc:aap "Adami, J. George (John George), 1862-1926. Medical contributions to the study of evolution" .
+
+<http://id.loc.gov/resources/works/10120478> a bf:Work ;
+    bflc:aap "Jaworski, Helan. plan biologique. t. I. L'intériorisation" .
+
+<http://id.loc.gov/resources/works/10122556> a bf:Work ;
+    bflc:aap "Jaworski, Helan. plan biologique ... III. La période géologique, sa signification--la naissance" .
+
+<http://id.loc.gov/resources/works/10125383> a bf:Work ;
+    bflc:aap "McFarland, Joseph, 1868-1945. Biology, general and medical," .
+
+<http://id.loc.gov/resources/works/10131156> a bf:Work ;
+    bflc:aap "Menge, Edward John von Komorowski, 1882-1941. General and professional biology : with special reference to man" .
+
+<http://id.loc.gov/resources/works/10131767> a bf:Work ;
+    bflc:aap "Burlingame, Leonas Lancelot, 1876- General biology," .
+
+<http://id.loc.gov/resources/works/10134488> a bf:Work ;
+    bflc:aap "Thomson, J. Arthur (John Arthur), 1861-1933. Everyday biology," .
+
+<http://id.loc.gov/resources/works/10135890> a bf:Work ;
+    bflc:aap "Smallwood, W. M. (William Martin), 1873-1949. text-book of biology for students in general, medical and technical courses," .
+
+<http://id.loc.gov/resources/works/10136362> a bf:Work ;
+    bflc:aap "Smallwood, W. M. (William Martin), 1873-1949. New biology," .
+
+<http://id.loc.gov/resources/works/10137494> a bf:Work ;
+    bflc:aap "Gruenberg, Benjamin C. (Benjamin Charles), 1875-1965. Biology and human life," .
+
+<http://id.loc.gov/resources/works/10139823> a bf:Work ;
+    bflc:aap "Holmes, Samuel J. (Samuel Jackson), 1868- Life and evolution; an introduction to general biology," .
+
+<http://id.loc.gov/resources/works/10142471> a bf:Work ;
+    bflc:aap "Huxley, Julian, 1887-1975. Essays in popular science," .
+
+<http://id.loc.gov/resources/works/10144237> a bf:Work ;
+    bflc:aap "Schäffer, Cäsar, 1867- leben seine entwicklung," .
+
+<http://id.loc.gov/resources/works/10147706> a bf:Work ;
+    bflc:aap "Spencer, Herbert, 1820-1903. Creación y evolución" .
+
+<http://id.loc.gov/resources/works/10149341> a bf:Work ;
+    bflc:aap "Shull, Aaron Franklin, 1881- Principles of animal biology," .
+
+<http://id.loc.gov/resources/works/10149590> a bf:Work ;
+    bflc:aap "Giesen, John, 1891- Backgrounds of biology," .
+
+<http://id.loc.gov/resources/works/10150612> a bf:Work ;
+    bflc:aap "National Research Council (U.S.) Reprints of papers by National research fellows in the biological sciences" .
+
+<http://id.loc.gov/resources/works/10152445> a bf:Work ;
+    bflc:aap "Smallwood, W. M. (William Martin), 1873-1949. text-book of biology for students in general, medical and technical courses," .
+
+<http://id.loc.gov/resources/works/10155828> a bf:Work ;
+    bflc:aap "Kammerer, Paul, 1880-1926. Allgemeine Biologie," .
+
+<http://id.loc.gov/resources/works/10159244> a bf:Work ;
+    bflc:aap "Johnstone, James. essentials of biology," .
+
+<http://id.loc.gov/resources/works/10161538> a bf:Work ;
+    bflc:aap "Lazerges, Élie. grands problèmes de la biologie et de la géologie," .
+
+<http://id.loc.gov/resources/works/10161861> a bf:Work ;
+    bflc:aap "Schmidt, Heinrich, 1874- kampf ums dasein, mit 28 abbildungen im text" .
+
+<http://id.loc.gov/resources/works/10162423> a bf:Work ;
+    bflc:aap "Buchanan, James William, 1888- Elements of biology," .
+
+<http://id.loc.gov/resources/works/10162982> a bf:Work ;
+    bflc:aap "Bertalanffy, Ludwig von, 1901-1972. Modern theories of development; an introduction to theoretical biology," .
+
+<http://id.loc.gov/resources/works/1016533> a bf:Work ;
+    bflc:aap "Lamarck, Jean Baptiste Pierre Antoine de Monet de, 1744-1829. Recherches sur l'organisation des corps vivants : précédé du Discours d'ouverture du cours de zoologie donné dans la Muséum d'histoire naturelle" .
+
+<http://id.loc.gov/resources/works/10171094> a bf:Work ;
+    bflc:aap "Miller, Henry, 1800-1874. An inaugural thesis on the relation between the sanguiferous and nervous systems .." .
+
+<http://id.loc.gov/resources/works/10171764> a bf:Work ;
+    bflc:aap "Goldstein, Kurt, 1878- aufbau des organismus; einführung in die biologie unter besonderer berücksichtigung der erfahrungen am kranken menschen," .
+
+<http://id.loc.gov/resources/works/10173553> a bf:Work ;
+    bflc:aap "Woodruff, Lorande Loss, 1879-1947. Foundations of biology," .
+
+<http://id.loc.gov/resources/works/10173907> a bf:Work ;
+    bflc:aap "Graubard, Mark, 1904- Biology and human behavior" .
+
+<http://id.loc.gov/resources/works/10177010> a bf:Work ;
+    bflc:aap "Guyer, Michael Frederic, 1874- Animal biology" .
+
+<http://id.loc.gov/resources/works/10180431> a bf:Work ;
+    bflc:aap "Wood, George C. (George Clayton), 1878- Our environment, the living things in it," .
+
+<http://id.loc.gov/resources/works/10180913> a bf:Work ;
+    bflc:aap "Collier, Henry. interpretation of biology," .
+
+<http://id.loc.gov/resources/works/10181754> a bf:Work ;
+    bflc:aap "Spallanzani, Lazzaro, 1729-1799. opere di Lazzar Spallanzani" .
+
+<http://id.loc.gov/resources/works/10183641> a bf:Work ;
+    bflc:aap "Greenwood, William Osborne, 1871- Biology and Christian belief," .
+
+<http://id.loc.gov/resources/works/10186569> a bf:Work ;
+    bflc:aap "Wells, H. G. (Herbert George), 1866-1946. science of life" .
+
+<http://id.loc.gov/resources/works/10187968> a bf:Work ;
+    bflc:aap "Fitzpatrick, Frederick L. (Frederick Linder), 1900-1976. Biology" .
+
+<http://id.loc.gov/resources/works/10190998> a bf:Work ;
+    bflc:aap "McAtee, W. L. (Waldo Lee), 1883-1962. Biologic balance on the farm," .
+
+<http://id.loc.gov/resources/works/10191123> a bf:Work ;
+    bflc:aap "Rogers, James Speed, 1892- Man and the biological world," .
+
+<http://id.loc.gov/resources/works/10191502> a bf:Work ;
+    bflc:aap "Weymouth, Clinton G. Science of living things" .
+
+<http://id.loc.gov/resources/works/10191801> a bf:Work ;
+    bflc:aap "Cross, James Cecil, 1895- introduction to biology," .
+
+<http://id.loc.gov/resources/works/10198186> a bf:Work ;
+    bflc:aap "Bree, Charles Robert, 1811-1886. Popular illustrations of the lower forms of life: I.--The protophyton. II.--The protozoon" .
+
+<http://id.loc.gov/resources/works/10199252> a bf:Work ;
+    bflc:aap "Frisch, Karl von, 1886-1982. Tú y la vida, una biología moderna para todos" .
+
+<http://id.loc.gov/resources/works/10200504> a bf:Work ;
+    bflc:aap "De Laubenfels, M. W. (Max Walker), 1894- Life science, a survey of the various fields of biology," .
+
+<http://id.loc.gov/resources/works/10208902> a bf:Work ;
+    bflc:aap "Nóvoa Santos, Roberto, 1885-1933. advenimiento del hombre," .
+
+<http://id.loc.gov/resources/works/10209478> a bf:Work ;
+    bflc:aap "Torres de la Llosa, Carlos A. Tratado elemental de historia natural .." .
+
+<http://id.loc.gov/resources/works/10212865> a bf:Work ;
+    bflc:aap "Pujiula, Jaime, 1869- Problemas biológicos," .
+
+<http://id.loc.gov/resources/works/1021668> a bf:Work ;
+    bflc:aap "Checkerboard Press biology encyclopedia" .
+
+<http://id.loc.gov/resources/works/10217557> a bf:Work ;
+    bflc:aap "Young, Clarence Whitford, 1902- human organism and the world of life" .
+
+<http://id.loc.gov/resources/works/10218080> a bf:Work ;
+    bflc:aap "Fejérváry, Géza Gyula, báró, 1894-1932. Élet, szerelem és halál; biologia" .
+
+<http://id.loc.gov/resources/works/10220562> a bf:Work ;
+    bflc:aap "Pierantoni, Umberto, 1876- Lezioni di biologia e zoologia generale" .
+
+<http://id.loc.gov/resources/works/10220582> a bf:Work ;
+    bflc:aap "Strausbaugh, Perry Daniel, 1886-1965. General biology," .
+
+<http://id.loc.gov/resources/works/10220626> a bf:Work ;
+    bflc:aap "Fenton, Carroll Lane, 1900-1969. Basic biology for high schools" .
+
+<http://id.loc.gov/resources/works/10224973> a bf:Work ;
+    bflc:aap "Knobloch, Irving W. (Irving William), 1907- Readings in biological science" .
+
+<http://id.loc.gov/resources/works/10228384> a bf:Work ;
+    bflc:aap "Klöpf, Alexander, 1912- Ultraschallwellen und deren biologische Bedeutung" .
+
+<http://id.loc.gov/resources/works/10230250> a bf:Work ;
+    bflc:aap "De Laubenfels, M. W. (Max Walker), 1894- Pageant of life science" .
+
+<http://id.loc.gov/resources/works/10234270> a bf:Work ;
+    bflc:aap "Wideman, Charles J. biological world," .
+
+<http://id.loc.gov/resources/works/1023431> a bf:Work ;
+    bflc:aap "Kelly, James L., 1942- Biology : a personalized approach" .
+
+<http://id.loc.gov/resources/works/10238599> a bf:Work ;
+    bflc:aap "Petrodvoret︠s︡, Russia. Biologicheskiĭ institut. Trudy" .
+
+<http://id.loc.gov/resources/works/10239531> a bf:Work ;
+    bflc:aap "Rossner, Ferdinand, 1900- Was wir vom Leben wissen; Grundfragen der Biologie" .
+
+<http://id.loc.gov/resources/works/10240571> a bf:Work ;
+    bflc:aap "Rittershaus, Wilhelm. Mosaik biologischer Studien" .
+
+<http://id.loc.gov/resources/works/10240628> a bf:Work ;
+    bflc:aap "Lysenko, Trofim, 1898-1976. situation in biological science; address delivered at the session of the Lenin Academy of Agricultural Sciences of the U.S.S.R., July 31, 1948" .
+
+<http://id.loc.gov/resources/works/10241875> a bf:Work ;
+    bflc:aap "Marsland, Douglas, 1899- Principles of modern biology; a complete reconstruction and modernization of Charles R. Plunkett's Elements of modern biology" .
+
+<http://id.loc.gov/resources/works/10242002> a bf:Work ;
+    bflc:aap "Ledoux, André, 1919- Recherche sur la biologie de la fourmi fileuse (Œcophylla loginoda Latr.)" .
+
+<http://id.loc.gov/resources/works/10243189> a bf:Work ;
+    bflc:aap "Steen, Johannes Christiaan van der. planten- & dierenwereld" .
+
+<http://id.loc.gov/resources/works/10244856> a bf:Work ;
+    bflc:aap "Kiev. Universytet. Naukovo-doslidnyĭ instytut biologiĭ. Pratsi" .
+
+<http://id.loc.gov/resources/works/10245681> a bf:Work ;
+    bflc:aap "Schlegel, Christian. Sciences naturelles, rédigé conformément aux programmes officiels de l'enseignement secondaire du 23 décembre 1941" .
+
+<http://id.loc.gov/resources/works/10250893> a bf:Work ;
+    bflc:aap "Lysenko, Trofim, 1898-1976. Nuove vie alla biologia" .
+
+<http://id.loc.gov/resources/works/10252637> a bf:Work ;
+    bflc:aap "Schöne, Georg, 1875- Über das Individuelle in Menschen, Tieren und Pflanzen; biologische Untersuchungen" .
+
+<http://id.loc.gov/resources/works/10253807> a bf:Work ;
+    bflc:aap "Dale, Alan. introduction to social biology" .
+
+<http://id.loc.gov/resources/works/10254098> a bf:Work ;
+    bflc:aap "University of Chicago. College. Syllabus and selected readings in biology for Natural sciences 2: the structural and functional organization of living things; the history of the species and of the individual as objects of investigation (evolution, genetics, embryology)" .
+
+<http://id.loc.gov/resources/works/10255759> a bf:Work ;
+    bflc:aap "Leningrad. Universitet. Trudy i︠u︡bileĭnoĭ nauchnoĭ sessii. Sekt︠s︡ii︠a︡ biologicheskikh nauk" .
+
+<http://id.loc.gov/resources/works/10259682> a bf:Work ;
+    bflc:aap "Hunter, George William, 1873-1948. Biology in Philippine life" .
+
+<http://id.loc.gov/resources/works/10260576> a bf:Work ;
+    bflc:aap "Hensill, John Samuel, 1908- biology of man. With chapters on development, body framework, and pregnancy and birth" .
+
+<http://id.loc.gov/resources/works/10265139> a bf:Work ;
+    bflc:aap "Hunter, George William, 1873-1948. Biology in our lives" .
+
+<http://id.loc.gov/resources/works/10268832> a bf:Work ;
+    bflc:aap "California Institute of Technology. Division of Biology. Biology" .
+
+<http://id.loc.gov/resources/works/10273658> a bf:Work ;
+    bflc:aap "Akadėmii︠a︡ navuk BSSR, Minsk, Instytut bii︠a︡logii Sbornik nauchnykh trudov" .
+
+<http://id.loc.gov/resources/works/10285483> a bf:Work ;
+    bflc:aap "Heiss, Elwood D. (Elwood David), 1899- Biology, a basic science" .
+
+<http://id.loc.gov/resources/works/10288414> a bf:Work ;
+    bflc:aap "Biológia" .
+
+<http://id.loc.gov/resources/works/10295796> a bf:Work ;
+    bflc:aap "Gessner, Fritz. unwahrscheinliche Leben; eine Biologie für alle," .
+
+<http://id.loc.gov/resources/works/10295870> a bf:Work ;
+    bflc:aap "Sellier, Robert. insectes utiles; biologie des insectes auxiliaires; utilisation des insectes par l'homme" .
+
+<http://id.loc.gov/resources/works/10296174> a bf:Work ;
+    bflc:aap "Popov, Metodiĭ, 1881-1954 Obshta biologii︠a" .
+
+<http://id.loc.gov/resources/works/10298781> a bf:Work ;
+    bflc:aap "Elliott, Alfred Marlyn, 1905- Biology" .
+
+<http://id.loc.gov/resources/works/10302361> a bf:Work ;
+    bflc:aap "Weckstein, Abraham M. Graphic survey of biology" .
+
+<http://id.loc.gov/resources/works/10304580> a bf:Work ;
+    bflc:aap "Brown, Frank A. (Frank Arthur), 1908-1983. rhythmic nature of animals and plants" .
+
+<http://id.loc.gov/resources/works/10311823> a bf:Work ;
+    bflc:aap "Goodnight, Clarence J. (Clarence James), 1914-1987. Biology, an introduction to the science of life" .
+
+<http://id.loc.gov/resources/works/10313178> a bf:Work ;
+    bflc:aap "Wolff, Étienne, 1904-1996. être vivant" .
+
+<http://id.loc.gov/resources/works/10314730> a bf:Work ;
+    bflc:aap "Woltereck, Heinz, 1901- Dem leben auf der Spur" .
+
+<http://id.loc.gov/resources/works/10325043> a bf:Work ;
+    bflc:aap "Brandwein, Paul Franz, 1912- world of living things" .
+
+<http://id.loc.gov/resources/works/10337139> a bf:Work ;
+    bflc:aap "Vondřejc, Josef, Biologie" .
+
+<http://id.loc.gov/resources/works/10340991> a bf:Work ;
+    bflc:aap "Kang, Yŏng-sŏn, 1917-1999 Saengmurhak kaeron 生物學 槪論" .
+
+<http://data.bnf.fr/ark:/12148/cb119440835> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biologie"@fr ;
+    skos:prefLabel "Biologie"@fr .
+
+<http://datos.bne.es/resource/XX524700> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biología"@es ;
+    skos:prefLabel "Biología"@es .
+
+<http://id.loc.gov/authorities/subjects/sh00003440> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Pollinators"@en ;
+    skos:prefLabel "Pollinators"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2001012327> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Coastal biology"@en ;
+    skos:prefLabel "Coastal biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2003008355> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Computational biology"@en ;
+    skos:prefLabel "Computational biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2005001919> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biocomplexity"@en ;
+    skos:prefLabel "Biocomplexity"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2006001276> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Phenomenological biology"@en ;
+    skos:prefLabel "Phenomenological biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2006002547> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Forensic biology"@en ;
+    skos:prefLabel "Forensic biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2006005143> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Artificial satellites in biology"@en ;
+    skos:prefLabel "Artificial satellites in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2007007463> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Architecture and biology"@en ;
+    skos:prefLabel "Architecture and biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2009008123> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Art and biology"@en ;
+    skos:prefLabel "Art and biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2012001925> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Viability (Biology)"@en ;
+    skos:prefLabel "Viability (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2020006632> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Chemical biology"@en ;
+    skos:prefLabel "Chemical biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2021005778> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Libraries--Special collections--Biology"@en ;
+    skos:prefLabel "Libraries--Special collections--Biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85000800> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Adaptation (Biology)"@en ;
+    skos:prefLabel "Adaptation (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85004835> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Anatomy"@en ;
+    skos:prefLabel "Anatomy"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85006231> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Aquatic biology"@en ;
+    skos:prefLabel "Aquatic biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85014134> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Bioengineering"@en ;
+    skos:prefLabel "Bioengineering"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85014147> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biogeography"@en ;
+    skos:prefLabel "Biogeography"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85014167> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biolinguistics"@en ;
+    skos:prefLabel "Biolinguistics"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85014171> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biochemistry"@en ;
+    skos:prefLabel "Biochemistry"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85014203> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    bflc:marcKey "150  $aBiology" ;
+    bflc:subjectOf <http://id.loc.gov/resources/works/10002245>,
+        <http://id.loc.gov/resources/works/10002754>,
+        <http://id.loc.gov/resources/works/10022132>,
+        <http://id.loc.gov/resources/works/1006906>,
+        <http://id.loc.gov/resources/works/10070936>,
+        <http://id.loc.gov/resources/works/10075082>,
+        <http://id.loc.gov/resources/works/10077684>,
+        <http://id.loc.gov/resources/works/10083974>,
+        <http://id.loc.gov/resources/works/10096591>,
+        <http://id.loc.gov/resources/works/10099055>,
+        <http://id.loc.gov/resources/works/10119831>,
+        <http://id.loc.gov/resources/works/10120478>,
+        <http://id.loc.gov/resources/works/10122556>,
+        <http://id.loc.gov/resources/works/10125383>,
+        <http://id.loc.gov/resources/works/10131156>,
+        <http://id.loc.gov/resources/works/10131767>,
+        <http://id.loc.gov/resources/works/10134488>,
+        <http://id.loc.gov/resources/works/10135890>,
+        <http://id.loc.gov/resources/works/10136362>,
+        <http://id.loc.gov/resources/works/10137494>,
+        <http://id.loc.gov/resources/works/10139823>,
+        <http://id.loc.gov/resources/works/10142471>,
+        <http://id.loc.gov/resources/works/10144237>,
+        <http://id.loc.gov/resources/works/10147706>,
+        <http://id.loc.gov/resources/works/10149341>,
+        <http://id.loc.gov/resources/works/10149590>,
+        <http://id.loc.gov/resources/works/10150612>,
+        <http://id.loc.gov/resources/works/10152445>,
+        <http://id.loc.gov/resources/works/10155828>,
+        <http://id.loc.gov/resources/works/10159244>,
+        <http://id.loc.gov/resources/works/10161538>,
+        <http://id.loc.gov/resources/works/10161861>,
+        <http://id.loc.gov/resources/works/10162423>,
+        <http://id.loc.gov/resources/works/10162982>,
+        <http://id.loc.gov/resources/works/1016533>,
+        <http://id.loc.gov/resources/works/10171094>,
+        <http://id.loc.gov/resources/works/10171764>,
+        <http://id.loc.gov/resources/works/10173553>,
+        <http://id.loc.gov/resources/works/10173907>,
+        <http://id.loc.gov/resources/works/10177010>,
+        <http://id.loc.gov/resources/works/10180431>,
+        <http://id.loc.gov/resources/works/10180913>,
+        <http://id.loc.gov/resources/works/10181754>,
+        <http://id.loc.gov/resources/works/10183641>,
+        <http://id.loc.gov/resources/works/10186569>,
+        <http://id.loc.gov/resources/works/10187968>,
+        <http://id.loc.gov/resources/works/10190998>,
+        <http://id.loc.gov/resources/works/10191123>,
+        <http://id.loc.gov/resources/works/10191502>,
+        <http://id.loc.gov/resources/works/10191801>,
+        <http://id.loc.gov/resources/works/10198186>,
+        <http://id.loc.gov/resources/works/10199252>,
+        <http://id.loc.gov/resources/works/10200504>,
+        <http://id.loc.gov/resources/works/10208902>,
+        <http://id.loc.gov/resources/works/10209478>,
+        <http://id.loc.gov/resources/works/10212865>,
+        <http://id.loc.gov/resources/works/1021668>,
+        <http://id.loc.gov/resources/works/10217557>,
+        <http://id.loc.gov/resources/works/10218080>,
+        <http://id.loc.gov/resources/works/10220562>,
+        <http://id.loc.gov/resources/works/10220582>,
+        <http://id.loc.gov/resources/works/10220626>,
+        <http://id.loc.gov/resources/works/10224973>,
+        <http://id.loc.gov/resources/works/10228384>,
+        <http://id.loc.gov/resources/works/10230250>,
+        <http://id.loc.gov/resources/works/10234270>,
+        <http://id.loc.gov/resources/works/1023431>,
+        <http://id.loc.gov/resources/works/10238599>,
+        <http://id.loc.gov/resources/works/10239531>,
+        <http://id.loc.gov/resources/works/10240571>,
+        <http://id.loc.gov/resources/works/10240628>,
+        <http://id.loc.gov/resources/works/10241875>,
+        <http://id.loc.gov/resources/works/10242002>,
+        <http://id.loc.gov/resources/works/10243189>,
+        <http://id.loc.gov/resources/works/10244856>,
+        <http://id.loc.gov/resources/works/10245681>,
+        <http://id.loc.gov/resources/works/10250893>,
+        <http://id.loc.gov/resources/works/10252637>,
+        <http://id.loc.gov/resources/works/10253807>,
+        <http://id.loc.gov/resources/works/10254098>,
+        <http://id.loc.gov/resources/works/10255759>,
+        <http://id.loc.gov/resources/works/10259682>,
+        <http://id.loc.gov/resources/works/10260576>,
+        <http://id.loc.gov/resources/works/10265139>,
+        <http://id.loc.gov/resources/works/10268832>,
+        <http://id.loc.gov/resources/works/10273658>,
+        <http://id.loc.gov/resources/works/10285483>,
+        <http://id.loc.gov/resources/works/10288414>,
+        <http://id.loc.gov/resources/works/10295796>,
+        <http://id.loc.gov/resources/works/10295870>,
+        <http://id.loc.gov/resources/works/10296174>,
+        <http://id.loc.gov/resources/works/10298781>,
+        <http://id.loc.gov/resources/works/10302361>,
+        <http://id.loc.gov/resources/works/10304580>,
+        <http://id.loc.gov/resources/works/10311823>,
+        <http://id.loc.gov/resources/works/10313178>,
+        <http://id.loc.gov/resources/works/10314730>,
+        <http://id.loc.gov/resources/works/10325043>,
+        <http://id.loc.gov/resources/works/10337139>,
+        <http://id.loc.gov/resources/works/10340991> ;
+    identifiers:lccn "sh 85014203" ;
+    madsrdf:adminMetadata [ a ri:RecordInfo ;
+            ri:recordChangeDate "1986-02-11T00:00:00"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            ri:recordStatus "new"^^xsd:string ],
+        [ a ri:RecordInfo ;
+            ri:recordChangeDate "2021-11-23T12:02:06"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            ri:recordStatus "revised"^^xsd:string ] ;
+    madsrdf:authoritativeLabel "Biology"@en ;
+    madsrdf:classification [ a lcc:ClassNumber ;
+            bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            madsrdf:code "QH301-QH705.5" ] ;
+    madsrdf:editorialNote "headings beginning with the word [Biological]" ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Biology"@en ] ) ;
+    madsrdf:hasBroaderAuthority <http://id.loc.gov/authorities/subjects/sh85076841> ;
+    madsrdf:hasCloseExternalAuthority <http://data.bnf.fr/ark:/12148/cb119440835>,
+        <http://datos.bne.es/resource/XX524700>,
+        <http://id.worldcat.org/fast/832383>,
+        <http://lod.nal.usda.gov/nalt/127348>,
+        <http://purl.org/bncf/tid/1541>,
+        <http://www.wikidata.org/entity/Q420>,
+        <http://www.yso.fi/onto/yso/p1782>,
+        <https://d-nb.info/gnd/4006851-1> ;
+    madsrdf:hasNarrowerAuthority <http://id.loc.gov/authorities/subjects/sh00003440>,
+        <http://id.loc.gov/authorities/subjects/sh2001012327>,
+        <http://id.loc.gov/authorities/subjects/sh2003008355>,
+        <http://id.loc.gov/authorities/subjects/sh2005001919>,
+        <http://id.loc.gov/authorities/subjects/sh2006001276>,
+        <http://id.loc.gov/authorities/subjects/sh2006002547>,
+        <http://id.loc.gov/authorities/subjects/sh2006005143>,
+        <http://id.loc.gov/authorities/subjects/sh2007007463>,
+        <http://id.loc.gov/authorities/subjects/sh2009008123>,
+        <http://id.loc.gov/authorities/subjects/sh2012001925>,
+        <http://id.loc.gov/authorities/subjects/sh2020006632>,
+        <http://id.loc.gov/authorities/subjects/sh2021005778>,
+        <http://id.loc.gov/authorities/subjects/sh85000800>,
+        <http://id.loc.gov/authorities/subjects/sh85004835>,
+        <http://id.loc.gov/authorities/subjects/sh85006231>,
+        <http://id.loc.gov/authorities/subjects/sh85014134>,
+        <http://id.loc.gov/authorities/subjects/sh85014147>,
+        <http://id.loc.gov/authorities/subjects/sh85014167>,
+        <http://id.loc.gov/authorities/subjects/sh85014171>,
+        <http://id.loc.gov/authorities/subjects/sh85014225>,
+        <http://id.loc.gov/authorities/subjects/sh85014235>,
+        <http://id.loc.gov/authorities/subjects/sh85014253>,
+        <http://id.loc.gov/authorities/subjects/sh85015976>,
+        <http://id.loc.gov/authorities/subjects/sh85026726>,
+        <http://id.loc.gov/authorities/subjects/sh85029053>,
+        <http://id.loc.gov/authorities/subjects/sh85031693>,
+        <http://id.loc.gov/authorities/subjects/sh85034412>,
+        <http://id.loc.gov/authorities/subjects/sh85035240>,
+        <http://id.loc.gov/authorities/subjects/sh85036102>,
+        <http://id.loc.gov/authorities/subjects/sh85037133>,
+        <http://id.loc.gov/authorities/subjects/sh85037352>,
+        <http://id.loc.gov/authorities/subjects/sh85040752>,
+        <http://id.loc.gov/authorities/subjects/sh85042396>,
+        <http://id.loc.gov/authorities/subjects/sh85046568>,
+        <http://id.loc.gov/authorities/subjects/sh85047904>,
+        <http://id.loc.gov/authorities/subjects/sh85053877>,
+        <http://id.loc.gov/authorities/subjects/sh85060367>,
+        <http://id.loc.gov/authorities/subjects/sh85062843>,
+        <http://id.loc.gov/authorities/subjects/sh85066291>,
+        <http://id.loc.gov/authorities/subjects/sh85068313>,
+        <http://id.loc.gov/authorities/subjects/sh85071684>,
+        <http://id.loc.gov/authorities/subjects/sh85084783>,
+        <http://id.loc.gov/authorities/subjects/sh85085457>,
+        <http://id.loc.gov/authorities/subjects/sh85094831>,
+        <http://id.loc.gov/authorities/subjects/sh85097024>,
+        <http://id.loc.gov/authorities/subjects/sh85097922>,
+        <http://id.loc.gov/authorities/subjects/sh85101138>,
+        <http://id.loc.gov/authorities/subjects/sh85101498>,
+        <http://id.loc.gov/authorities/subjects/sh85101679>,
+        <http://id.loc.gov/authorities/subjects/sh85104151>,
+        <http://id.loc.gov/authorities/subjects/sh85104917>,
+        <http://id.loc.gov/authorities/subjects/sh85108425>,
+        <http://id.loc.gov/authorities/subjects/sh85110626>,
+        <http://id.loc.gov/authorities/subjects/sh85110669>,
+        <http://id.loc.gov/authorities/subjects/sh85110725>,
+        <http://id.loc.gov/authorities/subjects/sh85112953>,
+        <http://id.loc.gov/authorities/subjects/sh85120560>,
+        <http://id.loc.gov/authorities/subjects/sh85124322>,
+        <http://id.loc.gov/authorities/subjects/sh85125916>,
+        <http://id.loc.gov/authorities/subjects/sh85126861>,
+        <http://id.loc.gov/authorities/subjects/sh85131402>,
+        <http://id.loc.gov/authorities/subjects/sh85134776>,
+        <http://id.loc.gov/authorities/subjects/sh85136397>,
+        <http://id.loc.gov/authorities/subjects/sh85139495>,
+        <http://id.loc.gov/authorities/subjects/sh85142095>,
+        <http://id.loc.gov/authorities/subjects/sh85143950>,
+        <http://id.loc.gov/authorities/subjects/sh85149983>,
+        <http://id.loc.gov/authorities/subjects/sh87003347>,
+        <http://id.loc.gov/authorities/subjects/sh87004825>,
+        <http://id.loc.gov/authorities/subjects/sh87005569>,
+        <http://id.loc.gov/authorities/subjects/sh90001574>,
+        <http://id.loc.gov/authorities/subjects/sh90004042>,
+        <http://id.loc.gov/authorities/subjects/sh90004216>,
+        <http://id.loc.gov/authorities/subjects/sh90005715>,
+        <http://id.loc.gov/authorities/subjects/sh91000326>,
+        <http://id.loc.gov/authorities/subjects/sh91002927>,
+        <http://id.loc.gov/authorities/subjects/sh92002086>,
+        <http://id.loc.gov/authorities/subjects/sh93004780>,
+        <http://id.loc.gov/authorities/subjects/sh94009447>,
+        <http://id.loc.gov/authorities/subjects/sh96002650>,
+        <http://id.loc.gov/authorities/subjects/sh97002104> ;
+    madsrdf:hasNarrowerExternalAuthority <http://id.worldcat.org/fast/1199705>,
+        <http://id.worldcat.org/fast/832384>,
+        <http://id.worldcat.org/fast/832386>,
+        <http://id.worldcat.org/fast/832387>,
+        <http://id.worldcat.org/fast/832388>,
+        <http://id.worldcat.org/fast/832390>,
+        <http://id.worldcat.org/fast/832392>,
+        <http://id.worldcat.org/fast/832393>,
+        <http://id.worldcat.org/fast/832400>,
+        <http://id.worldcat.org/fast/832401>,
+        <http://id.worldcat.org/fast/832402>,
+        <http://id.worldcat.org/fast/832403>,
+        <http://id.worldcat.org/fast/832404>,
+        <http://id.worldcat.org/fast/832405>,
+        <http://id.worldcat.org/fast/832407>,
+        <http://id.worldcat.org/fast/832408>,
+        <http://id.worldcat.org/fast/832409>,
+        <http://id.worldcat.org/fast/832410>,
+        <http://id.worldcat.org/fast/832411>,
+        <http://id.worldcat.org/fast/832412>,
+        <http://id.worldcat.org/fast/832420>,
+        <http://id.worldcat.org/fast/832421>,
+        <http://id.worldcat.org/fast/832422>,
+        <http://id.worldcat.org/fast/832427>,
+        <http://id.worldcat.org/fast/832428>,
+        <http://id.worldcat.org/fast/832429>,
+        <http://id.worldcat.org/fast/832433>,
+        <http://id.worldcat.org/fast/832436>,
+        <http://id.worldcat.org/fast/832437>,
+        <http://id.worldcat.org/fast/832438>,
+        <http://id.worldcat.org/fast/832441>,
+        <http://id.worldcat.org/fast/832442>,
+        <http://id.worldcat.org/fast/832447>,
+        <http://id.worldcat.org/fast/832466>,
+        <http://id.worldcat.org/fast/832467>,
+        <http://id.worldcat.org/fast/832469>,
+        <http://id.worldcat.org/fast/832474>,
+        <http://id.worldcat.org/fast/832475>,
+        <http://id.worldcat.org/fast/832483>,
+        <http://id.worldcat.org/fast/832484>,
+        <http://id.worldcat.org/fast/832490>,
+        <http://id.worldcat.org/fast/832491>,
+        <http://id.worldcat.org/fast/832493>,
+        <http://id.worldcat.org/fast/832496> ;
+    madsrdf:hasReciprocalAuthority <http://id.loc.gov/authorities/subjects/sh85076810>,
+        <http://id.loc.gov/authorities/subjects/sh85090222> ;
+    madsrdf:isMemberOfMADSCollection <http://id.loc.gov/authorities/subjects/collection_LCSHAuthorizedHeadings>,
+        <http://id.loc.gov/authorities/subjects/collection_LCSH_General>,
+        <http://id.loc.gov/authorities/subjects/collection_SubdivideGeographically> ;
+    madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ;
+    owl:sameAs <http://id.loc.gov/authorities/sh85014203#concept>,
+        <info:lc/authorities/sh85014203> ;
+    skos:broader <http://id.loc.gov/authorities/subjects/sh85076841> ;
+    skos:changeNote [ a cs:ChangeSet ;
+            cs:changeReason "new"^^xsd:string ;
+            cs:createdDate "1986-02-11T00:00:00"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/subjects/sh85014203> ],
+        [ a cs:ChangeSet ;
+            cs:changeReason "revised"^^xsd:string ;
+            cs:createdDate "2021-11-23T12:02:06"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/subjects/sh85014203> ] ;
+    skos:closeMatch <http://data.bnf.fr/ark:/12148/cb119440835>,
+        <http://datos.bne.es/resource/XX524700>,
+        <http://id.worldcat.org/fast/832383>,
+        <http://lod.nal.usda.gov/nalt/127348>,
+        <http://purl.org/bncf/tid/1541>,
+        <http://www.wikidata.org/entity/Q420>,
+        <http://www.yso.fi/onto/yso/p1782>,
+        <https://d-nb.info/gnd/4006851-1> ;
+    skos:editorialNote "headings beginning with the word [Biological]" ;
+    skos:inScheme <http://id.loc.gov/authorities/subjects> ;
+    skos:narrowMatch <http://id.worldcat.org/fast/1199705>,
+        <http://id.worldcat.org/fast/832384>,
+        <http://id.worldcat.org/fast/832386>,
+        <http://id.worldcat.org/fast/832387>,
+        <http://id.worldcat.org/fast/832388>,
+        <http://id.worldcat.org/fast/832390>,
+        <http://id.worldcat.org/fast/832392>,
+        <http://id.worldcat.org/fast/832393>,
+        <http://id.worldcat.org/fast/832400>,
+        <http://id.worldcat.org/fast/832401>,
+        <http://id.worldcat.org/fast/832402>,
+        <http://id.worldcat.org/fast/832403>,
+        <http://id.worldcat.org/fast/832404>,
+        <http://id.worldcat.org/fast/832405>,
+        <http://id.worldcat.org/fast/832407>,
+        <http://id.worldcat.org/fast/832408>,
+        <http://id.worldcat.org/fast/832409>,
+        <http://id.worldcat.org/fast/832410>,
+        <http://id.worldcat.org/fast/832411>,
+        <http://id.worldcat.org/fast/832412>,
+        <http://id.worldcat.org/fast/832420>,
+        <http://id.worldcat.org/fast/832421>,
+        <http://id.worldcat.org/fast/832422>,
+        <http://id.worldcat.org/fast/832427>,
+        <http://id.worldcat.org/fast/832428>,
+        <http://id.worldcat.org/fast/832429>,
+        <http://id.worldcat.org/fast/832433>,
+        <http://id.worldcat.org/fast/832436>,
+        <http://id.worldcat.org/fast/832437>,
+        <http://id.worldcat.org/fast/832438>,
+        <http://id.worldcat.org/fast/832441>,
+        <http://id.worldcat.org/fast/832442>,
+        <http://id.worldcat.org/fast/832447>,
+        <http://id.worldcat.org/fast/832466>,
+        <http://id.worldcat.org/fast/832467>,
+        <http://id.worldcat.org/fast/832469>,
+        <http://id.worldcat.org/fast/832474>,
+        <http://id.worldcat.org/fast/832475>,
+        <http://id.worldcat.org/fast/832483>,
+        <http://id.worldcat.org/fast/832484>,
+        <http://id.worldcat.org/fast/832490>,
+        <http://id.worldcat.org/fast/832491>,
+        <http://id.worldcat.org/fast/832493>,
+        <http://id.worldcat.org/fast/832496> ;
+    skos:narrower <http://id.loc.gov/authorities/subjects/sh00003440>,
+        <http://id.loc.gov/authorities/subjects/sh2001012327>,
+        <http://id.loc.gov/authorities/subjects/sh2003008355>,
+        <http://id.loc.gov/authorities/subjects/sh2005001919>,
+        <http://id.loc.gov/authorities/subjects/sh2006001276>,
+        <http://id.loc.gov/authorities/subjects/sh2006002547>,
+        <http://id.loc.gov/authorities/subjects/sh2006005143>,
+        <http://id.loc.gov/authorities/subjects/sh2007007463>,
+        <http://id.loc.gov/authorities/subjects/sh2009008123>,
+        <http://id.loc.gov/authorities/subjects/sh2012001925>,
+        <http://id.loc.gov/authorities/subjects/sh2020006632>,
+        <http://id.loc.gov/authorities/subjects/sh2021005778>,
+        <http://id.loc.gov/authorities/subjects/sh85000800>,
+        <http://id.loc.gov/authorities/subjects/sh85004835>,
+        <http://id.loc.gov/authorities/subjects/sh85006231>,
+        <http://id.loc.gov/authorities/subjects/sh85014134>,
+        <http://id.loc.gov/authorities/subjects/sh85014147>,
+        <http://id.loc.gov/authorities/subjects/sh85014167>,
+        <http://id.loc.gov/authorities/subjects/sh85014171>,
+        <http://id.loc.gov/authorities/subjects/sh85014225>,
+        <http://id.loc.gov/authorities/subjects/sh85014235>,
+        <http://id.loc.gov/authorities/subjects/sh85014253>,
+        <http://id.loc.gov/authorities/subjects/sh85015976>,
+        <http://id.loc.gov/authorities/subjects/sh85026726>,
+        <http://id.loc.gov/authorities/subjects/sh85029053>,
+        <http://id.loc.gov/authorities/subjects/sh85031693>,
+        <http://id.loc.gov/authorities/subjects/sh85034412>,
+        <http://id.loc.gov/authorities/subjects/sh85035240>,
+        <http://id.loc.gov/authorities/subjects/sh85036102>,
+        <http://id.loc.gov/authorities/subjects/sh85037133>,
+        <http://id.loc.gov/authorities/subjects/sh85037352>,
+        <http://id.loc.gov/authorities/subjects/sh85040752>,
+        <http://id.loc.gov/authorities/subjects/sh85042396>,
+        <http://id.loc.gov/authorities/subjects/sh85046568>,
+        <http://id.loc.gov/authorities/subjects/sh85047904>,
+        <http://id.loc.gov/authorities/subjects/sh85053877>,
+        <http://id.loc.gov/authorities/subjects/sh85060367>,
+        <http://id.loc.gov/authorities/subjects/sh85062843>,
+        <http://id.loc.gov/authorities/subjects/sh85066291>,
+        <http://id.loc.gov/authorities/subjects/sh85068313>,
+        <http://id.loc.gov/authorities/subjects/sh85071684>,
+        <http://id.loc.gov/authorities/subjects/sh85084783>,
+        <http://id.loc.gov/authorities/subjects/sh85085457>,
+        <http://id.loc.gov/authorities/subjects/sh85094831>,
+        <http://id.loc.gov/authorities/subjects/sh85097024>,
+        <http://id.loc.gov/authorities/subjects/sh85097922>,
+        <http://id.loc.gov/authorities/subjects/sh85101138>,
+        <http://id.loc.gov/authorities/subjects/sh85101498>,
+        <http://id.loc.gov/authorities/subjects/sh85101679>,
+        <http://id.loc.gov/authorities/subjects/sh85104151>,
+        <http://id.loc.gov/authorities/subjects/sh85104917>,
+        <http://id.loc.gov/authorities/subjects/sh85108425>,
+        <http://id.loc.gov/authorities/subjects/sh85110626>,
+        <http://id.loc.gov/authorities/subjects/sh85110669>,
+        <http://id.loc.gov/authorities/subjects/sh85110725>,
+        <http://id.loc.gov/authorities/subjects/sh85112953>,
+        <http://id.loc.gov/authorities/subjects/sh85120560>,
+        <http://id.loc.gov/authorities/subjects/sh85124322>,
+        <http://id.loc.gov/authorities/subjects/sh85125916>,
+        <http://id.loc.gov/authorities/subjects/sh85126861>,
+        <http://id.loc.gov/authorities/subjects/sh85131402>,
+        <http://id.loc.gov/authorities/subjects/sh85134776>,
+        <http://id.loc.gov/authorities/subjects/sh85136397>,
+        <http://id.loc.gov/authorities/subjects/sh85139495>,
+        <http://id.loc.gov/authorities/subjects/sh85142095>,
+        <http://id.loc.gov/authorities/subjects/sh85143950>,
+        <http://id.loc.gov/authorities/subjects/sh85149983>,
+        <http://id.loc.gov/authorities/subjects/sh87003347>,
+        <http://id.loc.gov/authorities/subjects/sh87004825>,
+        <http://id.loc.gov/authorities/subjects/sh87005569>,
+        <http://id.loc.gov/authorities/subjects/sh90001574>,
+        <http://id.loc.gov/authorities/subjects/sh90004042>,
+        <http://id.loc.gov/authorities/subjects/sh90004216>,
+        <http://id.loc.gov/authorities/subjects/sh90005715>,
+        <http://id.loc.gov/authorities/subjects/sh91000326>,
+        <http://id.loc.gov/authorities/subjects/sh91002927>,
+        <http://id.loc.gov/authorities/subjects/sh92002086>,
+        <http://id.loc.gov/authorities/subjects/sh93004780>,
+        <http://id.loc.gov/authorities/subjects/sh94009447>,
+        <http://id.loc.gov/authorities/subjects/sh96002650>,
+        <http://id.loc.gov/authorities/subjects/sh97002104> ;
+    skos:prefLabel "Biology"@en ;
+    skos:related <http://id.loc.gov/authorities/subjects/sh85076810>,
+        <http://id.loc.gov/authorities/subjects/sh85090222> .
+
+<http://id.loc.gov/authorities/subjects/sh85014225> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology, Experimental"@en ;
+    skos:prefLabel "Biology, Experimental"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85014235> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biomathematics"@en ;
+    skos:prefLabel "Biomathematics"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85014253> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biophysics"@en ;
+    skos:prefLabel "Biophysics"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85015976> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Botany"@en ;
+    skos:prefLabel "Botany"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85026726> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Classification--Books--Biology"@en ;
+    skos:prefLabel "Classification--Books--Biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85029053> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Communication in biology"@en ;
+    skos:prefLabel "Communication in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85031693> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Convergence (Biology)"@en ;
+    skos:prefLabel "Convergence (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85034412> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Cryobiology"@en ;
+    skos:prefLabel "Cryobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85035240> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Cytology"@en ;
+    skos:prefLabel "Cytology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85036102> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Death (Biology)"@en ;
+    skos:prefLabel "Death (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85037133> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Desert biology"@en ;
+    skos:prefLabel "Desert biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85037352> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Developmental biology"@en ;
+    skos:prefLabel "Developmental biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85040752> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Ecology"@en ;
+    skos:prefLabel "Ecology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85042396> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Electronics in biology"@en ;
+    skos:prefLabel "Electronics in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85046568> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Extinction (Biology)"@en ;
+    skos:prefLabel "Extinction (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85047904> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Fertilization (Biology)"@en ;
+    skos:prefLabel "Fertilization (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85053877> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Genetics"@en ;
+    skos:prefLabel "Genetics"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85060367> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Heredity"@en ;
+    skos:prefLabel "Heredity"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85062843> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Human biology"@en ;
+    skos:prefLabel "Human biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85066291> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Information theory in biology"@en ;
+    skos:prefLabel "Information theory in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85068313> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Irritability"@en ;
+    skos:prefLabel "Irritability"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85071684> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Karyokinesis"@en ;
+    skos:prefLabel "Karyokinesis"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85076810> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Life (Biology)"@en ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Life (Biology)"@en ] ) ;
+    skos:prefLabel "Life (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85076841> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Life sciences"@en ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Life sciences"@en ] ) ;
+    skos:prefLabel "Life sciences"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85084783> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Microbiology"@en ;
+    skos:prefLabel "Microbiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85085457> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Mimicry (Biology)"@en ;
+    skos:prefLabel "Mimicry (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85090222> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Natural history"@en ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Natural history"@en ] ) ;
+    skos:prefLabel "Natural history"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85094831> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Ontogeny"@en ;
+    skos:prefLabel "Ontogeny"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85097024> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Paleobiology"@en ;
+    skos:prefLabel "Paleobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85097922> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Parasitology"@en ;
+    skos:prefLabel "Parasitology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85101138> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Photobiology"@en ;
+    skos:prefLabel "Photobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85101498> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Phylogeny"@en ;
+    skos:prefLabel "Phylogeny"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85101679> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Physiology"@en ;
+    skos:prefLabel "Physiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85104151> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Polarity (Biology)"@en ;
+    skos:prefLabel "Polarity (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85104917> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Population biology"@en ;
+    skos:prefLabel "Population biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85108425> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Psychobiology"@en ;
+    skos:prefLabel "Psychobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85110626> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Radioactive tracers in biology"@en ;
+    skos:prefLabel "Radioactive tracers in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85110669> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Radiobiology"@en ;
+    skos:prefLabel "Radiobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85110725> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Radioisotopes in biology"@en ;
+    skos:prefLabel "Radioisotopes in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85112953> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Reproduction"@en ;
+    skos:prefLabel "Reproduction"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85120560> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Sex (Biology)"@en ;
+    skos:prefLabel "Sex (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85124322> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Soil biology"@en ;
+    skos:prefLabel "Soil biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85125916> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Space biology"@en ;
+    skos:prefLabel "Space biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85126861> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Spontaneous generation"@en ;
+    skos:prefLabel "Spontaneous generation"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85131402> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Symbiosis"@en ;
+    skos:prefLabel "Symbiosis"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85134776> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Thermobiology"@en ;
+    skos:prefLabel "Thermobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85136397> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Tracers (Biology)"@en ;
+    skos:prefLabel "Tracers (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85139495> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Ultrasonics in biology"@en ;
+    skos:prefLabel "Ultrasonics in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85142095> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Variation (Biology)"@en ;
+    skos:prefLabel "Variation (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85143950> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Vitalism"@en ;
+    skos:prefLabel "Vitalism"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85149983> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Zoology"@en ;
+    skos:prefLabel "Zoology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh87003347> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Chronobiology"@en ;
+    skos:prefLabel "Chronobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh87004825> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Imaging systems in biology"@en ;
+    skos:prefLabel "Imaging systems in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh87005569> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biodiversity"@en ;
+    skos:prefLabel "Biodiversity"@en .
+
+<http://id.loc.gov/authorities/subjects/sh90001574> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Geobiology"@en ;
+    skos:prefLabel "Geobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh90004042> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Evolution (Biology)"@en ;
+    skos:prefLabel "Evolution (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh90004216> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Exobiology"@en ;
+    skos:prefLabel "Exobiology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh90005715> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Law and biology"@en ;
+    skos:prefLabel "Law and biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh91000326> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Divergence (Biology)"@en ;
+    skos:prefLabel "Divergence (Biology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh91002927> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Bioelectronics"@en ;
+    skos:prefLabel "Bioelectronics"@en .
+
+<http://id.loc.gov/authorities/subjects/sh92002086> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Charge transfer in biology"@en ;
+    skos:prefLabel "Charge transfer in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh93004780> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "High pressure biology"@en ;
+    skos:prefLabel "High pressure biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh94009447> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Sexism in biology"@en ;
+    skos:prefLabel "Sexism in biology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh96002650> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biospeleology"@en ;
+    skos:prefLabel "Biospeleology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh97002104> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Proposal writing in biology"@en ;
+    skos:prefLabel "Proposal writing in biology"@en .
+
+<http://id.worldcat.org/fast/1199705> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Folklore" ;
+    skos:prefLabel "Biology--Folklore" .
+
+<http://id.worldcat.org/fast/832383> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology" ;
+    skos:prefLabel "Biology" .
+
+<http://id.worldcat.org/fast/832384> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Ability testing" ;
+    skos:prefLabel "Biology--Ability testing" .
+
+<http://id.worldcat.org/fast/832386> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Abstracts" ;
+    skos:prefLabel "Biology--Abstracts" .
+
+<http://id.worldcat.org/fast/832387> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Audio-visual aids" ;
+    skos:prefLabel "Biology--Audio-visual aids" .
+
+<http://id.worldcat.org/fast/832388> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Authorship" ;
+    skos:prefLabel "Biology--Authorship" .
+
+<http://id.worldcat.org/fast/832390> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Bibliography" ;
+    skos:prefLabel "Biology--Bibliography" .
+
+<http://id.worldcat.org/fast/832392> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Catalogs and collections" ;
+    skos:prefLabel "Biology--Catalogs and collections" .
+
+<http://id.worldcat.org/fast/832393> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Classification" ;
+    skos:prefLabel "Biology--Classification" .
+
+<http://id.worldcat.org/fast/832400> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Competitions" ;
+    skos:prefLabel "Biology--Competitions" .
+
+<http://id.worldcat.org/fast/832401> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Computer network resources" ;
+    skos:prefLabel "Biology--Computer network resources" .
+
+<http://id.worldcat.org/fast/832402> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Computer programs" ;
+    skos:prefLabel "Biology--Computer programs" .
+
+<http://id.worldcat.org/fast/832403> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Computer simulation" ;
+    skos:prefLabel "Biology--Computer simulation" .
+
+<http://id.worldcat.org/fast/832404> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Computer-assisted instruction" ;
+    skos:prefLabel "Biology--Computer-assisted instruction" .
+
+<http://id.worldcat.org/fast/832405> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Congresses" ;
+    skos:prefLabel "Biology--Congresses" .
+
+<http://id.worldcat.org/fast/832407> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Documentation" ;
+    skos:prefLabel "Biology--Documentation" .
+
+<http://id.worldcat.org/fast/832408> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Environmental aspects" ;
+    skos:prefLabel "Biology--Environmental aspects" .
+
+<http://id.worldcat.org/fast/832409> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Equipment and supplies" ;
+    skos:prefLabel "Biology--Equipment and supplies" .
+
+<http://id.worldcat.org/fast/832410> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Examinations" ;
+    skos:prefLabel "Biology--Examinations" .
+
+<http://id.worldcat.org/fast/832411> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Examinations, questions, etc." ;
+    skos:prefLabel "Biology--Examinations, questions, etc." .
+
+<http://id.worldcat.org/fast/832412> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Examinations--Computer programs" ;
+    skos:prefLabel "Biology--Examinations--Computer programs" .
+
+<http://id.worldcat.org/fast/832420> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Forecasting" ;
+    skos:prefLabel "Biology--Forecasting" .
+
+<http://id.worldcat.org/fast/832421> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Graphic methods" ;
+    skos:prefLabel "Biology--Graphic methods" .
+
+<http://id.worldcat.org/fast/832422> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Historiography" ;
+    skos:prefLabel "Biology--Historiography" .
+
+<http://id.worldcat.org/fast/832427> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Instruments" ;
+    skos:prefLabel "Biology--Instruments" .
+
+<http://id.worldcat.org/fast/832428> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Laboratory manuals" ;
+    skos:prefLabel "Biology--Laboratory manuals" .
+
+<http://id.worldcat.org/fast/832429> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Language" ;
+    skos:prefLabel "Biology--Language" .
+
+<http://id.worldcat.org/fast/832433> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Measurement" ;
+    skos:prefLabel "Biology--Measurement" .
+
+<http://id.worldcat.org/fast/832436> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Nomenclature" ;
+    skos:prefLabel "Biology--Nomenclature" .
+
+<http://id.worldcat.org/fast/832437> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Nomenclature (Popular)" ;
+    skos:prefLabel "Biology--Nomenclature (Popular)" .
+
+<http://id.worldcat.org/fast/832438> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Periodicals" ;
+    skos:prefLabel "Biology--Periodicals" .
+
+<http://id.worldcat.org/fast/832441> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Political aspects" ;
+    skos:prefLabel "Biology--Political aspects" .
+
+<http://id.worldcat.org/fast/832442> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Reference books" ;
+    skos:prefLabel "Biology--Reference books" .
+
+<http://id.worldcat.org/fast/832447> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Remote sensing" ;
+    skos:prefLabel "Biology--Remote sensing" .
+
+<http://id.worldcat.org/fast/832466> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Research grants" ;
+    skos:prefLabel "Biology--Research grants" .
+
+<http://id.worldcat.org/fast/832467> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Sampling" ;
+    skos:prefLabel "Biology--Sampling" .
+
+<http://id.worldcat.org/fast/832469> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Simulation methods" ;
+    skos:prefLabel "Biology--Simulation methods" .
+
+<http://id.worldcat.org/fast/832474> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Sources" ;
+    skos:prefLabel "Biology--Sources" .
+
+<http://id.worldcat.org/fast/832475> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Sources--Manuscripts" ;
+    skos:prefLabel "Biology--Sources--Manuscripts" .
+
+<http://id.worldcat.org/fast/832483> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Study and teaching (Continuing education)" ;
+    skos:prefLabel "Biology--Study and teaching (Continuing education)" .
+
+<http://id.worldcat.org/fast/832484> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Study and teaching (Elementary)" ;
+    skos:prefLabel "Biology--Study and teaching (Elementary)" .
+
+<http://id.worldcat.org/fast/832490> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Study and teaching (Middle school)" ;
+    skos:prefLabel "Biology--Study and teaching (Middle school)" .
+
+<http://id.worldcat.org/fast/832491> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Study and teaching (Primary)" ;
+    skos:prefLabel "Biology--Study and teaching (Primary)" .
+
+<http://id.worldcat.org/fast/832493> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Study and teaching (Secondary)--Audio-visual aids" ;
+    skos:prefLabel "Biology--Study and teaching (Secondary)--Audio-visual aids" .
+
+<http://id.worldcat.org/fast/832496> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biology--Technological innovations" ;
+    skos:prefLabel "Biology--Technological innovations" .
+
+<http://lod.nal.usda.gov/nalt/127348> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biological Sciences"@en ;
+    skos:prefLabel "Biological Sciences"@en .
+
+<http://purl.org/bncf/tid/1541> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biologia"@it ;
+    skos:prefLabel "Biologia"@it .
+
+<http://www.wikidata.org/entity/Q420> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "biology" ;
+    skos:prefLabel "biology" .
+
+<http://www.yso.fi/onto/yso/p1782> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "biologia"@fi ;
+    skos:prefLabel "biologia"@fi .
+
+<https://d-nb.info/gnd/4006851-1> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Biologie"@de ;
+    skos:prefLabel "Biologie"@de .
+

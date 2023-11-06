@@ -36,7 +36,7 @@ export default function HasVariant({ hasVariant }: Props) {
         nodeId="1"
         label={
           <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
-            Variantes do nome:
+            Variantes:
           </Typography>
         }
       >
