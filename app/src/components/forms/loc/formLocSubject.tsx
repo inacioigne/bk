@@ -144,6 +144,7 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                     value: "n"
                 },
             },
+            isMemberOfMADSCollection: 'subjects',
             authoritativeLabel: data.birthYearDate ?
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }

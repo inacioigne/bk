@@ -72,8 +72,7 @@ def MakeGraphName(request, id):
             { f'madsrdf:hasCloseExternalAuthority {", ".join([ f"<{i.uri}>" for i in request.hasCloseExternalAuthority])} ;' if request.hasCloseExternalAuthority else ''}
             { f'madsrdf:hasExactExternalAuthority {", ".join([ f"<{i.uri}>" for i in request.hasExactExternalAuthority])} ;' if request.hasExactExternalAuthority else ''}
             { f'madsrdf:identifiesRWO { IdentifiesRWO(request.identifiesRWO) } ;' if request.identifiesRWO else ''  }
-
-             madsrdf:isMemberOfMADSCollection <https://bibliokeia.com/authority> .         
+             madsrdf:isMemberOfMADSCollection <https://bibliokeia.com/authority/{request.isMemberOfMADSCollection}> .         
             }} 
         }}"""
     return graph

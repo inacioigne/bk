@@ -33,7 +33,7 @@ type adminMetadata = {
     generationProcess: string
 }
     
-export interface schemaMads {
+export interface schemaMads { 
     type: string;
     identifiersLccn?: string;
     adminMetadata: adminMetadata;

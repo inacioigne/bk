@@ -1,9 +1,8 @@
 // Schema
 import { schemaMads } from "@/schema/authority";
 
-
 // BiblioKeia Services
-import { bkapi } from "src/services/api";
+import { bkapi } from "@/services/api";
 
 export function CreateAuthority(
   authority: schemaMads,

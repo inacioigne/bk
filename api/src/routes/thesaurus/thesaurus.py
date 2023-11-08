@@ -37,7 +37,6 @@ async def post_authority(request: SchemaMads):
         if loc["exist"]:
             raise HTTPException(status_code=409, detail="Esse registro já existe")
 
-
     # MariaDB
     a = Authority(id=request.identifiersLocal, type=request.type, uri=uri)
     session.add(a) 

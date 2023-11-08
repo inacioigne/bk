@@ -21,6 +21,7 @@ import { FcCancel } from "react-icons/fc";
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
 import { bkapi } from "@/services/api";
+import { CreateNames } from "@/services/thesarus/createNames"
 
 // React Hooks
 import { useEffect, useState } from "react";
@@ -135,7 +136,7 @@ export default function FormLocName({ hit, setForm }: Props) {
         defaultValues,
     });
 
-    // console.log(errors)
+    // console.log(errors) 
     function createAuthority(data: any) {
         let formData = ParserData(data)
         let obj = {
@@ -148,6 +149,7 @@ export default function FormLocName({ hit, setForm }: Props) {
                     value: "n"
                 },
             },
+            isMemberOfMADSCollection: 'names',
             authoritativeLabel: data.birthYearDate ?
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }

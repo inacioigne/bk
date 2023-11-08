@@ -78,7 +78,8 @@ class SchemaMads(BaseModel):
     hasNarrowerAuthority: Optional[list[Uri]] = None
     hasReciprocalAuthority: Optional[list[Uri]] = None
     imagem: Optional[str] = None
+    isMemberOfMADSCollection: str
 
     # subjectOf: Optional[list[Uri]] = None
     # contributorOf: Optional[list[Uri]] = None
-    # isMemberOfMADSCollection: str
+    # 

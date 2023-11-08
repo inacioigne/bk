@@ -66,7 +66,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
       .then(function (response) {
         if (response.status === 200) {
           if (response.data.exist) {
-            console.log(response.data)
+            // console.log(response.data)
             setTypeAlert("error");
             setMessage("Registro já existe")
             setOpenSnack(true);
@@ -74,8 +74,6 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           } else {
             setForm(true)
           }
-          // console.log(response);
-          // setTypeAlert("error");
         }
       })
       .catch(function (error) {

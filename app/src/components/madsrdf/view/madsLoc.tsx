@@ -52,21 +52,20 @@ export default function MadsLoc({ uri, label, setHit }: Props) {
         {Array.isArray(uri) ? (
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             {uri.map((e, index) => (
-            //   <Link key={index} href={`${e.uri}`} target="_blank">
-                <StyledTreeItem
-                  nodeId={`${index + 5}`}
-                  labelText={`${e.label}`}
-                  labelIcon={logos[`${e.base}`]}
-                  color="#1a73e8"
-                  bgColor="#e8f0fe"
-                  colorForDarkMode="#B8E7FB"
-                  bgColorForDarkMode="#071318"
-                  onClick={() => {
-                    // console.log(e.uri)
-                    LocAuthority(setHit, e.uri)
+              <StyledTreeItem
+                key={index}
+                nodeId={`${index + 5}`}
+                labelText={`${e.label}`}
+                labelIcon={logos[`${e.base}`]}
+                color="#1a73e8"
+                bgColor="#e8f0fe"
+                colorForDarkMode="#B8E7FB"
+                bgColorForDarkMode="#071318"
+                onClick={() => {
+                  // console.log(e.uri)
+                  LocAuthority(setHit, e.uri)
                 }}
-                />
-            //   </Link>
+              />
             ))}
           </Box>
         ) : (

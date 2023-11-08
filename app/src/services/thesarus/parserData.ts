@@ -41,8 +41,6 @@ export function ParserData(data: any) {
 
   }
 
-
-
   // Parser Uris
   let uris = [
     "hasCloseExternalAuthority",

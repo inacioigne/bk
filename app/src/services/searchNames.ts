@@ -29,6 +29,7 @@ export function SearchNames(
 ) {
 
   // console.log("PR", params)
+  params.set("fq", "isMemberOfMADSCollection:names");
 
   solr.get("authority/query?", {params: params})
     .then(function (response) { 

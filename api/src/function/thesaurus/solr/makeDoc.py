@@ -1,6 +1,7 @@
 def MakeDoc(request, id):
     authority = request.elementList[0].elementValue.value
     authority = authority.removesuffix(',')
+    isMemberOfMADSCollection = request.isMemberOfMADSCollection.split("/")[-1]
 
     doc = { 
             'id': id,
@@ -8,7 +9,7 @@ def MakeDoc(request, id):
             "creationDate": request.adminMetadata.creationDate.strftime('%Y-%m-%d'), 
             "label": request.authoritativeLabel,
             "authority": authority,
-            "isMemberOfMADSCollection": "https://bibliokeia.com/authority"
+            "isMemberOfMADSCollection": isMemberOfMADSCollection
         }
     if request.identifiersLccn:
         doc['identifiersLccn'] = request.identifiersLccn
