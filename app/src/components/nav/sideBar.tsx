@@ -8,12 +8,13 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-  Avatar 
+  Avatar,
+  Menu 
 } from "@mui/material/";
 import { red } from '@mui/material/colors';
 
 // MUI Icons
-import { MdLocalLibrary, MdDashboardCustomize } from 'react-icons/md';
+import { MdDashboardCustomize } from 'react-icons/md';
 import { FcHome } from 'react-icons/fc';
 import { BsPersonPlusFill } from 'react-icons/bs';
 
@@ -27,10 +28,11 @@ import Link from "next/link";
 import { useProgress } from "@/providers/progress";
 
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const drawerWidth = 260;
 
-const openedMixin = (theme) => ({
+const openedMixin = (theme: any) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
@@ -39,7 +41,7 @@ const openedMixin = (theme) => ({
   overflowX: "hidden",
 });
 
-const closedMixin = (theme) => ({
+const closedMixin = (theme: any) => ({
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -64,17 +66,20 @@ const Drawer = styled(MuiDrawer, {
 
 const menuLinks = [
   { href: "/admin", label: "Inicio", icon: <FcHome /> },
-  { href: "/admin/authority", label: "Autoridades", icon: <BsPersonPlusFill />  },
-  { href: "/admin/cataloguing", label: "Catalogação", icon: <MdDashboardCustomize />  },
+  { href: "/admin/authority", label: "Autoridades", icon: <BsPersonPlusFill /> },
+  { href: "/admin/cataloguing", label: "Catalogação", icon: <MdDashboardCustomize /> },
 ];
 
 interface Props {
-    open: Boolean
+  open: Boolean
 }
 
 export default function SideBar({ open }: Props) {
-  const { initProgress } = useProgress();
+  const [isActive, setActive] = useState(false)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const openSubMenu = Boolean(anchorEl);
   const pathname = usePathname();
+  // console.log(pathname)
 
   const styleMenu = {
     borderRadius: "6px",
@@ -89,6 +94,15 @@ export default function SideBar({ open }: Props) {
     backgroundColor: "hover.background",
     ":hover": { backgroundColor: "hover.background" }
   };
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Drawer variant="permanent" open={open}>
       <Box
@@ -102,7 +116,6 @@ export default function SideBar({ open }: Props) {
           fontWeight: 600,
         }}
       >
-        {/* <MdLocalLibrary color="primary" sx={{ fontSize: 35 }} /> */}
         <Avatar sx={{ bgcolor: red[500] }}>BK</Avatar>
         <Typography
           variant="h6"
@@ -112,8 +125,67 @@ export default function SideBar({ open }: Props) {
           BiblioKeia
         </Typography>
       </Box>
-      <MenuList sx={{display: "flex", flexDirection: "column", gap: "8px"}}>
-        {menuLinks.map((link) => {
+      <MenuList sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        <Link href="/admin" >
+          <MenuItem sx={pathname === "/admin" ? styleMenuActive : styleMenu}>
+            <ListItemIcon>
+              <FcHome />
+            </ListItemIcon>
+            <ListItemText>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 400,
+                  fontSize: "0.9rem",
+                  lineHeight: 1.3,
+                  ml: "0.5rem",
+                }}
+              >
+                Inicio
+              </Typography>
+            </ListItemText>
+          </MenuItem>
+        </Link>
+
+        <MenuItem
+          sx={pathname.includes('authority') ? styleMenuActive : styleMenu}
+          onClick={handleClick}
+        >
+          <ListItemIcon>
+            <BsPersonPlusFill />
+          </ListItemIcon>
+          <ListItemText>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 400,
+                fontSize: "0.9rem",
+                lineHeight: 1.3,
+                ml: "0.5rem",
+              }}
+            >
+              Autoridades
+            </Typography>
+          </ListItemText>
+        </MenuItem>
+        <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={openSubMenu}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <Link  href="/admin/authority/names">
+        <MenuItem onClick={handleClose}>Nomes</MenuItem>
+        </Link>
+        
+        <MenuItem onClick={handleClose}>Assuntos</MenuItem>
+      </Menu>
+
+
+        {/* {menuLinks.map((link) => {
           const isActive = pathname === link.href;
           return (
             <Link href={link.href} key={link.label}>
@@ -137,8 +209,7 @@ export default function SideBar({ open }: Props) {
               </MenuItem>
             </Link>
           );
-        })}
-
+        })} */}
       </MenuList>
     </Drawer>
   );

@@ -1,9 +1,15 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
-export const ParamsAuthorityContext = createContext();
+type ContextType = {
+  paramsAuthority: URLSearchParams;
+  updateParamsAuthority: Function
+};
 
-export const ParamsAuthorityProvider = ({ children }) => {
+export const ParamsAuthorityContext = createContext<ContextType | undefined>(undefined);
+
+
+export const ParamsAuthorityProvider = ({ children }: { children: ReactNode }) => {
 
   const params = new URLSearchParams();
   params.append("q", "search_general:*");
@@ -13,16 +19,17 @@ export const ParamsAuthorityProvider = ({ children }) => {
   params.append("facet.field", "occupation_str");
   const [paramsAuthority, setSearchParams] = useState(params);
 
-  
-  // setSearchParams(params)
-
-  const updateParamsAuthority = (newParams) => {
+  const updateParamsAuthority = (newParams: any) => {
     setSearchParams(newParams);
+  };
+  const contextValue: ContextType = {
+    paramsAuthority, updateParamsAuthority
   };
 
   return (
     <ParamsAuthorityContext.Provider
-      value={{ paramsAuthority, updateParamsAuthority }}
+    value={contextValue}
+      // value={{ paramsAuthority, updateParamsAuthority }}
     >
       {children}
     </ParamsAuthorityContext.Provider>

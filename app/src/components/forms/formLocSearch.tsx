@@ -101,6 +101,7 @@ export default function FormLCSH( props: Props) {
               <MenuItem value="Topic">Termo Topico</MenuItem>
               <MenuItem value="Geographic">Termo Geográfico</MenuItem>
               <MenuItem value="PersonalName">Nome Pessoal</MenuItem>
+              <MenuItem value="CorporateName">Nome Coorporativo</MenuItem>
             </Select>
           </FormControl>
           <TextField

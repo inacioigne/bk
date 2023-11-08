@@ -136,7 +136,7 @@ export default function FormLocName({ hit, setForm }: Props) {
         defaultValues,
     });
 
-    // console.log(errors) 
+    console.log(errors) 
     function createAuthority(data: any) {
         let formData = ParserData(data)
         let obj = {
@@ -203,7 +203,13 @@ export default function FormLocName({ hit, setForm }: Props) {
                     </Box>
                 </Box>
                 <Divider />
-                {hit?.type === "PersonalName" ? (
+                <FormMadsNames
+                        control={control}
+                        register={register}
+                        errors={errors}
+                        getValues={getValues}
+                        setValue={setValue} />
+                {/* {hit?.type === "PersonalName" ? (
                     <FormMadsNames
                         control={control}
                         register={register}
@@ -218,7 +224,7 @@ export default function FormLocName({ hit, setForm }: Props) {
                         errors={errors}
                         getValues={getValues}
                         setValue={setValue} />
-                )}
+                )} */}
 
             </form>
         </Box>

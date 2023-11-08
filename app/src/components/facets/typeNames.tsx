@@ -12,7 +12,8 @@ import {
   
   // Reacts Icons
   import { RiFilterLine } from 'react-icons/ri';
-  import { BsArrowsAngleContract, BsArrowsAngleExpand } from 'react-icons/bs';
+  // import { BsArrowsAngleContract, BsArrowsAngleExpand } from 'react-icons/bs';
+  import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
   
   // Providers BiblioKeia
   import { useParmasAutority } from "@/providers/paramsAuthority"
@@ -43,7 +44,7 @@ import {
   
     const obj: Types = {
       PersonalName: "Nome Pessoal",
-      corporatename: "Nome Coorporativo",
+      CorporateName: "Nome Coorporativo",
       Topic: "Topic"
     };
   
@@ -58,8 +59,10 @@ import {
   
     return (
       <TreeView
-        defaultCollapseIcon={<BsArrowsAngleExpand />}
-        defaultExpandIcon={<BsArrowsAngleContract />}
+        // defaultCollapseIcon={<BsArrowsAngleExpand />}
+        // defaultExpandIcon={<BsArrowsAngleContract />} 
+        defaultCollapseIcon={<AiOutlineArrowDown />}
+        defaultExpandIcon={<AiOutlineArrowUp />}
         sx={{
           flexGrow: 1, overflowY: 'auto'
         }}

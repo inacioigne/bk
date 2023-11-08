@@ -37,6 +37,8 @@ const previousPaths = [
   },
 ];
 
+const names = ["PersonalName",  "CorporateName"]
+
 export default function LOC() {
   const [hit, setHit] = useState(null)
   const [form, setForm] = useState(false)
@@ -63,7 +65,7 @@ export default function LOC() {
         </Box>
 
       ) :  
-     ( hit?.type === "PersonalName" ? 
+     ( names.includes(hit?.type) ? 
       <FormLocName hit={hit} setForm={setForm} /> : 
       <FormLocSubject hit={hit} setForm={setForm} /> )
 }  
