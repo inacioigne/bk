@@ -33,18 +33,7 @@ import { Suspense } from "react";
 
 // import Loading from "@/app/admin/authority/[id]/loading";
 
-const previousPaths = [
-    {
-        link: "/admin",
-        label: "Início",
-        icon: <FcHome fontSize="small" />,
-    },
-    {
-        link: "/admin/authority/names",
-        label: "Autoridades",
-        icon: <BsFillPersonLinesFill fontSize="small" />,
-    },
-];
+
 
 async function getData(id: string) {
 
@@ -60,12 +49,24 @@ async function getData(id: string) {
 
 
 export default async function Page({ params }: { params: { id: string } }) {
-
     const data = await getData(params.id);
     const [doc] = data.response.docs;
-    console.log("DOC", doc)
 
+    const previousPaths = [
+        {
+            link: "/admin",
+            label: "Início",
+            icon: <FcHome fontSize="small" />,
+        },
+        {
+            link: `/admin/authority/${doc.isMemberOfMADSCollection}`,
+            label: "Autoridades",
+            icon: <BsFillPersonLinesFill fontSize="small" />,
+        },
+    ];
 
+    
+    // console.log("DOC", doc)
     return (
         <Container maxWidth="xl">
             <Box my={"1rem"}>

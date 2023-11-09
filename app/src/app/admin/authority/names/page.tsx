@@ -35,7 +35,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { useParmasAutority } from "@/providers/paramsAuthority";
 
 // BiblioKeia Services
-import { SearchNames } from "@/services/searchNames";
+import { SearchNames } from "@/services/thesarus/searchNames";
 
 // BiblioKeia Components
 import { TabName } from "@/components/tables/tabNames";

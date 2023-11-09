@@ -35,7 +35,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { useParmasAutority } from "@/providers/paramsAuthority";
 
 // BiblioKeia Services
-import { SearchNames } from "@/services/searchNames";
+import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
 // BiblioKeia Components
 import { TabName } from "@/components/tables/tabNames";
@@ -74,7 +74,7 @@ export default function Subjects() {
         // const url = `${pathname}?${searchParams}`;
 
         paramsAuthority.set("rows", "3");
-        SearchNames(
+        SearchSubjects(
             paramsAuthority,
             setRows,
             setRowCount,
@@ -97,7 +97,7 @@ export default function Subjects() {
         e.preventDefault();
         paramsAuthority.set("q", `${field}:${search}`);
         paramsAuthority.has("start") && paramsAuthority.delete("start");
-        SearchNames(
+        SearchSubjects(
             paramsAuthority,
             setRows,
             setRowCount,
@@ -114,7 +114,7 @@ export default function Subjects() {
         paramsAuthority.has("start") && paramsAuthority.delete("start");
         setSearch("");
         setField("search_general");
-        SearchNames(
+        SearchSubjects(
             paramsAuthority,
             setRows,
             setRowCount,

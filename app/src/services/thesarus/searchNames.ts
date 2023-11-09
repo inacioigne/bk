@@ -2,16 +2,22 @@
 import { solr } from "@/services/solr";
 
 // Types BiblioKeia
-import Facet from "@/utils/types"
+// import Facet from "@/utils/types"
 
 import { useProgress } from "@/providers/progress";
 
+interface Facet {
+  name: string;
+  count: number;
+}
 
-function TransformFacet(facets: Facet[]) { 
+function TransformFacet(facets: any) { 
+    
   const listFacets = [];
   for (let i = 0; i < facets.length; i += 2) {
     const chave = facets[i];
     const valor = facets[i + 1];
+    
     if (valor > 0) {
       listFacets.push({ name: chave, count: valor });
     }
@@ -33,7 +39,7 @@ export function SearchNames(
 
   solr.get("authority/query?", {params: params})
     .then(function (response) { 
-      console.log("RES:", response)
+      // console.log("RES:", response)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
       const r = docs.map((doc: any, index: number) => {

@@ -9,7 +9,7 @@ import {
   import { BsArrowsAngleContract, BsArrowsAngleExpand } from 'react-icons/bs';
   
   // BiblioKeia Services
-  import { SearchNames } from "@/services/searchNames";
+  import { SearchNames } from "@/services/thesarus/searchNames";
   
   // Types BiblioKeia
   import Facet from "@/utils/types"

@@ -58,6 +58,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
   const router = useRouter();
   const { setProgress } = useProgress();
   const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
+  // console.log("H: ", hit)
 
   function LocExist(identifiersLccn: any) {
     setProgress(true)
@@ -71,6 +72,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
             setMessage("Registro já existe")
             setOpenSnack(true);
             router.push(`/admin/authority/${response.data.id}`);
+            // setForm(true)
           } else {
             setForm(true)
           }

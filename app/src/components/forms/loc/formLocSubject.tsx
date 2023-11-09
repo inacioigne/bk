@@ -154,8 +154,8 @@ export default function FormLocSubject({ hit, setForm }: Props) {
         bkapi.post("/thesarus/create", request, {
             headers: headers,
         })
-            .then(function (response) {
-                console.log("RES:", response)
+        .then(function (response) {
+                // console.log("RES:", response)
 
                 if (response.status === 201) {
                     setMessage("Registro criado com sucesso!")

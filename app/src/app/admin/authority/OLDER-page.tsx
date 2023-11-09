@@ -33,7 +33,7 @@ import { CiImport } from "react-icons/ci";
 import { useState, useEffect, FormEvent } from "react";
 
 // BiblioKeia Services
-import { SearchNames } from "@/services/searchNames";
+import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
 // BiblioKeia Components
 import { TabName } from "@/components/tables/tabNames";
@@ -107,7 +107,7 @@ export default function Authority() {
     // const url = `${pathname}?${searchParams}`;
 
     paramsAuthority.set("rows", "3");
-    SearchNames(
+    SearchSubjects(
       paramsAuthority,
       setRows,
       setRowCount,

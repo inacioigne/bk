@@ -16,7 +16,7 @@ import { TbUserSearch } from "react-icons/tb";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 
 // BiblioKeia Services
-import { SearchNames } from "@/services/searchNames";
+import { SearchNames } from "@/services/thesarus/searchNames";
 
 // Nextjs
 import { useRouter } from 'next/navigation'

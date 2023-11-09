@@ -4,7 +4,7 @@ import {
 import { TreeView } from '@mui/x-tree-view/TreeView';
 
 // BiblioKeia Services
-import { SearchNames } from "@/services/searchNames";
+import { SearchNames } from "@/services/thesarus/searchNames";
 
 // Reacts Icons
 import { RiFilterLine } from 'react-icons/ri';

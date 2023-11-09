@@ -3,7 +3,7 @@ from enum import Enum
 
 class TypesAuthority(str, Enum):
     PersonalName = "PersonalName"
-    inactive = "inactive"
+    Topic = "Topic"
     pending = "pending"
 
 class SchemaDeleteAuthority(BaseModel):

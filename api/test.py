@@ -1,12 +1,30 @@
 from src.schemas.settings import Settings
-from rdflib import Graph
-# from pysolr import Solr
+# from rdflib import Graph
+from pysolr import Solr
 
 settings = Settings()
+solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
+r = solr.search(q=f'id:5', **{'fl': '*,[child]'})
+[doc] = r.docs
+ids = [5]
+nMeta = [
+        "id", "identifiersLccn","type", "creationDate", "authority", "affiliation", "occupation", "isMemberOfMADSCollection", 
+        "note", "variant", "imagem", "fullerName", "birthDate", "birthPlace","deathDate",  "_version_", 
+        "label", "changeDate", "deathPlace", "birthDayDate", "birthMonthDate", "birthYearDate", "deathDayDate",
+        "deathMonthDate", "deathYearDate", "occupationLabels", "hasBroaderAuthorityLabels", "hasNarrowerAuthorityLabels", 
+          "hasReciprocalAuthorityLabels"  ]
+for k, v in doc.items():
+        if k not in nMeta:
+            print(k)
+            if type(v) == list:
+                for i in v:
+                    ids.append(i['id']) 
+            else:
+                ids.append(v['id']) 
 
-graph = Graph()
-graph.parse('http://id.loc.gov/authorities/subjects/sh85014203')
-graph.serialize('subject.ttl')
+# graph = Graph()
+# graph.parse('http://id.loc.gov/authorities/subjects/sh85014203')
+# graph.serialize('subject.ttl')
 # solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
 # solr = Solr('http://192.168.128.4:8983/solr/authority', always_commit=True, timeout=10)
 

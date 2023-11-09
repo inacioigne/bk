@@ -5,7 +5,7 @@ import {
   import StyledTreeItem from "@/components/baseMui/styledTreeItem"
   
   // BiblioKeia Services
-  import { SearchNames } from "@/services/searchNames";
+  import { SearchNames } from "@/services/thesarus/searchNames";
   
   // Types BiblioKeia
   import Facet from "@/utils/types"

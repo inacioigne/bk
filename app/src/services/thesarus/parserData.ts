@@ -47,6 +47,10 @@ export function ParserData(data: any) {
     "identifiesRWO",
     "occupation",
     "fieldOfActivity",
+    "hasBroaderAuthority",
+    "hasNarrowerAuthority",
+    "hasReciprocalAuthority"
+
   ];
   for (let [k, v] of Object.entries(data)) {
     if (uris.includes(k)) {
