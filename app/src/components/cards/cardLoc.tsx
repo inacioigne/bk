@@ -27,12 +27,10 @@ import { useAlert } from "@/providers/alert";
 import { bkapi } from "@/services/api"
 
 // BiblioKeia Components
-// import IdentifiesRWO from "@/components/madsrdf/view/identifiesRWO"
 import MadsUri from "@/components/madsrdf/view/madsUri"
 import FieldOfActivity from "@/components/madsrdf/view/fieldOfActivity"
 import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
-// import Occupation from "@/components/madsrdf/view/occupation";
 import HasCloseExternalAuthority from "@/components/madsrdf/view/hasCloseExternalAuthority";
 import BtnIcon from "@/components/buttons/btnIcon";
 import ListMads from "@/components/loc/listMads"
@@ -46,8 +44,6 @@ import { FcCalendar } from "react-icons/fc";
 // Nextjs
 import { useRouter } from 'next/navigation'
 
-
-
 interface Props {
   hit: schemaMads;
   setHit: Function;
@@ -58,7 +54,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
   const router = useRouter();
   const { setProgress } = useProgress();
   const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-  // console.log("H: ", hit)
+  // console.log("H: ", hit.hasReciprocalAuthority)
 
   function LocExist(identifiersLccn: any) {
     setProgress(true)
@@ -213,14 +209,13 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           {/* Occupation */}
           {hit?.occupation && (
             <Grid item xs={6}>
-              <MadsLoc uri={hit.occupation} label={"Ocupações:"} setHit={setHit} />
-              {/* <MadsUri uri={hit.occupation} label={"Ocupações:"} /> */}
-              
+              <MadsLoc uri={hit.occupation} label={"Ocupações:"} setHit={setHit} />              
             </Grid>
           )}
 
           {/* hasReciprocalAuthority */}
           {hit?.hasReciprocalAuthority && (
+
             <Grid item xs={6}>
               <ListMads label="Termo Relacionado" setHit={setHit} items={hit?.hasReciprocalAuthority} />
             </Grid>

@@ -12,7 +12,8 @@ def UpdateDelete(doc, response, uri):
                 resposneUpdate = UpdateDeleteUri(request, "hasNarrowerAuthority")
                 response.update(resposneUpdate)
         else:
-            [delUri] = doc.get('hasBroaderAuthority')['uri']
+            # [delUri] = doc.get('hasBroaderAuthority')['uri']
+            delUri = doc.get('hasBroaderAuthority')['uri']
             request = {'authority': uri, 
                         'uri': delUri, 
                         'type': 'hasNarrowerAuthority' }
@@ -30,7 +31,8 @@ def UpdateDelete(doc, response, uri):
                 resposneUpdate = UpdateDeleteUri(request, "hasBroaderAuthority")
                 response.update(resposneUpdate)
         else:
-            [delUri] = doc.get('hasNarrowerAuthority')['uri']
+            # [delUri] = doc.get('hasNarrowerAuthority')['uri']
+            delUri = doc.get('hasNarrowerAuthority')['uri']
             request = {'authority': uri, 
                         'uri':delUri, 
                         'type': 'hasBroaderAuthority' }
@@ -48,7 +50,8 @@ def UpdateDelete(doc, response, uri):
                 resposneUpdate = UpdateDeleteUri(request, "hasReciprocalAuthority")
                 response.update(resposneUpdate)
         else:
-            [delUri] = doc.get('hasReciprocalAuthority')['uri']
+            # [delUri] = doc.get('hasReciprocalAuthority')['uri']
+            delUri = doc.get('hasReciprocalAuthority')['uri']
             request = {'authority': uri, 
                         'uri': delUri, 
                         'type': 'hasReciprocalAuthority' }

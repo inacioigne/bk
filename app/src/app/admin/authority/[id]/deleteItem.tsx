@@ -30,9 +30,10 @@ import { schemaAuthorityDoc } from "@/schema/solr";
 interface Props {
   id: string;
   type: string;
+  isMemberOfMADSCollection: string
 }
 
-export default function DeleteItem({ id, type }: Props) {
+export default function DeleteItem({ id, type, isMemberOfMADSCollection }: Props) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -64,25 +65,25 @@ export default function DeleteItem({ id, type }: Props) {
     const headers = {
       "Content-Type": "application/json",
     };
-    console.log(data)
+    // console.log(data)
 
-    // bkapi
-    //   .delete("/thesarus/delete", { data, headers })
-    //   .then(function (response) {
-    //     // console.log(response);
-    //     if (response.status === 200) {
-    //       setMessage("Registro excluido com sucesso!");
-    //       router.push(`/admin/authority/`);
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.error(error);
-    //   })
-    //   .finally(function () {
-    //     setProgress(false);
-    //     setOpenSnack(true);
-    //     // setDoc(null);
-    //   });
+    bkapi
+      .delete("/thesarus/delete", { data, headers })
+      .then(function (response) {
+        // console.log(response);
+        if (response.status === 200) {
+          setMessage("Registro excluido com sucesso!");
+          router.push(`/admin/authority/${isMemberOfMADSCollection}`);
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      })
+      .finally(function () {
+        setProgress(false);
+        setOpenSnack(true);
+        // setDoc(null);
+      });
   };
 
   return (

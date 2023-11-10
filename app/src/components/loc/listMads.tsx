@@ -26,17 +26,13 @@ type Props = {
 };
 
 export default function ListMads({ label, setHit, items }: Props) {
+    // console.log("I", items)
     return (
         <TreeView
             aria-label="FieldOfActivity"
             defaultCollapseIcon={<AiOutlineArrowDown />}
             defaultExpandIcon={<AiOutlineArrowUp />}
             defaultExpanded={['1']}
-        // sx={{
-        //     flexGrow: 1,
-        //     maxHeight: 300,
-        //     overflowY: "auto",
-        // }}
         >
             <TreeItem
                 nodeId="1"

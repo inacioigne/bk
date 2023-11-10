@@ -1,0 +1,420 @@
+{
+    "type": "Topic",
+    "identifiersLocal": "4",
+    "identifiersLccn": "sh85066670",
+    "adminMetadata": {
+        "status": {
+            "label": "novo",
+            "value": "n"
+        }
+    },
+    "isMemberOfMADSCollection": "subjects",
+    "authoritativeLabel": "Insects",
+    "elementList": [
+        {
+            "type": "TopicElement",
+            "elementValue": {
+                "value": "Insects",
+                "lang": "en"
+            }
+        }
+    ],
+    "hasVariant": [
+        {
+            "type": "Topic",
+            "elementList": [
+                {
+                    "type": "TopicElement",
+                    "elementValue": {
+                        "value": "Hexapoda"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Topic",
+            "elementList": [
+                {
+                    "type": "TopicElement",
+                    "elementValue": {
+                        "value": "Insecta"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Topic",
+            "elementList": [
+                {
+                    "type": "TopicElement",
+                    "elementValue": {
+                        "value": "Pterygota"
+                    }
+                }
+            ]
+        }
+    ],
+    "hasCloseExternalAuthority": [
+        {
+            "uri": "http://www.wikidata.org/entity/Q1390",
+            "label": "insect",
+            "base": "www.wikidata.org"
+        },
+        {
+            "uri": "http://datos.bne.es/resource/XX524421",
+            "label": "Insectos",
+            "base": "datos.bne.es"
+        },
+        {
+            "uri": "http://lod.nal.usda.gov/nalt/45487",
+            "label": "Insecta",
+            "base": "lod.nal.usda.gov"
+        },
+        {
+            "uri": "http://purl.org/bncf/tid/634",
+            "label": "Insetti",
+            "base": "purl.org"
+        },
+        {
+            "uri": "http://lod.nal.usda.gov/nalt/76",
+            "label": "Hexapoda",
+            "base": "lod.nal.usda.gov"
+        },
+        {
+            "uri": "http://data.bnf.fr/ark:/12148/cb11932119n",
+            "label": "Insectes",
+            "base": "data.bnf.fr"
+        },
+        {
+            "uri": "http://www.yso.fi/onto/yso/p1983",
+            "label": "hyönteiset",
+            "base": "www.yso.fi"
+        },
+        {
+            "uri": "https://d-nb.info/gnd/4027110-9",
+            "label": "Insekten",
+            "base": "d-nb.info"
+        },
+        {
+            "uri": "http://id.worldcat.org/fast/974074",
+            "label": "Insects",
+            "base": "id.worldcat.org"
+        }
+    ],
+    "hasBroaderAuthority": [
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85008134",
+            "label": "Arthropoda",
+            "base": "loc"
+        }
+    ],
+    "hasNarrowerAuthority": [
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85108332",
+            "label": "Psocoptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85042686",
+            "label": "Embioptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85076759",
+            "label": "Lice",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85060175",
+            "label": "Hemiptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh90005479",
+            "label": "Bloodsucking insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85107825",
+            "label": "Protura",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2005020304",
+            "label": "Carrion insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85094090",
+            "label": "Odonata",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85006203",
+            "label": "Apterygota",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2008020096",
+            "label": "Saproxylic insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh92000807",
+            "label": "Gnats",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85050594",
+            "label": "Forest insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85066645",
+            "label": "Insect pests",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85128674",
+            "label": "Strepsiptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85128335",
+            "label": "Stoneflies",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85076067",
+            "label": "Lepidoptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2001008516",
+            "label": "Mantodea",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh93001373",
+            "label": "Queens (Insects)",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85041874",
+            "label": "Electric organs in insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85082422",
+            "label": "Mayflies",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85134031",
+            "label": "Termites",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh91001313",
+            "label": "Phasmatoptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh93002360",
+            "label": "Predatory insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85013131",
+            "label": "Beneficial insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85049104",
+            "label": "Flies",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85091166",
+            "label": "Neuroptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85049052",
+            "label": "Fleas",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh88006704",
+            "label": "Phytophagous insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85101352",
+            "label": "Photography of insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh92000131",
+            "label": "Rare insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2021005269",
+            "label": "Classification--Books--Insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2002004915",
+            "label": "Archaeognatha",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85005450",
+            "label": "Anoplura",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85047912",
+            "label": "Fertilization of plants by insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85135052",
+            "label": "Thrips",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85066657",
+            "label": "Insect societies",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85012867",
+            "label": "Beetles",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2007005354",
+            "label": "Introduced insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85066699",
+            "label": "Aquatic insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85027610",
+            "label": "Cockroaches",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85038238",
+            "label": "Diptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85095822",
+            "label": "Orthoptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85063592",
+            "label": "Hymenoptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85082794",
+            "label": "Mecoptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85037080",
+            "label": "Earwigs",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85080166",
+            "label": "Mallophaga",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh00003441",
+            "label": "Insect pollinators",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh99000944",
+            "label": "Raphidioptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh99000943",
+            "label": "Megaloptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85066704",
+            "label": "Edible insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85038214",
+            "label": "Diplura",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh92002134",
+            "label": "Extinct insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85097913",
+            "label": "Parasitic insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85061775",
+            "label": "Homoptera",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2012001922",
+            "label": "Workers (Insects)",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2002004123",
+            "label": "Grylloblattodea",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85018616",
+            "label": "Caddisflies",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85028419",
+            "label": "Collembola",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh2002000222",
+            "label": "Mycophagous insects",
+            "base": "loc"
+        },
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85135184",
+            "label": "Thysanura",
+            "base": "loc"
+        }
+    ],
+    "hasReciprocalAuthority": [
+        {
+            "uri": "http://id.loc.gov/authorities/subjects/sh85044125",
+            "label": "Entomology",
+            "base": "loc"
+        }
+    ]
+}

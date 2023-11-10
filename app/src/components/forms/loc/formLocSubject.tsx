@@ -149,26 +149,26 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }
         let request = { ...obj, ...formData };
-        // console.log("CR:", request)
+        console.log("CR:", request)
         setProgress(true)
-        bkapi.post("/thesarus/create", request, {
-            headers: headers,
-        })
-        .then(function (response) {
-                // console.log("RES:", response)
+        // bkapi.post("/thesarus/create", request, {
+        //     headers: headers,
+        // })
+        // .then(function (response) {
+        //         // console.log("RES:", response)
 
-                if (response.status === 201) {
-                    setMessage("Registro criado com sucesso!")
-                    router.push(`/admin/authority/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                console.error(error);
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+        //         if (response.status === 201) {
+        //             setMessage("Registro criado com sucesso!")
+        //             router.push(`/admin/authority/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         console.error(error);
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //     });
     }
 
     return (

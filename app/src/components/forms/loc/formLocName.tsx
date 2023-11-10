@@ -136,7 +136,7 @@ export default function FormLocName({ hit, setForm }: Props) {
         defaultValues,
     });
 
-    console.log(errors) 
+    // console.log(errors) 
     function createAuthority(data: any) {
         let formData = ParserData(data)
         let obj = {

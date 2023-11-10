@@ -1,14 +1,15 @@
-import LogoWikidata from "src/components/logos/wikidata";
-import LogoWordcat from "src/components/logos/worldcat";
-import LogoGetty from "src/components/logos/getty";
-import LogoBne from "src/components/logos/bne";
-import LogoLoc from "src/components/logos/loc";
-import LogoIsni from "src/components/logos/isni";
-import LogoViaf from "src/components/logos/viaf";
-import LogoBnf from "src/components/logos/bnf";
-import LogoPurl from "src/components/logos/pulr";
-import LogoYso from "src/components/logos/yso";
-import LogoDnb from "src/components/logos/dnb";
+import LogoWikidata from "@/components/logos/wikidata";
+import LogoWordcat from "@/components/logos/worldcat";
+import LogoGetty from "@/components/logos/getty";
+import LogoBne from "@/components/logos/bne";
+import LogoLoc from "@/components/logos/loc";
+import LogoIsni from "@/components/logos/isni";
+import LogoViaf from "@/components/logos/viaf";
+import LogoBnf from "@/components/logos/bnf";
+import LogoPurl from "@/components/logos/pulr";
+import LogoYso from "@/components/logos/yso";
+import LogoDnb from "@/components/logos/dnb";
+import BiblioKeia from "@/components/logos/bibliokeia";
 
 
 
@@ -24,5 +25,6 @@ export const logos: any = {
     "data.bnf.fr": LogoBnf,
     "purl.org": LogoPurl,
     "www.yso.fi": LogoYso,
-    "d-nb.info": LogoDnb
+    "d-nb.info": LogoDnb,
+    "bk": BiblioKeia
   };

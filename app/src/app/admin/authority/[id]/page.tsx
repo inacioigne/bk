@@ -107,7 +107,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                         Editar
                                     </Button>
                                 </Link>
-                                <DeleteItem id={doc.id} type={doc.type} />
+                                <DeleteItem id={doc.id} type={doc.type}  isMemberOfMADSCollection={doc.isMemberOfMADSCollection} />
                             </Box>
                         </Box>
                         <Divider />

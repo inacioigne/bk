@@ -69,7 +69,7 @@ async def delete_authority(request: SchemaDeleteAuthority ):
             graph <{authority}> {{ ?s ?p ?o. }}
             }}"""
     responseJena = authorityUpdate.run_sparql(d)
-    
+     
     # Solr
     r = solr.search(q=f'id:{request.id}', **{'fl': '*,[child]'})
     [doc] = r.docs
