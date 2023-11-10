@@ -4,26 +4,6 @@ import { ParserUri } from "@/services/importation/parserUri"
 
 const mads = "http://www.loc.gov/mads/rdf/v1#";
 
-// function ParserUri(authority: any, data: any, metadado: string) {
-//     let items = authority[`${mads}${metadado}`];
-//     let arr = items.map((item: any) => {
-//       let [metadado] = data.filter(function (elemento: any) {
-//         return elemento["@id"] === item["@id"];
-//       });
-//       let [type] = metadado["@type"];
-//       let [authoritativeLabel] = metadado[`${mads}authoritativeLabel`];
-//       let obj = {
-//         uri: metadado["@id"],
-//         type: type.split("#")[1],
-//         label: authoritativeLabel["@value"],
-//         lang: authoritativeLabel["@language"],
-//         base: "loc",
-//       };
-//       return obj;
-//     });
-//     return arr;
-//   }
-
 export async function  ParserData(response: any, uri: string) {
     const data = response.data;
     const [a] = data.filter(function (elemento: any) {
@@ -77,7 +57,10 @@ export async function  ParserData(response: any, uri: string) {
     }
     // Narrower Terms
     if (a.hasOwnProperty(`${mads}hasNarrowerAuthority`)) {
-        let hasNarrowerAuthority = ParserUri(a, data, 'hasNarrowerAuthority')
+        let uris = ParserUri(a, data, 'hasNarrowerAuthority')
+        let arrCheck = await CheckLoc(uris)
+        let hasNarrowerAuthority = await Promise.all(arrCheck)
+        // console.log("ck:", hasNarrowerAuthority)
         authority["hasNarrowerAuthority"] = hasNarrowerAuthority;
     }
     // hasReciprocalAuthority
@@ -85,10 +68,7 @@ export async function  ParserData(response: any, uri: string) {
         let uris = ParserUri(a, data, 'hasReciprocalAuthority')
         let arrCheck = await CheckLoc(uris)
         let hasReciprocalAuthority = await Promise.all(arrCheck)
-
         authority["hasReciprocalAuthority"] = hasReciprocalAuthority
-
-        // await console.log("RA: ", uris)
 
     }
 

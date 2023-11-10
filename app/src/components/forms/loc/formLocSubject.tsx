@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 
 // BiblioKeia Components
-// import FormMadsNames from "@/components/forms/formMadsNames"
 import FormMadsSubject from "@/components/forms/formMadsSubject"
 
 
@@ -25,7 +24,6 @@ import { SchemaMads } from "@/schema/mads/schemaMads"
 // MUI Icons
 import { IoIosSave } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
-
 
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
@@ -149,26 +147,25 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }
         let request = { ...obj, ...formData };
-        console.log("CR:", request)
+        // console.log("CR:", request)
         setProgress(true)
-        // bkapi.post("/thesarus/create", request, {
-        //     headers: headers,
-        // })
-        // .then(function (response) {
-        //         // console.log("RES:", response)
-
-        //         if (response.status === 201) {
-        //             setMessage("Registro criado com sucesso!")
-        //             router.push(`/admin/authority/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.error(error);
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+        bkapi.post("/thesarus/create", request, {
+            headers: headers,
+        })
+            .then(function (response) {
+                console.log("RES:", response)
+                if (response.status === 201) {
+                    setMessage("Registro criado com sucesso!")
+                    router.push(`/admin/authority/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                console.error(error);
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     return (

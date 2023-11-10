@@ -1,18 +1,16 @@
-from src.function.thesaurus.makeGraph.birthDate import BirthDate
-from src.function.thesaurus.makeGraph.deathDate import DeathDate
-from src.function.thesaurus.makeGraph.occupation import Occupation
-from src.function.thesaurus.makeGraph.hasAffiliation import HasAffiliation
-from src.function.thesaurus.makeGraph.birthPlace import BirthPlace
-from src.function.thesaurus.makeGraph.deathPlace import DeathPlace
-from src.function.thesaurus.makeGraph.fullerName import FullerName
-from src.function.thesaurus.makeGraph.makeElement import MakeElement
-from src.function.thesaurus.makeGraph.makeLabel import MakeLabel
-from src.function.thesaurus.makeGraph.hasVariant import HasVariant
-from src.function.thesaurus.makeGraph.identifiesRWO import IdentifiesRWO
-from src.function.thesaurus.makeGraph.listUri import ListUri
-
-
 from datetime import datetime
+from src.function.thesaurus.jena.makeGraph.birthDate import BirthDate
+from src.function.thesaurus.jena.makeGraph.birthPlace import BirthPlace
+from src.function.thesaurus.jena.makeGraph.deathDate import DeathDate
+from src.function.thesaurus.jena.makeGraph.deathPlace import DeathPlace
+from src.function.thesaurus.jena.makeGraph.fullerName import FullerName
+from src.function.thesaurus.jena.makeGraph.hasAffiliation import HasAffiliation
+from src.function.thesaurus.jena.makeGraph.hasVariant import HasVariant
+from src.function.thesaurus.jena.makeGraph.identifiesRWO import IdentifiesRWO
+from src.function.thesaurus.jena.makeGraph.listUri import ListUri
+from src.function.thesaurus.jena.makeGraph.makeElement import MakeElement
+from src.function.thesaurus.jena.makeGraph.makeLabel import MakeLabel
+from src.function.thesaurus.jena.makeGraph.occupation import Occupation
 
 
 prefix = """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 

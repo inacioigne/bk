@@ -10,12 +10,14 @@ from src.db.init_db import session
 from src.db.models import Authority
 from src.function.thesaurus.loc.graphExistLoc import GraphExistLoc
 from src.schemas.thesaurus.deleteAuthority import SchemaDeleteAuthority
-from src.function.thesaurus.makeGraph.makeGraphName import MakeGraphName
+from src.function.thesaurus.jena.makeGraph.makeGraphName import MakeGraphName
 from src.function.thesaurus.solr.makeDoc import MakeDoc
 from src.function.thesaurus.nextId import NextId
 from src.function.thesaurus.solr.deleteAuthority import DeleteAuthoritySolr
 from src.function.thesaurus.update.updateDelete import UpdateDelete
 from src.schemas.thesaurus.mads import SchemaMads 
+from src.function.thesaurus.jena.updateJena import UpdateJena
+from src.function.thesaurus.solr.updateSolr import UpdateSolr
 
 
 settings = Settings()
@@ -38,18 +40,20 @@ async def post_authority(request: SchemaMads):
             raise HTTPException(status_code=409, detail="Esse registro já existe")
 
     # MariaDB
-    a = Authority(id=request.identifiersLocal, type=request.type, uri=uri)
+    a = Authority(id=request.identifiersLocal, type=request.type, uri=uri) 
     session.add(a) 
     session.commit()
     
     # # Jena
     graph = MakeGraphName(request, request.identifiersLocal)
     # print(graph)
-    response = authorityUpdate.run_sparql(graph)    
+    response = authorityUpdate.run_sparql(graph)   
+    UpdateJena(request) 
 
     # # Solr
     doc = MakeDoc(request, request.identifiersLocal)
     responseSolr = solr.add([doc], commit=True)
+    UpdateSolr(request)
     # print('TESTE: ', responseSolr)
 
     return {
