@@ -28,11 +28,16 @@ export interface schemaAuthorityDoc {
     variant: string[];
     hasVariant: any[],
     occupation: any;
+    hasReciprocalAuthority?: uri[] 
+    hasBroaderAuthority?: uri[] 
+    hasNarrowerAuthority?: uri[] 
     hasExactExternalAuthority: uri[] 
     hasCloseExternalAuthority?: uri[]  
     hasOccupation?: uri[]  
     identifiesRWO?: uri[]  
     fieldOfActivity?: uri[]
+    isMemberOfMADSCollection: string
+    lang?: string
 
 
 }

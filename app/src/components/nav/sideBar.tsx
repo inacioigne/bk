@@ -180,36 +180,10 @@ export default function SideBar({ open }: Props) {
         <Link  href="/admin/authority/names">
         <MenuItem onClick={handleClose}>Nomes</MenuItem>
         </Link>
-        
+        <Link  href="/admin/authority/subjects">
         <MenuItem onClick={handleClose}>Assuntos</MenuItem>
+        </Link>
       </Menu>
-
-
-        {/* {menuLinks.map((link) => {
-          const isActive = pathname === link.href;
-          return (
-            <Link href={link.href} key={link.label}>
-              <MenuItem sx={isActive ? styleMenuActive : styleMenu}>
-                <ListItemIcon>
-                  {link.icon}
-                </ListItemIcon>
-                <ListItemText>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 400,
-                      fontSize: "0.9rem",
-                      lineHeight: 1.3,
-                      ml: "0.5rem",
-                    }}
-                  >
-                    {link.label}
-                  </Typography>
-                </ListItemText>
-              </MenuItem>
-            </Link>
-          );
-        })} */}
       </MenuList>
     </Drawer>
   );

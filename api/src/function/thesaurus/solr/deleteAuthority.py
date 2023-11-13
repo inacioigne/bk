@@ -14,7 +14,7 @@ def DeleteAuthoritySolr(doc):
         "note", "variant", "imagem", "fullerName", "birthDate", "birthPlace","deathDate",  "_version_", 
         "label", "changeDate", "deathPlace", "birthDayDate", "birthMonthDate", "birthYearDate", "deathDayDate",
         "deathMonthDate", "deathYearDate", "occupationLabels", "hasBroaderAuthorityLabels", "hasNarrowerAuthorityLabels", 
-          "hasReciprocalAuthorityLabels"  ]
+          "hasReciprocalAuthorityLabels", "lang"  ]
 
     for k, v in doc.items():
         if k not in nMeta:

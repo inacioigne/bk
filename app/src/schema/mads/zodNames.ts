@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const MadsSchema = z.object({
+export const ZodNames = z.object({
     elementList: z.array(
         z.object({
             type: z.string(),

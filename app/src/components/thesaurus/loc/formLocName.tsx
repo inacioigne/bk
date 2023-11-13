@@ -1,8 +1,8 @@
 import { Box, Divider, Typography, Button } from "@mui/material";
 
 // BiblioKeia Components
-import FormMadsNames from "@/components/forms/formMadsNames"
-import FormMadsSubject from "@/components/forms/formMadsSubject"
+import FormMadsNames from "@/components/thesaurus/forms/formMadsNames"
+// import FormMadsSubject from "@/components/thesaurus/forms/formMadsSubject"
 
 // React-Hook-Form
 import { useForm, Controller } from "react-hook-form";
@@ -10,7 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Schema
-import { MadsSchema } from "@/schema/mads/zodNames";
+import { ZodNames } from "@/schema/mads/zodNames";
 import { schemaMads } from "@/schema/authority";
 
 // MUI Icons
@@ -21,7 +21,7 @@ import { FcCancel } from "react-icons/fc";
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
 import { bkapi } from "@/services/api";
-import { CreateNames } from "@/services/thesarus/createNames"
+// import { CreateNames } from "@/services/thesarus/createNames"
 
 // React Hooks
 import { useEffect, useState } from "react";
@@ -34,7 +34,7 @@ import { useAlert } from "@/providers/alert";
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
 
-type SchemaCreateAuthority = z.infer<typeof MadsSchema>;
+type SchemaCreateAuthority = z.infer<typeof ZodNames>;
 
 interface Props {
     hit: schemaMads | null;
@@ -100,10 +100,10 @@ export default function FormLocName({ hit, setForm }: Props) {
     const {
         openSnack,
         setOpenSnack,
-        message,
+        // message,
         setMessage,
-        typeAlert,
-        setTypeAlert,
+        // typeAlert,
+        // setTypeAlert,
     } = useAlert();
 
     useEffect(() => {
@@ -204,28 +204,11 @@ export default function FormLocName({ hit, setForm }: Props) {
                 </Box>
                 <Divider />
                 <FormMadsNames
-                        control={control}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        setValue={setValue} />
-                {/* {hit?.type === "PersonalName" ? (
-                    <FormMadsNames
-                        control={control}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        setValue={setValue} />
-
-                ) : (
-                    <FormMadsSubject
-                        control={control}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        setValue={setValue} />
-                )} */}
-
+                    control={control}
+                    register={register}
+                    errors={errors}
+                    getValues={getValues}
+                    setValue={setValue} />
             </form>
         </Box>
     );

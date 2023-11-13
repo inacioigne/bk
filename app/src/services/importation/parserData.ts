@@ -1,6 +1,7 @@
 import { CheckLoc } from "@/services/importation/checkLoc"
 import { schemaMads, schemaAffiliation } from "@/schema/authority";
 import { ParserUri } from "@/services/importation/parserUri"
+import { Console } from "console";
 
 const mads = "http://www.loc.gov/mads/rdf/v1#";
 
@@ -70,6 +71,7 @@ export async function  ParserData(response: any, uri: string) {
         let arrCheck = await CheckLoc(uris)
         let hasReciprocalAuthority = await Promise.all(arrCheck)
         authority["hasReciprocalAuthority"] = hasReciprocalAuthority
+        // console.log("C: ", hasReciprocalAuthority)
     }
     // fullerName
     if (a.hasOwnProperty(`${mads}fullerName`)) {

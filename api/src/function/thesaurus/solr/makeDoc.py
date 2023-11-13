@@ -11,6 +11,12 @@ def MakeDoc(request, id):
             "authority": authority,
             "isMemberOfMADSCollection": isMemberOfMADSCollection
         }
+    # Lang
+    element = request.elementList[0]
+    lang = element.elementValue.lang
+    if lang:
+        doc['lang'] = lang
+
     if request.identifiersLccn:
         doc['identifiersLccn'] = request.identifiersLccn
         

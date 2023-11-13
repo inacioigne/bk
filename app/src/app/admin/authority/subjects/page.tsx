@@ -38,7 +38,7 @@ import { useParmasAutority } from "@/providers/paramsAuthority";
 import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
 // BiblioKeia Components
-import { TabName } from "@/components/tables/tabNames";
+import { TabSubjects } from "@/components/thesaurus/tables/tabSubjects";
 import FacetTypeNames from "@/components/facets/typeNames";
 import Affiliation from "@/components/facets/affiliations";
 import Occupations from "@/components/facets/occupations";
@@ -61,7 +61,7 @@ export default function Subjects() {
     const { paramsAuthority } = useParmasAutority();
 
     const [value, setValue] = useState(0);
-    const [rowCount, setRowCount] = useState("*");
+    const [rowCount, setRowCount] = useState(3);
     const [field, setField] = useState("search_general");
     const [search, setSearch] = useState("");
     const [rows, setRows] = useState([]);
@@ -70,8 +70,6 @@ export default function Subjects() {
     const [facetOccupation, setOccupation] = useState([]);
 
     useEffect(() => {
-        // setProgress(true)
-        // const url = `${pathname}?${searchParams}`;
 
         paramsAuthority.set("rows", "3");
         SearchSubjects(
@@ -82,7 +80,7 @@ export default function Subjects() {
             setFacetAffiliation,
             setOccupation
         );
-        // setProgress(false)
+
     }, [pathname, searchParams]);
 
     const handleChangeField = (event: SelectChangeEvent) => {
@@ -131,18 +129,18 @@ export default function Subjects() {
                     currentPath="Autoridades - Assuntos"
                 />
                 <Link href={"/admin/authority/names"}>
-                <Button
-                    startIcon={<TbUserSearch />}
-                    sx={{ "textTransform": "none", color: grey[500] }}
-                >Nomes</Button>
-                 </Link>
-                
+                    <Button
+                        startIcon={<TbUserSearch />}
+                        sx={{ "textTransform": "none", color: grey[500] }}
+                    >Nomes</Button>
+                </Link>
+
                 <Button
                     startIcon={<MdSubject />}
-                    sx={{ "textTransform": "none"  }}
+                    sx={{ "textTransform": "none" }}
                 >Assuntos</Button>
-               
-                
+
+
                 <Divider />
                 <Paper elevation={3} sx={{ p: "15px", mt: "10px" }}>
                     <form onSubmit={onSubmit}>
@@ -276,7 +274,7 @@ export default function Subjects() {
                             </Grid>
                             <Grid item xs={8}>
                                 {rows.length > 0 ? (
-                                    <TabName
+                                    <TabSubjects
                                         rows={rows}
                                         rowCount={rowCount}
                                         setRowCount={setRowCount}
@@ -297,8 +295,6 @@ export default function Subjects() {
                     </Box>
                 </Paper>
             </Box>
-
-
         </Container >
 
     )

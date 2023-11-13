@@ -11,7 +11,7 @@ import {
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
-import DeleteItem from "@/app/admin/authority/[id]/deleteItem";
+import DeleteItem from "@/app/admin/authority/names/[id]/deleteItem";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
 import MadsUri from "@/components/madsrdf/view/madsUri"
 import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
@@ -65,7 +65,6 @@ export default async function Page({ params }: { params: { id: string } }) {
         },
     ];
 
-    
     // console.log("DOC", doc)
     return (
         <Container maxWidth="xl">
@@ -98,7 +97,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                         Novo
                                     </Button>
                                 </Link>
-                                <Link href={`/admin/authority/edit/${params.id}`}>
+                                <Link href={`/admin/authority/subjects/${params.id}/edit`}>
                                     <Button
                                         sx={{ textTransform: "none", mx: "10px" }}
                                         variant="outlined"

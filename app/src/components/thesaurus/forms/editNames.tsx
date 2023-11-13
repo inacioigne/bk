@@ -2,22 +2,24 @@
 // MUI
 import {
     Box,
-    Grid,
+    // Grid,
     Divider,
     Button,
     Typography,
-    Paper,
-    TextField,
-    InputLabel,
-    IconButton,
-    FormControl,
-    Select,
-    MenuItem,
+    // Paper,
+    // TextField,
+    // InputLabel,
+    // IconButton,
+    // FormControl,
+    // Select,
+    // MenuItem,
 } from "@mui/material";
 
 // Schema
 import { schemaAuthorityDoc } from "@/schema/solr";
-import { MadsSchema } from "@/schema/authority/madsSchema"
+// import { SchemaMads } from "@/schema/mads/schemaMads"
+import { ZodNames } from "@/schema/mads/zodNames"
+
 
 // Next
 import Link from "next/link";
@@ -25,7 +27,6 @@ import Link from "next/link";
 // React Icons
 import { IoIosSave } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
-// import { IoRemove, IoAddOutline } from "react-icons/io5";
 
 // BiblioKeia Services
 import { bkapi } from "@/services/api";
@@ -33,21 +34,18 @@ import { bkapi } from "@/services/api";
 // React-Hook-Form
 import {
     useForm,
-    // useFieldArray,
-    // Controller,
-    // SubmitHandler,
 } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // BiblioKea Components
-import FormMads from "@/components/forms/formMadsNames"
+import FormMads from "@/components/thesaurus/forms/formMadsNames"
 
 interface Props {
     doc: schemaAuthorityDoc;
 }
 
-type EditAuthorityData = z.infer<typeof MadsSchema>;
+type EditAuthorityData = z.infer<typeof ZodNames>;
 
 function ParserUri(uri: any) {
     if (uri) {
@@ -146,16 +144,16 @@ function TransForm(doc: schemaAuthorityDoc) {
 }
 
 // Providers BiblioKeia
-import { useProgress } from "src/providers/progress";
-import { useAlert } from "src/providers/alert";
+import { useProgress } from "@/providers/progress";
+import { useAlert } from "@/providers/alert";
 
 // Nextjs
 import { useRouter } from "next/navigation";
 
 // Services BiblioKeia
-import { ParserData } from "src/services/thesarus/parserData"
+import { ParserData } from "@/services/thesarus/parserData"
 
-export default function EditAuthority({ doc }: Props) {
+export default function EditNames({ doc }: Props) {
 
     const router = useRouter();
     const { setProgress } = useProgress();
@@ -188,13 +186,7 @@ export default function EditAuthority({ doc }: Props) {
             type: doc.type,
             identifiersLocal: doc.id,
             adminMetadata: {
-                //   "assigner": "http://id.loc.gov/vocabulary/organizations/brmninpa",
-                //   "descriptionModifier": "http://id.loc.gov/vocabulary/organizations/brmninpa",
-                //   "changeDate": "2023-10-04",
                 creationDate: doc.creationDate,
-                //   "descriptionLanguage": "http://id.loc.gov/vocabulary/languages/por",
-                //   "generationProcess": "BiblioKeia v.1",
-                //   "generationDate": "2023-10-04T08:13:08",
                 status: {
                     label: "novo",
                     value: "n"

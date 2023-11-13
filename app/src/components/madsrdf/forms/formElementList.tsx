@@ -1,20 +1,28 @@
 // MUI
-import { Grid, TextField, Typography } from "@mui/material";
+import { Grid, TextField, Typography, FormControl, InputLabel, MenuItem } from "@mui/material";
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 interface Props {
     control: any;
     register: any,
     error: any
-    
+
 }
 
 // React-Hook-Form
 import { useFieldArray } from "react-hook-form";
 
 // React
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+// React Hooks
+// import { useState, FormEvent, ChangeEvent, ReactNode } from "react";
+
+import { Controller } from "react-hook-form"
 
 export default function FormElementList({ control, register, error }: Props) {
+
+    // console.log("e: ", register)
+    const [type, setType] = useState("FullNameElement");
 
     const {
         fields: fieldsElementList,
@@ -25,29 +33,37 @@ export default function FormElementList({ control, register, error }: Props) {
         name: "elementList",
     });
 
+    // const handleChangeType = (event: SelectChangeEvent) => {
+    //     const target = event.target as HTMLButtonElement;
+    //     setType(target.value);
+
+    // };
+
     return (
         <>
             {fieldsElementList.map((field, index) => (
                 <Fragment key={index}>
                     <Grid item xs={2}>
-                    <TextField
-                            fullWidth
-                            disabled={true}
-                            label="Tipo"
-                            variant="outlined"
-                            size="small"
-                            {...register(`elementList.${index}.type`)}
+                        <Controller
+                            name={`elementList.${index}.type`}
+                            control={control}
+                            render={({ field }) => (
+                                <FormControl fullWidth>
+                                    <InputLabel id="label">Tipo da Entrada</InputLabel>
+                                    <Select
+                                        size="small"
+                                        label="Tipo da Entrada"
+                                        {...field} >
+                                        <MenuItem value="FullNameElement">FullNameElement</MenuItem>
+                                        <MenuItem value="TopicElement">TopicElement</MenuItem>
+                                        <MenuItem value="Geographic">Termo Geográfico</MenuItem>
+                                        <MenuItem value="PersonalName">Nome Pessoal</MenuItem>
+                                        <MenuItem value="CorporateName">Nome Coorporativo</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
                         />
-                        {error && (
-                <Typography
-                  variant="caption"
-                  display="block"
-                  gutterBottom
-                  color={"red"}
-                >
-                  {error[index].elementValue.value.message}
-                </Typography>
-              )}
+                       
                     </Grid>
                     <Grid item xs={4}>
                         <TextField
@@ -57,6 +73,16 @@ export default function FormElementList({ control, register, error }: Props) {
                             size="small"
                             {...register(`elementList.${index}.elementValue.value`)}
                         />
+                         {error && (
+                            <Typography
+                                variant="caption"
+                                display="block"
+                                gutterBottom
+                                color={"red"}
+                            >
+                                {error[index].elementValue.value.message}
+                            </Typography>
+                        )}
                     </Grid>
                     <Grid item xs={1}>
                         <TextField

@@ -27,7 +27,7 @@ import {
       icon: <FcHome fontSize="small" />,
     },
     {
-      link: "/admin/authority",
+      link: "/admin/authority/names",
       label: "Autoridades",
       icon: <BsPersonPlus fontSize="small" />,
     },

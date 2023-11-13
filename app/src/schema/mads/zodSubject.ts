@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const SchemaSubject = z.object({
+export const ZodSubjects = z.object({
+    type: z.string(),
     elementList: z.array(
         z.object({
             type: z.string(),

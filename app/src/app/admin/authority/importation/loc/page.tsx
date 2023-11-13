@@ -11,8 +11,8 @@ import {
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormLCSH from "@/components/forms/formLocSearch"
 import CardLoc from "@/components/cards/cardLoc"
-import FormLocName from "@/components/forms/loc/formLocName";
-import FormLocSubject from "@/components/forms/loc/formLocSubject";
+import FormLocName from "@/components/thesaurus/loc/formLocName";
+import FormLocSubject from "@/components/thesaurus/loc/formLocSubject";
 
 // react-icons
 import { FcHome } from "react-icons/fc";
@@ -26,7 +26,7 @@ const previousPaths = [
     icon: <FcHome fontSize="small" />,
   },
   {
-    link: "/admin/authority",
+    link: "/admin/authority/names",
     label: "Autoridades",
     icon: <BsPersonPlus fontSize="small" />,
   },

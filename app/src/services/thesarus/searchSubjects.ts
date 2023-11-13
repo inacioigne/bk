@@ -1,15 +1,12 @@
 // BiblioKeia Services
 import { solr } from "@/services/solr";
 
-// Types BiblioKeia
-// import Facet from "@/utils/types"
+// import { useProgress } from "@/providers/progress";
 
-import { useProgress } from "@/providers/progress";
-
-interface Facet {
-  name: string;
-  count: number;
-}
+// interface Facet {
+//   name: string;
+//   count: number;
+// }
 
 function TransformFacet(facets: any) { 
     
@@ -34,8 +31,9 @@ export function SearchSubjects(
   setOccupation: Function
 ) {
 
-  // console.log("PR", params)
+  // 
   params.set("fq", "isMemberOfMADSCollection:subjects");
+  // console.log("PRs", params.toString())
 
   solr.get("authority/query?", {params: params})
     .then(function (response) { 

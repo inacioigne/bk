@@ -1,15 +1,7 @@
-import {
-    Box,
-    Divider,
-    Typography,
-    // Grid,
-    // Paper,
-    // TextField,
-    Button,
-} from "@mui/material";
+import { Box, Divider, Typography, Button } from "@mui/material";
 
 // BiblioKeia Components
-import FormMadsSubject from "@/components/forms/formMadsSubject"
+import FormMadsSubject from "@/components/thesaurus/forms/formMadsSubject"
 
 
 // React-Hook-Form
@@ -18,7 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Schema
-import { SchemaSubject } from "@/schema/mads/zodSubject"
+import { ZodSubjects } from "@/schema/mads/zodSubject"
 import { SchemaMads } from "@/schema/mads/schemaMads"
 
 // MUI Icons
@@ -40,7 +32,7 @@ import { useAlert } from "@/providers/alert";
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
 
-type SchemaCreateAuthority = z.infer<typeof SchemaSubject>;
+type SchemaCreateAuthority = z.infer<typeof ZodSubjects>;
 
 interface Props {
     hit: SchemaMads | null;
@@ -124,7 +116,7 @@ export default function FormLocSubject({ hit, setForm }: Props) {
         setValue,
         getValues,
     } = useForm<SchemaCreateAuthority>({
-        resolver: zodResolver(SchemaSubject),
+        resolver: zodResolver(ZodSubjects),
         defaultValues,
     });
 
@@ -147,7 +139,7 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }
         let request = { ...obj, ...formData };
-        console.log("CR:", request)
+        // console.log("CR:", request)
         setProgress(true)
         bkapi.post("/thesarus/create", request, {
             headers: headers,

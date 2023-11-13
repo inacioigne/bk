@@ -16,7 +16,8 @@ import { TbUserSearch } from "react-icons/tb";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 
 // BiblioKeia Services
-import { SearchNames } from "@/services/thesarus/searchNames";
+import { SearchSubjects } from "@/services/thesarus/searchSubjects";
+
 
 // Nextjs
 import { useRouter } from 'next/navigation'
@@ -95,7 +96,17 @@ function RenderType(props: GridRenderCellParams<any, String>) {
 import { useProgress } from "@/providers/progress";
 import { useParmasAutority } from "@/providers/paramsAuthority"
 
-export function TabName({ rows, rowCount, setRows, setRowCount, setFacetType, setFacetAffiliation, setOccupation }) {
+interface Props {
+  rows: any[];
+  rowCount: number;
+  setRows: Function;
+  setRowCount: Function;
+  setFacetType: Function;
+  setFacetAffiliation: Function;
+  setOccupation: Function;
+}
+
+export function TabSubjects({ rows, rowCount, setRows, setRowCount, setFacetType, setFacetAffiliation, setOccupation }: Props) {
 
   const router = useRouter() 
 
@@ -133,9 +144,10 @@ export function TabName({ rows, rowCount, setRows, setRowCount, setFacetType, se
     paginationModel={paginationModel}
     paginationMode="server"
     onPaginationModelChange={(paginationModel) => {
+      // console.log(paginationModel)
       let page = paginationModel.page == 0 ? 0 : paginationModel.page + 2
       paramsAuthority.set('start', page)
-      SearchNames(paramsAuthority, setRows, setRowCount, setFacetType, setFacetAffiliation, setOccupation);
+      SearchSubjects(paramsAuthority, setRows, setRowCount, setFacetType, setFacetAffiliation, setOccupation);
       setPaginationModel(paginationModel)
     }}
     pageSizeOptions={[3]}

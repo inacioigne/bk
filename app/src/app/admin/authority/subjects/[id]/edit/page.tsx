@@ -4,7 +4,6 @@ import {
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
-import EditNames from "@/components/thesaurus/forms/editNames"
 import EditSubjects from "@/components/thesaurus/forms/editSubjects"
 
 
@@ -47,12 +46,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                     currentPath={`edit/${params.id}`}
                 />
             </Box>
-            { doc.isMemberOfMADSCollection === 'names' ? 
-            <EditNames doc={doc} /> :
             <EditSubjects doc={doc} />
-            
-            }
-            
         </Container>
     );
 }
