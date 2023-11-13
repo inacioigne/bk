@@ -51,8 +51,9 @@ export async function  ParserData(response: any, uri: string) {
     };
     // hasBroaderAuthority
     if (a.hasOwnProperty(`${mads}hasBroaderAuthority`)) {
-        // let hasBroaderAuthority = ParserHasBroaderAuthority(a, data);
-        let hasBroaderAuthority = ParserUri(a, data, 'hasBroaderAuthority')
+        let uris = ParserUri(a, data, 'hasBroaderAuthority')
+        let arrCheck = await CheckLoc(uris)
+        let hasBroaderAuthority = await Promise.all(arrCheck)
         authority["hasBroaderAuthority"] = hasBroaderAuthority;
     }
     // Narrower Terms
@@ -69,10 +70,7 @@ export async function  ParserData(response: any, uri: string) {
         let arrCheck = await CheckLoc(uris)
         let hasReciprocalAuthority = await Promise.all(arrCheck)
         authority["hasReciprocalAuthority"] = hasReciprocalAuthority
-
     }
-
-
     // fullerName
     if (a.hasOwnProperty(`${mads}fullerName`)) {
         let [name] = a[`${mads}fullerName`];
