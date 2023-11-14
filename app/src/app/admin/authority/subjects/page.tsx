@@ -40,6 +40,7 @@ import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 // BiblioKeia Components
 import { TabSubjects } from "@/components/thesaurus/tables/tabSubjects";
 import FacetTypeNames from "@/components/facets/typeNames";
+import FacetType from "@/components/facets/subjects/facetType"
 import Affiliation from "@/components/facets/affiliations";
 import Occupations from "@/components/facets/occupations";
 
@@ -66,8 +67,8 @@ export default function Subjects() {
     const [search, setSearch] = useState("");
     const [rows, setRows] = useState([]);
     const [facetType, setFacetType] = useState([]);
-    const [facetAffiliation, setFacetAffiliation] = useState([]);
-    const [facetOccupation, setOccupation] = useState([]);
+    // const [facetAffiliation, setFacetAffiliation] = useState([]);
+    // const [facetOccupation, setOccupation] = useState([]);
 
     useEffect(() => {
 
@@ -77,8 +78,8 @@ export default function Subjects() {
             setRows,
             setRowCount,
             setFacetType,
-            setFacetAffiliation,
-            setOccupation
+            // setFacetAffiliation,
+            // setOccupation
         );
 
     }, [pathname, searchParams]);
@@ -100,8 +101,8 @@ export default function Subjects() {
             setRows,
             setRowCount,
             setFacetType,
-            setFacetAffiliation,
-            setOccupation
+            // setFacetAffiliation,
+            // setOccupation
         );
         console.log(paramsAuthority.has("start"));
     };
@@ -117,8 +118,8 @@ export default function Subjects() {
             setRows,
             setRowCount,
             setFacetType,
-            setFacetAffiliation,
-            setOccupation
+            // setFacetAffiliation,
+            // setOccupation
         );
     };
     return (
@@ -241,16 +242,17 @@ export default function Subjects() {
                                     }}
                                 >
                                     {facetType?.length > 0 && (
-                                        <FacetTypeNames
-                                            facets={facetType}
-                                            setRows={setRows}
-                                            setRowCount={setRowCount}
-                                            setFacetType={setFacetType}
-                                            setFacetAffiliation={setFacetAffiliation}
-                                            setOccupation={setOccupation}
+
+                                        <FacetType 
+                                        facets={facetType} 
+                                        setRows={setRows} 
+                                        setFacetType={setFacetType} 
+                                        setRowCount={setRowCount} 
+                                        // setFacetAffiliation={setFacetAffiliation} 
+                                        // setOccupation={setOccupation}                                        
                                         />
                                     )}
-                                    {facetAffiliation?.length > 0 && (
+                                    {/* {facetAffiliation?.length > 0 && (
                                         <Affiliation
                                             facets={facetAffiliation}
                                             setRows={setRows}
@@ -269,7 +271,7 @@ export default function Subjects() {
                                             setFacetAffiliation={setFacetAffiliation}
                                             setOccupation={setOccupation}
                                         />
-                                    )}
+                                    )} */}
                                 </Box>
                             </Grid>
                             <Grid item xs={8}>
@@ -280,8 +282,8 @@ export default function Subjects() {
                                         setRowCount={setRowCount}
                                         setRows={setRows}
                                         setFacetType={setFacetType}
-                                        setFacetAffiliation={setFacetAffiliation}
-                                        setOccupation={setOccupation}
+                                        // setFacetAffiliation={setFacetAffiliation}
+                                        // setOccupation={setOccupation}
                                     />
                                 ) : (
                                     <Box>

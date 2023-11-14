@@ -34,12 +34,15 @@ export function SearchNames(
   setOccupation: Function
 ) {
 
-  // console.log("PR", params)
-  params.set("fq", "isMemberOfMADSCollection:names");
+  params.getAll('fq').includes("isMemberOfMADSCollection:subjects") && params.delete("fq", "isMemberOfMADSCollection:subjects")
+
+  if (!params.getAll('fq').includes("isMemberOfMADSCollection:names")) {
+    params.append("fq", "isMemberOfMADSCollection:names");    
+  }
 
   solr.get("authority/query?", {params: params})
     .then(function (response) { 
-      // console.log("RES:", response)
+      // console.log("RES:", response.data)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
       const r = docs.map((doc: any, index: number) => {

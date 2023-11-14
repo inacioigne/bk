@@ -170,10 +170,10 @@ export default function EditNames({ doc }: Props) {
         setValue,
         getValues
     } = useForm<EditAuthorityData>({
-        resolver: zodResolver(MadsSchema),
+        resolver: zodResolver(ZodNames),
         defaultValues
     });
-    console.log("ER:", errors)
+    // console.log("ER:", errors)
 
     function editAuthority(data: any) {
         setProgress(true)
@@ -188,10 +188,11 @@ export default function EditNames({ doc }: Props) {
             adminMetadata: {
                 creationDate: doc.creationDate,
                 status: {
-                    label: "novo",
-                    value: "n"
+                    label: "Editado",
+                    value: "e"
                 },
             },
+            isMemberOfMADSCollection: "names",
             authoritativeLabel: data.birthYearDate ?
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }
@@ -207,7 +208,7 @@ export default function EditNames({ doc }: Props) {
                 if (response.status === 200) {
                     // console.log(response);
                     setMessage("Registro criado com sucesso!")
-                    router.push(`/admin/authority/${doc.id}`);
+                    router.push(`/admin/authority/names/${doc.id}`);
                 }
             })
             .catch(function (error) {

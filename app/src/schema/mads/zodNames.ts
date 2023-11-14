@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const ZodNames = z.object({
+export const ZodNames = z.object({ 
+    type: z.string(),
     elementList: z.array(
         z.object({
             type: z.string(),

@@ -54,7 +54,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
   const router = useRouter();
   const { setProgress } = useProgress();
   const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-  // console.log("H: ", hit.hasReciprocalAuthority)
+  // console.log("H: ", hit)
 
   function LocExist(identifiersLccn: any) {
     setProgress(true)

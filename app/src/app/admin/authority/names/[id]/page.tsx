@@ -65,7 +65,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         },
     ];
 
-    
+
     // console.log("DOC", doc)
     return (
         <Container maxWidth="xl">
@@ -98,7 +98,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                         Novo
                                     </Button>
                                 </Link>
-                                <Link href={`/admin/authority/edit/${params.id}`}>
+                                <Link href={`/admin/authority/names/${params.id}/edit`}>
                                     <Button
                                         sx={{ textTransform: "none", mx: "10px" }}
                                         variant="outlined"
@@ -107,15 +107,13 @@ export default async function Page({ params }: { params: { id: string } }) {
                                         Editar
                                     </Button>
                                 </Link>
-                                <DeleteItem id={doc.id} type={doc.type}  isMemberOfMADSCollection={doc.isMemberOfMADSCollection} />
+                                <DeleteItem id={doc.id} type={doc.type} isMemberOfMADSCollection={doc.isMemberOfMADSCollection} />
                             </Box>
                         </Box>
                         <Divider />
                         <Paper sx={{ mt: "15px" }}
                         >
                             <Box sx={{ p: "20px" }}>
-
-
                                 {doc?.imagem && (
                                     <Image
                                         src={doc?.imagem}
@@ -264,7 +262,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                             />
                                         </Grid>
                                     )}
-                                    
+
                                     {doc?.hasNarrowerAuthority && (
                                         <Grid item xs={4}>
                                             <MadsUri
@@ -273,7 +271,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                             />
                                         </Grid>
                                     )}
-                                    
+
                                     {doc?.hasCloseExternalAuthority && (
                                         <Grid item xs={4}>
                                             <MadsUri

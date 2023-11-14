@@ -26,18 +26,22 @@ export function SearchSubjects(
   params: URLSearchParams,
   setRows: Function,
   setRowCount:Function,
-  setFacetType: Function,
-  setFacetAffiliation: Function,
-  setOccupation: Function
+  setFacetType: Function
 ) {
+  if (params.getAll('fq').includes("isMemberOfMADSCollection:names")) {
+    params.delete("fq", "isMemberOfMADSCollection:names")
+  }
 
-  // 
-  params.set("fq", "isMemberOfMADSCollection:subjects");
-  // console.log("PRs", params.toString())
+  if (!params.getAll('fq').includes("isMemberOfMADSCollection:subjects")) {
+    params.append("fq", "isMemberOfMADSCollection:subjects"); 
+    // console.log("prb:", params.getAll('fq'))
+
+  }
+  
 
   solr.get("authority/query?", {params: params})
     .then(function (response) { 
-      // console.log("RESub:", response)
+      console.log("RESub:", response.data)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
       const r = docs.map((doc: any, index: number) => {
@@ -49,14 +53,14 @@ export function SearchSubjects(
         response.data.facet_counts.facet_fields.type
       );
       setFacetType(fType);
-      const fAffiliation = TransformFacet(
-        response.data.facet_counts.facet_fields.affiliation_str
-      );
-      setFacetAffiliation(fAffiliation);
-      const fOccupation = TransformFacet(
-        response.data.facet_counts.facet_fields.occupation_str
-      );
-      setOccupation(fOccupation)
+      // const fAffiliation = TransformFacet(
+      //   response.data.facet_counts.facet_fields.affiliation_str
+      // );
+      // setFacetAffiliation(fAffiliation);
+      // const fOccupation = TransformFacet(
+      //   response.data.facet_counts.facet_fields.occupation_str
+      // );
+      // setOccupation(fOccupation)
     })
     .catch(function (error) {
       // manipula erros da requisição

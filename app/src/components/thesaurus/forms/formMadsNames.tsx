@@ -8,7 +8,7 @@ import {
     Button,
 } from "@mui/material";
 
-import { schemaMads } from "@/schema/authority";
+// import { schemaMads } from "@/schema/authority";
 
 import FormElementList from "@/components/madsrdf/forms/formElementList";
 import FormFullerName from "@/components/madsrdf/forms/formFullerName"
@@ -20,6 +20,7 @@ import FormOccupation from "@/components/madsrdf/forms/formOccupation"
 import FormFieldOfActivity from "@/components/madsrdf/forms/formFieldOfActivity"
 import FormRWO from "@/components/madsrdf/forms/formRWO"
 import FormHCEA from "@/components/madsrdf/forms/formHCEA"
+import FormType from "@/components/madsrdf/forms/formType";
 
 interface Props {
     control: any
@@ -41,12 +42,15 @@ export default function FormMadsNames({ control, register, errors, getValues, se
                         Autoridade
                     </Typography>
                 </Grid>
+                <FormType control={control}
+                    register={register}/>
                 <FormElementList
                     control={control}
                     register={register}
                     error={errors.elementList}
                 />
-                <Grid item xs={5}>
+                <Grid item xs={4}>
+                
                     <FormFullerName register={register} />
                 </Grid>
                 <FormBirth register={register} control={control} />

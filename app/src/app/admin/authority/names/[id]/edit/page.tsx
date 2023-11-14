@@ -47,11 +47,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                     currentPath={`edit/${params.id}`}
                 />
             </Box>
-            { doc.isMemberOfMADSCollection === 'names' ? 
-            <EditNames doc={doc} /> :
-            <EditSubjects doc={doc} />
-            
-            }
+            <EditNames doc={doc} />
             
         </Container>
     );

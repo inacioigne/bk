@@ -202,7 +202,7 @@ export default function Names() {
                                 >
                                     Limpar
                                 </Button>
-                                <Link href={"/admin/authority/create"}>
+                                <Link href={"/admin/authority/names/create"}>
                                     <Button
                                         variant="outlined"
                                         size="large"

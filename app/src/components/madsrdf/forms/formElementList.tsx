@@ -22,7 +22,7 @@ import { Controller } from "react-hook-form"
 export default function FormElementList({ control, register, error }: Props) {
 
     // console.log("e: ", register)
-    const [type, setType] = useState("FullNameElement");
+    // const [type, setType] = useState("FullNameElement");
 
     const {
         fields: fieldsElementList,
@@ -56,7 +56,7 @@ export default function FormElementList({ control, register, error }: Props) {
                                         {...field} >
                                         <MenuItem value="FullNameElement">FullNameElement</MenuItem>
                                         <MenuItem value="TopicElement">TopicElement</MenuItem>
-                                        <MenuItem value="Geographic">Termo Geográfico</MenuItem>
+                                        <MenuItem value="GeographicElement">GeographicElement</MenuItem>
                                         <MenuItem value="PersonalName">Nome Pessoal</MenuItem>
                                         <MenuItem value="CorporateName">Nome Coorporativo</MenuItem>
                                     </Select>
@@ -65,7 +65,7 @@ export default function FormElementList({ control, register, error }: Props) {
                         />
                        
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={3}>
                         <TextField
                             fullWidth
                             label="Nome"

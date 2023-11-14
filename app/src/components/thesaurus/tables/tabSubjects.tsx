@@ -102,11 +102,13 @@ interface Props {
   setRows: Function;
   setRowCount: Function;
   setFacetType: Function;
-  setFacetAffiliation: Function;
-  setOccupation: Function;
+  // setFacetAffiliation: Function;
+  // setOccupation: Function;
 }
 
-export function TabSubjects({ rows, rowCount, setRows, setRowCount, setFacetType, setFacetAffiliation, setOccupation }: Props) {
+export function TabSubjects({ rows, rowCount, setRows, setRowCount, setFacetType, 
+  // setFacetAffiliation, setOccupation 
+}: Props) {
 
   const router = useRouter() 
 

@@ -21,7 +21,6 @@ import { FcCancel } from "react-icons/fc";
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
 import { bkapi } from "@/services/api";
-// import { CreateNames } from "@/services/thesarus/createNames"
 
 // React Hooks
 import { useEffect, useState } from "react";
@@ -95,15 +94,13 @@ function GetValue(hit: any) {
 export default function FormLocName({ hit, setForm }: Props) {
     // console.log("LOC:", hit)
     const router = useRouter()
-    const { progress, setProgress } = useProgress();
+    const { setProgress } = useProgress();
     const [id, setId] = useState(null);
     const {
-        openSnack,
+        // openSnack,
         setOpenSnack,
         // message,
         setMessage,
-        // typeAlert,
-        // setTypeAlert,
     } = useAlert();
 
     useEffect(() => {
@@ -132,7 +129,7 @@ export default function FormLocName({ hit, setForm }: Props) {
         setValue,
         getValues,
     } = useForm<SchemaCreateAuthority>({
-        resolver: zodResolver(MadsSchema),
+        resolver: zodResolver(ZodNames),
         defaultValues,
     });
 
@@ -163,7 +160,7 @@ export default function FormLocName({ hit, setForm }: Props) {
             .then(function (response) {
                 if (response.status === 201) {
                     setMessage("Registro criado com sucesso!")
-                    router.push(`/admin/authority/${response.data.id}`);
+                    router.push(`/admin/authority/names/${response.data.id}`);
                 }
             })
             .catch(function (error) {

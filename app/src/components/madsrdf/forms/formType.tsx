@@ -14,7 +14,7 @@ interface Props {
 export default function FormType({ register, control }: Props) {
 
     return (
-        <Grid item xs={3}>
+        <Grid item xs={2}>
             <Controller
                 name={`type`}
                 control={control}

@@ -54,6 +54,7 @@ function GetValue(hit: any) {
     }]
 
     const obj: any = {
+        type: hit.type,
         elementList: [{
             type: elementList.type, elementValue: {
                 value: elementList.elementValue.value,
@@ -78,15 +79,15 @@ function GetValue(hit: any) {
 export default function FormLocSubject({ hit, setForm }: Props) {
     // console.log("SUB:", hit)
     const router = useRouter()
-    const { progress, setProgress } = useProgress();
+    const { setProgress } = useProgress();
     const [id, setId] = useState(null);
     const {
-        openSnack,
+        // openSnack,
         setOpenSnack,
-        message,
+        // message,
         setMessage,
-        typeAlert,
-        setTypeAlert,
+        // typeAlert,
+        // setTypeAlert,
     } = useAlert();
 
     useEffect(() => {
