@@ -148,7 +148,7 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                 // console.log("RES:", response)
                 if (response.status === 201) {
                     setMessage("Registro criado com sucesso!")
-                    router.push(`/admin/authority/${response.data.id}`);
+                    router.push(`/admin/authority/subjects/${response.data.id}`);
                 }
             })
             .catch(function (error) {

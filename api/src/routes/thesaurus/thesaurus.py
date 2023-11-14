@@ -2,7 +2,8 @@
 from fastapi import APIRouter, HTTPException
 from pyfuseki import FusekiUpdate
 from pysolr import Solr
-from datetime import datetime 
+from datetime import datetime
+from src.function.thesaurus.jena.editJena import EditJena 
 
 # Bibliokeia Functions
 from src.schemas.settings import Settings
@@ -18,6 +19,7 @@ from src.function.thesaurus.update.updateDelete import UpdateDelete
 from src.schemas.thesaurus.mads import SchemaMads 
 from src.function.thesaurus.jena.updateJena import UpdateJena
 from src.function.thesaurus.solr.updateSolr import UpdateSolr
+from src.function.thesaurus.jena.editJena import EditJena 
 
 
 settings = Settings()
@@ -86,25 +88,16 @@ async def delete_authority(request: SchemaDeleteAuthority ):
 # Edit Autority
 @router.put("/edit", status_code=200) 
 async def edit_authority(request: SchemaMads):
-    authority = f'https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}'
-    request.adminMetadata.changeDate = datetime.now()
-    request.adminMetadata.status.label = 'Editado'
-    request.adminMetadata.status.value = 'e'
-    graph = MakeGraphName(request, request.identifiersLocal)
-    deleteGraph = f"""DELETE {{ graph <{authority}> {{ ?s ?p ?o }} }}
-            WHERE {{
-            graph <{authority}> {{ ?s ?p ?o. }}
-            }}"""
-    deleteJena = authorityUpdate.run_sparql(deleteGraph)
-    postJena = authorityUpdate.run_sparql(graph)
+    response = EditJena(request)
+    UpdateJena(request) 
 
     # # Solr
     doc = MakeDoc(request, request.identifiersLocal)
     responseSolr = solr.add([doc], commit=True)
+    UpdateSolr(request)
 
     return {
-        'jena': {'deleteGraph': deleteJena.convert()['message'],
-                 'postGraph': postJena.convert()['message']},
+        'jena': response,
         'solr': responseSolr 
             }
 

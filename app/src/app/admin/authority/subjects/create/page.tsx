@@ -145,7 +145,6 @@ export default function Create() {
     let formData = ParserData(data)
 
     let obj = {
-      // type: "PersonalName",
       identifiersLocal: String(id),
       adminMetadata: {
         status: {
@@ -159,7 +158,7 @@ export default function Create() {
     }
 
     const request = { ...obj, ...formData };
-    console.log("R: ", request)
+    // console.log("R: ", request)
 
     bkapi
       .post("/thesarus/create", request, {

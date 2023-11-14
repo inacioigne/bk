@@ -138,7 +138,7 @@ export function TabSubjects({ rows, rowCount, setRows, setRowCount, setFacetType
     rowCount={rowCount}
     onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
       setProgress(true)
-      router.push(`/admin/authority/${params.id}`) 
+      router.push(`/admin/authority/subjects/${params.id}`) 
     }}
     columns={columns}
     paginationModel={paginationModel}

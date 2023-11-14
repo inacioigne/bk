@@ -7,7 +7,7 @@ url = 'http://localhost:8983/solr/authority/schema'
 
 json_data = {
     'replace-field': {
-        'name': 'isMemberOfMADSCollection',
+        'name': 'identifiersLccn',
         'type': 'string',
     },
 }

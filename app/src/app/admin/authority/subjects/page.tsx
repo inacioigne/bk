@@ -201,7 +201,7 @@ export default function Subjects() {
                                 >
                                     Limpar
                                 </Button>
-                                <Link href={"/admin/authority/create"}>
+                                <Link href={"/admin/authority/subjects/create"}>
                                     <Button
                                         variant="outlined"
                                         size="large"
