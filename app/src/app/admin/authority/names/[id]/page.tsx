@@ -31,8 +31,6 @@ import Image from "next/image";
 // React Hooks
 import { Suspense } from "react";
 
-// import Loading from "@/app/admin/authority/[id]/loading";
-
 
 
 async function getData(id: string) {
@@ -89,7 +87,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                         Importar
                                     </Button>
                                 </Link>
-                                <Link href={"/admin/authority/create"}>
+                                <Link href={"/admin/authority/names/create"}>
                                     <Button
                                         sx={{ textTransform: "none" }}
                                         variant="outlined"

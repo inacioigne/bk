@@ -28,13 +28,14 @@ export function SearchSubjects(
   setRowCount:Function,
   setFacetType: Function
 ) {
+  console.log("prs:", params.toString())
+
   if (params.getAll('fq').includes("isMemberOfMADSCollection:names")) {
     params.delete("fq", "isMemberOfMADSCollection:names")
   }
 
   if (!params.getAll('fq').includes("isMemberOfMADSCollection:subjects")) {
     params.append("fq", "isMemberOfMADSCollection:subjects"); 
-    // console.log("prb:", params.getAll('fq'))
 
   }
   

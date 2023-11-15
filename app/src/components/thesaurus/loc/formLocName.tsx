@@ -31,7 +31,6 @@ import { useAlert } from "@/providers/alert";
 
 // Nextjs
 import { useRouter } from 'next/navigation'
-// import Link from 'next/link'
 
 type SchemaCreateAuthority = z.infer<typeof ZodNames>;
 
@@ -55,6 +54,7 @@ function GetValue(hit: any) {
     }]
 
     const obj: any = {
+        type: hit.type,
         elementList: [{
             type: elementList.type, elementValue: {
                 value: elementList.elementValue.value,
@@ -92,14 +92,11 @@ function GetValue(hit: any) {
 }
 
 export default function FormLocName({ hit, setForm }: Props) {
-    // console.log("LOC:", hit)
+    console.log("LOC:", hit)
     const router = useRouter()
     const { setProgress } = useProgress();
     const [id, setId] = useState(null);
-    const {
-        // openSnack,
-        setOpenSnack,
-        // message,
+    const { setOpenSnack,
         setMessage,
     } = useAlert();
 

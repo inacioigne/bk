@@ -1,26 +1,43 @@
+"use client";
 // MUI
 import {
     Box,
     Grid,
     TextField,
-    IconButton
+    IconButton,
+    DialogContent,
+    DialogTitle,
+    Dialog,
+    InputAdornment,
+    DialogContentText,
+    DialogActions,
+    Button
 } from "@mui/material";
 
 // React-Hook-Form
 import { useFieldArray } from "react-hook-form";
 
 // React
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 // React Icons
 import { IoRemove, IoAddOutline } from "react-icons/io5";
+import { FcSearch } from "react-icons/fc";
+
+import SearchSubjects from "@/components/thesaurus/modal/searchSubjects"
 
 interface Props {
     control: any;
     register: any
+    setOpen: Function
+    setValue: any
 }
 
-export default function FormHRA({ control, register }: Props) {
+export default function FormHRA({ control, register, setOpen, setValue }: Props) {
+    // const [open, setOpen] = useState(false);
+    
+
+    
     const {
         fields,
         append,
@@ -44,13 +61,52 @@ export default function FormHRA({ control, register }: Props) {
                     <Grid item xs={4}>
                         <TextField
                             fullWidth
+                            disabled={true}
+                            // id="input-with-icon-textfield"
+                            label="Termo relacionado"
+                            size="small"
+                            {...register(`hasReciprocalAuthority.${index}.label`)}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment 
+                                    position="start" 
+                                    sx={{ cursor: "pointer" }}
+                                    onClick={() => {
+                                        setOpen(true)
+                                        setValue(`hasReciprocalAuthority.${index}.label`, "TESTE")
+                                    }}
+                                    >
+                                        <FcSearch />
+                                    </InputAdornment>
+                                ),
+                            }}
+                            variant="outlined"
+                        />
+                        {/* <FormControl
+                            variant="outlined"
+                            fullWidth
+                        >
+                            <InputLabel htmlFor="input-with-icon-adornment">
+                                Nome
+                            </InputLabel>
+                            <Input
+                                id="input-with-icon-adornment"
+                                endAdornment={
+                                    <InputAdornment position="start">
+                                        <FcSearch />
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl> */}
+                        {/* <TextField
+                            fullWidth
                             label="Nome"
                             variant="outlined"
                             size="small"
                             {...register(`hasReciprocalAuthority.${index}.label`)}
-                        />
+                        /> */}
                     </Grid>
-                    <Grid item xs={4}>
+                    {/* <Grid item xs={4}>
                         <TextField
                             fullWidth
                             label="uri"
@@ -67,7 +123,7 @@ export default function FormHRA({ control, register }: Props) {
                             size="small"
                             {...register(`hasReciprocalAuthority.${index}.base`)}
                         />
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={2}>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                             <IconButton
@@ -90,7 +146,7 @@ export default function FormHRA({ control, register }: Props) {
                     </Grid>
                 </Fragment>
             ))}
-
+           {/* <SearchSubjects setOpen={setOpen} open={open} /> */}
         </>
     )
 }

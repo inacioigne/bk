@@ -39,7 +39,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // BiblioKea Components
-// import FormMads from "@/components/forms/formMadsNames"
 import FormMadsSubject from "@/components/thesaurus/forms/formMadsSubject"
 
 interface Props {
@@ -184,8 +183,6 @@ export default function EditSubjects({ doc }: Props) {
             })
             .finally(function () {
                 setProgress(false)
-                //   setOpenSnack(true)
-                //   setDoc(null)
             });
     }
 
@@ -197,7 +194,7 @@ export default function EditSubjects({ doc }: Props) {
                 </Typography>
 
                 <Box sx={{ display: "flex", gap: "5px" }}>
-                    <Link href={`/admin/authority/${doc.id}`}>
+                    <Link href={`/admin/authority/subjects/${doc.id}`}>
                         <Button
                             sx={{ textTransform: "none" }}
                             variant="outlined"

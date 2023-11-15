@@ -34,6 +34,7 @@ interface FacetProps {
   setRowCount: Function;
   setFacetAffiliation: Function;
   setOccupation: Function;
+  setCleanOn: Function;
 }
 const FacetTypeNames: React.FC<FacetProps> = ({
   facets,
@@ -41,7 +42,8 @@ const FacetTypeNames: React.FC<FacetProps> = ({
   setFacetType,
   setFacetAffiliation,
   setOccupation,
-  setRowCount
+  setRowCount,
+  setCleanOn
 }) => {
 
   const { paramsAuthority, updateParamsAuthority } = useParmasAutority()
@@ -53,6 +55,8 @@ const FacetTypeNames: React.FC<FacetProps> = ({
   };
 
   const handleFacet = (facet: Facet, params: URLSearchParams) => {
+
+    setCleanOn(true)
 
 
     if (!params.getAll('fq').includes(`type:${facet.name}`)) {

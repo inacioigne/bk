@@ -61,25 +61,22 @@ export default function Subjects() {
     const searchParams = useSearchParams();
     const { paramsAuthority } = useParmasAutority();
 
-    const [value, setValue] = useState(0);
-    const [rowCount, setRowCount] = useState(3);
+    // const [value, setValue] = useState(0);
+    const [cleanOn, setCleanOn] = useState(false)
+    const [rowCount, setRowCount] = useState(5);
     const [field, setField] = useState("search_general");
     const [search, setSearch] = useState("");
     const [rows, setRows] = useState([]);
     const [facetType, setFacetType] = useState([]);
-    // const [facetAffiliation, setFacetAffiliation] = useState([]);
-    // const [facetOccupation, setOccupation] = useState([]);
 
     useEffect(() => {
 
-        paramsAuthority.set("rows", "3");
+        paramsAuthority.set("rows", "5");
         SearchSubjects(
             paramsAuthority,
             setRows,
             setRowCount,
             setFacetType,
-            // setFacetAffiliation,
-            // setOccupation
         );
 
     }, [pathname, searchParams]);
@@ -94,15 +91,13 @@ export default function Subjects() {
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        paramsAuthority.set("q", `${field}:${search}`);
+        paramsAuthority.set("q", `${field}:${search}*`);
         paramsAuthority.has("start") && paramsAuthority.delete("start");
         SearchSubjects(
             paramsAuthority,
             setRows,
             setRowCount,
             setFacetType,
-            // setFacetAffiliation,
-            // setOccupation
         );
         console.log(paramsAuthority.has("start"));
     };
@@ -118,9 +113,8 @@ export default function Subjects() {
             setRows,
             setRowCount,
             setFacetType,
-            // setFacetAffiliation,
-            // setOccupation
         );
+        setCleanOn(false)
     };
     return (
         <Container maxWidth="xl">
@@ -189,19 +183,9 @@ export default function Subjects() {
                             <Grid
                                 item
                                 xs={4}
-                                sx={{ display: "flex", justifyContent: "space-around" }}
+                                sx={{ display: "flex", gap: "15px" }}
                             >
-                                <Button
-                                    variant="outlined"
-                                    size="large"
-                                    startIcon={<AiOutlineClear />}
-                                    sx={{
-                                        textTransform: "none",
-                                    }}
-                                    onClick={handleClean}
-                                >
-                                    Limpar
-                                </Button>
+
                                 <Link href={"/admin/authority/subjects/create"}>
                                     <Button
                                         variant="outlined"
@@ -233,45 +217,42 @@ export default function Subjects() {
                                     Refine sua busca:
                                 </Typography>
                                 }
+                                <Box sx={{
+                                    height: 300, justifyContent: "space-between",
+                                    display: "flex", flexDirection: "column", alignContent: "space-between"
+                                }}>
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            gap: "10px",
+                                        }}
+                                    >
+                                        {facetType?.length > 0 && (
+                                            <FacetType
+                                                facets={facetType}
+                                                setRows={setRows}
+                                                setFacetType={setFacetType}
+                                                setRowCount={setRowCount}
+                                                setCleanOn={setCleanOn}
 
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        gap: "10px",
-                                    }}
-                                >
-                                    {facetType?.length > 0 && (
+                                            />
+                                        )}
 
-                                        <FacetType 
-                                        facets={facetType} 
-                                        setRows={setRows} 
-                                        setFacetType={setFacetType} 
-                                        setRowCount={setRowCount} 
-                                        // setFacetAffiliation={setFacetAffiliation} 
-                                        // setOccupation={setOccupation}                                        
-                                        />
-                                    )}
-                                    {/* {facetAffiliation?.length > 0 && (
-                                        <Affiliation
-                                            facets={facetAffiliation}
-                                            setRows={setRows}
-                                            setRowCount={setRowCount}
-                                            setFacetType={setFacetType}
-                                            setFacetAffiliation={setFacetAffiliation}
-                                            setOccupation={setOccupation}
-                                        />
-                                    )}
-                                    {facetOccupation?.length > 0 && (
-                                        <Occupations
-                                            facets={facetOccupation}
-                                            setRows={setRows}
-                                            setRowCount={setRowCount}
-                                            setFacetType={setFacetType}
-                                            setFacetAffiliation={setFacetAffiliation}
-                                            setOccupation={setOccupation}
-                                        />
-                                    )} */}
+                                    </Box>
+                                    <Box sx={cleanOn ? { display: "block" } : { display: "none" }}>
+                                        <Button
+                                            variant="outlined"
+                                            size="small"
+                                            startIcon={<AiOutlineClear />}
+                                            sx={{
+                                                textTransform: "none",
+                                            }}
+                                            onClick={handleClean}
+                                        >
+                                            Limpar Filtros
+                                        </Button>
+                                    </Box>
                                 </Box>
                             </Grid>
                             <Grid item xs={8}>
@@ -282,8 +263,6 @@ export default function Subjects() {
                                         setRowCount={setRowCount}
                                         setRows={setRows}
                                         setFacetType={setFacetType}
-                                        // setFacetAffiliation={setFacetAffiliation}
-                                        // setOccupation={setOccupation}
                                     />
                                 ) : (
                                     <Box>

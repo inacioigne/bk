@@ -21,9 +21,6 @@ import { Controller } from "react-hook-form"
 
 export default function FormElementList({ control, register, error }: Props) {
 
-    // console.log("e: ", register)
-    // const [type, setType] = useState("FullNameElement");
-
     const {
         fields: fieldsElementList,
         append: appendElementList,
@@ -32,12 +29,6 @@ export default function FormElementList({ control, register, error }: Props) {
         control,
         name: "elementList",
     });
-
-    // const handleChangeType = (event: SelectChangeEvent) => {
-    //     const target = event.target as HTMLButtonElement;
-    //     setType(target.value);
-
-    // };
 
     return (
         <>
@@ -57,7 +48,7 @@ export default function FormElementList({ control, register, error }: Props) {
                                         <MenuItem value="FullNameElement">FullNameElement</MenuItem>
                                         <MenuItem value="TopicElement">TopicElement</MenuItem>
                                         <MenuItem value="GeographicElement">GeographicElement</MenuItem>
-                                        <MenuItem value="PersonalName">Nome Pessoal</MenuItem>
+                                        <MenuItem value="NameElement">NameElement</MenuItem>
                                         <MenuItem value="CorporateName">Nome Coorporativo</MenuItem>
                                     </Select>
                                 </FormControl>

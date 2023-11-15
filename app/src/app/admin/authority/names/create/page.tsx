@@ -4,10 +4,6 @@ import {
   Box,
   Divider,
   Typography,
-  // Grid,
-  // FormControl,
-  // Paper,
-  // TextField,
   Button,
 } from "@mui/material";
 
@@ -145,7 +141,6 @@ export default function Create() {
     let formData = ParserData(data)
 
     let obj = {
-      // type: "PersonalName",
       identifiersLocal: String(id),
       adminMetadata: {
         status: {
@@ -205,7 +200,6 @@ export default function Create() {
           </Box>
         </Box>
         <Divider />
-
         <FormMadsNames
           control={control}
           register={register}

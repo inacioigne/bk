@@ -60,7 +60,7 @@ export default function Names() {
     const searchParams = useSearchParams();
     const { paramsAuthority } = useParmasAutority();
 
-    const [value, setValue] = useState(0);
+    const [cleanOn, setCleanOn] = useState(false)
     const [rowCount, setRowCount] = useState("*");
     const [field, setField] = useState("search_general");
     const [search, setSearch] = useState("");
@@ -70,8 +70,6 @@ export default function Names() {
     const [facetOccupation, setOccupation] = useState([]);
 
     useEffect(() => {
-        // setProgress(true)
-        // const url = `${pathname}?${searchParams}`;
 
         paramsAuthority.set("rows", "3");
         SearchNames(
@@ -82,7 +80,6 @@ export default function Names() {
             setFacetAffiliation,
             setOccupation
         );
-        // setProgress(false)
     }, [pathname, searchParams]);
 
     const handleChangeField = (event: SelectChangeEvent) => {
@@ -122,6 +119,7 @@ export default function Names() {
             setFacetAffiliation,
             setOccupation
         );
+        setCleanOn(false)
     };
     return (
         <Container maxWidth="xl">
@@ -135,15 +133,15 @@ export default function Names() {
                     sx={{ "textTransform": "none" }}
                 >Nomes</Button>
                 <Link href={"/admin/authority/subjects"}>
-                <Button
-                    startIcon={<MdSubject />}
-                    sx={{ "textTransform": "none", color: grey[500] }}
-                >Assuntos</Button>
+                    <Button
+                        startIcon={<MdSubject />}
+                        sx={{ "textTransform": "none", color: grey[500] }}
+                    >Assuntos</Button>
 
                 </Link>
-               
+
                 <Divider />
-                <Paper elevation={3} sx={{ p: "15px", mt: "10px" }}>
+                <Paper elevation={3} sx={{ p: "15px", mt: "10px", height: 500 }}>
                     <form onSubmit={onSubmit}>
                         <Grid container spacing={2}>
                             <Grid item xs={2}>
@@ -189,19 +187,10 @@ export default function Names() {
                             <Grid
                                 item
                                 xs={4}
-                                sx={{ display: "flex", justifyContent: "space-around" }}
+                                sx={{
+                                    display: "flex", gap: "15px" 
+                                }}
                             >
-                                <Button
-                                    variant="outlined"
-                                    size="large"
-                                    startIcon={<AiOutlineClear />}
-                                    sx={{
-                                        textTransform: "none",
-                                    }}
-                                    onClick={handleClean}
-                                >
-                                    Limpar
-                                </Button>
                                 <Link href={"/admin/authority/names/create"}>
                                     <Button
                                         variant="outlined"
@@ -233,44 +222,64 @@ export default function Names() {
                                     Refine sua busca:
                                 </Typography>
                                 }
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        gap: "10px",
-                                    }}
-                                >
-                                    {facetType?.length > 0 && (
-                                        <FacetTypeNames
-                                            facets={facetType}
-                                            setRows={setRows}
-                                            setRowCount={setRowCount}
-                                            setFacetType={setFacetType}
-                                            setFacetAffiliation={setFacetAffiliation}
-                                            setOccupation={setOccupation}
-                                        />
-                                    )}
-                                    {facetAffiliation?.length > 0 && (
-                                        <Affiliation
-                                            facets={facetAffiliation}
-                                            setRows={setRows}
-                                            setRowCount={setRowCount}
-                                            setFacetType={setFacetType}
-                                            setFacetAffiliation={setFacetAffiliation}
-                                            setOccupation={setOccupation}
-                                        />
-                                    )}
-                                    {facetOccupation?.length > 0 && (
-                                        <Occupations
-                                            facets={facetOccupation}
-                                            setRows={setRows}
-                                            setRowCount={setRowCount}
-                                            setFacetType={setFacetType}
-                                            setFacetAffiliation={setFacetAffiliation}
-                                            setOccupation={setOccupation}
-                                        />
-                                    )}
+                                <Box sx={{
+                                    height: 300, justifyContent: "space-between",
+                                    display: "flex", flexDirection: "column", alignContent: "space-between"
+                                }}>
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            gap: "10px",
+                                        }}
+                                    >
+                                        {facetType?.length > 0 && (
+                                            <FacetTypeNames
+                                                setCleanOn={setCleanOn}
+                                                facets={facetType}
+                                                setRows={setRows}
+                                                setRowCount={setRowCount}
+                                                setFacetType={setFacetType}
+                                                setFacetAffiliation={setFacetAffiliation}
+                                                setOccupation={setOccupation}
+                                            />
+                                        )}
+                                        {facetAffiliation?.length > 0 && (
+                                            <Affiliation
+                                                facets={facetAffiliation}
+                                                setRows={setRows}
+                                                setRowCount={setRowCount}
+                                                setFacetType={setFacetType}
+                                                setFacetAffiliation={setFacetAffiliation}
+                                                setOccupation={setOccupation}
+                                            />
+                                        )}
+                                        {facetOccupation?.length > 0 && (
+                                            <Occupations
+                                                facets={facetOccupation}
+                                                setRows={setRows}
+                                                setRowCount={setRowCount}
+                                                setFacetType={setFacetType}
+                                                setFacetAffiliation={setFacetAffiliation}
+                                                setOccupation={setOccupation}
+                                            />
+                                        )}
+                                    </Box>
+                                    <Box sx={cleanOn ? { display: "block" } : { display: "none" }}>
+                                        <Button
+                                            variant="outlined"
+                                            size="small"
+                                            startIcon={<AiOutlineClear />}
+                                            sx={{
+                                                textTransform: "none",
+                                            }}
+                                            onClick={handleClean}
+                                        >
+                                            Limpar Filtros
+                                        </Button>
+                                    </Box>
                                 </Box>
+
                             </Grid>
                             <Grid item xs={8}>
                                 {rows.length > 0 ? (
@@ -294,10 +303,7 @@ export default function Names() {
                             </Grid>
                         </Grid>
                     </Box>
-
                 </Paper>
-
-
             </Box>
 
 

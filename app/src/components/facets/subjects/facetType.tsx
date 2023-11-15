@@ -35,8 +35,7 @@ interface FacetProps {
     setRows: Function;
     setFacetType: Function;
     setRowCount: Function;
-    // setFacetAffiliation: Function;
-    // setOccupation: Function;
+    setCleanOn: Function;
 }
 
 
@@ -44,33 +43,27 @@ export default function FacetType({
     facets,
     setRows,
     setFacetType,
-    // setFacetAffiliation,
-    // setOccupation,
+    setCleanOn,
     setRowCount
 }: FacetProps) {
 
     const { paramsAuthority, updateParamsAuthority } = useParmasAutority()
 
     const obj: Types = {
-        // PersonalName: "Nome Pessoal",
-        // CorporateName: "Nome Coorporativo",
         Topic: "Topic",
         Geographic: "Geographic"
 
     };
 
     const handleFacet = (facet: Facet, params: URLSearchParams) => {
-
-        
-
+        setCleanOn(true)
         if (!params.getAll('fq').includes(`type:${facet.name}`)) {
             params.append('fq', `type:${facet.name}`)
             console.log(params.getAll('fq'))
-            
-            console.log("PRs", params.toString())
-       
-            SearchSubjects(paramsAuthority, setRows, setRowCount, setFacetType, //setFacetAffiliation, setOccupation
-                );
+
+            // console.log("PRs", params.toString())
+
+            SearchSubjects(paramsAuthority, setRows, setRowCount, setFacetType);
         }
     }
 

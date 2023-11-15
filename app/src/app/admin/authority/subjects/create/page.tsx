@@ -41,6 +41,7 @@ import { bkapi } from "@/services/api";
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormMadsSubject from "@/components/thesaurus/forms/formMadsSubject";
+import SearchSubjects from "@/components/thesaurus/modal/searchSubjects"
 
 const previousPaths = [
   {
@@ -105,6 +106,7 @@ export default function Create() {
 
   const { setProgress } = useProgress();
   const { setOpenSnack, setMessage } = useAlert();
+  const [open, setOpen] = useState(false);
 
   const router = useRouter();
 
@@ -180,6 +182,7 @@ export default function Create() {
       });
 
   }
+  // console.log("OF: ", setOpen)
 
   return (
     <Container maxWidth="xl">
@@ -208,8 +211,11 @@ export default function Create() {
           register={register}
           errors={errors}
           getValues={getValues}
-          setValue={setValue} />
+          setValue={setValue}
+          setOpen={setOpen}
+           />
       </form>
+      <SearchSubjects setOpen={setOpen} open={open} defaultValues={defaultValues} />
     </Container>
   )
 }

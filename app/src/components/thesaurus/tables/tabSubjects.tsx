@@ -102,15 +102,12 @@ interface Props {
   setRows: Function;
   setRowCount: Function;
   setFacetType: Function;
-  // setFacetAffiliation: Function;
-  // setOccupation: Function;
 }
 
-export function TabSubjects({ rows, rowCount, setRows, setRowCount, setFacetType, 
-  // setFacetAffiliation, setOccupation 
-}: Props) {
+export function TabSubjects(
+  { rows, rowCount, setRows, setRowCount, setFacetType}: Props) {
 
-  const router = useRouter() 
+  const router = useRouter()
 
   const { paramsAuthority } = useParmasAutority()
   const { setProgress } = useProgress();
@@ -132,7 +129,7 @@ export function TabSubjects({ rows, rowCount, setRows, setRowCount, setFacetType
 
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
-    pageSize: 3,
+    pageSize: 5,
   });
 
   return <DataGrid
@@ -140,19 +137,19 @@ export function TabSubjects({ rows, rowCount, setRows, setRowCount, setFacetType
     rowCount={rowCount}
     onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
       setProgress(true)
-      router.push(`/admin/authority/subjects/${params.id}`) 
+      router.push(`/admin/authority/subjects/${params.id}`)
     }}
     columns={columns}
     paginationModel={paginationModel}
     paginationMode="server"
     onPaginationModelChange={(paginationModel) => {
       // console.log(paginationModel)
-      let page = paginationModel.page == 0 ? 0 : paginationModel.page + 2
+      let page = paginationModel.page == 0 ? 0 : paginationModel.page + 4
       paramsAuthority.set('start', page)
-      SearchSubjects(paramsAuthority, setRows, setRowCount, setFacetType, setFacetAffiliation, setOccupation);
+      SearchSubjects(paramsAuthority, setRows, setRowCount, setFacetType);
       setPaginationModel(paginationModel)
     }}
-    pageSizeOptions={[3]}
+    pageSizeOptions={[5]}
   />;
 
 }
