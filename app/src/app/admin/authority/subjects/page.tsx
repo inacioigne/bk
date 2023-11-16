@@ -41,8 +41,8 @@ import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 import { TabSubjects } from "@/components/thesaurus/tables/tabSubjects";
 import FacetTypeNames from "@/components/facets/typeNames";
 import FacetType from "@/components/facets/subjects/facetType"
-import Affiliation from "@/components/facets/affiliations";
-import Occupations from "@/components/facets/occupations";
+// import Affiliation from "@/components/facets/affiliations";
+// import Occupations from "@/components/facets/occupations";
 
 // Nextjs
 import { usePathname, useSearchParams } from "next/navigation";

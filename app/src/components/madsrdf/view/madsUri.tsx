@@ -26,11 +26,6 @@ export default function MadsUri({ uri, label }: Props) {
       defaultCollapseIcon={<AiOutlineArrowDown />}
       defaultExpandIcon={<AiOutlineArrowUp />}
       defaultExpanded={["1"]}
-    // sx={{
-    //   flexGrow: 1,
-    //   maxHeight: 300,
-    //   overflowY: "auto", 
-    // }}
     >
       <TreeItem
         nodeId="1"

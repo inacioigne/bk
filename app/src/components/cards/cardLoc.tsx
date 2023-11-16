@@ -215,7 +215,6 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
 
           {/* hasReciprocalAuthority */}
           {hit?.hasReciprocalAuthority && (
-
             <Grid item xs={6}>
               <ListMads label="Termo Relacionado" setHit={setHit} items={hit?.hasReciprocalAuthority} />
             </Grid>

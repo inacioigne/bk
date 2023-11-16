@@ -31,8 +31,6 @@ import Image from "next/image";
 // React Hooks
 import { Suspense } from "react";
 
-// import Loading from "@/app/admin/authority/[id]/loading";
-
 
 
 async function getData(id: string) {

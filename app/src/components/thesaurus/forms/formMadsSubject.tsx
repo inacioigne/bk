@@ -15,11 +15,12 @@ interface Props {
     errors: any
     getValues: Function
     setValue: Function
-    setOpen: Function
+    setOpen: Function,
+    setField: Function
 
 }
 
-export default function FormMadsSubject({ control, register, errors, getValues, setValue, setOpen }: Props) {
+export default function FormMadsSubject({ control, register, errors, getValues, setValue, setOpen, setField }: Props) {
     
 
 
@@ -51,7 +52,9 @@ export default function FormMadsSubject({ control, register, errors, getValues, 
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormHRA control={control} register={register} setOpen={setOpen} setValue={setValue}/>                
+                <FormHRA 
+                control={control} 
+                register={register} setOpen={setOpen} setValue={setValue} setField={setField} />                
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Termo Geral

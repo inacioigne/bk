@@ -24,19 +24,17 @@ import { Fragment, useState } from "react";
 import { IoRemove, IoAddOutline } from "react-icons/io5";
 import { FcSearch } from "react-icons/fc";
 
-import SearchSubjects from "@/components/thesaurus/modal/searchSubjects"
+import SearchSubjects from "@/components/thesaurus/modal/modalSubjects"
 
 interface Props {
     control: any;
     register: any
     setOpen: Function
     setValue: any
+    setField: Function
 }
 
-export default function FormHRA({ control, register, setOpen, setValue }: Props) {
-    // const [open, setOpen] = useState(false);
-    
-
+export default function FormHRA({ control, register, setOpen, setValue, setField }: Props) {
     
     const {
         fields,
@@ -61,8 +59,11 @@ export default function FormHRA({ control, register, setOpen, setValue }: Props)
                     <Grid item xs={4}>
                         <TextField
                             fullWidth
-                            disabled={true}
-                            // id="input-with-icon-textfield"
+                            // disabled={true}
+                            // focused={true}
+                            // hiddenLabel={true}
+                            variant="standard"
+                            // autoFocus={true}
                             label="Termo relacionado"
                             size="small"
                             {...register(`hasReciprocalAuthority.${index}.label`)}
@@ -73,31 +74,17 @@ export default function FormHRA({ control, register, setOpen, setValue }: Props)
                                     sx={{ cursor: "pointer" }}
                                     onClick={() => {
                                         setOpen(true)
-                                        setValue(`hasReciprocalAuthority.${index}.label`, "TESTE")
+                                        // setValue(`hasReciprocalAuthority.${index}.label`, "TESTE")
+                                        setField(`hasReciprocalAuthority.${index}`)
                                     }}
                                     >
                                         <FcSearch />
                                     </InputAdornment>
                                 ),
                             }}
-                            variant="outlined"
+                            
                         />
-                        {/* <FormControl
-                            variant="outlined"
-                            fullWidth
-                        >
-                            <InputLabel htmlFor="input-with-icon-adornment">
-                                Nome
-                            </InputLabel>
-                            <Input
-                                id="input-with-icon-adornment"
-                                endAdornment={
-                                    <InputAdornment position="start">
-                                        <FcSearch />
-                                    </InputAdornment>
-                                }
-                            />
-                        </FormControl> */}
+                     
                         {/* <TextField
                             fullWidth
                             label="Nome"
