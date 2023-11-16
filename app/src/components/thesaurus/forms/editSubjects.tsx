@@ -2,17 +2,17 @@
 // MUI
 import {
     Box,
-    Grid,
+    // Grid,
     Divider,
     Button,
     Typography,
-    Paper,
-    TextField,
-    InputLabel,
-    IconButton,
-    FormControl,
-    Select,
-    MenuItem,
+    // Paper,
+    // TextField,
+    // InputLabel,
+    // IconButton,
+    // FormControl,
+    // Select,
+    // MenuItem,
 } from "@mui/material";
 
 // Schema
@@ -117,9 +117,14 @@ import { useRouter } from "next/navigation";
 
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
+import { useState } from "react";
+import ModalSubjects from "@/components/thesaurus/modal/modalSubjects"
+
 
 export default function EditSubjects({ doc }: Props) {
-    // console.log("D: ", doc)
+
+    const [open, setOpen] = useState(false);
+    const [field, setField] = useState("");
 
     const router = useRouter();
     const { setProgress } = useProgress();
@@ -166,7 +171,7 @@ export default function EditSubjects({ doc }: Props) {
 
         let formData = ParserData(data)
         const request = { ...obj, ...formData };
-        console.log("R:", request)
+        // console.log("R:", request)
 
         bkapi.put("thesarus/edit/", request, {
             headers: headers,
@@ -187,6 +192,7 @@ export default function EditSubjects({ doc }: Props) {
     }
 
     return (
+        <>
         <form onSubmit={handleSubmit(editAuthority)}>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography variant="h5" gutterBottom>
@@ -221,7 +227,13 @@ export default function EditSubjects({ doc }: Props) {
                 register={register}
                 errors={errors}
                 getValues={getValues}
-                setValue={setValue} />
+                setValue={setValue}
+                setOpen={setOpen}
+                setField={setField}
+            />
         </form>
+        <ModalSubjects setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue}/>
+        </>
+        
     )
 }

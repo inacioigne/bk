@@ -35,7 +35,7 @@ export function SearchSubjects(
 
   solr.get("authority/query?", { params: params })
     .then(function (response) {
-      console.log("RESub:", response.data)
+      // console.log("RESub:", response.data)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
       const r = docs.map((doc: any, index: number) => {

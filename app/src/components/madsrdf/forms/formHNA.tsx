@@ -3,24 +3,30 @@ import {
     Box,
     Grid,
     TextField,
-    IconButton
+    IconButton,
+    InputAdornment,
+    Chip
 } from "@mui/material";
 
 // React-Hook-Form
-import { useFieldArray } from "react-hook-form";
+import { useFieldArray, useWatch } from "react-hook-form";
 
 // React
 import { Fragment } from "react";
 
 // React Icons
 import { IoRemove, IoAddOutline } from "react-icons/io5";
+import { FcSearch } from "react-icons/fc";
+import { TiLockClosedOutline } from "react-icons/ti";
 
 interface Props {
     control: any;
-    register: any
+    register: any;
+    setOpen: Function;
+    setField: Function
 }
 
-export default function FormHNA({ control, register }: Props) {
+export default function FormHNA({ control, register, setOpen, setField }: Props) {
     const {
         fields,
         append,
@@ -37,20 +43,72 @@ export default function FormHNA({ control, register }: Props) {
         });
     };
 
+    const watchFields = useWatch({
+        control,
+        name: "hasNarrowerAuthority"
+    });
+
     return (
         <>
             {fields.map((field, index) => (
                 <Fragment key={index}>
                     <Grid item xs={4}>
-                        <TextField
+                    <TextField
+                            fullWidth
+                            disabled={true}
+                            variant="standard"
+                            label="Termo geral"
+                            size="small"
+                            {...register(`hasNarrowerAuthority.${index}.label`)}
+                            inputProps={{
+                                style: { opacity: 0 },
+
+                            }}
+                            InputProps={
+                                watchFields[index]?.label === "" ? {
+                                    endAdornment: (
+                                        <InputAdornment
+                                            position="start"
+                                            sx={{ cursor: "pointer" }}
+                                            onClick={() => {
+                                                setOpen(true)
+                                                setField(`hasNarrowerAuthority.${index}`)
+                                            }}
+                                        >
+                                            <FcSearch />
+                                        </InputAdornment>
+                                    ),
+                                } : {
+                                    startAdornment: (
+                                        <InputAdornment
+                                            position="start" >
+                                            <Chip label={watchFields[index]?.label} size="small"
+                                                color="info" avatar={<TiLockClosedOutline />} />
+                                        </InputAdornment>
+                                    ),
+                                    endAdornment: (
+                                        <InputAdornment
+                                            position="start"
+                                            sx={{ cursor: "pointer" }}
+                                            onClick={() => {
+                                                setOpen(true)
+                                                setField(`hasNarrowerAuthority.${index}`)
+                                            }}
+                                        >
+                                            <FcSearch />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                        />
+                        {/* <TextField
                             fullWidth
                             label="Nome"
                             variant="outlined"
                             size="small"
                             {...register(`hasNarrowerAuthority.${index}.label`)}
-                        />
+                        /> */}
                     </Grid>
-                    <Grid item xs={4}>
+                    {/* <Grid item xs={4}>
                         <TextField
                             fullWidth
                             label="uri"
@@ -67,7 +125,7 @@ export default function FormHNA({ control, register }: Props) {
                             size="small"
                             {...register(`hasNarrowerAuthority.${index}.base`)}
                         />
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={2}>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                             <IconButton

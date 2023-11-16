@@ -1,4 +1,4 @@
-import { Divider, Typography,  Grid, Paper } from "@mui/material";
+import { Divider, Typography, Grid, Paper } from "@mui/material";
 
 import FormElementList from "@/components/madsrdf/forms/formElementList";
 import FormHCEA from "@/components/madsrdf/forms/formHCEA"
@@ -21,8 +21,7 @@ interface Props {
 }
 
 export default function FormMadsSubject({ control, register, errors, getValues, setValue, setOpen, setField }: Props) {
-    
-
+    // console.log("f", setOpen)
 
     return (
         <Paper sx={{ p: "15px", mt: "20px" }}>
@@ -33,7 +32,7 @@ export default function FormMadsSubject({ control, register, errors, getValues, 
                     </Typography>
                 </Grid>
                 <FormType control={control}
-                    register={register}/>
+                    register={register} />
                 <FormElementList
                     control={control}
                     register={register}
@@ -52,23 +51,33 @@ export default function FormMadsSubject({ control, register, errors, getValues, 
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormHRA 
-                control={control} 
-                register={register} setOpen={setOpen} setValue={setValue} setField={setField} />                
+                <FormHRA
+                    control={control}
+                    register={register}
+                    setOpen={setOpen}
+                    setField={setField} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Termo Geral
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormHBA control={control} register={register} />
+                <FormHBA
+                    control={control}
+                    register={register}
+                    setOpen={setOpen}
+                    setField={setField} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Termo Específico
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormHNA control={control} register={register} />
+                <FormHNA
+                    control={control}
+                    register={register}
+                    setOpen={setOpen}
+                    setField={setField} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Ocorrências em outra bases
@@ -76,7 +85,7 @@ export default function FormMadsSubject({ control, register, errors, getValues, 
                     <Divider />
                 </Grid>
                 <FormHCEA control={control} register={register} />
-               
+
             </Grid>
 
         </Paper>

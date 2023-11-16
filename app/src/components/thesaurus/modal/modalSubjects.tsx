@@ -9,7 +9,7 @@ import {
     DialogTitle,
     Dialog,
     InputAdornment,
-    DialogContentText,
+    // DialogContentText,
     DialogActions,
     Button,
     FormControl,
@@ -24,8 +24,8 @@ import {
     ListItemText,
     ListItemButton,
     Paper,
-    Card,
-    CardContent
+    // Card,
+    // CardContent
 } from "@mui/material";
 
 
@@ -55,7 +55,7 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
-    const [doc, setDoc] = useState<schemaAuthorityDoc|null>(null)
+    const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
     const handleClose = () => {
         setOpen(false);
     };
@@ -63,7 +63,7 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
     const handleSubmit = (e: any) => {
         e.preventDefault()
         SearchModalSubjects(type, search, setDocs)
-        console.log(type, search)
+        // console.log(type, search)
 
     };
 
@@ -84,9 +84,7 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <form onSubmit={handleSubmit}>
-                            <Box sx={{
-                                // p: "10px" 
-                            }}>
+                            <Box >
                                 <FormControl
                                     sx={{ width: "30%" }}
                                     size="small"
@@ -125,9 +123,7 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
                                             >
                                                 <IconButton type="submit">
                                                     <FcSearch />
-
                                                 </IconButton>
-
                                             </InputAdornment>
                                         ),
                                     }}
@@ -144,7 +140,7 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
                                         docs.map((doc, index) => (
                                             <div key={index}>
                                                 <ListItem disablePadding >
-                                                    <ListItemButton onClick={() => {setDoc(doc)}}>
+                                                    <ListItemButton onClick={() => { setDoc(doc) }}>
                                                         <ListItemIcon>
                                                             <Avatar sx={{ width: 24, height: 24, fontSize: 15 }}>
                                                                 {doc.type[0]}
@@ -161,7 +157,7 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
                             </Paper> : null}
                     </Grid>
                     <Grid item xs={8}>
-                       {doc ? <CardBkTheasaurs doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null }
+                        {doc ? <CardBkTheasaurs doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
                     </Grid>
                 </Grid>
 

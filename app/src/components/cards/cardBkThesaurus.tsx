@@ -16,7 +16,7 @@ import {
 import { schemaAuthorityDoc } from "@/schema/solr"
 
 import { red } from "@mui/material/colors";
-import { CiImport } from "react-icons/ci";
+// import { CiImport } from "react-icons/ci";
 import { FcCheckmark } from "react-icons/fc";
 
 import HasVariant from "@/components/madsrdf/view/hasVariant";
@@ -32,6 +32,13 @@ interface Props {
 
 }
 export default function CardBkTheasaurs({ doc, setDoc, setValue, field, setOpen }: Props) {
+    const handleChoose = () => {
+        setValue(`${field}.label`, doc.authority[0])
+        setValue(`${field}.base`, "bk")
+        setValue(`${field}.uri`, `https://bibliokeia.com/authority/${doc.type}/${doc.id}`)
+        setOpen(false)
+
+    }
 
     return (
         <Card >
@@ -54,13 +61,7 @@ export default function CardBkTheasaurs({ doc, setDoc, setValue, field, setOpen 
                         <Tooltip title="Usar registro">
                             <IconButton
                                 aria-label="settings"
-                            onClick={() => {
-                                console.log("F", doc)
-                                setValue(`${field}.label`, doc.authority[0])
-                                setValue(`${field}.base`, "bk")
-                                setOpen(false)
-                           
-                            }}
+                                onClick={handleChoose}
                             >
                                 <FcCheckmark />
                             </IconButton>

@@ -28,7 +28,7 @@ const previousPaths = [
         icon: <FcHome fontSize="small" />,
     },
     {
-        link: "/admin/authority",
+        link: "/admin/authority/subjects",
         label: "Autoridades",
         icon: <BsFillPersonLinesFill fontSize="small" />,
     },

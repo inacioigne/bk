@@ -10,7 +10,7 @@ export function SearchModalSubjects(type: String, search: String, setDocs: Funct
 
   solr.get("authority/query?", { params: params })
     .then(function (response) {
-      console.log("RESub:", response.data)
+      // console.log("RESub:", response.data)
       const docs = response.data.response.docs;
       setDocs(docs)
     })

@@ -161,29 +161,28 @@ export default function Create() {
     }
 
     const request = { ...obj, ...formData };
-    console.log("R: ", request)
+    // console.log("R: ", request)
 
-    // bkapi
-    //   .post("/thesarus/create", request, {
-    //     headers: headers,
-    //   })
-    //   .then(function (response) {
-    //     if (response.status === 201) {
-    //       // console.log(response);
-    //       setMessage("Registro criado com sucesso!")
-    //       router.push(`/admin/authority/subjects/${response.data.id}`);
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.error(error);
-    //   })
-    //   .finally(function () {
-    //     setProgress(false)
-    //     setOpenSnack(true)
-    //   });
+    bkapi
+      .post("/thesarus/create", request, {
+        headers: headers,
+      })
+      .then(function (response) {
+        if (response.status === 201) {
+          // console.log(response);
+          setMessage("Registro criado com sucesso!")
+          router.push(`/admin/authority/subjects/${response.data.id}`);
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      })
+      .finally(function () {
+        setProgress(false)
+        setOpenSnack(true)
+      });
 
   }
-  // console.log("OF: ", setOpen)
 
   return (
     <Container maxWidth="xl">

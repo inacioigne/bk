@@ -45,7 +45,8 @@ export default function MadsUri({ uri, label }: Props) {
           {Array.isArray(uri) ? (
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {uri.map((e, index) => (
-                <Link key={index} href={`${e.uri}`} target="_blank">
+                <Link key={index} href={e.base === 'bk' ?
+                 `/admin/authority/subjects/${e.uri.split("/")[5]}` : `${e.uri}`} target={e.base === 'bk' ? "_self" : "_blank"}>
                   <StyledTreeItem
                     nodeId={`${index + 5}`}
                     labelText={`${e.label}`}

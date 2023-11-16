@@ -8,8 +8,6 @@ import StyledTreeItem from "@/components/baseMui/styledTreeItem"
 
 import { logos } from "@/share/objLogos"
 
-// import { LocAuthority } from "@/services/importation/locAuthority"
-
 // BiblioKeia Services
 import { solr } from "@/services/solr";
 
@@ -23,7 +21,7 @@ interface ElementMads {
 type Props = {
     label: string
     setDoc: Function
-    items: ElementMads[]|ElementMads
+    items: ElementMads[] | ElementMads
 };
 
 export default function ListMadsBk({ label, setDoc, items }: Props) {
@@ -36,12 +34,11 @@ export default function ListMadsBk({ label, setDoc, items }: Props) {
             const params = new URLSearchParams();
             params.set("q", `id:${id}`);
             params.set("fl", "*,[child]");
-            console.log(id)
+            // console.log(id)
             solr.get("authority/query?", { params: params })
                 .then(function (response) {
-                    
                     const [doc] = response.data.response.docs;
-                    console.log("RESub:", response.data)
+                    // console.log("RESub:", response.data)
                     setDoc(doc)
                 })
                 .catch(function (error) {
@@ -67,36 +64,36 @@ export default function ListMadsBk({ label, setDoc, items }: Props) {
                     </Typography>
                 }
             >
-                { Array.isArray(items) ? 
-                <Box
-                    sx={{
-                        flexGrow: 1,
-                        maxHeight: 300,
-                        overflowY: "auto",
-                    }}
-                >
-                    {items.map((e, index) => (
-                        <div key={index} onClick={() => { HandleClick(e) }}>
-                            <StyledTreeItem
-                                nodeId={`${index + 5}`}
-                                labelText={e.label}
-                                labelIcon={logos[`${e.base}`]}
-                                color="#1a73e8"
-                                bgColor="#e8f0fe"
-                                colorForDarkMode="#B8E7FB"
-                                bgColorForDarkMode="#071318"
-                            />
-                        </div>
-                    ))}
-                </Box> :  <StyledTreeItem
-                                nodeId={"6"}
-                                labelText={items.label}
-                                labelIcon={logos[`${items.base}`]}
-                                color="#1a73e8"
-                                bgColor="#e8f0fe"
-                                colorForDarkMode="#B8E7FB"
-                                bgColorForDarkMode="#071318"
-                            />}
+                {Array.isArray(items) ?
+                    <Box
+                        sx={{
+                            flexGrow: 1,
+                            maxHeight: 300,
+                            overflowY: "auto",
+                        }}
+                    >
+                        {items.map((e, index) => (
+                            <div key={index} onClick={() => { HandleClick(e) }}>
+                                <StyledTreeItem
+                                    nodeId={`${index + 5}`}
+                                    labelText={e.label}
+                                    labelIcon={logos[`${e.base}`]}
+                                    color="#1a73e8"
+                                    bgColor="#e8f0fe"
+                                    colorForDarkMode="#B8E7FB"
+                                    bgColorForDarkMode="#071318"
+                                />
+                            </div>
+                        ))}
+                    </Box> : <StyledTreeItem
+                        nodeId={"6"}
+                        labelText={items.label}
+                        labelIcon={logos[`${items.base}`]}
+                        color="#1a73e8"
+                        bgColor="#e8f0fe"
+                        colorForDarkMode="#B8E7FB"
+                        bgColorForDarkMode="#071318"
+                    />}
             </TreeItem>
         </TreeView>
 
