@@ -9,7 +9,6 @@ import {
     DialogTitle,
     Dialog,
     InputAdornment,
-    // DialogContentText,
     DialogActions,
     Button,
     FormControl,
@@ -24,12 +23,10 @@ import {
     ListItemText,
     ListItemButton,
     Paper,
-    // Card,
-    // CardContent
 } from "@mui/material";
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FcSearch } from "react-icons/fc";
 
@@ -47,11 +44,12 @@ interface Props {
     field: string
 }
 
-type TypeDoc = {
-    authority: String[]
-    type: String
-}
-export default function ModalSubjects({ setOpen, setValue, open, defaultValues, field }: Props) {
+// type TypeDoc = {
+//     authority: String[]
+//     type: String
+// }
+
+export default function ModalSubjects({ setOpen, setValue, open, field }: Props) {
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
@@ -59,6 +57,13 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
     const handleClose = () => {
         setOpen(false);
     };
+
+    useEffect(() => {
+        // console.log(type, search)
+        SearchModalSubjects(type, search, setDocs)
+
+
+    }, [open])
     // console.log(defaultValues)
     const handleSubmit = (e: any) => {
         e.preventDefault()
@@ -84,7 +89,7 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <form onSubmit={handleSubmit}>
-                            <Box >
+                            <Box sx={{display: "flex", gap: "10px"}}>
                                 <FormControl
                                     sx={{ width: "30%" }}
                                     size="small"
@@ -96,7 +101,7 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
                                         value={type}
                                         label="Selecione uma opção"
                                         onChange={(e) => {
-                                            // handleChangeType(e, params);
+                                            setType(e.target.value)
                                         }}
                                     >
                                         <MenuItem value="*">Todos</MenuItem>
@@ -160,14 +165,9 @@ export default function ModalSubjects({ setOpen, setValue, open, defaultValues, 
                         {doc ? <CardBkTheasaurs doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
                     </Grid>
                 </Grid>
-
-
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Disagree</Button>
-                <Button onClick={handleClose} autoFocus>
-                    Agree
-                </Button>
+                <Button onClick={handleClose}>Cancelar</Button>
             </DialogActions>
         </Dialog>
     )

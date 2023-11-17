@@ -5,7 +5,7 @@ export default function LogoLoc() {
   return (
    <IconButton >
     <Image
-      src="/logos/loc_icon.png"
+      src="/logos/loc.png"
       width={20}
       height={16}
       alt="loc"

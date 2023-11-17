@@ -5,7 +5,8 @@ import {
     TextField,
     IconButton,
     InputAdornment,
-    Chip
+    Chip,
+    Avatar
 } from "@mui/material";
 
 // React-Hook-Form
@@ -83,7 +84,13 @@ export default function FormHNA({ control, register, setOpen, setField }: Props)
                                         <InputAdornment
                                             position="start" >
                                             <Chip label={watchFields[index]?.label} size="small"
-                                                color="info" avatar={<TiLockClosedOutline />} />
+                                                color="info" 
+                                                avatar={
+                                                    watchFields[index]?.base === "bk" ?
+                                                        <TiLockClosedOutline /> :
+                                                        <Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
+                                                }
+                                                />
                                         </InputAdornment>
                                     ),
                                     endAdornment: (

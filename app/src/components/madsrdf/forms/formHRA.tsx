@@ -5,14 +5,9 @@ import {
     Grid,
     TextField,
     IconButton,
-    // DialogContent,
-    // DialogTitle,
-    // Dialog,
     InputAdornment,
-    // DialogContentText,
-    // DialogActions,
-    // Button,
-    Chip
+    Chip,
+    Avatar
 } from "@mui/material";
 
 // React-Hook-Form
@@ -26,13 +21,13 @@ import { IoRemove, IoAddOutline } from "react-icons/io5";
 import { FcSearch } from "react-icons/fc";
 import { TiLockClosedOutline } from "react-icons/ti";
 
-// import SearchSubjects from "@/components/thesaurus/modal/modalSubjects"
+import { logos } from "@/share/objLogos"
+import LogoLoc from "@/components/logos/loc";
 
 interface Props {
     control: any;
     register: any
     setOpen: Function
-    // setValue: any
     setField: Function
 }
 
@@ -95,7 +90,13 @@ export default function FormHRA({ control, register, setOpen, setField }: Props)
                                         <InputAdornment
                                             position="start" >
                                             <Chip label={watchFields[index]?.label} size="small"
-                                                color="info" avatar={<TiLockClosedOutline />} />
+                                                color="info"
+                                                avatar={
+                                                    watchFields[index]?.base === "bk" ?
+                                                        <TiLockClosedOutline /> :
+                                                        <Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
+                                                }
+                                                /> 
                                         </InputAdornment>
                                     ),
                                     endAdornment: (
