@@ -41,7 +41,7 @@ import { bkapi } from "@/services/api";
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormMadsSubject from "@/components/thesaurus/forms/formMadsSubject";
-import ModalSubjects from "@/components/thesaurus/modal/modalSubjects"
+import ModalSubjects from "@/components/thesaurus/modal/modalThesarus"
 
 const previousPaths = [
   {

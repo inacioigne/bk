@@ -21,7 +21,6 @@ interface Props {
 }
 
 export default function FormMadsSubject({ control, register, errors, getValues, setValue, setOpen, setField }: Props) {
-    // console.log("f", setOpen)
 
     return (
         <Paper sx={{ p: "15px", mt: "20px" }}>

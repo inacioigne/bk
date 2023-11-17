@@ -13,6 +13,7 @@ import {
     Divider,
     Button,
     Typography,
+    Alert
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { grey } from '@mui/material/colors';
@@ -265,11 +266,13 @@ export default function Subjects() {
                                         setFacetType={setFacetType}
                                     />
                                 ) : (
-                                    <Box>
-                                        <Typography variant="body1" gutterBottom>
-                                            Sua busca não retornou nenhum resultado
-                                        </Typography>
+                                    <Grid item xs={8}>
+                                    <Box sx={{ display: "flex" }}>
+                                        <Alert severity="info" >
+                                            Sua busca não retorno nenhum resultado.
+                                        </Alert>
                                     </Box>
+                                </Grid>
                                 )}
                             </Grid>
                         </Grid>

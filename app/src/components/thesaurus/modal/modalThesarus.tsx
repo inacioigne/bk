@@ -23,6 +23,7 @@ import {
     ListItemText,
     ListItemButton,
     Paper,
+    Alert
 } from "@mui/material";
 
 
@@ -44,12 +45,8 @@ interface Props {
     field: string
 }
 
-// type TypeDoc = {
-//     authority: String[]
-//     type: String
-// }
-
-export default function ModalSubjects({ setOpen, setValue, open, field }: Props) {
+export default function ModalThesarus({ setOpen, setValue, open, field }: Props) {
+    console.log("M", open)
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
@@ -61,10 +58,8 @@ export default function ModalSubjects({ setOpen, setValue, open, field }: Props)
     useEffect(() => {
         // console.log(type, search)
         SearchModalSubjects(type, search, setDocs)
-
-
     }, [open])
-    // console.log(defaultValues)
+
     const handleSubmit = (e: any) => {
         e.preventDefault()
         SearchModalSubjects(type, search, setDocs)
@@ -89,7 +84,7 @@ export default function ModalSubjects({ setOpen, setValue, open, field }: Props)
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <form onSubmit={handleSubmit}>
-                            <Box sx={{display: "flex", gap: "10px"}}>
+                            <Box sx={{ display: "flex", gap: "10px" }}>
                                 <FormControl
                                     sx={{ width: "30%" }}
                                     size="small"
@@ -137,8 +132,9 @@ export default function ModalSubjects({ setOpen, setValue, open, field }: Props)
                             </Box>
                         </form>
                     </Grid>
-                    <Grid item xs={4}>
-                        {docs.length > 0 ?
+                    {/* <Grid item xs={4}> */}
+                    {docs.length > 0 ?
+                        <Grid item xs={4}>
                             <Paper elevation={3}>
                                 <List dense={true}>
                                     {
@@ -159,8 +155,17 @@ export default function ModalSubjects({ setOpen, setValue, open, field }: Props)
                                         ))
                                     }
                                 </List>
-                            </Paper> : null}
-                    </Grid>
+                            </Paper>
+                        </Grid> : (
+                            <Grid item xs={12}>
+                                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                                    <Alert severity="info" >
+                                        Sua busca não retorno nenhum resultado.
+                                    </Alert>
+                                </Box>
+                            </Grid>
+                        )}
+                    {/* </Grid> */}
                     <Grid item xs={8}>
                         {doc ? <CardBkTheasaurs doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
                     </Grid>

@@ -65,11 +65,11 @@ export default function FormLCSH(props: Props) {
     const target = event.target as HTMLButtonElement;
     setType(target.value);
     params.set("rdftype", target.value);
-    // console.log("T", params.toString())
     search !== "" && SearchLCSH(params, setHits);
   };
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault()
     const target = event.target as HTMLButtonElement;
     params.set("q", target.value);
     setSearch(target.value)
@@ -78,7 +78,7 @@ export default function FormLCSH(props: Props) {
 
   return (
     <>
-      <form>
+      <form onSubmit={(e) => {e.preventDefault()}}>
         <Paper sx={{ p: "1rem" }}>
           <FormControl fullWidth sx={{ mb: "0.5rem" }}>
             <InputLabel id="label">Selecione uma opção</InputLabel>

@@ -5,14 +5,7 @@ import {
     // Grid,
     Divider,
     Button,
-    Typography,
-    // Paper,
-    // TextField,
-    // InputLabel,
-    // IconButton,
-    // FormControl,
-    // Select,
-    // MenuItem,
+    Typography
 } from "@mui/material";
 
 // Schema
@@ -39,7 +32,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // BiblioKea Components
-import FormMads from "@/components/thesaurus/forms/formMadsNames"
+import FormMadsNames from "@/components/thesaurus/forms/formMadsNames"
+import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
+
 
 interface Props {
     doc: schemaAuthorityDoc;
@@ -117,6 +112,7 @@ function ParserVariant(variant: any) {
 
 function TransForm(doc: schemaAuthorityDoc) {
     const obj: any = {
+        type: doc.type,
         elementList: [{
             type: 'FullNameElement', elementValue: {
                 value: doc.authority[0],
@@ -152,8 +148,13 @@ import { useRouter } from "next/navigation";
 
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
+import { useState } from "react";
+
 
 export default function EditNames({ doc }: Props) {
+
+    const [open, setOpen] = useState(false);
+    const [field, setField] = useState("");
 
     const router = useRouter();
     const { setProgress } = useProgress();
@@ -183,7 +184,6 @@ export default function EditNames({ doc }: Props) {
         };
 
         let obj = {
-            type: doc.type,
             identifiersLocal: doc.id,
             adminMetadata: {
                 creationDate: doc.creationDate,
@@ -206,7 +206,6 @@ export default function EditNames({ doc }: Props) {
         })
             .then(function (response) {
                 if (response.status === 200) {
-                    // console.log(response);
                     setMessage("Registro criado com sucesso!")
                     router.push(`/admin/authority/names/${doc.id}`);
                 }
@@ -216,47 +215,49 @@ export default function EditNames({ doc }: Props) {
             })
             .finally(function () {
                 setProgress(false)
-                //   setOpenSnack(true)
-                //   setDoc(null)
             });
     }
 
     return (
-        <form onSubmit={handleSubmit(editAuthority)}>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Typography variant="h5" gutterBottom>
-                    Editar - Nome Pessoal
-                </Typography>
+        <>
+            <form onSubmit={handleSubmit(editAuthority)}>
+                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                    <Typography variant="h5" gutterBottom>
+                        Editar - Nome Pessoal
+                    </Typography>
 
-                <Box sx={{ display: "flex", gap: "5px" }}>
-                    <Link href="/admin/authority/">
-                        <Button
-                            sx={{ textTransform: "none" }}
-                            variant="outlined"
-                            startIcon={<FcCancel />}
-                        >
-                            Cancelar
-                        </Button>
-                    </Link>
-                    <Box>
-                        <Button
-                            type="submit"
-                            sx={{ textTransform: "none" }}
-                            variant="outlined"
-                            startIcon={<IoIosSave />}
-                        >
-                            Salvar
-                        </Button>
+                    <Box sx={{ display: "flex", gap: "5px" }}>
+                        <Link href="/admin/authority/">
+                            <Button
+                                sx={{ textTransform: "none" }}
+                                variant="outlined"
+                                startIcon={<FcCancel />}
+                            >
+                                Cancelar
+                            </Button>
+                        </Link>
+                        <Box>
+                            <Button
+                                type="submit"
+                                sx={{ textTransform: "none" }}
+                                variant="outlined"
+                                startIcon={<IoIosSave />}
+                            >
+                                Salvar
+                            </Button>
+                        </Box>
                     </Box>
                 </Box>
-            </Box>
-            <Divider />
-            <FormMads
-                control={control}
-                register={register}
-                errors={errors}
-                getValues={getValues}
-                setValue={setValue} />
-        </form>
+                <Divider />
+                <FormMadsNames
+                    control={control}
+                    register={register}
+                    errors={errors}
+                    getValues={getValues}
+                    setValue={setValue} setOpen={setOpen} setField={setField} />
+            </form>
+            <ModalThesarus setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue}/>
+
+        </>
     )
 }

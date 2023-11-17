@@ -2,7 +2,6 @@ import { Box, Divider, Typography, Button } from "@mui/material";
 
 // BiblioKeia Components
 import FormMadsNames from "@/components/thesaurus/forms/formMadsNames"
-// import FormMadsSubject from "@/components/thesaurus/forms/formMadsSubject"
 
 // React-Hook-Form
 import { useForm, Controller } from "react-hook-form";
@@ -92,7 +91,7 @@ function GetValue(hit: any) {
 }
 
 export default function FormLocName({ hit, setForm }: Props) {
-    console.log("LOC:", hit)
+    // console.log("LOC:", hit)
     const router = useRouter()
     const { setProgress } = useProgress();
     const [id, setId] = useState(null);
@@ -174,7 +173,7 @@ export default function FormLocName({ hit, setForm }: Props) {
             <form onSubmit={handleSubmit(createAuthority)}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
-                        Criar Autoridades
+                        Criar Autoridades - Nomes
                     </Typography>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
                         <Button

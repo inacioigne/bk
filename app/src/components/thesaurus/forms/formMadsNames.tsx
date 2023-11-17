@@ -28,10 +28,12 @@ interface Props {
     errors: any
     getValues: Function
     setValue: Function
+    setOpen: Function,
+    setField: Function
 
 }
 
-export default function FormMadsNames({ control, register, errors, getValues, setValue }: Props) {
+export default function FormMadsNames({ control, register, errors, getValues, setValue, setOpen, setField  }: Props) {
 
 
     return (
@@ -42,15 +44,17 @@ export default function FormMadsNames({ control, register, errors, getValues, se
                         Autoridade
                     </Typography>
                 </Grid>
+                <Grid item xs={12}>
                 <FormType control={control}
-                    register={register}/>
+                    register={register} />
+
+                </Grid>
                 <FormElementList
                     control={control}
                     register={register}
                     error={errors.elementList}
                 />
                 <Grid item xs={4}>
-                
                     <FormFullerName register={register} />
                 </Grid>
                 <FormBirth register={register} control={control} />
@@ -68,14 +72,16 @@ export default function FormMadsNames({ control, register, errors, getValues, se
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormAffiliation control={control} register={register} />
+                <FormAffiliation control={control} register={register}  />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Ocupações
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormOccupation control={control} register={register} />
+                <FormOccupation control={control} register={register} 
+                setOpen={setOpen} 
+                setField={setField} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Campos de atividade

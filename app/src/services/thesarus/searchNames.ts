@@ -12,6 +12,7 @@ interface Facet {
 }
 
 function TransformFacet(facets: any) { 
+  // console.log("F: ", facets)
     
   const listFacets = [];
   for (let i = 0; i < facets.length; i += 2) {
@@ -42,26 +43,27 @@ export function SearchNames(
 
   solr.get("authority/query?", {params: params})
     .then(function (response) { 
-      // console.log("RES:", response.data)
+      // console.log("RES:", response.data.facet_counts.facet_fields)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
       const r = docs.map((doc: any, index: number) => {
         return { id: doc.id, authority: doc.authority[0], type: doc.type };
       });
       setRows(r);
-      // Facets
+      // Facet Type
       const fType = TransformFacet(
         response.data.facet_counts.facet_fields.type
       );
       setFacetType(fType);
-      const fAffiliation = TransformFacet(
-        response.data.facet_counts.facet_fields.affiliation_str
-      );
-      setFacetAffiliation(fAffiliation);
-      const fOccupation = TransformFacet(
-        response.data.facet_counts.facet_fields.occupation_str
-      );
-      setOccupation(fOccupation)
+      // Facet fAffiliation
+      // const fAffiliation = TransformFacet(
+      //   response.data.facet_counts.facet_fields.affiliation_str
+      // );
+      // setFacetAffiliation(fAffiliation);
+      // const fOccupation = TransformFacet(
+      //   response.data.facet_counts.facet_fields.occupation_str
+      // );
+      // setOccupation(fOccupation)
     })
     .catch(function (error) {
       // manipula erros da requisição

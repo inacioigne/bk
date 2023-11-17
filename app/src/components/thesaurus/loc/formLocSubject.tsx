@@ -2,6 +2,8 @@ import { Box, Divider, Typography, Button } from "@mui/material";
 
 // BiblioKeia Components
 import FormMadsSubject from "@/components/thesaurus/forms/formMadsSubject"
+import ModalSubjects from "@/components/thesaurus/modal/modalThesarus"
+
 
 
 // React-Hook-Form
@@ -82,13 +84,13 @@ export default function FormLocSubject({ hit, setForm }: Props) {
     const { setProgress } = useProgress();
     const [id, setId] = useState(null);
     const {
-        // openSnack,
         setOpenSnack,
-        // message,
         setMessage,
         // typeAlert,
         // setTypeAlert,
     } = useAlert();
+    const [open, setOpen] = useState(false);
+    const [field, setField] = useState("");
 
     useEffect(() => {
         bkapi
@@ -123,7 +125,6 @@ export default function FormLocSubject({ hit, setForm }: Props) {
 
     // console.log("ER:", errors)
     function createAuthority(data: any) {
-        // console.log("DT:", data)
         let formData = ParserData(data)
         let obj = {
             type: hit?.type,
@@ -194,10 +195,10 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                     register={register}
                     errors={errors}
                     getValues={getValues}
-                    setValue={setValue} />
-
-
+                    setValue={setValue} setOpen={setOpen} setField={setField} />
             </form>
+            <ModalSubjects setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue}/>
+
         </Box>
     );
 }

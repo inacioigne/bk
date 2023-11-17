@@ -17,7 +17,9 @@ import FormLocSubject from "@/components/thesaurus/loc/formLocSubject";
 // react-icons
 import { FcHome } from "react-icons/fc";
 import { BsPersonPlus, BsPersonFillDown } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams, useSearchParams  } from 'next/navigation'
+import { LocAuthority } from "@/services/importation/locAuthority"
 
 const previousPaths = [
   {
@@ -42,6 +44,25 @@ const names = ["PersonalName",  "CorporateName"]
 export default function LOC() {
   const [hit, setHit] = useState(null)
   const [form, setForm] = useState(false)
+
+  const searchParams = useSearchParams()
+  const uri = searchParams.get('uri')
+
+  useEffect(() => {
+    if (uri) {
+      LocAuthority(setHit, uri)
+      // setForm(true)
+  
+      console.log("p:", uri)
+  
+    }
+
+  },[])
+
+  
+  
+
+
   return (
     <Container maxWidth="xl">
       <Box my={"1rem"}>

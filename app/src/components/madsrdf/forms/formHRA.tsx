@@ -21,8 +21,8 @@ import { IoRemove, IoAddOutline } from "react-icons/io5";
 import { FcSearch } from "react-icons/fc";
 import { TiLockClosedOutline } from "react-icons/ti";
 
-import { logos } from "@/share/objLogos"
-import LogoLoc from "@/components/logos/loc";
+// import { logos } from "@/share/objLogos"
+// import LogoLoc from "@/components/logos/loc";
 
 interface Props {
     control: any;
@@ -53,7 +53,6 @@ export default function FormHRA({ control, register, setOpen, setField }: Props)
         control,
         name: "hasReciprocalAuthority"
     });
-
 
     return (
         <>
@@ -136,7 +135,6 @@ export default function FormHRA({ control, register, setOpen, setField }: Props)
                     </Grid>
                 </Fragment>
             ))}
-            {/* <SearchSubjects setOpen={setOpen} open={open} /> */}
         </>
     )
 }
