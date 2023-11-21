@@ -48,7 +48,6 @@ export default async function Page({ params }: { params: { id: string } }) {
                 />
             </Box>
             <EditNames doc={doc} />
-            
         </Container>
     );
 }

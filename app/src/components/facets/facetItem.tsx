@@ -1,6 +1,6 @@
 "use client";
 // MUI Components
-import { Typography, Box, Fade } from "@mui/material";
+import { Typography, Box, Fade, Chip } from "@mui/material";
 import {
   TreeItem,
   TreeItemProps,
@@ -59,7 +59,7 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
   },
 })) as unknown as typeof TreeItem;
 
-const StyledTreeItem = forwardRef(function StyledTreeItem(
+const FacetItem = forwardRef(function StyledTreeItem(
   props: StyledTreeItemProps,
   ref: React.Ref<HTMLLIElement>
 ) {
@@ -82,12 +82,12 @@ const StyledTreeItem = forwardRef(function StyledTreeItem(
     "--tree-view-bg-color":
       theme.palette.mode !== "dark" ? bgColor : bgColorForDarkMode,
   };
-  const [onMouse, setOnMouse] = useState(false)
+//   const [onMouse, setOnMouse] = useState(false)
 
   return (
     <StyledTreeItemRoot
-      onMouseEnter={() => setOnMouse(true)}
-      onMouseLeave={() => setOnMouse(false)}
+    //   onMouseEnter={() => setOnMouse(true)}
+    //   onMouseLeave={() => setOnMouse(false)}
       label={
         <Box
           sx={{
@@ -101,15 +101,16 @@ const StyledTreeItem = forwardRef(function StyledTreeItem(
           <Typography
             variant="body2"
             sx={{
-              fontWeight: "inherit", //flexGrow: 1, 
+              fontWeight: "inherit", flexGrow: 1, 
             }}
           >
             {labelText}
           </Typography>
-          {action && <Fade in={onMouse} timeout={800}><div>{action}</div></Fade>}            
-          <Typography variant="caption" color="inherit">
+          <Chip label={labelInfo} color="primary"/>
+          {/* {action && <Fade in={onMouse} timeout={800}><div>{action}</div></Fade>}             */}
+          {/* <Typography variant="caption" color="inherit">
             {labelInfo}
-          </Typography>
+          </Typography> */}
         </Box>
       }
       style={styleProps}
@@ -119,4 +120,4 @@ const StyledTreeItem = forwardRef(function StyledTreeItem(
   );
 });
 
-export default StyledTreeItem;
+export default FacetItem;

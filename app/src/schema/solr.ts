@@ -1,7 +1,7 @@
 // import { uri } from "@/schema/authority/personalName"
 
 type uri = {
-    uri: string;
+    uri?: string;
     label: string
     base?: string
 }

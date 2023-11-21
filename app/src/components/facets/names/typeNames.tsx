@@ -2,13 +2,13 @@ import {
   Box
 } from "@mui/material";
 import { TreeView } from '@mui/x-tree-view/TreeView';
-import StyledTreeItem from "@/components/baseMui/styledTreeItem"
+import { TreeItem } from '@mui/x-tree-view/TreeItem';
+// import StyledTreeItem from "@/components/baseMui/styledTreeItem"
+import FacetItem from "@/components/facets/facetItem"
 
 // BiblioKeia Services
 import { SearchNames } from "@/services/thesarus/searchNames";
 
-// Types BiblioKeia
-// import Facet from "@/utils/types"
 
 // Reacts Icons
 import { RiFilterLine } from 'react-icons/ri';
@@ -16,7 +16,6 @@ import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 
 // Providers BiblioKeia
 import { useParmasAutority } from "@/providers/paramsAuthority"
-// import { Console } from "console";
 
 interface Types {
   [chave: string]: string;
@@ -69,15 +68,19 @@ const FacetTypeNames: React.FC<FacetProps> = ({
     <TreeView
       defaultCollapseIcon={<AiOutlineArrowDown />}
       defaultExpandIcon={<AiOutlineArrowUp />}
+      // defaultEndIcon={<RiFilterLine/>}
       sx={{
         flexGrow: 1, overflowY: 'auto'
       }}
     >
-      <StyledTreeItem nodeId="1" labelText="Tipo" labelIcon={RiFilterLine}>
+      <TreeItem nodeId="1" label="Tipo" 
+      // icon={<RiFilterLine/>} 
+      // endIcon={<AiOutlineArrowUp />}
+      >
         <Box sx={{ display: "flex", flexDirection: "column", gap: "5px" }}>
           {
             facets?.map((facet, index) => (
-              <StyledTreeItem
+              <FacetItem
                 key={index}
                 nodeId={`${index + 2}`}
                 labelText={`${obj[facet.name]}`}
@@ -86,17 +89,16 @@ const FacetTypeNames: React.FC<FacetProps> = ({
                 bgColor="#f3e8fd"
                 colorForDarkMode="#D9B8FB"
                 bgColorForDarkMode="#100719"
-                onClick={() => {
-                  handleFacet(facet, paramsAuthority)
-                }} />
+                // onClick={() => {
+                //   handleFacet(facet, paramsAuthority)
+                // }} 
+                />
             ))
           }
         </Box>
-      </StyledTreeItem>
+      </TreeItem>
     </TreeView>
   )
-
-
 }
 
 export default FacetTypeNames;

@@ -40,7 +40,7 @@ import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
 // BiblioKeia Components
 import { TabSubjects } from "@/components/thesaurus/tables/tabSubjects";
-import FacetTypeNames from "@/components/facets/typeNames";
+import FacetTypeNames from "@/components/facets/names/typeNames";
 import FacetType from "@/components/facets/subjects/facetType"
 // import Affiliation from "@/components/facets/affiliations";
 // import Occupations from "@/components/facets/occupations";

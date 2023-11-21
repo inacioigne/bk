@@ -54,7 +54,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
   const router = useRouter();
   const { setProgress } = useProgress();
   const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-  // console.log("H: ", hit)
+  console.log("H: ", hit)
 
   function LocExist(identifiersLccn: any) {
     setProgress(true)
@@ -202,7 +202,8 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           {/* fieldOfActivity */}
           {hit?.fieldOfActivity && (
             <Grid item xs={6}>
-              <FieldOfActivity fieldOfActivity={hit.fieldOfActivity} setHit={setHit} />
+              {/* <FieldOfActivity fieldOfActivity={hit.fieldOfActivity} setHit={setHit} /> */}
+              <MadsLoc uri={hit.fieldOfActivity} label={"Campos de Atividade:"} setHit={setHit} />
             </Grid>
           )}
 

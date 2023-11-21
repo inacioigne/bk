@@ -30,8 +30,10 @@ export default function FormMadsSubject({ control, register, errors, getValues, 
                         Autoridade
                     </Typography>
                 </Grid>
-                <FormType control={control}
-                    register={register} />
+                <Grid item xs={12}>
+                    <FormType control={control}
+                        register={register} />
+                </Grid>
                 <FormElementList
                     control={control}
                     register={register}

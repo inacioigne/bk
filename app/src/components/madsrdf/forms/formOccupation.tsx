@@ -19,20 +19,21 @@ import { Fragment } from "react";
 // React Icons
 import { IoRemove, IoAddOutline } from "react-icons/io5";
 import { FcSearch } from "react-icons/fc";
-import { TiLockClosedOutline } from "react-icons/ti";
+// import { TiLockClosedOutline } from "react-icons/ti";
 
 interface Props {
     control: any;
     register: any;
-    setOpen: Function
+    setOpen: Function;
     setField: Function
 }
 
 export default function FormOccupation({ control, register, setOpen, setField }: Props) {
+    // console.log(setOpen)
     const {
         fields,
         append,
-        remove: removeOccpation,
+        remove,
     } = useFieldArray({
         control,
         name: "occupation",
@@ -54,13 +55,6 @@ export default function FormOccupation({ control, register, setOpen, setField }:
             {fields.map((field, index) => (
                 <Fragment key={index}>
                     <Grid item xs={4}>
-                        {/* <TextField
-                            fullWidth
-                            label="Nome"
-                            variant="outlined"
-                            size="small"
-                            {...register(`occupation.${index}.label`)}
-                        /> */}
                         <TextField
                             fullWidth
                             disabled={true}
@@ -92,12 +86,12 @@ export default function FormOccupation({ control, register, setOpen, setField }:
                                             position="start" >
                                             <Chip label={watchFields[index]?.label} size="small"
                                                 color="info"
-                                                avatar={
-                                                    watchFields[index]?.base === "bk" ?
-                                                        <TiLockClosedOutline /> :
-                                                        <Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
+                                                avatar={<Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
+                                                    // watchFields[index]?.base === "bk" ?
+                                                    //     <TiLockClosedOutline /> :
+                                                    //     <Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
                                                 }
-                                                /> 
+                                            />
                                         </InputAdornment>
                                     ),
                                     endAdornment: (
@@ -107,7 +101,7 @@ export default function FormOccupation({ control, register, setOpen, setField }:
                                             onClick={() => {
                                                 setOpen(true)
                                                 setField(`occupation.${index}`)
-                                              
+
                                             }}
                                         >
                                             <FcSearch />
@@ -116,24 +110,6 @@ export default function FormOccupation({ control, register, setOpen, setField }:
                                 }}
                         />
                     </Grid>
-                    {/* <Grid item xs={4}>
-                        <TextField
-                            fullWidth
-                            label="uri"
-                            variant="outlined"
-                            size="small"
-                            {...register(`occupation.${index}.uri`)}
-                        />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <TextField
-                            fullWidth
-                            label="base"
-                            variant="outlined"
-                            size="small"
-                            {...register(`occupation.${index}.base`)}
-                        />
-                    </Grid> */}
                     <Grid item xs={2}>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                             <IconButton
@@ -146,7 +122,7 @@ export default function FormOccupation({ control, register, setOpen, setField }:
                             <IconButton
                                 aria-label="add"
                                 onClick={() => {
-                                    removeOccpation(index);
+                                    remove(index);
                                 }}
                                 color="primary"
                             >

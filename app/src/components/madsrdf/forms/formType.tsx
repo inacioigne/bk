@@ -14,13 +14,12 @@ interface Props {
 export default function FormType({ register, control }: Props) {
 
     return (
-        // <Grid item xs={2}>
         <Controller
             name={`type`}
             control={control}
             render={({ field }) => (
                 <FormControl //fullWidth
-                sx={{ width: 500}}
+                    sx={{ width: 400 }}
                 >
                     <InputLabel id="label">Tipo de Autoridade</InputLabel>
                     <Select
@@ -35,8 +34,6 @@ export default function FormType({ register, control }: Props) {
                 </FormControl>
             )}
         />
-
-        // </Grid>
     )
 
 }

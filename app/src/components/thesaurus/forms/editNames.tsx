@@ -174,7 +174,7 @@ export default function EditNames({ doc }: Props) {
         resolver: zodResolver(ZodNames),
         defaultValues
     });
-    // console.log("ER:", errors)
+    // console.log("ER:", errors, defaultValues)
 
     function editAuthority(data: any) {
         setProgress(true)
@@ -199,7 +199,7 @@ export default function EditNames({ doc }: Props) {
 
         let formData = ParserData(data)
         const request = { ...obj, ...formData };
-        // console.log(request)
+        // console.log("R:", request)
 
         bkapi.put("thesarus/edit/", request, {
             headers: headers,
@@ -223,11 +223,10 @@ export default function EditNames({ doc }: Props) {
             <form onSubmit={handleSubmit(editAuthority)}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h5" gutterBottom>
-                        Editar - Nome Pessoal
+                        Editar - Nomes
                     </Typography>
-
                     <Box sx={{ display: "flex", gap: "5px" }}>
-                        <Link href="/admin/authority/">
+                        <Link href="/admin/authority/names">
                             <Button
                                 sx={{ textTransform: "none" }}
                                 variant="outlined"
@@ -254,7 +253,9 @@ export default function EditNames({ doc }: Props) {
                     register={register}
                     errors={errors}
                     getValues={getValues}
-                    setValue={setValue} setOpen={setOpen} setField={setField} />
+                    setValue={setValue} 
+                    setOpen={setOpen} 
+                    setField={setField} />
             </form>
             <ModalThesarus setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue}/>
 

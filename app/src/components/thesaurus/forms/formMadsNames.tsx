@@ -33,7 +33,9 @@ interface Props {
 
 }
 
-export default function FormMadsNames({ control, register, errors, getValues, setValue, setOpen, setField  }: Props) {
+export default function FormMadsNames({ control, register, errors, getValues, setValue, setOpen, setField }: Props) {
+    // console.log(setOpen)
+
 
 
     return (
@@ -45,8 +47,8 @@ export default function FormMadsNames({ control, register, errors, getValues, se
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                <FormType control={control}
-                    register={register} />
+                    <FormType control={control}
+                        register={register} />
 
                 </Grid>
                 <FormElementList
@@ -72,23 +74,29 @@ export default function FormMadsNames({ control, register, errors, getValues, se
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormAffiliation control={control} register={register}  />
+                <FormAffiliation control={control} register={register} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Ocupações
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormOccupation control={control} register={register} 
-                setOpen={setOpen} 
-                setField={setField} />
+                <FormOccupation
+                    control={control}
+                    register={register}
+                    setOpen={setOpen}
+                    setField={setField} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Campos de atividade
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormFieldOfActivity control={control} register={register} />
+                <FormFieldOfActivity 
+                control={control} 
+                register={register}
+                setOpen={setOpen}
+                setField={setField} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Identificadores

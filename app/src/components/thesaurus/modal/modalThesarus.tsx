@@ -46,7 +46,7 @@ interface Props {
 }
 
 export default function ModalThesarus({ setOpen, setValue, open, field }: Props) {
-    console.log("M", open)
+    // console.log("M", open)
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
@@ -132,7 +132,6 @@ export default function ModalThesarus({ setOpen, setValue, open, field }: Props)
                             </Box>
                         </form>
                     </Grid>
-                    {/* <Grid item xs={4}> */}
                     {docs.length > 0 ?
                         <Grid item xs={4}>
                             <Paper elevation={3}>

@@ -2,6 +2,7 @@ import { Box, Divider, Typography, Button } from "@mui/material";
 
 // BiblioKeia Components
 import FormMadsNames from "@/components/thesaurus/forms/formMadsNames"
+import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
 
 // React-Hook-Form
 import { useForm, Controller } from "react-hook-form";
@@ -15,7 +16,6 @@ import { schemaMads } from "@/schema/authority";
 // MUI Icons
 import { IoIosSave } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
-
 
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
@@ -95,9 +95,9 @@ export default function FormLocName({ hit, setForm }: Props) {
     const router = useRouter()
     const { setProgress } = useProgress();
     const [id, setId] = useState(null);
-    const { setOpenSnack,
-        setMessage,
-    } = useAlert();
+    const [open, setOpen] = useState(false);
+    const [field, setField] = useState("");
+    const { setOpenSnack, setMessage } = useAlert();
 
     useEffect(() => {
         bkapi
@@ -201,8 +201,12 @@ export default function FormLocName({ hit, setForm }: Props) {
                     register={register}
                     errors={errors}
                     getValues={getValues}
-                    setValue={setValue} />
+                    setValue={setValue} 
+                    setOpen={setOpen} 
+                    setField={setField} />
             </form>
+            <ModalThesarus setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue}/>
+
         </Box>
     );
 }

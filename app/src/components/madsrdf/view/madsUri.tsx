@@ -112,6 +112,7 @@ export default function MadsUri({ uri, label }: Props) {
                   // <Link key={index} href={e.base === 'bk' ?
                   //   `/admin/authority/subjects/${e.uri.split("/")[5]}` : `${e.uri}`} target={e.base === 'bk' ? "_self" : "_blank"}>
                   <StyledTreeItem
+                  key={index}
                     nodeId={`${index + 5}`}
                     labelText={`${e.label}`}
                     labelIcon={logos[`${e.base}`]}

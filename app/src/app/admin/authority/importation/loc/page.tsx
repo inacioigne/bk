@@ -59,9 +59,6 @@ export default function LOC() {
 
   },[])
 
-  
-  
-
 
   return (
     <Container maxWidth="xl">

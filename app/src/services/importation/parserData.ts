@@ -7,6 +7,7 @@ const mads = "http://www.loc.gov/mads/rdf/v1#";
 
 export async function  ParserData(response: any, uri: string) {
     const data = response.data;
+
     const [a] = data.filter(function (elemento: any) {
         return elemento["@id"] === uri;
     });
@@ -62,7 +63,6 @@ export async function  ParserData(response: any, uri: string) {
         let uris = ParserUri(a, data, 'hasNarrowerAuthority')
         let arrCheck = await CheckLoc(uris)
         let hasNarrowerAuthority = await Promise.all(arrCheck)
-        // console.log("ck:", hasNarrowerAuthority)
         authority["hasNarrowerAuthority"] = hasNarrowerAuthority;
     }
     // hasReciprocalAuthority
@@ -71,7 +71,6 @@ export async function  ParserData(response: any, uri: string) {
         let arrCheck = await CheckLoc(uris)
         let hasReciprocalAuthority = await Promise.all(arrCheck)
         authority["hasReciprocalAuthority"] = hasReciprocalAuthority
-        // console.log("C: ", hasReciprocalAuthority)
     }
     // fullerName
     if (a.hasOwnProperty(`${mads}fullerName`)) {
@@ -188,157 +187,168 @@ export async function  ParserData(response: any, uri: string) {
         });
         authority["identifiesRWO"] = identifies;
 
-        identifies.forEach((identifier: any) => {
-            if (identifier.uri.split("/")[3] === "rwo") {
-                let [metadado] = data.filter(function (e: any) {
-                    return e["@id"] === identifier.uri;
+        
+        let [rwoLoc] = identifies.filter((e: any) => {
+            let base = e.uri.split("/")[3]
+            if (base === "rwo") {
+                return e
+            }
+        })
+        let [metadado] = data.filter(function (e: any) {
+            return e["@id"] === rwoLoc.uri;
+        });
+
+        // Field of Activity
+        if (metadado.hasOwnProperty(`${mads}fieldOfActivity`)) {
+            let foa = metadado[`${mads}fieldOfActivity`];
+            let fieldOfActivity = foa.map((e: any) => {
+                let id = e["@id"];
+                let [obj] = data.filter(function (e: any) {
+                    return e["@id"] === id;
+                });
+                let [label] = obj[`${mads}authoritativeLabel`];
+                let uri = { label: label["@value"], base: "loc", uri: obj["@id"] };
+                return uri;
+            });
+            let arrCheck = await CheckLoc(fieldOfActivity)
+            let uris = await Promise.all(arrCheck)
+            authority["fieldOfActivity"] = uris;
+        }
+        // birthPlace
+        if (metadado.hasOwnProperty(`${mads}birthPlace`)) {
+            let [bp] = metadado[`${mads}birthPlace`];
+            let [birthPlace] = data.filter(function (elemento: any) {
+                return elemento["@id"] === bp["@id"];
+            });
+            let [label] = birthPlace[
+                "http://www.w3.org/2000/01/rdf-schema#label"
+            ];
+            authority["birthPlace"] = label["@value"];
+        }
+        // birthDate
+        if (metadado.hasOwnProperty(`${mads}birthDate`)) {
+            let [bd] = metadado[`${mads}birthDate`];
+            let date = bd["@value"].split("-");
+            if (date.length === 1) {
+                let [year] = date;
+                authority["birthYearDate"] = year;
+                authority["birthDate"] = year;
+            } else if (date.length === 3) {
+                authority["birthYearDate"] = date[0];
+                authority["birthMonthDate"] = date[1];
+                authority["birthDayDate"] = date[2];
+                authority["birthDate"] = `${date[2]}-${date[1]}-${date[0]}`;
+            }
+        }
+         // deathPlace
+         if (metadado.hasOwnProperty(`${mads}deathPlace`)) {
+            let [dp] = metadado[`${mads}deathPlace`];
+        }
+         // deathDate
+         if (metadado.hasOwnProperty(`${mads}deathDate`)) {
+            let [dd] = metadado[`${mads}deathDate`];
+            let date = dd["@value"].split("-");
+            if (date.length === 1) {
+                let [year] = date;
+                authority["deathYearDate"] = year;
+                authority["deathDate"] = year;
+            } else if (date.length === 3) {
+                authority["deathYearDate"] = date[0];
+                authority["deathMonthDate"] = date[1];
+                authority["deathDayDate"] = date[2];
+                authority["deathDate"] = `${date[2]}-${date[1]}-${date[0]}`;
+            }
+        }
+         // hasAffiliation
+         if (metadado.hasOwnProperty(`${mads}hasAffiliation`)) {
+            let hasAffiliation = metadado[`${mads}hasAffiliation`];
+
+            let affiliations = hasAffiliation.map((affiliation: any) => {
+                let id = affiliation["@id"];
+                let [metadado] = data.filter(function (elemento: any) {
+                    return elemento["@id"] === id;
                 });
 
-                // birthPlace
-                if (metadado.hasOwnProperty(`${mads}birthPlace`)) {
-                    let [bp] = metadado[`${mads}birthPlace`];
-                    let [birthPlace] = data.filter(function (elemento: any) {
-                        return elemento["@id"] === bp["@id"];
-                    });
-                    let [label] = birthPlace[
+                let [org] = metadado[`${mads}organization`];
+                let orgId = org["@id"];
+                let [organization] = data.filter(function (elemento: any) {
+                    return elemento["@id"] === orgId;
+                });
+                let uri = organization["@id"];
+                const objOrg: any = { base: "loc" };
+
+                if (uri.includes("http://")) {
+                    let [label] = organization[`${mads}authoritativeLabel`];
+                    objOrg["uri"] = uri;
+                    objOrg["label"] = label["@value"];
+                } else {
+                    let [label] = organization[
                         "http://www.w3.org/2000/01/rdf-schema#label"
                     ];
-                    authority["birthPlace"] = label["@value"];
+                    objOrg["label"] = label["@value"];
                 }
 
-                // birthDate
-                if (metadado.hasOwnProperty(`${mads}birthDate`)) {
-                    let [bd] = metadado[`${mads}birthDate`];
-                    let date = bd["@value"].split("-");
-                    if (date.length === 1) {
-                        let [year] = date;
-                        authority["birthYearDate"] = year;
-                        authority["birthDate"] = year;
-                    } else if (date.length === 3) {
-                        authority["birthYearDate"] = date[0];
-                        authority["birthMonthDate"] = date[1];
-                        authority["birthDayDate"] = date[2];
-                        authority["birthDate"] = `${date[2]}-${date[1]}-${date[0]}`;
-                    }
+                let objA: schemaAffiliation = {
+                    organization: objOrg,
+                };
+
+                // affiliationStart
+                if (metadado.hasOwnProperty(`${mads}affiliationStart`)) {
+                    let [start] = metadado[`${mads}affiliationStart`];
+                    objA["affiliationStart"] = start["@value"];
                 }
-
-                // deathPlace
-                if (metadado.hasOwnProperty(`${mads}deathPlace`)) {
-                    let [dp] = metadado[`${mads}deathPlace`];
+                // affiliationEnd
+                if (metadado.hasOwnProperty(`${mads}affiliationEnd`)) {
+                    let [end] = metadado[`${mads}affiliationEnd`];
+                    objA["affiliationEnd"] = end["@value"];
                 }
+                return objA;
+            });
 
-                // deathDate
-                if (metadado.hasOwnProperty(`${mads}deathDate`)) {
-                    let [dd] = metadado[`${mads}deathDate`];
-                    let date = dd["@value"].split("-");
-                    if (date.length === 1) {
-                        let [year] = date;
-                        authority["deathYearDate"] = year;
-                        authority["deathDate"] = year;
-                    } else if (date.length === 3) {
-                        authority["deathYearDate"] = date[0];
-                        authority["deathMonthDate"] = date[1];
-                        authority["deathDayDate"] = date[2];
-                        authority["deathDate"] = `${date[2]}-${date[1]}-${date[0]}`;
-                    }
+            authority["hasAffiliation"] = affiliations;
+        }
+        // occupation
+        if (metadado.hasOwnProperty(`${mads}occupation`)) {
+            let occ = metadado[`${mads}occupation`];
+            let occupation = occ.map((e: any) => {
+                let id = e["@id"];
+                let [obj] = data.filter(function (e: any) {
+                    return e["@id"] === id;
+                });
+
+                if (id.includes("http://")) {
+                    let [label] = obj[`${mads}authoritativeLabel`];
+                    let objOcc: any = {
+                        label: label["@value"],
+                        base: "loc",
+                        uri: obj["@id"],
+                    };
+                    return objOcc;
+                } else {
+                    let [label] = obj["http://www.w3.org/2000/01/rdf-schema#label"];
+                    let objOcc: any = {
+                        label: label["@value"],
+                        base: "loc",
+                    };
+                    return objOcc;
                 }
+            });
+            authority["occupation"] = occupation;
+        }
+        console.log("C: ", metadado)
 
-                // hasAffiliation
-                if (metadado.hasOwnProperty(`${mads}hasAffiliation`)) {
-                    let hasAffiliation = metadado[`${mads}hasAffiliation`];
 
-                    let affiliations = hasAffiliation.map((affiliation: any) => {
-                        let id = affiliation["@id"];
-                        let [metadado] = data.filter(function (elemento: any) {
-                            return elemento["@id"] === id;
-                        });
-
-                        let [org] = metadado[`${mads}organization`];
-                        let orgId = org["@id"];
-                        let [organization] = data.filter(function (elemento: any) {
-                            return elemento["@id"] === orgId;
-                        });
-                        let uri = organization["@id"];
-                        const objOrg: any = { base: "loc" };
-
-                        if (uri.includes("http://")) {
-                            let [label] = organization[`${mads}authoritativeLabel`];
-                            objOrg["uri"] = uri;
-                            objOrg["label"] = label["@value"];
-                        } else {
-                            let [label] = organization[
-                                "http://www.w3.org/2000/01/rdf-schema#label"
-                            ];
-                            objOrg["label"] = label["@value"];
-                        }
-
-                        let objA: schemaAffiliation = {
-                            organization: objOrg,
-                        };
-
-                        // affiliationStart
-                        if (metadado.hasOwnProperty(`${mads}affiliationStart`)) {
-                            let [start] = metadado[`${mads}affiliationStart`];
-                            objA["affiliationStart"] = start["@value"];
-                        }
-                        // affiliationEnd
-                        if (metadado.hasOwnProperty(`${mads}affiliationEnd`)) {
-                            let [end] = metadado[`${mads}affiliationEnd`];
-                            objA["affiliationEnd"] = end["@value"];
-                        }
-                        return objA;
-                    });
-
-                    authority["hasAffiliation"] = affiliations;
-                }
-
-                // Field of Activity
-                if (metadado.hasOwnProperty(`${mads}fieldOfActivity`)) {
-                    let foa = metadado[`${mads}fieldOfActivity`];
-                    let fieldOfActivity = foa.map((e: any) => {
-                        let id = e["@id"];
-                        let [obj] = data.filter(function (e: any) {
-                            return e["@id"] === id;
-                        });
-                        let [label] = obj[`${mads}authoritativeLabel`];
-                        let uri = { label: label["@value"], base: "loc", uri: obj["@id"] };
-                        return uri;
-                    });
-                    authority["fieldOfActivity"] = fieldOfActivity;
-                }
-
-                // occupation
-                if (metadado.hasOwnProperty(`${mads}occupation`)) {
-                    let occ = metadado[`${mads}occupation`];
-                    let occupation = occ.map((e: any) => {
-                        let id = e["@id"];
-                        let [obj] = data.filter(function (e: any) {
-                            return e["@id"] === id;
-                        });
-
-                        if (id.includes("http://")) {
-                            let [label] = obj[`${mads}authoritativeLabel`];
-                            let objOcc: any = {
-                                label: label["@value"],
-                                base: "loc",
-                                uri: obj["@id"],
-                            };
-                            return objOcc;
-                        } else {
-                            let [label] = obj["http://www.w3.org/2000/01/rdf-schema#label"];
-                            let objOcc: any = {
-                                label: label["@value"],
-                                base: "loc",
-                            };
-                            return objOcc;
-                        }
-                    });
-                    authority["occupation"] = occupation;
-                }
-            }
-        });
+        // identifies.forEach(async (identifier: any) => {
+        //     if (identifier.uri.split("/")[3] === "rwo") {
+        //         let [metadado] = data.filter(function (e: any) {
+        //             return e["@id"] === identifier.uri;
+        //         });
+                
+        //     }
+        // });
     }
-    // 
+    
+
 
     return authority;
 }

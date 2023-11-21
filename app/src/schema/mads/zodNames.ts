@@ -49,7 +49,7 @@ export const ZodNames = z.object({
     ),
     occupation: z.array(
         z.object({
-            uri: z.string().nullable(),
+            uri: z.string().optional(),
             label: z.string(),
             base: z.string().nullable()
         })

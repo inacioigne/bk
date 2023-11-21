@@ -83,12 +83,7 @@ export default function FormLocSubject({ hit, setForm }: Props) {
     const router = useRouter()
     const { setProgress } = useProgress();
     const [id, setId] = useState(null);
-    const {
-        setOpenSnack,
-        setMessage,
-        // typeAlert,
-        // setTypeAlert,
-    } = useAlert();
+    const { setOpenSnack, setMessage } = useAlert();
     const [open, setOpen] = useState(false);
     const [field, setField] = useState("");
 

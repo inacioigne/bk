@@ -15,7 +15,7 @@ class FullerName(BaseModel):
     elementValue: Label
 
 class Uri(BaseModel):
-    uri: str
+    uri: Optional[str] = None
     label: str
     type: Optional[str] = None
     base: Optional[str] = None
