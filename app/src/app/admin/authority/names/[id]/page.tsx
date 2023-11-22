@@ -111,21 +111,32 @@ export default async function Page({ params }: { params: { id: string } }) {
                         <Paper sx={{ mt: "15px" }}
                         >
                             <Box sx={{ p: "20px" }}>
-                                {doc?.imagem && (
-                                    <Image
-                                        src={doc?.imagem}
-                                        height={300}
-                                        width={200}
-                                        alt="Picture of the author"
-                                    />
-                                )}
+
                                 <Grid
                                     container
                                     spacing={2}
                                     sx={{ alignItems: "flex-start", alignContent: "flex-start" }}
                                 >
-                                    {doc?.fullerName && (
-                                        <Grid item xs={4}>
+                                    <Grid xs={3}>
+                                        {doc?.imagem && (
+                                            <Box sx={{ p: "10px", display: "flex", justifyContent: "center"}}>
+                                                <Image
+                                                    src={doc.imagem}
+                                                    height={300}
+                                                    width={200}
+                                                    alt="Picture of the author"
+                                                />
+                                            </Box>
+
+                                        )}
+
+
+                                    </Grid>
+
+
+                                    <Grid item xs={4}>
+
+                                        {doc?.fullerName && (
                                             <Box>
                                                 <Typography
                                                     variant="subtitle2"
@@ -137,83 +148,78 @@ export default async function Page({ params }: { params: { id: string } }) {
                                                     {doc.fullerName}
                                                 </Typography>
                                             </Box>
-                                        </Grid>
-                                    )}
-                                    {(doc?.birthPlace || doc?.birthDate || doc?.deathPlace || doc?.deathDate) && (
-                                        <Grid item xs={8}>
-                                            <Box
-                                                sx={{ display: "flex", justifyContent: "space-between", gap: "2rem" }}
-                                            >
-                                                {(doc?.birthPlace || doc?.birthDate) && (
-                                                    <Box>
-                                                        <Typography
-                                                            variant="subtitle2"
-                                                            sx={{ fontWeight: "bold" }}
+                                        )}
+
+                                        {(doc?.birthPlace || doc?.birthDate) && (
+                                            <Box>
+                                                <Typography
+                                                    variant="subtitle2"
+                                                    sx={{ fontWeight: "bold" }}
+                                                >
+                                                    Nascimento:
+                                                </Typography>
+                                                <Box sx={{ display: "flex", gap: "5px" }}>
+                                                    {doc?.birthPlace && (
+                                                        <Button
+                                                            startIcon={<LiaBirthdayCakeSolid />}
+                                                            variant="outlined"
+                                                            size="small"
+                                                            sx={{ textTransform: "none" }}
                                                         >
-                                                            Nascimento:
-                                                        </Typography>
-                                                        <Box sx={{ display: "flex", gap: "5px" }}>
-                                                            {doc?.birthPlace && (
-                                                                <Button
-                                                                    startIcon={<LiaBirthdayCakeSolid />}
-                                                                    variant="outlined"
-                                                                    size="small"
-                                                                    sx={{ textTransform: "none" }}
-                                                                >
-                                                                    {" "}
-                                                                    {doc.birthPlace}
-                                                                </Button>
+                                                            {" "}
+                                                            {doc.birthPlace}
+                                                        </Button>
 
-                                                            )}
-                                                            {doc?.birthDate && <Button
-                                                                variant="outlined"
-                                                                startIcon={<FcCalendar />}
-                                                                size="small"
-                                                            >
-                                                                {doc.birthDate}
-                                                            </Button>}
-
-                                                        </Box>
-                                                    </Box>
-                                                )}
-                                                {(doc?.deathPlace || doc?.deathDate) && (
-                                                    <Box sx={{ width: "50%" }}>
-                                                        <Typography
-                                                            variant="subtitle2"
-                                                            sx={{ fontWeight: "bold" }}
-                                                        >
-                                                            Falecimento:
-                                                        </Typography>
-
-                                                        <Box sx={{ display: "flex", gap: "5px", }}>
-                                                            {doc.deathPlace && (
-                                                                <Button
-                                                                    startIcon={<GiTombstone />}
-                                                                    variant="outlined"
-                                                                    size="small"
-                                                                    sx={{ textTransform: "none" }}
-                                                                >
-                                                                    {doc.deathPlace}
-                                                                </Button>
-                                                            )}
-
-                                                            {doc?.deathDate && (
-                                                                <Button
-                                                                    variant="outlined"
-                                                                    startIcon={<FcCalendar />}
-                                                                    size="small"
-                                                                >
-                                                                    {" "}
-                                                                    {doc.deathDate}{" "}
-                                                                </Button>
-                                                            )}
-                                                        </Box>
-                                                    </Box>
-                                                )}
+                                                    )}
+                                                    {doc?.birthDate && <Button
+                                                        variant="outlined"
+                                                        startIcon={<FcCalendar />}
+                                                        size="small"
+                                                    >
+                                                        {doc.birthDate}
+                                                    </Button>}
+                                                </Box>
                                             </Box>
-                                        </Grid>
-                                    )
-                                    }
+                                        )}
+
+
+                                        {(doc?.deathPlace || doc?.deathDate) && (
+                                            <Box sx={{ mt: "10px" }}
+                                            >
+                                                <Typography
+                                                    variant="subtitle2"
+                                                    sx={{ fontWeight: "bold" }}
+                                                >
+                                                    Falecimento:
+                                                </Typography>
+
+                                                <Box sx={{ display: "flex", gap: "5px", }}>
+                                                    {doc.deathPlace && (
+                                                        <Button
+                                                            startIcon={<GiTombstone />}
+                                                            variant="outlined"
+                                                            size="small"
+                                                            sx={{ textTransform: "none" }}
+                                                        >
+                                                            {doc.deathPlace}
+                                                        </Button>
+                                                    )}
+
+                                                    {doc?.deathDate && (
+                                                        <Button
+                                                            variant="outlined"
+                                                            startIcon={<FcCalendar />}
+                                                            size="small"
+                                                        >
+                                                            {" "}
+                                                            {doc.deathDate}{" "}
+                                                        </Button>
+                                                    )}
+                                                </Box>
+                                            </Box>
+                                        )}
+                                    </Grid>
+
 
                                     {doc?.hasAffiliation && (
                                         <Grid item xs={4}>

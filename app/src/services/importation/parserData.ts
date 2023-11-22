@@ -335,17 +335,7 @@ export async function  ParserData(response: any, uri: string) {
             });
             authority["occupation"] = occupation;
         }
-        console.log("C: ", metadado)
-
-
-        // identifies.forEach(async (identifier: any) => {
-        //     if (identifier.uri.split("/")[3] === "rwo") {
-        //         let [metadado] = data.filter(function (e: any) {
-        //             return e["@id"] === identifier.uri;
-        //         });
-                
-        //     }
-        // });
+        // console.log("C: ", metadado)
     }
     
 

@@ -1,5 +1,14 @@
 // MUI
-import { Box, Grid, TextField, IconButton } from "@mui/material";
+import {
+  Box,
+  Grid,
+  TextField,
+  IconButton,
+  Accordion,
+  AccordionSummary,
+  Typography,
+  AccordionDetails
+} from "@mui/material";
 
 // React-Hook-Form
 import { useFieldArray } from "react-hook-form";
@@ -9,6 +18,8 @@ import { Fragment } from "react";
 
 // React Icons
 import { IoRemove, IoAddOutline } from "react-icons/io5";
+import { IoIosArrowDown } from "react-icons/io";
+
 
 import FormElementListVariant from "@/components/madsrdf/forms/formElementListVariant"
 
@@ -111,44 +122,58 @@ export default function FormVariant({ control, register, getValues, setValue, }:
     ])
   };
   return (
-    <>
-      {fields.map((field, index) => (
-        <Fragment key={index}>
-          <Grid container spacing={2} sx={{ m: "10px" }}>
-            <Grid item xs={10}>
-              <TextField
-                fullWidth
-                disabled={true}
-                label="Tipo de Variante"
-                variant="outlined"
-                size="small"
-                {...register(`hasVariant.${index}.type`)}
-              />
+    <Accordion defaultExpanded={true}>
+      <AccordionSummary expandIcon={<IoIosArrowDown />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+        sx={{ borderBottom: "1px solid gray" }}
+      >
+        <Typography variant="h6" gutterBottom>
+          Variantes do nome
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails sx={{
+        display: "flex",
+        flexWrap: "wrap"
+      }}>
+        {fields.map((field, index) => (
+          <Fragment key={index}>
+            <Grid container spacing={2} sx={{ m: "10px" }}>
+              <Grid item xs={10}>
+                <TextField
+                  fullWidth
+                  disabled={true}
+                  label="Tipo de Variante"
+                  variant="outlined"
+                  size="small"
+                  {...register(`hasVariant.${index}.type`)}
+                />
+              </Grid>
+              <Grid item xs={2}>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <IconButton aria-label="add" onClick={addVariant} color="primary">
+                    <IoAddOutline />
+                  </IconButton>
+                  <IconButton
+                    aria-label="add"
+                    onClick={() => {
+                      remove(index);
+                    }}
+                    color="primary"
+                  >
+                    <IoRemove />
+                  </IconButton>
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <FormElementListVariant nestIndex={index} {...{ control, register }} />
+              </Grid>
             </Grid>
-            <Grid item xs={2}>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <IconButton aria-label="add" onClick={addVariant} color="primary">
-                  <IoAddOutline />
-                </IconButton>
-                <IconButton
-                  aria-label="add"
-                  onClick={() => {
-                    remove(index);
-                  }}
-                  color="primary"
-                >
-                  <IoRemove />
-                </IconButton>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <FormElementListVariant nestIndex={index} {...{ control, register }} />
-            </Grid>
-          </Grid>
 
-        </Fragment>
+          </Fragment>
 
-      ))}
-    </>
+        ))}
+      </AccordionDetails>
+    </Accordion>
   );
 }

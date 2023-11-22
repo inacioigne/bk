@@ -40,53 +40,36 @@ export default function FormMadsSubject({ control, register, errors, getValues, 
                     error={errors.elementList}
                 />
                 <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Variantes do nome
-                    </Typography>
-                    <Divider />
+                    <FormVariant control={control} register={register} getValues={getValues} setValue={setValue} />
                 </Grid>
-                <FormVariant control={control} register={register} getValues={getValues} setValue={setValue} />
                 <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Termo Relacionado
-                    </Typography>
-                    <Divider />
-                </Grid>
-                <FormHRA
+                    <FormHRA
                     control={control}
                     register={register}
                     setOpen={setOpen}
                     setField={setField} />
-                <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Termo Geral
-                    </Typography>
-                    <Divider />
                 </Grid>
-                <FormHBA
+           
+                <Grid item xs={12}>
+                    <FormHBA
                     control={control}
                     register={register}
                     setOpen={setOpen}
                     setField={setField} />
-                <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Termo Específico
-                    </Typography>
-                    <Divider />
                 </Grid>
-                <FormHNA
+               
+                <Grid item xs={12}>
+                    <FormHNA
                     control={control}
                     register={register}
                     setOpen={setOpen}
                     setField={setField} />
-                <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Ocorrências em outra bases
-                    </Typography>
-                    <Divider />
                 </Grid>
-                <FormHCEA control={control} register={register} />
-
+              
+                <Grid item xs={12}>
+                    <FormHCEA control={control} register={register} />
+                </Grid>
+             
             </Grid>
 
         </Paper>

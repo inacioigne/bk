@@ -42,8 +42,10 @@ interface Props {
 export default function FormMadsNames({ control, register, errors, getValues, setValue, setOpen, setField }: Props) {
 
     return (
-        <Paper sx={{ p: "15px", mt: "20px" }}>
-            <Grid container spacing={2}>
+        <Paper sx={{
+            p: "25px", mt: "20px"
+        }}>
+            <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Autoridade
@@ -64,87 +66,43 @@ export default function FormMadsNames({ control, register, errors, getValues, se
                 </Grid>
                 <FormBirth register={register} control={control} />
                 <FormDeath register={register} control={control} />
-                <Grid item xs={12}>
-                    <Accordion>
-                        <AccordionSummary expandIcon={<IoIosArrowDown />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                            sx={{ borderBottom: "1px solid gray" }}
-                        >
-                            <Typography variant="h6" gutterBottom>
-                                Variantes do nome
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <FormVariant control={control} register={register} getValues={getValues} setValue={setValue} />
-                        </AccordionDetails>
-                    </Accordion>
+                <Grid item xs={12} >
+                    <FormVariant
+                        control={control}
+                        register={register}
+                        getValues={getValues}
+                        setValue={setValue} />
                 </Grid>
-                <Accordion>
-                    <AccordionSummary expandIcon={<IoIosArrowDown />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        sx={{ borderBottom: "1px solid gray" }}
-                    >
-                        <Grid item xs={12}>
-
-                            <Typography variant="h6" gutterBottom>
-                                Afiliação
-                            </Typography>
-                        </Grid>
-
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <FormAffiliation control={control} register={register} />
-                    </AccordionDetails>
-                </Accordion>
-                <Grid item xs={12}>
-                    <Accordion>
-                        <AccordionSummary expandIcon={<IoIosArrowDown />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                            sx={{ borderBottom: "1px solid gray" }}
-                        >
-
-                            <Typography variant="h6" gutterBottom>
-                                Ocupações
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <FormOccupation
-                                control={control}
-                                register={register}
-                                setOpen={setOpen}
-                                setField={setField} />
-                        </AccordionDetails>
-                    </Accordion>
+                <Grid item xs={12} >
+                    <FormAffiliation
+                        control={control}
+                        register={register} />
                 </Grid>
 
-                <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Campos de atividade
-                    </Typography>
-                    <Divider />
+                <Grid item xs={12} >
+                    <FormOccupation
+                        control={control}
+                        register={register}
+                        setOpen={setOpen}
+                        setField={setField} />
                 </Grid>
-                <FormFieldOfActivity
-                    control={control}
-                    register={register}
-                    setOpen={setOpen}
-                    setField={setField} />
-                <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Identificadores
-                    </Typography>
-                    <Divider />
+
+                <Grid item xs={12} >
+                    <FormFieldOfActivity
+                        control={control}
+                        register={register}
+                        setOpen={setOpen}
+                        setField={setField} />
                 </Grid>
-                <FormRWO control={control} register={register} />
-                <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Ocorrências em outra bases
-                    </Typography>
-                    <Divider />
+
+                <Grid item xs={12} >
+                    <FormRWO control={control} register={register} />
                 </Grid>
-                <FormHCEA control={control} register={register} />
+
+                <Grid item xs={12} >
+                    <FormHCEA control={control} register={register} />
+                </Grid>
+
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Imagem

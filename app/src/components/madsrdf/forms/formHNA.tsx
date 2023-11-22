@@ -6,7 +6,11 @@ import {
     IconButton,
     InputAdornment,
     Chip,
-    Avatar
+    Avatar,
+    Accordion,
+    AccordionSummary,
+    Typography,
+    AccordionDetails
 } from "@mui/material";
 
 // React-Hook-Form
@@ -19,6 +23,7 @@ import { Fragment } from "react";
 import { IoRemove, IoAddOutline } from "react-icons/io5";
 import { FcSearch } from "react-icons/fc";
 import { TiLockClosedOutline } from "react-icons/ti";
+import { IoIosArrowDown } from "react-icons/io";
 
 interface Props {
     control: any;
@@ -50,7 +55,20 @@ export default function FormHNA({ control, register, setOpen, setField }: Props)
     });
 
     return (
-        <>
+        <Accordion defaultExpanded={true}>
+        <AccordionSummary expandIcon={<IoIosArrowDown />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+          sx={{ borderBottom: "1px solid gray" }}
+        >
+          <Typography variant="h6" gutterBottom>
+          Termo Específico
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails sx={{
+          display: "flex",
+          flexWrap: "wrap"
+        }}>
             {fields.map((field, index) => (
                 <Fragment key={index}>
                     <Grid item xs={4}>
@@ -155,7 +173,7 @@ export default function FormHNA({ control, register, setOpen, setField }: Props)
                     </Grid>
                 </Fragment>
             ))}
-
-        </>
+            </AccordionDetails>
+        </Accordion>
     )
 }
