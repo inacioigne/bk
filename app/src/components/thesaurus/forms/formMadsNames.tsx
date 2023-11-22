@@ -6,9 +6,12 @@ import {
     Paper,
     TextField,
     Button,
+    Accordion,
+    AccordionSummary,
+    AccordionDetails
 } from "@mui/material";
 
-// import { schemaMads } from "@/schema/authority";
+import { IoIosArrowDown } from "react-icons/io";
 
 import FormElementList from "@/components/madsrdf/forms/formElementList";
 import FormFullerName from "@/components/madsrdf/forms/formFullerName"
@@ -22,6 +25,9 @@ import FormRWO from "@/components/madsrdf/forms/formRWO"
 import FormHCEA from "@/components/madsrdf/forms/formHCEA"
 import FormType from "@/components/madsrdf/forms/formType";
 
+import { blueGrey } from '@mui/material/colors';
+
+
 interface Props {
     control: any
     register: Function
@@ -34,9 +40,6 @@ interface Props {
 }
 
 export default function FormMadsNames({ control, register, errors, getValues, setValue, setOpen, setField }: Props) {
-    // console.log(setOpen)
-
-
 
     return (
         <Paper sx={{ p: "15px", mt: "20px" }}>
@@ -62,41 +65,72 @@ export default function FormMadsNames({ control, register, errors, getValues, se
                 <FormBirth register={register} control={control} />
                 <FormDeath register={register} control={control} />
                 <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Variantes do nome
-                    </Typography>
-                    <Divider />
+                    <Accordion>
+                        <AccordionSummary expandIcon={<IoIosArrowDown />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                            sx={{ borderBottom: "1px solid gray" }}
+                        >
+                            <Typography variant="h6" gutterBottom>
+                                Variantes do nome
+                            </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <FormVariant control={control} register={register} getValues={getValues} setValue={setValue} />
+                        </AccordionDetails>
+                    </Accordion>
                 </Grid>
-                <FormVariant control={control} register={register} getValues={getValues} setValue={setValue} />
+                <Accordion>
+                    <AccordionSummary expandIcon={<IoIosArrowDown />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        sx={{ borderBottom: "1px solid gray" }}
+                    >
+                        <Grid item xs={12}>
+
+                            <Typography variant="h6" gutterBottom>
+                                Afiliação
+                            </Typography>
+                        </Grid>
+
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <FormAffiliation control={control} register={register} />
+                    </AccordionDetails>
+                </Accordion>
                 <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Afiliação
-                    </Typography>
-                    <Divider />
+                    <Accordion>
+                        <AccordionSummary expandIcon={<IoIosArrowDown />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                            sx={{ borderBottom: "1px solid gray" }}
+                        >
+
+                            <Typography variant="h6" gutterBottom>
+                                Ocupações
+                            </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <FormOccupation
+                                control={control}
+                                register={register}
+                                setOpen={setOpen}
+                                setField={setField} />
+                        </AccordionDetails>
+                    </Accordion>
                 </Grid>
-                <FormAffiliation control={control} register={register} />
-                <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Ocupações
-                    </Typography>
-                    <Divider />
-                </Grid>
-                <FormOccupation
-                    control={control}
-                    register={register}
-                    setOpen={setOpen}
-                    setField={setField} />
+
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Campos de atividade
                     </Typography>
                     <Divider />
                 </Grid>
-                <FormFieldOfActivity 
-                control={control} 
-                register={register}
-                setOpen={setOpen}
-                setField={setField} />
+                <FormFieldOfActivity
+                    control={control}
+                    register={register}
+                    setOpen={setOpen}
+                    setField={setField} />
                 <Grid item xs={12}>
                     <Typography variant="h6" gutterBottom>
                         Identificadores

@@ -43,66 +43,69 @@ export default function FormAffiliation({ control, register }: Props) {
         <>
             {fieldshasAffiliation.map((field, index) => (
                 <Fragment key={index}>
-                    <Grid item xs={6}>
-                        <Box sx={{ display: "flex", gap: "10px"}}>
+                    <Grid container spacing={2} sx={{ m: "10px" }}>
+                        <Grid item xs={6}>
+                            <Box sx={{ display: "flex", gap: "10px" }}>
+                                <TextField
+                                    fullWidth
+                                    label="Organização"
+                                    variant="outlined"
+                                    size="small"
+                                    {...register(`hasAffiliation.${index}.organization.label`)}
+                                />
+                                <TextField
+                                    fullWidth
+                                    label="Url"
+                                    variant="outlined"
+                                    size="small"
+                                    {...register(`hasAffiliation.${index}.organization.uri`)}
+                                />
+                            </Box>
+                        </Grid>
+
+                        <Grid item xs={2}>
                             <TextField
                                 fullWidth
-                                label="Organização"
+                                label="Início do vínculo"
                                 variant="outlined"
                                 size="small"
-                                {...register(`hasAffiliation.${index}.organization.label`)}
+                                {...register(`hasAffiliation.${index}.affiliationStart`)}
                             />
+                        </Grid>
+
+                        <Grid item xs={2}>
                             <TextField
                                 fullWidth
-                                label="Url"
+                                label="Fim do vínculo"
                                 variant="outlined"
                                 size="small"
-                                {...register(`hasAffiliation.${index}.organization.uri`)}
+                                {...register(`hasAffiliation.${index}.affiliationEnd`)}
                             />
-                        </Box>
+                        </Grid>
+
+                        <Grid item xs={2}>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+
+                                <IconButton
+                                    aria-label="add"
+                                    onClick={addAffiliation}
+                                    color="primary"
+                                >
+                                    <IoAddOutline />
+                                </IconButton>
+                                <IconButton
+                                    aria-label="add"
+                                    onClick={() => {
+                                        removehasAffiliation(index);
+                                    }}
+                                    color="primary"
+                                >
+                                    <IoRemove />
+                                </IconButton>
+                            </Box>
+                        </Grid>
                     </Grid>
 
-                    <Grid item xs={2}>
-                        <TextField
-                            fullWidth
-                            label="Início do vínculo"
-                            variant="outlined"
-                            size="small"
-                            {...register(`hasAffiliation.${index}.affiliationStart`)}
-                        />
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        <TextField
-                            fullWidth
-                            label="Fim do vínculo"
-                            variant="outlined"
-                            size="small"
-                            {...register(`hasAffiliation.${index}.affiliationEnd`)}
-                        />
-                    </Grid>
-
-                    <Grid item xs={2}>
-                        <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-
-                            <IconButton
-                                aria-label="add"
-                                onClick={addAffiliation}
-                                color="primary"
-                            >
-                                <IoAddOutline />
-                            </IconButton>
-                            <IconButton
-                                aria-label="add"
-                                onClick={() => {
-                                    removehasAffiliation(index);
-                                }}
-                                color="primary"
-                            >
-                                <IoRemove />
-                            </IconButton>
-                        </Box>
-                    </Grid>
                 </Fragment>
             ))}
         </>

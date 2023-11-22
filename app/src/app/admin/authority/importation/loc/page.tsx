@@ -53,10 +53,8 @@ export default function LOC() {
       LocAuthority(setHit, uri)
       // setForm(true)
   
-      console.log("p:", uri)
-  
+      // console.log("p:", uri)
     }
-
   },[])
 
 

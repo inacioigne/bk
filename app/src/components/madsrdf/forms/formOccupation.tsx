@@ -29,7 +29,6 @@ interface Props {
 }
 
 export default function FormOccupation({ control, register, setOpen, setField }: Props) {
-    // console.log(setOpen)
     const {
         fields,
         append,
@@ -54,82 +53,84 @@ export default function FormOccupation({ control, register, setOpen, setField }:
         <>
             {fields.map((field, index) => (
                 <Fragment key={index}>
-                    <Grid item xs={4}>
-                        <TextField
-                            fullWidth
-                            disabled={true}
-                            variant="standard"
-                            label="Ocupação"
-                            size="small"
-                            {...register(`occupation.${index}.label`)}
-                            inputProps={{
-                                style: { opacity: 0 },
+                    {/* <Grid container spacing={2} sx={{ m: "10px" }}> */}
+                        <Grid item xs={4}>
+                            <TextField
+                                fullWidth
+                                disabled={true}
+                                variant="standard"
+                                label="Ocupação"
+                                size="small"
+                                {...register(`occupation.${index}.label`)}
+                                inputProps={{
+                                    style: { opacity: 0 },
 
-                            }}
-                            InputProps={
-                                watchFields[index]?.label === "" ? {
-                                    endAdornment: (
-                                        <InputAdornment
-                                            position="start"
-                                            sx={{ cursor: "pointer" }}
-                                            onClick={() => {
-                                                setOpen(true)
-                                                setField(`occupation.${index}`)
-                                            }}
-                                        >
-                                            <FcSearch />
-                                        </InputAdornment>
-                                    ),
-                                } : {
-                                    startAdornment: (
-                                        <InputAdornment
-                                            position="start" >
-                                            <Chip label={watchFields[index]?.label} size="small"
-                                                color="info"
-                                                avatar={<Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
-                                                    // watchFields[index]?.base === "bk" ?
-                                                    //     <TiLockClosedOutline /> :
-                                                    //     <Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
-                                                }
-                                            />
-                                        </InputAdornment>
-                                    ),
-                                    endAdornment: (
-                                        <InputAdornment
-                                            position="start"
-                                            sx={{ cursor: "pointer" }}
-                                            onClick={() => {
-                                                setOpen(true)
-                                                setField(`occupation.${index}`)
+                                }}
+                                InputProps={
+                                    watchFields[index]?.label === "" ? {
+                                        endAdornment: (
+                                            <InputAdornment
+                                                position="start"
+                                                sx={{ cursor: "pointer" }}
+                                                onClick={() => {
+                                                    setOpen(true)
+                                                    setField(`occupation.${index}`)
+                                                }}
+                                            >
+                                                <FcSearch />
+                                            </InputAdornment>
+                                        ),
+                                    } : {
+                                        startAdornment: (
+                                            <InputAdornment
+                                                position="start" >
+                                                <Chip label={watchFields[index]?.label} size="small"
+                                                    color="info"
+                                                    avatar={<Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
+                                                        // watchFields[index]?.base === "bk" ?
+                                                        //     <TiLockClosedOutline /> :
+                                                        //     <Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
+                                                    }
+                                                />
+                                            </InputAdornment>
+                                        ),
+                                        endAdornment: (
+                                            <InputAdornment
+                                                position="start"
+                                                sx={{ cursor: "pointer" }}
+                                                onClick={() => {
+                                                    setOpen(true)
+                                                    setField(`occupation.${index}`)
 
-                                            }}
-                                        >
-                                            <FcSearch />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                        />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Box sx={{ display: "flex", alignItems: "center" }}>
-                            <IconButton
-                                aria-label="add"
-                                onClick={addOccpation}
-                                color="primary"
-                            >
-                                <IoAddOutline />
-                            </IconButton>
-                            <IconButton
-                                aria-label="add"
-                                onClick={() => {
-                                    remove(index);
-                                }}
-                                color="primary"
-                            >
-                                <IoRemove />
-                            </IconButton>
-                        </Box>
-                    </Grid>
+                                                }}
+                                            >
+                                                <FcSearch />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                            />
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                                <IconButton
+                                    aria-label="add"
+                                    onClick={addOccpation}
+                                    color="primary"
+                                >
+                                    <IoAddOutline />
+                                </IconButton>
+                                <IconButton
+                                    aria-label="add"
+                                    onClick={() => {
+                                        remove(index);
+                                    }}
+                                    color="primary"
+                                >
+                                    <IoRemove />
+                                </IconButton>
+                            </Box>
+                        </Grid>
+                    {/* </Grid> */}
                 </Fragment>
             ))}
 

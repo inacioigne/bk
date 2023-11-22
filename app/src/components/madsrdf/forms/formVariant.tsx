@@ -34,7 +34,7 @@ function ElementList({ nestIndex, control, register }: PropsElementList) {
     appendElementList({
       type: "FullNameElement",
       elementValue: { value: "" }
-    }); 
+    });
   };
   return (
     <div>
@@ -100,8 +100,6 @@ export default function FormVariant({ control, register, getValues, setValue, }:
     name: "hasVariant"
   });
 
-
-
   const addVariant = () => {
     setValue("hasVariant", [
       ...(getValues().hasVariant || []),
@@ -116,36 +114,40 @@ export default function FormVariant({ control, register, getValues, setValue, }:
     <>
       {fields.map((field, index) => (
         <Fragment key={index}>
-          <Grid item xs={10}>
-            <TextField
-              fullWidth
-              disabled={true}
-              label="Tipo de Variante"
-              variant="outlined"
-              size="small"
-              {...register(`hasVariant.${index}.type`)}
-            />
+          <Grid container spacing={2} sx={{ m: "10px" }}>
+            <Grid item xs={10}>
+              <TextField
+                fullWidth
+                disabled={true}
+                label="Tipo de Variante"
+                variant="outlined"
+                size="small"
+                {...register(`hasVariant.${index}.type`)}
+              />
+            </Grid>
+            <Grid item xs={2}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <IconButton aria-label="add" onClick={addVariant} color="primary">
+                  <IoAddOutline />
+                </IconButton>
+                <IconButton
+                  aria-label="add"
+                  onClick={() => {
+                    remove(index);
+                  }}
+                  color="primary"
+                >
+                  <IoRemove />
+                </IconButton>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <FormElementListVariant nestIndex={index} {...{ control, register }} />
+            </Grid>
           </Grid>
-          <Grid item xs={2}>
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <IconButton aria-label="add" onClick={addVariant} color="primary">
-                <IoAddOutline />
-              </IconButton>
-              <IconButton
-                aria-label="add"
-                onClick={() => {
-                  remove(index);
-                }}
-                color="primary"
-              >
-                <IoRemove />
-              </IconButton>
-            </Box>
-          </Grid>
-          <Grid item xs={12}>
-            <FormElementListVariant nestIndex={index} {...{ control, register }} />
-          </Grid>
+
         </Fragment>
+
       ))}
     </>
   );
