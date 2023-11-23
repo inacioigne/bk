@@ -4,7 +4,7 @@ import { Box, LinearProgress, Alert, Snackbar } from "@mui/material/";
 
 // BiblioKeia Components
 import NavBar from "@/components/nav/navBar";
-import SideBar from "../../components/nav/sideBar";
+import SideBar from "@/components/nav/sideBar";
 
 // React Hooks
 import { Suspense, useState } from "react";
@@ -19,9 +19,7 @@ export default function AdminLayout({ children }) {
     openSnack,
     setOpenSnack,
     message,
-    // setMessage,
     typeAlert,
-    // setTypeAlert,
   } = useAlert();
 
   const handleClose = (

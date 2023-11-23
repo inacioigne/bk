@@ -13,7 +13,7 @@ import { MdFormatIndentIncrease, MdOutlineFormatIndentDecrease } from 'react-ico
 import { grey } from "@mui/material/colors";
 
 // BiblioKeia Components
-import DarkMode from "@/components/buttons/darkMode"
+// import DarkMode from "@/components/buttons/darkMode"
 
 interface Props {
     open: Boolean;
@@ -82,7 +82,7 @@ export default function NavBar({ open, setOpen }: Props) {
         >
           {open ? <MdOutlineFormatIndentDecrease /> : <MdFormatIndentIncrease />}
         </IconButton>
-        <DarkMode />
+        {/* <DarkMode /> */}
       </Toolbar>
     </AppBar>
   );
