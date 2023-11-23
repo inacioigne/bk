@@ -1,0 +1,161 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix lclocal: <http://id.loc.gov/ontologies/lclocal/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://id.loc.gov/resources/works/8186980> a bf:Text,
+        bf:Work ;
+    rdfs:label "Plants." ;
+    bflc:aap "Plants" ;
+    bflc:aap-normalized "plants" ;
+    bf:adminMetadata [ a bf:AdminMetadata ;
+            bflc:encodingLevel <http://id.loc.gov/vocabulary/menclvl/7> ;
+            bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            bf:changeDate "2010-10-22T14:46:25"^^xsd:dateTime ;
+            bf:creationDate "1991-07-17"^^xsd:date ;
+            bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/local> ;
+            bf:descriptionModifier <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            bf:generationProcess [ a bf:GenerationProcess ;
+                    rdfs:label "DLC marc2bibframe2 v1.7.0-SNAPSHOT" ;
+                    bf:generationDate "2021-08-04T21:35:29-04:00"^^xsd:dateTime ] ;
+            bf:identifiedBy [ a bf:Local ;
+                    bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
+                    rdf:value "8186980" ] ;
+            bf:status [ a bf:Status ;
+                    rdfs:label "corrected or revised" ;
+                    bf:code "c" ] ;
+            lclocal:d906 "=906     $a 0 $b cbc $c premunv $d u $e ncip $f 19 $g y-gencatlg" ] ;
+    bf:content <http://id.loc.gov/vocabulary/contentTypes/txt> ;
+    bf:hasInstance <http://id.loc.gov/resources/instances/8186980> ;
+    bf:language <http://id.loc.gov/vocabulary/languages/eng> ;
+    bf:relatedTo <http://id.loc.gov/resources/works/11648976>,
+        <http://id.loc.gov/resources/works/651435> ;
+    bf:title [ a bf:Title ;
+            rdfs:label "Plants." ;
+            bf:mainTitle "Plants." ] ;
+    bf:translation <http://id.loc.gov/resources/hubs/14c1bb8a-db83-f4dc-3111-98d8ed1f244b>,
+        <http://id.loc.gov/resources/hubs/15987fdb-59a0-4cba-ce6a-48dbf24098e7>,
+        <http://id.loc.gov/resources/hubs/44e665fb-bbac-3299-ecbf-f94666cb54bf>,
+        <http://id.loc.gov/resources/hubs/5327c763-90c1-022d-d798-fedc631f9503>,
+        <http://id.loc.gov/resources/hubs/6b41c953-bb3a-1b08-c0e1-ff4a0760a182>,
+        <http://id.loc.gov/resources/hubs/9275acda-6a08-78c7-8dc5-9d3220485013>,
+        <http://id.loc.gov/resources/hubs/9a2bf3a0-9ff4-28ba-a4a0-580e3a533ab5>,
+        <http://id.loc.gov/resources/hubs/bbf5f1cf-81a7-bf62-e857-9a3ddbdf9563>,
+        <http://id.loc.gov/resources/hubs/cc3374ab-66c0-6d57-923b-a34ecfc07a57> ;
+    dcterms:isPartOf <http://id.loc.gov/resources/works> .
+
+<http://id.loc.gov/resources/hubs/14c1bb8a-db83-f4dc-3111-98d8ed1f244b> a bf:Work ;
+    rdfs:label "Plants. Polish" ;
+    bf:title [ a bf:VariantTitle ;
+            bf:mainTitle "Rośliny" ],
+        [ a bf:Title ;
+            bf:mainTitle "Plants. Polish" ] .
+
+<http://id.loc.gov/resources/hubs/15987fdb-59a0-4cba-ce6a-48dbf24098e7> a bf:Work ;
+    rdfs:label "Plants. Spanish" ;
+    bf:title [ a bf:VariantTitle ;
+            bf:mainTitle "Plantas (Milet Publishing)" ],
+        [ a bf:Title ;
+            bf:mainTitle "Plants. Spanish" ] .
+
+<http://id.loc.gov/resources/hubs/44e665fb-bbac-3299-ecbf-f94666cb54bf> a bf:Work ;
+    rdfs:label "Plants. Somali" ;
+    bf:title [ a bf:VariantTitle ;
+            bf:mainTitle "Dhir (Milet Publishing)" ],
+        [ a bf:Title ;
+            bf:mainTitle "Plants. Somali" ] .
+
+<http://id.loc.gov/resources/hubs/5327c763-90c1-022d-d798-fedc631f9503> a bf:Work ;
+    rdfs:label "Plants. Russian" ;
+    bf:title [ a bf:Title ;
+            bf:mainTitle "Plants. Russian" ],
+        [ a bf:VariantTitle ;
+            bf:mainTitle "Rastenii︠a" ],
+        [ a bf:VariantTitle ;
+            bf:mainTitle "Растения" ] .
+
+<http://id.loc.gov/resources/hubs/6b41c953-bb3a-1b08-c0e1-ff4a0760a182> a bf:Work ;
+    rdfs:label "Plants. Arabic" ;
+    bf:title [ a bf:Title ;
+            bf:mainTitle "Plants. Arabic" ],
+        [ a bf:VariantTitle ;
+            bf:mainTitle "نباتات" ] .
+
+<http://id.loc.gov/resources/hubs/9275acda-6a08-78c7-8dc5-9d3220485013> a bf:Work ;
+    rdfs:label "Plants. Korean" ;
+    bf:title [ a bf:VariantTitle ;
+            bf:mainTitle "식물" ],
+        [ a bf:VariantTitle ;
+            bf:mainTitle "Singmul" ],
+        [ a bf:Title ;
+            bf:mainTitle "Plants. Korean" ] .
+
+<http://id.loc.gov/resources/hubs/9a2bf3a0-9ff4-28ba-a4a0-580e3a533ab5> a bf:Work ;
+    rdfs:label "Plants. Vietnamese" ;
+    bf:title [ a bf:Title ;
+            bf:mainTitle "Plants. Vietnamese" ],
+        [ a bf:VariantTitle ;
+            bf:mainTitle "Cây cảnh" ] .
+
+<http://id.loc.gov/resources/hubs/bbf5f1cf-81a7-bf62-e857-9a3ddbdf9563> a bf:Work ;
+    rdfs:label "Plants. Urdu" ;
+    bf:title [ a bf:VariantTitle ;
+            bf:mainTitle "Paude" ],
+        [ a bf:Title ;
+            bf:mainTitle "Plants. Urdu" ] .
+
+<http://id.loc.gov/resources/hubs/cc3374ab-66c0-6d57-923b-a34ecfc07a57> a bf:Work ;
+    rdfs:label "Plants. Chinese" ;
+    bf:title [ a bf:VariantTitle ;
+            bf:mainTitle "Zhi wu" ],
+        [ a bf:VariantTitle ;
+            bf:mainTitle "植物" ],
+        [ a bf:Title ;
+            bf:mainTitle "Plants. Chinese" ] .
+
+<http://id.loc.gov/resources/instances/8186980> a bf:Instance ;
+    rdfs:label "Plants." ;
+    bf:provisionActivityStatement "London, Religious Tract Society; [n.d.]" ;
+    bf:title [ a bf:Title ;
+            rdfs:label "Plants." ;
+            bf:mainTitle "Plants" ] .
+
+<http://id.loc.gov/resources/works/11648976> a bf:Work ;
+    rdfs:label "Mad scientist toon club. Plants" ;
+    bf:title [ a bf:Title ;
+            rdfs:label "Mad scientist toon club. Plants" ;
+            bf:mainTitle "Mad scientist toon club." ;
+            bf:partName "Plants" ] .
+
+<http://id.loc.gov/resources/works/651435> a bf:Work ;
+    rdfs:label "Higginson, Mel, 1942- Scientists who study plants" ;
+    bf:contribution [ a bflc:PrimaryContribution,
+                bf:Contribution ;
+            bf:agent [ a bf:Agent,
+                        bf:Person ;
+                    rdfs:label "Higginson, Mel, 1942-" ] ;
+            bf:role <http://id.loc.gov/vocabulary/relators/ctb> ] ;
+    bf:title [ a bf:Title ;
+            rdfs:label "Scientists who study plants" ;
+            bf:mainTitle "Scientists who study plants" ] .
+
+<http://id.loc.gov/vocabulary/contentTypes/txt> a bf:Content ;
+    rdfs:label "text" .
+
+<http://id.loc.gov/vocabulary/descriptionConventions/local> a bf:DescriptionConventions ;
+    rdfs:label "Locally defined or unknown cataloging rules" .
+
+<http://id.loc.gov/vocabulary/languages/eng> a bf:Language ;
+    rdfs:label "English"@en .
+
+<http://id.loc.gov/vocabulary/menclvl/7> a bflc:EncodingLevel ;
+    rdfs:label "minimal" .
+
+<http://id.loc.gov/vocabulary/relators/ctb> a bf:Role .
+
+<http://id.loc.gov/vocabulary/organizations/dlc> a bf:Organization ;
+    rdfs:label "United States, Library of Congress" .
+

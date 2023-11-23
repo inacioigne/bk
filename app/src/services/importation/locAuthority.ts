@@ -1,10 +1,6 @@
 import axios from "axios";
 
-// import { schemaMads, schemaAffiliation } from "@/schema/authority";
 import { ParserData } from "@/services/importation/parserData"
-
-// const mads = "http://www.loc.gov/mads/rdf/v1#";
-
 
 export async function LocAuthority(setHit: Function, uri: string) {
   const url = `${uri}.json`;
@@ -17,5 +13,4 @@ export async function LocAuthority(setHit: Function, uri: string) {
   } catch (error) {
     console.error(error);
   }
-
 }

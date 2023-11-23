@@ -1,10 +1,13 @@
 import { loc } from "@/services/thesarus/loc"
-export function SearchLCSH(
+export function SearchLocResources(
   params: URLSearchParams,
+  type: string,
   setHits: Function
 ) {
+  // console.log("PR:", params.toString(), type)
+  // let works = 'works'
     loc
-      .get("authorities/suggest2/", {
+      .get(`resources${type}suggest2/`, {
         params: params,
       })
       .then((response) => {

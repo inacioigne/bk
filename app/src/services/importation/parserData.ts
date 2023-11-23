@@ -335,10 +335,6 @@ export async function  ParserData(response: any, uri: string) {
             });
             authority["occupation"] = occupation;
         }
-        // console.log("C: ", metadado)
     }
-    
-
-
     return authority;
 }
