@@ -81,7 +81,7 @@ export default function FormLocResources(props: Props) {
     <>
       <form onSubmit={(e) => {e.preventDefault()}}>
         <Paper sx={{ p: "1rem" }}>
-          <FormControl fullWidth sx={{ mb: "0.5rem" }}>
+          {/* <FormControl fullWidth sx={{ mb: "0.5rem" }}>
             <InputLabel id="label">Selecione uma opção</InputLabel>
             <Select
               labelId="label"
@@ -96,9 +96,9 @@ export default function FormLocResources(props: Props) {
               <MenuItem value="/works/">Work</MenuItem>
               <MenuItem value="/hubs/">Hub</MenuItem>
               <MenuItem value="/instances/">Instance</MenuItem>
-              {/* <MenuItem value="CorporateName">Nome Coorporativo</MenuItem> */}
+              <MenuItem value="CorporateName">Nome Coorporativo</MenuItem> 
             </Select>
-          </FormControl>
+          </FormControl> */}
           <TextField
             label="Busca"
             variant="outlined"

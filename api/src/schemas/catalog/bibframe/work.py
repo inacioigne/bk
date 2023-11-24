@@ -13,9 +13,9 @@ class Classification(BaseModel):
 
 class Work(BaseModel):
     adminMetadata: AdminMetadata
-    identifiersLccn: Optional[str] = None
-    type: list[str]
-    content: list[Element]
+    identifiersLocal: str
+    type: str
+    content: Element
     language: list[Element]
     title: Title
     classification: Optional[Classification] = None
@@ -29,4 +29,5 @@ class Work(BaseModel):
     illustrativeContent: Optional[list[Element]] = None
     intendedAudience: Optional[list[Element]] = None
     geographicCoverage: Optional[list[Element]] = None
+    isPartOf: str
     

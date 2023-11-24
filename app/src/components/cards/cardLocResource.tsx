@@ -29,19 +29,19 @@ import { useAlert } from "@/providers/alert";
 import { bkapi } from "@/services/api"
 
 // BiblioKeia Components
-import MadsUri from "@/components/madsrdf/view/madsUri"
-import FieldOfActivity from "@/components/madsrdf/view/fieldOfActivity"
-import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
-import HasVariant from "@/components/madsrdf/view/hasVariant";
-import HasCloseExternalAuthority from "@/components/madsrdf/view/hasCloseExternalAuthority";
-import BtnIcon from "@/components/buttons/btnIcon";
-import ListMads from "@/components/loc/listMads"
-import MadsLoc from "@/components/madsrdf/view/madsLoc";
+// import MadsUri from "@/components/madsrdf/view/madsUri"
+// import FieldOfActivity from "@/components/madsrdf/view/fieldOfActivity"
+// import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
+// import HasVariant from "@/components/madsrdf/view/hasVariant";
+// import HasCloseExternalAuthority from "@/components/madsrdf/view/hasCloseExternalAuthority";
+// import BtnIcon from "@/components/buttons/btnIcon";
+// import ListMads from "@/components/loc/listMads"
+// import MadsLoc from "@/components/madsrdf/view/madsLoc";
 
 
 // React Icons
-import { FaTreeCity } from "react-icons/fa6";
-import { FcCalendar } from "react-icons/fc";
+// import { FaTreeCity } from "react-icons/fa6";
+// import { FcCalendar } from "react-icons/fc";
 
 // Nextjs
 import { useRouter } from 'next/navigation'
@@ -101,11 +101,7 @@ export default function CardLocResource({ hit, setHit, setForm }: Props) {
                             <Typography variant="h5" component="div">
                                 {hit.title.mainTitle}
                             </Typography>
-                            <Box sx={{ display: "flex", gap: "5px" }}>
-                                {hit.type.map((type, index) => (
-                                    <Chip key={index} label={type} color="primary" size="small" />
-                                ))}
-                            </Box>
+                            <Chip label={hit.type} color="primary" size="small" />
                         </>
                     }
                     action={
@@ -114,7 +110,7 @@ export default function CardLocResource({ hit, setHit, setForm }: Props) {
                                 aria-label="settings"
                                 onClick={() => {
                                     LocExist(hit.identifiersLccn)
-                                    
+
                                 }}
                             >
                                 <CiImport />
@@ -129,11 +125,14 @@ export default function CardLocResource({ hit, setHit, setForm }: Props) {
                             <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
                                 Conteúdo:
                             </Typography>
-                            {hit.content.map((content, index) => (
+                            <Typography variant="subtitle1" gutterBottom>
+                                    {hit.content.label}
+                                </Typography>
+                            {/* {hit.content.map((content, index) => (
                                 <Typography key={index} variant="subtitle1" gutterBottom>
                                     {content.label}
                                 </Typography>
-                            ))}
+                            ))} */}
                         </Box>
                     </Grid>
                     <Grid item xs={6}>

@@ -10,7 +10,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Schema
-import { ZodNames } from "@/schema/mads/zodNames";
 import { ZodWork } from "@/schema/bibframe/zodWork"
 import { Bibframe } from "@/schema/bibframe"
 
@@ -20,7 +19,7 @@ import { IoIosSave } from "react-icons/io";
 import { FcCancel } from "react-icons/fc";
 
 // Services BiblioKeia
-import { ParserData } from "@/services/thesarus/parserData"
+import { ParserData } from "@/services/catalog/parserData"
 import { bkapi } from "@/services/api";
 
 // React Hooks
@@ -43,30 +42,37 @@ interface Props {
 
 const headers = {
     accept: "application/json",
-    "Content-Type": "application/json",
+    "Content-Type": "application/json", 
 };
 
 function GetValue(hit: any) {
 
-    let uriDefault = [{
-        uri: "",
-        label: "",
-        base: ""
-    }]
-    let [type] = hit.type.filter(function (e: any) {
-        return e !== "Work";
-    })
-    
-
-    const obj: any = {
-        type: type,
-        title: hit.title,
-        // identifiersLccn: hit.identifiersLccn,
+    let obj = {
+        "type": "Text",
+        "title": {
+            "type": "http://id.loc.gov/ontologies/bibframe/Title",
+            "mainTitle": "Plants.",
+            "label": {
+                "@value": "Plants."
+            }
+        },
+        "content": {
+            "label": "text",
+            "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
+            "type": "http://id.loc.gov/ontologies/bibframe/Content"
+        },
+        "language": [
+            {
+                "label": "English",
+                "lang": "en",
+                "uri": "http://id.loc.gov/vocabulary/languages/eng",
+                "type": "http://id.loc.gov/ontologies/bibframe/Language"
+            }
+        ]
     }
-    // console.log("loc", hit);
-    console.log(obj)
+    console.log("loc", obj);
     return obj
-   
+
 }
 
 export default function FormLocWork({ hit, setForm }: Props) {
@@ -76,6 +82,7 @@ export default function FormLocWork({ hit, setForm }: Props) {
     const [open, setOpen] = useState(false);
     const [field, setField] = useState("");
     const { setOpenSnack, setMessage } = useAlert();
+    // console.log("H: ", hit)
 
     useEffect(() => {
         bkapi
@@ -93,7 +100,24 @@ export default function FormLocWork({ hit, setForm }: Props) {
             });
     }, [String(id)]);
 
-    let defaultValues = GetValue(hit)
+    // let defaultValues = GetValue(hit)
+    let defaultValues = {
+        "type": "Text",
+        "title": {
+            "type": "http://id.loc.gov/ontologies/bibframe/Title",
+            "mainTitle": "Teste IMPORT.",
+            "label": {
+                "@value": "Plants."
+            }
+        },
+        "content": {
+            "label": "text",
+            "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
+            "type": "http://id.loc.gov/ontologies/bibframe/Content"
+        },
+       
+    }
+
 
     const {
         control,
@@ -104,51 +128,70 @@ export default function FormLocWork({ hit, setForm }: Props) {
         getValues,
     } = useForm<SchemaCreateWork>({
         resolver: zodResolver(ZodWork),
-        defaultValues,
+        defaultValues: hit
     });
 
-    // console.log(errors) 
-    function createAuthority(data: any) {
-        let formData = ParserData(data)
-        let obj = {
-            type: hit?.type,
-            identifiersLocal: String(id),
-            identifiersLccn: hit?.identifiersLccn,
-            adminMetadata: {
-                status: {
-                    label: "novo",
-                    value: "n"
-                },
-            },
-            isMemberOfMADSCollection: 'names',
-            authoritativeLabel: data.birthYearDate ?
-                `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
+    console.log(errors) 
+    function CreateWork(data: any) {
+        
+
+
+        // let formData = ParserData(data)
+
+        function RemoveNull(obj: any) {
+            const formData = Object.keys(obj).reduce((acc: any, key) => {
+                // if (typeof obj[key] === 'object') {
+                //     let tmp = RemoveNull(obj[key]);
+                //     obj[key] = tmp
+                // }
+                if (obj[key] !== "") {
+                    acc[key] = obj[key];
+                }
+                return acc;
+            }, {});
+            return formData;
         }
-        let request = { ...obj, ...formData };
+        //   console.log(data)
+        let formData = RemoveNull(data);
+        console.log("IR:", formData)
+        // let obj = {
+        //     identifiersLocal: String(id),
+        //     adminMetadata: {
+        //         status: {
+        //             label: "novo",
+        //             value: "n"
+        //         },
+        //     },
+        //     isPartOf: 'https://bibliokeia.com/catalog/works'
+        // }
+        // let request = { ...obj, ...formData };
         // console.log("CR:", request)
 
-        setProgress(true)
-        bkapi.post("/thesarus/create", request, {
-            headers: headers,
-        })
-            .then(function (response) {
-                if (response.status === 201) {
-                    setMessage("Registro criado com sucesso!")
-                    router.push(`/admin/authority/names/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                console.error(error);
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+
+
+
+        // setProgress(true)
+        // bkapi.post("/catalog/work/create", request, {
+        //     headers: headers,
+        // })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             setMessage("Registro criado com sucesso!")
+        //             // router.push(`/admin/authority/names/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         console.error(error);
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //     });
     }
 
     return (
         <Box sx={{ width: "100%" }}>
-            <form onSubmit={handleSubmit(createAuthority)}>
+            <form onSubmit={handleSubmit(CreateWork)}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
                         Criar Obra - Work
@@ -175,15 +218,15 @@ export default function FormLocWork({ hit, setForm }: Props) {
                 </Box>
                 <Divider />
                 <FormBibframeWork
-                    control={control}
-                    register={register}
-                    errors={errors}
-                    getValues={getValues}
-                    setValue={setValue} 
-                    setOpen={setOpen} 
-                    setField={setField} />
+                        control={control}
+                        register={register}
+                        // errors={errors}
+                        // getValues={getValues}
+                        // setValue={setValue}
+                        // setOpen={setOpen}
+                        setField={setField} />
             </form>
-            <ModalThesarus setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue}/>
+            {/* <ModalThesarus setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue} /> */}
 
         </Box>
     );

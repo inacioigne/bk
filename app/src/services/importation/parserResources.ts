@@ -12,17 +12,12 @@ export async function ParserResources(response: any, uri: string) {
     return elemento["@id"] === uri;
   });
 
-  // Types
-  let types = r["@type"].map((e: string) => {
-    let typeList = e.split("/");
-    let type = typeList[typeList.length - 1];
-    return type;
+  // Type
+  let [bfType] = r["@type"].filter(function (e: string) {
+    return e !== `${bibframe}Work`;
   });
-
-  // identifiersLccn
-  let uriArray = uri.split("/");
-  let identifiersLccn = uriArray[uriArray.length - 1];
-  let collection = uriArray[4];
+  let typeList = bfType.split("/");
+  let type = typeList[typeList.length - 1];
 
   // Title
   let [t] = r[`${bibframe}title`];
@@ -39,23 +34,23 @@ export async function ParserResources(response: any, uri: string) {
     label: mainTitle
   }
   
-
-  // content
+  // Content
   let [c] = r[`${bibframe}content`];
   let content = data.filter(function (elemento: any) {
     return elemento["@id"] === c["@id"];
   });
-  let bfContent = content.map((e: any) => {
+  let [bfContent] = content.map((e: any) => {
     let id = e["@id"];
     let [bf] = data.filter(function (e: any) {
       return e["@id"] === id;
     });
     let [label] = bf[`${rdf}label`]
+    let [typeContent] = bf["@type"]
     let obj = {
         label: label['@value'],
         lang: label['@language'],
         uri: bf['@id'],
-        type: bf["@type"]
+        type: typeContent
     }
     return obj
   });
@@ -67,19 +62,19 @@ export async function ParserResources(response: any, uri: string) {
       return e["@id"] === id;
     });
     let [label] = l[`${rdf}label`]
+    let [typeLang] = l["@type"]
+
     let obj = {
         label: label['@value'],
         lang: label['@language'],
         uri: l['@id'],
-        type: l["@type"]
+        type: typeLang
     }
     return obj
   });
 
   let resources = {
-    type: types,
-    identifiersLccn: identifiersLccn,
-    // collection: collection,
+    type: type,
     title: objTitle,
     content: bfContent,
     language: bfLanguages

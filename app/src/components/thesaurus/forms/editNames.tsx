@@ -177,6 +177,8 @@ export default function EditNames({ doc }: Props) {
     // console.log("ER:", errors, defaultValues)
 
     function editAuthority(data: any) {
+                // console.log("R:", data)
+
         setProgress(true)
         const headers = {
             accept: "application/json",
@@ -199,7 +201,6 @@ export default function EditNames({ doc }: Props) {
 
         let formData = ParserData(data)
         const request = { ...obj, ...formData };
-        // console.log("R:", request)
 
         bkapi.put("thesarus/edit/", request, {
             headers: headers,

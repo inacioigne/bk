@@ -1,34 +1,14 @@
 {
-    "type": [
-        "Work",
-        "Text"
-    ],
-    "identifiersLccn": "8186980",
-    "collection": "works",
-    "title": {
-        "type": "http://id.loc.gov/ontologies/bibframe/Title",
-        "mainTitle": "Plants.",
-        "label": {
-            "@value": "Plants."
+    "identifiersLocal": "7",
+    "adminMetadata": {
+        "status": {
+            "label": "novo",
+            "value": "n"
         }
     },
-    "content": [
-        {
-            "label": "text",
-            "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
-            "type": [
-                "http://id.loc.gov/ontologies/bibframe/Content"
-            ]
-        }
-    ],
-    "language": [
-        {
-            "label": "English",
-            "lang": "en",
-            "uri": "http://id.loc.gov/vocabulary/languages/eng",
-            "type": [
-                "http://id.loc.gov/ontologies/bibframe/Language"
-            ]
-        }
-    ]
+    "isPartOf": "https://bibliokeia.com/catalog/works",
+    "type": "Text",
+    "title": {
+        "mainTitle": "Plants."
+    }
 }

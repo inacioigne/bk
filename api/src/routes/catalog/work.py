@@ -7,4 +7,4 @@ router = APIRouter()
 
 @router.post("/create", status_code=201)
 async def create_work(request: Work): 
-    pass
+    return request.model_dump()

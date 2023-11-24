@@ -12,9 +12,9 @@ type Title = {
     label: string
 }
 export interface Bibframe {
-    type: string[]
+    type: string
     identifiersLccn: string
-    content: Element[]
+    content: Element
     language: Element[]
     title: Title
 }

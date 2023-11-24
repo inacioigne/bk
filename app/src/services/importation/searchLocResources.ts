@@ -7,7 +7,7 @@ export function SearchLocResources(
   // console.log("PR:", params.toString(), type)
   // let works = 'works'
     loc
-      .get(`resources${type}suggest2/`, {
+      .get(`resources/works/suggest2/`, {
         params: params,
       })
       .then((response) => {

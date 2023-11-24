@@ -15,14 +15,14 @@ export default function FormBfType({ register, control }: Props) {
 
     return (
 
-         <Grid item xs={12}>
+         <Grid item xs={3}>
             <Controller
                 name={`type`}
                 control={control}
                 render={({ field }) => (
                     <FormControl
-                        sx={{ width: 300 }}
-                        // fullWidth
+                        // sx={{ width: 300 }}
+                        fullWidth
                     >
                         <InputLabel id="label">Tipo Work</InputLabel>
                         <Select

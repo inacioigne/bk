@@ -8,7 +8,7 @@ export async function LocResources(setHit: Function, uri: string) {
   try {
     const response = await axios.get(url);
     const resources = await ParserResources(response, uri);
-    console.log(resources)
+    // console.log(resources)
     setHit(resources);
     // console.log("TS", resources);
   } catch (error) {
