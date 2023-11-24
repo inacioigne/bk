@@ -13,6 +13,7 @@ class Classification(BaseModel):
 
 class Work(BaseModel):
     adminMetadata: AdminMetadata
+    identifiersLccn: Optional[str] = None
     type: list[str]
     content: list[Element]
     language: list[Element]

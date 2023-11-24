@@ -1,49 +1,34 @@
-
 {
-    "type": "Topic",
-    "identifiersLocal": "1",
-    "adminMetadata": {
-        "creationDate": "2023-11-13T00:00:00Z",
-        "status": {
-            "label": "editado",
-            "value": "e"
+    "type": [
+        "Work",
+        "Text"
+    ],
+    "identifiersLccn": "8186980",
+    "collection": "works",
+    "title": {
+        "type": "http://id.loc.gov/ontologies/bibframe/Title",
+        "mainTitle": "Plants.",
+        "label": {
+            "@value": "Plants."
         }
     },
-    "isMemberOfMADSCollection": "subjects",
-    "authoritativeLabel": "Zoologia",
-    "elementList": [
+    "content": [
         {
-            "type": "TopicElement",
-            "elementValue": {
-                "value": "Zoologia",
-                "lang": "pt"
-            }
+            "label": "text",
+            "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
+            "type": [
+                "http://id.loc.gov/ontologies/bibframe/Content"
+            ]
         }
     ],
-    "hasBroaderAuthority": [
+    "language": [
         {
-            "uri": "https://bibliokeia.com/authority/Topic/2",
-            "label": "Biologia",
-            "base": "bk"
-        },
-        {
-            "uri": "https://bibliokeia.com/authority/Topic/3",
-            "label": "História natural",
-            "base": "bk"
-        }
-    ],
-    "hasNarrowerAuthority": [
-        {
-            "uri": "https://bibliokeia.com/authority/Topic/4",
-            "label": "Entomologia",
-            "base": "bk"
-        }
-    ],
-    "hasReciprocalAuthority": [
-        {
-            "uri": "https://bibliokeia.com/authority/Topic/5",
-            "label": "Animais",
-            "base": "bk"
+            "label": "English",
+            "lang": "en",
+            "uri": "http://id.loc.gov/vocabulary/languages/eng",
+            "type": [
+                "http://id.loc.gov/ontologies/bibframe/Language"
+            ]
         }
     ]
 }

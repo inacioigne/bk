@@ -24,51 +24,67 @@ export async function ParserResources(response: any, uri: string) {
   let identifiersLccn = uriArray[uriArray.length - 1];
   let collection = uriArray[4];
 
-  // authoritativeLabel
-  let [authoritativeLabel] = r["http://www.w3.org/2000/01/rdf-schema#label"];
+  // Title
+  let [t] = r[`${bibframe}title`];
+  let [title] = data.filter(function (elemento: any) {
+    return elemento["@id"] === t["@id"];
+  });
+  let [typeTitle] = title['@type']
+  let [mainTitle] = title['http://id.loc.gov/ontologies/bibframe/mainTitle']
 
-  // http://id.loc.gov/ontologies/bibframe/content
+  let objTitle = {
+    type: typeTitle,
+    mainTitle: mainTitle['@value'],
+    subtitle: undefined,
+    label: mainTitle
+  }
+  
+
+  // content
   let [c] = r[`${bibframe}content`];
-
-  let [content] = data.filter(function (elemento: any) {
+  let content = data.filter(function (elemento: any) {
     return elemento["@id"] === c["@id"];
   });
-  let [labelContent] = content["http://www.w3.org/2000/01/rdf-schema#label"];
-
-  //   http://id.loc.gov/ontologies/bibframe/language
-  //   label: str
-  //   lang: Optional[str] = None
-  //   uri: str
-  //   type: list[str]
-
+  let bfContent = content.map((e: any) => {
+    let id = e["@id"];
+    let [bf] = data.filter(function (e: any) {
+      return e["@id"] === id;
+    });
+    let [label] = bf[`${rdf}label`]
+    let obj = {
+        label: label['@value'],
+        lang: label['@language'],
+        uri: bf['@id'],
+        type: bf["@type"]
+    }
+    return obj
+  });
+  // languages
   let languages = r[`${bibframe}language`];
-  //   let languages = data.filter(function (e: any) {
-  //     return e["@id"] === l["@id"];
-  //   });
-  languages.map((e: any) => {
+  let bfLanguages = languages.map((e: any) => {
     let id = e["@id"];
     let [l] = data.filter(function (e: any) {
       return e["@id"] === id;
     });
     let [label] = l[`${rdf}label`]
     let obj = {
-        label: l[`${rdf}label`]['@value'],
-        lang: l[`${rdf}label`]['@language'],
+        label: label['@value'],
+        lang: label['@language'],
         uri: l['@id'],
         type: l["@type"]
     }
-    console.log(obj);
+    return obj
   });
 
   let resources = {
     type: types,
     identifiersLccn: identifiersLccn,
-    collection: collection,
-    title: authoritativeLabel["@value"],
-    content: labelContent["@value"],
+    // collection: collection,
+    title: objTitle,
+    content: bfContent,
+    language: bfLanguages
   };
 
-//   console.log(resources, r);
 
   // // elementList
   // let [elementList] = a[`${mads}elementList`];

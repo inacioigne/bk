@@ -9,10 +9,10 @@ import {
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
-// import FormLCSH from "@/components/forms/formLocSearch"
 import FormLocResources from "@/components/forms/formLocResources"
-import CardLoc from "@/components/cards/cardLoc"
-import FormLocName from "@/components/thesaurus/loc/formLocName";
+import CardLocResource from "@/components/cards/cardLocResource"
+import FormLocWork from "@/components/catalog/forms/formLocWork"
+// import FormLocName from "@/components/thesaurus/loc/formLocName";
 import FormLocSubject from "@/components/thesaurus/loc/formLocSubject";
 
 // react-icons
@@ -21,6 +21,8 @@ import { BsPersonPlus, BsPersonFillDown } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams  } from 'next/navigation'
 import { LocAuthority } from "@/services/importation/locAuthority"
+
+import { Bibframe } from "@/schema/bibframe"
 
 const previousPaths = [
   {
@@ -43,7 +45,7 @@ const previousPaths = [
 const names = ["PersonalName",  "CorporateName"]
 
 export default function LOC() {
-  const [hit, setHit] = useState(null)
+  const [hit, setHit] = useState<Bibframe|null>(null)
   const [form, setForm] = useState(false)
 
   const searchParams = useSearchParams()
@@ -70,19 +72,18 @@ export default function LOC() {
           <Divider />
           <Grid container spacing={2}>
             <Grid item xs={5} sx={{ mt: "15px" }}>
-              {/* <FormLCSH setHit={setHit} /> */}
               <FormLocResources setHit={setHit} />
             </Grid>
             <Grid item xs={7} sx={{ mt: "15px" }}>
-              {hit && <CardLoc hit={hit} setHit={setHit} setForm={setForm} />}
+              {hit && <CardLocResource hit={hit} setHit={setHit} setForm={setForm} />}
             </Grid>
           </Grid>
         </Box>
 
-      ) :  
-     ( names.includes(hit?.type) ? 
-      <FormLocName hit={hit} setForm={setForm} /> : 
-      <FormLocSubject hit={hit} setForm={setForm} /> )
+      ) :  <FormLocWork hit={hit} setForm={setForm} />
+    //  ( names.includes(hit?.type) ? 
+      // <FormLocName hit={hit} setForm={setForm} /> : 
+    //   <FormLocSubject hit={hit} setForm={setForm} /> )
 }  
     </Container>
   );

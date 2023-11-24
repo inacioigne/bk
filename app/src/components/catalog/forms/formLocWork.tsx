@@ -1,7 +1,7 @@
 import { Box, Divider, Typography, Button } from "@mui/material";
 
 // BiblioKeia Components
-import FormMadsNames from "@/components/thesaurus/forms/formMadsNames"
+import FormBibframeWork from "@/components/catalog/forms/formBibframeWork"
 import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
 
 // React-Hook-Form
@@ -11,7 +11,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 // Schema
 import { ZodNames } from "@/schema/mads/zodNames";
-import { schemaMads } from "@/schema/authority";
+import { ZodWork } from "@/schema/bibframe/zodWork"
+import { Bibframe } from "@/schema/bibframe"
+
 
 // MUI Icons
 import { IoIosSave } from "react-icons/io";
@@ -31,10 +33,11 @@ import { useAlert } from "@/providers/alert";
 // Nextjs
 import { useRouter } from 'next/navigation'
 
-type SchemaCreateAuthority = z.infer<typeof ZodNames>;
+
+type SchemaCreateWork = z.infer<typeof ZodWork>;
 
 interface Props {
-    hit: schemaMads | null;
+    hit: Bibframe | null;
     setForm: Function;
 }
 
@@ -45,52 +48,28 @@ const headers = {
 
 function GetValue(hit: any) {
 
-    let elementList = hit.elementList[0]
     let uriDefault = [{
         uri: "",
         label: "",
         base: ""
     }]
+    let [type] = hit.type.filter(function (e: any) {
+        return e !== "Work";
+    })
+    
 
     const obj: any = {
-        type: hit.type,
-        elementList: [{
-            type: elementList.type, elementValue: {
-                value: elementList.elementValue.value,
-                lang: elementList.elementValue.lang
-            }
-        }],
-        identifiersLccn: hit.identifiersLccn,
-        fullerName: hit.fullerName,
-        birthPlace: hit.birthPlace,
-        birthDayDate: hit.birthDayDate,
-        birthMonthDate: hit.birthMonthDate,
-        birthYearDate: hit.birthYearDate,
-        deathPlace: hit.deathPlace,
-        deathDayDate: hit.deathDayDate,
-        deathMonthDate: hit.deathMonthDate,
-        deathYearDate: hit.deathYearDate,
-        hasVariant: hit.hasVariant ? hit.hasVariant : [{
-            type: "PersonalName",
-            elementList: [{ type: 'FullNameElement', elementValue: { value: "" } }]
-
-        }],
-        hasAffiliation: hit.hasAffiliation ? hit.hasAffiliation : [{
-            organization: { label: "", uri: "" },
-            affiliationStart: "",
-            affiliationEnd: ""
-        }],
-        occupation: hit.occupation ? hit.occupation : uriDefault,
-        fieldOfActivity: hit.fieldOfActivity ? hit.fieldOfActivity : uriDefault,
-        identifiesRWO: hit.identifiesRWO ? hit.identifiesRWO : uriDefault,
-        hasCloseExternalAuthority: hit.hasCloseExternalAuthority ? hit.hasCloseExternalAuthority : uriDefault,
-        hasBroaderAuthority: hit.hasBroaderAuthority
+        type: type,
+        title: hit.title,
+        // identifiersLccn: hit.identifiersLccn,
     }
     // console.log("loc", hit);
+    console.log(obj)
     return obj
+   
 }
 
-export default function FormLocName({ hit, setForm }: Props) {
+export default function FormLocWork({ hit, setForm }: Props) {
     const router = useRouter()
     const { setProgress } = useProgress();
     const [id, setId] = useState(null);
@@ -123,8 +102,8 @@ export default function FormLocName({ hit, setForm }: Props) {
         formState: { errors },
         setValue,
         getValues,
-    } = useForm<SchemaCreateAuthority>({
-        resolver: zodResolver(ZodNames),
+    } = useForm<SchemaCreateWork>({
+        resolver: zodResolver(ZodWork),
         defaultValues,
     });
 
@@ -172,7 +151,7 @@ export default function FormLocName({ hit, setForm }: Props) {
             <form onSubmit={handleSubmit(createAuthority)}>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
-                        Criar Autoridades - Nomes
+                        Criar Obra - Work
                     </Typography>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
                         <Button
@@ -195,7 +174,7 @@ export default function FormLocName({ hit, setForm }: Props) {
                     </Box>
                 </Box>
                 <Divider />
-                <FormMadsNames
+                <FormBibframeWork
                     control={control}
                     register={register}
                     errors={errors}

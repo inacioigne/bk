@@ -23,7 +23,8 @@ import FormOccupation from "@/components/madsrdf/forms/formOccupation"
 import FormFieldOfActivity from "@/components/madsrdf/forms/formFieldOfActivity"
 import FormRWO from "@/components/madsrdf/forms/formRWO"
 import FormHCEA from "@/components/madsrdf/forms/formHCEA"
-import FormType from "@/components/madsrdf/forms/formType";
+import FormBfType from "@/components/bibframe/formBfType";
+import FormBfTitle from "@/components/bibframe/formBfTitle";
 
 import { blueGrey } from '@mui/material/colors';
 
@@ -38,24 +39,19 @@ interface Props {
     setField: Function
 }
 
-export default function FormMadsNames({ control, register, errors, getValues, setValue, setOpen, setField }: Props) {
+export default function FormBibframeWork({ control, register, errors, getValues, setValue, setOpen, setField }: Props) {
 
     return (
         <Paper sx={{
             p: "25px", mt: "20px"
         }}>
             <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
-                        Autoridade
-                    </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <FormType control={control}
-                        register={register} />
+                <FormBfType
+                    control={control}
+                    register={register} />
+                <FormBfTitle register={register} />
 
-                </Grid>
-                <FormElementList
+                {/* <FormElementList
                     control={control}
                     register={register}
                     error={errors.elementList}
@@ -114,7 +110,7 @@ export default function FormMadsNames({ control, register, errors, getValues, se
                         variant="outlined"
                         {...register("imagem")}
                     />
-                </Grid>
+                </Grid> */}
             </Grid>
 
         </Paper>

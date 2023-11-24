@@ -18,7 +18,7 @@ export default function FormType({ register, control }: Props) {
             name={`type`}
             control={control}
             render={({ field }) => (
-                <FormControl //fullWidth
+                <FormControl 
                     sx={{ width: 400 }}
                 >
                     <InputLabel id="label">Tipo de Autoridade</InputLabel>
