@@ -86,7 +86,7 @@ export default function FormLocWork({ hit, setForm }: Props) {
 
     useEffect(() => {
         bkapi
-            .get(`/thesarus/next_id`)
+            .get("/catalog/next_id")
             .then(function (response) {
                 setId(response.data);
                 // console.log(response.data);
@@ -98,25 +98,7 @@ export default function FormLocWork({ hit, setForm }: Props) {
             .finally(function () {
                 // setProgress(false)
             });
-    }, [String(id)]);
-
-    // let defaultValues = GetValue(hit)
-    let defaultValues = {
-        "type": "Text",
-        "title": {
-            "type": "http://id.loc.gov/ontologies/bibframe/Title",
-            "mainTitle": "Teste IMPORT.",
-            "label": {
-                "@value": "Plants."
-            }
-        },
-        "content": {
-            "label": "text",
-            "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
-            "type": "http://id.loc.gov/ontologies/bibframe/Content"
-        },
-       
-    }
+    }, [String(id)]);  
 
 
     const {
@@ -131,62 +113,38 @@ export default function FormLocWork({ hit, setForm }: Props) {
         defaultValues: hit
     });
 
-    console.log(errors) 
+    // console.log(errors) 
     function CreateWork(data: any) {
-        
-
-
-        // let formData = ParserData(data)
-
-        function RemoveNull(obj: any) {
-            const formData = Object.keys(obj).reduce((acc: any, key) => {
-                // if (typeof obj[key] === 'object') {
-                //     let tmp = RemoveNull(obj[key]);
-                //     obj[key] = tmp
-                // }
-                if (obj[key] !== "") {
-                    acc[key] = obj[key];
-                }
-                return acc;
-            }, {});
-            return formData;
+   
+        let obj = {
+            identifiersLocal: String(id),
+            adminMetadata: {
+                status: {
+                    label: "novo",
+                    value: "n"
+                },
+            },
+            isPartOf: 'https://bibliokeia.com/catalog/works'
         }
-        //   console.log(data)
-        let formData = RemoveNull(data);
-        console.log("IR:", formData)
-        // let obj = {
-        //     identifiersLocal: String(id),
-        //     adminMetadata: {
-        //         status: {
-        //             label: "novo",
-        //             value: "n"
-        //         },
-        //     },
-        //     isPartOf: 'https://bibliokeia.com/catalog/works'
-        // }
-        // let request = { ...obj, ...formData };
-        // console.log("CR:", request)
-
-
-
-
-        // setProgress(true)
-        // bkapi.post("/catalog/work/create", request, {
-        //     headers: headers,
-        // })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             setMessage("Registro criado com sucesso!")
-        //             // router.push(`/admin/authority/names/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.error(error);
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+        let request = { ...obj, ...data };
+        console.log("CR:", request)
+        setProgress(true)
+        bkapi.post("/catalog/work/create", request, {
+            headers: headers,
+        })
+            .then(function (response) {
+                if (response.status === 201) {
+                    setMessage("Registro criado com sucesso!")
+                    // router.push(`/admin/authority/names/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                console.error(error);
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     return (

@@ -83,5 +83,11 @@ class Authority(Base):
     type = Column(String(20))
     uri = Column(String(200))
 
+class Catalog(Base):
+    __tablename__ = 'catalog'
+    id = Column(Integer, primary_key=True)
+    type = Column(String(20))
+    uri = Column(String(200))
+
 
     

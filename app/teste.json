@@ -1,19 +1,28 @@
 {
+    "identifiersLocal": "1",
+    "adminMetadata": {
+        "status": {
+            "label": "novo",
+            "value": "n"
+        }
+    },
+    "isPartOf": "https://bibliokeia.com/catalog/works",
     "type": "Text",
     "title": {
-        "mainTitle": "Plants."
+        "mainTitle": "Plants.",
+        "subtitle": ""
     },
     "content": {
         "label": "text",
         "type": "http://id.loc.gov/ontologies/bibframe/Content",
         "uri": "http://id.loc.gov/vocabulary/contentTypes/txt"
     },
-    "language": {
-        "0": {
+    "language": [
+        {
             "label": "English",
             "lang": "en",
             "type": "http://id.loc.gov/ontologies/bibframe/Language",
             "uri": "http://id.loc.gov/vocabulary/languages/eng"
         }
-    }
+    ]
 }

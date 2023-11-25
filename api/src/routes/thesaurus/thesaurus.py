@@ -46,7 +46,7 @@ async def post_authority(request: SchemaMads):
     session.add(a) 
     session.commit()
     
-    # # Jena
+    # Jena
     graph = MakeGraphName(request, request.identifiersLocal)
     # print(graph)
     response = authorityUpdate.run_sparql(graph)   

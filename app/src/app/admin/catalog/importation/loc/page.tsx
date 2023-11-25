@@ -63,7 +63,6 @@ export default function LOC() {
       <Box my={"1rem"}>
         <BreadcrumbsBK previousPaths={previousPaths} currentPath="LOC" />
       </Box>
-     
       {!form ? (
         <Box>
           <Typography variant="h4" gutterBottom>
