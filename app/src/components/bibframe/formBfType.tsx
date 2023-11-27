@@ -21,7 +21,6 @@ export default function FormBfType({ register, control }: Props) {
                 control={control}
                 render={({ field }) => (
                     <FormControl
-                        // sx={{ width: 300 }}
                         fullWidth
                     >
                         <InputLabel id="label">Tipo Work</InputLabel>

@@ -30,10 +30,11 @@ import {
 import { useEffect, useState } from "react";
 
 import { FcSearch } from "react-icons/fc";
+import { IoCloseSharp } from "react-icons/io5";
 
 // Services BiblioKeia
-import { SearchModalSubjects } from "@/services/thesarus/searchModalSubjects"
-import CardBkTheasaurs from "@/components/cards/cardBkThesaurus";
+import { SearchModalNames } from "@/services/thesarus/searchModalNames"
+import CardBkNames from "@/components/cards/cardBkNames";
 
 import { schemaAuthorityDoc } from "@/schema/solr"
 
@@ -45,7 +46,7 @@ interface Props {
     field: string
 }
 
-export default function ModalThesarus({ setOpen, setValue, open, field }: Props) {
+export default function ModalThesarusNames({ setOpen, setValue, open, field }: Props) {
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
@@ -56,12 +57,12 @@ export default function ModalThesarus({ setOpen, setValue, open, field }: Props)
 
     useEffect(() => {
         // console.log(type, search)
-        SearchModalSubjects(type, search, setDocs)
+        SearchModalNames(type, search, setDocs)
     }, [open])
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        SearchModalSubjects(type, search, setDocs)
+        SearchModalNames(type, search, setDocs)
         // console.log(type, search)
 
     };
@@ -75,8 +76,11 @@ export default function ModalThesarus({ setOpen, setValue, open, field }: Props)
             fullWidth={true}
             maxWidth={"md"}
         >
-            <DialogTitle id="alert-dialog-title">
-                Assuntos
+            <DialogTitle id="alert-dialog-title" sx={{display: "flex", justifyContent: "space-between"}}>
+                Nomes
+                <IconButton  onClick={handleClose} color="primary"><IoCloseSharp /></IconButton>
+                
+
             </DialogTitle>
             <Divider />
             <DialogContent>
@@ -99,7 +103,6 @@ export default function ModalThesarus({ setOpen, setValue, open, field }: Props)
                                         }}
                                     >
                                         <MenuItem value="*">Todos</MenuItem>
-                                        <MenuItem value="Topic">Termo Topico</MenuItem>
                                         <MenuItem value="Geographic">Termo Geográfico</MenuItem>
                                         <MenuItem value="PersonalName">Nome Pessoal</MenuItem>
                                         <MenuItem value="CorporateName">Nome Coorporativo</MenuItem>
@@ -165,7 +168,7 @@ export default function ModalThesarus({ setOpen, setValue, open, field }: Props)
                         )}
                     {/* </Grid> */}
                     <Grid item xs={8}>
-                        {doc ? <CardBkTheasaurs doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
+                        {doc ? <CardBkNames doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
                     </Grid>
                 </Grid>
             </DialogContent>

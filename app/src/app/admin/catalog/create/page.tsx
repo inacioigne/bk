@@ -17,10 +17,10 @@ import {
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormBibframeWork from "@/components/catalog/forms/formBibframeWork"
+import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
 
 // React Icons
 import { FcHome, FcCancel } from "react-icons/fc";
@@ -39,6 +39,8 @@ import { Bibframe } from "@/schema/bibframe"
 // React Hooks
 import { useEffect, useState } from "react";
 
+import { bkapi } from "@/services/api";
+
 
 import Link from "next/link";
 
@@ -55,33 +57,67 @@ const previousPaths = [
     },
 ];
 
+const headers = {
+    accept: "application/json",
+    "Content-Type": "application/json", 
+};
+
 export default function Create() {
     const [field, setField] = useState("");
     const [open, setOpen] = useState(false);
+    const [id, setId] = useState(null);
+
+    useEffect(() => {
+        bkapi
+            .get("/catalog/next_id")
+            .then(function (response) {
+                setId(response.data);
+                // console.log(response.data);
+            })
+            .catch(function (error) {
+                // manipula erros da requisição
+                console.error(error);
+            })
+            .finally(function () {
+                // setProgress(false)
+            });
+    }, [String(id)]);  
 
     type SchemaCreateWork = z.infer<typeof ZodWork>; 
     let defaultValues = {
-        "type": "Text",
-        "title": {
-            "type": "http://id.loc.gov/ontologies/bibframe/Title",
-            "mainTitle": "Plants.CREATE",
-            "label": {
-                "@value": "Plants."
+        "contribution": [
+            {
+            "agent": "",
+            "label": "",
+            "role": "",
+            "roleLabel": "http://id.loc.gov/vocabulary/relators/aut"
             }
-        },
+        ],
+        "type": "Text",
         "content": {
-            "label": "text",
+            "label": "Texto",
             "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
-            "type": "http://id.loc.gov/ontologies/bibframe/Content"
         },
-        "language": {
-            "label": "text",
-            "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
-            "type": "http://id.loc.gov/ontologies/bibframe/Content"
-        },
-
-       
+        "language": [{
+            "label": "por",
+            "uri": "http://id.loc.gov/vocabulary/languages/por",
+            // "type": ""
+        }],
+        // "title": {
+        //     "type": "http://id.loc.gov/ontologies/bibframe/Title",
+        //     "mainTitle": "Plants.CREATE",
+        //     "label": {
+        //         "@value": "Plants."
+        //     }
+        // },
+        // "content": {
+        //     "label": "Texto",
+        //     "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
+        //     // "type": "http://id.loc.gov/ontologies/bibframe/Content"
+        // },
+        
     }
+
     const {
         control,
         register,
@@ -97,45 +133,42 @@ export default function Create() {
     console.log("E: ", errors)
 
     function CreateWork(data: any) {
-        console.log("CR: ", data)
+        
 
         // setProgress(true)
         // let formData = ParserData(data)
     
-        // let obj = {
-        //   identifiersLocal: String(id),
-        //   adminMetadata: {
-        //     status: {
-        //       label: "novo", 
-        //       value: "n"
-        //     },
-        //   },
-        //   isMemberOfMADSCollection: "names",
-        //   authoritativeLabel: data.birthYearDate ?
-        //     `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
-        // }
+        let obj = {
+          identifiersLocal: String(id),
+          adminMetadata: {
+            status: {
+              label: "novo", 
+              value: "n"
+            },
+          },
+          isPartOf: "https://bibliokeia.com/catalog/works",
+          }
         
     
-        // const request = { ...obj, ...formData };
-        // // 
-    
+        const request = { ...obj, ...data };
+        console.log("CR: ", request)    
         // bkapi
-        //   .post("/thesarus/create", request, {
+        //   .post("/catalog/work/create", request, {
         //     headers: headers,
         //   })
         //   .then(function (response) {
         //     if (response.status === 201) {
-        //       // console.log(response);
-        //       setMessage("Registro criado com sucesso!")
-        //       router.push(`/admin/authority/names/${response.data.id}`);
+        //       console.log(response);
+        //     //   setMessage("Registro criado com sucesso!")
+        //     //   router.push(`/admin/authority/names/${response.data.id}`);
         //     }
         //   })
         //   .catch(function (error) {
         //     console.error(error);
         //   })
         //   .finally(function () {
-        //     setProgress(false)
-        //     setOpenSnack(true)
+        //     // setProgress(false)
+        //     // setOpenSnack(true)
         //   });
     
       }
@@ -147,8 +180,7 @@ export default function Create() {
             />
             <Divider sx={{ mt: "10px" }} />
             <Paper elevation={3} sx={{ p: "15px", mt: "10px", height: 500 }}>
-                <form onSubmit={handleSubmit(CreateWork)}
-                >
+                <form onSubmit={handleSubmit(CreateWork)} >
                     <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                         <Typography variant="h4" gutterBottom>
                             Criar Obra - Work
@@ -177,13 +209,15 @@ export default function Create() {
                     <FormBibframeWork
                         control={control}
                         register={register}
-                        // errors={errors}
+                        errors={errors}
                         // getValues={getValues}
-                        // setValue={setValue}
-                        // setOpen={setOpen}
+                        setValue={setValue}
+                        setOpen={setOpen}
                         setField={setField} />
 
                 </form>
+                <ModalThesarusNames setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue}/>
+
             </Paper>
         </Container>
     )

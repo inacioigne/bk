@@ -11,22 +11,14 @@ import {
     AccordionDetails
 } from "@mui/material";
 
-// import { IoIosArrowDown } from "react-icons/io";
 
-// import FormElementList from "@/components/madsrdf/forms/formElementList";
-// import FormFullerName from "@/components/madsrdf/forms/formFullerName"
-// import FormBirth from "@/components/madsrdf/forms/birth"
-// import FormDeath from "@/components/madsrdf/forms/death"
-// import FormVariant from "@/components/madsrdf/forms/formVariant"
-// import FormAffiliation from "@/components/madsrdf/forms/formAffiliation"
-// import FormOccupation from "@/components/madsrdf/forms/formOccupation"
-// import FormFieldOfActivity from "@/components/madsrdf/forms/formFieldOfActivity"
-// import FormRWO from "@/components/madsrdf/forms/formRWO"
-import FormHCEA from "@/components/madsrdf/forms/formHCEA"
 import FormBfType from "@/components/bibframe/formBfType";
 import FormBfTitle from "@/components/bibframe/formBfTitle";
 import FormBfContent from "@/components/bibframe/formBfContent";
 import FormBfLanguage from "@/components/bibframe/formBfLanguage";
+import FormBfContribution from "@/components/bibframe/formBfContribution";
+
+
 
 // import { blueGrey } from '@mui/material/colors';
 
@@ -34,28 +26,37 @@ import FormBfLanguage from "@/components/bibframe/formBfLanguage";
 interface Props {
     control: any
     register: Function
-    // errors: any
+    errors: any
     // getValues: Function
-    // setValue: Function
-    // setOpen: Function,
+    setValue: Function
+    setOpen: Function,
     setField: Function
 }
 
-export default function FormBibframeWork({ control, register, //errors, getValues, setValue, setOpen, 
+export default function FormBibframeWork({ control, register, setValue, errors, setOpen, //getValues, , , 
     setField }: Props) {
 
     return (
         <Paper sx={{
             p: "25px", mt: "20px"
         }}>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <FormBfContribution 
+                    register={register} 
+                    control={control} 
+                    error={errors.title} 
+                    setOpen={setOpen} 
+                    setField={setField}
+                    setValue={setValue} />
+                </Grid>
                 <FormBfType
                     control={control}
                     register={register} />
-                <FormBfContent register={register} />
-                <FormBfTitle register={register} />
+                <FormBfContent control={control} register={register} setValue={setValue} />
+                <FormBfTitle register={register} error={errors.title} />
                 <FormBfLanguage control={control} register={register} setField={setField} />
-              
+
             </Grid>
 
         </Paper>

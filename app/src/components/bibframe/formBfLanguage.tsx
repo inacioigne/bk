@@ -2,19 +2,16 @@
 import {
     Box,
     Grid,
-    TextField,
     IconButton,
-    InputAdornment,
-    Chip,
-    Avatar,
-    Accordion,
-    AccordionSummary,
-    Typography,
-    AccordionDetails
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem
 } from "@mui/material";
 
 // React-Hook-Form
 import { useFieldArray, useWatch } from "react-hook-form";
+import { Controller } from "react-hook-form"
 
 // React
 import { Fragment } from "react";
@@ -62,7 +59,27 @@ export default function FormBfLanguage({ control, register, setField }: Props) {
             {fields.map((field, index) => (
                 <Fragment key={index}>
                     <Grid item xs={4}>
-                        <TextField
+                        <Controller
+                            name={`language.${index}.label`}
+                            control={control}
+                            render={({ field }) => (
+                                <FormControl
+                                    fullWidth
+                                >
+                                    <InputLabel id="label">Idioma</InputLabel>
+                                    <Select
+                                        size="small"
+                                        label="Idioma"
+                                        {...field} >
+                                        <MenuItem value="por">Português</MenuItem>
+                                        <MenuItem value="eng">Inglês</MenuItem>
+                                        <MenuItem value="PersonalName">Nome Pessoal</MenuItem>
+                                        <MenuItem value="CorporateName">Nome Coorporativo</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            )}
+                        />
+                        {/* <TextField
                             fullWidth
                             disabled={true}
                             variant="standard"
@@ -114,10 +131,10 @@ export default function FormBfLanguage({ control, register, setField }: Props) {
                                         </InputAdornment>
                                     ),
                                 }}
-                        />
-                     
+                        /> */}
+
                     </Grid>
-                
+
                     <Grid item xs={2}>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                             <IconButton

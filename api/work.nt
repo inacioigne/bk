@@ -1,0 +1,387 @@
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> <http://id.worldcat.org/fast/00821801> .
+<http://id.loc.gov/authorities/subjects/sh85009815> <http://id.loc.gov/ontologies/bflc/marcKey> "150 0$aAuthors, Argentine" .
+<http://id.loc.gov/authorities/genreForms/gf2014026295> <http://id.loc.gov/ontologies/bflc/marcKey> "155  $aDomestic fiction" .
+_:N1a42a78f3b2e4277a2be7cdfa90e4336 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:Ndf2c3a941e8e493fb5f0d441dbf9516a .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/lclocal/d906> "=906     $a 7 $b cbc $c copycat $d 3 $e ncip $f 20 $g y-gencatlg" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> <http://id.worldcat.org/fast/01007080> .
+_:Ne954e3ab87564dad98c0c47958237b3d <http://id.loc.gov/ontologies/bflc/aap-normalized> "montevideo(uruguay)fiction" .
+_:N094ee8343edb473bb062e148b61213a8 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/genreFormSchemes/qlsp> .
+<http://id.loc.gov/vocabulary/languages/eng> <http://www.w3.org/2000/01/rdf-schema#label> "English"@en .
+_:N5588cce4e2b7409cb8cf9c43918754d9 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/authorities/subjects> .
+<http://id.loc.gov/rwo/agents/n50000647-781> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Geographic> .
+<http://id.loc.gov/rwo/agents/n50000647-781> <http://id.loc.gov/ontologies/bflc/marcKey> "181  $zUruguay" .
+<http://id.loc.gov/vocabulary/subjectSchemes/bidex> <http://www.w3.org/2000/01/rdf-schema#label> "Bilindex: a bilingual Spanish-English subject heading list" .
+_:N7a3207d7ec8c4692b53701d9fae6794a <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/authorities/subjects> .
+_:N3c98dd304aa948c98261028b2c9e88e1 <http://www.w3.org/2000/01/rdf-schema#label> "Deseo--Novela" .
+_:N4f45e2d09ded455181e5edf450d10361 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N24c7ffa81a1a4c94ae367561192bd403 .
+<http://id.loc.gov/authorities/genreForms/gf2014026295> <http://www.w3.org/2000/01/rdf-schema#label> "Domestic fiction"@en .
+_:N9048dbd09fd541729b3993694d31f580 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+<http://id.loc.gov/resources/works/21447514> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Monograph> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/language> <http://id.loc.gov/vocabulary/languages/spa> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/title> _:Nff81a1638f54453fbfe214b9d0ec3b41 .
+_:N094ee8343edb473bb062e148b61213a8 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Novela de la vida familiar" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/genreForm> <http://id.loc.gov/authorities/genreForms/gf2014026295> .
+_:Ne3eb04c04e3d43e8aa881748d4d878cb <http://id.loc.gov/ontologies/bflc/aap-normalized> "middleagedmenfiction" .
+_:Na03f74c1840c430983fd02d4318e084c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/AdminMetadata> .
+<http://id.loc.gov/resources/instances/21447514> <http://id.loc.gov/ontologies/bflc/publicationStatement> "Nueva York: Vintage Español, una división de Penguin Random House LLC; 2019" .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/lclocal/d925> "=925  0  $a acquire $b 1 shelf copy $x policy default" .
+_:N7a3207d7ec8c4692b53701d9fae6794a <http://www.loc.gov/mads/rdf/v1#componentList> _:N21513098ace34b21a2c7283e40b8ccc3 .
+_:N5588cce4e2b7409cb8cf9c43918754d9 <http://www.w3.org/2000/01/rdf-schema#label> "Argentines--Uruguay--Fiction" .
+_:N15dd448a06d54615b84ef8e9157305e0 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Novela" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:Ne3eb04c04e3d43e8aa881748d4d878cb .
+_:Ndf2c3a941e8e493fb5f0d441dbf9516a <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh99001562> .
+_:N82f0b006b5ef4f66926c86ef943009ee <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> <http://id.worldcat.org/fast/01202667> .
+_:Nf4b1c585d21a4bccb18c117de217c8e3 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Novela" .
+_:N6f40512e48d9464897e348ff609e7388 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/subjectSchemes/bidex> .
+_:N35c961d8346841e2a6ceac32177a5488 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Novela" .
+_:N0079972c0a674d7e84322f90a3261519 <http://id.loc.gov/ontologies/bflc/aap-normalized> "authorsargentinefiction" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> <http://id.worldcat.org/fast/00891351> .
+_:N8ba092ec501547b5a2e78f5067ea0a27 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/subjectSchemes/qlsp> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:Nb5b4bef20c1c40fdaff41689477bfed9 .
+_:N24c7ffa81a1a4c94ae367561192bd403 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Geographic> .
+<http://id.worldcat.org/fast/01206025> <http://www.loc.gov/mads/rdf/v1#componentList> _:Nc449876fd3934adc85e4099ca2b5b070 .
+_:N90d88e1d1a4546fa9aab6b4d304153a3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Contribution> .
+_:N9334e3988f29407880e9e28b83149728 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+<http://id.loc.gov/authorities/subjects/sh85084997> <http://id.loc.gov/ontologies/bflc/marcKey> "150  $aMiddle-aged men" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/genreForm> _:N9048dbd09fd541729b3993694d31f580 .
+_:N43105a7a9f864bf182048f0509ad1740 <http://id.loc.gov/ontologies/bibframe/assigner> <http://id.loc.gov/vocabulary/organizations/dlc> .
+<http://id.loc.gov/vocabulary/subjectSchemes/qlsp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:N221f1d7630884edf83c88f521c2e077e <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+<http://id.loc.gov/authorities/subjects/sh96002376> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+<http://id.loc.gov/resources/works/21447514> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Text> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:N3cd03d3483aa443f8892a2a29bfed334 .
+_:N84f5d2dbc4484093af48991f6b61711b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+_:N132dfdb31a8742109d33ea48baa15363 <http://id.loc.gov/ontologies/bibframe/assigner> <http://id.loc.gov/vocabulary/organizations/dlc> .
+_:N2330ac1c2dfc4c4d953554c2378ba1a2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh99001562> .
+_:Nb5b4bef20c1c40fdaff41689477bfed9 <http://id.loc.gov/ontologies/bflc/aap-normalized> "maritalconflictfiction" .
+_:Nb88ea21fc1004cb6a76864e4bd590c68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:Nfe8c315c2c0d481c9a76fadc98e732e6 .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/contribution> _:N48915b3d47ff48a09e55c0c596d74328 .
+_:N398c14268bb04cd2afca20f4d7edffb2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+_:N1a7372dc03ac4cd28b44d9280e25b9d9 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Fiction" .
+<http://id.loc.gov/vocabulary/menclvl/f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bflc/EncodingLevel> .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/changeDate> "2023-09-06T11:37:32"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> <http://id.worldcat.org/fast/01010071> .
+_:N3c98dd304aa948c98261028b2c9e88e1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+_:Na5c2d854f4dc4b66b825e10fce860240 <http://id.loc.gov/ontologies/bibframe/mainTitle> "La uruguaya" .
+_:N3c98dd304aa948c98261028b2c9e88e1 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Deseo--Novela" .
+_:N21513098ace34b21a2c7283e40b8ccc3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh85037214> .
+_:Nc449876fd3934adc85e4099ca2b5b070 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:Ne979b2cfa84a452ab9d9a4443e527cd9 .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> <http://id.worldcat.org/fast/01206025> .
+<http://id.loc.gov/vocabulary/descriptionConventions/rda> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/DescriptionConventions> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/summary> _:N1a9537ad72b54f8ca0dcb4e67ae47aeb .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/genreForm> _:N094ee8343edb473bb062e148b61213a8 .
+_:N094ee8343edb473bb062e148b61213a8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+<http://id.loc.gov/authorities/subjects/sh85037214> <http://id.loc.gov/ontologies/bflc/marcKey> "150  $aDesire" .
+_:Nff81a1638f54453fbfe214b9d0ec3b41 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Title> .
+_:N6f40512e48d9464897e348ff609e7388 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:Na5a692ddfe9141ee9425107b76855a17 <http://www.w3.org/2000/01/rdf-schema#label> "Autores argentinos--Novela" .
+_:N939d012cbe954af58f3a376b41890e4b <http://id.loc.gov/ontologies/bibframe/classificationPortion> "863.7" .
+<http://id.loc.gov/resources/works/21447514> <http://purl.org/dc/terms/isPartOf> <http://id.loc.gov/resources/works> .
+_:Nca83b8fbb4b44d208357e278f5337908 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh85009815> .
+<http://id.loc.gov/authorities/subjects/sh85009815> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/descriptionConventions> <http://id.loc.gov/vocabulary/descriptionConventions/isbd> .
+<http://id.loc.gov/vocabulary/geographicAreas/s-uy> <http://www.w3.org/2000/01/rdf-schema#label> "Uruguay"@en .
+_:N444c532290a84e2ab0e244e9c574a7a7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<http://id.loc.gov/rwo/agents/no2014069590> <http://id.loc.gov/ontologies/bflc/marcKey> "1102 $aPenguin Random House" .
+_:N3cd03d3483aa443f8892a2a29bfed334 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:N9334e3988f29407880e9e28b83149728 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/vocabulary/subjectSchemes/qlsp> .
+<http://id.loc.gov/vocabulary/relators/aut> <http://www.w3.org/2000/01/rdf-schema#label> "Author" .
+_:N8ba092ec501547b5a2e78f5067ea0a27 <http://id.loc.gov/ontologies/bflc/aap-normalized> "conflictoconyugalnovela" .
+_:N132dfdb31a8742109d33ea48baa15363 <http://id.loc.gov/ontologies/bibframe/itemPortion> "U78 2019" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> <http://id.worldcat.org/fast/00814307> .
+<http://id.worldcat.org/fast/01202667> <http://id.loc.gov/ontologies/bflc/aap-normalized> "uruguay" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:N7a3207d7ec8c4692b53701d9fae6794a .
+_:Nb97e6e96f47e492994ebc26f43734eeb <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:N87d01209b88e4920969f359034572146 .
+_:N6f40512e48d9464897e348ff609e7388 <http://id.loc.gov/ontologies/bflc/aap-normalized> "relacioneshombremujernovela" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:N0079972c0a674d7e84322f90a3261519 .
+<http://id.worldcat.org/fast/01206025> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Uruguay--Montevideo" .
+_:N7a3207d7ec8c4692b53701d9fae6794a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/adminMetadata> _:Na03f74c1840c430983fd02d4318e084c .
+_:N4a27653a9e564717b8f8ccb64d9e8c44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:N2330ac1c2dfc4c4d953554c2378ba1a2 .
+<http://id.worldcat.org/fast/01206025> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Place> .
+_:N8ba092ec501547b5a2e78f5067ea0a27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+_:N1a7372dc03ac4cd28b44d9280e25b9d9 <http://www.w3.org/2000/01/rdf-schema#label> "Fiction" .
+_:N221f1d7630884edf83c88f521c2e077e <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Relaciones hombre-mujer" .
+_:Ne3eb04c04e3d43e8aa881748d4d878cb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:N4f45e2d09ded455181e5edf450d10361 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:Nca83b8fbb4b44d208357e278f5337908 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:Nb0af4176efa7427bb3b0ae19c7ebb9e7 .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/assigner> _:N3f37daac82b24d64af4e9e6b2b853f37 .
+<http://id.loc.gov/vocabulary/contentTypes/txt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Content> .
+<http://id.loc.gov/vocabulary/descriptionConventions/isbd> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/DescriptionConventions> .
+_:Ne954e3ab87564dad98c0c47958237b3d <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Montevideo (Uruguay)--Fiction" .
+<http://id.loc.gov/resources/instances/21447514> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Instance> .
+<http://id.loc.gov/rwo/agents/no99009801> <http://www.w3.org/2000/01/rdf-schema#label> "Mairal, Pedro, 1970-" .
+_:Ne954e3ab87564dad98c0c47958237b3d <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/authorities/subjects> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/classification> _:N132dfdb31a8742109d33ea48baa15363 .
+_:N9334e3988f29407880e9e28b83149728 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/subjectSchemes/qlsp> .
+_:Na5a692ddfe9141ee9425107b76855a17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:N90d88e1d1a4546fa9aab6b4d304153a3 <http://id.loc.gov/ontologies/bibframe/agent> <http://id.loc.gov/rwo/agents/no99009801> .
+_:N0079972c0a674d7e84322f90a3261519 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/authorities/subjects> .
+<http://id.loc.gov/authorities/genreForms/gf2014026339> <http://www.w3.org/2000/01/rdf-schema#label> "Fiction"@en .
+<http://id.loc.gov/vocabulary/contentTypes/txt> <http://www.w3.org/2000/01/rdf-schema#label> "text" .
+_:Nd26a635353ff45a9a43eb5f88eb0b528 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<http://id.worldcat.org/fast/01202667> <http://www.w3.org/2000/01/rdf-schema#label> "Uruguay" .
+_:N8d1b91bd5ceb46f5ae75ab964bd1f383 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Novela" .
+_:Nc3a3accdce844fa3a086a256863a2fbd <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:N1980b14d4548402eb11844b4e6100350 .
+_:Na5a692ddfe9141ee9425107b76855a17 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/subjectSchemes/bidex> .
+_:N9048dbd09fd541729b3993694d31f580 <http://www.w3.org/2000/01/rdf-schema#label> "Domestic fiction" .
+_:N0db661cd82334782a865c3404a7252c3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Summary> .
+_:Ne3eb04c04e3d43e8aa881748d4d878cb <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/authorities/subjects> .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/identifiedBy> _:N43105a7a9f864bf182048f0509ad1740 .
+_:N094ee8343edb473bb062e148b61213a8 <http://www.w3.org/2000/01/rdf-schema#label> "Novela de la vida familiar" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:Ne954e3ab87564dad98c0c47958237b3d .
+_:N1a7372dc03ac4cd28b44d9280e25b9d9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+_:N395e1410a49a44d7881b3bd46d64e1d0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh99001562> .
+_:N1980b14d4548402eb11844b4e6100350 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<http://id.loc.gov/authorities/subjects/sh99001562> <http://id.loc.gov/ontologies/bflc/marcKey> "185  $vFiction" .
+_:N9f71006493bb447fb1fca3c3a990a04d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+_:Nc449876fd3934adc85e4099ca2b5b070 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:N4f45e2d09ded455181e5edf450d10361 .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/geographicCoverage> <http://id.loc.gov/vocabulary/geographicAreas/s-uy> .
+_:N3c98dd304aa948c98261028b2c9e88e1 <http://id.loc.gov/ontologies/bflc/aap-normalized> "deseonovela" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:Na5a692ddfe9141ee9425107b76855a17 .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/descriptionConventions> <http://id.loc.gov/vocabulary/descriptionConventions/rda> .
+_:N500fbc46afa64135aec833fb4e7b0c44 <http://id.loc.gov/ontologies/bibframe/code> "23" .
+_:Na5a692ddfe9141ee9425107b76855a17 <http://www.loc.gov/mads/rdf/v1#componentList> _:N11d614ef34de469f9edd05b898705d8d .
+_:N24c7ffa81a1a4c94ae367561192bd403 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Montevideo" .
+_:Ne954e3ab87564dad98c0c47958237b3d <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/authorities/subjects> .
+<http://id.loc.gov/authorities/genreForms/gf2014026295> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GenreForm> .
+_:N500fbc46afa64135aec833fb4e7b0c44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Source> .
+_:Nfb241df0a94948e4803cf9aaac738147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N8d1b91bd5ceb46f5ae75ab964bd1f383 .
+_:N87d01209b88e4920969f359034572146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:Nb5b4bef20c1c40fdaff41689477bfed9 <http://www.loc.gov/mads/rdf/v1#componentList> _:Nc3a3accdce844fa3a086a256863a2fbd .
+_:Na9f6542444ca4e46ad01d8b318924fc8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+_:N5588cce4e2b7409cb8cf9c43918754d9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+_:N43105a7a9f864bf182048f0509ad1740 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Local> .
+_:N88af95d284754bb58eb030bbccd4672d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GenreForm> .
+_:N444c532290a84e2ab0e244e9c574a7a7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N84f5d2dbc4484093af48991f6b61711b .
+<http://id.loc.gov/resources/instances/21447514> <http://id.loc.gov/ontologies/bibframe/title> _:Na5c2d854f4dc4b66b825e10fce860240 .
+_:N35c961d8346841e2a6ceac32177a5488 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+<http://id.loc.gov/vocabulary/subjectSchemes/bidex> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:Ne954e3ab87564dad98c0c47958237b3d <http://www.w3.org/2000/01/rdf-schema#label> "Montevideo (Uruguay)--Fiction" .
+_:Ndf316ed88df947d0889f5bbae7ab62ab <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:N369f758bd18c4666b3c023a295f6cd74 .
+<http://id.loc.gov/rwo/agents/no2014069590> <http://www.w3.org/2000/01/rdf-schema#label> "Penguin Random House" .
+_:N132dfdb31a8742109d33ea48baa15363 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/ClassificationLcc> .
+_:N06ad9fae389446e3a3baef5fe278f718 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Montevideo (Uruguay)" .
+_:N3c98dd304aa948c98261028b2c9e88e1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+<http://id.worldcat.org/fast/01206025> <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/subjectSchemes/fast> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:N9334e3988f29407880e9e28b83149728 .
+<http://id.loc.gov/vocabulary/marcauthen/lccopycat> <http://www.w3.org/2000/01/rdf-schema#label> "LC Copy Cataloging" .
+_:Nb5b4bef20c1c40fdaff41689477bfed9 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Marital conflict--Fiction" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/genreForm> _:N1a7372dc03ac4cd28b44d9280e25b9d9 .
+_:Ne979b2cfa84a452ab9d9a4443e527cd9 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Uruguay" .
+<http://id.loc.gov/vocabulary/mstatus/uba> <http://www.w3.org/2000/01/rdf-schema#label> "used by assigner" .
+_:N9048dbd09fd541729b3993694d31f580 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GenreForm> .
+_:N3c98dd304aa948c98261028b2c9e88e1 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/subjectSchemes/bidex> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/contribution> _:N90d88e1d1a4546fa9aab6b4d304153a3 .
+<http://id.worldcat.org/fast/01202667> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Geographic> .
+_:N84f5d2dbc4484093af48991f6b61711b <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Novela" .
+_:Nb0af4176efa7427bb3b0ae19c7ebb9e7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh99001562> .
+<http://id.loc.gov/rwo/agents/no99009801> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Person> .
+_:N939d012cbe954af58f3a376b41890e4b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/ClassificationDdc> .
+_:N1a9537ad72b54f8ca0dcb4e67ae47aeb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Summary> .
+<http://id.loc.gov/vocabulary/organizations/dlc> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Organization> .
+_:Nf7162f1f35e743b68be88f99737fa6a4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh85007098> .
+_:N11d614ef34de469f9edd05b898705d8d <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N398c14268bb04cd2afca20f4d7edffb2 .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/descriptionLanguage> <http://id.loc.gov/vocabulary/languages/eng> .
+_:N0079972c0a674d7e84322f90a3261519 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/authorities/subjects> .
+_:N939d012cbe954af58f3a376b41890e4b <http://id.loc.gov/ontologies/bibframe/edition> "full" .
+_:N7a3207d7ec8c4692b53701d9fae6794a <http://www.w3.org/2000/01/rdf-schema#label> "Desire--Fiction" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/hasInstance> <http://id.loc.gov/resources/instances/21447514> .
+<http://id.worldcat.org/fast/01202667> <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/subjectSchemes/fast> .
+_:N132dfdb31a8742109d33ea48baa15363 <http://id.loc.gov/ontologies/bibframe/classificationPortion> "PQ7798.23.A369" .
+_:N87d01209b88e4920969f359034572146 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N35c961d8346841e2a6ceac32177a5488 .
+_:Nad7301a568984dc0935b1fb2befd558d <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:Nd26a635353ff45a9a43eb5f88eb0b528 .
+_:Nb5b4bef20c1c40fdaff41689477bfed9 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/authorities/subjects> .
+_:N15dd448a06d54615b84ef8e9157305e0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+_:N3cd03d3483aa443f8892a2a29bfed334 <http://www.loc.gov/mads/rdf/v1#componentList> _:Nb88ea21fc1004cb6a76864e4bd590c68 .
+_:N398c14268bb04cd2afca20f4d7edffb2 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Autores argentinos" .
+<http://id.worldcat.org/fast/01206025> <http://www.w3.org/2000/01/rdf-schema#label> "Uruguay--Montevideo" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:N8ba092ec501547b5a2e78f5067ea0a27 .
+_:N88af95d284754bb58eb030bbccd4672d <http://www.w3.org/2000/01/rdf-schema#label> "Novels" .
+<http://id.loc.gov/vocabulary/descriptionConventions/isbd> <http://www.w3.org/2000/01/rdf-schema#label> "ISBD: International standard bibliographic description" .
+_:N0db661cd82334782a865c3404a7252c3 <http://www.w3.org/2000/01/rdf-schema#label> "Lucas Pereyra, un escritor recién entrado en la cuarentena, viaja de Buenos Aires a Montevideo para recoger un dinero que le han mandado desde el extranjero y que no puede recibir en su país debido a las restricciones cambiarias. Casado y con un hijo, no atraviesa su mejor momento, pero la perspectiva de pasar un día en otro país en compañía de una joven amiga es suficiente para animarle un poco. Una vez en Uruguay, las cosas no salen tal como las había planeado, así que a Lucas no le quedará más remedio que afrontar la realidad. Narrada con una brillante voz en primera persona, La uruguaya es una intensa y divertida novela sobre una crisis conyugal que nos habla también de cómo, en algún punto de nuestras vidas, debemos enfrentarnos a las promesas que nos hacemos y que no cumplimos, a las diferencias entre aquello que somos y aquello que nos gustaría ser." .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> <http://id.worldcat.org/fast/01020373> .
+<http://id.loc.gov/authorities/subjects> <http://www.w3.org/2000/01/rdf-schema#label> "Library of\n            Congress Subject Headings"@en .
+_:N8ba092ec501547b5a2e78f5067ea0a27 <http://www.w3.org/2000/01/rdf-schema#label> "Conflicto conyugal--Novela" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bflc/aap-normalized> "mairalpedro1970lauruguaya" .
+<http://id.loc.gov/authorities/subjects/sh85084997> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+<http://id.worldcat.org/fast/01202667> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Uruguay" .
+_:N7a3207d7ec8c4692b53701d9fae6794a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:N1a9537ad72b54f8ca0dcb4e67ae47aeb <http://www.w3.org/2000/01/rdf-schema#label> "Lucas Pereyra, a writer recently in his early forties, travels from Buenos Aires to Montevideo to collect money sent to him from abroad that he cannot receive in his country due to exchange restrictions. Married and with a child, he is not going through his best moments, but the prospect of spending a day in another country in the company of a young friend is enough to encourage him a little. Once in Uruguay, things do not go as planned, so Lucas will have no choice but to face reality. Narrated with a brilliant first-person voice, La Uruguaya is an intense and fun novel about a marital crisis that also tells us how, at some point in our lives, we must face the promises we make and that we don't keep, the differences between what we are and what we would like to be." .
+<http://id.loc.gov/authorities/subjects> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Source> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bflc/aap> "Mairal, Pedro, 1970- La uruguaya" .
+<http://id.loc.gov/rwo/agents/n50000647-781> <http://www.w3.org/2000/01/rdf-schema#label> "Uruguay" .
+_:N8ba092ec501547b5a2e78f5067ea0a27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+<http://id.worldcat.org/fast/01206025> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:N9048dbd09fd541729b3993694d31f580 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Domestic fiction" .
+<http://id.loc.gov/vocabulary/subjectSchemes/qlsp> <http://www.w3.org/2000/01/rdf-schema#label> "Queens Library Spanish language subject headings" .
+_:N094ee8343edb473bb062e148b61213a8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GenreForm> .
+_:Ne954e3ab87564dad98c0c47958237b3d <http://www.loc.gov/mads/rdf/v1#componentList> _:N1a42a78f3b2e4277a2be7cdfa90e4336 .
+_:N88af95d284754bb58eb030bbccd4672d <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/genreFormSchemes/fast> .
+_:Ne954e3ab87564dad98c0c47958237b3d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Place> .
+_:Nfe8c315c2c0d481c9a76fadc98e732e6 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Uruguay" .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/descriptionModifier> <http://id.loc.gov/vocabulary/organizations/dlc> .
+_:Nb5b4bef20c1c40fdaff41689477bfed9 <http://www.w3.org/2000/01/rdf-schema#label> "Marital conflict--Fiction" .
+_:N0079972c0a674d7e84322f90a3261519 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+_:N8ba092ec501547b5a2e78f5067ea0a27 <http://www.loc.gov/mads/rdf/v1#componentList> _:Nc5faa68b6b0248abb16e229e9d1bbee3 .
+_:N48915b3d47ff48a09e55c0c596d74328 <http://id.loc.gov/ontologies/bibframe/agent> <http://id.loc.gov/rwo/agents/no2014069590> .
+_:Na9f6542444ca4e46ad01d8b318924fc8 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Novela" .
+_:Na5a692ddfe9141ee9425107b76855a17 <http://id.loc.gov/ontologies/bflc/aap-normalized> "autoresargentinosnovela" .
+_:Ndb3856d3b19f47ce96e905e571ab83d7 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Montevideo (Uruguay)" .
+_:N539495de2b384ab984cca023567c834f <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N2e83054857834dc38430d8f55d93018c .
+_:Ne3eb04c04e3d43e8aa881748d4d878cb <http://www.loc.gov/mads/rdf/v1#componentList> _:N4a27653a9e564717b8f8ccb64d9e8c44 .
+<http://id.loc.gov/vocabulary/mstatus/uba> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Status> .
+_:N9334e3988f29407880e9e28b83149728 <http://id.loc.gov/ontologies/bflc/aap-normalized> "montevideo(uruguay)novela" .
+<http://id.loc.gov/vocabulary/languages/spa> <http://www.w3.org/2000/01/rdf-schema#label> "Spanish"@en .
+_:Nb5b4bef20c1c40fdaff41689477bfed9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+<http://id.loc.gov/authorities/subjects/sh85037214> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+<http://id.worldcat.org/fast/01206025> <http://id.loc.gov/ontologies/bflc/aap-normalized> "uruguaymontevideo" .
+_:Nb97e6e96f47e492994ebc26f43734eeb <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N221f1d7630884edf83c88f521c2e077e .
+_:Ncb89d242bc2146c59e36c7f456e5c8a4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GenerationProcess> .
+<http://id.loc.gov/authorities/genreForms/gf2015026020> <http://id.loc.gov/ontologies/bflc/marcKey> "155  $aNovels" .
+_:Na8226e8caaa84f3289f5d2a8542b14e5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N15dd448a06d54615b84ef8e9157305e0 .
+_:N1980b14d4548402eb11844b4e6100350 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh99001562> .
+_:N88af95d284754bb58eb030bbccd4672d <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Novels" .
+_:N3c98dd304aa948c98261028b2c9e88e1 <http://www.loc.gov/mads/rdf/v1#componentList> _:N539495de2b384ab984cca023567c834f .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/genreForm> <http://id.loc.gov/authorities/genreForms/gf2015026020> .
+_:N9048dbd09fd541729b3993694d31f580 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/genreFormSchemes/fast> .
+<http://id.loc.gov/authorities/subjects/sh85007098> <http://www.w3.org/2000/01/rdf-schema#label> "Argentines"@en .
+<http://id.loc.gov/authorities/subjects/sh85084997> <http://www.w3.org/2000/01/rdf-schema#label> "Middle-aged men"@en .
+_:N0079972c0a674d7e84322f90a3261519 <http://www.w3.org/2000/01/rdf-schema#label> "Authors, Argentine--Fiction" .
+_:N8ba092ec501547b5a2e78f5067ea0a27 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Conflicto conyugal--Novela" .
+_:N43105a7a9f864bf182048f0509ad1740 <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> "21447514" .
+_:N6f40512e48d9464897e348ff609e7388 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/vocabulary/subjectSchemes/bidex> .
+_:Nff81a1638f54453fbfe214b9d0ec3b41 <http://id.loc.gov/ontologies/bibframe/mainTitle> "La uruguaya" .
+_:N4a27653a9e564717b8f8ccb64d9e8c44 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh85084997> .
+_:N3f37daac82b24d64af4e9e6b2b853f37 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Agent> .
+_:Nc5faa68b6b0248abb16e229e9d1bbee3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N9f71006493bb447fb1fca3c3a990a04d .
+<http://id.loc.gov/rwo/agents/no99009801> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Agent> .
+_:Nad7301a568984dc0935b1fb2befd558d <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/rwo/agents/n50000647-781> .
+_:N8ba092ec501547b5a2e78f5067ea0a27 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/vocabulary/subjectSchemes/qlsp> .
+_:Na5c2d854f4dc4b66b825e10fce860240 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Title> .
+_:N2e83054857834dc38430d8f55d93018c <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+_:N0079972c0a674d7e84322f90a3261519 <http://www.loc.gov/mads/rdf/v1#componentList> _:Nca83b8fbb4b44d208357e278f5337908 .
+_:Nd26a635353ff45a9a43eb5f88eb0b528 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh99001562> .
+_:N3cd03d3483aa443f8892a2a29bfed334 <http://www.w3.org/2000/01/rdf-schema#label> "Uruguay--Novela" .
+_:N2e83054857834dc38430d8f55d93018c <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Deseo" .
+_:N5588cce4e2b7409cb8cf9c43918754d9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+<http://id.worldcat.org/fast/01202667> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Place> .
+_:Ncb89d242bc2146c59e36c7f456e5c8a4 <http://www.w3.org/2000/01/rdf-schema#label> "DLC marc2bibframe2 v2.3.0" .
+<http://id.loc.gov/vocabulary/relators/aut> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Role> .
+_:Ne979b2cfa84a452ab9d9a4443e527cd9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Geographic> .
+_:Ndf2c3a941e8e493fb5f0d441dbf9516a <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<http://id.loc.gov/vocabulary/relators/pbl> <http://www.w3.org/2000/01/rdf-schema#label> "Publisher" .
+_:N48915b3d47ff48a09e55c0c596d74328 <http://id.loc.gov/ontologies/bibframe/role> <http://id.loc.gov/vocabulary/relators/pbl> .
+_:N2330ac1c2dfc4c4d953554c2378ba1a2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:Nfe8c315c2c0d481c9a76fadc98e732e6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Geographic> .
+_:Nb0af4176efa7427bb3b0ae19c7ebb9e7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:N7a3207d7ec8c4692b53701d9fae6794a <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Desire--Fiction" .
+_:N1a7372dc03ac4cd28b44d9280e25b9d9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GenreForm> .
+_:N0079972c0a674d7e84322f90a3261519 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Authors, Argentine--Fiction" .
+<http://id.loc.gov/vocabulary/genreFormSchemes/qlsp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Source> .
+_:N7a3207d7ec8c4692b53701d9fae6794a <http://id.loc.gov/ontologies/bflc/aap-normalized> "desirefiction" .
+_:N06ad9fae389446e3a3baef5fe278f718 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Geographic> .
+_:N9334e3988f29407880e9e28b83149728 <http://www.w3.org/2000/01/rdf-schema#label> "Montevideo (Uruguay)--Novela" .
+<http://id.loc.gov/vocabulary/marcauthen/lccopycat> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/DescriptionAuthentication> .
+<http://id.loc.gov/vocabulary/organizations/dlc> <http://www.w3.org/2000/01/rdf-schema#label> "United States, Library of Congress" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/genreForm> <http://id.loc.gov/authorities/genreForms/gf2014026339> .
+_:N539495de2b384ab984cca023567c834f <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:Nfb241df0a94948e4803cf9aaac738147 .
+_:N90d88e1d1a4546fa9aab6b4d304153a3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bflc/PrimaryContribution> .
+<http://id.loc.gov/vocabulary/mstatus/c> <http://www.w3.org/2000/01/rdf-schema#label> "changed" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/classification> _:N939d012cbe954af58f3a376b41890e4b .
+_:Na5a692ddfe9141ee9425107b76855a17 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/vocabulary/subjectSchemes/bidex> .
+_:Nc3a3accdce844fa3a086a256863a2fbd <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://id.loc.gov/authorities/subjects/sh96002376> .
+_:Ne3eb04c04e3d43e8aa881748d4d878cb <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/authorities/subjects> .
+_:N6f40512e48d9464897e348ff609e7388 <http://www.loc.gov/mads/rdf/v1#componentList> _:Nb97e6e96f47e492994ebc26f43734eeb .
+<http://id.loc.gov/rwo/agents/no2014069590> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Organization> .
+<http://id.loc.gov/authorities/subjects/sh99001562> <http://www.w3.org/2000/01/rdf-schema#label> "Fiction"@en .
+<http://id.loc.gov/vocabulary/subjectSchemes/bidex> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Source> .
+_:Ndf316ed88df947d0889f5bbae7ab62ab <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:N06ad9fae389446e3a3baef5fe278f718 .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/content> <http://id.loc.gov/vocabulary/contentTypes/txt> .
+_:Ndb3856d3b19f47ce96e905e571ab83d7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Geographic> .
+_:N3cd03d3483aa443f8892a2a29bfed334 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/vocabulary/subjectSchemes/bidex> .
+_:Na5a692ddfe9141ee9425107b76855a17 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Autores argentinos--Novela" .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/descriptionAuthentication> <http://id.loc.gov/vocabulary/marcauthen/lccopycat> .
+_:N5588cce4e2b7409cb8cf9c43918754d9 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Argentines--Uruguay--Fiction" .
+_:N9334e3988f29407880e9e28b83149728 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Place> .
+<http://id.loc.gov/authorities/subjects> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#MADSScheme> .
+_:N9334e3988f29407880e9e28b83149728 <http://www.loc.gov/mads/rdf/v1#componentList> _:Ndf316ed88df947d0889f5bbae7ab62ab .
+<http://id.loc.gov/authorities/subjects/sh85007098> <http://id.loc.gov/ontologies/bflc/marcKey> "150 0$aArgentines" .
+_:Na8226e8caaa84f3289f5d2a8542b14e5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/lclocal/d955> "=955     $b xn16 2020-02-26 z-processor to USPRLL $i bf09 2020-06-24 (situational) $e bf09 2020-06-24 (situational) $a bf19 2021-04-20 copy 2 to surplus $b xk33 2023-09-06 z-processor $i xk33 2023-09-06 copy 1 to PresSrvs" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:N3c98dd304aa948c98261028b2c9e88e1 .
+_:N395e1410a49a44d7881b3bd46d64e1d0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<http://id.loc.gov/vocabulary/mstatus/c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Status> .
+_:Nfb241df0a94948e4803cf9aaac738147 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+<http://id.loc.gov/authorities/subjects/sh96002376> <http://id.loc.gov/ontologies/bflc/marcKey> "150 0$aMarital conflict" .
+_:N9334e3988f29407880e9e28b83149728 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Montevideo (Uruguay)--Novela" .
+_:N11d614ef34de469f9edd05b898705d8d <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:N444c532290a84e2ab0e244e9c574a7a7 .
+<http://id.loc.gov/vocabulary/languages/eng> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Language> .
+<http://id.loc.gov/authorities/subjects/sh85037214> <http://www.w3.org/2000/01/rdf-schema#label> "Desire"@en .
+_:N5588cce4e2b7409cb8cf9c43918754d9 <http://id.loc.gov/ontologies/bflc/aap-normalized> "argentinesuruguayfiction" .
+<http://id.loc.gov/vocabulary/subjectSchemes/qlsp> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Source> .
+_:N3f37daac82b24d64af4e9e6b2b853f37 <http://id.loc.gov/ontologies/bibframe/code> "IHZ" .
+<http://id.loc.gov/rwo/agents/no2014069590> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Agent> .
+_:N939d012cbe954af58f3a376b41890e4b <http://id.loc.gov/ontologies/bibframe/source> _:N500fbc46afa64135aec833fb4e7b0c44 .
+_:Nc5faa68b6b0248abb16e229e9d1bbee3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:N82f0b006b5ef4f66926c86ef943009ee .
+_:N8d1b91bd5ceb46f5ae75ab964bd1f383 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+<http://id.loc.gov/vocabulary/descriptionConventions/rda> <http://www.w3.org/2000/01/rdf-schema#label> "Resource description and access" .
+_:Ncb89d242bc2146c59e36c7f456e5c8a4 <http://id.loc.gov/ontologies/bibframe/generationDate> "2023-09-07T01:40:37.257999-04:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://id.loc.gov/authorities/subjects/sh96002376> <http://www.w3.org/2000/01/rdf-schema#label> "Marital conflict"@en .
+_:Ne3eb04c04e3d43e8aa881748d4d878cb <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Middle-aged men--Fiction" .
+_:Ne954e3ab87564dad98c0c47958237b3d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:N3cd03d3483aa443f8892a2a29bfed334 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/subjectSchemes/bidex> .
+_:N6f40512e48d9464897e348ff609e7388 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+_:Nf4b1c585d21a4bccb18c117de217c8e3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+_:N0079972c0a674d7e84322f90a3261519 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:N5588cce4e2b7409cb8cf9c43918754d9 .
+_:Nb88ea21fc1004cb6a76864e4bd590c68 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:Na8226e8caaa84f3289f5d2a8542b14e5 .
+<http://id.loc.gov/vocabulary/menclvl/f> <http://www.w3.org/2000/01/rdf-schema#label> "full" .
+_:N6f40512e48d9464897e348ff609e7388 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Relaciones hombre-mujer--Novela" .
+<http://id.loc.gov/authorities/genreForms/gf2015026020> <http://www.w3.org/2000/01/rdf-schema#label> "Novels"@en .
+<http://id.loc.gov/rwo/agents/no99009801> <http://id.loc.gov/ontologies/bflc/marcKey> "1001 $aMairal, Pedro,$d1970-" .
+_:Nb5b4bef20c1c40fdaff41689477bfed9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+<http://id.loc.gov/authorities/subjects/sh85009815> <http://www.w3.org/2000/01/rdf-schema#label> "Authors, Argentine"@en .
+_:N1a7372dc03ac4cd28b44d9280e25b9d9 <http://id.loc.gov/ontologies/bibframe/source> <http://id.loc.gov/vocabulary/genreFormSchemes/fast> .
+_:N3cd03d3483aa443f8892a2a29bfed334 <http://id.loc.gov/ontologies/bflc/aap-normalized> "uruguaynovela" .
+_:N5588cce4e2b7409cb8cf9c43918754d9 <http://www.loc.gov/mads/rdf/v1#componentList> _:Nf7162f1f35e743b68be88f99737fa6a4 .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bflc/encodingLevel> <http://id.loc.gov/vocabulary/menclvl/f> .
+<http://id.loc.gov/vocabulary/geographicAreas/s-uy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GeographicCoverage> .
+_:N3cd03d3483aa443f8892a2a29bfed334 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Place> .
+_:N3cd03d3483aa443f8892a2a29bfed334 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Uruguay--Novela" .
+<http://id.loc.gov/authorities/subjects/sh99001562> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/subject> _:N6f40512e48d9464897e348ff609e7388 .
+_:N369f758bd18c4666b3c023a295f6cd74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:N9f71006493bb447fb1fca3c3a990a04d <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Conflicto conyugal" .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/summary> _:N0db661cd82334782a865c3404a7252c3 .
+_:N369f758bd18c4666b3c023a295f6cd74 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:Nf4b1c585d21a4bccb18c117de217c8e3 .
+_:Nb5b4bef20c1c40fdaff41689477bfed9 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/authorities/subjects> .
+<http://id.loc.gov/authorities/genreForms/gf2014026339> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GenreForm> .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/generationProcess> _:Ncb89d242bc2146c59e36c7f456e5c8a4 .
+_:Na5c2d854f4dc4b66b825e10fce860240 <http://id.loc.gov/ontologies/bibframe/subtitle> "una novela" .
+_:N5588cce4e2b7409cb8cf9c43918754d9 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/authorities/subjects> .
+<http://id.loc.gov/vocabulary/genreFormSchemes/qlsp> <http://id.loc.gov/ontologies/bibframe/code> "qlsp" .
+_:N7a3207d7ec8c4692b53701d9fae6794a <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/authorities/subjects> .
+_:Ne3eb04c04e3d43e8aa881748d4d878cb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+<http://id.loc.gov/authorities/genreForms/gf2015026020> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/GenreForm> .
+<http://id.loc.gov/authorities/genreForms/gf2014026339> <http://id.loc.gov/ontologies/bflc/marcKey> "155  $aFiction" .
+_:N1a42a78f3b2e4277a2be7cdfa90e4336 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:Ndb3856d3b19f47ce96e905e571ab83d7 .
+_:Nf7162f1f35e743b68be88f99737fa6a4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:Nad7301a568984dc0935b1fb2befd558d .
+<http://id.loc.gov/resources/works/21447514> <http://id.loc.gov/ontologies/bibframe/genreForm> _:N88af95d284754bb58eb030bbccd4672d .
+_:N88af95d284754bb58eb030bbccd4672d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+<http://id.loc.gov/vocabulary/relators/pbl> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Role> .
+_:Ne3eb04c04e3d43e8aa881748d4d878cb <http://www.w3.org/2000/01/rdf-schema#label> "Middle-aged men--Fiction" .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/status> <http://id.loc.gov/vocabulary/mstatus/c> .
+<http://id.loc.gov/authorities/subjects/sh85007098> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+_:N21513098ace34b21a2c7283e40b8ccc3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:N395e1410a49a44d7881b3bd46d64e1d0 .
+_:Na5a692ddfe9141ee9425107b76855a17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Topic> .
+_:N82f0b006b5ef4f66926c86ef943009ee <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:Na9f6542444ca4e46ad01d8b318924fc8 .
+_:N132dfdb31a8742109d33ea48baa15363 <http://id.loc.gov/ontologies/bibframe/status> <http://id.loc.gov/vocabulary/mstatus/uba> .
+_:N90d88e1d1a4546fa9aab6b4d304153a3 <http://id.loc.gov/ontologies/bibframe/role> <http://id.loc.gov/vocabulary/relators/aut> .
+_:N3c98dd304aa948c98261028b2c9e88e1 <http://www.loc.gov/mads/rdf/v1#isMemberOfMADSScheme> <http://id.loc.gov/vocabulary/subjectSchemes/bidex> .
+<http://id.loc.gov/vocabulary/languages/spa> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Language> .
+<http://id.loc.gov/resources/works/21447514> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Work> .
+_:N6f40512e48d9464897e348ff609e7388 <http://www.w3.org/2000/01/rdf-schema#label> "Relaciones hombre-mujer--Novela" .
+_:N48915b3d47ff48a09e55c0c596d74328 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://id.loc.gov/ontologies/bibframe/Contribution> .
+_:Na03f74c1840c430983fd02d4318e084c <http://id.loc.gov/ontologies/bibframe/creationDate> "2020-02-26"^^<http://www.w3.org/2001/XMLSchema#date> .

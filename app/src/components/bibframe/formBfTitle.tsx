@@ -1,11 +1,12 @@
 // MUI
-import { TextField, Grid } from "@mui/material";
+import { TextField, Grid, Typography } from "@mui/material";
 
 interface Props {
     register: any
+    error: any
 }
 
-export default function FormBfTitle({ register }: Props) {
+export default function FormBfTitle({ register, error }: Props) {
     return (
         <>
             <Grid item xs={6}>
@@ -16,6 +17,16 @@ export default function FormBfTitle({ register }: Props) {
                     variant="outlined"
                     {...register("title.mainTitle")}
                 />
+                 {error && (
+                            <Typography
+                                variant="caption"
+                                display="block"
+                                gutterBottom
+                                color={"red"}
+                            >
+                                {error.mainTitle.message}
+                            </Typography>
+                        )}
             </Grid>
             <Grid item xs={6}>
                 <TextField

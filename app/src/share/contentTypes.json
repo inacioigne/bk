@@ -1,0 +1,11 @@
+[
+    {
+        "label": "cartographic dataset",
+        "uri": "http://id.loc.gov/vocabulary/contentTypes/crd"
+    },
+    {
+        "label": "Texto",
+        "uri": "http://id.loc.gov/vocabulary/contentTypes/txt"
+    }
+
+]

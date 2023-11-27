@@ -279,6 +279,7 @@ class Contribution(BaseModel):
     agent: str
     label: str
     role: str
+    roleLabel: str
 
     # _type = ["bf:Contribution", 'http://id.loc.gov/ontologies/bflc/PrimaryContribution' ] 
 

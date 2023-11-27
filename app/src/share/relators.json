@@ -1,0 +1,10 @@
+[
+    {
+        "label": "Autor",
+        "uri": "http://id.loc.gov/vocabulary/relators/aut"
+    },
+    {
+        "label": "Tradutor",
+        "uri": "http://id.loc.gov/vocabulary/relators/trl"
+    }
+]

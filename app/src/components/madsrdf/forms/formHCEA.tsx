@@ -29,14 +29,14 @@ interface Props {
 export default function FormHCEA({ control, register }: Props) {
     const {
         fields,
-        append: appendHCEA,
-        remove: removeHCEA,
+        append,
+        remove,
     } = useFieldArray({
         control,
         name: "hasCloseExternalAuthority",
     });
     const addHCEA = () => {
-        appendHCEA({
+        append({
             uri: "",
             label: "",
             base: ""
@@ -101,7 +101,7 @@ export default function FormHCEA({ control, register }: Props) {
                                 <IconButton
                                     aria-label="add"
                                     onClick={() => {
-                                        removeHCEA(index);
+                                        remove(index);
                                     }}
                                     color="primary"
                                 >

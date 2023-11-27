@@ -6,6 +6,7 @@ from pyfuseki import FusekiUpdate
 from sqlalchemy import exc
 from src.function.catalog.work.graphWork import MakeGraphWork
 from src.schemas.settings import Settings
+from src.function.catalog.solr.work import DocWork
 
 router = APIRouter()
 settings = Settings()
@@ -25,14 +26,16 @@ async def create_work(request: Work):
         raise HTTPException(status_code=409, detail="Esse registro já existe")
     finally:
         session.close()
-        
     
     # Jena
     graph = MakeGraphWork(request)
     response = fuseki.run_sparql(graph) 
 
+    # Solr
+    responseSolr = DocWork(request) 
+
     return {
         "id": request.identifiersLocal,
          "jena": response.convert()['message'],
-        # "solr": responseSolr
+        "solr": responseSolr
         } 

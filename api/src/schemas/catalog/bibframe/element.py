@@ -5,4 +5,4 @@ class Element(BaseModel):
     label: str
     lang: Optional[str] = None
     uri: str
-    type: str
+    type: Optional[str] = None

@@ -1,32 +1,65 @@
 // MUI
-import { TextField, Grid } from "@mui/material";
+import {
+    TextField, Grid, FormControl,
+    InputLabel,
+    // Select,
+    MenuItem
+} from "@mui/material";
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
+import { Controller } from "react-hook-form"
+
+// Share
+import contentTypes from "@/share/contentTypes.json" assert { type: "json" };
 
 interface Props {
-    register: any
+    register: any,
+    control: any;
+    setValue: Function
 }
 
-export default function FormBfContent({ register }: Props) {
+export default function FormBfContent({ control, register, setValue }: Props) {
+    // console.log(contentTypes)
+    const handleChange = (event: SelectChangeEvent) => {
+        // setAge(event.target.value as string);
+        console.log(event.target.value)
+    };
     return (
         <>
             <Grid item xs={6}>
-                <TextField
-                    fullWidth
-                    size="small"
-                    label="Conteúdo"
-                    variant="outlined"
-                    {...register("content.label")}
+                <Controller
+                    name={`content.uri`}
+                    control={control}
+                    defaultValue={"http://id.loc.gov/vocabulary/contentTypes/txt"}
+                    render={({ field }) => (
+                        <FormControl
+                            fullWidth
+                        >
+                            <InputLabel id="label">Conteúdo</InputLabel>
+                            <Select
+                                size="small"
+                                label="Conteúdo"
+                                {...field}
+                            // onChange={(e) => {
+                            //     field.onChange(e);
+                            //   }}
+                            >
+
+                                {contentTypes.map((type, index) =>
+                                (<MenuItem
+                                    key={index}
+                                    value={type.uri}
+                                    onClick={() => {
+                                        setValue("content.label", type.label)
+                                        console.log(type)
+                                    }}
+                                >{type.label}</MenuItem>)
+                                )}
+                            </Select>
+                        </FormControl>
+                    )}
                 />
             </Grid>
-            {/* <Grid item xs={6}>
-                <TextField
-                    fullWidth
-                    size="small"
-                    label="Subtítulo"
-                    variant="outlined"
-                    {...register("title.subtitle")}
-                />
-            </Grid> */}
         </>
-
     )
 }
