@@ -40,10 +40,9 @@ import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
 // BiblioKeia Components
 import { TabSubjects } from "@/components/thesaurus/tables/tabSubjects";
-import FacetTypeNames from "@/components/facets/names/typeNames";
+// import FacetTypeNames from "@/components/facets/names/typeNames";
 import FacetType from "@/components/facets/subjects/facetType"
-// import Affiliation from "@/components/facets/affiliations";
-// import Occupations from "@/components/facets/occupations";
+
 
 // Nextjs
 import { usePathname, useSearchParams } from "next/navigation";
@@ -79,6 +78,7 @@ export default function Subjects() {
             setRowCount,
             setFacetType,
         );
+        console.log(rows)
 
     }, [pathname, searchParams]);
 
@@ -267,12 +267,12 @@ export default function Subjects() {
                                     />
                                 ) : (
                                     <Grid item xs={8}>
-                                    <Box sx={{ display: "flex" }}>
-                                        <Alert severity="info" >
-                                            Sua busca não retorno nenhum resultado.
-                                        </Alert>
-                                    </Box>
-                                </Grid>
+                                        <Box sx={{ display: "flex" }}>
+                                            <Alert severity="info" >
+                                                Sua busca não retorno nenhum resultado.
+                                            </Alert>
+                                        </Box>
+                                    </Grid>
                                 )}
                             </Grid>
                         </Grid>

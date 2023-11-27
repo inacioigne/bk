@@ -76,10 +76,10 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
             fullWidth={true}
             maxWidth={"md"}
         >
-            <DialogTitle id="alert-dialog-title" sx={{display: "flex", justifyContent: "space-between"}}>
+            <DialogTitle id="alert-dialog-title" sx={{ display: "flex", justifyContent: "space-between" }}>
                 Nomes
-                <IconButton  onClick={handleClose} color="primary"><IoCloseSharp /></IconButton>
-                
+                <IconButton onClick={handleClose} color="primary"><IoCloseSharp /></IconButton>
+
 
             </DialogTitle>
             <Divider />

@@ -21,7 +21,7 @@ import { FcCheckmark } from "react-icons/fc";
 
 import HasVariant from "@/components/madsrdf/view/hasVariant";
 import MadsUri from "@/components/madsrdf/view/madsUri";
-import ListMadsBk from "@/components/madsrdf/view/listMadsBk"
+// import ListMadsBk from "@/components/madsrdf/view/listMadsBk"
 
 interface Props {
     doc: schemaAuthorityDoc;

@@ -1,5 +1,5 @@
 {
-    "identifiersLocal": "7",
+    "identifiersLocal": "1",
     "adminMetadata": {
         "status": {
             "label": "novo",
@@ -7,8 +7,33 @@
         }
     },
     "isPartOf": "https://bibliokeia.com/catalog/works",
+    "contribution": [
+        {
+            "agent": "https://bibliokeia.com/authority/PersonalName/7",
+            "label": "Popper, Karl R.",
+            "role": "http://id.loc.gov/vocabulary/relators/aut",
+            "roleLabel": "Autor"
+        },
+        {
+            "agent": "https://bibliokeia.com/authority/PersonalName/8",
+            "label": "Bath, Sérgio",
+            "role": "http://id.loc.gov/vocabulary/relators/trl",
+            "roleLabel": "Tradutor"
+        }
+    ],
     "type": "Text",
     "title": {
-        "mainTitle": "Plants."
-    }
+        "mainTitle": "Conjecturas e refutações",
+        "subtitle": "pensamento científico"
+    },
+    "content": {
+        "label": "Texto",
+        "uri": "http://id.loc.gov/vocabulary/contentTypes/txt"
+    },
+    "language": [
+        {
+            "label": "por",
+            "uri": "http://id.loc.gov/vocabulary/languages/por"
+        }
+    ]
 }

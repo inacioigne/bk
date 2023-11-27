@@ -27,7 +27,6 @@ import { FcHome, FcCancel } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
 import { IoIosSave } from "react-icons/io";
 
-
 // React-Hook-Form
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -40,6 +39,11 @@ import { Bibframe } from "@/schema/bibframe"
 import { useEffect, useState } from "react";
 
 import { bkapi } from "@/services/api";
+
+
+// Providers BiblioKeia
+import { useProgress } from "@/providers/progress";
+import { useAlert } from "@/providers/alert";
 
 
 import Link from "next/link";
@@ -66,6 +70,8 @@ export default function Create() {
     const [field, setField] = useState("");
     const [open, setOpen] = useState(false);
     const [id, setId] = useState(null);
+    const { setProgress } = useProgress();
+    const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
 
     useEffect(() => {
         bkapi
@@ -89,8 +95,8 @@ export default function Create() {
             {
             "agent": "",
             "label": "",
-            "role": "",
-            "roleLabel": "http://id.loc.gov/vocabulary/relators/aut"
+            "role": "http://id.loc.gov/vocabulary/relators/aut",
+            "roleLabel": "Autor"
             }
         ],
         "type": "Text",
@@ -152,24 +158,31 @@ export default function Create() {
     
         const request = { ...obj, ...data };
         console.log("CR: ", request)    
-        // bkapi
-        //   .post("/catalog/work/create", request, {
-        //     headers: headers,
-        //   })
-        //   .then(function (response) {
-        //     if (response.status === 201) {
-        //       console.log(response);
-        //     //   setMessage("Registro criado com sucesso!")
-        //     //   router.push(`/admin/authority/names/${response.data.id}`);
-        //     }
-        //   })
-        //   .catch(function (error) {
-        //     console.error(error);
-        //   })
-        //   .finally(function () {
-        //     // setProgress(false)
-        //     // setOpenSnack(true)
-        //   });
+        setProgress(true)
+        bkapi
+          .post("/catalog/work/create", request, {
+            headers: headers,
+          })
+          .then(function (response) {
+            if (response.status === 201) {
+              console.log(response);
+              setMessage("Registro criado com sucesso!")
+            //   router.push(`/admin/authority/names/${response.data.id}`);
+            }
+          })
+          .catch(function (error) {
+            if (error.response.status === 409) {
+                setTypeAlert("error")
+                setMessage("Este registro já existe")
+                console.error("ER:", error);
+
+            }
+            
+          })
+          .finally(function () {
+            setProgress(false)
+            setOpenSnack(true)
+          });
     
       }
     return (

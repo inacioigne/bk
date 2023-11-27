@@ -42,6 +42,7 @@ export function SearchSubjects(
         return { id: doc.id, authority: doc.authority[0], type: doc.type };
       });
       setRows(r);
+      console.log(r)
       // Facets
       const fType = TransformFacet(
         response.data.facet_counts.facet_fields.type

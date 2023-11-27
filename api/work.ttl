@@ -7,280 +7,115 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://id.loc.gov/authorities/genreForms/gf2014026339> a bf:GenreForm ;
-    rdfs:label "Fiction"@en ;
-    bflc:marcKey "155  $aFiction" .
-
-<http://id.loc.gov/authorities/genreForms/gf2014026492> a bf:GenreForm ;
-    rdfs:label "Psychological fiction"@en ;
-    bflc:marcKey "155  $aPsychological fiction" .
-
-<http://id.loc.gov/authorities/genreForms/gf2015026020> a bf:GenreForm ;
-    rdfs:label "Novels"@en ;
-    bflc:marcKey "155  $aNovels" .
-
-<http://id.loc.gov/authorities/subjects/sh85007098> a madsrdf:Topic ;
-    rdfs:label "Argentines"@en ;
-    bflc:marcKey "150 0$aArgentines" .
-
-<http://id.loc.gov/authorities/subjects/sh85009793> a madsrdf:Topic ;
-    rdfs:label "Authors"@en ;
-    bflc:marcKey "150  $aAuthors" .
-
-<http://id.loc.gov/authorities/subjects/sh85037214> a madsrdf:Topic ;
-    rdfs:label "Desire"@en ;
-    bflc:marcKey "150  $aDesire" .
-
-<http://id.loc.gov/authorities/subjects/sh85081416> a madsrdf:Topic ;
-    rdfs:label "Marriage"@en ;
-    bflc:marcKey "150  $aMarriage" .
-
-<http://id.loc.gov/authorities/subjects/sh89001167> a madsrdf:Topic ;
-    rdfs:label "Midlife crisis"@en ;
-    bflc:marcKey "150 0$aMidlife crisis" .
-
-<http://id.loc.gov/authorities/subjects/sh92001504> a madsrdf:Topic ;
-    rdfs:label "Man-woman relationships"@en ;
-    bflc:marcKey "150  $aMan-woman relationships" .
-
-<http://id.loc.gov/entities/relationships/ebookversion> a bflc:Relation ;
-    rdfs:label "Ebook version" .
-
-<http://id.loc.gov/resources/hubs/81e10526-02e7-b57d-59ce-bf4b0044bdbf> a bf:Work ;
-    rdfs:label "Mairal, Pedro, 1970- Uruguaya. English" ;
-    bf:contribution [ a bflc:PrimaryContribution,
-                bf:Contribution ;
-            bf:agent [ a bf:Agent,
-                        bf:Person ;
-                    rdfs:label "Mairal, Pedro, 1970-" ] ;
-            bf:role <http://id.loc.gov/vocabulary/relators/ctb> ] ;
-    bf:title [ a bf:Title ;
-            bf:mainTitle "Uruguaya. English" ] .
-
-<http://id.loc.gov/resources/instances/21723259> a bf:Instance ;
-    bf:title [ a bf:Title ;
-            bf:mainTitle "The woman from Uruguay" ] .
-
-<http://id.loc.gov/resources/works/21723259> a bf:Text,
+<http://id.loc.gov/resources/works/1893399> a bf:Text,
         bf:Work ;
-    rdfs:label "Mairal, Pedro, 1970- The woman from Uruguay" ;
-    bflc:aap "Mairal, Pedro, 1970- The woman from Uruguay" ;
-    bflc:aap-normalized "mairalpedro1970thewomanfromuruguay" ;
+    rdfs:label "Conjectures and refutations : the growth of scientific knowledge" ;
+    bflc:aap "Popper, Karl R. (Karl Raimund), 1902-1994. Conjectures and refutations : the growth of scientific knowledge" ;
+    bflc:aap-normalized "popperkarlr(karlraimund)19021994conjecturesandrefutations:thegrowthofscientificknowledge" ;
     bf:adminMetadata [ a bf:AdminMetadata ;
             bflc:encodingLevel <http://id.loc.gov/vocabulary/menclvl/f> ;
-            bf:assigner <http://id.loc.gov/vocabulary/organizations/njbwbt> ;
-            bf:changeDate "2021-11-09T14:29:00"^^xsd:dateTime ;
-            bf:creationDate "2020-09-18"^^xsd:date ;
-            bf:descriptionAuthentication <http://id.loc.gov/vocabulary/marcauthen/lccopycat> ;
-            bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/isbd>,
-                <http://id.loc.gov/vocabulary/descriptionConventions/rda> ;
-            bf:descriptionLanguage <http://id.loc.gov/vocabulary/languages/eng> ;
+            bf:assigner <http://id.loc.gov/vocabulary/organizations/mh> ;
+            bf:changeDate "2008-05-09T11:03:06"^^xsd:dateTime ;
+            bf:creationDate "1983-12-01"^^xsd:date ;
+            bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/aacr> ;
             bf:descriptionModifier <http://id.loc.gov/vocabulary/organizations/dlc> ;
             bf:generationProcess [ a bf:GenerationProcess ;
-                    rdfs:label "DLC marc2bibframe2 v1.7.0" ;
-                    bf:generationDate "2022-04-20T20:03:34.418609-04:00"^^xsd:dateTime ] ;
+                    rdfs:label "DLC marc2bibframe2 v1.7.0-SNAPSHOT" ;
+                    bf:generationDate "2021-08-04T20:33:57-04:00"^^xsd:dateTime ] ;
             bf:identifiedBy [ a bf:Local ;
-                    bf:source <http://id.loc.gov/vocabulary/organizations/uk> ;
-                    rdf:value "020321625" ],
-                [ a bf:Local ;
                     bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
-                    rdf:value "21723259" ] ;
-            bf:status <http://id.loc.gov/vocabulary/mstatus/c> ;
-            lclocal:d906 "=906     $a 7 $b cbc $c copycat $d 2 $e ncip $f 20 $g y-gencatlg" ;
-            lclocal:d925 "=925  0  $a acquire $b 1 shelf copy $x policy default" ;
-            lclocal:d955 "=955     $b xd09 2020-09-18 $a xn11 2021-10-06 1 copy rec'd., to USPRLL $b xk25 2021-10-14 z-processor $i xk02 2021-11-05 to CMD (telework)" ] ;
+                    rdf:value "1893399" ] ;
+            bf:status [ a bf:Status ;
+                    rdfs:label "corrected or revised" ;
+                    bf:code "c" ] ;
+            lclocal:d906 "=906     $a 7 $b cbc $c orignew $d u $e ncip $f 19 $g y-gencatlg" ] ;
     bf:classification [ a bf:ClassificationLcc ;
-            bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
-            bf:classificationPortion "PQ7798.23.A369" ;
-            bf:itemPortion "U7813 2021" ],
-        [ a bf:ClassificationDdc ;
-            bf:classificationPortion "863/.64" ;
-            bf:edition "full" ;
-            bf:source [ a bf:Source ;
-                    bf:code "23" ] ] ;
+            bf:classificationPortion "BD241" ;
+            bf:itemPortion ".P65x 1968" ] ;
     bf:content <http://id.loc.gov/vocabulary/contentTypes/txt> ;
-    bf:contribution [ a bf:Contribution ;
-            bf:agent [ a bf:Agent,
-                        bf:Person ;
-                    rdfs:label "Croft, Jennifer (Translator)" ] ;
-            bf:role [ a bf:Role ;
-                    rdfs:label "translator" ] ],
-        [ a bf:Contribution ;
-            bf:agent <http://id.loc.gov/rwo/agents/no2008179862> ;
-            bf:role <http://id.loc.gov/vocabulary/relators/trl> ],
-        [ a bflc:PrimaryContribution,
+    bf:contribution [ a bflc:PrimaryContribution,
                 bf:Contribution ;
-            bf:agent <http://id.loc.gov/rwo/agents/no99009801> ;
-            bf:role <http://id.loc.gov/vocabulary/relators/aut> ],
-        [ a bflc:PrimaryContribution,
-                bf:Contribution ;
-            bf:agent [ a bf:Agent,
-                        bf:Person ;
-                    rdfs:label "Mairal, Pedro, 1970-" ] ;
-            bf:role [ a bf:Role ;
-                    rdfs:label "author" ] ] ;
-    bf:expressionOf <http://id.loc.gov/resources/hubs/81e10526-02e7-b57d-59ce-bf4b0044bdbf> ;
-    bf:genreForm [ a bf:GenreForm,
-                madsrdf:Topic ;
-            rdfs:label "Novels." ;
-            bf:identifiedBy [ a bf:Identifier ;
-                    bf:source [ a bf:Source ;
-                            bf:code "OCoLC" ] ;
-                    rdf:value "fst01921742" ] ;
-            bf:source <http://id.loc.gov/vocabulary/genreFormSchemes/fast> ;
-            madsrdf:authoritativeLabel "Novels." ],
-        <http://id.loc.gov/authorities/genreForms/gf2014026339>,
-        <http://id.loc.gov/authorities/genreForms/gf2014026492>,
-        <http://id.loc.gov/authorities/genreForms/gf2015026020> ;
-    bf:geographicCoverage <http://id.loc.gov/vocabulary/geographicAreas/s-uy> ;
-    bf:hasInstance <http://id.loc.gov/resources/instances/21723259> ;
-    bf:language [ a bf:Language ;
-            bf:part "original" ;
-            rdf:value <http://id.loc.gov/vocabulary/languages/spa> ],
-        [ a bf:Language ;
-            rdf:value <http://id.loc.gov/vocabulary/languages/eng> ],
-        [ a bf:Language ;
-            bf:note [ a bf:Note ;
-                    rdfs:label "Translated from the Spanish." ] ],
-        <http://id.loc.gov/vocabulary/languages/eng> ;
-    bf:note [ a bf:Note ;
-            rdfs:label "Includes translation" ] ;
-    bf:otherPhysicalFormat [ a bf:Work ;
-            bflc:aap "The woman from Uruguay" ;
-            bflc:aap-normalized "thewomanfromuruguay" ;
-            bflc:relationship [ a bflc:Relationship ;
-                    bflc:relation <http://id.loc.gov/entities/relationships/ebookversion> ;
-                    bf:relatedTo <http://id.loc.gov/resources/works/21723259> ] ;
-            bf:hasInstance [ a bf:Instance ;
-                    bf:identifiedBy [ a bf:Isbn ;
-                            rdf:value "9781635577341" ] ;
-                    bf:title [ a bf:Title ;
-                            bf:mainTitle "The woman from Uruguay" ] ] ;
-            bf:title [ a bf:Title ;
-                    bf:mainTitle "The woman from Uruguay" ] ] ;
+            bf:agent <http://id.loc.gov/rwo/agents/n80032184> ;
+            bf:role <http://id.loc.gov/vocabulary/relators/ctb> ] ;
+    bf:hasInstance <http://id.loc.gov/resources/instances/1893399> ;
+    bf:language <http://id.loc.gov/vocabulary/languages/eng> ;
     bf:subject [ a bf:Topic,
                 madsrdf:ComplexSubject ;
-            rdfs:label "Man-woman relationships--Fiction." ;
-            bflc:aap-normalized "manwomanrelationshipsfiction" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Man-woman relationships--Fiction." ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh92001504> <http://id.loc.gov/authorities/subjects/sh99001562> ) ;
+            rdfs:label "Science--Methodology." ;
+            bflc:aap-normalized "sciencemethodology" ;
+            madsrdf:authoritativeLabel "Science--Methodology." ;
+            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85118553> <http://id.loc.gov/authorities/subjects/sh99001902> ) ;
             madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Desire--Fiction." ;
-            bflc:aap-normalized "desirefiction" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Desire--Fiction." ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85037214> <http://id.loc.gov/authorities/subjects/sh99001562> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Authors--Fiction." ;
-            bflc:aap-normalized "authorsfiction" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Authors--Fiction." ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85009793> <http://id.loc.gov/authorities/subjects/sh99001562> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Argentines--Uruguay--Fiction." ;
-            bflc:aap-normalized "argentinesuruguayfiction" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Argentines--Uruguay--Fiction." ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85007098> <http://id.loc.gov/rwo/agents/n50000647-781> <http://id.loc.gov/authorities/subjects/sh99001562> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Midlife crisis--Fiction." ;
-            bflc:aap-normalized "midlifecrisisfiction" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Midlife crisis--Fiction." ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh89001167> <http://id.loc.gov/authorities/subjects/sh99001562> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Marriage--Fiction." ;
-            bflc:aap-normalized "marriagefiction" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Marriage--Fiction." ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85081416> <http://id.loc.gov/authorities/subjects/sh99001562> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ] ;
-    bf:summary [ a bf:Summary ;
-            rdfs:label "Trapped in a loveless marriage, Lucas Pereyra, an unemployed writer in his forties, finds the one thing that keeps him going is the woman from Uruguay whom he met at a conference and has been longing to see ever since." ],
-        [ a bf:Summary ;
-            rdfs:label "\"Lucas Pereyra, an unemployed writer in his forties, embarks on a day trip from Buenos Aires to Montevideo to pick up fifteen thousand dollars in cash. An advance due to him on his upcoming novel, the small fortune might mean the solution to his problems, most importantly the tension he has with his wife. While she spends her days at work and her nights out on the town-with a lover, perhaps, he doesn't know for sure-Lucas is stuck at home all day staring at the blank page, caring for his son Maiko and fantasizing about the one thing that keeps him going: the woman from Uruguay whom he met at a conference and has been longing to see ever since. But that woman, Magalí Guerra Zabala, is a free spirit with her own relationship troubles, and the day they spend together in this beautiful city on the beach winds up being nothing like Lucas predicted. The constantly surprising, moving story of this dramatically transformative day in their lives, The Woman from Uruguay is both a gripping narrative and a tender, thought-provoking exploration of the nature of relationships. An international bestseller published in fourteen countries, it is the masterpiece of one of the most original voices in Latin American literature today.\" -- Book jacket." ] ;
+        <http://id.loc.gov/authorities/subjects/sh85072732>,
+        <http://id.loc.gov/authorities/subjects/sh85106252>,
+        <http://id.loc.gov/authorities/subjects/sh99001902> ;
+    bf:supplementaryContent [ a bf:SupplementaryContent ;
+            rdfs:label "Includes bibliographical references and indexes." ],
+        <http://id.loc.gov/vocabulary/msupplcont/bibliography>,
+        <http://id.loc.gov/vocabulary/msupplcont/index> ;
     bf:title [ a bf:Title ;
-            bf:mainTitle "The woman from Uruguay" ],
-        [ a bf:Title ;
-            bf:mainTitle "The woman from Uruguay" ] ;
+            rdfs:label "Conjectures and refutations : the growth of scientific knowledge" ;
+            bf:mainTitle "Conjectures and refutations : the growth of scientific knowledge" ] ;
     dcterms:isPartOf <http://id.loc.gov/resources/works> .
 
-<http://id.loc.gov/rwo/agents/n50000647-781> a madsrdf:Geographic ;
-    rdfs:label "Uruguay" ;
-    bflc:marcKey "181  $zUruguay" .
+<http://id.loc.gov/authorities/subjects> a madsrdf:MADSScheme ;
+    rdfs:label """Library of
+            Congress Subject Headings"""@en .
 
-<http://id.loc.gov/rwo/agents/no2008179862> a bf:Agent,
-        bf:Person ;
-    rdfs:label "Croft, Jennifer (Translator)" ;
-    bflc:marcKey "1001 $aCroft, Jennifer$c(Translator)" .
+<http://id.loc.gov/authorities/subjects/sh85072732> a bf:Topic ;
+    rdfs:label "Knowledge, Theory of"@en ;
+    bflc:marcKey "150  $aKnowledge, Theory of" .
 
-<http://id.loc.gov/rwo/agents/no99009801> a bf:Agent,
+<http://id.loc.gov/authorities/subjects/sh85106252> a bf:Topic ;
+    rdfs:label "Prediction (Logic)"@en ;
+    bflc:marcKey "150 0$aPrediction (Logic)" .
+
+<http://id.loc.gov/authorities/subjects/sh85118553> a madsrdf:Topic ;
+    rdfs:label "Science"@en ;
+    bflc:marcKey "150  $aScience" .
+
+<http://id.loc.gov/resources/instances/1893399> a bf:Instance ;
+    rdfs:label "Conjectures and refutations : the growth of scientific knowledge" ;
+    bf:provisionActivityStatement "New York : Harper & Row, 1968, c1965." ;
+    bf:title [ a bf:Title ;
+            rdfs:label "Conjectures and refutations : the growth of scientific knowledge" ;
+            bf:mainTitle "Conjectures and refutations" ;
+            bf:subtitle "the growth of scientific knowledge" ] .
+
+<http://id.loc.gov/rwo/agents/n80032184> a bf:Agent,
         bf:Person ;
-    rdfs:label "Mairal, Pedro, 1970-" ;
-    bflc:marcKey "1001 $aMairal, Pedro,$d1970-" .
+    rdfs:label "Popper, Karl R. (Karl Raimund), 1902-1994" ;
+    bflc:marcKey "1001 $aPopper, Karl R.$q(Karl Raimund),$d1902-1994" .
 
 <http://id.loc.gov/vocabulary/contentTypes/txt> a bf:Content ;
     rdfs:label "text" .
 
-<http://id.loc.gov/vocabulary/descriptionConventions/isbd> a bf:DescriptionConventions ;
-    rdfs:label "ISBD: International standard bibliographic description" .
+<http://id.loc.gov/vocabulary/descriptionConventions/aacr> a bf:DescriptionConventions ;
+    rdfs:label "Anglo-American cataloguing rules" .
 
-<http://id.loc.gov/vocabulary/descriptionConventions/rda> a bf:DescriptionConventions ;
-    rdfs:label "Resource description and access" .
-
-<http://id.loc.gov/vocabulary/genreFormSchemes/fast> a bf:Source ;
-    bf:code "fast" .
-
-<http://id.loc.gov/vocabulary/geographicAreas/s-uy> a bf:GeographicCoverage ;
-    rdfs:label "Uruguay"@en .
-
-<http://id.loc.gov/vocabulary/languages/spa> a madsrdf:Language ;
-    rdfs:label "Spanish"@en .
-
-<http://id.loc.gov/vocabulary/marcauthen/lccopycat> a bf:DescriptionAuthentication ;
-    rdfs:label "LC Copy Cataloging" .
+<http://id.loc.gov/vocabulary/languages/eng> a bf:Language ;
+    rdfs:label "English"@en .
 
 <http://id.loc.gov/vocabulary/menclvl/f> a bflc:EncodingLevel ;
     rdfs:label "full" .
 
-<http://id.loc.gov/vocabulary/mstatus/c> a bf:Status ;
-    rdfs:label "changed" .
+<http://id.loc.gov/vocabulary/msupplcont/bibliography> a bf:SupplementaryContent ;
+    rdfs:label "bibliography" .
 
-<http://id.loc.gov/vocabulary/organizations/njbwbt> a bf:Organization ;
-    rdfs:label "Baker & Taylor Inc., Electronic Business and Information Services Unit" .
+<http://id.loc.gov/vocabulary/msupplcont/index> a bf:SupplementaryContent ;
+    rdfs:label "index" .
 
-<http://id.loc.gov/vocabulary/relators/aut> a bf:Role ;
-    rdfs:label "Author" .
+<http://id.loc.gov/vocabulary/organizations/mh> a bf:Organization ;
+    rdfs:label "Harvard University" .
 
-<http://id.loc.gov/vocabulary/relators/ctb> a bf:Role .
+<http://id.loc.gov/vocabulary/relators/ctb> a bf:Role ;
+    rdfs:label "Contributor" .
 
-<http://id.loc.gov/vocabulary/relators/trl> a bf:Role ;
-    rdfs:label "Translator" .
-
-<http://id.loc.gov/vocabulary/languages/eng> a bf:Language,
-        madsrdf:Language ;
-    rdfs:label "English"@en .
+<http://id.loc.gov/authorities/subjects/sh99001902> a bf:Topic,
+        madsrdf:Topic ;
+    rdfs:label "Methodology"@en ;
+    bflc:marcKey "180  $xMethodology" .
 
 <http://id.loc.gov/vocabulary/organizations/dlc> a bf:Organization ;
     rdfs:label "United States, Library of Congress" .
-
-<http://id.loc.gov/authorities/subjects/sh99001562> a madsrdf:GenreForm ;
-    rdfs:label "Fiction"@en ;
-    bflc:marcKey "185  $vFiction" .
-
-<http://id.loc.gov/authorities/subjects> a bf:Source,
-        madsrdf:MADSScheme ;
-    rdfs:label """Library of
-            Congress Subject Headings"""@en .
 

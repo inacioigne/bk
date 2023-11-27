@@ -25,7 +25,7 @@ import { TiLockClosedOutline } from "react-icons/ti";
 import { IoPersonAddSharp } from "react-icons/io5";
 
 // React
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 
 import { Controller } from "react-hook-form"
 
@@ -56,15 +56,20 @@ export default function FormBfContribution({ register, control, error, setOpen, 
         append({
             agent: "",
             label: "",
-            role: "",
-            roleLabel: ""
+            role: "http://id.loc.gov/vocabulary/relators/aut",
+            roleLabel: "Autor"
         });
     };
     const watchFields = useWatch({
         control,
         name: "contribution"
     });
-    // console.log("W", watchFields[0])
+
+    // useEffect(() => {
+    //     console.log("W", watchFields)
+
+    // }, [watchFields])
+
     return (
         <Accordion defaultExpanded={true}>
             <AccordionSummary expandIcon={<IoIosArrowDown />}
@@ -116,7 +121,7 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                                                 position="start" >
                                                 <Chip label={watchFields[index]?.label} size="small"
                                                     color="info"
-                                                    avatar={<IoPersonAddSharp /> }
+                                                    avatar={<IoPersonAddSharp />}
                                                 />
                                             </InputAdornment>
                                         ),
@@ -136,7 +141,7 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                                     }}
                             />
                             <Controller
-                                name={`contribution.${index}.roleLabel`}
+                                name={`contribution.${index}.role`}
                                 control={control}
                                 defaultValue={"http://id.loc.gov/vocabulary/contentTypes/txt"}
                                 render={({ field }) => (
@@ -145,18 +150,29 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                                     >
                                         <InputLabel id="label">Responsabilidade</InputLabel>
                                         <Select
+                                            id="role"
                                             size="small"
                                             label="Responsabilidade"
                                             {...field}
+                                            onChange={(e) => {
+                                                field.onChange(e)
+                                                let value = e.target.value
+                                                let index = e.target.name.split(".")[1]                                            
+                                                const label = relators.find((option) => option.uri === value)?.label;
+                                                setValue(`contribution.${index}.roleLabel`, label)
+                                                // console.log(index, value)
+                                            }}
+                                            // onSelect={(e) => {console.log(e)}}
                                         >
                                             {relators.map((type, index) =>
                                             (<MenuItem
                                                 key={index}
                                                 value={type.uri}
-                                                onClick={() => {
-                                                    setValue(`contribution.${index}.roleLabel`, type.label)
-                                                    console.log(type)
-                                                }}
+                                                id={"X"}
+                                            // onClick={() => {
+                                            //     setValue(`contribution.${index}.roleLabel`, type.label)
+                                            //     console.log("Role",index, type.label)
+                                            // }}
                                             >{type.label}</MenuItem>)
                                             )}
                                         </Select>

@@ -29,10 +29,11 @@ def DocWork(request):
         contributions = list()
         for i in request.contribution:
             c = { "id": f"{request.identifiersLocal}/contribution/{i.agent.split('/')[-1]}",
-                "type": [i.split('/')[-1] for i in i.type],
+                # "type": [i.split('/')[-1] for i in i.type],
                 "agent": i.agent,
                 "label": i.label,
-                "role": i.role } 
+                "role": i.role,
+                 "roleLabel": i.roleLabel } 
             contributions.append(c)
         doc['contribution'] = contributions   
         

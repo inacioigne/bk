@@ -6,6 +6,7 @@ export const ZodWork = z.object({
             agent: z.string(),
             label: z.string(),
             role: z.string(),
+            roleLabel: z.string()
     })),
     type: z.string(),
     title: z.object({

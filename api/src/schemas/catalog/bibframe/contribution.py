@@ -275,7 +275,7 @@ relators =  [
 
 
 class Contribution(BaseModel): 
-    type: str
+    # type: str
     agent: str
     label: str
     role: str
