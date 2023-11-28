@@ -80,7 +80,8 @@ export default function Catalog() {
                 currentPath="Catálogo"
             />
             <Divider sx={{ mt: "10px" }} />
-            <Paper elevation={3} sx={{ p: "15px", mt: "10px", height: 500 }}>
+            <Paper elevation={3} sx={{ p: "15px", mt: "10px", //height: 500 
+        }}>
                 <form >
                     <Grid container spacing={2}>
                         <Grid item xs={2}>
@@ -157,7 +158,8 @@ export default function Catalog() {
                 <Box sx={{ mt: "10px" }}>
                     <Grid container spacing={2}>
                         <Grid item xs={2}>Refine sua busca:</Grid>
-                        <Grid item xs={9}>
+                        <Grid item xs={10} //sx={{ border: "solid"}}
+                        >
                             <TableCatalogResult
                                 rows={rows}
                                 rowCount={rowCount}

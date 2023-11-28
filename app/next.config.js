@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['localhost', "commons.wikimedia.org", "upload.wikimedia.org"]
+        domains: [
+          'localhost', 
+          "m.media-amazon.com",
+          "commons.wikimedia.org", "upload.wikimedia.org"]
       }
 }
 

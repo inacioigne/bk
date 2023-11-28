@@ -19,59 +19,15 @@ import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
 import {RenderTitle} from "@/components/catalog/table/renderTitle"
+import {RenderCover} from "@/components/catalog/table/renderCover"
+
 
 
 // Nextjs
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
 
-// function RenderLabel(props: GridRenderCellParams<any, Object>) {
-//   const { hasFocus, value } = props;
-//   // console.log(value)
 
-//   function stringToColor(string: string) {
-//     let hash = 0;
-//     let i;
-
-//     /* eslint-disable no-bitwise */
-//     for (i = 0; i < string.length; i += 1) {
-//       hash = string.charCodeAt(i) + ((hash << 5) - hash);
-//     }
-
-//     let color = "#";
-
-//     for (i = 0; i < 3; i += 1) {
-//       const value = (hash >> (i * 8)) & 0xff;
-//       color += `00${value.toString(16)}`.slice(-2);
-//     }
-//     /* eslint-enable no-bitwise */
-
-//     return color;
-//   }
-
-//   function stringAvatar(name: string) {
-//     return {
-//       sx: {
-//         bgcolor: stringToColor(name),
-//       },
-//       children: `${name[0]}`,
-//     };
-//   }
-
-//   return (
-//     <Box
-//       sx={{
-//         display: "flex",
-//         alignItems: "center",
-//         gap: "5px",
-//         cursor: "pointer",
-//       }}
-//     >
-//       <Avatar {...stringAvatar(value)} />
-//       {value}
-//     </Box>
-//   );
-// }
 
 function RenderType(props: GridRenderCellParams<any, String>) {
   const { hasFocus, value } = props;
@@ -113,10 +69,16 @@ export function TableCatalogResult(
 
   const router = useRouter()
 
-  const { paramsAuthority } = useParmasAutority()
+  // const { paramsAuthority } = useParmasAutority()
   const { setProgress } = useProgress();
 
   const columns: GridColDef[] = [
+    {
+      field: "cover",
+      // flex: 1,
+      renderHeader: () => "",
+      renderCell: RenderCover,
+    },
     {
       field: "title",
       flex: 2,
@@ -144,18 +106,19 @@ export function TableCatalogResult(
 
   return <DataGrid
     rows={rows}
+    getRowHeight={() => 'auto'}
     rowCount={rowCount}
-    onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
-      setProgress(true)
-      router.push(`/admin/authority/subjects/${params.id}`)
-    }}
+    // onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
+    //   setProgress(true)
+    //   router.push(`/admin/authority/subjects/${params.id}`)
+    // }}
     columns={columns}
     paginationModel={paginationModel}
     paginationMode="server"
     onPaginationModelChange={(paginationModel) => {
       // console.log(paginationModel)
       let page = paginationModel.page == 0 ? 0 : paginationModel.page + 4
-      paramsAuthority.set('start', page)
+      // paramsAuthority.set('start', page)
       // SearchSubjects(paramsAuthority, setRows, setRowCount, setFacetType);
       setPaginationModel(paginationModel)
     }}

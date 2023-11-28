@@ -5,6 +5,8 @@ import {
     GridColDef,
     GridRenderCellParams,
 } from "@mui/x-data-grid";
+import Image from 'next/image'
+import Link from "next/link";
 
 type Title = {
     mainTitle: string,
@@ -21,20 +23,22 @@ export function RenderTitle(props: GridRenderCellParams<any, Title>) {
     return (
         <Box
             sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
-                cursor: "pointer",
+                // display: "flex",
+                // alignItems: "center",
+                // gap: "5px",
+                // flexDirection: "column"
+                // cursor: "pointer",
             }}
         >
-            <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
+            <Link href={"/admin"}>
+            <Typography
+                variant="subtitle2"
+                sx={{ fontSize: "12px" }}
+            >
                 {value?.mainTitle}
             </Typography>
-            <Typography variant="body2" >
-                {value?.subtitle}
-            </Typography>
-
-
+            </Link>
+            
         </Box>
     );
 }
