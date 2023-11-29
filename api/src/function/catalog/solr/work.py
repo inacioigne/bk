@@ -2,7 +2,7 @@ from pysolr import Solr
 from src.schemas.settings import Settings
 
 settings = Settings()
-solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
+solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 
 def DocWork(request):
 
@@ -42,7 +42,8 @@ def DocWork(request):
         subjects = list()
         for i in request.subject:
             s = { "id": f"{request.identifiersLocal}/subject/{i.uri.split('/')[-1]}",
-                    "type": [i.split('/')[-1] for i in i.type],
+                    # "type": [i.split('/')[-1] for i in i.type],
+                    "type": i.type,
                     "uri": i.uri,
                     "label": i.label} 
             subjects.append(s)

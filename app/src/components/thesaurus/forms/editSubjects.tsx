@@ -171,7 +171,7 @@ export default function EditSubjects({ doc }: Props) {
 
         let formData = ParserData(data)
         const request = { ...obj, ...formData };
-        // console.log("R:", request)
+        console.log("R:", request)
 
         bkapi.put("thesarus/edit/", request, {
             headers: headers,

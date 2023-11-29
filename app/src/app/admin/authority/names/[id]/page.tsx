@@ -117,9 +117,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                                     spacing={2}
                                     sx={{ alignItems: "flex-start", alignContent: "flex-start" }}
                                 >
-                                    <Grid xs={3}>
-                                        {doc?.imagem && (
-                                            <Box sx={{ p: "10px", display: "flex", justifyContent: "center"}}>
+                                    {doc?.imagem && (
+                                        <Grid item xs={3}>
+                                            <Box sx={{ p: "10px", display: "flex", justifyContent: "center" }}>
                                                 <Image
                                                     src={doc.imagem}
                                                     height={300}
@@ -127,13 +127,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                                                     alt="Picture of the author"
                                                 />
                                             </Box>
-
-                                        )}
-
-
-                                    </Grid>
-
-
+                                        </Grid>
+                                    )}
                                     <Grid item xs={4}>
 
                                         {doc?.fullerName && (

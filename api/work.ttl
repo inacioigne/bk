@@ -37,7 +37,7 @@
                 bf:Contribution ;
             bf:agent <http://id.loc.gov/rwo/agents/n80032184> ;
             bf:role <http://id.loc.gov/vocabulary/relators/ctb> ] ;
-    bf:hasInstance <http://id.loc.gov/resources/instances/1893399> ;
+    bf:hasInstance <http://id.loc.gov/resources/instances/1893399> ; 
     bf:language <http://id.loc.gov/vocabulary/languages/eng> ;
     bf:subject [ a bf:Topic,
                 madsrdf:ComplexSubject ;

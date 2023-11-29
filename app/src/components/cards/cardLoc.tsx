@@ -23,12 +23,11 @@ import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
 
 // BiblioKeia Services
-// import { CreateAuthority } from "@/services/thesarus/createAuthority"
 import { bkapi } from "@/services/api"
 
 // BiblioKeia Components
 import MadsUri from "@/components/madsrdf/view/madsUri"
-import FieldOfActivity from "@/components/madsrdf/view/fieldOfActivity"
+// import FieldOfActivity from "@/components/madsrdf/view/fieldOfActivity"
 import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
 import HasCloseExternalAuthority from "@/components/madsrdf/view/hasCloseExternalAuthority";
@@ -54,7 +53,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
   const router = useRouter();
   const { setProgress } = useProgress();
   const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-  console.log("H: ", hit)
+  // console.log("H: ", hit)
 
   function LocExist(identifiersLccn: any) {
     setProgress(true)

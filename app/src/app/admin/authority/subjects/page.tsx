@@ -40,7 +40,6 @@ import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
 // BiblioKeia Components
 import { TabSubjects } from "@/components/thesaurus/tables/tabSubjects";
-// import FacetTypeNames from "@/components/facets/names/typeNames";
 import FacetType from "@/components/facets/subjects/facetType"
 
 
@@ -78,7 +77,7 @@ export default function Subjects() {
             setRowCount,
             setFacetType,
         );
-        console.log(rows)
+        // console.log(rows)
 
     }, [pathname, searchParams]);
 
@@ -140,9 +139,10 @@ export default function Subjects() {
                 <Divider />
                 <Paper elevation={3} sx={{ p: "15px", mt: "10px" }}>
                     <form onSubmit={onSubmit}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={2}>
-                                <FormControl fullWidth>
+                    <Box sx={{ display: "flex", gap: 2 }}>
+                        {/* <Grid container spacing={2}>
+                            <Grid item xs={2}> */}
+                                <FormControl sx={{ width: 300}}>
                                     <InputLabel id="field-label">Filtro</InputLabel>
                                     <Select
                                         labelId="field-label"
@@ -158,8 +158,6 @@ export default function Subjects() {
                                         <MenuItem value="organization">Afiliação</MenuItem>
                                     </Select>
                                 </FormControl>
-                            </Grid>
-                            <Grid item xs={6}>
                                 <TextField
                                     label="Busca"
                                     variant="outlined"
@@ -180,12 +178,12 @@ export default function Subjects() {
                                         ),
                                     }}
                                 />
-                            </Grid>
+                            {/* </Grid>
                             <Grid
                                 item
                                 xs={4}
                                 sx={{ display: "flex", gap: "15px" }}
-                            >
+                            > */}
 
                                 <Link href={"/admin/authority/subjects/create"}>
                                     <Button
@@ -207,8 +205,9 @@ export default function Subjects() {
                                         Importar
                                     </Button>
                                 </Link>
-                            </Grid>
-                        </Grid>
+                            {/* </Grid>
+                        </Grid> */}
+                        </Box>
                     </form>
                     <Divider sx={{ mt: "10px" }} />
                     <Box sx={{ mt: "10px" }}>

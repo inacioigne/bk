@@ -7,20 +7,22 @@ import {
     InputLabel,
     MenuItem,
     Paper,
-    TextField,
-    InputAdornment,
-    IconButton,
+    // TextField,
+    // InputAdornment,
+    // IconButton,
     Divider,
     Button,
     Typography,
-    Alert
+    // Alert
 } from "@mui/material";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+// import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormBibframeWork from "@/components/catalog/forms/formBibframeWork"
 import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
+import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
+
 
 // React Icons
 import { FcHome, FcCancel } from "react-icons/fc";
@@ -33,7 +35,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 import { ZodWork } from "@/schema/bibframe/zodWork"
-import { Bibframe } from "@/schema/bibframe"
+// import { Bibframe } from "@/schema/bibframe"
 
 // React Hooks
 import { useEffect, useState } from "react";
@@ -46,7 +48,7 @@ import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
 
 
-import Link from "next/link";
+// import Link from "next/link";
 
 const previousPaths = [
     {
@@ -63,12 +65,14 @@ const previousPaths = [
 
 const headers = {
     accept: "application/json",
-    "Content-Type": "application/json", 
+    "Content-Type": "application/json",
 };
 
 export default function Create() {
     const [field, setField] = useState("");
-    const [open, setOpen] = useState(false);
+    const [openName, setOpenName] = useState(false);
+    const [openSubject, setOpenSubject] = useState(false);
+
     const [id, setId] = useState(null);
     const { setProgress } = useProgress();
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
@@ -87,16 +91,24 @@ export default function Create() {
             .finally(function () {
                 // setProgress(false)
             });
-    }, [String(id)]);  
+    }, [String(id)]);
 
-    type SchemaCreateWork = z.infer<typeof ZodWork>; 
+    type SchemaCreateWork = z.infer<typeof ZodWork>;
     let defaultValues = {
         "contribution": [
             {
-            "agent": "",
-            "label": "",
-            "role": "http://id.loc.gov/vocabulary/relators/aut",
-            "roleLabel": "Autor"
+                "agent": "",
+                "label": "",
+                "role": "http://id.loc.gov/vocabulary/relators/aut",
+                "roleLabel": "Autor"
+            }
+        ],
+        "subject": [
+            {
+                label: "",
+                lang: "por",
+                uri: "",
+                type: "Topic"
             }
         ],
         "type": "Text",
@@ -108,20 +120,8 @@ export default function Create() {
             "label": "por",
             "uri": "http://id.loc.gov/vocabulary/languages/por",
             // "type": ""
-        }],
-        // "title": {
-        //     "type": "http://id.loc.gov/ontologies/bibframe/Title",
-        //     "mainTitle": "Plants.CREATE",
-        //     "label": {
-        //         "@value": "Plants."
-        //     }
-        // },
-        // "content": {
-        //     "label": "Texto",
-        //     "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
-        //     // "type": "http://id.loc.gov/ontologies/bibframe/Content"
-        // },
-        
+        }]
+
     }
 
     const {
@@ -130,7 +130,7 @@ export default function Create() {
         handleSubmit,
         formState: { errors },
         setValue,
-        getValues 
+        getValues
     } = useForm<SchemaCreateWork>({
         resolver: zodResolver(ZodWork),
         defaultValues,
@@ -139,52 +139,50 @@ export default function Create() {
     console.log("E: ", errors)
 
     function CreateWork(data: any) {
-        
 
         // setProgress(true)
-        // let formData = ParserData(data)
-    
+
         let obj = {
-          identifiersLocal: String(id),
-          adminMetadata: {
-            status: {
-              label: "novo", 
-              value: "n"
+            identifiersLocal: String(id),
+            adminMetadata: {
+                status: {
+                    label: "novo",
+                    value: "n"
+                },
             },
-          },
-          isPartOf: "https://bibliokeia.com/catalog/works",
-          }
-        
-    
+            isPartOf: "https://bibliokeia.com/catalog/works",
+        }
+
+
         const request = { ...obj, ...data };
-        console.log("CR: ", request)    
+        console.log("CR: ", request)
         setProgress(true)
         bkapi
-          .post("/catalog/work/create", request, {
-            headers: headers,
-          })
-          .then(function (response) {
-            if (response.status === 201) {
-              console.log(response);
-              setMessage("Registro criado com sucesso!")
-            //   router.push(`/admin/authority/names/${response.data.id}`);
-            }
-          })
-          .catch(function (error) {
-            if (error.response.status === 409) {
-                setTypeAlert("error")
-                setMessage("Este registro já existe")
-                console.error("ER:", error);
+            .post("/catalog/work/create", request, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    console.log(response);
+                    setMessage("Registro criado com sucesso!")
+                    //   router.push(`/admin/authority/names/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 409) {
+                    setTypeAlert("error")
+                    setMessage("Este registro já existe")
+                    console.error("ER:", error);
 
-            }
-            
-          })
-          .finally(function () {
-            setProgress(false)
-            setOpenSnack(true)
-          });
-    
-      }
+                }
+
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
+
+    }
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
             <BreadcrumbsBK
@@ -192,7 +190,9 @@ export default function Create() {
                 currentPath="Catálogo"
             />
             <Divider sx={{ mt: "10px" }} />
-            <Paper elevation={3} sx={{ p: "15px", mt: "10px", height: 500 }}>
+            <Paper elevation={3} sx={{
+                p: "15px", mt: "10px", //height: 500 
+            }}>
                 <form onSubmit={handleSubmit(CreateWork)} >
                     <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                         <Typography variant="h4" gutterBottom>
@@ -204,7 +204,7 @@ export default function Create() {
                                 sx={{ textTransform: "none" }}
                                 variant="outlined"
                                 startIcon={<FcCancel />}
-                                // onClick={() => { setForm(false) }}
+                            // onClick={() => { setForm(false) }}
                             >
                                 Cancelar
                             </Button>
@@ -225,12 +225,24 @@ export default function Create() {
                         errors={errors}
                         // getValues={getValues}
                         setValue={setValue}
-                        setOpen={setOpen}
+                        setOpenName={setOpenName}
+                        setOpenSubject={setOpenSubject}
                         setField={setField} />
 
                 </form>
-                <ModalThesarusNames setOpen={setOpen} open={open} defaultValues={defaultValues} field={field} setValue={setValue}/>
+                <ModalThesarusNames
+                    setOpen={setOpenName}
+                    open={openName}
+                    defaultValues={defaultValues}
+                    field={field}
+                    setValue={setValue} />
 
+                 <ModalThesarus
+                    setOpen={setOpenSubject}
+                    open={openSubject}
+                    defaultValues={defaultValues}
+                    field={field}
+                    setValue={setValue} />
             </Paper>
         </Container>
     )

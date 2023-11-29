@@ -21,10 +21,8 @@ import { useFieldArray, useWatch } from "react-hook-form";
 import { IoRemove, IoAddOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { FcSearch } from "react-icons/fc";
-// import { TiLockClosedOutline } from "react-icons/ti";
 import { FcLock } from "react-icons/fc";
-
-import { IoPersonAddSharp } from "react-icons/io5";
+// import { IoPersonAddSharp } from "react-icons/io5";
 
 // React
 import { Fragment, useEffect } from "react";
@@ -33,7 +31,7 @@ import { Controller } from "react-hook-form"
 
 
 // Share
-import relators from "@/share/relators.json" assert { type: "json" };
+// import relators from "@/share/relators.json" assert { type: "json" };
 
 interface Props {
     register: any
@@ -45,26 +43,26 @@ interface Props {
 
 }
 
-export default function FormBfContribution({ register, control, error, setOpen, setField, setValue }: Props) {
+export default function FormBfSubject({ register, control, error, setOpen, setField, setValue }: Props) {
     const {
         fields,
         append,
         remove,
     } = useFieldArray({
         control,
-        name: "contribution",
+        name: "subject",
     });
-    const addContribution = () => {
+    const addField = () => {
         append({
-            agent: "",
             label: "",
-            role: "http://id.loc.gov/vocabulary/relators/aut",
-            roleLabel: "Autor"
+            lang: "por",
+            uri: "",
+            type: "Topic"
         });
     };
     const watchFields = useWatch({
         control,
-        name: "contribution"
+        name: "subject"
     });
 
     // useEffect(() => {
@@ -80,7 +78,7 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                 sx={{ borderBottom: "1px solid gray" }}
             >
                 <Typography variant="subtitle1" >
-                    Autoria
+                    Assuntos
                 </Typography>
             </AccordionSummary>
             <AccordionDetails sx={{
@@ -92,26 +90,60 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                 {fields.map((field, index) => (
                     <Fragment key={index} >
                         <Box sx={{ display: "flex", gap: "10px", width: "100%" }}>
+                            <Controller
+                                name={`subject.${index}.type`}
+                                control={control}
+                                defaultValue={"Topic"}
+                                render={({ field }) => (
+                                    <FormControl
+                                    sx={{ width: 300}}
+                                    >
+                                        <InputLabel id="label">Tipo de Assunto</InputLabel>
+                                        <Select
+                                            id="role"
+                                            size="small"
+                                            label="Tipo de Assunto"
+                                            {...field}
+                                            onChange={(e) => {
+                                                field.onChange(e)
+                                                // let value = e.target.value
+                                                // let index = e.target.name.split(".")[1]                                            
+                                                // const label = relators.find((option) => option.uri === value)?.label;
+                                                // setValue(`contribution.${index}.roleLabel`, label)
+                                                // console.log(index, value)
+                                            }}
+                                        >
+                                            <MenuItem value={"Topic"}>Topic</MenuItem>
+                                            {/* {relators.map((type, index) =>
+                                            (<MenuItem
+                                                key={index}
+                                                value={type.uri}                                    
+                                            >{type.label}</MenuItem>)
+                                            )} */}
+                                        </Select>
+                                    </FormControl>
+                                )}
+                            />
                             <TextField
                                 fullWidth
                                 disabled={true}
                                 variant="outlined"
-                                label="Nome"
+                                label="Assunto"
                                 size="small"
-                                {...register(`contribution.${index}.label`)}
+                                {...register(`subject.${index}.label`)}
                                 inputProps={{
                                     style: { opacity: 0 },
 
                                 }}
                                 InputProps={
-                                    watchFields[index]?.agent === "" ? {
+                                    watchFields[index]?.label === "" ? {
                                         endAdornment: (
                                             <InputAdornment
                                                 position="start"
                                                 sx={{ cursor: "pointer" }}
                                                 onClick={() => {
                                                     setOpen(true)
-                                                    setField(`contribution.${index}`)
+                                                    setField(`subject.${index}`)
                                                 }}
                                             >
                                                 <FcSearch />
@@ -132,9 +164,8 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                                                 position="start"
                                                 sx={{ cursor: "pointer" }}
                                                 onClick={() => {
-                                                    console.log("abrir")
+                                                    // console.log("abrir")
                                                     setOpen(true)
-                                                    // setField(`hasNarrowerAuthority.${index}`)
                                                 }}
                                             >
                                                 <FcSearch />
@@ -142,42 +173,42 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                                         ),
                                     }}
                             />
-                            <Controller
-                                name={`contribution.${index}.role`}
+                             <Controller
+                                name={`subject.${index}.lang`}
                                 control={control}
-                                defaultValue={"http://id.loc.gov/vocabulary/contentTypes/txt"}
+                                defaultValue={"por"}
                                 render={({ field }) => (
                                     <FormControl
-                                        fullWidth
+                                        // fullWidth
+                                        sx={{ width: 200}}
                                     >
-                                        <InputLabel id="label">Responsabilidade</InputLabel>
+                                        <InputLabel id="label">Idioma</InputLabel>
                                         <Select
-                                            id="role"
+                                            // id="role"
                                             size="small"
-                                            label="Responsabilidade"
+                                            label="Idioma"
                                             {...field}
                                             onChange={(e) => {
                                                 field.onChange(e)
-                                                let value = e.target.value
-                                                let index = e.target.name.split(".")[1]
-                                                const label = relators.find((option) => option.uri === value)?.label;
-                                                setValue(`contribution.${index}.roleLabel`, label)
+                                                // let value = e.target.value
+                                                // let index = e.target.name.split(".")[1]                                            
+                                                // const label = relators.find((option) => option.uri === value)?.label;
+                                                // setValue(`contribution.${index}.roleLabel`, label)
+                                                // console.log(index, value)
                                             }}
                                         >
-                                            {relators.map((type, index) =>
-                                            (<MenuItem
-                                                key={index}
-                                                value={type.uri}
-                                            >{type.label}</MenuItem>)
-                                            )}
+                                            <MenuItem value={"por"}>Português</MenuItem>
+                                            <MenuItem value={"en"}>Inglês</MenuItem>
+                                           
                                         </Select>
                                     </FormControl>
                                 )}
                             />
+
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                                 <IconButton
                                     aria-label="add"
-                                    onClick={addContribution}
+                                    onClick={addField}
                                     color="primary"
                                 >
                                     <IoAddOutline />
@@ -192,7 +223,6 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                                     <IoRemove />
                                 </IconButton>
                             </Box>
-                            {/* </Grid> */}
                         </Box>
                     </Fragment>
                 ))}

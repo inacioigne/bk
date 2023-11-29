@@ -6,11 +6,6 @@ import { solr } from "@/services/solr";
 
 import { useProgress } from "@/providers/progress";
 
-interface Facet {
-  name: string;
-  count: number;
-}
-
 function TransformFacet(facets: any) { 
   // console.log("F: ", facets)
     
@@ -26,13 +21,11 @@ function TransformFacet(facets: any) {
   return listFacets;
 }
 
-export function SearchNames(
+export function SearchCatalog(
   params: URLSearchParams,
   setRows: Function,
   setRowCount:Function,
-  setFacetType: Function,
-  setFacetAffiliation: Function,
-  setOccupation: Function
+  setFacetType: Function
 ) {
 
   params.getAll('fq').includes("isMemberOfMADSCollection:subjects") && params.delete("fq", "isMemberOfMADSCollection:subjects")
@@ -41,9 +34,9 @@ export function SearchNames(
     params.append("fq", "isMemberOfMADSCollection:names");    
   }
 
-  solr.get("authority/query?", {params: params})
+  solr.get("catalog/query?", {params: params})
     .then(function (response) { 
-      // console.log("RES:", response.data.facet_counts.facet_fields)
+      console.log("RES:", response.data)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
       const r = docs.map((doc: any, index: number) => {

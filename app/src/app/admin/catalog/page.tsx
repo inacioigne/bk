@@ -30,6 +30,11 @@ import { FcHome, FcSearch } from "react-icons/fc";
 import { CiImport } from "react-icons/ci";
 import { FaBookOpenReader } from "react-icons/fa6";
 
+// BiblioKeia Services
+import { SearchCatalog } from "@/services/catalog/searchCatalog";
+
+// Providers BiblioKeia
+import { useParmasAutority } from "@/providers/paramsAuthority";
 
 import Link from "next/link";
 
@@ -45,6 +50,7 @@ export default function Catalog() {
     const [field, setField] = useState("search_general");
     const [rows, setRows] = useState([]);
     const [rowCount, setRowCount] = useState(5);
+    const { paramsAuthority } = useParmasAutority();
 
     useEffect(() => {
         let rw: any = [
@@ -52,25 +58,31 @@ export default function Catalog() {
                 id: 1,
                 title: {
                     mainTitle: "An evidence-based multimodal fusion approach for predicting review helpfulness with human-AI complementarity",
-                    subtitle:  "View preprints published by authors to have an early idea of upcoming research documents."
+                    subtitle: "View preprints published by authors to have an early idea of upcoming research documents."
                 },
                 authors: "Autores",
                 year: 2001
             },
             {
                 id: 2,
-                title:  {mainTitle: "Fingerprinting based on spectral reflectance and chemometrics – An analytical approach aimed at combating the illegal trade of stingray meat in the Amazon"},
+                title: { mainTitle: "Fingerprinting based on spectral reflectance and chemometrics – An analytical approach aimed at combating the illegal trade of stingray meat in the Amazon" },
                 authors: "Autor 1",
                 year: 2023
             },
             {
                 id: 3,
-                title:  {mainTitle: "Titulo 1"},
+                title: { mainTitle: "Titulo 1" },
                 authors: "Autor 1",
                 year: 1998
             }
         ]
         setRows(rw)
+        paramsAuthority.set("rows", "3");
+        SearchCatalog(
+            paramsAuthority,
+            setRows,
+            setRowCount
+        );
 
     }, [])
     return (
@@ -80,8 +92,9 @@ export default function Catalog() {
                 currentPath="Catálogo"
             />
             <Divider sx={{ mt: "10px" }} />
-            <Paper elevation={3} sx={{ p: "15px", mt: "10px", //height: 500 
-        }}>
+            <Paper elevation={3} sx={{
+                p: "15px", mt: "10px", //height: 500 
+            }}>
                 <form >
                     <Grid container spacing={2}>
                         <Grid item xs={2}>

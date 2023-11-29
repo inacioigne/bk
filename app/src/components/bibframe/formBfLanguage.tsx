@@ -79,60 +79,6 @@ export default function FormBfLanguage({ control, register, setField }: Props) {
                                 </FormControl>
                             )}
                         />
-                        {/* <TextField
-                            fullWidth
-                            disabled={true}
-                            variant="standard"
-                            label="Idioma"
-                            size="small"
-                            {...register(`language.${index}.label`)}
-                            inputProps={{
-                                style: { opacity: 0 },
-
-                            }}
-                            InputProps={
-                                watchFields[index]?.label === "" ? {
-                                    endAdornment: (
-                                        <InputAdornment
-                                            position="start"
-                                            sx={{ cursor: "pointer" }}
-                                            onClick={() => {
-                                                setOpen(true)
-                                                setField(`hasBroaderAuthority.${index}`)
-                                            }}
-                                        >
-                                            <FcSearch />
-                                        </InputAdornment>
-                                    ),
-                                } : {
-                                    startAdornment: (
-                                        <InputAdornment
-                                            position="start" >
-                                            <Chip label={watchFields[index]?.label} size="small"
-                                                color="info"
-                                                avatar={
-                                                    watchFields[index]?.base === "bk" ?
-                                                        <TiLockClosedOutline /> :
-                                                        <Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
-                                                }
-                                            />
-                                        </InputAdornment>
-                                    ),
-                                    endAdornment: (
-                                        <InputAdornment
-                                            position="start"
-                                            sx={{ cursor: "pointer" }}
-                                            onClick={() => {
-                                                setOpen(true)
-                                                setField(`hasBroaderAuthority.${index}`)
-                                            }}
-                                        >
-                                            <FcSearch />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                        /> */}
-
                     </Grid>
 
                     <Grid item xs={2}>

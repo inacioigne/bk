@@ -22,6 +22,7 @@ import { usePathname } from "next/navigation";
 import { FcHome } from 'react-icons/fc';
 import { BsPersonPlusFill } from 'react-icons/bs';
 import { GiBookshelf } from "react-icons/gi";
+import { FcBusinessman } from "react-icons/fc";
 
 import { useState, MouseEvent } from "react";
 
@@ -146,12 +147,15 @@ export default function SideBar({ open }: Props) {
                             </ListItemText>
                         </MenuItem>
                     </Link>
+                    <Link href="/admin/authority/names" >
+
+                   
                     <MenuItem
                         sx={pathname.includes('authority') ? styleMenuActive : styleMenu}
                         onClick={handleClick}
                     >
                         <ListItemIcon>
-                            <BsPersonPlusFill />
+                            <FcBusinessman />
                         </ListItemIcon>
                         <ListItemText>
                             <Typography
@@ -162,7 +166,8 @@ export default function SideBar({ open }: Props) {
                             </Typography>
                         </ListItemText>
                     </MenuItem>
-                    <Menu
+                    </Link>
+                    {/* <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={openSubMenu}
@@ -177,7 +182,7 @@ export default function SideBar({ open }: Props) {
                         <Link href="/admin/authority/subjects">
                             <MenuItem onClick={handleClose}>Assuntos</MenuItem>
                         </Link>
-                    </Menu>
+                    </Menu> */}
                     <Link href="/admin/catalog" >
                     <MenuItem sx={pathname === "/admin/catalog" ? styleMenuActive : styleMenu}>
                         <ListItemIcon //sx={{ color: "black"}}

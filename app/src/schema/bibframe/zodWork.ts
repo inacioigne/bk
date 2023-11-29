@@ -8,6 +8,14 @@ export const ZodWork = z.object({
             role: z.string(),
             roleLabel: z.string()
     })),
+    subject: z.array(
+        z.object({
+            label: z.string(),
+            lang: z.string(),
+            uri: z.string(),
+            type: z.string()
+        })
+    ),
     type: z.string(),
     title: z.object({
         mainTitle: z.string().min(1, {message: "O título é obrigatório."}),

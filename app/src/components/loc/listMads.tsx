@@ -6,8 +6,6 @@ import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
 
 import StyledTreeItem from "@/components/baseMui/styledTreeItem"
 
-// import { BsLink45Deg } from "react-icons/bs";
-
 import { logos } from "@/share/objLogos"
 
 import { LocAuthority } from "@/services/importation/locAuthority"
