@@ -54,7 +54,7 @@ def DocWork(request):
     if request.genreForm:
         pass
 
-    print("DOC:", doc)
+    # print("DOC:", doc)
 
     responseSolr =  solr.add([doc], commit=True)
 

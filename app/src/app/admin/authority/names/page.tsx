@@ -161,8 +161,6 @@ export default function Names() {
                                     <MenuItem value="organization">Afiliação</MenuItem>
                                 </Select>
                             </FormControl>
-                            {/* </Grid> */}
-                            {/* <Grid item xs={6}> */}
                             <TextField
                                 label="Busca"
                                 variant="outlined"
@@ -183,14 +181,6 @@ export default function Names() {
                                     ),
                                 }}
                             />
-                            {/* </Grid> */}
-                            {/* <Grid
-                                item
-                                xs={4}
-                                sx={{
-                                    display: "flex", gap: "15px"
-                                }}
-                            > */}
                             <Link href={"/admin/authority/names/create"}>
                                 <Button
                                     variant="outlined"
@@ -281,7 +271,6 @@ export default function Names() {
                                 </Box>
 
                             </Grid>
-
                             {rows.length > 0 ? (
                                 <Grid item xs={8}>
                                     <TabName
@@ -303,8 +292,6 @@ export default function Names() {
                                     </Box>
                                 </Grid>
                             )}
-
-
                         </Grid>
                     </Box>
                 </Paper>

@@ -7,6 +7,8 @@ from sqlalchemy import exc
 from src.function.catalog.work.graphWork import MakeGraphWork
 from src.schemas.settings import Settings
 from src.function.catalog.solr.work import DocWork
+from src.function.catalog.bibframe.bfContributionOf import UpdateFusekiContribution, UpdateSolrContribution
+from src.function.catalog.bibframe.bfSubjectOf import UpdateFusekiSubject, UpdateSolrSubject
 
 router = APIRouter()
 settings = Settings()
@@ -33,6 +35,15 @@ async def create_work(request: Work):
 
     # Solr
     responseSolr = DocWork(request) 
+
+    if request.contribution:
+        UpdateFusekiContribution(request)
+        UpdateSolrContribution(request)
+
+    if request.subject:
+        UpdateFusekiSubject(request)
+        UpdateSolrSubject(request)
+
 
     return {
         "id": request.identifiersLocal,

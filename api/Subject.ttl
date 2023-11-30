@@ -1,0 +1,1098 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix cs: <http://purl.org/vocab/changeset/schema#> .
+@prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
+@prefix lcc: <http://id.loc.gov/ontologies/lcc#> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ri: <http://id.loc.gov/ontologies/RecordInfo#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://id.loc.gov/resources/works/10001490> a bf:Work ;
+    bflc:aap "Nekotorye voprosy teorii poznanii︠a" .
+
+<http://id.loc.gov/resources/works/10003722> a bf:Work ;
+    bflc:aap "Chao, Ya-po Chih shih lun" .
+
+<http://id.loc.gov/resources/works/100137> a bf:Work ;
+    bflc:aap "La Garanderie, Antoine de L'intuition" .
+
+<http://id.loc.gov/resources/works/1001418> a bf:Work ;
+    bflc:aap "Infancy and epistemology" .
+
+<http://id.loc.gov/resources/works/10015839> a bf:Work ;
+    bflc:aap "Dewey, John, 1859-1952 The quest for certainty" .
+
+<http://id.loc.gov/resources/works/10018045> a bf:Work ;
+    bflc:aap "Izumiya, Shūzaburō, 1936- Ningen to shakai" .
+
+<http://id.loc.gov/resources/works/1002807> a bf:Work ;
+    bflc:aap "Jha, V. N. (Vashishtha Narayan), 1946- Studies in language, logic, and epistemology" .
+
+<http://id.loc.gov/resources/works/100374> a bf:Work ;
+    bflc:aap "Antoine Arnauld" .
+
+<http://id.loc.gov/resources/works/1004541> a bf:Work ;
+    bflc:aap "Changing our minds" .
+
+<http://id.loc.gov/resources/works/1006261> a bf:Work ;
+    bflc:aap "Perspectives on mind" .
+
+<http://id.loc.gov/resources/works/1006541> a bf:Work ;
+    bflc:aap "Gärdenfors, Peter Knowledge in flux" .
+
+<http://id.loc.gov/resources/works/10075126> a bf:Work ;
+    bflc:aap "Bradley, F. H. (Francis Herbert), 1846-1924. Appearance and reality: a metaphysical essay," .
+
+<http://id.loc.gov/resources/works/10075545> a bf:Work ;
+    bflc:aap "Dürr, Ernst, 1878-1913. Ueber die grenzen der gewissheit .." .
+
+<http://id.loc.gov/resources/works/10078641> a bf:Work ;
+    bflc:aap "Hönigswald, Richard, 1875-1947. Über die lehre Hume's von der realität der aussendinge. Eine erkenntnistheoretische Untersuchung .." .
+
+<http://id.loc.gov/resources/works/10079052> a bf:Work ;
+    bflc:aap "Read, Carveth, 1848- metaphysics of nature," .
+
+<http://id.loc.gov/resources/works/10082736> a bf:Work ;
+    bflc:aap "Morse, M. Rowena, 1871- Uber den widerspruch im wahrheitsbegriff in Lockes erkenntnislehre .." .
+
+<http://id.loc.gov/resources/works/10085314> a bf:Work ;
+    bflc:aap "Hedvall, Karl Zacharias Knut. Humes erkentnistheorie kritisch dargestellt" .
+
+<http://id.loc.gov/resources/works/100906> a bf:Work ;
+    bflc:aap "Rábade Romeo, Sergio. Teoría del conocimiento" .
+
+<http://id.loc.gov/resources/works/1009369> a bf:Work ;
+    bflc:aap "Chisholm, Roderick M. Philosophische Aufsätze zu Ehren von Roderick M. Chisholm" .
+
+<http://id.loc.gov/resources/works/1009416> a bf:Work ;
+    bflc:aap "Scheidt, Friedrich. Grundfragen der Erkenntnisphilosophie : historische Perspektiven" .
+
+<http://id.loc.gov/resources/works/10096299> a bf:Work ;
+    bflc:aap "Mill, John Stuart, 1806-1873. system of logic, ratiocinative and inductive, being a connected view of the principles of evidence and the methods of scientific investigation," .
+
+<http://id.loc.gov/resources/works/1009747> a bf:Work ;
+    bflc:aap "Pushkin, V. G. Problemy soznanii︠a︡ v filosofii i nauchnom poznanii : mezhvuzovskiĭ sbornik nauchnykh trudov" .
+
+<http://id.loc.gov/resources/works/10098408> a bf:Work ;
+    bflc:aap "Berkeley, George, 1685-1753 treatise concerning the principles of human knowledge" .
+
+<http://id.loc.gov/resources/works/10100789> a bf:Work ;
+    bflc:aap "Moeltzner, August, 1864-1925. Salomon Maimons erkenntnistheoretische Verbesserungsversuche der Kantischen Philosophie" .
+
+<http://id.loc.gov/resources/works/10101029> a bf:Work ;
+    bflc:aap "M'Cosh, James, 1811-1894. intuitions of the mind inductively investigated" .
+
+<http://id.loc.gov/resources/works/10104595> a bf:Work ;
+    bflc:aap "Sunne, Dagny Gunhilda. Some phases in the development of the subjective point of view during the post-Aristotelian period .." .
+
+<http://id.loc.gov/resources/works/10104950> a bf:Work ;
+    bflc:aap "Eucken, Rudolf, 1846-1926. Erkennen und Leben" .
+
+<http://id.loc.gov/resources/works/10106319> a bf:Work ;
+    bflc:aap "Lask, Emil, 1875-1915. logik der philosophie und die kategorienlehre; eine studie über den herrschaftsbereich der logischen form," .
+
+<http://id.loc.gov/resources/works/101077> a bf:Work ;
+    bflc:aap "Ennepi, Claubril, 1949- blinde Fleck : Mitteilungen aus dem Zentrum der Bestimmungslosigkeit" .
+
+<http://id.loc.gov/resources/works/10107956> a bf:Work ;
+    bflc:aap "Bosanquet, Bernard, 1848-1923. distinction between mind and its objects" .
+
+<http://id.loc.gov/resources/works/10115291> a bf:Work ;
+    bflc:aap "Simmel, Georg, 1858-1918. probleme der geschichtsphilosophie. Eine erkenntnistheoretische studie," .
+
+<http://id.loc.gov/resources/works/10117444> a bf:Work ;
+    bflc:aap "Schultze, Otto, 1872- Fundamentos de la teoría del conocimiento" .
+
+<http://id.loc.gov/resources/works/1011855> a bf:Work ;
+    bflc:aap "Wenzel, Günter, 1952- Evolution und Logik" .
+
+<http://id.loc.gov/resources/works/10118627> a bf:Work ;
+    bflc:aap "Locke, John, 1632-1704. essay concerning human understanding" .
+
+<http://id.loc.gov/resources/works/10122064> a bf:Work ;
+    bflc:aap "Schnippel, E. (Emil), 1847- Widerlegung der sophistischen Erkenntnistheorie im Platonischen Theätet : (die Hauptepochen in der Entwicklung des Erkenntnisproblems. I.)" .
+
+<http://id.loc.gov/resources/works/101223> a bf:Work ;
+    bflc:aap "Maréchal, Joseph, 1878-1944. punto di partenza della metafisica : il tomismo di fronte alla filosofia critica" .
+
+<http://id.loc.gov/resources/works/10127601> a bf:Work ;
+    bflc:aap "Husserl, Edmund, 1859-1938. Logische Untersuchungen," .
+
+<http://id.loc.gov/resources/works/1012917> a bf:Work ;
+    bflc:aap "Groskiĭ, D. P. Logika nauchnogo poznanii︠a︡ : aktualʹnye problemy" .
+
+<http://id.loc.gov/resources/works/10133418> a bf:Work ;
+    bflc:aap "Strich, Walter. Prinzipien der psychologischen Erkenntnis; Prolegomena zu einer Kritik der historischen Vernunft," .
+
+<http://id.loc.gov/resources/works/10134003> a bf:Work ;
+    bflc:aap "Strong, Charles Augustus, 1862-1940. theory of knowledge" .
+
+<http://id.loc.gov/resources/works/10134629> a bf:Work ;
+    bflc:aap "McDowall, Stewart Andrew, 1882- Evolution, Knowledge and revelation" .
+
+<http://id.loc.gov/resources/works/10138818> a bf:Work ;
+    bflc:aap "Zamboni, Giuseppe, 1875-1950. Introduzione al corso di gnoseologia pura" .
+
+<http://id.loc.gov/resources/works/10141591> a bf:Work ;
+    bflc:aap "Mauthner, Fritz, 1849-1923. drei bilder der welt, ein sprachkritischer versuch," .
+
+<http://id.loc.gov/resources/works/10145296> a bf:Work ;
+    bflc:aap "Cassirer, Ernst, 1874-1945. Individuum und kosmos in der philosophie der renaissance" .
+
+<http://id.loc.gov/resources/works/10150623> a bf:Work ;
+    bflc:aap "Meyerson, Émile, 1859-1933. De l'explication dans les sciences .." .
+
+<http://id.loc.gov/resources/works/10152407> a bf:Work ;
+    bflc:aap "Spencer, Willard Wylie. Our knowledge of other minds; a study in mental nature, existence, and intercourse," .
+
+<http://id.loc.gov/resources/works/10153973> a bf:Work ;
+    bflc:aap "Lindner, Benedikt. erkenntnislehre des Thomas von Strassburg" .
+
+<http://id.loc.gov/resources/works/10153988> a bf:Work ;
+    bflc:aap "Kant, Immanuel, 1724-1804. Immanuel Kant's Critique of pure reason" .
+
+<http://id.loc.gov/resources/works/10154243> a bf:Work ;
+    bflc:aap "Vaihinger, Hans, 1852-1933. philosophie des als ob" .
+
+<http://id.loc.gov/resources/works/10155687> a bf:Work ;
+    bflc:aap "Becher, Erich, 1882-1929. Einführung in die Philosophie," .
+
+<http://id.loc.gov/resources/works/10157566> a bf:Work ;
+    bflc:aap "D'Arcy, Martin Cyril, 1888-1976 The nature of belief" .
+
+<http://id.loc.gov/resources/works/10160799> a bf:Work ;
+    bflc:aap "Krzesinski, Andrew John, 1884-1964. nouvelle philosophie de l'immanence. Exposé et critique de ses postulats" .
+
+<http://id.loc.gov/resources/works/10161571> a bf:Work ;
+    bflc:aap "Moser, Hans. Thomas Hobbes; seine logische problematik und ihre erkenntnistheoretischen vorauussetzungen," .
+
+<http://id.loc.gov/resources/works/10161620> a bf:Work ;
+    bflc:aap "Barthel, Ernst, 1890- welt als spannung und rhythmus: erkenntnistheorie, ästhetik, naturphilosophie, ethik," .
+
+<http://id.loc.gov/resources/works/10162510> a bf:Work ;
+    bflc:aap "Falckenberg, Richard, 1851-1920. Grundzüge der Philosophie des Nicolaus Cusanus" .
+
+<http://id.loc.gov/resources/works/10162511> a bf:Work ;
+    bflc:aap "Volkelt, Johannes, 1848-1930 Gewissheit und Wahrheit" .
+
+<http://id.loc.gov/resources/works/10162875> a bf:Work ;
+    bflc:aap "Macmurray, John, 1891-1976 Interpreting the universe," .
+
+<http://id.loc.gov/resources/works/10163820> a bf:Work ;
+    bflc:aap "Barthel, Ernst, 1890- Vorstellung und denken; eine kritik des pragmatischen verstandes," .
+
+<http://id.loc.gov/resources/works/10163873> a bf:Work ;
+    bflc:aap "Glenn, Paul J. (Paul Joseph), 1893-1957. Criteriology; a class manual in major logic" .
+
+<http://id.loc.gov/resources/works/10163892> a bf:Work ;
+    bflc:aap "Kant, Immanuel, 1724-1804. Critik der reinen Vernunft," .
+
+<http://id.loc.gov/resources/works/10164307> a bf:Work ;
+    bflc:aap "Thomas, Aquinas, Saint, 1225?-1274. D. Thomae Aquinatis Quaestiones disputatae de veritate," .
+
+<http://id.loc.gov/resources/works/10164697> a bf:Work ;
+    bflc:aap "Liebert, Arthur, 1878-1946. Erkenntnistheorie," .
+
+<http://id.loc.gov/resources/works/10165339> a bf:Work ;
+    bflc:aap "Bernard, Walter. philosophy of Spinoza and Brunner," .
+
+<http://id.loc.gov/resources/works/10165627> a bf:Work ;
+    bflc:aap "Morris, George Sylvester, 1840-1889. final cause as principal of cognition and principal in nature" .
+
+<http://id.loc.gov/resources/works/10166538> a bf:Work ;
+    bflc:aap "Hartmann, Eduard von, 1842-1906. Kants Erkenntnistheorie und Metaphysik in den vier Perioden ihrer Entwickelung" .
+
+<http://id.loc.gov/resources/works/10167582> a bf:Work ;
+    bflc:aap "Esser, Gerard. Epistemologia in usum scholarum," .
+
+<http://id.loc.gov/resources/works/10171635> a bf:Work ;
+    bflc:aap "Porter, Noah, 1811-1892. elements of intellectual science" .
+
+<http://id.loc.gov/resources/works/10173610> a bf:Work ;
+    bflc:aap "Baratono, Adelchi, 1875-1947. mondo sensibile; introduzione all' estetica" .
+
+<http://id.loc.gov/resources/works/10173812> a bf:Work ;
+    bflc:aap "Bridet, L. théorie de la connaissance dans la philosophie de Malebranche," .
+
+<http://id.loc.gov/resources/works/10173962> a bf:Work ;
+    bflc:aap "Bittle, Celestine Nicholas Charles, 1884- Reality and the mind; epistemology" .
+
+<http://id.loc.gov/resources/works/10174425> a bf:Work ;
+    bflc:aap "Schuppe, Wilhelm, 1836-1913. Allgemeine rechtslehre mit einschluss der allgemeinen lehren vom sein und vom wissen unter verwendung des handschriftlichen nachlasses redigert," .
+
+<http://id.loc.gov/resources/works/101748> a bf:Work ;
+    bflc:aap "Pacho, Julián. Naturalizar la razón? : alcance y límites del naturalismo evolucionista" .
+
+<http://id.loc.gov/resources/works/10175165> a bf:Work ;
+    bflc:aap "Burman, Erik Olof, 1845-1929. Om kunskapens möjlighet .." .
+
+<http://id.loc.gov/resources/works/10176769> a bf:Work ;
+    bflc:aap "Hicks, G. Dawes (George Dawes), 1862-1941. ... Thought and real existence," .
+
+<http://id.loc.gov/resources/works/10176918> a bf:Work ;
+    bflc:aap "Paliard, Jacques. monde des idoles .." .
+
+<http://id.loc.gov/resources/works/10179860> a bf:Work ;
+    bflc:aap "Lenin, Vladimir Ilʹich, 1870-1924. Materializm i ėmpiriokritit︠s︡izm" .
+
+<http://id.loc.gov/resources/works/10181280> a bf:Work ;
+    bflc:aap "Gauss, Hermann, 1902-1966. Über die problematik der neueren philosophie .." .
+
+<http://id.loc.gov/resources/works/10182871> a bf:Work ;
+    bflc:aap "Bergmann, Artur. Zur grundlegung des erkenntnisproblems in der neueren philosophie: die bedeutung der zweiweltenlhre des Descartes für das transzendenzproblem der erkenntnis," .
+
+<http://id.loc.gov/resources/works/10183998> a bf:Work ;
+    bflc:aap "Elsenhans, Theodor, 1862-1918. Fries und Kant; ein Beitrag zur Geschichte und zur systematischen Grundlegung der Erkenntnistheorie," .
+
+<http://id.loc.gov/resources/works/10185601> a bf:Work ;
+    bflc:aap "Kern, Berthold von, 1848- erkenntnisproblem und seine kritische lösung" .
+
+<http://id.loc.gov/resources/works/10185602> a bf:Work ;
+    bflc:aap "Moog, Willy, 1888- Logik, psychologie und psychologismus; wissenschaftssystematische untersuchungen" .
+
+<http://id.loc.gov/resources/works/10193725> a bf:Work ;
+    bflc:aap "Rabeau, Gaston. Species. Verbum" .
+
+<http://id.loc.gov/resources/works/10194153> a bf:Work ;
+    bflc:aap "Rosmini, Antonio, 1797-1855. Nuovo saggio sull'origine delle idee," .
+
+<http://id.loc.gov/resources/works/10196217> a bf:Work ;
+    bflc:aap "Bastide, Georges, 1901-1969. De la condition humaine," .
+
+<http://id.loc.gov/resources/works/10198692> a bf:Work ;
+    bflc:aap "Nogué, Jean. signification du sensible .." .
+
+<http://id.loc.gov/resources/works/10206700> a bf:Work ;
+    bflc:aap "Orestano, Francesco, 1873- Verità dimostrate" .
+
+<http://id.loc.gov/resources/works/10207520> a bf:Work ;
+    bflc:aap "Carabellese, Pantaleo. Critica del concreto" .
+
+<http://id.loc.gov/resources/works/10211912> a bf:Work ;
+    bflc:aap "Bazzano, Oreste G. Critica cognitionis," .
+
+<http://id.loc.gov/resources/works/10212359> a bf:Work ;
+    bflc:aap "Nogué, Jean. Esquisse d'un système des qualités sensibles," .
+
+<http://id.loc.gov/resources/works/1021989> a bf:Work ;
+    bflc:aap "Hoffman, Piotr. Violence in modern philosophy" .
+
+<http://id.loc.gov/resources/works/10222444> a bf:Work ;
+    bflc:aap "Molle, Germaine van. connaissance dialectique et l'expérience existentielle" .
+
+<http://id.loc.gov/resources/works/10223088> a bf:Work ;
+    bflc:aap "Banfi, Antonio, 1886-1957. Principi di una teoria della ragione" .
+
+<http://id.loc.gov/resources/works/10228731> a bf:Work ;
+    bflc:aap "McCosh, James, 1811-1894. Criteria of diverse kinds of truth as opposed to agnosticism, being a treatise on applied logic" .
+
+<http://id.loc.gov/resources/works/10230853> a bf:Work ;
+    bflc:aap "Ghose, Aurobindo, 1872-1950. life divine" .
+
+<http://id.loc.gov/resources/works/10232074> a bf:Work ;
+    bflc:aap "Téchoueyres, Émile. Spiritualité indienne et science occidentale" .
+
+<http://id.loc.gov/resources/works/10235592> a bf:Work ;
+    bflc:aap "Steenberghen, Fernand van, 1904- Epistemology" .
+
+<http://id.loc.gov/resources/works/10235797> a bf:Work ;
+    bflc:aap "Bollnow, Otto Friedrich, 1903-1991. Verstehen; drei Aufsätze zur Theorie der Geisteswissenschaften" .
+
+<http://id.loc.gov/resources/works/10236010> a bf:Work ;
+    bflc:aap "Gérard, Robert, 1899- chemins divers de la connaissance" .
+
+<http://id.loc.gov/resources/works/10236294> a bf:Work ;
+    bflc:aap "Woozley, A. D. (Anthony Douglas) Theory of knowledge, an introduction" .
+
+<http://id.loc.gov/resources/works/10238919> a bf:Work ;
+    bflc:aap "Fischl, Johann. Wahrheit unseres Denkens" .
+
+<http://data.bnf.fr/ark:/12148/cb119339073> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Théorie de la connaissance"@fr ;
+    skos:prefLabel "Théorie de la connaissance"@fr .
+
+<http://datos.bne.es/resource/XX526258> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Epistemología"@es ;
+    skos:prefLabel "Epistemología"@es .
+
+<http://id.loc.gov/authorities/subjects/sh00002298> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Virtue epistemology"@en ;
+    skos:prefLabel "Virtue epistemology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2003005284> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Foundationalism (Theory of knowledge)"@en ;
+    skos:prefLabel "Foundationalism (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2006003446> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Internalism (Theory of knowledge)"@en ;
+    skos:prefLabel "Internalism (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2008002937> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Gettier problem"@en ;
+    skos:prefLabel "Gettier problem"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2010012461> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Underdetermination (Theory of knowledge)"@en ;
+    skos:prefLabel "Underdetermination (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2010015469> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Testimony (Theory of knowledge)"@en ;
+    skos:prefLabel "Testimony (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh2011005653> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Metaethics"@en ;
+    skos:prefLabel "Metaethics"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85000019> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "A priori"@en ;
+    skos:prefLabel "A priori"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85004775> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Analogy"@en ;
+    skos:prefLabel "Analogy"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85009064> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Ataraxia"@en ;
+    skos:prefLabel "Ataraxia"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85013004> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Belief and doubt"@en ;
+    skos:prefLabel "Belief and doubt"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85020993> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Categories (Philosophy)"@en ;
+    skos:prefLabel "Categories (Philosophy)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85022164> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Certainty"@en ;
+    skos:prefLabel "Certainty"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85028999> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Common sense"@en ;
+    skos:prefLabel "Common sense"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85029309> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Comparison (Psychology)"@en ;
+    skos:prefLabel "Comparison (Psychology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85029423> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Comprehension (Theory of knowledge)"@en ;
+    skos:prefLabel "Comprehension (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85029623> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Concepts"@en ;
+    skos:prefLabel "Concepts"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85034130> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Criterion (Theory of knowledge)"@en ;
+    skos:prefLabel "Criterion (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85038061> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Ding an sich"@en ;
+    skos:prefLabel "Ding an sich"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85041430> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Ejection (Psychology)"@en ;
+    skos:prefLabel "Ejection (Psychology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85042851> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Empiricism"@en ;
+    skos:prefLabel "Empiricism"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85044451> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Epistemics"@en ;
+    skos:prefLabel "Epistemics"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85044723> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Error"@en ;
+    skos:prefLabel "Error"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85046433> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Experience"@en ;
+    skos:prefLabel "Experience"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85046453> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Explanation"@en ;
+    skos:prefLabel "Explanation"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85048070> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Fictions, Theory of"@en ;
+    skos:prefLabel "Fictions, Theory of"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85050813> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Formalization (Philosophy)"@en ;
+    skos:prefLabel "Formalization (Philosophy)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85054723> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Gestalt psychology"@en ;
+    skos:prefLabel "Gestalt psychology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85064120> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Idea (Philosophy)"@en ;
+    skos:prefLabel "Idea (Philosophy)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85064155> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Ideology"@en ;
+    skos:prefLabel "Ideology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85064214> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Ignorance (Theory of knowledge)"@en ;
+    skos:prefLabel "Ignorance (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85064394> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Illusion (Philosophy)"@en ;
+    skos:prefLabel "Illusion (Philosophy)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85065993> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Infallibility (Philosophy)"@en ;
+    skos:prefLabel "Infallibility (Philosophy)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85066548> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Inquiry (Theory of knowledge)"@en ;
+    skos:prefLabel "Inquiry (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85067132> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Integration (Theory of knowledge)"@en ;
+    skos:prefLabel "Integration (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85067232> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Interdisciplinary approach to knowledge"@en ;
+    skos:prefLabel "Interdisciplinary approach to knowledge"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85070913> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Judgment"@en ;
+    skos:prefLabel "Judgment"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85071149> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Justification (Theory of knowledge)"@en ;
+    skos:prefLabel "Justification (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85072731> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Sociology of",
+        "Knowledge, Sociology of"@en ;
+    skos:prefLabel "Knowledge, Sociology of",
+        "Knowledge, Sociology of"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85072732> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    bflc:marcKey "150  $aKnowledge, Theory of" ;
+    bflc:subjectOf <http://id.loc.gov/resources/works/10001490>,
+        <http://id.loc.gov/resources/works/10003722>,
+        <http://id.loc.gov/resources/works/100137>,
+        <http://id.loc.gov/resources/works/1001418>,
+        <http://id.loc.gov/resources/works/10015839>,
+        <http://id.loc.gov/resources/works/10018045>,
+        <http://id.loc.gov/resources/works/1002807>,
+        <http://id.loc.gov/resources/works/100374>,
+        <http://id.loc.gov/resources/works/1004541>,
+        <http://id.loc.gov/resources/works/1006261>,
+        <http://id.loc.gov/resources/works/1006541>,
+        <http://id.loc.gov/resources/works/10075126>,
+        <http://id.loc.gov/resources/works/10075545>,
+        <http://id.loc.gov/resources/works/10078641>,
+        <http://id.loc.gov/resources/works/10079052>,
+        <http://id.loc.gov/resources/works/10082736>,
+        <http://id.loc.gov/resources/works/10085314>,
+        <http://id.loc.gov/resources/works/100906>,
+        <http://id.loc.gov/resources/works/1009369>,
+        <http://id.loc.gov/resources/works/1009416>,
+        <http://id.loc.gov/resources/works/10096299>,
+        <http://id.loc.gov/resources/works/1009747>,
+        <http://id.loc.gov/resources/works/10098408>,
+        <http://id.loc.gov/resources/works/10100789>,
+        <http://id.loc.gov/resources/works/10101029>,
+        <http://id.loc.gov/resources/works/10104595>,
+        <http://id.loc.gov/resources/works/10104950>,
+        <http://id.loc.gov/resources/works/10106319>,
+        <http://id.loc.gov/resources/works/101077>,
+        <http://id.loc.gov/resources/works/10107956>,
+        <http://id.loc.gov/resources/works/10115291>,
+        <http://id.loc.gov/resources/works/10117444>,
+        <http://id.loc.gov/resources/works/1011855>,
+        <http://id.loc.gov/resources/works/10118627>,
+        <http://id.loc.gov/resources/works/10122064>,
+        <http://id.loc.gov/resources/works/101223>,
+        <http://id.loc.gov/resources/works/10127601>,
+        <http://id.loc.gov/resources/works/1012917>,
+        <http://id.loc.gov/resources/works/10133418>,
+        <http://id.loc.gov/resources/works/10134003>,
+        <http://id.loc.gov/resources/works/10134629>,
+        <http://id.loc.gov/resources/works/10138818>,
+        <http://id.loc.gov/resources/works/10141591>,
+        <http://id.loc.gov/resources/works/10145296>,
+        <http://id.loc.gov/resources/works/10150623>,
+        <http://id.loc.gov/resources/works/10152407>,
+        <http://id.loc.gov/resources/works/10153973>,
+        <http://id.loc.gov/resources/works/10153988>,
+        <http://id.loc.gov/resources/works/10154243>,
+        <http://id.loc.gov/resources/works/10155687>,
+        <http://id.loc.gov/resources/works/10157566>,
+        <http://id.loc.gov/resources/works/10160799>,
+        <http://id.loc.gov/resources/works/10161571>,
+        <http://id.loc.gov/resources/works/10161620>,
+        <http://id.loc.gov/resources/works/10162510>,
+        <http://id.loc.gov/resources/works/10162511>,
+        <http://id.loc.gov/resources/works/10162875>,
+        <http://id.loc.gov/resources/works/10163820>,
+        <http://id.loc.gov/resources/works/10163873>,
+        <http://id.loc.gov/resources/works/10163892>,
+        <http://id.loc.gov/resources/works/10164307>,
+        <http://id.loc.gov/resources/works/10164697>,
+        <http://id.loc.gov/resources/works/10165339>,
+        <http://id.loc.gov/resources/works/10165627>,
+        <http://id.loc.gov/resources/works/10166538>,
+        <http://id.loc.gov/resources/works/10167582>,
+        <http://id.loc.gov/resources/works/10171635>,
+        <http://id.loc.gov/resources/works/10173610>,
+        <http://id.loc.gov/resources/works/10173812>,
+        <http://id.loc.gov/resources/works/10173962>,
+        <http://id.loc.gov/resources/works/10174425>,
+        <http://id.loc.gov/resources/works/101748>,
+        <http://id.loc.gov/resources/works/10175165>,
+        <http://id.loc.gov/resources/works/10176769>,
+        <http://id.loc.gov/resources/works/10176918>,
+        <http://id.loc.gov/resources/works/10179860>,
+        <http://id.loc.gov/resources/works/10181280>,
+        <http://id.loc.gov/resources/works/10182871>,
+        <http://id.loc.gov/resources/works/10183998>,
+        <http://id.loc.gov/resources/works/10185601>,
+        <http://id.loc.gov/resources/works/10185602>,
+        <http://id.loc.gov/resources/works/10193725>,
+        <http://id.loc.gov/resources/works/10194153>,
+        <http://id.loc.gov/resources/works/10196217>,
+        <http://id.loc.gov/resources/works/10198692>,
+        <http://id.loc.gov/resources/works/10206700>,
+        <http://id.loc.gov/resources/works/10207520>,
+        <http://id.loc.gov/resources/works/10211912>,
+        <http://id.loc.gov/resources/works/10212359>,
+        <http://id.loc.gov/resources/works/1021989>,
+        <http://id.loc.gov/resources/works/10222444>,
+        <http://id.loc.gov/resources/works/10223088>,
+        <http://id.loc.gov/resources/works/10228731>,
+        <http://id.loc.gov/resources/works/10230853>,
+        <http://id.loc.gov/resources/works/10232074>,
+        <http://id.loc.gov/resources/works/10235592>,
+        <http://id.loc.gov/resources/works/10235797>,
+        <http://id.loc.gov/resources/works/10236010>,
+        <http://id.loc.gov/resources/works/10236294>,
+        <http://id.loc.gov/resources/works/10238919> ;
+    identifiers:lccn "sh 85072732" ;
+    madsrdf:adminMetadata [ a ri:RecordInfo ;
+            ri:recordChangeDate "2002-03-26T08:19:57"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            ri:recordStatus "revised"^^xsd:string ],
+        [ a ri:RecordInfo ;
+            ri:recordChangeDate "2002-02-01T00:00:00"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            ri:recordStatus "new"^^xsd:string ] ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of"@en ;
+    madsrdf:classification [ a lcc:ClassNumber ;
+            madsrdf:code "BD143-BD237" ;
+            madsrdf:hasExactExternalAuthority <http://id.loc.gov/authorities/classification/BD143-BD237> ] ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Knowledge, Theory of"@en ] ) ;
+    madsrdf:hasBroaderAuthority <http://id.loc.gov/authorities/subjects/sh85100849>,
+        <http://id.loc.gov/authorities/subjects/sh85108459> ;
+    madsrdf:hasCloseExternalAuthority <http://data.bnf.fr/ark:/12148/cb119339073>,
+        <http://datos.bne.es/resource/XX526258>,
+        <http://id.worldcat.org/fast/988194>,
+        <http://purl.org/bncf/tid/9651>,
+        <http://www.wikidata.org/entity/Q9471>,
+        <http://www.yso.fi/onto/yso/p15994>,
+        <https://d-nb.info/gnd/4070914-0>,
+        <https://d-nb.info/gnd/4112520-4>,
+        <https://d-nb.info/gnd/4117665-0> ;
+    madsrdf:hasNarrowerAuthority <http://id.loc.gov/authorities/subjects/sh00002298>,
+        <http://id.loc.gov/authorities/subjects/sh2003005284>,
+        <http://id.loc.gov/authorities/subjects/sh2006003446>,
+        <http://id.loc.gov/authorities/subjects/sh2008002937>,
+        <http://id.loc.gov/authorities/subjects/sh2010012461>,
+        <http://id.loc.gov/authorities/subjects/sh2010015469>,
+        <http://id.loc.gov/authorities/subjects/sh2011005653>,
+        <http://id.loc.gov/authorities/subjects/sh85000019>,
+        <http://id.loc.gov/authorities/subjects/sh85004775>,
+        <http://id.loc.gov/authorities/subjects/sh85009064>,
+        <http://id.loc.gov/authorities/subjects/sh85013004>,
+        <http://id.loc.gov/authorities/subjects/sh85020993>,
+        <http://id.loc.gov/authorities/subjects/sh85022164>,
+        <http://id.loc.gov/authorities/subjects/sh85028999>,
+        <http://id.loc.gov/authorities/subjects/sh85029309>,
+        <http://id.loc.gov/authorities/subjects/sh85029423>,
+        <http://id.loc.gov/authorities/subjects/sh85029623>,
+        <http://id.loc.gov/authorities/subjects/sh85034130>,
+        <http://id.loc.gov/authorities/subjects/sh85038061>,
+        <http://id.loc.gov/authorities/subjects/sh85041430>,
+        <http://id.loc.gov/authorities/subjects/sh85042851>,
+        <http://id.loc.gov/authorities/subjects/sh85044451>,
+        <http://id.loc.gov/authorities/subjects/sh85044723>,
+        <http://id.loc.gov/authorities/subjects/sh85046433>,
+        <http://id.loc.gov/authorities/subjects/sh85046453>,
+        <http://id.loc.gov/authorities/subjects/sh85048070>,
+        <http://id.loc.gov/authorities/subjects/sh85050813>,
+        <http://id.loc.gov/authorities/subjects/sh85054723>,
+        <http://id.loc.gov/authorities/subjects/sh85064120>,
+        <http://id.loc.gov/authorities/subjects/sh85064155>,
+        <http://id.loc.gov/authorities/subjects/sh85064214>,
+        <http://id.loc.gov/authorities/subjects/sh85064394>,
+        <http://id.loc.gov/authorities/subjects/sh85065993>,
+        <http://id.loc.gov/authorities/subjects/sh85066548>,
+        <http://id.loc.gov/authorities/subjects/sh85067132>,
+        <http://id.loc.gov/authorities/subjects/sh85067232>,
+        <http://id.loc.gov/authorities/subjects/sh85070913>,
+        <http://id.loc.gov/authorities/subjects/sh85071149>,
+        <http://id.loc.gov/authorities/subjects/sh85072731>,
+        <http://id.loc.gov/authorities/subjects/sh85086411>,
+        <http://id.loc.gov/authorities/subjects/sh85093660>,
+        <http://id.loc.gov/authorities/subjects/sh85093747>,
+        <http://id.loc.gov/authorities/subjects/sh85094699>,
+        <http://id.loc.gov/authorities/subjects/sh85096028>,
+        <http://id.loc.gov/authorities/subjects/sh85097744>,
+        <http://id.loc.gov/authorities/subjects/sh85100119>,
+        <http://id.loc.gov/authorities/subjects/sh85100679>,
+        <http://id.loc.gov/authorities/subjects/sh85106059>,
+        <http://id.loc.gov/authorities/subjects/sh85111520>,
+        <http://id.loc.gov/authorities/subjects/sh85112496>,
+        <http://id.loc.gov/authorities/subjects/sh85113058>,
+        <http://id.loc.gov/authorities/subjects/sh85118695>,
+        <http://id.loc.gov/authorities/subjects/sh85119766>,
+        <http://id.loc.gov/authorities/subjects/sh85120041>,
+        <http://id.loc.gov/authorities/subjects/sh85120047>,
+        <http://id.loc.gov/authorities/subjects/sh85124666>,
+        <http://id.loc.gov/authorities/subjects/sh85129469>,
+        <http://id.loc.gov/authorities/subjects/sh85129642>,
+        <http://id.loc.gov/authorities/subjects/sh85139690>,
+        <http://id.loc.gov/authorities/subjects/sh85141083>,
+        <http://id.loc.gov/authorities/subjects/sh85141939>,
+        <http://id.loc.gov/authorities/subjects/sh88000079>,
+        <http://id.loc.gov/authorities/subjects/sh88001233>,
+        <http://id.loc.gov/authorities/subjects/sh89004801>,
+        <http://id.loc.gov/authorities/subjects/sh94002873>,
+        <http://id.loc.gov/authorities/subjects/sh95007788>,
+        <http://id.loc.gov/authorities/subjects/sh96011227>,
+        <http://id.loc.gov/authorities/subjects/sh98001235>,
+        <http://id.loc.gov/authorities/subjects/sh98004398> ;
+    madsrdf:hasNarrowerExternalAuthority <http://id.worldcat.org/fast/988195>,
+        <http://id.worldcat.org/fast/988196>,
+        <http://id.worldcat.org/fast/988197>,
+        <http://id.worldcat.org/fast/988199>,
+        <http://id.worldcat.org/fast/988200>,
+        <http://id.worldcat.org/fast/988201>,
+        <http://id.worldcat.org/fast/988202>,
+        <http://id.worldcat.org/fast/988203>,
+        <http://id.worldcat.org/fast/988204> ;
+    madsrdf:hasVariant [ a madsrdf:Topic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                        madsrdf:elementValue "Epistemology"@en ] ) ;
+            madsrdf:variantLabel "Epistemology"@en ],
+        [ a madsrdf:Topic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                        madsrdf:elementValue "Theory of knowledge"@en ] ) ;
+            madsrdf:variantLabel "Theory of knowledge"@en ] ;
+    madsrdf:isMemberOfMADSCollection <http://id.loc.gov/authorities/subjects/collection_LCSHAuthorizedHeadings>,
+        <http://id.loc.gov/authorities/subjects/collection_LCSH_General>,
+        <http://id.loc.gov/authorities/subjects/collection_SubdivideGeographically> ;
+    madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ;
+    owl:sameAs <http://id.loc.gov/authorities/sh85072732#concept>,
+        <info:lc/authorities/sh85072732> ;
+    skos:altLabel "Epistemology"@en,
+        "Theory of knowledge"@en ;
+    skos:broader <http://id.loc.gov/authorities/subjects/sh85100849>,
+        <http://id.loc.gov/authorities/subjects/sh85108459> ;
+    skos:changeNote [ a cs:ChangeSet ;
+            cs:changeReason "revised"^^xsd:string ;
+            cs:createdDate "2002-03-26T08:19:57"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/subjects/sh85072732> ],
+        [ a cs:ChangeSet ;
+            cs:changeReason "new"^^xsd:string ;
+            cs:createdDate "2002-02-01T00:00:00"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/subjects/sh85072732> ] ;
+    skos:closeMatch <http://data.bnf.fr/ark:/12148/cb119339073>,
+        <http://datos.bne.es/resource/XX526258>,
+        <http://id.worldcat.org/fast/988194>,
+        <http://purl.org/bncf/tid/9651>,
+        <http://www.wikidata.org/entity/Q9471>,
+        <http://www.yso.fi/onto/yso/p15994>,
+        <https://d-nb.info/gnd/4070914-0>,
+        <https://d-nb.info/gnd/4112520-4>,
+        <https://d-nb.info/gnd/4117665-0> ;
+    skos:inScheme <http://id.loc.gov/authorities/subjects> ;
+    skos:narrowMatch <http://id.worldcat.org/fast/988195>,
+        <http://id.worldcat.org/fast/988196>,
+        <http://id.worldcat.org/fast/988197>,
+        <http://id.worldcat.org/fast/988199>,
+        <http://id.worldcat.org/fast/988200>,
+        <http://id.worldcat.org/fast/988201>,
+        <http://id.worldcat.org/fast/988202>,
+        <http://id.worldcat.org/fast/988203>,
+        <http://id.worldcat.org/fast/988204> ;
+    skos:narrower <http://id.loc.gov/authorities/subjects/sh00002298>,
+        <http://id.loc.gov/authorities/subjects/sh2003005284>,
+        <http://id.loc.gov/authorities/subjects/sh2006003446>,
+        <http://id.loc.gov/authorities/subjects/sh2008002937>,
+        <http://id.loc.gov/authorities/subjects/sh2010012461>,
+        <http://id.loc.gov/authorities/subjects/sh2010015469>,
+        <http://id.loc.gov/authorities/subjects/sh2011005653>,
+        <http://id.loc.gov/authorities/subjects/sh85000019>,
+        <http://id.loc.gov/authorities/subjects/sh85004775>,
+        <http://id.loc.gov/authorities/subjects/sh85009064>,
+        <http://id.loc.gov/authorities/subjects/sh85013004>,
+        <http://id.loc.gov/authorities/subjects/sh85020993>,
+        <http://id.loc.gov/authorities/subjects/sh85022164>,
+        <http://id.loc.gov/authorities/subjects/sh85028999>,
+        <http://id.loc.gov/authorities/subjects/sh85029309>,
+        <http://id.loc.gov/authorities/subjects/sh85029423>,
+        <http://id.loc.gov/authorities/subjects/sh85029623>,
+        <http://id.loc.gov/authorities/subjects/sh85034130>,
+        <http://id.loc.gov/authorities/subjects/sh85038061>,
+        <http://id.loc.gov/authorities/subjects/sh85041430>,
+        <http://id.loc.gov/authorities/subjects/sh85042851>,
+        <http://id.loc.gov/authorities/subjects/sh85044451>,
+        <http://id.loc.gov/authorities/subjects/sh85044723>,
+        <http://id.loc.gov/authorities/subjects/sh85046433>,
+        <http://id.loc.gov/authorities/subjects/sh85046453>,
+        <http://id.loc.gov/authorities/subjects/sh85048070>,
+        <http://id.loc.gov/authorities/subjects/sh85050813>,
+        <http://id.loc.gov/authorities/subjects/sh85054723>,
+        <http://id.loc.gov/authorities/subjects/sh85064120>,
+        <http://id.loc.gov/authorities/subjects/sh85064155>,
+        <http://id.loc.gov/authorities/subjects/sh85064214>,
+        <http://id.loc.gov/authorities/subjects/sh85064394>,
+        <http://id.loc.gov/authorities/subjects/sh85065993>,
+        <http://id.loc.gov/authorities/subjects/sh85066548>,
+        <http://id.loc.gov/authorities/subjects/sh85067132>,
+        <http://id.loc.gov/authorities/subjects/sh85067232>,
+        <http://id.loc.gov/authorities/subjects/sh85070913>,
+        <http://id.loc.gov/authorities/subjects/sh85071149>,
+        <http://id.loc.gov/authorities/subjects/sh85072731>,
+        <http://id.loc.gov/authorities/subjects/sh85086411>,
+        <http://id.loc.gov/authorities/subjects/sh85093660>,
+        <http://id.loc.gov/authorities/subjects/sh85093747>,
+        <http://id.loc.gov/authorities/subjects/sh85094699>,
+        <http://id.loc.gov/authorities/subjects/sh85096028>,
+        <http://id.loc.gov/authorities/subjects/sh85097744>,
+        <http://id.loc.gov/authorities/subjects/sh85100119>,
+        <http://id.loc.gov/authorities/subjects/sh85100679>,
+        <http://id.loc.gov/authorities/subjects/sh85106059>,
+        <http://id.loc.gov/authorities/subjects/sh85111520>,
+        <http://id.loc.gov/authorities/subjects/sh85112496>,
+        <http://id.loc.gov/authorities/subjects/sh85113058>,
+        <http://id.loc.gov/authorities/subjects/sh85118695>,
+        <http://id.loc.gov/authorities/subjects/sh85119766>,
+        <http://id.loc.gov/authorities/subjects/sh85120041>,
+        <http://id.loc.gov/authorities/subjects/sh85120047>,
+        <http://id.loc.gov/authorities/subjects/sh85124666>,
+        <http://id.loc.gov/authorities/subjects/sh85129469>,
+        <http://id.loc.gov/authorities/subjects/sh85129642>,
+        <http://id.loc.gov/authorities/subjects/sh85139690>,
+        <http://id.loc.gov/authorities/subjects/sh85141083>,
+        <http://id.loc.gov/authorities/subjects/sh85141939>,
+        <http://id.loc.gov/authorities/subjects/sh88000079>,
+        <http://id.loc.gov/authorities/subjects/sh88001233>,
+        <http://id.loc.gov/authorities/subjects/sh89004801>,
+        <http://id.loc.gov/authorities/subjects/sh94002873>,
+        <http://id.loc.gov/authorities/subjects/sh95007788>,
+        <http://id.loc.gov/authorities/subjects/sh96011227>,
+        <http://id.loc.gov/authorities/subjects/sh98001235>,
+        <http://id.loc.gov/authorities/subjects/sh98004398> ;
+    skos:prefLabel "Knowledge, Theory of"@en ;
+    skosxl:altLabel [ a skosxl:Label ;
+            skosxl:literalForm "Theory of knowledge"@en ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "Epistemology"@en ] .
+
+<http://id.loc.gov/authorities/subjects/sh85086411> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Modality (Theory of knowledge)"@en ;
+    skos:prefLabel "Modality (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85093660> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Objectivity"@en ;
+    skos:prefLabel "Objectivity"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85093747> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Observation (Psychology)"@en ;
+    skos:prefLabel "Observation (Psychology)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85094699> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Omniscience (Theory of knowledge)"@en ;
+    skos:prefLabel "Omniscience (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85096028> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Other minds (Theory of knowledge)"@en ;
+    skos:prefLabel "Other minds (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85097744> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Paradigm (Theory of knowledge)"@en ;
+    skos:prefLabel "Paradigm (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85100119> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Personality (Theory of knowledge)"@en ;
+    skos:prefLabel "Personality (Theory of knowledge)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85100679> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Phenomenalism"@en ;
+    skos:prefLabel "Phenomenalism"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85100849> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Philosophy"@en ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Philosophy"@en ] ) ;
+    skos:prefLabel "Philosophy"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85106059> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Pragmatism"@en ;
+    skos:prefLabel "Pragmatism"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85108459> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Psychology"@en ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Psychology"@en ] ) ;
+    skos:prefLabel "Psychology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85111520> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rationalism"@en ;
+    skos:prefLabel "Rationalism"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85112496> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Relativity"@en ;
+    skos:prefLabel "Relativity"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85113058> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Resemblance (Philosophy)"@en ;
+    skos:prefLabel "Resemblance (Philosophy)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85118695> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Scientism"@en ;
+    skos:prefLabel "Scientism"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85119766> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Self-knowledge, Theory of"@en ;
+    skos:prefLabel "Self-knowledge, Theory of"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85120041> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Sense data"@en ;
+    skos:prefLabel "Sense data"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85120047> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Senses and sensation"@en ;
+    skos:prefLabel "Senses and sensation"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85124666> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Solipsism"@en ;
+    skos:prefLabel "Solipsism"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85129469> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Subjectivity"@en ;
+    skos:prefLabel "Subjectivity"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85129642> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Sufficient reason"@en ;
+    skos:prefLabel "Sufficient reason"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85139690> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Uniformity of nature"@en ;
+    skos:prefLabel "Uniformity of nature"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85141083> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Universals (Philosophy)"@en ;
+    skos:prefLabel "Universals (Philosophy)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85141939> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Values"@en ;
+    skos:prefLabel "Values"@en .
+
+<http://id.loc.gov/authorities/subjects/sh88000079> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Expertise"@en ;
+    skos:prefLabel "Expertise"@en .
+
+<http://id.loc.gov/authorities/subjects/sh88001233> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of, in children"@en ;
+    skos:prefLabel "Knowledge, Theory of, in children"@en .
+
+<http://id.loc.gov/authorities/subjects/sh89004801> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Genetic epistemology"@en ;
+    skos:prefLabel "Genetic epistemology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh94002873> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Social epistemology"@en ;
+    skos:prefLabel "Social epistemology"@en .
+
+<http://id.loc.gov/authorities/subjects/sh95007788> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Self-evidence (Logic)"@en ;
+    skos:prefLabel "Self-evidence (Logic)"@en .
+
+<http://id.loc.gov/authorities/subjects/sh96011227> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Memetics"@en ;
+    skos:prefLabel "Memetics"@en .
+
+<http://id.loc.gov/authorities/subjects/sh98001235> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Qualia"@en ;
+    skos:prefLabel "Qualia"@en .
+
+<http://id.loc.gov/authorities/subjects/sh98004398> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Tacit knowledge"@en ;
+    skos:prefLabel "Tacit knowledge"@en .
+
+<http://id.worldcat.org/fast/988194> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of" ;
+    skos:prefLabel "Knowledge, Theory of" .
+
+<http://id.worldcat.org/fast/988195> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Data processing" ;
+    skos:prefLabel "Knowledge, Theory of--Data processing" .
+
+<http://id.worldcat.org/fast/988196> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Early works to 1800" ;
+    skos:prefLabel "Knowledge, Theory of--Early works to 1800" .
+
+<http://id.worldcat.org/fast/988197> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Economic aspects" ;
+    skos:prefLabel "Knowledge, Theory of--Economic aspects" .
+
+<http://id.worldcat.org/fast/988199> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Methodology" ;
+    skos:prefLabel "Knowledge, Theory of--Methodology" .
+
+<http://id.worldcat.org/fast/988200> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Moral and ethical aspects" ;
+    skos:prefLabel "Knowledge, Theory of--Moral and ethical aspects" .
+
+<http://id.worldcat.org/fast/988201> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Political aspects" ;
+    skos:prefLabel "Knowledge, Theory of--Political aspects" .
+
+<http://id.worldcat.org/fast/988202> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Psychological aspects" ;
+    skos:prefLabel "Knowledge, Theory of--Psychological aspects" .
+
+<http://id.worldcat.org/fast/988203> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Study and teaching" ;
+    skos:prefLabel "Knowledge, Theory of--Study and teaching" .
+
+<http://id.worldcat.org/fast/988204> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Knowledge, Theory of--Study and teaching (Higher)" ;
+    skos:prefLabel "Knowledge, Theory of--Study and teaching (Higher)" .
+
+<http://purl.org/bncf/tid/9651> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Gnoseologia"@it ;
+    skos:prefLabel "Gnoseologia"@it .
+
+<http://www.wikidata.org/entity/Q9471> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "epistemology" ;
+    skos:prefLabel "epistemology" .
+
+<http://www.yso.fi/onto/yso/p15994> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "tietoteoria"@fi ;
+    skos:prefLabel "tietoteoria"@fi .
+
+<https://d-nb.info/gnd/4070914-0> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Erkenntnistheorie"@de ;
+    skos:prefLabel "Erkenntnistheorie"@de .
+
+<https://d-nb.info/gnd/4112520-4> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Analytische Wissenschaftstheorie"@de ;
+    skos:prefLabel "Analytische Wissenschaftstheorie"@de .
+
+<https://d-nb.info/gnd/4117665-0> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Wissenschaftstheorie"@de ;
+    skos:prefLabel "Wissenschaftstheorie"@de .
+

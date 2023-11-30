@@ -1,5 +1,5 @@
 {
-    "identifiersLocal": "2",
+    "identifiersLocal": "13",
     "adminMetadata": {
         "status": {
             "label": "novo",
@@ -10,22 +10,22 @@
     "contribution": [
         {
             "agent": "https://bibliokeia.com/authority/PersonalName/3",
-            "label": "Munro, Alice",
+            "label": "Popper, Karl R.",
             "role": "http://id.loc.gov/vocabulary/relators/aut",
             "roleLabel": "Autor"
         }
     ],
     "subject": [
         {
-            "label": "Ficção",
+            "label": "Metodologia",
             "lang": "por",
-            "uri": "https://bibliokeia.com/authority/Topic/2",
+            "uri": "https://bibliokeia.com/authority/Topic/1",
             "type": "Topic"
         }
     ],
     "type": "Text",
     "title": {
-        "mainTitle": "Ódio, amizade, namoro, amor, casamento",
+        "mainTitle": "Conjecturas e refutações",
         "subtitle": ""
     },
     "content": {

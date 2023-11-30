@@ -7,27 +7,19 @@ import {
     InputLabel,
     MenuItem,
     Paper,
-    // TextField,
-    // InputAdornment,
-    // IconButton,
     Divider,
     Button,
     Typography,
-    // Alert
 } from "@mui/material";
-// import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
-import FormBibframeWork from "@/components/catalog/forms/formBibframeWork"
 import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
 import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
-
 
 // React Icons
 import { FcHome, FcCancel } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
-import { IoIosSave } from "react-icons/io";
 
 // React-Hook-Form
 import { useForm } from "react-hook-form";
@@ -35,7 +27,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 import { ZodWork } from "@/schema/bibframe/zodWork"
-// import { Bibframe } from "@/schema/bibframe"
 
 // React Hooks
 import { useEffect, useState } from "react";
@@ -46,9 +37,7 @@ import { bkapi } from "@/services/api";
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
-
-
-// import Link from "next/link";
+import FormCreateWork from "@/components/catalog/forms/formCreateWork";
 
 const previousPaths = [
     {
@@ -138,49 +127,49 @@ export default function Create() {
 
     console.log("E: ", errors)
 
-    function CreateWork(data: any) {
+    // function CreateWork(data: any) {
 
-        // setProgress(true)
+    //     // setProgress(true)
 
-        let obj = {
-            identifiersLocal: String(id),
-            adminMetadata: {
-                status: {
-                    label: "novo",
-                    value: "n"
-                },
-            },
-            isPartOf: "https://bibliokeia.com/catalog/works",
-        }
+    //     let obj = {
+    //         identifiersLocal: String(id),
+    //         adminMetadata: {
+    //             status: {
+    //                 label: "novo",
+    //                 value: "n"
+    //             },
+    //         },
+    //         isPartOf: "https://bibliokeia.com/catalog/works",
+    //     }
 
+    //     const request = { ...obj, ...data };
+    //     console.log("CR: ", request)
+    //     setProgress(true)
+    //     bkapi
+    //         .post("/catalog/work/create", request, {
+    //             headers: headers,
+    //         })
+    //         .then(function (response) {
+    //             if (response.status === 201) {
+    //                 console.log(response);
+    //                 setMessage("Registro criado com sucesso!")
+    //                 //   router.push(`/admin/authority/names/${response.data.id}`);
+    //             }
+    //         })
+    //         .catch(function (error) {
+    //             if (error.response.status === 409) {
+    //                 setTypeAlert("error")
+    //                 setMessage("Este registro já existe")
+    //                 console.error("ER:", error);
+    //             }
+    //         })
+    //         .finally(function () {
+    //             setProgress(false)
+    //             setOpenSnack(true)
+    //         });
 
-        const request = { ...obj, ...data };
-        console.log("CR: ", request)
-        setProgress(true)
-        bkapi
-            .post("/catalog/work/create", request, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    console.log(response);
-                    setMessage("Registro criado com sucesso!")
-                    //   router.push(`/admin/authority/names/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 409) {
-                    setTypeAlert("error")
-                    setMessage("Este registro já existe")
-                    console.error("ER:", error);
-                }
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+    // }
 
-    }
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
             <BreadcrumbsBK
@@ -189,9 +178,16 @@ export default function Create() {
             />
             <Divider sx={{ mt: "10px" }} />
             <Paper elevation={3} sx={{
-                p: "15px", mt: "10px", //height: 500 
+                p: "15px", mt: "10px"
             }}>
-                <form onSubmit={handleSubmit(CreateWork)} >
+                <FormCreateWork
+                    // defaultValues={defaultValues}
+                    // setOpenName={setOpenName}
+                    // setOpenSubject={setOpenSubject}
+                    // setField={setField}
+                    // setValue={setValue} 
+                    />
+                {/* <form onSubmit={handleSubmit(CreateWork)} >
                     <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                         <Typography variant="h4" gutterBottom>
                             Criar Obra - Work
@@ -226,21 +222,20 @@ export default function Create() {
                         setOpenName={setOpenName}
                         setOpenSubject={setOpenSubject}
                         setField={setField} />
-
-                </form>
-                <ModalThesarusNames
+                </form> */}
+                {/* <ModalThesarusNames
                     setOpen={setOpenName}
                     open={openName}
                     defaultValues={defaultValues}
                     field={field}
                     setValue={setValue} />
 
-                 <ModalThesarus
+                <ModalThesarus
                     setOpen={setOpenSubject}
                     open={openSubject}
                     defaultValues={defaultValues}
                     field={field}
-                    setValue={setValue} />
+                    setValue={setValue} /> */}
             </Paper>
         </Container>
     )

@@ -34,7 +34,7 @@ import { FaBookOpenReader } from "react-icons/fa6";
 import { SearchCatalog } from "@/services/catalog/searchCatalog";
 
 // Providers BiblioKeia
-import { useParmasAutority } from "@/providers/paramsAuthority";
+// import { useParmasAutority } from "@/providers/paramsAuthority";
 
 import Link from "next/link";
 
@@ -82,10 +82,6 @@ export default function Catalog() {
         params.set("q", "*:*");
         params.set("fq", "isPartOf:Work");
         params.set("fl", "*,[child]");
-        // params.set("q.op", "OR");
-
-        // "q.op":"OR",
-
         setParams(params)
         SearchCatalog(
             params,
@@ -180,16 +176,25 @@ export default function Catalog() {
                 <Box sx={{ mt: "10px" }}>
                     <Grid container spacing={2}>
                         <Grid item xs={2}>Refine sua busca:</Grid>
-                        <Grid item xs={10} //sx={{ border: "solid"}}
-                        >
-                            <TableCatalogResult
-                                rows={rows}
-                                rowCount={rowCount}
-                                setRowCount={setRowCount}
-                                setRows={setRows}
-                            // setFacetType={setFacetType}
-                            />
-                        </Grid>
+                        {rows.length > 0 ? (
+                                <Grid item xs={10} >
+                                <TableCatalogResult
+                                    rows={rows}
+                                    rowCount={rowCount}
+                                    setRowCount={setRowCount}
+                                    setRows={setRows}
+                                />
+                            </Grid>
+                            ) : (
+                                <Grid item xs={10}>
+                                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                                        <Alert severity="info">
+                                            Sua busca não retorno nenhum resultado.
+                                        </Alert>
+                                    </Box>
+                                </Grid>
+                            )}
+                        
                     </Grid>
 
 

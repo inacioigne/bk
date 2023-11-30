@@ -55,23 +55,9 @@ export function SearchCatalog(
       setRowCount(response.data.response.numFound)
       let r = ParserDoc(docs)
      
-      console.log("RES:", r)
+      console.log("RES:", response.data)
 
       setRows(r);
-      // Facet Type
-      // const fType = TransformFacet(
-      //   response.data.facet_counts.facet_fields.type
-      // );
-      // setFacetType(fType); 
-      // Facet fAffiliation
-      // const fAffiliation = TransformFacet(
-      //   response.data.facet_counts.facet_fields.affiliation_str
-      // );
-      // setFacetAffiliation(fAffiliation);
-      // const fOccupation = TransformFacet(
-      //   response.data.facet_counts.facet_fields.occupation_str
-      // );
-      // setOccupation(fOccupation)
     })
     .catch(function (error) {
       // manipula erros da requisição
