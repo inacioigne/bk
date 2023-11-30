@@ -1,6 +1,5 @@
 function RemoveNull(obj: any) {
   const formData = Object.keys(obj).reduce((acc: any, key) => {
-    // console.log(acc);
     if (obj[key] !== "") {
       acc[key] = obj[key];
     }

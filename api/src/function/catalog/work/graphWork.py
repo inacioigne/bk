@@ -19,6 +19,8 @@ prefix = """PREFIX bkw: <https://bibliokeia.com/catalog/works/>
             PREFIX genreForms: <http://id.loc.gov/authorities/genreForms/>
             PREFIX msupplcont: <http://id.loc.gov/vocabulary/msupplcont/>
             PREFIX millus: <http://id.loc.gov/vocabulary/millus/>    
+            PREFIX dcterms: <http://purl.org/dc/terms/>    
+
     """
 
 def MakeGraphWork(request): 
@@ -58,6 +60,7 @@ def MakeGraphWork(request):
                 { MakeUri("illustrativeContent", request.illustrativeContent) if request.illustrativeContent else "" }
                 { MakeUri("intendedAudience", request.intendedAudience) if request.intendedAudience else "" }
                 { MakeUri("geographicCoverage", request.geographicCoverage) if request.geographicCoverage else "" }
+                dcterms:isPartOf <http://id.loc.gov/resources/works> .
         }} }}
         """
     return graph

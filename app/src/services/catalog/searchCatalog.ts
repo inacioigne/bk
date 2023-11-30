@@ -21,33 +21,48 @@ function TransformFacet(facets: any) {
   return listFacets;
 }
 
+function ParserDoc(docs: any) {
+  const r = docs.map((doc: any, index: number) => {
+    let title = {mainTitle: doc.mainTitle, subtitle: doc.subtitle}
+    // let authors = {name: doc.contribution}
+    return { 
+      id: doc.id, 
+      title: title, 
+      authors: doc.contribution,
+      type: doc.type };
+  });
+  return r
+
+}
+
 export function SearchCatalog(
   params: URLSearchParams,
   setRows: Function,
   setRowCount:Function,
-  setFacetType: Function
+  // setFacetType: Function
 ) {
+  console.log(params.toString())
 
-  params.getAll('fq').includes("isMemberOfMADSCollection:subjects") && params.delete("fq", "isMemberOfMADSCollection:subjects")
+  // params.getAll('fq').includes("isMemberOfMADSCollection:subjects") && params.delete("fq", "isMemberOfMADSCollection:subjects")
 
-  if (!params.getAll('fq').includes("isMemberOfMADSCollection:names")) {
-    params.append("fq", "isMemberOfMADSCollection:names");    
-  }
+  // if (!params.getAll('fq').includes("isMemberOfMADSCollection:names")) {
+  //   params.append("fq", "isMemberOfMADSCollection:names");    
+  // }
 
   solr.get("catalog/query?", {params: params})
     .then(function (response) { 
-      console.log("RES:", response.data)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
-      const r = docs.map((doc: any, index: number) => {
-        return { id: doc.id, authority: doc.authority[0], type: doc.type };
-      });
+      let r = ParserDoc(docs)
+     
+      console.log("RES:", r)
+
       setRows(r);
       // Facet Type
-      const fType = TransformFacet(
-        response.data.facet_counts.facet_fields.type
-      );
-      setFacetType(fType); 
+      // const fType = TransformFacet(
+      //   response.data.facet_counts.facet_fields.type
+      // );
+      // setFacetType(fType); 
       // Facet fAffiliation
       // const fAffiliation = TransformFacet(
       //   response.data.facet_counts.facet_fields.affiliation_str

@@ -18,37 +18,17 @@ import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 // BiblioKeia Services
 import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
-import {RenderTitle} from "@/components/catalog/table/renderTitle"
-import {RenderCover} from "@/components/catalog/table/renderCover"
+import { RenderTitle } from "@/components/catalog/table/renderTitle"
+import { RenderCover } from "@/components/catalog/table/renderCover"
+import { RenderAuthors } from "@/components/catalog/table/renderAuthors"
+
+
 
 
 
 // Nextjs
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
-
-
-
-function RenderType(props: GridRenderCellParams<any, String>) {
-  const { hasFocus, value } = props;
-  let obj = {
-    PersonalName: { name: "Nome Pessoal", icon: <TbUserSearch /> },
-    CorporateName: {
-      name: "Nome Coorporativo",
-      icon: <HiOutlineBuildingOffice2 />,
-    },
-  };
-  // console.log(obj)
-
-  return (
-    <div>
-      {/* <Button startIcon={obj[`${value}`].icon} sx={{ textTransform: "none" }}>
-        {obj[`${value}`].name}
-      </Button> */}
-      {value}
-    </div>
-  );
-}
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
@@ -63,13 +43,11 @@ interface Props {
 }
 
 export function TableCatalogResult(
-  { rows, rowCount, setRows, setRowCount, 
-    // setFacetType
+  { rows, rowCount, setRows, setRowCount,
   }: Props) {
 
   const router = useRouter()
 
-  // const { paramsAuthority } = useParmasAutority()
   const { setProgress } = useProgress();
 
   const columns: GridColDef[] = [
@@ -89,7 +67,7 @@ export function TableCatalogResult(
       field: "authors",
       flex: 1,
       renderHeader: () => <strong>{"Autores"}</strong>,
-      renderCell: RenderType,
+      renderCell: RenderAuthors,
     },
     {
       field: "year",

@@ -173,9 +173,7 @@ export default function Create() {
                     setTypeAlert("error")
                     setMessage("Este registro já existe")
                     console.error("ER:", error);
-
                 }
-
             })
             .finally(function () {
                 setProgress(false)

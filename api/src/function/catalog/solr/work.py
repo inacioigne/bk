@@ -8,6 +8,7 @@ def DocWork(request):
 
     doc = {
         "id": request.identifiersLocal,
+        "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "type": request.type,
         # "content": [i.label for i in request.content],
         "content": request.content.label,
@@ -22,6 +23,7 @@ def DocWork(request):
         "illustrativeContent": [i.label for i in request.illustrativeContent] if request.illustrativeContent else None,
         "intendedAudience": [i.label for i in request.intendedAudience] if request.intendedAudience else None,
         "geographicCoverage": [i.label for i in request.geographicCoverage] if request.geographicCoverage else None,
+        "isPartOf": "Work"
 
         }
     # contribution
@@ -51,6 +53,8 @@ def DocWork(request):
 
     if request.genreForm:
         pass
+
+    print("DOC:", doc)
 
     responseSolr =  solr.add([doc], commit=True)
 

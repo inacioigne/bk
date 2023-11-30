@@ -43,7 +43,7 @@ export function SearchNames(
 
   solr.get("authority/query?", {params: params})
     .then(function (response) { 
-      // console.log("RES:", response.data.facet_counts.facet_fields)
+      console.log("RES:", response.data)
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
       const r = docs.map((doc: any, index: number) => {

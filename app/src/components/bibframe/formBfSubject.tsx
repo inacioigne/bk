@@ -104,22 +104,11 @@ export default function FormBfSubject({ register, control, error, setOpen, setFi
                                             size="small"
                                             label="Tipo de Assunto"
                                             {...field}
-                                            onChange={(e) => {
-                                                field.onChange(e)
-                                                // let value = e.target.value
-                                                // let index = e.target.name.split(".")[1]                                            
-                                                // const label = relators.find((option) => option.uri === value)?.label;
-                                                // setValue(`contribution.${index}.roleLabel`, label)
-                                                // console.log(index, value)
-                                            }}
+                                            // onChange={(e) => {
+                                            //     field.onChange(e)
+                                            // }}
                                         >
                                             <MenuItem value={"Topic"}>Topic</MenuItem>
-                                            {/* {relators.map((type, index) =>
-                                            (<MenuItem
-                                                key={index}
-                                                value={type.uri}                                    
-                                            >{type.label}</MenuItem>)
-                                            )} */}
                                         </Select>
                                     </FormControl>
                                 )}
@@ -179,23 +168,16 @@ export default function FormBfSubject({ register, control, error, setOpen, setFi
                                 defaultValue={"por"}
                                 render={({ field }) => (
                                     <FormControl
-                                        // fullWidth
                                         sx={{ width: 200}}
                                     >
                                         <InputLabel id="label">Idioma</InputLabel>
                                         <Select
-                                            // id="role"
                                             size="small"
                                             label="Idioma"
                                             {...field}
-                                            onChange={(e) => {
-                                                field.onChange(e)
-                                                // let value = e.target.value
-                                                // let index = e.target.name.split(".")[1]                                            
-                                                // const label = relators.find((option) => option.uri === value)?.label;
-                                                // setValue(`contribution.${index}.roleLabel`, label)
-                                                // console.log(index, value)
-                                            }}
+                                            // onChange={(e) => {
+                                            //     field.onChange(e)
+                                            // }}
                                         >
                                             <MenuItem value={"por"}>Português</MenuItem>
                                             <MenuItem value={"en"}>Inglês</MenuItem>

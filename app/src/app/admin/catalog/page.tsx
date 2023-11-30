@@ -50,7 +50,10 @@ export default function Catalog() {
     const [field, setField] = useState("search_general");
     const [rows, setRows] = useState([]);
     const [rowCount, setRowCount] = useState(5);
-    const { paramsAuthority } = useParmasAutority();
+    // const { paramsAuthority } = useParmasAutority();
+    const [params, setParams] = useState( new URLSearchParams());
+
+    // const params = new URLSearchParams();
 
     useEffect(() => {
         let rw: any = [
@@ -76,10 +79,16 @@ export default function Catalog() {
                 year: 1998
             }
         ]
-        setRows(rw)
-        paramsAuthority.set("rows", "3");
+        params.set("q", "*:*");
+        params.set("fq", "isPartOf:Work");
+        params.set("fl", "*,[child]");
+        // params.set("q.op", "OR");
+
+        // "q.op":"OR",
+
+        setParams(params)
         SearchCatalog(
-            paramsAuthority,
+            params,
             setRows,
             setRowCount
         );

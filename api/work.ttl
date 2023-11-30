@@ -56,7 +56,7 @@
     bf:title [ a bf:Title ;
             rdfs:label "Conjectures and refutations : the growth of scientific knowledge" ;
             bf:mainTitle "Conjectures and refutations : the growth of scientific knowledge" ] ;
-    dcterms:isPartOf <http://id.loc.gov/resources/works> .
+    dcterms:isPartOf <http://id.loc.gov/resources/works> . 
 
 <http://id.loc.gov/authorities/subjects> a madsrdf:MADSScheme ;
     rdfs:label """Library of

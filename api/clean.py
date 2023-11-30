@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from src.db.models import Authority
+from src.db.models import Authority, Catalog
 from pyfuseki import FusekiUpdate, FusekiQuery
 from pysolr import Solr
 from src.schemas.settings import Settings
@@ -17,10 +17,11 @@ session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine))
 
 session.query(Authority).delete()
+session.query(Catalog).delete()
 session.commit()
 
 fuseki = FusekiUpdate(settings.fuseki, 'bk') 
-solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
+
 
 d = """DELETE { graph ?g { ?s ?p ?o } } 
         WHERE {
@@ -30,4 +31,8 @@ d = """DELETE { graph ?g { ?s ?p ?o } }
 response = fuseki.run_sparql(d)
 response.convert()
 
-solr.delete(q="*:*",  commit=True)
+solrAuthority = Solr(f'{settings.solr}/solr/authority/', timeout=10)
+solrAuthority.delete(q="*:*",  commit=True)
+
+solrCatalog = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
+solrCatalog.delete(q="*:*",  commit=True)

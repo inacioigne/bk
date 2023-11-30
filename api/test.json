@@ -1,5 +1,5 @@
 {
-    "identifiersLocal": "1",
+    "identifiersLocal": "2",
     "adminMetadata": {
         "status": {
             "label": "novo",
@@ -9,22 +9,24 @@
     "isPartOf": "https://bibliokeia.com/catalog/works",
     "contribution": [
         {
-            "agent": "https://bibliokeia.com/authority/PersonalName/7",
-            "label": "Popper, Karl R.",
+            "agent": "https://bibliokeia.com/authority/PersonalName/3",
+            "label": "Munro, Alice",
             "role": "http://id.loc.gov/vocabulary/relators/aut",
             "roleLabel": "Autor"
-        },
+        }
+    ],
+    "subject": [
         {
-            "agent": "https://bibliokeia.com/authority/PersonalName/8",
-            "label": "Bath, Sérgio",
-            "role": "http://id.loc.gov/vocabulary/relators/trl",
-            "roleLabel": "Tradutor"
+            "label": "Ficção",
+            "lang": "por",
+            "uri": "https://bibliokeia.com/authority/Topic/2",
+            "type": "Topic"
         }
     ],
     "type": "Text",
     "title": {
-        "mainTitle": "Conjecturas e refutações",
-        "subtitle": "pensamento científico"
+        "mainTitle": "Ódio, amizade, namoro, amor, casamento",
+        "subtitle": ""
     },
     "content": {
         "label": "Texto",

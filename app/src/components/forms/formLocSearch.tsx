@@ -73,7 +73,7 @@ export default function FormLCSH(props: Props) {
     const target = event.target as HTMLButtonElement;
     params.set("q", target.value);
     setSearch(target.value)
-    SearchLCSH(params, setHits);
+    target.value !== "" && SearchLCSH(params, setHits);
   };
 
   return (

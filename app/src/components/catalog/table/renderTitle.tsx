@@ -5,7 +5,6 @@ import {
     GridColDef,
     GridRenderCellParams,
 } from "@mui/x-data-grid";
-// import Image from 'next/image'
 import Link from "next/link";
 
 type Title = {
@@ -17,9 +16,6 @@ type Title = {
 export function RenderTitle(props: GridRenderCellParams<any, Title>) {
     const { hasFocus, value } = props;
     // console.log(hasFocus, value)
-
-
-
     return (
         <Box
             sx={{
