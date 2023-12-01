@@ -40,7 +40,9 @@ interface Props {
     setInstance: Function
 }
 
-export default function FormCreateWork({ setInstance }: Props) {
+export default function FormCreateInstance(
+    // { setInstance }: Props
+    ) {
 
     type SchemaCreateWork = z.infer<typeof ZodWork>;
     const { setProgress } = useProgress();
@@ -124,7 +126,7 @@ export default function FormCreateWork({ setInstance }: Props) {
         const request = { ...obj, ...data };
         console.log("CR: ", request)
         setProgress(true)
-        setInstance(true)
+        // setOpen(true)
 
         // bkapi
         //     .post("/catalog/work/create", request, {
@@ -156,7 +158,7 @@ export default function FormCreateWork({ setInstance }: Props) {
             <form onSubmit={handleSubmit(CreateWork)} >
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
-                        Criar Obra - {id}
+                        Criar Instância - {id}
                     </Typography>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
                         <Button

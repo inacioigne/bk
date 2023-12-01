@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from src.schemas.catalog.bibframe.work import Work
+from src.schemas.catalog.work import Work
 from src.db.models import Catalog
 from src.db.init_db import session
 from pyfuseki import FusekiUpdate
