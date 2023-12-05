@@ -37,10 +37,12 @@ const headers = {
 };
 
 interface Props {
+    setWork: Function
     setInstance: Function
+
 }
 
-export default function FormCreateWork({ setInstance }: Props) {
+export default function FormCreateWork({ setWork, setInstance }: Props) {
 
     type SchemaCreateWork = z.infer<typeof ZodWork>;
     const { setProgress } = useProgress();
@@ -124,6 +126,7 @@ export default function FormCreateWork({ setInstance }: Props) {
         const request = { ...obj, ...data };
         console.log("CR: ", request)
         setProgress(true)
+        setWork(request)
         setInstance(true)
 
         // bkapi

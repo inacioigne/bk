@@ -11,7 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 // Schema
-import { ZodWork } from "@/schema/bibframe/zodWork"
+import { ZodInstance } from "@/schema/bibframe/zodInstance"
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
@@ -24,9 +24,8 @@ import { bkapi } from "@/services/api";
 
 // React Icons
 import { FcHome, FcCancel } from "react-icons/fc";
-// import { GiBookshelf } from "react-icons/gi";
 import { IoIosSave } from "react-icons/io";
-import FormBibframeWork from "@/components/catalog/forms/formBibframeWork";
+import FormBibframeInstance from "@/components/catalog/forms/formBibframeInstance";
 
 import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
 import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
@@ -38,13 +37,15 @@ const headers = {
 
 interface Props {
     setInstance: Function
+    work: any
 }
 
 export default function FormCreateInstance(
-    // { setInstance }: Props
+    { setInstance, work }: Props
     ) {
+        console.log("I:", work)
 
-    type SchemaCreateWork = z.infer<typeof ZodWork>;
+    type SchemaCreateInstance = z.infer<typeof ZodInstance>;
     const { setProgress } = useProgress();
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
     const [id, setId] = useState(null);
@@ -54,27 +55,12 @@ export default function FormCreateInstance(
 
 
     let defaultValues = {
-        "contribution": [
-            {
-                "agent": "",
-                "label": "",
-                "role": "http://id.loc.gov/vocabulary/relators/aut",
-                "roleLabel": "Autor"
-            }
-        ],
-        "subject": [
-            {
-                label: "",
-                lang: "por",
-                uri: "",
-                type: "Topic"
-            }
-        ],
-        "type": "Text",
-        "content": {
-            "label": "Texto",
-            "uri": "http://id.loc.gov/vocabulary/contentTypes/txt",
+        "type": "Print",
+        "media": {
+            "label": "Não mediado",
+            "uri": "http://id.loc.gov/vocabulary/mediaTypes/n",
         },
+        title: work?.title,
         "language": [{
             "label": "por",
             "uri": "http://id.loc.gov/vocabulary/languages/por",
@@ -89,8 +75,8 @@ export default function FormCreateInstance(
         formState: { errors },
         setValue,
         getValues
-    } = useForm<SchemaCreateWork>({
-        resolver: zodResolver(ZodWork),
+    } = useForm<SchemaCreateInstance>({
+        resolver: zodResolver(ZodInstance),
         defaultValues,
     });
 
@@ -110,7 +96,7 @@ export default function FormCreateInstance(
             });
     }, [String(id)]);
 
-    function CreateWork(data: any) {
+    function CreateInstance(data: any) {
 
         let obj = {
             identifiersLocal: String(id),
@@ -120,7 +106,7 @@ export default function FormCreateInstance(
                     value: "n"
                 },
             },
-            isPartOf: "https://bibliokeia.com/catalog/works",
+            isPartOf: "https://bibliokeia.com/catalog/instances",
         }
 
         const request = { ...obj, ...data };
@@ -155,7 +141,7 @@ export default function FormCreateInstance(
 
     return (
         <>
-            <form onSubmit={handleSubmit(CreateWork)} >
+            <form onSubmit={handleSubmit(CreateInstance)} >
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
                         Criar Instância - {id}
@@ -181,7 +167,7 @@ export default function FormCreateInstance(
                     </Box>
                 </Box>
                 <Divider />
-                <FormBibframeWork
+                <FormBibframeInstance
                     control={control}
                     register={register}
                     errors={errors}

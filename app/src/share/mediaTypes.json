@@ -1,0 +1,11 @@
+[
+    {
+        "label": "Não mediado",
+        "uri": "http://id.loc.gov/vocabulary/mediaTypes/n"
+    },
+    {
+        "label": "Texto",
+        "uri": "http://id.loc.gov/vocabulary/contentTypes/txt"
+    }
+
+]

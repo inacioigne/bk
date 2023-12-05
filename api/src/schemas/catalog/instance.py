@@ -20,7 +20,7 @@ class Instance(BaseModel):
     extent: Optional[Value] = None
     instanceOf: Element
     issuance: Optional[list[Element]] = None
-    media: Optional[list[Element]] = None
+    media: Element
     provisionActivity: ProvisionActivity
     provisionActivityStatement: Optional[str] = None
     responsibilityStatement: Optional[str] = None

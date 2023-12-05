@@ -12,25 +12,23 @@ import {
 } from "@mui/material";
 
 
-import FormBfType from "@/components/bibframe/formBfType";
+import FormBfTypeInstance from "@/components/bibframe/formBfTypeInstance";
 import FormBfTitle from "@/components/bibframe/formBfTitle";
-import FormBfContent from "@/components/bibframe/formBfContent";
+import FormBfMedia from "@/components/bibframe/formBfMedia";
 import FormBfLanguage from "@/components/bibframe/formBfLanguage";
-import FormBfContribution from "@/components/bibframe/formBfContribution";
 import FormBfSubject from "@/components/bibframe/formBfSubject"
 
 interface Props {
     control: any
     register: Function
     errors: any
-    // getValues: Function
     setValue: Function
     setOpenName: Function,
     setOpenSubject: Function,
-    setField: Function
+    setField: Function,
 }
 
-export default function FormBibframeWork({ control, register, setValue, errors, setOpenName, setOpenSubject, //getValues, , , 
+export default function FormBibframeInstance({ control, register, setValue, errors, //setOpenName, setOpenSubject, //getValues, , , 
     setField }: Props) {
 
     return (
@@ -38,22 +36,13 @@ export default function FormBibframeWork({ control, register, setValue, errors, 
         <Grid container spacing={2} sx={{
             p: "25px"
         }}>
-            <Grid item xs={12}>
-                <FormBfContribution
-                    register={register}
-                    control={control}
-                    error={errors.title}
-                    setOpen={setOpenName}
-                    setField={setField}
-                    setValue={setValue} />
-            </Grid>
-            <FormBfType
+            <FormBfTypeInstance
                 control={control}
                 register={register} />
-            <FormBfContent control={control} register={register} setValue={setValue} />
+            <FormBfMedia control={control} register={register} setValue={setValue} />
             <FormBfTitle register={register} error={errors.title} />
             <FormBfLanguage control={control} register={register} setField={setField} />
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
                 <FormBfSubject
                     register={register}
                     control={control}
@@ -61,7 +50,7 @@ export default function FormBibframeWork({ control, register, setValue, errors, 
                     setOpen={setOpenSubject}
                     setField={setField}
                     setValue={setValue} />
-            </Grid>
+            </Grid> */}
 
         </Grid>
     )

@@ -15,8 +15,8 @@ import {
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
-import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
-import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
+// import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
+// import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
 
 // React Icons
 import { FcHome, FcCancel } from "react-icons/fc";
@@ -57,14 +57,11 @@ const previousPaths = [
     },
 ];
 
-// const headers = {
-//     accept: "application/json",
-//     "Content-Type": "application/json",
-// };
-
 export default function Create() {
 
     const [instance, setInstance] = useState(false);
+    const [work, setWork] = useState(null);
+
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
@@ -76,30 +73,12 @@ export default function Create() {
             <Paper elevation={3} sx={{
                 p: "15px", mt: "10px"
             }}>
-                {instance ? <FormCreateInstance /> : <FormCreateWork setInstance={setInstance} /> }
+                {instance ?
+                 <FormCreateInstance setInstance={setInstance} work={work} /> : 
+                 <FormCreateWork setInstance={setInstance} setWork={setWork} /> }
             
             </Paper>
-            {/* <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    Registro salvo com sucesso!
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                       Deseja a
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Disagree</Button>
-                    <Button onClick={handleClose} autoFocus>
-                        Agree
-                    </Button>
-                </DialogActions>
-            </Dialog> */}
+
         </Container>
     )
 }
