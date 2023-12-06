@@ -5,8 +5,6 @@ from datetime import datetime, timedelta
 from sqlalchemy.dialects.mysql import JSON
 from sqlalchemy.orm import DeclarativeBase
 
-# Base = declarative_base()
-
 class Base(DeclarativeBase):
     pass
 
@@ -83,11 +81,29 @@ class Authority(Base):
     type = Column(String(20))
     uri = Column(String(200))
 
-class Catalog(Base):
-    __tablename__ = 'catalog'
+# class Catalog(Base):
+#     __tablename__ = 'catalog'
+#     id = Column(Integer, primary_key=True)
+#     type = Column(String(20))
+#     uri = Column(String(200))
+
+class Work(Base):
+    __tablename__ = 'work'
     id = Column(Integer, primary_key=True)
-    type = Column(String(20))
     uri = Column(String(200))
+    title = Column(String(200))
+
+    instances = relationship('Instance', back_populates='work')
+
+class Instance(Base):
+    __tablename__ = 'instance'
+    id = Column(Integer, primary_key=True)
+    uri = Column(String(200))
+    work_id = Column(Integer, ForeignKey('work.id'))
+
+    work = relationship('Work', back_populates='instance')
+
+
 
 
     
