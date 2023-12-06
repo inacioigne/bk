@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-from src.schemas.catalog.bibframe.provisionActivity import ProvisionActivity
+from src.schemas.catalog.bibframe.provisionActivity import ProvisionActivity, Publication
 from src.schemas.adminMetadata import AdminMetadata
 from src.schemas.catalog.bibframe.element import Element
 from src.schemas.catalog.bibframe.title import Title
@@ -12,16 +12,18 @@ class Value(BaseModel):
 class Instance(BaseModel):
     adminMetadata: AdminMetadata
     identifiersLocal: str
-    type: list[str]
+    type: str
+    media: Element
+    issuance: Element
+    carrier: Element
     title: Title
-    carrier: list[Element]
+    publication: Publication
     copyrightDate: Optional[str] = None
     dimensions: Optional[str] = None
     extent: Optional[Value] = None
     instanceOf: Element
-    issuance: Optional[list[Element]] = None
-    media: Element
-    provisionActivity: ProvisionActivity
+    # issuance: Optional[list[Element]] = None
+    # provisionActivity: ProvisionActivity
     provisionActivityStatement: Optional[str] = None
     responsibilityStatement: Optional[str] = None
     seriesStatement: Optional[str] = None

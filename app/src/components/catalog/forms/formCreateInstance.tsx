@@ -43,7 +43,7 @@ interface Props {
 export default function FormCreateInstance(
     { setInstance, work }: Props
     ) {
-        console.log("I:", work)
+        // console.log("I:", work)
 
     type SchemaCreateInstance = z.infer<typeof ZodInstance>;
     const { setProgress } = useProgress();
@@ -60,7 +60,18 @@ export default function FormCreateInstance(
             "label": "Não mediado",
             "uri": "http://id.loc.gov/vocabulary/mediaTypes/n",
         },
+        issuance: {
+            label: "Monografia",
+            uri: "http://id.loc.gov/vocabulary/issuance/mono"
+        },
+        carrier: {
+            label: "Volume",
+            uri: "http://id.loc.gov/vocabulary/carriers/nc"
+        },
         title: work?.title,
+        publication: {
+
+        },
         "language": [{
             "label": "por",
             "uri": "http://id.loc.gov/vocabulary/languages/por",
@@ -106,6 +117,10 @@ export default function FormCreateInstance(
                     value: "n"
                 },
             },
+            instanceOf: {
+                uri: `${work.isPartOf}/${work.identifiersLocal}`,
+                label: work.title.mainTitle
+            },
             isPartOf: "https://bibliokeia.com/catalog/instances",
         }
 
@@ -114,28 +129,28 @@ export default function FormCreateInstance(
         setProgress(true)
         // setOpen(true)
 
-        // bkapi
-        //     .post("/catalog/work/create", request, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             console.log(response);
-        //             setMessage("Registro criado com sucesso!")
-        //             //   router.push(`/admin/authority/names/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         if (error.response.status === 409) {
-        //             setTypeAlert("error")
-        //             setMessage("Este registro já existe")
-        //             console.error("ER:", error);
-        //         }
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+        bkapi
+            .post("catalog/instance/create", request, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    console.log(response);
+                    setMessage("Registro criado com sucesso!")
+                    //   router.push(`/admin/authority/names/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 409) {
+                    setTypeAlert("error")
+                    setMessage("Este registro já existe")
+                    console.error("ER:", error);
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
 
     }
 
@@ -176,19 +191,6 @@ export default function FormCreateInstance(
                     setOpenSubject={setOpenSubject}
                     setField={setField} />
             </form>
-            <ModalThesarusNames
-                setOpen={setOpenName}
-                open={openName}
-                defaultValues={defaultValues}
-                field={field}
-                setValue={setValue} />
-
-            <ModalThesarus
-                setOpen={setOpenSubject}
-                open={openSubject}
-                defaultValues={defaultValues}
-                field={field}
-                setValue={setValue} />
         </>
 
     )

@@ -5,3 +5,8 @@ class ProvisionActivity(BaseModel):
     agent: Optional[str] = None
     date: str
     place: str
+    
+class Publication(BaseModel):
+    agent: Optional[str] = None
+    date: str
+    place: str

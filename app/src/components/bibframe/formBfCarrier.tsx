@@ -9,41 +9,38 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Controller } from "react-hook-form"
 
 // Share
-import mediaTypes from "@/share/vocabulary/mediaTypes.json" assert { type: "json" };
+import carrier from "@/share/vocabulary/carrier.json" assert { type: "json" };
 
 interface Props {
-    register: any,
+    // register: any,
     control: any;
     setValue: Function
 }
 
-export default function FormBfMedia({ control, register, setValue }: Props) {
+export default function FormBfCarrier({ control, setValue }: Props) {
 
     return (
         <Controller
-            name={`media.uri`}
+            name={`carrier.uri`}
             control={control}
-            defaultValue={"http://id.loc.gov/vocabulary/contentTypes/txt"}
             render={({ field }) => (
                 <FormControl
                     fullWidth
                 >
-                    <InputLabel id="label">Midia</InputLabel>
+                    <InputLabel id="label">Formato</InputLabel>
                     <Select
                         size="small"
-                        label="Midia"
+                        label="Formato"
                         {...field}
                     >
-
-                        {mediaTypes.map((type, index) =>
+                        {carrier.map((e, index) =>
                         (<MenuItem
                             key={index}
-                            value={type.uri}
+                            value={e.uri}
                             onClick={() => {
-                                setValue("media.label", type.label)
-                                console.log(type)
+                                setValue("carrier.label", e.label)
                             }}
-                        >{type.label}</MenuItem>)
+                        >{e.label}</MenuItem>)
                         )}
                     </Select>
                 </FormControl>

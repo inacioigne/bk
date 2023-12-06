@@ -1,0 +1,11 @@
+[
+    {
+        "label": "Monografia",
+        "uri": "http://id.loc.gov/vocabulary/issuance/mono"
+    },
+    {
+        "label": "Serial",
+        "uri": "http://id.loc.gov/vocabulary/issuance/serl"
+    }
+
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "label": "Volume",
+        "uri": "http://id.loc.gov/vocabulary/carriers/nc"
+    },
+    {
+        "label": "Objeto",
+        "uri": "http://id.loc.gov/vocabulary/carriers/nr"
+    }
+
+]

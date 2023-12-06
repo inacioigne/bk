@@ -10,7 +10,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Controller } from "react-hook-form"
 
 // Share
-import contentTypes from "@/share/contentTypes.json" assert { type: "json" };
+import contentTypes from "@/share/vocabulary/contentTypes.json" assert { type: "json" };
 
 interface Props {
     register: any,
@@ -19,11 +19,7 @@ interface Props {
 }
 
 export default function FormBfContent({ control, register, setValue }: Props) {
-    // console.log(contentTypes)
-    const handleChange = (event: SelectChangeEvent) => {
-        // setAge(event.target.value as string);
-        console.log(event.target.value)
-    };
+   
     return (
         <>
             <Grid item xs={6}>
@@ -40,9 +36,6 @@ export default function FormBfContent({ control, register, setValue }: Props) {
                                 size="small"
                                 label="Conteúdo"
                                 {...field}
-                            // onChange={(e) => {
-                            //     field.onChange(e);
-                            //   }}
                             >
 
                                 {contentTypes.map((type, index) =>
@@ -51,7 +44,7 @@ export default function FormBfContent({ control, register, setValue }: Props) {
                                     value={type.uri}
                                     onClick={() => {
                                         setValue("content.label", type.label)
-                                        console.log(type)
+                                        // console.log(type)
                                     }}
                                 >{type.label}</MenuItem>)
                                 )}

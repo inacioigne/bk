@@ -65,11 +65,6 @@ export default function FormBfSubject({ register, control, error, setOpen, setFi
         name: "subject"
     });
 
-    // useEffect(() => {
-    //     console.log("W", watchFields)
-
-    // }, [watchFields])
-
     return (
         <Accordion defaultExpanded={true}>
             <AccordionSummary expandIcon={<IoIosArrowDown />}

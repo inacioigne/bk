@@ -15,8 +15,12 @@ import {
 import FormBfTypeInstance from "@/components/bibframe/formBfTypeInstance";
 import FormBfTitle from "@/components/bibframe/formBfTitle";
 import FormBfMedia from "@/components/bibframe/formBfMedia";
+import FormBfIssuance from "@/components/bibframe/formBfIssuance";
+import FormBfCarrier from "@/components/bibframe/formBfCarrier";
 import FormBfLanguage from "@/components/bibframe/formBfLanguage";
-import FormBfSubject from "@/components/bibframe/formBfSubject"
+import FormBfPublication from "@/components/bibframe/formBfPublication";
+
+
 
 interface Props {
     control: any
@@ -36,21 +40,29 @@ export default function FormBibframeInstance({ control, register, setValue, erro
         <Grid container spacing={2} sx={{
             p: "25px"
         }}>
-            <FormBfTypeInstance
-                control={control}
-                register={register} />
-            <FormBfMedia control={control} register={register} setValue={setValue} />
+            <Grid item xs={3}>
+                <FormBfTypeInstance control={control} register={register} />
+            </Grid>
+            <Grid item xs={3}>
+                <FormBfMedia control={control} register={register} setValue={setValue} />
+            </Grid>
+            <Grid item xs={3}>
+                <FormBfIssuance control={control} register={register} setValue={setValue} />
+            </Grid>
+            <Grid item xs={3}>
+                <FormBfCarrier control={control} setValue={setValue} />
+            </Grid>
+            <Grid item xs={12}>
+            <FormBfPublication register={register} error={undefined} control={undefined} setOpen={undefined} setField={undefined} setValue={undefined} />
+
+
+            </Grid>
+
+
+
             <FormBfTitle register={register} error={errors.title} />
             <FormBfLanguage control={control} register={register} setField={setField} />
-            {/* <Grid item xs={12}>
-                <FormBfSubject
-                    register={register}
-                    control={control}
-                    error={errors.title}
-                    setOpen={setOpenSubject}
-                    setField={setField}
-                    setValue={setValue} />
-            </Grid> */}
+
 
         </Grid>
     )

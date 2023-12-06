@@ -9,7 +9,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Controller } from "react-hook-form"
 
 // Share
-import mediaTypes from "@/share/vocabulary/mediaTypes.json" assert { type: "json" };
+import issuance from "@/share/vocabulary/issuance.json" assert { type: "json" };
 
 interface Props {
     register: any,
@@ -17,33 +17,31 @@ interface Props {
     setValue: Function
 }
 
-export default function FormBfMedia({ control, register, setValue }: Props) {
+export default function FormBfIssuance({ control, register, setValue }: Props) {
 
     return (
         <Controller
-            name={`media.uri`}
+            name={`issuance.uri`}
             control={control}
-            defaultValue={"http://id.loc.gov/vocabulary/contentTypes/txt"}
+            // defaultValue={"http://id.loc.gov/vocabulary/contentTypes/txt"}
             render={({ field }) => (
                 <FormControl
                     fullWidth
                 >
-                    <InputLabel id="label">Midia</InputLabel>
+                    <InputLabel id="label">Emissão</InputLabel>
                     <Select
                         size="small"
-                        label="Midia"
+                        label="Emissão"
                         {...field}
                     >
-
-                        {mediaTypes.map((type, index) =>
+                        {issuance.map((e, index) =>
                         (<MenuItem
                             key={index}
-                            value={type.uri}
+                            value={e.uri}
                             onClick={() => {
-                                setValue("media.label", type.label)
-                                console.log(type)
+                                setValue("issuance.label", e.label)
                             }}
-                        >{type.label}</MenuItem>)
+                        >{e.label}</MenuItem>)
                         )}
                     </Select>
                 </FormControl>
