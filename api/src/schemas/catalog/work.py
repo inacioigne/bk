@@ -11,7 +11,7 @@ class Classification(BaseModel):
     itemPortion: Optional[str] = None
     edition: Optional[str] = None
 
-class Work(BaseModel):
+class BfWork(BaseModel):
     adminMetadata: AdminMetadata
     identifiersLocal: str
     type: str

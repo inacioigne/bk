@@ -1,21 +1,21 @@
 from fastapi import APIRouter
-from src.db.init_db import session
-from src.db.models import Catalog
+from src.function.catalog.work.workNextId import WorkNextId
+from src.function.catalog.instance.instanceNextId import InstanceNextId
 
-def NextId():
 
-    catalog = session.query(Catalog).order_by(Catalog.id.desc()).first()   
-    if  catalog:
-        id = catalog.id + 1 
-        return id
-    else:
-        return 1
 
 router = APIRouter()
 
-@router.get("/next_id")
+@router.get("/work/next_id")
 async def next_id():
 
-    register = NextId() 
+    register = WorkNextId() 
+
+    return register
+
+@router.get("/instance/next_id")
+async def next_id():
+
+    register = InstanceNextId() 
 
     return register

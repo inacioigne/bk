@@ -96,7 +96,7 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
 
     useEffect(() => {
         bkapi
-            .get("/catalog/next_id")
+            .get("/catalog/work/next_id")
             .then(function (response) {
                 setId(response.data);
                 // console.log(response.data);

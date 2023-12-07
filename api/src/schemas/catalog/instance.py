@@ -9,7 +9,7 @@ class Value(BaseModel):
     label: str
     type: str
 
-class Instance(BaseModel):
+class BfInstance(BaseModel):
     adminMetadata: AdminMetadata
     identifiersLocal: str
     type: str

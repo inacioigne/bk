@@ -41,7 +41,7 @@ export function SearchCatalog(
   setRowCount:Function,
   // setFacetType: Function
 ) {
-  console.log(params.toString())
+  // console.log(params.toString())
 
   // params.getAll('fq').includes("isMemberOfMADSCollection:subjects") && params.delete("fq", "isMemberOfMADSCollection:subjects")
 

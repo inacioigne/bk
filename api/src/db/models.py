@@ -1,4 +1,3 @@
-# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Date, DATETIME, ForeignKey, true
 from sqlalchemy.orm import relationship
 from datetime import datetime, timedelta
@@ -9,7 +8,7 @@ class Base(DeclarativeBase):
     pass
 
 #Users
-class User(Base):
+class DbUser(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
@@ -29,8 +28,8 @@ class User(Base):
     created_at = Column(Date, default=datetime.now())
 
     #relationship
-    loan_active = relationship("LoanActive", back_populates="user")
-    loan_historic = relationship("LoanHistoric", back_populates="user")
+    loan_active = relationship("DbLoanActive", back_populates="user")
+    loan_historic = relationship("DbLoanHistoric", back_populates="user")
 
     def json(self):
         return {'id': self.id, 'name': self.name, "email": self.email}
@@ -38,7 +37,7 @@ class User(Base):
     def __repr__(self):
         return f"id:{self.id!r}, name:{self.name!r}, email:{self.email!r}"
     
-class Item(Base):
+class DbItem(Base):
     __tablename__ = 'item'
     id = Column(Integer, primary_key=True)
     itemnumber = Column(String(8))
@@ -46,10 +45,10 @@ class Item(Base):
     barcode = Column(String(8))
 
     #relationship
-    loan_active = relationship("LoanActive", back_populates="item")
-    loan_historic = relationship("LoanHistoric", back_populates="item")
+    loan_active = relationship("DbLoanActive", back_populates="item")
+    loan_historic = relationship("DbLoanHistoric", back_populates="item")
 
-class LoanActive(Base):
+class DbLoanActive(Base):
     __tablename__ = 'loan_active'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
@@ -59,10 +58,10 @@ class LoanActive(Base):
     return_at = Column(DATETIME)
     log = Column(JSON)
 
-    user = relationship("User", back_populates="loan_active")
-    item = relationship("Item", back_populates="loan_active")
+    user = relationship("DbUser", back_populates="loan_active")
+    item = relationship("DbItem", back_populates="loan_active")
 
-class LoanHistoric(Base):
+class DbLoanHistoric(Base):
     __tablename__ = 'loan_historic'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
@@ -72,36 +71,30 @@ class LoanHistoric(Base):
     return_at = Column(DATETIME)
     log = Column(JSON)
 
-    user = relationship("User", back_populates="loan_historic")
-    item = relationship("Item", back_populates="loan_historic")
+    user = relationship("DbUser", back_populates="loan_historic")
+    item = relationship("DbItem", back_populates="loan_historic")
 
-class Authority(Base):
+class DbAuthority(Base):
     __tablename__ = 'authority'
     id = Column(Integer, primary_key=True)
     type = Column(String(20))
     uri = Column(String(200))
 
-# class Catalog(Base):
-#     __tablename__ = 'catalog'
-#     id = Column(Integer, primary_key=True)
-#     type = Column(String(20))
-#     uri = Column(String(200))
-
-class Work(Base):
+class DbWork(Base):
     __tablename__ = 'work'
     id = Column(Integer, primary_key=True)
-    uri = Column(String(200))
+    uri = Column(String(200)) 
     title = Column(String(200))
 
-    instances = relationship('Instance', back_populates='work')
+    instance = relationship('DbInstance', back_populates='work')
 
-class Instance(Base):
+class DbInstance(Base):
     __tablename__ = 'instance'
     id = Column(Integer, primary_key=True)
     uri = Column(String(200))
     work_id = Column(Integer, ForeignKey('work.id'))
 
-    work = relationship('Work', back_populates='instance')
+    work = relationship('DbWork', back_populates='instance')
 
 
 

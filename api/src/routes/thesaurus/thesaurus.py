@@ -8,7 +8,7 @@ from src.function.thesaurus.jena.editJena import EditJena
 # Bibliokeia Functions
 from src.schemas.settings import Settings
 from src.db.init_db import session
-from src.db.models import Authority
+from src.db.models import DbAuthority
 from src.function.thesaurus.loc.graphExistLoc import GraphExistLoc
 from src.schemas.thesaurus.deleteAuthority import SchemaDeleteAuthority
 from src.function.thesaurus.jena.makeGraph.makeGraphName import MakeGraphName
@@ -42,7 +42,7 @@ async def post_authority(request: SchemaMads):
             raise HTTPException(status_code=409, detail="Esse registro já existe")
 
     # MariaDB
-    a = Authority(id=request.identifiersLocal, type=request.type, uri=uri) 
+    a = DbAuthority(id=request.identifiersLocal, type=request.type, uri=uri) 
     session.add(a) 
     session.commit()
     

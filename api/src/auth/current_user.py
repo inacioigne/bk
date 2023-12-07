@@ -4,14 +4,14 @@ from jose import JWTError, jwt
 from security import SECRET_KEY, JWT_ALGORITHM
 from src.schemas.token import TokenData
 from src.db.init_db import session
-from src.db.models import User
+from src.db.models import DbUser
 from src.schemas.users.user_schema import Simple_User
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 def get_user(username: str):
-    user = session.query(User).filter_by(name = username).first()
+    user = session.query(DbUser).filter_by(name = username).first()
     if user:   
         return Simple_User(**user.json())
 

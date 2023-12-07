@@ -1,14 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from src.db.models import Authority, Catalog
+from src.db.models import DbAuthority, DbWork, DbInstance
 from pyfuseki import FusekiUpdate, FusekiQuery
 from pysolr import Solr
 from src.schemas.settings import Settings
 
 settings = Settings()
-
-# engine = create_engine(
-#      f"mariadb+mariadbconnector://admin:bkpass@{settings.mariadb}:3306/bk") 
 
 engine = create_engine(
      f"mariadb+mariadbconnector://{settings.db_user}:{settings.db_pass}@{settings.mariadb}:3306/bk")
@@ -16,8 +13,9 @@ engine = create_engine(
 session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine))
 
-session.query(Authority).delete()
-session.query(Catalog).delete()
+session.query(DbAuthority).delete()
+session.query(DbWork).delete()
+session.query(DbInstance).delete()
 session.commit()
 
 fuseki = FusekiUpdate(settings.fuseki, 'bk') 

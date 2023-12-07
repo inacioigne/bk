@@ -15,29 +15,27 @@ import {
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
-// import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
-// import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
 
 // React Icons
 import { FcHome, FcCancel } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
 
 // React-Hook-Form
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+// import { useForm } from "react-hook-form";
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import { z } from "zod";
 
-import { ZodWork } from "@/schema/bibframe/zodWork"
+// import { ZodWork } from "@/schema/bibframe/zodWork"
 
 // React Hooks
 import { useEffect, useState } from "react";
 
-import { bkapi } from "@/services/api";
+// import { bkapi } from "@/services/api";
 
 
 // Providers BiblioKeia
-import { useProgress } from "@/providers/progress";
-import { useAlert } from "@/providers/alert";
+// import { useProgress } from "@/providers/progress";
+// import { useAlert } from "@/providers/alert";
 
 
 import FormCreateWork from "@/components/catalog/forms/formCreateWork";

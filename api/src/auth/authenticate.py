@@ -1,5 +1,5 @@
 from src.db.init_db import session
-from src.db.models import User 
+from src.db.models import DbUser 
 from passlib.context import CryptContext
 import os
 
@@ -16,7 +16,7 @@ def get_password_hash(password):
 
 def authenticate_user(email: str, password: str):
 
-    user = session.query(User).filter_by(email = email).first()
+    user = session.query(DbUser).filter_by(email = email).first()
     
     if not user:
         return False
