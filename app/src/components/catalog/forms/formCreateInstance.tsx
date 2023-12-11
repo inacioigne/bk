@@ -75,7 +75,6 @@ export default function FormCreateInstance(
         "language": [{
             "label": "por",
             "uri": "http://id.loc.gov/vocabulary/languages/por",
-            // "type": ""
         }]
 
     }
@@ -93,7 +92,7 @@ export default function FormCreateInstance(
 
     useEffect(() => {
         bkapi
-            .get("/catalog/next_id")
+            .get("/catalog/instance/next_id")
             .then(function (response) {
                 setId(response.data);
                 // console.log(response.data);

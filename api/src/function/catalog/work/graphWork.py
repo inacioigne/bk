@@ -20,7 +20,6 @@ prefix = """PREFIX bkw: <https://bibliokeia.com/catalog/works/>
             PREFIX msupplcont: <http://id.loc.gov/vocabulary/msupplcont/>
             PREFIX millus: <http://id.loc.gov/vocabulary/millus/>    
             PREFIX dcterms: <http://purl.org/dc/terms/>    
-
     """
 
 def MakeGraphWork(request): 

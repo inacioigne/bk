@@ -43,7 +43,7 @@
             rdf:value "  2016306465" ] ;
     bf:instanceOf <http://id.loc.gov/resources/works/19137192> ;
     bf:issuance <http://id.loc.gov/vocabulary/issuance/mono> ;
-    bf:media <http://id.loc.gov/vocabulary/mediaTypes/n> ;
+    bf:media <http://id.loc.gov/vocabulary/mediaTypes/n> ; 
     bf:provisionActivity [ a bf:ProvisionActivity,
                 bf:Publication ;
             bf:date "2016"^^<http://id.loc.gov/datatypes/edtf> ;

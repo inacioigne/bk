@@ -129,28 +129,28 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
         setWork(request)
         setInstance(true)
 
-        // bkapi
-        //     .post("/catalog/work/create", request, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             console.log(response);
-        //             setMessage("Registro criado com sucesso!")
-        //             //   router.push(`/admin/authority/names/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         if (error.response.status === 409) {
-        //             setTypeAlert("error")
-        //             setMessage("Este registro já existe")
-        //             console.error("ER:", error);
-        //         }
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+        bkapi
+            .post("/catalog/work/create", request, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    console.log(response);
+                    setMessage("Registro criado com sucesso!")
+                    //   router.push(`/admin/authority/names/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 409) {
+                    setTypeAlert("error")
+                    setMessage("Este registro já existe")
+                    console.error("ER:", error);
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
 
     }
 
