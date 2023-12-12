@@ -27,8 +27,9 @@ import { FcHome, FcCancel } from "react-icons/fc";
 import { IoIosSave } from "react-icons/io";
 import FormBibframeInstance from "@/components/catalog/forms/formBibframeInstance";
 
-import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
-import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
+// import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
+// import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
+import ModalItems from "@/components/catalog/items/modalItems"
 
 const headers = {
     accept: "application/json",
@@ -51,6 +52,8 @@ export default function FormCreateInstance(
     const [id, setId] = useState(null);
     const [openName, setOpenName] = useState(false);
     const [openSubject, setOpenSubject] = useState(false);
+    const [openItems, setOpenItems] = useState(false);
+
     const [field, setField] = useState("");
 
 
@@ -126,30 +129,30 @@ export default function FormCreateInstance(
         const request = { ...obj, ...data };
         console.log("CR: ", request)
         setProgress(true)
-        // setOpen(true)
+        setOpenItems(true)
 
-        bkapi
-            .post("catalog/instance/create", request, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    console.log(response);
-                    setMessage("Registro criado com sucesso!")
-                    //   router.push(`/admin/authority/names/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 409) {
-                    setTypeAlert("error")
-                    setMessage("Este registro já existe")
-                    console.error("ER:", error);
-                }
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+        // bkapi
+        //     .post("catalog/instance/create", request, {
+        //         headers: headers,
+        //     })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             console.log(response);
+        //             setMessage("Registro criado com sucesso!")
+        //             //   router.push(`/admin/authority/names/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error.response.status === 409) {
+        //             setTypeAlert("error")
+        //             setMessage("Este registro já existe")
+        //             console.error("ER:", error);
+        //         }
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //     });
 
     }
 
@@ -190,6 +193,7 @@ export default function FormCreateInstance(
                     setOpenSubject={setOpenSubject}
                     setField={setField} />
             </form>
+            <ModalItems setOpen={setOpenItems} open={openItems} />
         </>
 
     )

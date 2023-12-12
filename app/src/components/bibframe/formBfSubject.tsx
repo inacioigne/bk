@@ -91,7 +91,7 @@ export default function FormBfSubject({ register, control, error, setOpen, setFi
                                 defaultValue={"Topic"}
                                 render={({ field }) => (
                                     <FormControl
-                                    sx={{ width: 300}}
+                                        sx={{ width: 300 }}
                                     >
                                         <InputLabel id="label">Tipo de Assunto</InputLabel>
                                         <Select
@@ -99,9 +99,6 @@ export default function FormBfSubject({ register, control, error, setOpen, setFi
                                             size="small"
                                             label="Tipo de Assunto"
                                             {...field}
-                                            // onChange={(e) => {
-                                            //     field.onChange(e)
-                                            // }}
                                         >
                                             <MenuItem value={"Topic"}>Topic</MenuItem>
                                         </Select>
@@ -157,26 +154,26 @@ export default function FormBfSubject({ register, control, error, setOpen, setFi
                                         ),
                                     }}
                             />
-                             <Controller
+                            <Controller
                                 name={`subject.${index}.lang`}
                                 control={control}
                                 defaultValue={"por"}
                                 render={({ field }) => (
                                     <FormControl
-                                        sx={{ width: 200}}
+                                        sx={{ width: 200 }}
                                     >
                                         <InputLabel id="label">Idioma</InputLabel>
                                         <Select
                                             size="small"
                                             label="Idioma"
                                             {...field}
-                                            // onChange={(e) => {
-                                            //     field.onChange(e)
-                                            // }}
+                                        // onChange={(e) => {
+                                        //     field.onChange(e)
+                                        // }}
                                         >
                                             <MenuItem value={"por"}>Português</MenuItem>
                                             <MenuItem value={"en"}>Inglês</MenuItem>
-                                           
+
                                         </Select>
                                     </FormControl>
                                 )}

@@ -124,7 +124,7 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
         }
 
         const request = { ...obj, ...data };
-        console.log("CR: ", request)
+        // console.log("CR: ", request)
         setProgress(true)
         setWork(request)
         setInstance(true)

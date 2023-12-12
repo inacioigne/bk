@@ -9,7 +9,7 @@ from src.routes.users import login
 from src.routes.users import users
 from src.routes.thesaurus import thesaurus
 from src.routes.thesaurus import importation
-from src.routes.catalog import work, instance, catalog
+from src.routes.catalog import work, instance, catalog, items
 # from src.routes.cataloguing import images, generateId, work, instances, items, hub, general
 # from src.routes.translate import translate
 
@@ -52,6 +52,8 @@ app.include_router(importation.router, prefix='/thesarus', tags=['Thesaurus'])
 app.include_router(catalog.router, prefix="/catalog", tags=["Catálogo"])
 app.include_router(work.router, prefix="/catalog/work", tags=["Catálogo"])
 app.include_router(instance.router, prefix="/catalog/instance", tags=["Catálogo"])
+app.include_router(items.router, prefix="/catalog/items", tags=["Catálogo"])
+
 
 
 

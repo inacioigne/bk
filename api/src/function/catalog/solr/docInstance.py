@@ -8,13 +8,13 @@ solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 def DocInstance(request):
 
     workID = request.instanceOf.uri.split("/")[-1]
-    uri = f'https://bibliokeia.com/catalog/works/{request.identifiersLocal}'
+    # uri = f'https://bibliokeia.com/catalog/works/{request.identifiersLocal}'
 
     doc = {
         "id": request.identifiersLocal,
         "type": request.type,
         "mainTitle": request.title.mainTitle,
-        "subtitle": request.title.subtitle,
+        "subtitle": request.title.subtitle if request.title.subtitle != "" else None,
         "carrier": request.carrier.label,
         "dimensions": request.dimensions,
         "extent": request.extent.label if request.extent else None,
@@ -24,12 +24,12 @@ def DocInstance(request):
         "publicationDate": request.publication.date,
         "publicationPlace": request.publication.place,      
         "serie": request.seriesStatement,
-        "instanceOf": {'id': f'{id}/instanceOf/{workID}', 'uri': request.instanceOf.uri, 'label': request.instanceOf.label} 
+        "instanceOf": {'id': f'{request.identifiersLocal}/instanceOf/{workID}', 'uri': request.instanceOf.uri, 'label': request.instanceOf.label} 
         }
     
     work = {
         "id": workID,
-         "hasInstance": {"add": {'id': f'{workID}/hasInstance/{request.identifiersLocal}', 'uri': uri, 'label': request.title.mainTitle} }
+        "hasInstance": {"add": doc }
     }
     # print("hasInstance", work)
 
