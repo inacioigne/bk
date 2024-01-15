@@ -3,6 +3,10 @@ from typing import List
 from src.schemas.adminMetadata import AdminMetadata
 from src.schemas.catalog.bibframe.element import Element
 
+# class ItemOf(BaseModel):
+#     id: int
+#     uri: str
+
 class Item(BaseModel):
     adminMetadata: AdminMetadata
     cdd: str
@@ -13,5 +17,5 @@ class Item(BaseModel):
     barcode: str
 
 class Items_Schema(BaseModel):
-  itemOf: Element
+  itemOf: int
   items: List[Item]

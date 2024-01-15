@@ -19,7 +19,7 @@ async def create_instance(request: BfInstance):
     work_id = request.instanceOf.uri.split("/")[-1]
 
     i = DbInstance(
-            id=request.identifiersLocal, 
+            id=request.identifiersLocal,  
             uri=uri,
             work_id=int(work_id)
             ) 

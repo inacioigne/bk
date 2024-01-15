@@ -52,11 +52,17 @@ import { z } from "zod";
 interface Props {
     setOpen: Function;
     open: boolean;
-    // defaultValues: any
-    // field: string
+    instance: number
 }
+
 // Schema
 import { ZodItem } from "@/schema/bibframe/zodItem"
+
+import { bkapi } from "@/services/api";
+
+// Providers BiblioKeia
+import { useProgress } from "@/providers/progress";
+import { useAlert } from "@/providers/alert";
 
 type SchemaCreateItem = z.infer<typeof ZodItem>;
 
@@ -69,17 +75,28 @@ const defaultValues = {
         shelf: "",
         barcode: "",
     }],
-
 }
 
+const headers = {
+    accept: "application/json",
+    "Content-Type": "application/json",
+};
 
-export default function ModalItems({ setOpen, open }: Props) {
+
+export default function ModalItems({ setOpen, open, instance }: Props) {
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
     const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
+    const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
+    const { setProgress } = useProgress();
 
-    const { control, register } = useForm<SchemaCreateItem>({
+    const {
+        control,
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<SchemaCreateItem>({
         resolver: zodResolver(ZodItem),
         defaultValues,
     });
@@ -107,13 +124,48 @@ export default function ModalItems({ setOpen, open }: Props) {
             barcode: "",
         });
     };
+    // console.log('E:', errors)
 
-    const handleSubmit = (e: any) => {
-        e.preventDefault()
-        SearchModalSubjects(type, search, setDocs)
-        // console.log(type, search)
+    function CreateItems(data: any) {
 
-    };
+        let items = data.items.map((item: any) => {
+            item['adminMetadata'] = {
+                label: "novo",
+                value: "n"
+            }
+            return item
+        })
+        let request = {
+            "itemOf": instance,
+            "items": items
+        }
+
+        bkapi
+            .post("catalog/items/create", request, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    console.log(response);
+                    setMessage("Registro criado com sucesso!")
+                    //   router.push(`/admin/authority/names/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 409) {
+                    setTypeAlert("error")
+                    setMessage("Este registro já existe")
+                    console.error("ER:", error);
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
+       
+        console.log("I:", request)
+
+    }
 
     return (
         <Dialog
@@ -125,59 +177,59 @@ export default function ModalItems({ setOpen, open }: Props) {
             maxWidth={"lg"}
         >
             <DialogTitle id="alert-dialog-title">
-                Criar Items
+                Criar Items {instance}
             </DialogTitle>
             <Divider />
-            <DialogContent>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(CreateItems)}>
+                <DialogContent>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
                             <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                 {fields.map((field, index) => (
-                                    <Box key={index} sx={{display: "flex"}}>
+                                    <Box key={index} sx={{ display: "flex" }}>
                                         <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            label="CDD"
-                                            size="small"
-                                            {...register(`items.${index}.cdd`)}
-                                        />
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            label="Cutter"
-                                            size="small"
-                                            {...register(`items.${index}.cutter`)}
-                                        />
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            label="Ano"
-                                            size="small"
-                                            {...register(`items.${index}.year`)}
-                                        />
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            label="Coleção"
-                                            size="small"
-                                            {...register(`items.${index}.collection`)}
-                                        />
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            label="Localização"
-                                            size="small"
-                                            {...register(`items.${index}.shelf`)}
-                                        />
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            label="Registro"
-                                            size="small"
-                                            {...register(`items.${index}.barcode`)}
-                                        />
+                                            <TextField
+                                                fullWidth
+                                                variant="outlined"
+                                                label="CDD"
+                                                size="small"
+                                                {...register(`items.${index}.cdd`)}
+                                            />
+                                            <TextField
+                                                fullWidth
+                                                variant="outlined"
+                                                label="Cutter"
+                                                size="small"
+                                                {...register(`items.${index}.cutter`)}
+                                            />
+                                            <TextField
+                                                fullWidth
+                                                variant="outlined"
+                                                label="Ano"
+                                                size="small"
+                                                {...register(`items.${index}.year`)}
+                                            />
+                                            <TextField
+                                                fullWidth
+                                                variant="outlined"
+                                                label="Coleção"
+                                                size="small"
+                                                {...register(`items.${index}.collection`)}
+                                            />
+                                            <TextField
+                                                fullWidth
+                                                variant="outlined"
+                                                label="Localização"
+                                                size="small"
+                                                {...register(`items.${index}.shelf`)}
+                                            />
+                                            <TextField
+                                                fullWidth
+                                                variant="outlined"
+                                                label="Registro"
+                                                size="small"
+                                                {...register(`items.${index}.barcode`)}
+                                            />
                                         </Box>
                                         <Box sx={{ display: "flex", alignItems: "center" }}>
                                             <IconButton
@@ -198,16 +250,13 @@ export default function ModalItems({ setOpen, open }: Props) {
                                             </IconButton>
                                         </Box>
                                     </Box>
-
                                 ))}
-
                             </Box>
-                        </form>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </DialogContent>
-            <DialogActions>
-            <Box sx={{ display: "flex", gap: "10px", alignItems: "center", pb: "10px", pr: "10px" }}>
+                </DialogContent>
+                <DialogActions>
+                    <Box sx={{ display: "flex", gap: "10px", alignItems: "center", pb: "10px", pr: "10px" }}>
                         <Button
                             type="submit"
                             sx={{ textTransform: "none" }}
@@ -228,7 +277,8 @@ export default function ModalItems({ setOpen, open }: Props) {
                             Salvar
                         </Button>
                     </Box>
-            </DialogActions>
+                </DialogActions>
+            </form>
         </Dialog>
     )
 

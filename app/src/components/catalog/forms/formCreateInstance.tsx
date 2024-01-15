@@ -27,8 +27,7 @@ import { FcCancel } from "react-icons/fc";
 import { IoIosSave } from "react-icons/io";
 import FormBibframeInstance from "@/components/catalog/forms/formBibframeInstance";
 
-// import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
-// import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
+
 import ModalItems from "@/components/catalog/items/modalItems"
 
 const headers = {
@@ -43,7 +42,7 @@ interface Props {
 
 export default function FormCreateInstance(
     { setInstance, work }: Props
-    ) {
+) {
 
     type SchemaCreateInstance = z.infer<typeof ZodInstance>;
     const { setProgress } = useProgress();
@@ -126,9 +125,8 @@ export default function FormCreateInstance(
         }
 
         const request = { ...obj, ...data };
-        console.log("CR: ", request)
+        // console.log("CR: ", request)
         setProgress(true)
-        
 
         bkapi
             .post("catalog/instance/create", request, {
@@ -136,7 +134,7 @@ export default function FormCreateInstance(
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    console.log(response);
+                    console.log("INSTANCE: ", response.data.id);
                     setMessage("Registro criado com sucesso!")
                     //   router.push(`/admin/authority/names/${response.data.id}`);
                 }
@@ -192,7 +190,7 @@ export default function FormCreateInstance(
                     setOpenSubject={setOpenSubject}
                     setField={setField} />
             </form>
-            <ModalItems setOpen={setOpenItems} open={openItems} />
+            <ModalItems setOpen={setOpenItems} open={openItems} instance={id} />
         </>
 
     )

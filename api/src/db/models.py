@@ -40,13 +40,15 @@ class DbUser(Base):
 class DbItem(Base):
     __tablename__ = 'item'
     id = Column(Integer, primary_key=True)
-    itemnumber = Column(String(8))
-    title = Column(String(200))
+    # itemnumber = Column(String(8))
+    # title = Column(String(200))
     barcode = Column(String(8))
+    instance_id = Column(Integer, ForeignKey('instance.id'))
 
     #relationship
     loan_active = relationship("DbLoanActive", back_populates="item")
     loan_historic = relationship("DbLoanHistoric", back_populates="item")
+    instance = relationship('DbInstance', back_populates='item')
 
 class DbLoanActive(Base):
     __tablename__ = 'loan_active'
@@ -95,6 +97,7 @@ class DbInstance(Base):
     work_id = Column(Integer, ForeignKey('work.id'))
 
     work = relationship('DbWork', back_populates='instance')
+    item = relationship('DbItem', back_populates='instance')
 
 
 
