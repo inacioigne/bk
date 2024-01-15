@@ -1,46 +1,28 @@
 "use client"
 import {
     Container,
-    Box,
-    DialogActions,
-    DialogContentText,
-    DialogContent,
-    DialogTitle,
+    // Box,
+    // DialogActions,
+    // DialogContentText,
+    // DialogContent,
+    // DialogTitle,
     Paper,
     Divider,
-    Button,
-    Dialog,
-
+    // Button,
+    // Dialog
 } from "@mui/material";
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
+import FormCreateWork from "@/components/catalog/forms/formCreateWork";
+import FormCreateInstance from "@/components/catalog/forms/formCreateInstance";
 
 // React Icons
 import { FcHome, FcCancel } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
 
-// React-Hook-Form
-// import { useForm } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
-// import { z } from "zod";
-
-// import { ZodWork } from "@/schema/bibframe/zodWork"
-
 // React Hooks
-import { useEffect, useState } from "react";
-
-// import { bkapi } from "@/services/api";
-
-
-// Providers BiblioKeia
-// import { useProgress } from "@/providers/progress";
-// import { useAlert } from "@/providers/alert";
-
-
-import FormCreateWork from "@/components/catalog/forms/formCreateWork";
-import FormCreateInstance from "@/components/catalog/forms/formCreateInstance";
-
+import { useState } from "react";
 
 const previousPaths = [
     {
@@ -71,11 +53,9 @@ export default function Create() {
                 p: "15px", mt: "10px"
             }}>
                 {instance ?
-                 <FormCreateInstance setInstance={setInstance} work={work} /> : 
-                 <FormCreateWork setInstance={setInstance} setWork={setWork} /> }
-            
+                    <FormCreateInstance setInstance={setInstance} work={work} /> :
+                    <FormCreateWork setInstance={setInstance} setWork={setWork} />}
             </Paper>
-
         </Container>
     )
 }

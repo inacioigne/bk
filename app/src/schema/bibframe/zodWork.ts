@@ -33,14 +33,5 @@ export const ZodWork = z.object({
             // type: z.string(),
             uri: z.string()
         })
-    ), 
-    // hasCloseExternalAuthority: z.array(
-    //     z.object({
-    //         uri: z.string().nullable(),
-    //         label: z.string(),
-    //         base: z.string().nullable()
-    //     })
-    // ),
-    
-    // imagem: z.string().nullable()
+    )
 });

@@ -15,6 +15,7 @@ import { IoIosSave } from "react-icons/io";
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormMadsNames from "@/components/thesaurus/forms/formMadsNames";
+import ModalSubjects from "@/components/thesaurus/modal/modalThesarus"
 
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
@@ -99,6 +100,8 @@ const defaultValues = {
 export default function Create() {
 
   const [id, setId] = useState(null);
+  const [field, setField] = useState("");
+  const [openSubjects, setOpenSubjects] = useState(false);
   const { setOpenSnack, setMessage } = useAlert();
   const { setProgress } = useProgress();
   const router = useRouter();
@@ -108,8 +111,6 @@ export default function Create() {
       .get(`/thesarus/next_id`)
       .then(function (response) {
         setId(response.data);
-
-        // console.log(response.data);
       })
       .catch(function (error) {
         // manipula erros da requisição
@@ -132,9 +133,6 @@ export default function Create() {
     defaultValues: defaultValues,
   });
 
-
-  
-
   function CreateName(data: any) {
 
     setProgress(true)
@@ -144,7 +142,7 @@ export default function Create() {
       identifiersLocal: String(id),
       adminMetadata: {
         status: {
-          label: "novo", 
+          label: "novo",
           value: "n"
         },
       },
@@ -152,10 +150,8 @@ export default function Create() {
       authoritativeLabel: data.birthYearDate ?
         `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
     }
-    
 
     const request = { ...obj, ...formData };
-    // console.log("R: ", request)
 
     bkapi
       .post("/thesarus/create", request, {
@@ -205,8 +201,17 @@ export default function Create() {
           register={register}
           errors={errors}
           getValues={getValues}
-          setValue={setValue} />
+          setValue={setValue}
+          setOpen={setOpenSubjects}
+          setField={setField}
+        />
       </form>
+      <ModalSubjects
+        setOpen={setOpenSubjects}
+        open={openSubjects}
+        defaultValues={defaultValues}
+        field={field}
+        setValue={setValue} />
 
 
     </Container>

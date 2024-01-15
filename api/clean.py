@@ -18,7 +18,7 @@ session.query(DbWork).delete()
 session.query(DbInstance).delete()
 session.commit()
 
-fuseki = FusekiUpdate(settings.fuseki, 'bk') 
+fuseki = FusekiUpdate(settings.fuseki, 'bk')  
 
 
 d = """DELETE { graph ?g { ?s ?p ?o } } 

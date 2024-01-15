@@ -104,9 +104,6 @@ export default function FormOccupation({ control, register, setOpen, setField }:
                                                 <Chip label={watchFields[index]?.label} size="small"
                                                     color="info"
                                                     avatar={<Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
-                                                        // watchFields[index]?.base === "bk" ?
-                                                        //     <TiLockClosedOutline /> :
-                                                        //     <Avatar alt="icon" src={`/logos/${watchFields[index]?.base}.png`} />
                                                     }
                                                 />
                                             </InputAdornment>

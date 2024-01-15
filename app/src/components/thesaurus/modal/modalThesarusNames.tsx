@@ -26,15 +26,20 @@ import {
     Alert
 } from "@mui/material";
 
-
 import { useEffect, useState } from "react";
 
+// React-Hook-Form
 import { FcSearch } from "react-icons/fc";
 import { IoCloseSharp } from "react-icons/io5";
 
+import Link from "next/link";
+
 // Services BiblioKeia
 import { SearchModalNames } from "@/services/thesarus/searchModalNames"
+
+// Components BiblioKeia
 import CardBkNames from "@/components/cards/cardBkNames";
+import ModalThesarusNamesCreate from "@/components/thesaurus/modal/modalThesarusNamesCreate"
 
 import { schemaAuthorityDoc } from "@/schema/solr"
 
@@ -49,6 +54,7 @@ interface Props {
 export default function ModalThesarusNames({ setOpen, setValue, open, field }: Props) {
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
+    const [openCreate, setOpenCreate] = useState(false)
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
     const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
     const handleClose = () => {
@@ -56,18 +62,19 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
     };
 
     useEffect(() => {
-        // console.log(type, search)
-        SearchModalNames(type, search, setDocs)
-    }, [open])
+
+        SearchModalNames(type, "", setDocs)
+        // console.log("E:", search )
+    }, [open, openCreate])
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
+        setDoc(null)
         SearchModalNames(type, search, setDocs)
-        // console.log(type, search)
-
     };
 
     return (
+        <>
         <Dialog
             open={open}
             onClose={handleClose}
@@ -79,8 +86,6 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
             <DialogTitle id="alert-dialog-title" sx={{ display: "flex", justifyContent: "space-between" }}>
                 Nomes
                 <IconButton onClick={handleClose} color="primary"><IoCloseSharp /></IconButton>
-
-
             </DialogTitle>
             <Divider />
             <DialogContent>
@@ -121,7 +126,6 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
                                             <InputAdornment
                                                 position="start"
                                                 sx={{ cursor: "pointer" }}
-                                            // onClick={handleSubmit}
                                             >
                                                 <IconButton type="submit">
                                                     <FcSearch />
@@ -159,14 +163,26 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
                             </Paper>
                         </Grid> : (
                             <Grid item xs={12}>
-                                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                                <Box sx={{ 
+                                    display: "flex", 
+                                    gap: "5px",
+                                    justifyContent: "center", 
+                                    flexDirection: "column",
+                                    alignItems: "center" }}>
                                     <Alert severity="info" >
-                                        Sua busca não retorno nenhum resultado.
+                                        Sua busca não retornou nenhum resultado.
                                     </Alert>
+                                    {/* <Link href={"/admin/authority/names/create"}> */}
+                                    <Button 
+                                    variant="outlined" 
+                                    size="small"
+                                    onClick={() => {setOpenCreate(true)}}
+                                    >Criar Autoridade</Button>
+                                    {/* </Link> */}
+                                    
                                 </Box>
                             </Grid>
                         )}
-                    {/* </Grid> */}
                     <Grid item xs={8}>
                         {doc ? <CardBkNames doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
                     </Grid>
@@ -176,6 +192,8 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
                 <Button onClick={handleClose}>Cancelar</Button>
             </DialogActions>
         </Dialog>
+        <ModalThesarusNamesCreate setOpen={setOpenCreate} open={openCreate} />
+        </>
     )
 
 }

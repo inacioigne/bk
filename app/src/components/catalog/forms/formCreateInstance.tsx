@@ -23,7 +23,7 @@ import { useEffect, useState } from "react";
 import { bkapi } from "@/services/api";
 
 // React Icons
-import { FcHome, FcCancel } from "react-icons/fc";
+import { FcCancel } from "react-icons/fc";
 import { IoIosSave } from "react-icons/io";
 import FormBibframeInstance from "@/components/catalog/forms/formBibframeInstance";
 
@@ -44,7 +44,6 @@ interface Props {
 export default function FormCreateInstance(
     { setInstance, work }: Props
     ) {
-        // console.log("I:", work)
 
     type SchemaCreateInstance = z.infer<typeof ZodInstance>;
     const { setProgress } = useProgress();
@@ -129,30 +128,31 @@ export default function FormCreateInstance(
         const request = { ...obj, ...data };
         console.log("CR: ", request)
         setProgress(true)
-        setOpenItems(true)
+        
 
-        // bkapi
-        //     .post("catalog/instance/create", request, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             console.log(response);
-        //             setMessage("Registro criado com sucesso!")
-        //             //   router.push(`/admin/authority/names/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         if (error.response.status === 409) {
-        //             setTypeAlert("error")
-        //             setMessage("Este registro já existe")
-        //             console.error("ER:", error);
-        //         }
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+        bkapi
+            .post("catalog/instance/create", request, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    console.log(response);
+                    setMessage("Registro criado com sucesso!")
+                    //   router.push(`/admin/authority/names/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 409) {
+                    setTypeAlert("error")
+                    setMessage("Este registro já existe")
+                    console.error("ER:", error);
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+                setOpenItems(true)
+            });
 
     }
 
@@ -169,7 +169,6 @@ export default function FormCreateInstance(
                             sx={{ textTransform: "none" }}
                             variant="outlined"
                             startIcon={<FcCancel />}
-                        // onClick={() => { setForm(false) }}
                         >
                             Cancelar
                         </Button>

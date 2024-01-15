@@ -1,0 +1,37 @@
+{
+    "type": "PersonalName",
+    "elementList": [{
+      "type": "FullNameElement", "elementValue": {
+        "value": ""
+      }
+    }],
+    "hasVariant": [{
+      "type": "PersonalName",
+      "elementList": [{ "type": "FullNameElement", "elementValue": { "value": "" } }]
+    }],
+    "hasAffiliation": [{
+      "organization": { "label": "", "uri": "" },
+      "affiliationStart": "",
+      "affiliationEnd": ""
+    }],
+    "occupation": [{
+      "uri": "",
+      "label": "",
+      "base": ""
+    }],
+    "hasCloseExternalAuthority": [{
+      "uri": "",
+      "label": "",
+      "base": ""
+    }],
+    "identifiesRWO": [{
+      "uri": "",
+      "label": "",
+      "base": ""
+    }],
+    "fieldOfActivity": [{
+      "uri": "",
+      "label": "",
+      "base": ""
+    }]
+  }

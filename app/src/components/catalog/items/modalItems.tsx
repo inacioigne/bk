@@ -29,7 +29,10 @@ import {
 // React
 import { Fragment, useEffect, useState } from "react";
 
-
+// React Icons
+import { IoRemove, IoAddOutline } from "react-icons/io5";
+import { FcCancel } from "react-icons/fc";
+import { IoIosSave } from "react-icons/io";
 
 
 import { FcSearch } from "react-icons/fc";
@@ -43,6 +46,8 @@ import { schemaAuthorityDoc } from "@/schema/solr"
 // React-Hook-Form
 import { useForm } from "react-hook-form";
 import { useFieldArray, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 interface Props {
     setOpen: Function;
@@ -50,6 +55,23 @@ interface Props {
     // defaultValues: any
     // field: string
 }
+// Schema
+import { ZodItem } from "@/schema/bibframe/zodItem"
+
+type SchemaCreateItem = z.infer<typeof ZodItem>;
+
+const defaultValues = {
+    items: [{
+        cdd: "",
+        cutter: "",
+        year: "",
+        collection: "",
+        shelf: "",
+        barcode: "",
+    }],
+
+}
+
 
 export default function ModalItems({ setOpen, open }: Props) {
     const [type, setType] = useState("*");
@@ -57,10 +79,11 @@ export default function ModalItems({ setOpen, open }: Props) {
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
     const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
 
-    const { control, register } = useForm<SchemaCreateWork>({
-        resolver: zodResolver(ZodWork),
+    const { control, register } = useForm<SchemaCreateItem>({
+        resolver: zodResolver(ZodItem),
         defaultValues,
     });
+
     const {
         fields,
         append,
@@ -74,11 +97,16 @@ export default function ModalItems({ setOpen, open }: Props) {
         setOpen(false);
     };
 
-
-    useEffect(() => {
-        // console.log(type, search)
-        SearchModalSubjects(type, search, setDocs)
-    }, [open])
+    const addField = () => {
+        append({
+            cdd: "",
+            cutter: "",
+            year: "",
+            collection: "",
+            shelf: "",
+            barcode: "",
+        });
+    };
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
@@ -94,231 +122,112 @@ export default function ModalItems({ setOpen, open }: Props) {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
             fullWidth={true}
-            maxWidth={"md"}
+            maxWidth={"lg"}
         >
             <DialogTitle id="alert-dialog-title">
-                Items
+                Criar Items
             </DialogTitle>
             <Divider />
             <DialogContent>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <form onSubmit={handleSubmit}>
-                            <Box sx={{ display: "flex", gap: "10px" }}>
+                            <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                                 {fields.map((field, index) => (
-                                    <TextField
-                                        fullWidth
-                                        // disabled={true}
-                                        variant="outlined"
-                                        label="CDD"
-                                        size="small"
-                                        {...register(`subject.${index}.label`)}
-
-                                    />
-                                    // <Fragment key={index} >
-                                    //     <Box sx={{ display: "flex", gap: "10px", width: "100%" }}>
-                                    //         <Controller
-                                    //             name={`subject.${index}.type`}
-                                    //             control={control}
-                                    //             defaultValue={"Topic"}
-                                    //             render={({ field }) => (
-                                    //                 <FormControl
-                                    //                     sx={{ width: 300 }}
-                                    //                 >
-                                    //                     <InputLabel id="label">Tipo de Assunto</InputLabel>
-                                    //                     <Select
-                                    //                         id="role"
-                                    //                         size="small"
-                                    //                         label="Tipo de Assunto"
-                                    //                         {...field}
-                                    //                     >
-                                    //                         <MenuItem value={"Topic"}>Topic</MenuItem>
-                                    //                     </Select>
-                                    //                 </FormControl>
-                                    //             )}
-                                    //         />
-                                    //         <TextField
-                                    //             fullWidth
-                                    //             disabled={true}
-                                    //             variant="outlined"
-                                    //             label="Assunto"
-                                    //             size="small"
-                                    //             {...register(`subject.${index}.label`)}
-                                    //             inputProps={{
-                                    //                 style: { opacity: 0 },
-
-                                    //             }}
-                                    //             InputProps={
-                                    //                 watchFields[index]?.label === "" ? {
-                                    //                     endAdornment: (
-                                    //                         <InputAdornment
-                                    //                             position="start"
-                                    //                             sx={{ cursor: "pointer" }}
-                                    //                             onClick={() => {
-                                    //                                 setOpen(true)
-                                    //                                 setField(`subject.${index}`)
-                                    //                             }}
-                                    //                         >
-                                    //                             <FcSearch />
-                                    //                         </InputAdornment>
-                                    //                     ),
-                                    //                 } : {
-                                    //                     startAdornment: (
-                                    //                         <InputAdornment
-                                    //                             position="start" >
-                                    //                             <Chip label={watchFields[index]?.label} size="small"
-                                    //                                 color="info"
-                                    //                                 avatar={<FcLock />}
-                                    //                             />
-                                    //                         </InputAdornment>
-                                    //                     ),
-                                    //                     endAdornment: (
-                                    //                         <InputAdornment
-                                    //                             position="start"
-                                    //                             sx={{ cursor: "pointer" }}
-                                    //                             onClick={() => {
-                                    //                                 // console.log("abrir")
-                                    //                                 setOpen(true)
-                                    //                             }}
-                                    //                         >
-                                    //                             <FcSearch />
-                                    //                         </InputAdornment>
-                                    //                     ),
-                                    //                 }}
-                                    //         />
-                                    //         <Controller
-                                    //             name={`subject.${index}.lang`}
-                                    //             control={control}
-                                    //             defaultValue={"por"}
-                                    //             render={({ field }) => (
-                                    //                 <FormControl
-                                    //                     sx={{ width: 200 }}
-                                    //                 >
-                                    //                     <InputLabel id="label">Idioma</InputLabel>
-                                    //                     <Select
-                                    //                         size="small"
-                                    //                         label="Idioma"
-                                    //                         {...field}
-                                    //                     // onChange={(e) => {
-                                    //                     //     field.onChange(e)
-                                    //                     // }}
-                                    //                     >
-                                    //                         <MenuItem value={"por"}>Português</MenuItem>
-                                    //                         <MenuItem value={"en"}>Inglês</MenuItem>
-
-                                    //                     </Select>
-                                    //                 </FormControl>
-                                    //             )}
-                                    //         />
-
-                                    //         <Box sx={{ display: "flex", alignItems: "center" }}>
-                                    //             <IconButton
-                                    //                 aria-label="add"
-                                    //                 onClick={addField}
-                                    //                 color="primary"
-                                    //             >
-                                    //                 <IoAddOutline />
-                                    //             </IconButton>
-                                    //             <IconButton
-                                    //                 aria-label="add"
-                                    //                 onClick={() => {
-                                    //                     remove(index);
-                                    //                 }}
-                                    //                 color="primary"
-                                    //             >
-                                    //                 <IoRemove />
-                                    //             </IconButton>
-                                    //         </Box>
-                                    //     </Box>
-                                    // </Fragment>
-                                ))}
-                                {/* <FormControl
-                                    sx={{ width: "30%" }}
-                                    size="small"
-                                >
-                                    <InputLabel id="label">Selecione uma opção</InputLabel>
-                                    <Select
-                                        labelId="label"
-                                        id="demo-simple-select"
-                                        value={type}
-                                        label="Selecione uma opção"
-                                        onChange={(e) => {
-                                            setType(e.target.value)
-                                        }}
-                                    >
-                                        <MenuItem value="*">Todos</MenuItem>
-                                        <MenuItem value="Topic">Termo Topico</MenuItem>
-                                        <MenuItem value="Geographic">Termo Geográfico</MenuItem>
-                                        <MenuItem value="PersonalName">Nome Pessoal</MenuItem>
-                                        <MenuItem value="CorporateName">Nome Coorporativo</MenuItem>
-                                    </Select>
-                                </FormControl>
-                                <TextField
-                                    sx={{ width: "70%" }}
-                                    value={search}
-                                    label="Assunto"
-                                    size="small"
-                                    onChange={(e) => {
-                                        setSearch(e.target.value)
-                                    }}
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment
-                                                position="start"
-                                                sx={{ cursor: "pointer" }}
-                                            // onClick={handleSubmit}
+                                    <Box key={index} sx={{display: "flex"}}>
+                                        <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            label="CDD"
+                                            size="small"
+                                            {...register(`items.${index}.cdd`)}
+                                        />
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            label="Cutter"
+                                            size="small"
+                                            {...register(`items.${index}.cutter`)}
+                                        />
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            label="Ano"
+                                            size="small"
+                                            {...register(`items.${index}.year`)}
+                                        />
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            label="Coleção"
+                                            size="small"
+                                            {...register(`items.${index}.collection`)}
+                                        />
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            label="Localização"
+                                            size="small"
+                                            {...register(`items.${index}.shelf`)}
+                                        />
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            label="Registro"
+                                            size="small"
+                                            {...register(`items.${index}.barcode`)}
+                                        />
+                                        </Box>
+                                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                                            <IconButton
+                                                aria-label="add"
+                                                onClick={addField}
+                                                color="primary"
                                             >
-                                                <IconButton type="submit">
-                                                    <FcSearch />
-                                                </IconButton>
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    variant="outlined"
-                                /> */}
+                                                <IoAddOutline />
+                                            </IconButton>
+                                            <IconButton
+                                                aria-label="add"
+                                                onClick={() => {
+                                                    remove(index);
+                                                }}
+                                                color="primary"
+                                            >
+                                                <IoRemove />
+                                            </IconButton>
+                                        </Box>
+                                    </Box>
+
+                                ))}
+
                             </Box>
                         </form>
                     </Grid>
-                    {docs.length > 0 ?
-                        <Grid item xs={4}>
-                            <Paper elevation={3}>
-                                <List dense={true}>
-                                    {
-                                        docs.map((doc, index) => (
-                                            <div key={index}>
-                                                <ListItem disablePadding >
-                                                    <ListItemButton onClick={() => { setDoc(doc) }}>
-                                                        <ListItemIcon>
-                                                            <Avatar sx={{ width: 24, height: 24, fontSize: 15 }}>
-                                                                {doc.type[0]}
-                                                            </Avatar>
-                                                        </ListItemIcon>
-                                                        <ListItemText primary={doc.authority} />
-                                                    </ListItemButton>
-                                                </ListItem>
-                                                <Divider />
-                                            </div>
-                                        ))
-                                    }
-                                </List>
-                            </Paper>
-                        </Grid> : (
-                            <Grid item xs={12}>
-                                <Box sx={{ display: "flex", justifyContent: "center" }}>
-                                    <Alert severity="info" >
-                                        Sua busca não retorno nenhum resultado.
-                                    </Alert>
-                                </Box>
-                            </Grid>
-                        )}
-                    {/* </Grid> */}
-                    {/* <Grid item xs={8}>
-                        {doc ? <CardBkTheasaurs doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
-                    </Grid> */}
                 </Grid>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Cancelar</Button>
+            <Box sx={{ display: "flex", gap: "10px", alignItems: "center", pb: "10px", pr: "10px" }}>
+                        <Button
+                            type="submit"
+                            sx={{ textTransform: "none" }}
+                            variant="outlined"
+                            size="small"
+                            onClick={handleClose}
+                            startIcon={<FcCancel />}
+                        >
+                            Cancelar
+                        </Button>
+                        <Button
+                            type="submit"
+                            sx={{ textTransform: "none" }}
+                            variant="outlined"
+                            size="small"
+                            startIcon={<IoIosSave />}
+                        >
+                            Salvar
+                        </Button>
+                    </Box>
             </DialogActions>
         </Dialog>
     )

@@ -125,32 +125,9 @@ export default function FormFieldOfActivity({ control, register, setOpen, setFie
                                         ),
                                     }}
                             />
-                            {/* <TextField
-                            fullWidth
-                            label="Nome"
-                            variant="outlined"
-                            size="small"
-                            {...register(`fieldOfActivity.${index}.label`)}
-                        /> */}
+                       
                         </Grid>
-                        {/* <Grid item xs={4}>
-                        <TextField
-                            fullWidth
-                            label="uri"
-                            variant="outlined"
-                            size="small"
-                            {...register(`fieldOfActivity.${index}.uri`)}
-                        />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <TextField
-                            fullWidth
-                            label="base"
-                            variant="outlined"
-                            size="small"
-                            {...register(`fieldOfActivity.${index}.base`)}
-                        />
-                    </Grid> */}
+                
                         <Grid item xs={2}>
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                                 <IconButton

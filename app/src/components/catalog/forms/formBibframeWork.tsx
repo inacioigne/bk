@@ -23,18 +23,22 @@ interface Props {
     control: any
     register: Function
     errors: any
-    // getValues: Function
     setValue: Function
     setOpenName: Function,
     setOpenSubject: Function,
     setField: Function
 }
 
-export default function FormBibframeWork({ control, register, setValue, errors, setOpenName, setOpenSubject, //getValues, , , 
+export default function FormBibframeWork({
+    control,
+    register,
+    setValue,
+    errors,
+    setOpenName,
+    setOpenSubject,
     setField }: Props) {
 
     return (
-
         <Grid container spacing={2} sx={{
             p: "25px"
         }}>

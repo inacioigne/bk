@@ -67,11 +67,6 @@ export default function FormBfContribution({ register, control, error, setOpen, 
         name: "contribution"
     });
 
-    // useEffect(() => {
-    //     console.log("W", watchFields)
-
-    // }, [watchFields])
-
     return (
         <Accordion defaultExpanded={true}>
             <AccordionSummary expandIcon={<IoIosArrowDown />}
@@ -192,7 +187,6 @@ export default function FormBfContribution({ register, control, error, setOpen, 
                                     <IoRemove />
                                 </IconButton>
                             </Box>
-                            {/* </Grid> */}
                         </Box>
                     </Fragment>
                 ))}
