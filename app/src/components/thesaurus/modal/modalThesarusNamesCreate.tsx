@@ -16,6 +16,8 @@ import {
     MenuItem,
     Divider,
     Slide,
+    Toolbar,
+    AppBar 
 } from "@mui/material";
 import { TransitionProps } from '@mui/material/transitions';
 
@@ -154,6 +156,7 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
 
                 <form onSubmit={handleSubmit(CreateName)}
                 >
+                    <AppBar color="default">
                     <DialogTitle id="alert-dialog-title" sx={{ display: "flex", justifyContent: "space-between" }}>
                         Criar Autoridades - {id}
                         {/* <IconButton onClick={handleClose} color="primary"><IoCloseSharp /></IconButton> */}
@@ -166,9 +169,12 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
                             Salvar
                         </Button>
                     </DialogTitle>
-                    <Divider />
 
-                    <DialogContent dividers sx={{ maxHeight: '30%' }}>
+                    </AppBar>
+                    
+                    {/* <Divider /> */}
+
+                    <DialogContent sx={{mt: "10px"}} >
                         <FormMadsNames
                             control={control}
                             register={register}
@@ -180,9 +186,9 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
                         />
 
                     </DialogContent>
-                    <DialogActions>
+                    {/* <DialogActions>
                         <Button onClick={handleClose}>Cancelar</Button>
-                    </DialogActions>
+                    </DialogActions> */}
                 </form>
             </Dialog>
             <ModalSubjects
