@@ -7,11 +7,11 @@ solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 
 def DocInstance(request):
 
-    workID = request.instanceOf.uri.split("/")[-1]
-    # uri = f'https://bibliokeia.com/catalog/works/{request.identifiersLocal}'
+    work_id = f'work#{request.instanceOf.uri.split("/")[-1]}'
+    instance_id = f'instance#{request.identifiersLocal}'
 
     doc = {
-        "id": request.identifiersLocal,
+        "id": instance_id,
         "type": request.type,
         "mainTitle": request.title.mainTitle,
         "subtitle": request.title.subtitle if request.title.subtitle != "" else None,
@@ -24,16 +24,18 @@ def DocInstance(request):
         "publicationDate": request.publication.date,
         "publicationPlace": request.publication.place,      
         "serie": request.seriesStatement,
-        "instanceOf": {'id': f'{request.identifiersLocal}/instanceOf/{workID}', 'uri': request.instanceOf.uri, 'label': request.instanceOf.label} 
+        "instanceOf": {'id': f'{instance_id}/instanceOf/{work_id}', 'uri': request.instanceOf.uri, 'label': request.instanceOf.label} 
         }
+ 
+
     
     work = {
-        "id": workID,
+        "id": work_id,
         "hasInstance": {"add": doc }
     }
     # print("hasInstance", work)
 
-    response = solr.add([doc, work], commit=True)
+    response = solr.add([work], commit=True)
     return response
 
 def DeleteInstanceSolr(id):

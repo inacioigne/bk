@@ -18,4 +18,5 @@ class Item(BaseModel):
 
 class Items_Schema(BaseModel):
   itemOf: int
+  instanceOf: int
   items: List[Item]

@@ -83,7 +83,7 @@ const headers = {
 };
 
 
-export default function ModalItems({ setOpen, open, instance }: Props) {
+export default function ModalItems({ setOpen, open, work, instance }: Props) {
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
@@ -137,6 +137,7 @@ export default function ModalItems({ setOpen, open, instance }: Props) {
         })
         let request = {
             "itemOf": instance,
+            "instanceOf": work,
             "items": items
         }
 
@@ -161,9 +162,10 @@ export default function ModalItems({ setOpen, open, instance }: Props) {
             .finally(function () {
                 setProgress(false)
                 setOpenSnack(true)
+                setOpen(false)
             });
-       
-        console.log("I:", request)
+
+        // console.log("I:", request)
 
     }
 

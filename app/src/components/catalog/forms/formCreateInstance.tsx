@@ -73,7 +73,7 @@ export default function FormCreateInstance(
         publication: {
 
         },
-        "language": [{
+        language: [{
             "label": "por",
             "uri": "http://id.loc.gov/vocabulary/languages/por",
         }]
@@ -118,14 +118,14 @@ export default function FormCreateInstance(
                 },
             },
             instanceOf: {
-                uri: `${work.isPartOf}/${work.identifiersLocal}`,
+                uri: `https://bibliokeia.com/catalog/work/${work.identifiersLocal}`,
                 label: work.title.mainTitle
             },
-            isPartOf: "https://bibliokeia.com/catalog/instances",
+            isPartOf: `https://bibliokeia.com/catalog/instance`,
         }
 
         const request = { ...obj, ...data };
-        // console.log("CR: ", request)
+
         setProgress(true)
 
         bkapi
@@ -134,7 +134,7 @@ export default function FormCreateInstance(
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    console.log("INSTANCE: ", response.data.id);
+                    // console.log("INSTANCE: ", response.data.id);
                     setMessage("Registro criado com sucesso!")
                     //   router.push(`/admin/authority/names/${response.data.id}`);
                 }
@@ -190,7 +190,11 @@ export default function FormCreateInstance(
                     setOpenSubject={setOpenSubject}
                     setField={setField} />
             </form>
-            <ModalItems setOpen={setOpenItems} open={openItems} instance={id} />
+            <ModalItems
+                setOpen={setOpenItems}
+                open={openItems}
+                work={work.identifiersLocal}
+                instance={id} />
         </>
 
     )

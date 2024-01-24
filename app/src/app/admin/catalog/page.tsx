@@ -12,7 +12,7 @@ import {
     IconButton,
     Divider,
     Button,
-    Typography,
+    // Typography,
     Alert
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -51,34 +51,12 @@ export default function Catalog() {
     const [rows, setRows] = useState([]);
     const [rowCount, setRowCount] = useState(5);
     // const { paramsAuthority } = useParmasAutority();
-    const [params, setParams] = useState( new URLSearchParams());
+    const [params, setParams] = useState(new URLSearchParams());
 
     // const params = new URLSearchParams();
 
     useEffect(() => {
-        let rw: any = [
-            {
-                id: 1,
-                title: {
-                    mainTitle: "An evidence-based multimodal fusion approach for predicting review helpfulness with human-AI complementarity",
-                    subtitle: "View preprints published by authors to have an early idea of upcoming research documents."
-                },
-                authors: "Autores",
-                year: 2001
-            },
-            {
-                id: 2,
-                title: { mainTitle: "Fingerprinting based on spectral reflectance and chemometrics – An analytical approach aimed at combating the illegal trade of stingray meat in the Amazon" },
-                authors: "Autor 1",
-                year: 2023
-            },
-            {
-                id: 3,
-                title: { mainTitle: "Titulo 1" },
-                authors: "Autor 1",
-                year: 1998
-            }
-        ]
+
         params.set("q", "*:*");
         params.set("fq", "isPartOf:Work");
         params.set("fl", "*,[child]");
@@ -98,7 +76,7 @@ export default function Catalog() {
             />
             <Divider sx={{ mt: "10px" }} />
             <Paper elevation={3} sx={{
-                p: "15px", mt: "10px", //height: 500 
+                p: "15px", mt: "10px"
             }}>
                 <form >
                     <Grid container spacing={2}>
@@ -177,7 +155,7 @@ export default function Catalog() {
                     <Grid container spacing={2}>
                         <Grid item xs={2}>Refine sua busca:</Grid>
                         {rows.length > 0 ? (
-                                <Grid item xs={10} >
+                            <Grid item xs={10} >
                                 <TableCatalogResult
                                     rows={rows}
                                     rowCount={rowCount}
@@ -185,23 +163,18 @@ export default function Catalog() {
                                     setRows={setRows}
                                 />
                             </Grid>
-                            ) : (
-                                <Grid item xs={10}>
-                                    <Box sx={{ display: "flex", justifyContent: "center" }}>
-                                        <Alert severity="info">
-                                            Sua busca não retorno nenhum resultado.
-                                        </Alert>
-                                    </Box>
-                                </Grid>
-                            )}
-                        
+                        ) : (
+                            <Grid item xs={10}>
+                                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                                    <Alert severity="info">
+                                        Sua busca não retorno nenhum resultado.
+                                    </Alert>
+                                </Box>
+                            </Grid>
+                        )}
                     </Grid>
-
-
                 </Box>
             </Paper>
-
         </Container>
-
     )
 }

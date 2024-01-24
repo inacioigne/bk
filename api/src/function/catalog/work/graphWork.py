@@ -5,6 +5,12 @@ from src.function.catalog.bibframe.bfGenreForm import MakeGenreForm
 from src.function.catalog.bibframe.bfSummary import  MakeSummary
 from src.function.catalog.bibframe.makeUri import MakeUri
 
+from src.schemas.settings import Settings
+
+settings = Settings()
+
+
+
 prefix = """PREFIX bkw: <https://bibliokeia.com/catalog/work/> 
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -59,7 +65,7 @@ def MakeGraphWork(request):
                 { MakeUri("illustrativeContent", request.illustrativeContent) if request.illustrativeContent else "" }
                 { MakeUri("intendedAudience", request.intendedAudience) if request.intendedAudience else "" }
                 { MakeUri("geographicCoverage", request.geographicCoverage) if request.geographicCoverage else "" }
-                dcterms:isPartOf <http://id.loc.gov/resources/works> .
+                dcterms:isPartOf <{settings.base_url}/catalog/work> .
         }} }}
         """
     return graph

@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+// import { Typography, Box } from "@mui/material";
 import {
     DataGrid,
     GridRowsProp,
@@ -10,7 +10,7 @@ import Link from "next/link";
 export function RenderAuthors(props: GridRenderCellParams<any, String>) {
     const { hasFocus, value } = props;
 
-    console.log(value)
+    // console.log(value)
 
     return (
         <div>

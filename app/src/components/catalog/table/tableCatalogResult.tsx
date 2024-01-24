@@ -45,6 +45,7 @@ interface Props {
 export function TableCatalogResult(
   { rows, rowCount, setRows, setRowCount,
   }: Props) {
+    // console.log('CAT:', rows)
 
   const router = useRouter()
 
@@ -53,7 +54,6 @@ export function TableCatalogResult(
   const columns: GridColDef[] = [
     {
       field: "cover",
-      // flex: 1,
       renderHeader: () => "",
       renderCell: RenderCover,
     },
@@ -86,10 +86,12 @@ export function TableCatalogResult(
     rows={rows}
     getRowHeight={() => 'auto'}
     rowCount={rowCount}
-    // onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
-    //   setProgress(true)
-    //   router.push(`/admin/authority/subjects/${params.id}`)
-    // }}
+    onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
+      setProgress(true)
+      let id = params.id.replace('#', '%23')
+
+      router.push(`/admin/catalog/${id}`)
+    }}
     columns={columns}
     paginationModel={paginationModel}
     paginationMode="server"

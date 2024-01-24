@@ -15,7 +15,7 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 @router.post("/create", status_code=201)
 async def create_instance(request: BfInstance): 
 
-    uri = f'https://bibliokeia.com/catalog/instances/{request.identifiersLocal}'
+    uri = f'https://bibliokeia.com/catalog/instance/{request.identifiersLocal}'
     work_id = request.instanceOf.uri.split("/")[-1]
 
     i = DbInstance(

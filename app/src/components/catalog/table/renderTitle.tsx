@@ -26,15 +26,15 @@ export function RenderTitle(props: GridRenderCellParams<any, Title>) {
                 // cursor: "pointer",
             }}
         >
-            <Link href={"/admin"}>
+            {/* <Link href={"/admin"}> */}
             <Typography
                 variant="subtitle2"
                 sx={{ fontSize: "12px" }}
             >
                 {value?.mainTitle}
             </Typography>
-            </Link>
-            
+            {/* </Link> */}
+
         </Box>
     );
 }

@@ -1,13 +1,9 @@
 // BiblioKeia Services
 import { solr } from "@/services/solr";
 
-// Types BiblioKeia
-// import Facet from "@/utils/types"
-
-import { useProgress } from "@/providers/progress";
+// import { useProgress } from "@/providers/progress";
 
 function TransformFacet(facets: any) { 
-  // console.log("F: ", facets)
     
   const listFacets = [];
   for (let i = 0; i < facets.length; i += 2) {
@@ -55,7 +51,7 @@ export function SearchCatalog(
       setRowCount(response.data.response.numFound)
       let r = ParserDoc(docs)
      
-      console.log("RES:", response.data)
+      // console.log("RES:", response.data)
 
       setRows(r);
     })

@@ -25,7 +25,7 @@ async def create_items(request: Items_Schema):
         graph = MakeGraphItem(item, request.itemOf)
         response = fuseki.run_sparql(graph) 
         HasItem(item, request.itemOf)
-        responseSolr = DocItem(item, request.itemOf)
+        responseSolr = DocItem(item, request.itemOf, request.instanceOf)
         print("ITEM:", response)
 
     return request.model_dump() 

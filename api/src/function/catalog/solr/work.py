@@ -6,8 +6,10 @@ solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 
 def DocWork(request):
 
+    work_id = f'work#{request.identifiersLocal}'
+
     doc = {
-        "id": request.identifiersLocal,
+        "id": work_id,
         "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "type": request.type,
         # "content": [i.label for i in request.content],
@@ -30,12 +32,12 @@ def DocWork(request):
     if request.contribution:
         contributions = list()
         for i in request.contribution:
-            c = { "id": f"{request.identifiersLocal}/contribution/{i.agent.split('/')[-1]}",
+            c = { "id": f"{work_id}/contribution/{i.agent.split('/')[-1]}",
                 # "type": [i.split('/')[-1] for i in i.type],
                 "agent": i.agent,
                 "label": i.label,
                 "role": i.role,
-                 "roleLabel": i.roleLabel } 
+                "roleLabel": i.roleLabel } 
             contributions.append(c)
         doc['contribution'] = contributions   
         

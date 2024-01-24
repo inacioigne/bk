@@ -1,7 +1,8 @@
 'use client'
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useProgress } from "src/providers/progress";
+import { useProgress } from "@/providers/progress"
+
  
 export function NavigationEvents() {
   const pathname = usePathname()

@@ -5,7 +5,7 @@ import {
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import EditNames from "@/components/thesaurus/forms/editNames"
-import EditSubjects from "@/components/thesaurus/forms/editSubjects"
+// import EditSubjects from "@/components/thesaurus/forms/editSubjects"
 
 
 // React Icons

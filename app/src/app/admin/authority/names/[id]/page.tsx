@@ -31,8 +31,6 @@ import Image from "next/image";
 // React Hooks
 import { Suspense } from "react";
 
-
-
 async function getData(id: string) {
 
     const url = `http://${process.env.SOLR}:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
@@ -63,7 +61,6 @@ export default async function Page({ params }: { params: { id: string } }) {
         },
     ];
 
-    // console.log("DOC", doc)
     return (
         <Container maxWidth="xl">
             <Box my={"1rem"}>

@@ -6,7 +6,7 @@ export default function Home() {
     <main className={styles.main}>
      
        <Container>
-       <h1>BiblioKeia</h1>
+       <h1>{process.env.BASE_URL}</h1>
 
        </Container>
        

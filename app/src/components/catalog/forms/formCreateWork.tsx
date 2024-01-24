@@ -54,7 +54,7 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
 
 
     let defaultValues = {
-        "contribution": [
+        contribution: [
             {
                 "agent": "",
                 "label": "",
@@ -120,11 +120,10 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
                     value: "n"
                 },
             },
-            isPartOf: "https://bibliokeia.com/catalog/works",
+            isPartOf: `${process.env.BASE_URL}/catalog/works`,
         }
 
         const request = { ...obj, ...data };
-        // console.log("CR: ", request)
         setProgress(true)
         setWork(request)
         setInstance(true)
@@ -135,7 +134,7 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    console.log(response);
+                    // console.log(response);
                     setMessage("Registro criado com sucesso!")
                     //   router.push(`/admin/authority/names/${response.data.id}`);
                 }

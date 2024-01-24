@@ -6,7 +6,7 @@ import { Switch, FormControlLabel } from "@mui/material/";
 import { styled } from "@mui/material/styles";
 
 // BiblioKeia Hooks
-import { useColorMode } from "src/providers/mode";
+import { useColorMode } from "@/providers/mode"
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
