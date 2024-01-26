@@ -25,7 +25,6 @@ export function ParserData(data: any) {
     }
   }
 
-
   if (data.hasAffiliation) {
     let a = data.hasAffiliation;
     let hasAffiliation = a.filter((e: any) => {

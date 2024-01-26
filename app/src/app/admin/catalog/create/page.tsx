@@ -32,8 +32,10 @@ const previousPaths = [
 
 export default function Create() {
 
-    const [instance, setInstance] = useState(false);
+    const [openInstance, setOpenInstance] = useState(false);
     const [work, setWork] = useState(null);
+    // const [work_id, setWork_id] = useState("");
+
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
@@ -45,9 +47,9 @@ export default function Create() {
             <Paper elevation={3} sx={{
                 p: "15px", mt: "10px"
             }}>
-                {instance ?
-                    <FormCreateInstance setInstance={setInstance} work={work} /> :
-                    <FormCreateWork setInstance={setInstance} setWork={setWork} />}
+                {openInstance ?
+                    <FormCreateInstance setOpenInstance={setOpenInstance} work={work} /> :
+                    <FormCreateWork setOpenInstance={setOpenInstance} setWork={setWork} />}
             </Paper>
         </Container>
     )

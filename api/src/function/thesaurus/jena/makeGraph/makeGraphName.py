@@ -31,15 +31,15 @@ prefix = """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX msupplcont: <http://id.loc.gov/vocabulary/msupplcont/>
     PREFIX millus: <http://id.loc.gov/vocabulary/millus/>"""
 
-def MakeGraphName(request, id):  
+def MakeGraphName(request):  
 
     graph = f"""{prefix}     
     INSERT DATA {{
-        GRAPH <https://bibliokeia.com/authority/{request.type}/{id}>
+        GRAPH <https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}>
         {{
-        <https://bibliokeia.com/authority/{request.type}/{id}> a madsrdf:Authority, 
+        <https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}> a madsrdf:Authority, 
             madsrdf:{request.type} ;
-            identifiers:local {id} ; 
+            identifiers:local {request.identifiersLocal} ; 
             { f'identifiers:lccn "{request.identifiersLccn}" ;' if request.identifiersLccn else ''}
             madsrdf:adminMetadata [ a bf:AdminMetadata ;
             bf:assigner <{request.adminMetadata.assigner}> ;

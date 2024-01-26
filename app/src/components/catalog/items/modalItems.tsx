@@ -8,38 +8,35 @@ import {
     DialogContent,
     DialogTitle,
     Dialog,
-    InputAdornment,
+    // InputAdornment,
     DialogActions,
     Button,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
+    // FormControl,
+    // InputLabel,
+    // Select,
+    // MenuItem,
     Divider,
-    List,
-    ListItem,
-    ListItemIcon,
-    Avatar,
-    ListItemText,
-    ListItemButton,
-    Paper,
-    Alert
+    // List,
+    // ListItem,
+    // ListItemIcon,
+    // Avatar,
+    // ListItemText,
+    // ListItemButton,
+    // Paper,
+    // Alert
 } from "@mui/material";
 
 // React
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // React Icons
 import { IoRemove, IoAddOutline } from "react-icons/io5";
 import { FcCancel } from "react-icons/fc";
 import { IoIosSave } from "react-icons/io";
-
-
-import { FcSearch } from "react-icons/fc";
+// import { FcSearch } from "react-icons/fc";
 
 // Services BiblioKeia
-import { SearchModalSubjects } from "@/services/thesarus/searchModalSubjects"
-// import CardBkTheasaurs from "@/components/cards/cardBkThesaurus";
+// import { SearchModalSubjects } from "@/services/thesarus/searchModalSubjects"
 
 import { schemaAuthorityDoc } from "@/schema/solr"
 
@@ -48,12 +45,6 @@ import { useForm } from "react-hook-form";
 import { useFieldArray, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
-interface Props {
-    setOpen: Function;
-    open: boolean;
-    instance: number|null
-}
 
 // Schema
 import { ZodItem } from "@/schema/bibframe/zodItem"
@@ -64,9 +55,17 @@ import { bkapi } from "@/services/api";
 import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
 
+// Next
+import { useRouter } from 'next/navigation'
+
 type SchemaCreateItem = z.infer<typeof ZodItem>;
 
-
+interface Props {
+    setOpen: Function;
+    open: boolean;
+    work: any;
+    instance: number|null
+}
 
 const headers = {
     accept: "application/json",
@@ -76,25 +75,26 @@ const headers = {
 
 export default function ModalItems({ setOpen, open, work, instance }: Props) {
 
-    const [type, setType] = useState("*");
-    const [search, setSearch] = useState("");
-    const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
-    const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
+    // const [type, setType] = useState("*");
+    // const [search, setSearch] = useState("");
+    // const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
+    // const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
     const { setProgress } = useProgress();
     const [id, setId] = useState(null);
+
+    const router = useRouter()
 
     
 
     const defaultValues = {
         items: [{
-            // id: id.id,
             cdd: "",
             cutter: "",
             year: "",
             collection: "",
             shelf: "",
-            barcode: "1"
+            barcode: ""
         }],
     }
 
@@ -115,9 +115,10 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
         bkapi
             .get("/catalog/item/next_id")
             .then(function (response) {
-                // setId(response.data);
                 setValue('items[0].barcode', response.data.barcode);
-                console.log("RD:",response.data);
+                setValue('items[0].year', instance.publication.date);
+                
+                // console.log("RD:",instance.publication);
             })
             .catch(function (error) {
                 // manipula erros da requisição
@@ -125,7 +126,7 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
             })
             .finally(function () {
             });
-    }, [String(id)]);
+    }, []);
 
     const {
         fields,
@@ -143,28 +144,20 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
     };
 
     const addField = () => {
-       
-        console.log(wFArray[wFArray.le])
+
+        let lastItem = wFArray[wFArray.length - 1]
+        let barcode = lastItem.barcode
+        let [y, n] = barcode.split("-")
+        let nextItem = `${y}-${parseInt(n)+1}`
         
         append({
-            cdd: "",
-            cutter: "",
-            year: "",
-            collection: "",
-            shelf: "",
-            barcode: "5"
+            cdd: lastItem.cdd,
+            cutter: lastItem.cutter,
+            year: instance.publication.date,
+            collection: lastItem.collection,
+            shelf: lastItem.shelf,
+            barcode: nextItem
         });
-        // bkapi
-        //     .get("/catalog/item/next_id")
-        //     .then(function (response) {
-        //         console.log("RD:",response.data);
-        //     })
-        //     .catch(function (error) {
-        //         // manipula erros da requisição
-        //         console.error(error);
-        //     })
-        //     .finally(function () {
-        //     });
 
         
     };
@@ -180,10 +173,11 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
             return item
         })
         let request = {
-            "itemOf": instance,
+            "itemOf": instance.id,
             "instanceOf": work,
             "items": items
         }
+        setProgress(true)
 
         bkapi
             .post("catalog/items/create", request, {
@@ -191,9 +185,9 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    console.log(response);
+                    // console.log(response);
                     setMessage("Registro criado com sucesso!")
-                    //   router.push(`/admin/authority/names/${response.data.id}`);
+                    router.push(`/admin/catalog/work%23${response.data.instanceOf}`);
                 }
             })
             .catch(function (error) {
@@ -208,9 +202,6 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
                 setOpenSnack(true)
                 setOpen(false)
             });
-
-        // console.log("I:", request)
-
     }
 
     return (
@@ -254,6 +245,9 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
                                                 label="Ano"
                                                 size="small"
                                                 {...register(`items.${index}.year`)}
+                                                InputProps={{
+                                                    readOnly: true,
+                                                  }}
                                             />
                                             <TextField
                                                 fullWidth
@@ -275,6 +269,9 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
                                                 label="Registro"
                                                 size="small"
                                                 {...register(`items.${index}.barcode`)}
+                                                InputProps={{
+                                                    readOnly: true,
+                                                  }}
                                             />
                                         </Box>
                                         <Box sx={{ display: "flex", alignItems: "center" }}>

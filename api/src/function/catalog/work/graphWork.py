@@ -28,12 +28,12 @@ prefix = """PREFIX bkw: <https://bibliokeia.com/catalog/work/>
             PREFIX dcterms: <http://purl.org/dc/terms/>    
     """
 
-def MakeGraphWork(request): 
+def MakeGraphWork(request, word_id): 
     graph = f"""{prefix}    
     INSERT DATA {{
-        GRAPH bkw:{request.identifiersLocal}
+        GRAPH bkw:{word_id}
         {{
-                bkw:{request.identifiersLocal} a bf:{request.type},
+                bkw:{word_id} a bf:{request.type},
                     bf:Work ;
                 bf:adminMetadata [ a bf:AdminMetadata ;
                 bf:assigner <{request.adminMetadata.assigner}> ;    
@@ -45,7 +45,7 @@ def MakeGraphWork(request):
                     bf:generationDate "{request.adminMetadata.generationDate}"^^xsd:dateTime ] ;
                 bf:identifiedBy [ a bf:Local ;
                     bf:assigner <{request.adminMetadata.assigner}> ;
-                    rdf:value "{request.identifiersLocal}" ] ;
+                    rdf:value "{word_id}" ] ;
                 bf:status [ a bf:Status ;
                     rdfs:label "{request.adminMetadata.status.label}" ;
                     bf:code "{request.adminMetadata.status.value}" ] ] ;

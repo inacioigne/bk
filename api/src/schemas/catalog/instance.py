@@ -11,7 +11,7 @@ class Value(BaseModel):
 
 class BfInstance(BaseModel):
     adminMetadata: AdminMetadata
-    identifiersLocal: str
+    # identifiersLocal: str
     type: str
     media: Element
     issuance: Element

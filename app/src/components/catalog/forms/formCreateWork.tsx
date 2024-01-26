@@ -18,8 +18,9 @@ import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
 
 // React Hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
+// BiblioKeia Service
 import { bkapi } from "@/services/api";
 
 // React Icons
@@ -31,6 +32,9 @@ import FormBibframeWork from "@/components/catalog/forms/formBibframeWork";
 import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
 import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
 
+// Next
+import Link from 'next/link'
+
 const headers = {
     accept: "application/json",
     "Content-Type": "application/json",
@@ -38,16 +42,16 @@ const headers = {
 
 interface Props {
     setWork: Function
-    setInstance: Function
+    setOpenInstance: Function
 
 }
 
-export default function FormCreateWork({ setWork, setInstance }: Props) {
+export default function FormCreateWork({ setWork, setOpenInstance }: Props) {
 
     type SchemaCreateWork = z.infer<typeof ZodWork>;
     const { setProgress } = useProgress();
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-    const [id, setId] = useState(null);
+    // const [id, setId] = useState(null);
     const [openName, setOpenName] = useState(false);
     const [openSubject, setOpenSubject] = useState(false);
     const [field, setField] = useState("");
@@ -57,12 +61,12 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
         contribution: [
             {
                 agent: "",
-                "label": "",
-                "role": "http://id.loc.gov/vocabulary/relators/aut",
-                "roleLabel": "Autor"
+                label: "",
+                role: "http://id.loc.gov/vocabulary/relators/aut",
+                roleLabel: "Autor"
             }
         ],
-        "subject": [
+        subject: [
             {
                 label: "",
                 lang: "por",
@@ -94,39 +98,40 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
         defaultValues,
     });
 
-    useEffect(() => {
-        bkapi
-            .get("/catalog/work/next_id")
-            .then(function (response) {
-                setId(response.data);
-                // console.log(response.data);
-            })
-            .catch(function (error) {
-                // manipula erros da requisição
-                console.error(error);
-            })
-            .finally(function () {
-                // setProgress(false)
-            });
-    }, [String(id)]);
+    // useEffect(() => {
+    //     bkapi
+    //         .get("/catalog/work/next_id")
+    //         .then(function (response) {
+    //             setId(response.data);
+    //             // console.log(response.data);
+    //         })
+    //         .catch(function (error) {
+    //             // manipula erros da requisição
+    //             console.error(error);
+    //         })
+    //         .finally(function () {
+    //             // setProgress(false)
+    //         });
+    // }, [String(id)]);
 
     function CreateWork(data: any) {
 
         let obj = {
-            identifiersLocal: String(id),
+            // identifiersLocal: String(id),
             adminMetadata: {
                 status: {
                     label: "novo",
                     value: "n"
                 },
             },
-            isPartOf: `${process.env.BASE_URL}/catalog/works`,
+            isPartOf: `${process.env.BASE_URL}/catalog/work`,
         }
 
         const request = { ...obj, ...data };
+        // console.log("WK", request)
         setProgress(true)
-        setWork(request)
-        setInstance(true)
+
+
 
         bkapi
             .post("/catalog/work/create", request, {
@@ -134,7 +139,11 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    // console.log(response);
+                    // console.log("RS", response.data);
+                    request.identifiersLocal = response.data.id
+                    setWork(request)
+                    setOpenInstance(true)
+
                     setMessage("Registro criado com sucesso!")
                     //   router.push(`/admin/authority/names/${response.data.id}`);
                 }
@@ -143,7 +152,7 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
                 if (error.response.status === 409) {
                     setTypeAlert("error")
                     setMessage("Este registro já existe")
-                    console.error("ER:", error);
+                    // console.error("ER:", error);
                 }
             })
             .finally(function () {
@@ -159,18 +168,19 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
             <form onSubmit={handleSubmit(CreateWork)} >
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
-                        Criar Obra - {id}
+                        Criar Obra
                     </Typography>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                        <Button
-                            type="submit"
-                            sx={{ textTransform: "none" }}
-                            variant="outlined"
-                            startIcon={<FcCancel />}
-                        // onClick={() => { setForm(false) }}
-                        >
-                            Cancelar
-                        </Button>
+                        <Link href={"/admin/catalog"}>
+                            <Button
+                                sx={{ textTransform: "none" }}
+                                variant="outlined"
+                                startIcon={<FcCancel />}
+                            >
+                                Cancelar
+                            </Button>
+                        </Link>
+
                         <Button
                             type="submit"
                             sx={{ textTransform: "none" }}
@@ -197,7 +207,6 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
                 defaultValues={defaultValues}
                 field={field}
                 setValue={setValue} />
-
             <ModalThesarus
                 setOpen={setOpenSubject}
                 open={openSubject}

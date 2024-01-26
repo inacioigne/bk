@@ -55,7 +55,6 @@ export default function ModalThesarus({ setOpen, setValue, open, field }: Props)
     };
 
     useEffect(() => {
-        // console.log(type, search)
         SearchModalSubjects(type, search, setDocs)
     }, [open])
 
@@ -118,7 +117,6 @@ export default function ModalThesarus({ setOpen, setValue, open, field }: Props)
                                             <InputAdornment
                                                 position="start"
                                                 sx={{ cursor: "pointer" }}
-                                            // onClick={handleSubmit}
                                             >
                                                 <IconButton type="submit">
                                                     <FcSearch />

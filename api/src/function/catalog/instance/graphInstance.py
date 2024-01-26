@@ -22,12 +22,12 @@ def MakeLiteral(value):
                     rdfs:label "{value.label}" ] ;"""
     return v
 
-def MakeGraphInstance(request):
+def MakeGraphInstance(request, instance_id):
     graph = f"""{prefix}    
     INSERT DATA {{
-        GRAPH bki:{request.identifiersLocal}
+        GRAPH bki:{instance_id}
         {{
-                bki:{request.identifiersLocal} a bf:Instance, 
+                bki:{instance_id} a bf:Instance, 
                     bf:{request.type};
                 bf:adminMetadata [ a bf:AdminMetadata ;
                 bf:assigner <{request.adminMetadata.assigner}> ;    
@@ -39,7 +39,7 @@ def MakeGraphInstance(request):
                     bf:generationDate "{request.adminMetadata.generationDate}"^^xsd:dateTime ] ;
                 bf:identifiedBy [ a bf:Local ;
                     bf:assigner <{request.adminMetadata.assigner}> ;
-                    rdf:value "{request.identifiersLocal}" ] ;
+                    rdf:value "{instance_id}" ] ;
                 bf:status "{request.adminMetadata.status.value}" ] ;            
                 bf:title [ a bf:Title ;
                 bf:mainTitle "{request.title.mainTitle}" 

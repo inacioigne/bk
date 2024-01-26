@@ -145,7 +145,6 @@ export default function FormBfSubject({ register, control, error, setOpen, setFi
                                                 position="start"
                                                 sx={{ cursor: "pointer" }}
                                                 onClick={() => {
-                                                    // console.log("abrir")
                                                     setOpen(true)
                                                 }}
                                             >
@@ -167,9 +166,6 @@ export default function FormBfSubject({ register, control, error, setOpen, setFi
                                             size="small"
                                             label="Idioma"
                                             {...field}
-                                        // onChange={(e) => {
-                                        //     field.onChange(e)
-                                        // }}
                                         >
                                             <MenuItem value={"por"}>Português</MenuItem>
                                             <MenuItem value={"en"}>Inglês</MenuItem>

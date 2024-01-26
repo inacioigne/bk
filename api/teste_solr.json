@@ -1,8 +1,0 @@
-{
-    "id": "2",
-    "creationDate": datetime.date(2023, 11, 29), 'type': 'Text', 'content': 'Texto', 'mainTitle': 'Ódio, amizade, namor
-o, amor, casamento', 'language': ['por'], 'subtitle': '', 'cdd': None, 'note': None, 'summary': None, 'tableOfContents': None, 'supp
-lementaryContent': None, 'illustrativeContent': None, 'intendedAudience': None, 'geographicCoverage': None, 'isPartOf': 'Work', 'con
-tribution': [{'id': '2/contribution/3', 'agent': 'https://bibliokeia.com/authority/PersonalName/3', 'label': 'Munro, Alice', 'role':
- 'http://id.loc.gov/vocabulary/relators/aut', 'roleLabel': 'Autor'}], 'subject': [{'id': '2/subject/2', 'type': 'Topic', 'uri': 'htt
-ps://bibliokeia.com/authority/Topic/2', 'label': 'Ficção'}]}

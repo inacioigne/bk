@@ -6,16 +6,16 @@ from src.db.models import DbItem
 settings = Settings()
 solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 
-def DocItem(item, instance, work):
+def DocItem(item, instance, work, item_id):
 
     instance_id = f'instance#{instance}'
     word_id = f'work#{work}'
-    db_item = session.query(DbItem).order_by(DbItem.id.desc()).first() 
-    if db_item:
-        item_id = db_item.id + 1
-    else:
-        item_id = 1
-    item_id = f'item#{item_id}'
+    # db_item = session.query(DbItem).order_by(DbItem.id.desc()).first() 
+    # if db_item:
+    #     item_id = db_item.id + 1
+    # else:
+    #     item_id = 1
+    # item_id = f'item#{item_id}'
 
 
     doc = {

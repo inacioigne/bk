@@ -1,0 +1,42 @@
+{
+    "adminMetadata": {
+        "status": {
+            "label": "novo",
+            "value": "n"
+        }
+    },
+    "instanceOf": {
+        "uri": "https://bibliokeia.com/catalog/work/7",
+        "label": "Plants."
+    },
+    "isPartOf": "https://bibliokeia.com/catalog/instance",
+    "type": "Print",
+    "media": {
+        "label": "Não mediado",
+        "uri": "http://id.loc.gov/vocabulary/mediaTypes/n"
+    },
+    "carrier": {
+        "label": "Volume",
+        "uri": "http://id.loc.gov/vocabulary/carriers/nc"
+    },
+    "issuance": {
+        "label": "Monografia",
+        "uri": "http://id.loc.gov/vocabulary/issuance/mono"
+    },
+    "title": {
+        "mainTitle": "Plants.",
+        "subtitle": ""
+    },
+    "publication": {
+        "agent": "Companhia das Letras",
+        "date": "2022",
+        "place": "Rio de Janeiro"
+    },
+    "language": [
+        {
+            "label": "por",
+            "uri": "http://id.loc.gov/vocabulary/languages/por"
+        }
+    ],
+    "image": "https://m.media-amazon.com/images/I/8118F5EgmZL._SY466_.jpg"
+}

@@ -7,9 +7,9 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
 
 
-def UpdateFusekiContribution(request):
+def UpdateFusekiContribution(request, work_id):
 
-    uri = f'https://bibliokeia.com/catalog/works/{request.identifiersLocal}'
+    uri = f'https://bibliokeia.com/catalog/work/{work_id}'
     for contribution in request.contribution:
         sparql = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
             INSERT DATA {{
@@ -19,8 +19,8 @@ def UpdateFusekiContribution(request):
         response = fuseki.run_sparql(sparql)
 
 
-def UpdateSolrContribution(request):
-    uri = f'https://bibliokeia.com/catalog/works/{request.identifiersLocal}'
+def UpdateSolrContribution(request, work_id):
+    uri = f'https://bibliokeia.com/catalog/work/{work_id}'
     docs = list()
     for contribution in request.contribution:
         id = contribution.agent.split("/")[-1]
@@ -28,7 +28,7 @@ def UpdateSolrContribution(request):
             "id": id,
             "contributionOf": {
                 "add": {
-                    "id": f'{id}/work/{request.identifiersLocal}',
+                    "id": f'{id}/work/{work_id}',
                     "label": request.title.mainTitle,
                     "uri": uri
                 }

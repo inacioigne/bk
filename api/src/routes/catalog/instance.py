@@ -15,24 +15,24 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 @router.post("/create", status_code=201)
 async def create_instance(request: BfInstance): 
 
-    uri = f'https://bibliokeia.com/catalog/instance/{request.identifiersLocal}'
+    # uri = f'https://bibliokeia.com/catalog/instance/{request.identifiersLocal}'
     work_id = request.instanceOf.uri.split("/")[-1]
 
     i = DbInstance(
-            id=request.identifiersLocal,  
-            uri=uri,
+            # id=request.identifiersLocal,  
+            # uri=uri,
             work_id=int(work_id)
             ) 
     session.add(i) 
     session.commit()
 
-    graph = MakeGraphInstance(request)
+    graph = MakeGraphInstance(request, i.id)
     response = fuseki.run_sparql(graph) 
-    HasInstance(request)
-    responseSolr = DocInstance(request)
+    HasInstance(request, i.id)
+    responseSolr = DocInstance(request, i.id)
 
     return {
-        "id": request.identifiersLocal,
-         "jena": response.convert()['message'],
-        # "solr": responseSolr
+        "id": i.id,
+        "jena": response.convert()['message'],
+        "solr": responseSolr
         } 

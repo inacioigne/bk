@@ -5,10 +5,10 @@ settings = Settings()
 solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 
 
-def DocInstance(request):
+def DocInstance(request, instance_id):
 
     work_id = f'work#{request.instanceOf.uri.split("/")[-1]}'
-    instance_id = f'instance#{request.identifiersLocal}'
+    instance_id = f'instance#{instance_id}'
 
     doc = {
         "id": instance_id,

@@ -36,30 +36,32 @@ const headers = {
 };
 
 interface Props {
-    setInstance: Function
+    setOpenInstance: Function
     work: any
 }
 
 export default function FormCreateInstance(
-    { setInstance, work }: Props
+    { setOpenInstance, work }: Props
 ) {
 
     type SchemaCreateInstance = z.infer<typeof ZodInstance>;
     const { setProgress } = useProgress();
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-    const [id, setId] = useState(null);
+    const [instance, setInstance] = useState(null);
     const [openName, setOpenName] = useState(false);
     const [openSubject, setOpenSubject] = useState(false);
     const [openItems, setOpenItems] = useState(false);
 
     const [field, setField] = useState("");
 
+    // console.log("W: ", work)
+
 
     let defaultValues = {
         type: "Print",
         media: {
-            "label": "Não mediado",
-            "uri": "http://id.loc.gov/vocabulary/mediaTypes/n",
+            label: "Não mediado",
+            uri: "http://id.loc.gov/vocabulary/mediaTypes/n",
         },
         issuance: {
             label: "Monografia",
@@ -91,26 +93,26 @@ export default function FormCreateInstance(
         defaultValues,
     });
 
-    useEffect(() => {
-        bkapi
-            .get("/catalog/instance/next_id")
-            .then(function (response) {
-                setId(response.data);
-                // console.log(response.data);
-            })
-            .catch(function (error) {
-                // manipula erros da requisição
-                console.error(error);
-            })
-            .finally(function () {
-                // setProgress(false)
-            });
-    }, [String(id)]);
+    // useEffect(() => {
+    //     bkapi
+    //         .get("/catalog/instance/next_id")
+    //         .then(function (response) {
+    //             setId(response.data);
+    //             // console.log(response.data);
+    //         })
+    //         .catch(function (error) {
+    //             // manipula erros da requisição
+    //             console.error(error);
+    //         })
+    //         .finally(function () {
+    //             // setProgress(false)
+    //         });
+    // }, [String(id)]);
 
     function CreateInstance(data: any) {
 
         let obj = {
-            identifiersLocal: String(id),
+            // identifiersLocal: String(id),
             adminMetadata: {
                 status: {
                     label: "novo",
@@ -129,30 +131,31 @@ export default function FormCreateInstance(
 
         setProgress(true)
 
-        // bkapi
-        //     .post("catalog/instance/create", request, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             // console.log("INSTANCE: ", response.data.id);
-        //             setMessage("Registro criado com sucesso!")
-        //             //   router.push(`/admin/authority/names/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         if (error.response.status === 409) {
-        //             setTypeAlert("error")
-        //             setMessage("Este registro já existe")
-        //             console.error("ER:", error);
-        //         }
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //         setOpenItems(true)
-        //     });
-        setOpenItems(true)
+        bkapi
+            .post("catalog/instance/create", request, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    request.id = response.data.id
+                    setInstance(request)
+                    setMessage("Registro criado com sucesso!")
+                    setOpenItems(true)
+                    //   router.push(`/admin/authority/names/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 409) {
+                    setTypeAlert("error")
+                    setMessage("Este registro já existe")
+                    console.error("ER:", error);
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
+        // setOpenItems(true)
 
     }
 
@@ -161,7 +164,7 @@ export default function FormCreateInstance(
             <form onSubmit={handleSubmit(CreateInstance)} >
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography variant="h4" gutterBottom>
-                        Criar Instância - {id}
+                        Criar Instância
                     </Typography>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
                         <Button
@@ -192,11 +195,14 @@ export default function FormCreateInstance(
                     setOpenSubject={setOpenSubject}
                     setField={setField} />
             </form>
-            <ModalItems
-                setOpen={setOpenItems}
-                open={openItems}
-                work={work.identifiersLocal}
-                instance={id} />
+            {instance &&
+                <ModalItems
+                    setOpen={setOpenItems}
+                    open={openItems}
+                    work={work.identifiersLocal}
+                    instance={instance} />
+            }
+
         </>
 
     )

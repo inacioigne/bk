@@ -21,12 +21,12 @@ def MakeLiteral(value):
                     rdfs:label "{value.label}" ] ;"""
     return v
 
-def MakeGraphItem(item, instance):
+def MakeGraphItem(item, instance, item_id):
     graph = f"""{prefix}    
     INSERT DATA {{
-        GRAPH bki:{item.barcode}
+        GRAPH bki:{item_id}
         {{
-                bki:{item.barcode} a bf:Item;
+                bki:{item_id} a bf:Item;
                 bf:adminMetadata [ a bf:AdminMetadata ;
                 bf:assigner <{item.adminMetadata.assigner}> ;    
                 bf:creationDate "{item.adminMetadata.creationDate}"^^xsd:date ;    

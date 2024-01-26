@@ -5,28 +5,36 @@ import {
     Button,
     Divider,
     Grid,
-    Paper
+    Box
 } from "@mui/material";
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 
 // React Icons
-import { FcHome, FcSearch } from "react-icons/fc";
+import { FcHome } from "react-icons/fc";
+import { GiBookshelf } from "react-icons/gi";
+import { LuFileText } from "react-icons/lu";
+
+// Next
+import Image from 'next/image'
 
 const previousPaths = [
     {
         link: "/admin",
         label: "Início",
         icon: <FcHome fontSize="small" />,
+    },
+    {
+        link: "/admin/catalog",
+        label: "Catálogo",
+        icon: <GiBookshelf fontSize="small" />,
     }
 ];
 
 async function getData(id: string) {
 
     const url = `http://${process.env.SOLR}:8983/solr/catalog/select?fl=*,[child]&q=id:${id}`;
-    // console.log("DAT:", url)
-
     const res = await fetch(url, { cache: "no-store" });
 
 
@@ -40,22 +48,58 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     const data = await getData(params.id);
     const [doc] = data.response.docs;
-    console.log("DAT:", doc)
+    let instances = doc.hasInstance
+    let lastInstance = instances[instances.length - 1]
+    // console.log("DAT:", img)
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
             <BreadcrumbsBK
                 previousPaths={previousPaths}
-                currentPath="Catálogo"
+                currentPath={params.id.split("%23")[1]}
             />
             <Divider sx={{ mt: "10px" }} />
-            <Chip  size="small" label="Obra" variant="filled" color="primary" />
-            <Typography variant="h4" gutterBottom>
-                {doc.mainTitle}
-            </Typography>
-            {doc.hasInstance.map((instance, index) => (
-                <p key={index}>Instance</p>
-            ))}
+            <Box sx={{ pt: "10px", display: "flex", gap: "15px" }}>
+                <Image
+                    src={lastInstance.image}
+                    width={300}
+                    height={400}
+                    alt="cover"
+                />
+                <Box sx={{ display: "flex", flexDirection: "column", rowGap: "10px"}}>
+                    <Box sx={{ display: "flex", gap: "5px" }}>
+                        <Chip size="small" label="Obra" variant="filled" color="primary" />
+                        <Chip size="small" label={doc.content} variant="filled" color="primary" avatar={<LuFileText />} />
+                    </Box>
+
+                    <Typography variant="h4" gutterBottom>
+                        {doc.mainTitle}
+                    </Typography>
+                    <Box>
+                    <Chip label={`${doc.contribution.label} (${doc.contribution.roleLabel})`} variant="outlined" color="primary" />
+
+
+                    </Box>
+                    <Divider />
+                    <Box >
+                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
+                            Idioma
+                        </Typography>
+                        <Typography variant="body2" gutterBottom>
+                            {doc.language}
+                        </Typography>
+
+                    </Box>
+
+
+
+                </Box>
+                {doc.hasInstance.map((instance: any, index: number) => (
+                    <p key={index}>Instance</p>
+                ))}
+            </Box>
+
+
 
         </Container>
     )

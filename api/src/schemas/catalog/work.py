@@ -13,7 +13,7 @@ class Classification(BaseModel):
 
 class BfWork(BaseModel):
     adminMetadata: AdminMetadata
-    identifiersLocal: str
+    # identifiersLocal: str
     type: str
     content: Element
     language: list[Element]

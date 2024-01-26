@@ -17,41 +17,41 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 
 @router.post("/create", status_code=201)
 async def create_work(request: BfWork): 
-    uri = f'https://bibliokeia.com/catalog/works/{request.identifiersLocal}'
+    # uri = f'https://bibliokeia.com/catalog/works/{request.identifiersLocal}'
     request = ParserRequestWork(request)
 
     # MariaDB
-    try:
-        w = DbWork(
-            id=request.identifiersLocal, 
-            title=request.title.mainTitle, 
-            uri=uri) 
-        session.add(w) 
-        session.commit()
-    except exc.IntegrityError as e:
-        session.rollback()
-        raise HTTPException(status_code=409, detail="Esse registro já existe")
-    finally:
-        session.close()
+    # try:
+    #     w = DbWork(title=request.title.mainTitle) 
+    #     session.add(w) 
+    #     session.commit()
+    # except exc.IntegrityError as e:
+    #     session.rollback()
+    #     raise HTTPException(status_code=409, detail="Esse registro já existe")
+    # finally:
+    #     session.close()
+    w = DbWork(title=request.title.mainTitle) 
+    session.add(w) 
+    session.commit()
     
     # Jena
-    graph = MakeGraphWork(request)
+    graph = MakeGraphWork(request, w.id)
     response = fuseki.run_sparql(graph) 
 
     # Solr
-    responseSolr = DocWork(request) 
+    responseSolr = DocWork(request, w.id) 
 
     if request.contribution:
-        UpdateFusekiContribution(request)
-        UpdateSolrContribution(request)
+        UpdateFusekiContribution(request, w.id)
+        UpdateSolrContribution(request, w.id)
 
     if request.subject:
-        UpdateFusekiSubject(request)
-        UpdateSolrSubject(request)
+        UpdateFusekiSubject(request, w.id)
+        UpdateSolrSubject(request, w.id)
 
 
     return {
-        "id": request.identifiersLocal,
+        "id": w.id,
          "jena": response.convert()['message'],
         "solr": responseSolr
         } 

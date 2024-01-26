@@ -80,12 +80,11 @@ class DbAuthority(Base):
     __tablename__ = 'authority'
     id = Column(Integer, primary_key=True)
     type = Column(String(20))
-    uri = Column(String(200))
+    # uri = Column(String(200))
 
 class DbWork(Base):
     __tablename__ = 'work'
     id = Column(Integer, primary_key=True)
-    uri = Column(String(200)) 
     title = Column(String(200))
 
     instance = relationship('DbInstance', back_populates='work')
@@ -93,7 +92,7 @@ class DbWork(Base):
 class DbInstance(Base):
     __tablename__ = 'instance'
     id = Column(Integer, primary_key=True)
-    uri = Column(String(200))
+    # uri = Column(String(200))
     work_id = Column(Integer, ForeignKey('work.id'))
 
     work = relationship('DbWork', back_populates='instance')

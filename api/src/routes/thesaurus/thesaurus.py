@@ -31,24 +31,23 @@ router = APIRouter()
 # Post Authority
 @router.post("/create", status_code=201) 
 async def post_authority(request: SchemaMads):
-    item_id = NextId()
-    
-    request.identifiersLocal = str(item_id)
-
-    uri = f'https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}'
+    # item_id = NextId()
     if request.identifiersLccn:
         loc = GraphExistLoc(request.identifiersLccn)
         if loc["exist"]:
             raise HTTPException(status_code=409, detail="Esse registro já existe")
 
     # MariaDB
-    a = DbAuthority(id=request.identifiersLocal, type=request.type, uri=uri) 
+    a = DbAuthority(type=request.type) 
     session.add(a) 
     session.commit()
+    request.identifiersLocal = str(a.id)
+    # uri = f'https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}'
+
+
     
     # Jena
-    graph = MakeGraphName(request, request.identifiersLocal)
-    # print(graph)
+    graph = MakeGraphName(request)
     response = authorityUpdate.run_sparql(graph)   
     UpdateJena(request) 
 

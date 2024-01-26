@@ -4,10 +4,8 @@ import { Box, Divider, Typography, Button } from "@mui/material";
 import FormMadsSubject from "@/components/thesaurus/forms/formMadsSubject"
 import ModalSubjects from "@/components/thesaurus/modal/modalThesarus"
 
-
-
 // React-Hook-Form
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -74,12 +72,10 @@ function GetValue(hit: any) {
         hasNarrowerAuthority: hit.hasNarrowerAuthority ? hit.hasNarrowerAuthority : uriDefault,
         hasReciprocalAuthority: hit.hasReciprocalAuthority ? hit.hasReciprocalAuthority : uriDefault,
     }
-    // console.log("loc", hit);
     return obj
 }
 
 export default function FormLocSubject({ hit, setForm }: Props) {
-    // console.log("SUB:", hit)
     const router = useRouter()
     const { setProgress } = useProgress();
     const [id, setId] = useState(null);
@@ -87,22 +83,22 @@ export default function FormLocSubject({ hit, setForm }: Props) {
     const [open, setOpen] = useState(false);
     const [field, setField] = useState("");
 
-    useEffect(() => {
-        bkapi
-            .get(`/thesarus/next_id`)
-            .then(function (response) {
-                setId(response.data);
+    // useEffect(() => {
+    //     bkapi
+    //         .get(`/thesarus/next_id`)
+    //         .then(function (response) {
+    //             setId(response.data);
 
-                // console.log(response.data);
-            })
-            .catch(function (error) {
-                // manipula erros da requisição
-                console.error(error);
-            })
-            .finally(function () {
-                // setProgress(false)
-            });
-    }, [String(id)]);
+    //             // console.log(response.data);
+    //         })
+    //         .catch(function (error) {
+    //             // manipula erros da requisição
+    //             console.error(error);
+    //         })
+    //         .finally(function () {
+    //             // setProgress(false)
+    //         });
+    // }, [String(id)]);
 
     let defaultValues = GetValue(hit)
 
@@ -123,7 +119,7 @@ export default function FormLocSubject({ hit, setForm }: Props) {
         let formData = ParserData(data)
         let obj = {
             type: hit?.type,
-            identifiersLocal: String(id),
+            // identifiersLocal: String(id),
             identifiersLccn: hit?.identifiersLccn,
             adminMetadata: {
                 status: {
@@ -142,7 +138,6 @@ export default function FormLocSubject({ hit, setForm }: Props) {
             headers: headers,
         })
             .then(function (response) {
-                // console.log("RES:", response)
                 if (response.status === 201) {
                     setMessage("Registro criado com sucesso!")
                     router.push(`/admin/authority/subjects/${response.data.id}`);

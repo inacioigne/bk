@@ -1,0 +1,40 @@
+{
+    "adminMetadata": {
+        "status": {
+            "label": "novo",
+            "value": "n"
+        }
+    },
+    "isPartOf": "undefined/catalog/works",
+    "contribution": [
+        {
+            "agent": "https://bibliokeia.com/authority/PersonalName/1",
+            "label": "Inácio Oliveira",
+            "role": "http://id.loc.gov/vocabulary/relators/aut",
+            "roleLabel": "Autor"
+        }
+    ],
+    "subject": [
+        {
+            "label": "",
+            "lang": "por",
+            "uri": "",
+            "type": "Topic"
+        }
+    ],
+    "type": "Text",
+    "title": {
+        "mainTitle": "Conjecturas e refutações",
+        "subtitle": ""
+    },
+    "content": {
+        "label": "Texto",
+        "uri": "http://id.loc.gov/vocabulary/contentTypes/txt"
+    },
+    "language": [
+        {
+            "label": "por",
+            "uri": "http://id.loc.gov/vocabulary/languages/por"
+        }
+    ]
+}

@@ -51,9 +51,6 @@ export default function LOC() {
   useEffect(() => {
     if (uri) {
       LocAuthority(setHit, uri)
-      // setForm(true)
-  
-      // console.log("p:", uri)
     }
   },[])
 
