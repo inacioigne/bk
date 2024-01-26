@@ -31,7 +31,6 @@ interface Props {
 }
 
 export default function FormBfLanguage({ control, register, setField }: Props) {
-    // console.log("C",control, "R", register, "SET", setField)
     const {
         fields,
         append,

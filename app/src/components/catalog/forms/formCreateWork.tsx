@@ -56,7 +56,7 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
     let defaultValues = {
         contribution: [
             {
-                "agent": "",
+                agent: "",
                 "label": "",
                 "role": "http://id.loc.gov/vocabulary/relators/aut",
                 "roleLabel": "Autor"
@@ -152,6 +152,7 @@ export default function FormCreateWork({ setWork, setInstance }: Props) {
             });
 
     }
+    // console.log("ER:", errors)
 
     return (
         <>

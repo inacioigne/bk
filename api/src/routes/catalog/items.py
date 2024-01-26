@@ -16,7 +16,6 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 @router.post("/create", status_code=201)
 async def create_items(request: Items_Schema):
     for item in request.items:
-        # uri = f'https://bibliokeia.com/catalog/items/{item.barcode}'
         
         i = DbItem(barcode=item.barcode, instance_id=request.itemOf)
         session.add(i) 
@@ -26,6 +25,6 @@ async def create_items(request: Items_Schema):
         response = fuseki.run_sparql(graph) 
         HasItem(item, request.itemOf)
         responseSolr = DocItem(item, request.itemOf, request.instanceOf)
-        print("ITEM:", response)
+        # print("ITEM:", response)
 
     return request.model_dump() 

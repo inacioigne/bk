@@ -22,8 +22,7 @@ class BfInstance(BaseModel):
     dimensions: Optional[str] = None
     extent: Optional[Value] = None
     instanceOf: Element
-    # issuance: Optional[list[Element]] = None
-    # provisionActivity: ProvisionActivity
     provisionActivityStatement: Optional[str] = None
     responsibilityStatement: Optional[str] = None
     seriesStatement: Optional[str] = None
+    image: Optional[str] = None

@@ -1,8 +1,0 @@
-{
-    "name": "Api",
-    "dockerComposeFile": ["../docker-compose.yml"],
-    "service": "api",
-    "shutdownAction": "none",
-    "postStartCommand": "python3 ./main.py",  
-    "workspaceFolder": "/workspace/api"
-}

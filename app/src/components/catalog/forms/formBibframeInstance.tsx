@@ -32,7 +32,8 @@ interface Props {
     setField: Function,
 }
 
-export default function FormBibframeInstance({ control, register, setValue, errors, //setOpenName, setOpenSubject, //getValues, , , 
+export default function FormBibframeInstance({ 
+    control, register, setValue, errors, 
     setField }: Props) {
 
     return (
@@ -53,15 +54,20 @@ export default function FormBibframeInstance({ control, register, setValue, erro
                 <FormBfCarrier control={control} setValue={setValue} />
             </Grid>
             <Grid item xs={12}>
-            <FormBfPublication register={register} error={undefined} control={undefined} setOpen={undefined} setField={undefined} setValue={undefined} />
-
-
+                <FormBfPublication register={register} error={undefined} control={undefined} setOpen={undefined} setField={undefined} setValue={undefined} />
             </Grid>
-
-
-
             <FormBfTitle register={register} error={errors.title} />
             <FormBfLanguage control={control} register={register} setField={setField} />
+            <Grid item xs={12}>
+            <TextField
+                    fullWidth
+                    size="small"
+                    label="Imagem"
+                    variant="outlined"
+                    {...register("image")}
+                />
+            </Grid>
+           
 
 
         </Grid>

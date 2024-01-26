@@ -24,6 +24,7 @@ def DocInstance(request):
         "publicationDate": request.publication.date,
         "publicationPlace": request.publication.place,      
         "serie": request.seriesStatement,
+        "image": request.image,
         "instanceOf": {'id': f'{instance_id}/instanceOf/{work_id}', 'uri': request.instanceOf.uri, 'label': request.instanceOf.label} 
         }
  

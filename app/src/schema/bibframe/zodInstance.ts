@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const ZodInstance = z.object({ 
-    
     type: z.string(),
     media: z.object({
         label: z.string(),
@@ -27,9 +26,8 @@ export const ZodInstance = z.object({
     language: z.array(
         z.object({
             label: z.string(),
-            // lang: z.string().nullable(),
-            // type: z.string(),
             uri: z.string()
         })
-    )
+    ),
+    image: z.string()
 });

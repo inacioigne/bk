@@ -56,8 +56,8 @@ export default function FormCreateInstance(
 
 
     let defaultValues = {
-        "type": "Print",
-        "media": {
+        type: "Print",
+        media: {
             "label": "Não mediado",
             "uri": "http://id.loc.gov/vocabulary/mediaTypes/n",
         },
@@ -125,32 +125,34 @@ export default function FormCreateInstance(
         }
 
         const request = { ...obj, ...data };
+        // console.log("IN:", request)
 
         setProgress(true)
 
-        bkapi
-            .post("catalog/instance/create", request, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    // console.log("INSTANCE: ", response.data.id);
-                    setMessage("Registro criado com sucesso!")
-                    //   router.push(`/admin/authority/names/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 409) {
-                    setTypeAlert("error")
-                    setMessage("Este registro já existe")
-                    console.error("ER:", error);
-                }
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-                setOpenItems(true)
-            });
+        // bkapi
+        //     .post("catalog/instance/create", request, {
+        //         headers: headers,
+        //     })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             // console.log("INSTANCE: ", response.data.id);
+        //             setMessage("Registro criado com sucesso!")
+        //             //   router.push(`/admin/authority/names/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error.response.status === 409) {
+        //             setTypeAlert("error")
+        //             setMessage("Este registro já existe")
+        //             console.error("ER:", error);
+        //         }
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //         setOpenItems(true)
+        //     });
+        setOpenItems(true)
 
     }
 

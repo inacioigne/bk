@@ -52,7 +52,7 @@ import { z } from "zod";
 interface Props {
     setOpen: Function;
     open: boolean;
-    instance: number
+    instance: number|null
 }
 
 // Schema
@@ -66,16 +66,7 @@ import { useAlert } from "@/providers/alert";
 
 type SchemaCreateItem = z.infer<typeof ZodItem>;
 
-const defaultValues = {
-    items: [{
-        cdd: "",
-        cutter: "",
-        year: "",
-        collection: "",
-        shelf: "",
-        barcode: "",
-    }],
-}
+
 
 const headers = {
     accept: "application/json",
@@ -84,22 +75,57 @@ const headers = {
 
 
 export default function ModalItems({ setOpen, open, work, instance }: Props) {
+
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
     const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
     const { setProgress } = useProgress();
+    const [id, setId] = useState(null);
+
+    
+
+    const defaultValues = {
+        items: [{
+            // id: id.id,
+            cdd: "",
+            cutter: "",
+            year: "",
+            collection: "",
+            shelf: "",
+            barcode: "1"
+        }],
+    }
 
     const {
         control,
         register,
         handleSubmit,
+        setValue, 
+        watch,
         formState: { errors },
     } = useForm<SchemaCreateItem>({
         resolver: zodResolver(ZodItem),
         defaultValues,
     });
+    
+
+    useEffect(() => {
+        bkapi
+            .get("/catalog/item/next_id")
+            .then(function (response) {
+                // setId(response.data);
+                setValue('items[0].barcode', response.data.barcode);
+                console.log("RD:",response.data);
+            })
+            .catch(function (error) {
+                // manipula erros da requisição
+                console.error(error);
+            })
+            .finally(function () {
+            });
+    }, [String(id)]);
 
     const {
         fields,
@@ -110,19 +136,37 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
         name: "items",
     });
 
+    const wFArray = watch("items");
+
     const handleClose = () => {
         setOpen(false);
     };
 
     const addField = () => {
+       
+        console.log(wFArray[wFArray.le])
+        
         append({
             cdd: "",
             cutter: "",
             year: "",
             collection: "",
             shelf: "",
-            barcode: "",
+            barcode: "5"
         });
+        // bkapi
+        //     .get("/catalog/item/next_id")
+        //     .then(function (response) {
+        //         console.log("RD:",response.data);
+        //     })
+        //     .catch(function (error) {
+        //         // manipula erros da requisição
+        //         console.error(error);
+        //     })
+        //     .finally(function () {
+        //     });
+
+        
     };
     // console.log('E:', errors)
 
@@ -179,7 +223,7 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
             maxWidth={"lg"}
         >
             <DialogTitle id="alert-dialog-title">
-                Criar Items {instance}
+                Criar Items {id?.barcode}
             </DialogTitle>
             <Divider />
             <form onSubmit={handleSubmit(CreateItems)}>
@@ -260,7 +304,7 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
                 <DialogActions>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center", pb: "10px", pr: "10px" }}>
                         <Button
-                            type="submit"
+                            // type="submit"
                             sx={{ textTransform: "none" }}
                             variant="outlined"
                             size="small"
