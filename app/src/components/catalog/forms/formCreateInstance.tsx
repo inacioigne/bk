@@ -1,3 +1,4 @@
+"use client"
 import {
     Box,
     Divider,
@@ -28,7 +29,7 @@ import { IoIosSave } from "react-icons/io";
 import FormBibframeInstance from "@/components/catalog/forms/formBibframeInstance";
 
 
-import ModalItems from "@/components/catalog/items/modalItems"
+import ModalItems from "@/components/catalog/items/modalFormItems"
 
 const headers = {
     accept: "application/json",
@@ -36,12 +37,12 @@ const headers = {
 };
 
 interface Props {
-    setOpenInstance: Function
+    // setOpenInstance: Function
     work: any
 }
 
 export default function FormCreateInstance(
-    { setOpenInstance, work }: Props
+    { work }: Props
 ) {
 
     type SchemaCreateInstance = z.infer<typeof ZodInstance>;
@@ -54,7 +55,12 @@ export default function FormCreateInstance(
 
     const [field, setField] = useState("");
 
-    // console.log("W: ", work)
+    
+    const ttitle = {
+        mainTitle: work.mainTitle[0],
+        subtitle: work?.subtitle
+    }
+    console.log("W: ", ttitle)
 
 
     let defaultValues = {
@@ -71,7 +77,7 @@ export default function FormCreateInstance(
             label: "Volume",
             uri: "http://id.loc.gov/vocabulary/carriers/nc"
         },
-        title: work?.title,
+        title: ttitle,
         publication: {
 
         },

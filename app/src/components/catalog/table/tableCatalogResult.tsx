@@ -4,19 +4,19 @@ import { useState } from "react";
 // MUI
 import {
   DataGrid,
-  GridRowsProp,
+  // GridRowsProp,
   GridColDef,
-  GridRenderCellParams,
+  // GridRenderCellParams,
 } from "@mui/x-data-grid";
-import { Avatar, Box } from "@mui/material";
+// import { Avatar, Box } from "@mui/material";
 import { GridRowParams, MuiEvent, GridCallbackDetails } from '@mui/x-data-grid';
 
 // React Icons
-import { TbUserSearch } from "react-icons/tb";
-import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
+// import { TbUserSearch } from "react-icons/tb";
+// import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 
 // BiblioKeia Services
-import { SearchSubjects } from "@/services/thesarus/searchSubjects";
+// import { SearchSubjects } from "@/services/thesarus/searchSubjects";
 
 import { RenderTitle } from "@/components/catalog/table/renderTitle"
 import { RenderCover } from "@/components/catalog/table/renderCover"
@@ -32,7 +32,7 @@ import { useRouter } from 'next/navigation'
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
-import { useParmasAutority } from "@/providers/paramsAuthority"
+// import { useParmasAutority } from "@/providers/paramsAuthority"
 
 interface Props {
   rows: any[];

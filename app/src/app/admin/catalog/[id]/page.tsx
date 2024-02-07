@@ -4,17 +4,19 @@ import {
     Typography,
     Button,
     Divider,
-    Grid,
+    // Grid,
     Box
 } from "@mui/material";
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
+import CardInstance from "@/components/catalog/instance/cardInstance"
 
 // React Icons
 import { FcHome } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
 import { LuFileText } from "react-icons/lu";
+import { IoAddOutline } from "react-icons/io5";
 
 // Next
 import Image from 'next/image'
@@ -50,7 +52,6 @@ export default async function Page({ params }: { params: { id: string } }) {
     const [doc] = data.response.docs;
     let instances = doc.hasInstance
     let lastInstance = instances[instances.length - 1]
-    // console.log("DAT:", img)
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
@@ -66,7 +67,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                     height={400}
                     alt="cover"
                 />
-                <Box sx={{ display: "flex", flexDirection: "column", rowGap: "10px"}}>
+                <Box sx={{ display: "flex", flexDirection: "column", rowGap: "10px" }}>
                     <Box sx={{ display: "flex", gap: "5px" }}>
                         <Chip size="small" label="Obra" variant="filled" color="primary" />
                         <Chip size="small" label={doc.content} variant="filled" color="primary" avatar={<LuFileText />} />
@@ -76,9 +77,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                         {doc.mainTitle}
                     </Typography>
                     <Box>
-                    <Chip label={`${doc.contribution.label} (${doc.contribution.roleLabel})`} variant="outlined" color="primary" />
-
-
+                        <Chip label={`${doc.contribution.label} (${doc.contribution.roleLabel})`} variant="outlined" color="primary" />
                     </Box>
                     <Divider />
                     <Box >
@@ -90,13 +89,28 @@ export default async function Page({ params }: { params: { id: string } }) {
                         </Typography>
 
                     </Box>
+                </Box>
+                <Box>
+                    <Box sx={{ display: "flex", gap: 1 }}>
+                        <Typography variant="h6" display="block" gutterBottom>
+                            Instâncias /
+                        </Typography>
+                        <Box>
+                            <Button size="small" variant="outlined" sx={{ textTransform: "none" }} startIcon={<IoAddOutline />}>Criar Instâncias</Button>
 
+
+                        </Box>
+                    </Box>
+                    <Box sx={{ pt: "10px" }}>
+                        {doc.hasInstance.map((instance: any, index: number) => (
+                            <CardInstance key={index} instance={instance} />
+                        ))}
+
+                    </Box>
 
 
                 </Box>
-                {doc.hasInstance.map((instance: any, index: number) => (
-                    <p key={index}>Instance</p>
-                ))}
+
             </Box>
 
 

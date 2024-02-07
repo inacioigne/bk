@@ -8,14 +8,13 @@ import {
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormCreateWork from "@/components/catalog/forms/formCreateWork";
-import FormCreateInstance from "@/components/catalog/forms/formCreateInstance";
 
 // React Icons
 import { FcHome } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
 
 // React Hooks
-import { useState } from "react";
+// import { useState } from "react";
 
 const previousPaths = [
     {
@@ -32,8 +31,8 @@ const previousPaths = [
 
 export default function Create() {
 
-    const [openInstance, setOpenInstance] = useState(false);
-    const [work, setWork] = useState(null);
+    // const [openInstance, setOpenInstance] = useState(false);
+    // const [work, setWork] = useState(null);
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
@@ -45,9 +44,8 @@ export default function Create() {
             <Paper elevation={3} sx={{
                 p: "15px", mt: "10px"
             }}>
-                {openInstance ?
-                    <FormCreateInstance setOpenInstance={setOpenInstance} work={work} /> :
-                    <FormCreateWork setOpenInstance={setOpenInstance} setWork={setWork} />}
+                <FormCreateWork />
+              
             </Paper>
         </Container>
     )

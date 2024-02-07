@@ -46,12 +46,13 @@ interface Props {
 
 }
 
-export default function FormCreateWork({ setWork, setOpenInstance }: Props) {
+export default function FormCreateWork(
+    // { setWork, setOpenInstance }: Props
+    ) {
 
     type SchemaCreateWork = z.infer<typeof ZodWork>;
     const { setProgress } = useProgress();
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-    // const [id, setId] = useState(null);
     const [openName, setOpenName] = useState(false);
     const [openSubject, setOpenSubject] = useState(false);
     const [field, setField] = useState("");
