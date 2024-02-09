@@ -12,14 +12,12 @@ import {
     IconButton,
     Divider,
     Button,
-    // Typography,
     Alert
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // React Hooks
 import { useState, useEffect, FormEvent } from "react";
-
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
@@ -50,10 +48,7 @@ export default function Catalog() {
     const [field, setField] = useState("search_general");
     const [rows, setRows] = useState([]);
     const [rowCount, setRowCount] = useState(5);
-    // const { paramsAuthority } = useParmasAutority();
     const [params, setParams] = useState(new URLSearchParams());
-
-    // const params = new URLSearchParams();
 
     useEffect(() => {
 
@@ -68,6 +63,7 @@ export default function Catalog() {
         );
 
     }, [])
+
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
             <BreadcrumbsBK
@@ -87,9 +83,7 @@ export default function Catalog() {
                                     labelId="field-label"
                                     id="field-select"
                                     value={field}
-                                    label="Filtro"
-                                // onChange={handleChangeField}
-                                >
+                                    label="Filtro" >
                                     <MenuItem value="search_general">Todos</MenuItem>
                                     <MenuItem value="authority">Nome Autorizado</MenuItem>
                                     <MenuItem value="fullerName">Nome completo</MenuItem>
@@ -127,7 +121,7 @@ export default function Catalog() {
                                 display: "flex", gap: "15px"
                             }}
                         >
-                            <Link href={"/admin/catalog/create"}>
+                            <Link href={"/admin/catalog/create/work"}>
                                 <Button
                                     variant="outlined"
                                     size="large"
