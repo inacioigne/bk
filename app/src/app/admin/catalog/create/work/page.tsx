@@ -12,6 +12,7 @@ import FormCreateWork from "@/components/catalog/forms/formCreateWork";
 // React Icons
 import { FcHome } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
+import FormWork from "@/components/catalog/forms/formWork";
 
 // React Hooks
 // import { useState } from "react";
@@ -44,7 +45,8 @@ export default function Create() {
             <Paper elevation={3} sx={{
                 p: "15px", mt: "10px"
             }}>
-                <FormCreateWork />
+                {/* <FormCreateWork /> */}
+                <FormWork />
               
             </Paper>
         </Container>

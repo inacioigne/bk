@@ -1,0 +1,18 @@
+[
+    {
+        "_class": "Contribution",
+        "uri": "http://id.loc.gov/ontologies/bibframe/Contribution",
+        "label": "Contribution",
+        "definition": "Agent and role with respect to the resource being described.",
+        "used_with": "contribution",
+        "properties_include" : [
+            "contributionOf","role"
+        ],
+        "subClassed": "PrimaryContribution",
+        "vocabulary": "loc",
+        "repeatable": true,
+        "required": true
+
+      
+    }
+]

@@ -99,21 +99,7 @@ export default function FormCreateWork(
         defaultValues,
     });
 
-    // useEffect(() => {
-    //     bkapi
-    //         .get("/catalog/work/next_id")
-    //         .then(function (response) {
-    //             setId(response.data);
-    //             // console.log(response.data);
-    //         })
-    //         .catch(function (error) {
-    //             // manipula erros da requisição
-    //             console.error(error);
-    //         })
-    //         .finally(function () {
-    //             // setProgress(false)
-    //         });
-    // }, [String(id)]);
+
 
     function CreateWork(data: any) {
 
