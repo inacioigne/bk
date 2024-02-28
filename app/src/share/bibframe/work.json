@@ -1,18 +1,87 @@
-[
-    {
-        "_class": "Contribution",
-        "uri": "http://id.loc.gov/ontologies/bibframe/Contribution",
-        "label": "Contribution",
-        "definition": "Agent and role with respect to the resource being described.",
-        "used_with": "contribution",
-        "properties_include" : [
-            "contributionOf","role"
-        ],
-        "subClassed": "PrimaryContribution",
-        "vocabulary": "loc",
-        "repeatable": true,
-        "required": true
+{
+    "ontology": [
+        {
+            "property": "contribution",
+            "uri": "http://id.loc.gov/ontologies/bibframe/contribution",
+            "label": "Autoria",
+            "repeatable": true,
+            "required": true,
+            "fields": [
+                {"label": "Autor", "name": "agent", "thesarus": "names", "type": "textField", "width": 8 },
+                {"label": "Responsabilidade", "name": "role", "type": "select", "commonType": "relators", "width": 4  }
+                ]
+        },
+        {
+            "property": "title",
+            "uri": "http://id.loc.gov/ontologies/bibframe/title",
+            "label": "Informações sobre o título",
+            "repeatable": false,
+            "required": true,
+            "fields": [
+                {"label": "Título", "name": "mainTitle",  "type": "textField", "width": 6 },
+                {"label": "Subtítulo", "name": "subtitle",  "type": "textField", "width": 6 } 
+            ]
+        },
+        {
+            "property": "subject",
+            "uri": "http://id.loc.gov/ontologies/bibframe/subject",
+            "label": "Assuntos",
+            "repeatable": true,
+            "required": true,
+            "fields": [
+                {"label": "Tipo", "name": "type",  "type": "select", "commonType": "typeSubject", "width": 2},
+                {"label": "Assunto", "name": "label",  "type": "textField", "thesarus": "subject", "width": 6},
+                {"label": "Subtítulo", "name": "subtitle",  "type": "textField"}  
+            ]
+        }
+    ],
+    "defaultValues" : {
+            "contribution": [
+                {
+                    "label": "",
+                    "uri": "", 
+                    "role": "",
+                    "roleLabel": ""
+                }
+            ],
+            "title": [
+                {
+                    "mainTitle": "",
+                    "subtitle": ""
+                }
+            ],
+            "subject": [
+                {
+                    "type": "",
+                    "label": "",
+                    "lang": "",
+                    "uri": ""
+                   
+                }
 
-      
+            ]
+        },
+    "commonType": {
+        "relators":[
+            {
+                "label": "Autor",
+                "uri": "http://id.loc.gov/vocabulary/relators/aut"
+            },
+            {
+                "label": "Tradutor",
+                "uri": "http://id.loc.gov/vocabulary/relators/trl"
+            }
+        ],
+        "typeSubject":[
+            {
+                "label": "Topic",
+                "uri": "http://id.loc.gov/vocabulary/relators/aut"
+            },
+            {
+                "label": "Tradutor",
+                "uri": "http://id.loc.gov/vocabulary/relators/trl"
+            }
+        ]
     }
-]
+    
+}

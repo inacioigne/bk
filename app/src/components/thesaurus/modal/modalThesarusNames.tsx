@@ -46,19 +46,21 @@ import { schemaAuthorityDoc } from "@/schema/solr"
 interface Props {
     setOpen: Function;
     setValue: Function;
-    open: boolean;
+    thesaurus: object;
     defaultValues: any
     field: string
 }
 
-export default function ModalThesarusNames({ setOpen, setValue, open, field }: Props) {
+export default function ModalThesarusNames({ setOpen, setValue, thesaurus, field }: Props) {
+
+    console.log("T:", thesaurus)
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [openCreate, setOpenCreate] = useState(false)
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
     const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
     const handleClose = () => {
-        setOpen(false);
+        setOpen({name: "", open: false});
     };
 
     useEffect(() => {
@@ -76,7 +78,7 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
     return (
         <>
         <Dialog
-            open={open}
+            open={thesaurus.open}
             onClose={handleClose}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
@@ -84,7 +86,7 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
             maxWidth={"md"}
         >
             <DialogTitle id="alert-dialog-title" sx={{ display: "flex", justifyContent: "space-between" }}>
-                Nomes
+                {thesaurus.name}
                 <IconButton onClick={handleClose} color="primary"><IoCloseSharp /></IconButton>
             </DialogTitle>
             <Divider />
@@ -177,9 +179,7 @@ export default function ModalThesarusNames({ setOpen, setValue, open, field }: P
                                     variant="outlined" 
                                     size="small"
                                     onClick={() => {setOpenCreate(true)}}
-                                    >Criar Autoridade</Button>
-                                    {/* </Link> */}
-                                    
+                                    >Criar Autoridade</Button>                                    
                                 </Box>
                             </Grid>
                         )}

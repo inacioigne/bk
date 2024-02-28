@@ -2,19 +2,22 @@ import { Box, TextField } from "@mui/material";
 // React-Hook-Form
 import { useFieldArray, useWatch, useForm } from "react-hook-form";
 import bibframe from "@/share/bibframe/work.json"
-import Field from "./field";
+import BibframeField from "./bibframeField";
+import { useEffect, useState } from "react";
+
+// BiblioKeia Components
+import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarusNames";
+import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
 
 
 
 export default function FormWork() {
+    const [thesaurus, setThesaurus] = useState({name:"", open: false});
+    const [open, setOpen] = useState(false);
+    const [field, setField] = useState("");
 
-    const defaultValues = bibframe.map((e) =>  {
-        const obj = { [e._class]: [{label:""}]}
-        return obj
-        
-      })
-      console.log(defaultValues)
-    
+    // console.log(bibframe.defaultValues)
+
 
     const {
         control,
@@ -24,13 +27,21 @@ export default function FormWork() {
         setValue,
         getValues
     } = useForm(
-                {
-                // resolver: zodResolver(ZodWork),
-                defaultValues
-            }
-        );
+        {
+            // resolver: zodResolver(ZodWork),
+            defaultValues: bibframe.defaultValues
+        }
+    );
 
-    
+    //  useEffect(() => {
+    //     console.log(thesaurus)
+    //     if (thesaurus === 'names') {
+    //         setOpenName(true)
+
+    //     }
+    //   }, [thesaurus, openName])
+
+
 
     function CreateWork(data: any) {
         console.log(data)
@@ -38,21 +49,29 @@ export default function FormWork() {
     return (
         <Box>
             <form onSubmit={handleSubmit(CreateWork)}>
-                {bibframe.map((field, index) => (
-                    <Field key={index} field={field} control={control} register={register} />
-                    // <Box key={index}>
-                    //     <TextField
-                    //         id="outlined-basic"
-                    //         label={field.label}
-                    //         variant="outlined"
-                    //         {...register(`contribution.${index}.label`)}
-                    //     />
-                    // </Box>
+                {bibframe.ontology.map((field, index) => (
+                    <BibframeField
+                        key={index}
+                        metadado={field}
+                        control={control} 
+                        register={register}
+                        setThesaurus={setThesaurus}
+                        setField={setField}
+                        setValue={setValue}
+                        defaultValue={bibframe.defaultValues[`${field.property}`]}
+                         />
+
                 ))}
                 <button>SALVAR</button>
 
 
             </form>
+            <ModalThesarusNames
+                setOpen={setThesaurus}
+                thesaurus={thesaurus}
+                defaultValues={bibframe.defaultValues}
+                field={field}
+                setValue={setValue} />
 
         </Box>
     )

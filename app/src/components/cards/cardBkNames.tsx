@@ -35,7 +35,7 @@ export default function CardBkNames({ doc, setDoc, setValue, field, setOpen }: P
     const handleChoose = () => {
         setValue(`${field}.label`, doc.authority[0])
         setValue(`${field}.agent`, `https://bibliokeia.com/authority/${doc.type}/${doc.id}`)
-        setOpen(false)
+        setOpen({name: "", open: false})
         // console.log(field, doc)
 
     }
