@@ -28,7 +28,7 @@ interface Props {
 
 export default function BibframeField({ metadado, control, register, setThesaurus, setField, setValue, defaultValue }) {
 
-    console.log("FP", metadado.fields)
+    
     const commonType = bibframe.commonType
     const {
         fields,
@@ -49,6 +49,20 @@ export default function BibframeField({ metadado, control, register, setThesauru
         let [df] = defaultValue
         append(df);
     };
+
+    // console.log("BF", metadado.fields)
+    const handleChangeSelect = (event, obj) => {
+        const f = obj.f
+        f.onChange(event)
+
+        const commonType = obj.commonType
+        const field = obj.field
+        const label = commonType.find((option) => option.uri === event.target.value)?.label;
+        let index = event.target.name.split(".")[1]
+        setValue(`${metadado.property}.${index}.${field.name}Label`, label)
+        // console.log(field)
+        
+      };
 
     return (
         <Accordion defaultExpanded={true}>
@@ -136,18 +150,22 @@ export default function BibframeField({ metadado, control, register, setThesauru
                                                     size="small"
                                                     label={f.label}
                                                     {...field}
-                                                    onChange={(e) => {
-                                                        field.onChange(e)
-                                                        let value = e.target.value
-                                                        let index = e.target.name.split(".")[1]
-                                                        const label = relators.find((option) => option.uri === value)?.label;
-                                                        setValue(`${metadado.property}.${index}.${f.name}Label`, label)
-                                                    }}
+                                                    onChange={(event) => handleChangeSelect(event, {
+                                                        commonType: commonType[`${f.commonType}`], field: f, f: field })}
+                                                    // onChange={(e) => {
+                                                    //     field.onChange(e, 'TESTE')
+                                                    //     let value = e.target.value
+                                                    //     let index = e.target.name.split(".")[1]
+                                                    //     const label = relators.find((option) => option.uri === value)?.label;
+                                                    //     console.log("LANG:", e)
+                                                    //     setValue(`${metadado.property}.${index}.${f.name}Label`, label)
+                                                    // }}
                                                 >
                                                     {commonType[`${f.commonType}`].map((type, index) =>
                                                     (<MenuItem
-                                                        key={index}
+                                                        key={type.label}
                                                         value={type.uri}
+                                                        
                                                     >{type.label}</MenuItem>)
                                                     )}
                                                 </Select>
@@ -175,7 +193,6 @@ export default function BibframeField({ metadado, control, register, setThesauru
                     </Grid>
                 ))}
             </Box>
-
         </Accordion>
     )
 }

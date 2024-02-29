@@ -53,7 +53,7 @@ interface Props {
 
 export default function ModalThesarusNames({ setOpen, setValue, thesaurus, field }: Props) {
 
-    console.log("T:", thesaurus)
+    // console.log("T:", thesaurus)
     const [type, setType] = useState("*");
     const [search, setSearch] = useState("");
     const [openCreate, setOpenCreate] = useState(false)
@@ -66,7 +66,6 @@ export default function ModalThesarusNames({ setOpen, setValue, thesaurus, field
     useEffect(() => {
 
         SearchModalNames(type, "", setDocs)
-        // console.log("E:", search )
     }, [open, openCreate])
 
     const handleSubmit = (e: any) => {
@@ -91,7 +90,7 @@ export default function ModalThesarusNames({ setOpen, setValue, thesaurus, field
             </DialogTitle>
             <Divider />
             <DialogContent>
-                <Grid container spacing={2}>
+                {/* <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <form onSubmit={handleSubmit}>
                             <Box sx={{ display: "flex", gap: "10px" }}>
@@ -174,7 +173,6 @@ export default function ModalThesarusNames({ setOpen, setValue, thesaurus, field
                                     <Alert severity="info" >
                                         Sua busca não retornou nenhum resultado.
                                     </Alert>
-                                    {/* <Link href={"/admin/authority/names/create"}> */}
                                     <Button 
                                     variant="outlined" 
                                     size="small"
@@ -186,7 +184,7 @@ export default function ModalThesarusNames({ setOpen, setValue, thesaurus, field
                     <Grid item xs={8}>
                         {doc ? <CardBkNames doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
                     </Grid>
-                </Grid>
+                </Grid> */}
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancelar</Button>

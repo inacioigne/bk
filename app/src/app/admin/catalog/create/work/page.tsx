@@ -45,9 +45,7 @@ export default function Create() {
             <Paper elevation={3} sx={{
                 p: "15px", mt: "10px"
             }}>
-                {/* <FormCreateWork /> */}
                 <FormWork />
-              
             </Paper>
         </Container>
     )

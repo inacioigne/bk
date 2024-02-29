@@ -33,14 +33,6 @@ export default function FormWork() {
         }
     );
 
-    //  useEffect(() => {
-    //     console.log(thesaurus)
-    //     if (thesaurus === 'names') {
-    //         setOpenName(true)
-
-    //     }
-    //   }, [thesaurus, openName])
-
 
 
     function CreateWork(data: any) {

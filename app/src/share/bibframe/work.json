@@ -7,7 +7,7 @@
             "repeatable": true,
             "required": true,
             "fields": [
-                {"label": "Autor", "name": "agent", "thesarus": "names", "type": "textField", "width": 8 },
+                {"label": "Autor", "name": "label", "thesarus": "names", "type": "textField", "width": 8 },
                 {"label": "Responsabilidade", "name": "role", "type": "select", "commonType": "relators", "width": 4  }
                 ]
         },
@@ -29,9 +29,9 @@
             "repeatable": true,
             "required": true,
             "fields": [
-                {"label": "Tipo", "name": "type",  "type": "select", "commonType": "typeSubject", "width": 2},
-                {"label": "Assunto", "name": "label",  "type": "textField", "thesarus": "subject", "width": 6},
-                {"label": "Subtítulo", "name": "subtitle",  "type": "textField"}  
+                {"label": "Tipo", "name": "type",  "type": "select", "commonType": "typeSubject", "width": 3},
+                {"label": "Assunto", "name": "label",  "type": "textField", "thesarus": "subject", "width": 7},
+                {"label": "Idioma", "name": "lang",  "type": "select", "commonType": "lang", "width": 2}
             ]
         }
     ],
@@ -54,9 +54,9 @@
                 {
                     "type": "",
                     "label": "",
+                    "langLabel": "",
                     "lang": "",
                     "uri": ""
-                   
                 }
 
             ]
@@ -76,10 +76,16 @@
             {
                 "label": "Topic",
                 "uri": "http://id.loc.gov/vocabulary/relators/aut"
+            }
+        ],
+        "lang":[
+            {
+                "label": "Português",
+                "uri": "http://id.loc.gov/vocabulary/languages/por"
             },
             {
-                "label": "Tradutor",
-                "uri": "http://id.loc.gov/vocabulary/relators/trl"
+                "label": "Inglês",
+                "uri": "http://id.loc.gov/vocabulary/languages/eng"
             }
         ]
     }
