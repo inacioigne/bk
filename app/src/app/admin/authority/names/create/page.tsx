@@ -15,7 +15,7 @@ import { IoIosSave } from "react-icons/io";
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormMadsNames from "@/components/thesaurus/forms/formMadsNames";
-import ModalSubjects from "@/components/thesaurus/modal/modalThesarus"
+import ModalSubjects from "@/components/thesaurus/modal/tmp-modalThesarus"
 
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"

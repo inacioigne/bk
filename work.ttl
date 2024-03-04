@@ -27,7 +27,7 @@
             bf:status <http://id.loc.gov/vocabulary/mstatus/c> ;
             lclocal:d906 "=906     $a 7 $b cbc $c orignew $d u $e ncip $f 19 $g y-gencatlg" ;
             lclocal:d955 "=955     $a NEW INPUT vj36 06-30-99; vj16 02-08-00" ] ;
-    bf:classification [ a bf:ClassificationLcc ;
+    bf:classification [ a bf:ClassificationLcc ; 
             bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
             bf:classificationPortion "E269.N3" ;
             bf:itemPortion "M8" ] ;

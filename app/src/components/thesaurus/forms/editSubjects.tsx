@@ -118,7 +118,7 @@ import { useRouter } from "next/navigation";
 // Services BiblioKeia
 import { ParserData } from "@/services/thesarus/parserData"
 import { useState } from "react";
-import ModalSubjects from "@/components/thesaurus/modal/modalThesarus"
+import ModalSubjects from "@/components/thesaurus/modal/tmp-modalThesarus"
 
 
 export default function EditSubjects({ doc }: Props) {

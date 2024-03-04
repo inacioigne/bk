@@ -11,23 +11,40 @@ class Classification(BaseModel):
     itemPortion: Optional[str] = None
     edition: Optional[str] = None
 
+class Work(BaseModel):
+    content: str
+    contentLabel: str
+    type: str
+    typeLabel: str
+    cdd: str
+    cutter: str
+
+class Language(BaseModel):
+    lang: str
+    langLabel: str
+
+
+
 class BfWork(BaseModel):
     adminMetadata: AdminMetadata
-    # identifiersLocal: str
-    type: str
-    content: Element
-    language: list[Element]
-    title: Title
-    classification: Optional[Classification] = None
+    work: list[Work]
     contribution: Optional[list[Contribution]] = None
+    title: list[Title]
     subject: Optional[list[Element]] = None
-    genreForm: Optional[list[Element]] = None
-    note: Optional[str] = None
-    summary: Optional[str] = None
-    tableOfContents: Optional[str] = None
-    supplementaryContent: Optional[list[Element]] = None
-    illustrativeContent: Optional[list[Element]] = None
-    intendedAudience: Optional[list[Element]] = None
-    geographicCoverage: Optional[list[Element]] = None
+    language: list[Language]
+    # type: str
+    # content: Element
+    # language: list[Element]
+    # 
+    # classification: Optional[Classification] = None
+    # 
+    # genreForm: Optional[list[Element]] = None
+    # note: Optional[str] = None
+    # summary: Optional[str] = None
+    # tableOfContents: Optional[str] = None
+    # supplementaryContent: Optional[list[Element]] = None
+    # illustrativeContent: Optional[list[Element]] = None
+    # intendedAudience: Optional[list[Element]] = None
+    # geographicCoverage: Optional[list[Element]] = None
     isPartOf: str
     

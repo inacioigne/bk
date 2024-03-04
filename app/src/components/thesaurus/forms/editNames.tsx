@@ -33,7 +33,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 // BiblioKea Components
 import FormMadsNames from "@/components/thesaurus/forms/formMadsNames"
-import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
+import ModalThesarus from "@/components/thesaurus/modal/tmp-modalThesarus";
 
 
 interface Props {

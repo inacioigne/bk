@@ -17,7 +17,6 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 
 @router.post("/create", status_code=201)
 async def create_work(request: BfWork): 
-    # uri = f'https://bibliokeia.com/catalog/works/{request.identifiersLocal}'
     request = ParserRequestWork(request)
 
     # MariaDB
@@ -30,28 +29,31 @@ async def create_work(request: BfWork):
     #     raise HTTPException(status_code=409, detail="Esse registro já existe")
     # finally:
     #     session.close()
-    w = DbWork(title=request.title.mainTitle) 
+    [title] = request.title
+    w = DbWork(title=title.mainTitle) 
     session.add(w) 
     session.commit()
     
-    # Jena
+    # # Jena
     graph = MakeGraphWork(request, w.id)
-    response = fuseki.run_sparql(graph) 
+    print(graph)
+    # response = fuseki.run_sparql(graph) 
 
-    # Solr
-    responseSolr = DocWork(request, w.id) 
+    # # Solr
+    # responseSolr = DocWork(request, w.id) 
 
-    if request.contribution:
-        UpdateFusekiContribution(request, w.id)
-        UpdateSolrContribution(request, w.id)
+    # if request.contribution:
+    #     UpdateFusekiContribution(request, w.id)
+    #     UpdateSolrContribution(request, w.id)
 
-    if request.subject:
-        UpdateFusekiSubject(request, w.id)
-        UpdateSolrSubject(request, w.id)
+    # if request.subject:
+    #     UpdateFusekiSubject(request, w.id)
+    #     UpdateSolrSubject(request, w.id)
 
 
-    return {
-        "id": w.id,
-         "jena": response.convert()['message'],
-        "solr": responseSolr
-        } 
+    # return {
+    #     "id": w.id,
+    #      "jena": response.convert()['message'],
+    #     "solr": responseSolr
+    #     } 
+    return request.model_dump()

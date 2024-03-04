@@ -1,6 +1,20 @@
 {
     "ontology": [
         {
+            "property": "work",
+            "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "label": "Informações Gerais",
+            "repeatable": false,
+            
+            "fields": [
+                {"label": "Tipo", "name": "type", "type": "select", "commonType": "typeWork", "width": 3, "required": true  },
+                {"label": "Conteúdo", "name": "content", "type": "select", "commonType": "contentTypes", "width": 3, "required": true  },
+                {"label": "CDD", "name": "cdd", "type": "textField", "width": 3, "required": true  },
+                {"label": "Cutter", "name": "cutter", "type": "textField", "width": 3, "required": true  }
+
+                ]
+        },
+        {
             "property": "contribution",
             "uri": "http://id.loc.gov/ontologies/bibframe/contribution",
             "label": "Autoria",
@@ -15,11 +29,19 @@
             "property": "title",
             "uri": "http://id.loc.gov/ontologies/bibframe/title",
             "label": "Informações sobre o título",
-            "repeatable": false,
-            "required": true,
+            "repeatable": false,        
             "fields": [
-                {"label": "Título", "name": "mainTitle",  "type": "textField", "width": 6 },
+                {"label": "Título", "name": "mainTitle",  "type": "textField", "width": 6, "required": true },
                 {"label": "Subtítulo", "name": "subtitle",  "type": "textField", "width": 6 } 
+            ]
+        },
+        {
+            "property": "language",
+            "uri": "http://id.loc.gov/ontologies/bibframe/Language",
+            "label": "Idioma(s) da obra",
+            "repeatable": true,        
+            "fields": [
+                {"label": "Idioma", "name": "lang",  "type": "select", "commonType": "lang", "width": 12}
             ]
         },
         {
@@ -36,7 +58,13 @@
         }
     ],
     "defaultValues" : {
-            "contribution": [
+        "work": [
+            {
+                "type": "",
+                "content": ""
+            }
+        ],
+        "contribution": [
                 {
                     "label": "",
                     "uri": "", 
@@ -50,6 +78,10 @@
                     "subtitle": ""
                 }
             ],
+            "language": [
+               { "langLabel": "",
+                "lang": ""}
+            ],
             "subject": [
                 {
                     "type": "",
@@ -62,6 +94,17 @@
             ]
         },
     "commonType": {
+        "contentTypes": [
+            {
+                "label": "Texto",
+                "uri": "http://id.loc.gov/vocabulary/contentTypes/txt"
+            },
+            {
+                "label": "Não especificado",
+                "uri": "http://id.loc.gov/vocabulary/contentTypes/zzz"
+            }
+
+        ],
         "relators":[
             {
                 "label": "Autor",
@@ -81,11 +124,17 @@
         "lang":[
             {
                 "label": "Português",
-                "uri": "http://id.loc.gov/vocabulary/languages/por"
+                "uri": "por"
             },
             {
                 "label": "Inglês",
-                "uri": "http://id.loc.gov/vocabulary/languages/eng"
+                "uri": "en"
+            }
+        ],
+        "typeWork": [
+            {
+                "label": "Texto",
+                "uri": "text"
             }
         ]
     }

@@ -1,3 +1,5 @@
+from src.function.catalog.bibframe.bfTitle import MakeTitle
+from src.function.catalog.bibframe.bfLanguage import MakeLanguage
 from src.function.catalog.bibframe.bfClassification import MakeClassification
 from src.function.catalog.bibframe.bfContribution import MakeContribution
 from src.function.catalog.bibframe.bfSubject import MakeSubject
@@ -29,11 +31,12 @@ prefix = """PREFIX bkw: <https://bibliokeia.com/catalog/work/>
     """
 
 def MakeGraphWork(request, word_id): 
+    [work] = request.work
     graph = f"""{prefix}    
     INSERT DATA {{
         GRAPH bkw:{word_id}
         {{
-                bkw:{word_id} a bf:{request.type},
+                bkw:{word_id} a bf:{work.type},
                     bf:Work ;
                 bf:adminMetadata [ a bf:AdminMetadata ;
                 bf:assigner <{request.adminMetadata.assigner}> ;    
@@ -49,12 +52,10 @@ def MakeGraphWork(request, word_id):
                 bf:status [ a bf:Status ;
                     rdfs:label "{request.adminMetadata.status.label}" ;
                     bf:code "{request.adminMetadata.status.value}" ] ] ;
-                { MakeClassification(request.classification) if request.classification  else "" }                
-                bf:content <{request.content.uri}>  ; 
-                bf:language { ", ".join([f'<{language.uri}>' for language in request.language]) } ;
-                bf:title [ a bf:Title ;
-                bf:mainTitle "{request.title.mainTitle}" 
-                { f'; bf:subtitle "{request.title.subtitle}" ' if request.title.subtitle else ''} ] ;
+                { MakeClassification(work.cdd) }                
+                bf:content <{work.content}>  ; 
+                { MakeLanguage(request.language) }
+                { MakeTitle(request.title) }
                 { MakeContribution(request.contribution) if request.contribution  else "" }  
                 { MakeSubject(request.subject) if request.subject  else "" }
                 { MakeGenreForm(request.genreForm)if request.genreForm  else "" }         

@@ -38,9 +38,7 @@ export default function CardBkTheasaurs({ doc, setDoc, setValue, field, setOpen 
         setValue(`${field}.base`, "bk")
         setValue(`${field}.lang`, doc.lang)
         setValue(`${field}.uri`, `https://bibliokeia.com/authority/${doc.type}/${doc.id}`)
-        setOpen(false)
-        // console.log(field, doc)
-
+        setOpen({name: "", open: false})
     }
 
     return (

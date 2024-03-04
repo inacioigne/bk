@@ -26,151 +26,86 @@ import {
     Alert
 } from "@mui/material";
 
-
 import { useEffect, useState } from "react";
 
+// React-Hook-Form
 import { FcSearch } from "react-icons/fc";
+import { IoCloseSharp } from "react-icons/io5";
+
+import Link from "next/link";
 
 // Services BiblioKeia
-import { SearchModalSubjects } from "@/services/thesarus/searchModalSubjects"
-import CardBkTheasaurs from "@/components/cards/cardBkThesaurus";
+import { SearchModalNames } from "@/services/thesarus/searchModalNames"
+
+// Components BiblioKeia
+import CardBkNames from "@/components/cards/cardBkNames";
+import ModalThesarusNamesCreate from "@/components/thesaurus/modal/modalThesarusNamesCreate"
 
 import { schemaAuthorityDoc } from "@/schema/solr"
+import ThesarusNames from "./thesarusNames";
+import ThesarusSubjects from "./thesarusSubjects";
+
+type Typethesaurus = {
+    name: string | undefined;
+    open: boolean;
+}
 
 interface Props {
     setOpen: Function;
     setValue: Function;
-    open: boolean;
+    thesaurus: Typethesaurus;
     defaultValues: any
-    field: string
+    nameField: string
 }
 
-export default function ModalThesarus({ setOpen, setValue, open, field }: Props) {
-    const [type, setType] = useState("*");
-    const [search, setSearch] = useState("");
-    const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
-    const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
+export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField }: Props) {
+
+
+    const [openCreate, setOpenCreate] = useState(false)
+
     const handleClose = () => {
-        setOpen(false);
-    };
-
-    useEffect(() => {
-        SearchModalSubjects(type, search, setDocs)
-    }, [open])
-
-    const handleSubmit = (e: any) => {
-        e.preventDefault()
-        SearchModalSubjects(type, search, setDocs)
-        // console.log(type, search)
-
+        setOpen({ name: "", open: false });
     };
 
     return (
-        <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-            fullWidth={true}
-            maxWidth={"md"}
-        >
-            <DialogTitle id="alert-dialog-title">
-                Assuntos
-            </DialogTitle>
-            <Divider />
-            <DialogContent>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <form onSubmit={handleSubmit}>
-                            <Box sx={{ display: "flex", gap: "10px" }}>
-                                <FormControl
-                                    sx={{ width: "30%" }}
-                                    size="small"
-                                >
-                                    <InputLabel id="label">Selecione uma opção</InputLabel>
-                                    <Select
-                                        labelId="label"
-                                        id="demo-simple-select"
-                                        value={type}
-                                        label="Selecione uma opção"
-                                        onChange={(e) => {
-                                            setType(e.target.value)
-                                        }}
-                                    >
-                                        <MenuItem value="*">Todos</MenuItem>
-                                        <MenuItem value="Topic">Termo Topico</MenuItem>
-                                        <MenuItem value="Geographic">Termo Geográfico</MenuItem>
-                                        <MenuItem value="PersonalName">Nome Pessoal</MenuItem>
-                                        <MenuItem value="CorporateName">Nome Coorporativo</MenuItem>
-                                    </Select>
-                                </FormControl>
-                                <TextField
-                                    sx={{ width: "70%" }}
-                                    value={search}
-                                    label="Assunto"
-                                    size="small"
-                                    onChange={(e) => {
-                                        setSearch(e.target.value)
-                                    }}
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment
-                                                position="start"
-                                                sx={{ cursor: "pointer" }}
-                                            >
-                                                <IconButton type="submit">
-                                                    <FcSearch />
-                                                </IconButton>
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                    variant="outlined"
-                                />
-                            </Box>
-                        </form>
-                    </Grid>
-                    {docs.length > 0 ?
-                        <Grid item xs={4}>
-                            <Paper elevation={3}>
-                                <List dense={true}>
-                                    {
-                                        docs.map((doc, index) => (
-                                            <div key={index}>
-                                                <ListItem disablePadding >
-                                                    <ListItemButton onClick={() => { setDoc(doc) }}>
-                                                        <ListItemIcon>
-                                                            <Avatar sx={{ width: 24, height: 24, fontSize: 15 }}>
-                                                                {doc.type[0]}
-                                                            </Avatar>
-                                                        </ListItemIcon>
-                                                        <ListItemText primary={doc.authority} />
-                                                    </ListItemButton>
-                                                </ListItem>
-                                                <Divider />
-                                            </div>
-                                        ))
-                                    }
-                                </List>
-                            </Paper>
-                        </Grid> : (
-                            <Grid item xs={12}>
-                                <Box sx={{ display: "flex", justifyContent: "center" }}>
-                                    <Alert severity="info" >
-                                        Sua busca não retorno nenhum resultado.
-                                    </Alert>
-                                </Box>
-                            </Grid>
-                        )}
-                    {/* </Grid> */}
-                    <Grid item xs={8}>
-                        {doc ? <CardBkTheasaurs doc={doc} setDoc={setDoc} field={field} setValue={setValue} setOpen={setOpen} /> : null}
-                    </Grid>
-                </Grid>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={handleClose}>Cancelar</Button>
-            </DialogActions>
-        </Dialog>
+        <>
+            <Dialog
+                open={thesaurus.open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                fullWidth={true}
+                maxWidth={"md"}
+            >
+                <DialogTitle id="alert-dialog-title" sx={{ display: "flex", justifyContent: "space-between" }}>
+                    {thesaurus.name}
+                    <IconButton onClick={handleClose} color="primary"><IoCloseSharp /></IconButton>
+                </DialogTitle>
+                <Divider />
+                <DialogContent>
+                    {thesaurus.name === 'names' ?
+                        <ThesarusNames
+                            nameField={nameField}
+                            setValue={setValue}
+                            setOpenCreate={setOpenCreate}
+                            openCreate={openCreate}
+                            setOpen={setOpen} /> :
+                        <ThesarusSubjects
+                            setValue={setValue}
+                            nameField={nameField}
+                            setOpenCreate={setOpenCreate}
+                            openCreate={openCreate}
+                            setOpen={setOpen} />
+                    }
+
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancelar</Button>
+                </DialogActions>
+            </Dialog>
+            <ModalThesarusNamesCreate setOpen={setOpenCreate} open={openCreate} />
+        </>
     )
 
 }

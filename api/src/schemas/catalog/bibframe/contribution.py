@@ -275,11 +275,15 @@ relators =  [
 
 
 class Contribution(BaseModel): 
-    # type: str
-    agent: str
     label: str
+    uri: str
     role: str
     roleLabel: str
+    # type: str
+    # agent: str
+    
+    
+    
 
     # _type = ["bf:Contribution", 'http://id.loc.gov/ontologies/bflc/PrimaryContribution' ] 
 

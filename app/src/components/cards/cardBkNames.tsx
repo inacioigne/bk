@@ -36,8 +36,6 @@ export default function CardBkNames({ doc, setDoc, setValue, field, setOpen }: P
         setValue(`${field}.label`, doc.authority[0])
         setValue(`${field}.uri`, `https://bibliokeia.com/authority/${doc.type}/${doc.id}`)
         setOpen({name: "", open: false})
-        // console.log(field, doc.authority[0], field)
-
     }
 
     return (

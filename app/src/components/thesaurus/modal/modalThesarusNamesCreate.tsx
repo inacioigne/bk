@@ -26,7 +26,7 @@ import { IoIosSave } from "react-icons/io";
 
 // BiblioKeia Components
 import FormMadsNames from "@/components/thesaurus/forms/formMadsNames";
-import ModalSubjects from "@/components/thesaurus/modal/modalThesarus"
+import ModalSubjects from "@/components/thesaurus/modal/tmp-modalThesarus"
 
 // React-Hook-Form
 import { useForm } from "react-hook-form";
