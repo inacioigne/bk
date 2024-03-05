@@ -55,6 +55,38 @@
                 {"label": "Assunto", "name": "label",  "type": "textField", "thesarus": "subject", "width": 7},
                 {"label": "Idioma", "name": "lang",  "type": "select", "commonType": "lang", "width": 2}
             ]
+        },
+        {
+            "property": "genreForm",
+            "uri": "http://id.loc.gov/ontologies/bibframe/GenreForm",
+            "label": "Gênero/Forma",
+            "repeatable": true,
+            "required": false,
+            "fields": [
+                {"label": "Gênero/Forma", "name": "genreForm",  "type": "select", "commonType": "genreForms", "width": 12}
+            ]
+        },
+        {
+            "property": "notes",
+            "uri": "http://id.loc.gov/ontologies/bibframe/Note",
+            "label": "Notas",
+            "repeatable": false,
+            "required": false,
+            "fields": [
+                {"label": "Nota", "name": "note",  "type": "textField", "multiline": true,  "width": 12},
+                {"label": "Sumário", "name": "summary",  "type": "textField", "multiline": true,  "width": 12},
+                {"label": "Tabela de Conteúdo", "name": "tableOfContents",  "type": "textField", "multiline": true,  "width": 12}
+            ]
+        },
+        {
+            "property": "describe",
+            "uri": "http://id.loc.gov/ontologies/bibframe/supplementaryContent",
+            "label": "Sumário",
+            "repeatable": false,
+            "required": false,
+            "fields": [
+                {"label": "Sumário", "name": "text",  "type": "textField", "multiline": true,  "width": 12}
+            ]
         }
     ],
     "defaultValues" : {
@@ -72,17 +104,17 @@
                     "roleLabel": ""
                 }
             ],
-            "title": [
+        "title": [
                 {
                     "mainTitle": "",
                     "subtitle": ""
                 }
             ],
-            "language": [
+        "language": [
                { "langLabel": "",
                 "lang": ""}
             ],
-            "subject": [
+        "subject": [
                 {
                     "type": "",
                     "label": "",
@@ -90,10 +122,41 @@
                     "lang": "",
                     "uri": ""
                 }
-
-            ]
+            ], 
+        "genreForm": [
+                {
+                    "genreForm": "",
+                    "genreFormLabel": ""
+                }
+            ],
+        "notes": [
+            {
+                "note": "",
+                "summary": "",
+                "tableOfContents": ""
+            }
+        ],
+        "summary": [
+            {
+                "text": ""
+            }
+        ]
         },
     "commonType": {
+        "genreForms": [
+            {
+                "label": "Materiais cartográficos",
+                "uri": "http://id.loc.gov/authorities/genreForms/gf2011026113"
+            },
+            {
+                "label": "Obras comemorativas",
+                "uri": "http://id.loc.gov/authorities/genreForms/gf2014026064"
+            },
+            {
+                "label": "Não ficção criativa",
+                "uri": "http://id.loc.gov/authorities/genreForms/gf2014026074"
+            }
+        ],
         "contentTypes": [
             {
                 "label": "Texto",
@@ -103,7 +166,6 @@
                 "label": "Não especificado",
                 "uri": "http://id.loc.gov/vocabulary/contentTypes/zzz"
             }
-
         ],
         "relators":[
             {

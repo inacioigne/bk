@@ -60,7 +60,6 @@ export default function BibframeField({ metadado, control, register, setThesauru
         const label = commonType.find((option) => option.uri === event.target.value)?.label;
         let index = event.target.name.split(".")[1]
         setValue(`${metadado.property}.${index}.${field.name}Label`, label)
-
     };
 
     return (
@@ -97,6 +96,8 @@ export default function BibframeField({ metadado, control, register, setThesauru
                                         f.type === 'textField' ?
                                             <TextField
                                                 fullWidth
+                                                multiline={f.multiline}
+                                                rows={4}
                                                 required={f.required}
                                                 size="small"
                                                 label={`${f.label}`}
