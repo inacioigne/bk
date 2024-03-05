@@ -23,6 +23,16 @@ class Language(BaseModel):
     lang: str
     langLabel: str
 
+class GenreForm(BaseModel):
+    genreForm: str
+    genreFormLabel: str
+
+class Notes(BaseModel):
+    note: str
+    summary: str
+    tableOfContents: str
+
+
 
 
 class BfWork(BaseModel):
@@ -31,17 +41,11 @@ class BfWork(BaseModel):
     contribution: Optional[list[Contribution]] = None
     title: list[Title]
     subject: Optional[list[Element]] = None
-    language: list[Language]
-    # type: str
-    # content: Element
-    # language: list[Element]
-    # 
-    # classification: Optional[Classification] = None
-    # 
-    # genreForm: Optional[list[Element]] = None
-    # note: Optional[str] = None
-    # summary: Optional[str] = None
-    # tableOfContents: Optional[str] = None
+    language: list[Language]  
+    genreForm: Optional[list[GenreForm]] = None
+    notes: Optional[list[Notes]] = None
+    # summary: Optional[list[BfLiteal]] = None
+    # tableOfContents: Optional[list[BfLiteal]] = None
     # supplementaryContent: Optional[list[Element]] = None
     # illustrativeContent: Optional[list[Element]] = None
     # intendedAudience: Optional[list[Element]] = None

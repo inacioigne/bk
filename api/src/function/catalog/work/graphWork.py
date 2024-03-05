@@ -1,3 +1,5 @@
+from src.function.catalog.bibframe.bfTableOfContents import MakeTableOfContents
+from src.function.catalog.bibframe.bfNote import MakeNote
 from src.function.catalog.bibframe.bfTitle import MakeTitle
 from src.function.catalog.bibframe.bfLanguage import MakeLanguage
 from src.function.catalog.bibframe.bfClassification import MakeClassification
@@ -10,8 +12,6 @@ from src.function.catalog.bibframe.makeUri import MakeUri
 from src.schemas.settings import Settings
 
 settings = Settings()
-
-
 
 prefix = """PREFIX bkw: <https://bibliokeia.com/catalog/work/> 
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -59,9 +59,9 @@ def MakeGraphWork(request, word_id):
                 { MakeContribution(request.contribution) if request.contribution  else "" }  
                 { MakeSubject(request.subject) if request.subject  else "" }
                 { MakeGenreForm(request.genreForm)if request.genreForm  else "" }         
-                { f'bf:note [ a bf:Note ; rdfs:label "{request.note}" ] ; ' if request.note else '' }
-                { MakeSummary(request.summary) if request.summary else "" }
-                { f'bf:tableOfContents [ a bf:tableOfContents ; rdfs:label "{request.tableOfContents}" ] ; ' if request.tableOfContents else '' }
+                { MakeNote(request.notes) }
+                { MakeSummary(request.notes) }
+                { MakeTableOfContents(request.notes) }
                 { MakeUri("supplementaryContent", request.supplementaryContent) if request.supplementaryContent else "" }
                 { MakeUri("illustrativeContent", request.illustrativeContent) if request.illustrativeContent else "" }
                 { MakeUri("intendedAudience", request.intendedAudience) if request.intendedAudience else "" }
