@@ -1,0 +1,62 @@
+{
+    "work": [
+        {
+            "type": "text",
+            "content": "http://id.loc.gov/vocabulary/contentTypes/txt",
+            "cdd": "548.5",
+            "cutter": "O48s",
+            "typeLabel": "Texto",
+            "contentLabel": "Texto"
+        }
+    ],
+    "contribution": [
+        {
+            "label": "Popper, Karl R.",
+            "uri": "https://bibliokeia.com/authority/PersonalName/10",
+            "role": "http://id.loc.gov/vocabulary/relators/aut",
+            "roleLabel": "Autor"
+        }
+    ],
+    "title": [
+        {
+            "mainTitle": "Título",
+            "subtitle": "subtitutlo"
+        }
+    ],
+    "language": [
+        {
+            "langLabel": "Português",
+            "lang": "por"
+        }
+    ],
+    "subject": [
+        {
+            "type": "http://id.loc.gov/vocabulary/relators/aut",
+            "label": "Metodologia",
+            "langLabel": "",
+            "lang": "por",
+            "uri": "https://bibliokeia.com/authority/Topic/11",
+            "base": "bk",
+            "typeLabel": "Topic"
+        }
+    ],
+    "genreForm": [
+        {
+            "genreForm": "http://id.loc.gov/authorities/genreForms/gf2011026113",
+            "genreFormLabel": "Materiais cartográficos"
+        }
+    ],
+    "notes": [
+        {
+            "note": "Notas",
+            "summary": "Sumário",
+            "tableOfContents": "Tabelas"
+        }
+    ],
+    "supplementaryContent": [
+        {
+            "uri": "http://id.loc.gov/vocabulary/msupplcont/bibliography",
+            "uriLabel": "Bibliografia"
+        }
+    ]
+}

@@ -32,6 +32,10 @@ class Notes(BaseModel):
     summary: str
     tableOfContents: str
 
+class Uri(BaseModel):
+    uri: str
+    uriLabel: Optional[str] = None
+
 
 
 
@@ -44,11 +48,9 @@ class BfWork(BaseModel):
     language: list[Language]  
     genreForm: Optional[list[GenreForm]] = None
     notes: Optional[list[Notes]] = None
-    # summary: Optional[list[BfLiteal]] = None
-    # tableOfContents: Optional[list[BfLiteal]] = None
-    # supplementaryContent: Optional[list[Element]] = None
+    supplementaryContent: Optional[list[Uri]] = None
     # illustrativeContent: Optional[list[Element]] = None
     # intendedAudience: Optional[list[Element]] = None
     # geographicCoverage: Optional[list[Element]] = None
-    isPartOf: str
+    # isPartOf: str
     

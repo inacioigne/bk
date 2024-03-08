@@ -2,7 +2,11 @@ from pydantic import BaseModel
 from typing import Optional
 
 class Element(BaseModel):
-    label: str
-    lang: Optional[str] = None
-    uri: str
     type: Optional[str] = None
+    typeLabel: Optional[str] = None
+    label: str
+    uri: str
+    lang: Optional[str] = None
+    langLabel: Optional[str] = None
+    
+    

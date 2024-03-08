@@ -1,0 +1,5 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+
+<https://bibliokeia/works/10> a bf:Text,
+        bf:Work .
+

@@ -144,7 +144,6 @@ export default function BibframeField({ metadado, control, register, setThesauru
                     {metadado.repeatable &&
                         <Button variant="outlined" sx={{ textTransform: "none" }} onClick={addField} >Adicionar</Button>
                     }
-
                 </Box>
 
             </Box>

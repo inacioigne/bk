@@ -1,148 +1,49 @@
-{
-    "ontology": [
-        {
-            "property": "work",
-            "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-            "label": "Informações Gerais",
-            "repeatable": false,
-            
-            "fields": [
-                {"label": "Tipo", "name": "type", "type": "select", "commonType": "typeWork", "width": 3, "required": true  },
-                {"label": "Conteúdo", "name": "content", "type": "select", "commonType": "contentTypes", "width": 3, "required": true  },
-                {"label": "CDD", "name": "cdd", "type": "textField", "width": 3, "required": true  },
-                {"label": "Cutter", "name": "cutter", "type": "textField", "width": 3, "required": true  }
-
-                ]
-        },
-        {
-            "property": "contribution",
-            "uri": "http://id.loc.gov/ontologies/bibframe/contribution",
-            "label": "Autoria",
-            "repeatable": true,
-            "required": true,
-            "fields": [
-                {"label": "Autor", "name": "label", "thesarus": "names", "type": "textField", "width": 8 },
-                {"label": "Responsabilidade", "name": "role", "type": "select", "commonType": "relators", "width": 4  }
-                ]
-        },
-        {
-            "property": "title",
-            "uri": "http://id.loc.gov/ontologies/bibframe/title",
-            "label": "Informações sobre o título",
-            "repeatable": false,        
-            "fields": [
-                {"label": "Título", "name": "mainTitle",  "type": "textField", "width": 6, "required": true },
-                {"label": "Subtítulo", "name": "subtitle",  "type": "textField", "width": 6 } 
-            ]
-        },
-        {
-            "property": "language",
-            "uri": "http://id.loc.gov/ontologies/bibframe/Language",
-            "label": "Idioma(s) da obra",
-            "repeatable": true,        
-            "fields": [
-                {"label": "Idioma", "name": "lang",  "type": "select", "commonType": "lang", "width": 12}
-            ]
-        },
-        {
-            "property": "subject",
-            "uri": "http://id.loc.gov/ontologies/bibframe/subject",
-            "label": "Assuntos",
-            "repeatable": true,
-            "required": true,
-            "fields": [
-                {"label": "Tipo", "name": "type",  "type": "select", "commonType": "typeSubject", "width": 3},
-                {"label": "Assunto", "name": "label",  "type": "textField", "thesarus": "subject", "width": 7},
-                {"label": "Idioma", "name": "lang",  "type": "select", "commonType": "lang", "width": 2}
-            ]
-        },
-        {
-            "property": "genreForm",
-            "uri": "http://id.loc.gov/ontologies/bibframe/GenreForm",
-            "label": "Gênero/Forma",
-            "repeatable": true,
-            "required": false,
-            "fields": [
-                {"label": "Gênero/Forma", "name": "genreForm",  "type": "select", "commonType": "genreForms", "width": 12}
-            ]
-        },
-        {
-            "property": "notes",
-            "uri": "http://id.loc.gov/ontologies/bibframe/Note",
-            "label": "Notas",
-            "repeatable": false,
-            "required": false,
-            "fields": [
-                {"label": "Nota", "name": "note",  "type": "textField", "multiline": true,  "width": 12},
-                {"label": "Sumário", "name": "summary",  "type": "textField", "multiline": true,  "width": 12},
-                {"label": "Tabela de Conteúdo", "name": "tableOfContents",  "type": "textField", "multiline": true,  "width": 12}
-            ]
-        },
-        {
-            "property": "describe",
-            "uri": "http://id.loc.gov/ontologies/bibframe/supplementaryContent",
-            "label": "Sumário",
-            "repeatable": false,
-            "required": false,
-            "fields": [
-                {"label": "Sumário", "name": "text",  "type": "textField", "multiline": true,  "width": 12}
-            ]
-        }
-    ],
+{   
+    "fields": [
+                {
+                    "name": "resourceType", 
+                    "label": "Tipos do Recurso",                     
+                    "type": "list", 
+                    "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
+                    "repeatable": true,
+                    "required": true,
+                    "subfields": [
+                        {
+                            "name": "value", 
+                            "label": "Tipo",                     
+                            "type": "select", 
+                            "commonType": "resourceType",
+                            "repeatable": false,
+                            "required": true
+                        }
+                    ]
+                }
+            ],
     "defaultValues" : {
-        "work": [
+        "resourceType": [
+          
             {
-                "type": "",
-                "content": ""
-            }
-        ],
-        "contribution": [
-                {
-                    "label": "",
-                    "uri": "", 
-                    "role": "",
-                    "roleLabel": ""
-                }
-            ],
-        "title": [
-                {
-                    "mainTitle": "",
-                    "subtitle": ""
-                }
-            ],
-        "language": [
-               { "langLabel": "",
-                "lang": ""}
-            ],
-        "subject": [
-                {
-                    "type": "",
-                    "label": "",
-                    "langLabel": "",
-                    "lang": "",
-                    "uri": ""
-                }
-            ], 
-        "genreForm": [
-                {
-                    "genreForm": "",
-                    "genreFormLabel": ""
-                }
-            ],
-        "notes": [
+                "value": "Work",
+                "label": "Obra"
+            },
             {
-                "note": "",
-                "summary": "",
-                "tableOfContents": ""
-            }
-        ],
-        "summary": [
-            {
-                "text": ""
+                "value": "",
+                "label": ""
             }
         ]
         },
     "commonType": {
+        "resourceType": [
+            {
+                "value": "Work",
+                "label": "Obra"
+            },
+            {
+                "value": "Text",
+                "label": "Texto"
+            }
+
+        ],
         "genreForms": [
             {
                 "label": "Materiais cartográficos",

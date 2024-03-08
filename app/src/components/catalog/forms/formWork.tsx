@@ -12,6 +12,8 @@ import { typeMetadata } from "@/schema/fieldMetadata";
 
 // BiblioKeia Service
 import { bkapi } from "@/services/api";
+import BfField from "./bibframe/bfField";
+import BfSubField from "./bibframe/bfSubField";
 
 const headers = {
     accept: "application/json",
@@ -21,9 +23,9 @@ const headers = {
 
 
 export default function FormWork() {
-    const [thesaurus, setThesaurus] = useState({name:"", open: false});
-    const [open, setOpen] = useState(false);
-    const [field, setField] = useState("");
+    // const [thesaurus, setThesaurus] = useState({name:"", open: false});
+    // const [open, setOpen] = useState(false);
+    // const [field, setField] = useState("");
 
     const {
         control,
@@ -51,50 +53,47 @@ export default function FormWork() {
         }
 
         const request = { ...obj, ...data };
-        console.log(data)
-        bkapi
-            .post("/catalog/work/create", request, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    console.log("RS", response.data);
-                    request.identifiersLocal = response.data.id
-                    // setWork(request)
-                    // setOpenInstance(true)
+        console.log("R", data)
+        // bkapi
+        //     .post("/catalog/work/create", request, {
+        //         headers: headers,
+        //     })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             console.log("RS", response.data);
+        //             request.identifiersLocal = response.data.id
+        //             // setWork(request)
+        //             // setOpenInstance(true)
 
-                    // setMessage("Registro criado com sucesso!")
-                    //   router.push(`/admin/authority/names/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 409) {
-                    // setTypeAlert("error")
-                    // setMessage("Este registro já existe")
-                    console.error("ER:", error);
-                }
-            })
-            .finally(function () {
-                // setProgress(false)
-                // setOpenSnack(true)
-            });
+        //             // setMessage("Registro criado com sucesso!")
+        //             //   router.push(`/admin/authority/names/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error.response.status === 409) {
+        //             // setTypeAlert("error")
+        //             // setMessage("Este registro já existe")
+        //             console.error("ER:", error);
+        //         }
+        //     })
+        //     .finally(function () {
+        //         // setProgress(false)
+        //         // setOpenSnack(true)
+        //     });
     }
 
     return (
         <Box>
             <form onSubmit={handleSubmit(CreateWork)}>
-                {bibframe.ontology.map((field: typeMetadata, index) => (
-                    <BibframeField
+                {bibframe.fields.map((field: any, index) => (
+                    <BfField
                         key={index}
-                        metadado={field}
-                        control={control} 
+                        field={field}
                         register={register}
-                        setThesaurus={setThesaurus}
-                        setField={setField}
+                        control={control}
+                        defaultValues={bibframe.defaultValues}
                         setValue={setValue}
-                        defaultValue={bibframe.defaultValues[`${field.property}`]}
-                         />
-
+                    />
                 ))}
                 <button>SALVAR</button>
             </form>

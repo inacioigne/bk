@@ -62,7 +62,7 @@ def MakeGraphWork(request, word_id):
                 { MakeNote(request.notes) }
                 { MakeSummary(request.notes) }
                 { MakeTableOfContents(request.notes) }
-                { MakeUri("supplementaryContent", request.supplementaryContent) if request.supplementaryContent else "" }
+                { MakeUri("supplementaryContent", request.supplementaryContent) }
                 { MakeUri("illustrativeContent", request.illustrativeContent) if request.illustrativeContent else "" }
                 { MakeUri("intendedAudience", request.intendedAudience) if request.intendedAudience else "" }
                 { MakeUri("geographicCoverage", request.geographicCoverage) if request.geographicCoverage else "" }
