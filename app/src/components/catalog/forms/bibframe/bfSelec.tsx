@@ -14,7 +14,7 @@ import { ChangeEvent } from "react";
 interface Props {
     subfield: any;
     setValue: Function;
-    index: number,
+    index: number | boolean;
     control: any;
     setValue: Function;
     name: string
@@ -23,6 +23,7 @@ interface Props {
 export default function BfSelect(
     { subfield, setValue, index, control, name }: Props
 ) {
+    // console.log("S:",index )
     const commonType = bibframe.commonType[`${subfield.commonType}`]
 
 
@@ -42,7 +43,7 @@ export default function BfSelect(
 
     return (
         <Controller
-            name={`${name}.${index}.${subfield.name}`}
+            name={ index === false ? `${name}.${subfield.name}.value` : `${name}.${index}.${subfield.name}` }
             control={control}
             render={({ field }) => (
                 <FormControl fullWidth size="small" //required={f.required}
@@ -50,6 +51,7 @@ export default function BfSelect(
                     <InputLabel id="label">{subfield.label}</InputLabel>
                     <Select
                         id="role"
+                        disabled={subfield.disabled}
                         label={subfield.label}
                         {...field}
                         onChange={(event) => handleChangeSelect(event, {field: field, commonType: commonType } )}
@@ -66,16 +68,6 @@ export default function BfSelect(
                 </FormControl>
             )}
         />
-        // <TextField
-        //     fullWidth
-        //     // multiline={f.multiline}
-        //     rows={4}
-        //     // required={f.required}
-        //     size="small"
-        //     label={`${subfield.label}`}
-        //     variant="outlined"
-        //     {...register(`resourceType.${index}.${subfield.name}`)}
-        // />
     )
 
 }

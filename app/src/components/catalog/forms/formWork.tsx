@@ -26,6 +26,7 @@ export default function FormWork() {
     // const [thesaurus, setThesaurus] = useState({name:"", open: false});
     // const [open, setOpen] = useState(false);
     // const [field, setField] = useState("");
+    // console.log("F: ", bibframe.fields)
 
     const {
         control,
@@ -91,7 +92,7 @@ export default function FormWork() {
                         field={field}
                         register={register}
                         control={control}
-                        defaultValues={bibframe.defaultValues}
+                        // defaultValues={bibframe.defaultValues}
                         setValue={setValue}
                     />
                 ))}

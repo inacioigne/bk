@@ -8,7 +8,8 @@ class Settings(BaseSettings):
     db_user: str = "root"
     db_pass: str = "8486"
     solr: str = "http://localhost:8983"
-    # mariadb: str = "mariadb"
-    # solr: str = "http://solr:8983"
-    # fuseki: str = "http://fuseki:3030" 
+    organization: str = "Instituto Nacional de Pesquisas da Amazônia"
+    organization_loc_uri: str = 'http://id.loc.gov/vocabulary/organizations/brmninpa'
+
+
    

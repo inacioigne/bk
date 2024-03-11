@@ -5,24 +5,25 @@ import {
 } from "@mui/material";
 
 interface Props {
-    field: any;
+    subfield: any;
     register: Function
 }
 
 export default function BfTextField(
-    { field, register }: Props
+    { subfield, register }: Props
 ) {
 
     return (
         <TextField
+            disabled={subfield.disabled}
             fullWidth
             // multiline={f.multiline}
             rows={4}
             // required={f.required}
             size="small"
-            label={`${field.label}`}
+            label={`${subfield.label}`}
             variant="outlined"
-            {...register(`adminMetadata.${field.name}`)}
+            {...register(`adminMetadata.${subfield.name}`)}
         />
     )
 

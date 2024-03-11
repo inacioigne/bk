@@ -3,7 +3,6 @@
                 {
                     "name": "resourceType", 
                     "label": "Tipos do Recurso",                     
-                    "type": "list", 
                     "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
                     "repeatable": true,
                     "required": true,
@@ -12,16 +11,53 @@
                             "name": "value", 
                             "label": "Tipo",                     
                             "type": "select", 
-                            "commonType": "resourceType",
-                            "repeatable": false,
-                            "required": true
+                            "commonType": "resourceType"
                         }
+                    ]
+                },
+                {
+                    "name": "adminMetadata", 
+                    "label": "AdminMetadata",                     
+                    "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
+                    "repeatable": false,
+                    "required": true,
+                    "subfields": [
+                        {
+                            "name": "creationDate", 
+                            "label": "Criação do registro",                     
+                            "type": "textField", 
+                            "disabled": true,
+                            "width": 3
+                        },
+                        {
+                            "name": "status", 
+                            "label": "Status",                     
+                            "type": "select", 
+                            "disabled": true,
+                            "width": 3,
+                            "commonType": "mstatus"
+                        }, 
+                        {
+                            "name": "descriptionConventions", 
+                            "label": "Normalização",                     
+                            "type": "select", 
+                            "width": 3,
+                            "commonType": "descriptionConventions"
+                        },
+                        {
+                            "name": "identifiedBy", 
+                            "label": "Identificador",                     
+                            "type": "textField", 
+                            "disabled": true,
+                            "width": 3
+                        }
+                         
+                         
                     ]
                 }
             ],
     "defaultValues" : {
         "resourceType": [
-          
             {
                 "value": "Work",
                 "label": "Obra"
@@ -30,9 +66,32 @@
                 "value": "",
                 "label": ""
             }
-        ]
+        ],
+        "adminMetadata": 
+            {
+                "creationDate": "08/03/2024",
+                "status": { 
+                    "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                    "label": "Novo"
+                },
+                "descriptionConventions": { 
+                    "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                    "label": "AACr"
+                },
+                "identifiedBy": "1"
+            }
         },
     "commonType": {
+        "descriptionConventions": [
+            {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            },
+            {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/rda",
+                "label": "RDA"
+            }
+        ],
         "resourceType": [
             {
                 "value": "Work",
@@ -41,6 +100,16 @@
             {
                 "value": "Text",
                 "label": "Texto"
+            }
+        ],
+        "mstatus": [
+            {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            {
+                "value": "http://id.loc.gov/vocabulary/mstatus/c",
+                "label": "Alterado"
             }
 
         ],

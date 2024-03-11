@@ -1,0 +1,28 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://bibliokeia/works/10> a bf:Text,
+        bf:Work ;
+    bf:adminMetadata [ a bf:AdminMetadata ;
+            bf:assigner <http://id.loc.gov/vocabulary/organizations/brmninpa> ;
+            bf:creationDate "2024-03-09"^^xsd:date ;
+            bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/aacr> ;
+            bf:generationProcess [ a bf:GenerationProcess ;
+                    rdfs:label "BiblioKeia" ;
+                    bf:generationDate "2024-03-09T17:54:25"^^xsd:dateTime ] ;
+            bf:identifiedBy [ a bf:Local ;
+                    bf:assigner <http://id.loc.gov/vocabulary/organizations/brmninpa> ;
+                    rdf:value "1" ] ;
+            bf:status <http://id.loc.gov/vocabulary/mstatus/n> ] .
+
+<http://id.loc.gov/vocabulary/descriptionConventions/aacr> a bf:DescriptionConventions ;
+    rdfs:label "AACr" .
+
+<http://id.loc.gov/vocabulary/mstatus/n> a bf:Status ;
+    rdfs:label "Novo" .
+
+<http://id.loc.gov/vocabulary/organizations/brmninpa> a bf:Organization ;
+    rdfs:label "Instituto Nacional de Pesquisas da Amazônia" .
+

@@ -1,10 +1,11 @@
 import BfModal from "./bfModal";
 import BfSelect from "./bfSelec";
+import BfTextField from "./bfTextField";
 
 interface Props {
     subfield: any;
     register: Function;
-    index: number;
+    index: number | boolean;
     control: any;
     setValue: Function;
     name: string;
@@ -14,23 +15,22 @@ interface Props {
 export default function BfSubField(
     { subfield, register, index, control, setValue, name }: Props
 ) {
-    // console.log("I: ", index)
-    
+    // console.log("SUB: ", subfield)
+
 
     if (subfield.type === 'select') {
         return (
-            <BfSelect 
-            subfield={subfield} 
-            setValue={setValue}
-            index={index}
-            control={control}
-            name={name}
-             />
-   
+            <BfSelect
+                subfield={subfield}
+                setValue={setValue}
+                index={index}
+                control={control}
+                name={name}
+            />
         )
-    }  else if (subfield.type === 'list') {
+    } else if (subfield.type === 'textField') {
         return (
-            <code>LIST</code>
+            <BfTextField subfield={subfield} register={register} />
         )
     }
 

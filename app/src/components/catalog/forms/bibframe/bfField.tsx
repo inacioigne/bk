@@ -19,7 +19,7 @@ interface Props {
 export default function BfField(
     { field, register, control, setValue }: Props
 ) {
-    // console.log(field.subfields)
+    // console.log("FS:", field)
 
     const {
         fields,
@@ -54,33 +54,50 @@ export default function BfField(
                 p: 3,
                 display: "flex", flexDirection: "column", gap: 2
             }}>
-                {fields.map((item, index) => (
-                    <Box key={index} sx={{ display: "flex", gap: 2, }}>
+                {field.repeatable ? (
+                    fields.map((item, index) => (
+                        <Box key={index} sx={{ display: "flex", gap: 2, }}>
+                            <Grid container spacing={2}>
+                                {field.subfields.map((subfield: any, i: number) => (
+                                    <Grid item key={i} xs={12} >
+                                        <BfSubField
+                                            name={field.name}
+                                            index={index}
+                                            subfield={subfield}
+                                            register={register}
+                                            control={control}
+                                            setValue={setValue}
+                                        />
+                                    </Grid>
+                                ))}
+                            </Grid>
+                            {fields.length > 1 &&
+                                <IconButton onClick={() => {
+                                    remove(index);
+                                }}> <FaTrashCan /></IconButton>}
+                        </Box>
+                    ))
+                ) : (
+                    <Box sx={{ display: "flex", gap: 2, }}>
                         <Grid container spacing={2}>
                             {field.subfields.map((subfield: any, i: number) => (
-                                 <Grid item key={i} xs={12} 
-                                 >
+                                <Grid item key={i} xs={subfield.width} >
                                     <BfSubField
-                                    // key={i}
-                                    name={field.name}
-                                    index={index}
-                                    subfield={subfield}
-                                    register={register}
-                                    control={control}
-                                    setValue={setValue}
-                                />
-
-                                 </Grid>
-                                
-                                ))}
+                                        name={field.name}
+                                        index={false}
+                                        subfield={subfield}
+                                        register={register}
+                                        control={control}
+                                        setValue={setValue}
+                          
+                                    />
+                                </Grid>
+                            ))}
                         </Grid>
-                        {fields.length > 1 &&
-                            <IconButton onClick={() => {
-                                remove(index);
-                            }}> <FaTrashCan /></IconButton>}
-
                     </Box>
-                ))}
+                )}
+
+
 
 
                 <Box>
