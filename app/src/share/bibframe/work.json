@@ -1,174 +1,356 @@
-{   
-    "fields": [
-                {
-                    "name": "resourceType", 
-                    "label": "Tipos do Recurso",                     
-                    "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
-                    "repeatable": true,
-                    "required": true,
-                    "subfields": [
-                        {
-                            "name": "value", 
-                            "label": "Tipo",                     
-                            "type": "select", 
-                            "commonType": "resourceType"
-                        }
-                    ]
-                },
-                {
-                    "name": "adminMetadata", 
-                    "label": "AdminMetadata",                     
-                    "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
-                    "repeatable": false,
-                    "required": true,
-                    "subfields": [
-                        {
-                            "name": "creationDate", 
-                            "label": "Criação do registro",                     
-                            "type": "textField", 
-                            "disabled": true,
-                            "width": 3
-                        },
-                        {
-                            "name": "status", 
-                            "label": "Status",                     
-                            "type": "select", 
-                            "disabled": true,
-                            "width": 3,
-                            "commonType": "mstatus"
-                        }, 
-                        {
-                            "name": "descriptionConventions", 
-                            "label": "Normalização",                     
-                            "type": "select", 
-                            "width": 3,
-                            "commonType": "descriptionConventions"
-                        },
-                        {
-                            "name": "identifiedBy", 
-                            "label": "Identificador",                     
-                            "type": "textField", 
-                            "disabled": true,
-                            "width": 3
-                        }
-                         
-                         
-                    ]
-                }
-            ],
-    "defaultValues" : {
-        "resourceType": [
-            {
-                "value": "Work",
-                "label": "Obra"
-            },
-            {
-                "value": "",
-                "label": ""
-            }
-        ],
-        "adminMetadata": 
-            {
-                "creationDate": "08/03/2024",
-                "status": { 
-                    "value": "http://id.loc.gov/vocabulary/mstatus/n",
-                    "label": "Novo"
-                },
-                "descriptionConventions": { 
-                    "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
-                    "label": "AACr"
-                },
-                "identifiedBy": "1"
-            }
+{
+  "fields": [
+    {
+      "name": "resourceType",
+      "label": "Tipos do Recurso",
+      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
+      "repeatable": true,
+      "required": true,
+      "subfields": [
+        {
+          "name": "value",
+          "label": "Tipo",
+          "type": "select",
+          "commonType": "resourceType",
+          "width": 12
+        }
+      ]
+    },
+    {
+      "name": "resourceProperties",
+      "label": "Propiedades do Recurso",
+      "doc": "https://id.loc.gov/ontologies/bibframe-category.html",
+      "repeatable": false,
+      "required": true,
+      "subfields": [
+        {
+          "name": "content",
+          "label": "Conteúdo",
+          "type": "select",
+          "commonType": "contentTypes",
+          "width": 3
         },
-    "commonType": {
-        "descriptionConventions": [
-            {
-                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
-                "label": "AACr"
-            },
-            {
-                "value": "http://id.loc.gov/vocabulary/descriptionConventions/rda",
-                "label": "RDA"
-            }
-        ],
-        "resourceType": [
-            {
-                "value": "Work",
-                "label": "Obra"
-            },
-            {
-                "value": "Text",
-                "label": "Texto"
-            }
-        ],
-        "mstatus": [
-            {
-                "value": "http://id.loc.gov/vocabulary/mstatus/n",
-                "label": "Novo"
-            },
-            {
-                "value": "http://id.loc.gov/vocabulary/mstatus/c",
-                "label": "Alterado"
-            }
-
-        ],
-        "genreForms": [
-            {
-                "label": "Materiais cartográficos",
-                "uri": "http://id.loc.gov/authorities/genreForms/gf2011026113"
-            },
-            {
-                "label": "Obras comemorativas",
-                "uri": "http://id.loc.gov/authorities/genreForms/gf2014026064"
-            },
-            {
-                "label": "Não ficção criativa",
-                "uri": "http://id.loc.gov/authorities/genreForms/gf2014026074"
-            }
-        ],
-        "contentTypes": [
-            {
-                "label": "Texto",
-                "uri": "http://id.loc.gov/vocabulary/contentTypes/txt"
-            },
-            {
-                "label": "Não especificado",
-                "uri": "http://id.loc.gov/vocabulary/contentTypes/zzz"
-            }
-        ],
-        "relators":[
-            {
-                "label": "Autor",
-                "uri": "http://id.loc.gov/vocabulary/relators/aut"
-            },
-            {
-                "label": "Tradutor",
-                "uri": "http://id.loc.gov/vocabulary/relators/trl"
-            }
-        ],
-        "typeSubject":[
-            {
-                "label": "Topic",
-                "uri": "http://id.loc.gov/vocabulary/relators/aut"
-            }
-        ],
-        "lang":[
-            {
-                "label": "Português",
-                "uri": "por"
-            },
-            {
-                "label": "Inglês",
-                "uri": "en"
-            }
-        ],
-        "typeWork": [
-            {
-                "label": "Texto",
-                "uri": "text"
-            }
-        ]
+        {
+          "name": "genreForm",
+          "label": "Gênero/Forma",
+          "type": "select",
+          "commonType": "genreForms",
+          "width": 3
+        }
+      ]
+    },
+    {
+      "name": "adminMetadata",
+      "label": "AdminMetadata",
+      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
+      "repeatable": false,
+      "required": true,
+      "subfields": [
+        {
+          "name": "creationDate",
+          "label": "Criação do registro",
+          "type": "textField",
+          "disabled": true,
+          "width": 3
+        },
+        {
+          "name": "status",
+          "label": "Status",
+          "type": "select",
+          "disabled": true,
+          "width": 3,
+          "commonType": "mstatus"
+        },
+        {
+          "name": "descriptionConventions",
+          "label": "Normalização",
+          "type": "select",
+          "width": 3,
+          "commonType": "descriptionConventions"
+        },
+        {
+          "name": "identifiedBy",
+          "label": "Identificador",
+          "type": "textField",
+          "disabled": true,
+          "width": 3
+        }
+      ]
+    },
+    {
+      "name": "title",
+      "label": "Informações sobre o título",
+      "doc": "http://id.loc.gov/ontologies/bibframe/title",
+      "repeatable": false,
+      "required": true,
+      "subfields": [
+        {
+          "name": "mainTitle",
+          "label": "Título principal",
+          "type": "textField",
+          "disabled": false,
+          "width": 6
+        },
+        {
+          "name": "subtitle",
+          "label": "Subtítulo",
+          "type": "textField",
+          "disabled": false,
+          "width": 6
+        }
+      ]
+    },
+    {
+      "name": "variantTitle",
+      "label": "Título alternativo",
+      "doc": "http://id.loc.gov/ontologies/bibframe/VariantTitle",
+      "repeatable": true,
+      "required": false,
+      "subfields": [
+        {
+          "name": "mainTitle",
+          "label": "Título principal",
+          "type": "textField",
+          "disabled": false,
+          "width": 6
+        },
+        {
+          "name": "subtitle",
+          "label": "Subtítulo",
+          "type": "textField",
+          "disabled": false,
+          "width": 6
+        }
+      ]
+    },
+    {
+      "name": "language",
+      "label": "Idioma",
+      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_language",
+      "repeatable": true,
+      "required": false,
+      "subfields": [
+        {
+          "name": "value",
+          "label": "Idioma",
+          "type": "select",
+          "commonType": "language",
+          "width": 12
+        }
+      ]
+    },
+    {
+      "name": "contribution",
+      "label": "Autoria",
+      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_contribution",
+      "repeatable": true,
+      "required": false,
+      "subfields": [
+        {
+          "name": "term",
+          "label": "Autor",
+          "type": "textField",
+          "thesarus": "names",
+          "width": 8
+        },
+        {
+          "label": "Responsabilidade",
+          "name": "role.value",
+          "type": "select",
+          "commonType": "relators",
+          "width": 4
+        }
+      ]
+    },
+    {
+      "name": "subject",
+      "label": "Assunto",
+      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_subject",
+      "repeatable": true,
+      "required": false,
+      "subfields": [
+        {
+          "name": "type",
+          "label": "Tipo de assunto",
+          "type": "select",
+          "commonType": "typeSubject",
+          "width": 3
+        },
+        {
+          "label": "Assunto",
+          "name": "term",
+          "type": "textField",
+          "thesarus": "subject",
+          "width": 7
+        },
+        {
+            "name": "lang",
+            "label": "Idioma",
+            "type": "select",
+            "commonType": "language",
+            "width": 2
+          }
+      ]
     }
-    
+  ],
+  "defaultValues": {
+    "resourceType": [
+      {
+        "value": "Work",
+        "label": "Obra"
+      },
+      {
+        "value": "",
+        "label": ""
+      }
+    ],
+    "resourceProperties": {
+      "content": {
+        "value": "http://id.loc.gov/vocabulary/contentTypes/txt",
+        "label": "Texto"
+      },
+      "genreForm": {
+        "value": "",
+        "label": ""
+      }
+    },
+    "adminMetadata": {
+      "creationDate": "08/03/2024",
+      "status": {
+        "value": "http://id.loc.gov/vocabulary/mstatus/n",
+        "label": "Novo"
+      },
+      "descriptionConventions": {
+        "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+        "label": "AACr"
+      },
+      "identifiedBy": "1"
+    },
+    "title": {
+      "mainTitle": "",
+      "subtitle": ""
+    },
+    "variantTitle": [
+      {
+        "mainTitle": "",
+        "subtitle": ""
+      }
+    ],
+    "language": [
+      {
+        "value": "por",
+        "label": "Português"
+      }
+    ],
+    "contribution": [
+      {
+        "term": {
+          "value": "",
+          "label": ""
+        },
+        "role": {
+          "value": "",
+          "label": ""
+        }
+      }
+    ],
+    "subject": [
+      {
+        "type": "",
+        "term": {
+          "value": "",
+          "label": ""
+        },
+        "lang": ""
+      }
+    ]
+  },
+  "commonType": {
+    "descriptionConventions": [
+      {
+        "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+        "label": "AACr"
+      },
+      {
+        "value": "http://id.loc.gov/vocabulary/descriptionConventions/rda",
+        "label": "RDA"
+      }
+    ],
+    "resourceType": [
+      {
+        "value": "Work",
+        "label": "Obra"
+      },
+      {
+        "value": "Text",
+        "label": "Texto"
+      }
+    ],
+    "mstatus": [
+      {
+        "value": "http://id.loc.gov/vocabulary/mstatus/n",
+        "label": "Novo"
+      },
+      {
+        "value": "http://id.loc.gov/vocabulary/mstatus/c",
+        "label": "Alterado"
+      }
+    ],
+    "genreForms": [
+      {
+        "label": "Materiais cartográficos",
+        "value": "http://id.loc.gov/authorities/genreForms/gf2011026113"
+      },
+      {
+        "label": "Obras comemorativas",
+        "value": "http://id.loc.gov/authorities/genreForms/gf2014026064"
+      },
+      {
+        "label": "Não ficção criativa",
+        "value": "http://id.loc.gov/authorities/genreForms/gf2014026074"
+      }
+    ],
+    "contentTypes": [
+      {
+        "label": "Texto",
+        "value": "http://id.loc.gov/vocabulary/contentTypes/txt"
+      },
+      {
+        "label": "Não especificado",
+        "value": "http://id.loc.gov/vocabulary/contentTypes/zzz"
+      }
+    ],
+    "relators": [
+      {
+        "label": "Autor",
+        "value": "http://id.loc.gov/vocabulary/relators/aut"
+      },
+      {
+        "label": "Tradutor",
+        "value": "http://id.loc.gov/vocabulary/relators/trl"
+      }
+    ],
+    "typeSubject": [
+      {
+        "label": "Termo Tópico",
+        "value": "Topic"
+      }
+    ],
+    "language": [
+      {
+        "label": "Português",
+        "value": "por"
+      },
+      {
+        "label": "Inglês",
+        "value": "eng"
+      }
+    ],
+    "typeWork": [
+      {
+        "label": "Texto",
+        "uri": "text"
+      }
+    ]
+  }
 }

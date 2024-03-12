@@ -32,12 +32,14 @@ interface Props {
 
 }
 export default function CardBkTheasaurs({ doc, setDoc, setValue, field, setOpen }: Props) {
+
+    // console.log("F:", field)
     
     const handleChoose = () => {
-        setValue(`${field}.label`, doc.authority[0])
+        setValue(`${field}.term.label`, doc.authority[0])
         setValue(`${field}.base`, "bk")
         setValue(`${field}.lang`, doc.lang)
-        setValue(`${field}.uri`, `https://bibliokeia.com/authority/${doc.type}/${doc.id}`)
+        setValue(`${field}.term.value`, `https://bibliokeia.com/authority/${doc.type}/${doc.id}`)
         setOpen({name: "", open: false})
     }
 

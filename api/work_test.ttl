@@ -3,25 +3,56 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://bibliokeia/works/10> a bf:Text,
+<> a bf:GenreForm ;
+    rdfs:label "" .
+
+<https://bibliokeia/works/1> a bf:Text,
         bf:Work ;
     bf:adminMetadata [ a bf:AdminMetadata ;
             bf:assigner <http://id.loc.gov/vocabulary/organizations/brmninpa> ;
-            bf:creationDate "2024-03-09"^^xsd:date ;
+            bf:creationDate "2024-03-11"^^xsd:date ;
             bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/aacr> ;
             bf:generationProcess [ a bf:GenerationProcess ;
                     rdfs:label "BiblioKeia" ;
-                    bf:generationDate "2024-03-09T17:54:25"^^xsd:dateTime ] ;
+                    bf:generationDate "2024-03-11T19:10:25"^^xsd:dateTime ] ;
             bf:identifiedBy [ a bf:Local ;
                     bf:assigner <http://id.loc.gov/vocabulary/organizations/brmninpa> ;
                     rdf:value "1" ] ;
-            bf:status <http://id.loc.gov/vocabulary/mstatus/n> ] .
+            bf:status <http://id.loc.gov/vocabulary/mstatus/n> ] ;
+    bf:content <http://id.loc.gov/vocabulary/contentTypes/txt> ;
+    bf:contribution [ a bf:Contribution ;
+            bf:agent <https://bibliokeia.com/authority/PersonalName/10> ;
+            bf:role <http://id.loc.gov/vocabulary/relators/aut> ] ;
+    bf:genreForm <http://id.loc.gov/vocabulary/contentTypes/txt> ;
+    bf:language <por> ;
+    bf:subject <https://bibliokeia.com/authority/Topic/11> ;
+    bf:title [ a bf:Title ;
+            bf:mainTitle "Titulo principal" ;
+            bf:subtitle "subtítulo" ],
+        [ a bf:VariantTitle ;
+            bf:mainTitle "Título alternativo" ] .
 
 <http://id.loc.gov/vocabulary/descriptionConventions/aacr> a bf:DescriptionConventions ;
     rdfs:label "AACr" .
 
 <http://id.loc.gov/vocabulary/mstatus/n> a bf:Status ;
     rdfs:label "Novo" .
+
+<http://id.loc.gov/vocabulary/relators/aut> a bf:Role ;
+    rdfs:label "Autor" .
+
+<https://bibliokeia.com/authority/PersonalName/10> a bf:Agent,
+        bf:Person ;
+    rdfs:label "Popper, Karl R." .
+
+<https://bibliokeia.com/authority/Topic/11> a bf:Topic ;
+    rdfs:label "Metodologia"@por .
+
+<por> a bf:Language ;
+    rdfs:label "Português" .
+
+<http://id.loc.gov/vocabulary/contentTypes/txt> a bf:Content ;
+    rdfs:label "Texto" .
 
 <http://id.loc.gov/vocabulary/organizations/brmninpa> a bf:Organization ;
     rdfs:label "Instituto Nacional de Pesquisas da Amazônia" .

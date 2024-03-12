@@ -140,9 +140,8 @@ export default function ThesarusSubjects(
                                 Sua busca não retorno nenhum resultado.
                             </Alert>
                         </Box>
-                    </Grid>
+                    </Grid> 
                 )}
-            {/* </Grid> */}
             <Grid item xs={8}>
                 {doc ? <CardBkTheasaurs doc={doc} setDoc={setDoc} field={nameField} setValue={setValue} setOpen={setOpen} /> : null}
             </Grid>

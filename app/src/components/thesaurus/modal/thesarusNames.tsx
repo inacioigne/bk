@@ -44,6 +44,8 @@ interface Props {
 
 export default function ThesarusNames({ nameField, setValue, openCreate, setOpenCreate, setOpen }: Props) {
 
+    // console.log("T:", nameField, )
+
     const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
     const [type, setType] = useState("*");
@@ -58,6 +60,8 @@ export default function ThesarusNames({ nameField, setValue, openCreate, setOpen
         setDoc(null)
         SearchModalNames(type, search, setDocs)
     };
+
+
 
     return (
         <Grid container spacing={2}>

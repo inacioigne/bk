@@ -41,9 +41,9 @@ interface Props {
 
 export default function BfTextfieldThesarus(
     {
-        property,
+        name,
         control,
-        field,
+        subfield,
         register,
         index,
         setValue,
@@ -56,32 +56,34 @@ export default function BfTextfieldThesarus(
 
     const watchFields = useWatch({
         control,
-        name: `${property}`
+        name: `${name}`
     });
+
+    // console.log("SUB: ", watchFields)    
 
     return (
         <>
             <TextField
                 fullWidth
-                required={field.required}
+                required={subfield.required}
                 size="small"
                 disabled={true}
                 id="outlined-basic"
-                label={`${field.label}`}
+                label={`${subfield.label}`}
                 variant="outlined"
                 inputProps={{
                     style: { opacity: 0 },
                 }}
-                {...register(`${property}.${index}.${field.name}`)}
+                {...register(`${name}.${index}.${subfield.name}.value`)}
                 InputProps={
-                    watchFields[index]?.uri === "" ? {
+                    watchFields[index]?.term.value === "" ? {
                         endAdornment: (
                             <InputAdornment
                                 position="start"
                                 sx={{ cursor: "pointer" }}
                                 onClick={() => {
-                                    setThesaurus({ name: field.thesarus, open: true })
-                                    setNameField(`${property}.${index}`)
+                                    setThesaurus({ name: subfield.thesarus, open: true })
+                                    setNameField(`${name}.${index}`)
                                 }}
                             >
                                 <FcSearch />
@@ -91,7 +93,7 @@ export default function BfTextfieldThesarus(
                         startAdornment: (
                             <InputAdornment
                                 position="start" >
-                                <Chip label={watchFields[index]?.label} size="small"
+                                <Chip label={watchFields[index]?.term.label} size="small"
                                     color="info"
                                     avatar={<FcLock />}
                                 />
@@ -102,8 +104,8 @@ export default function BfTextfieldThesarus(
                                 position="start"
                                 sx={{ cursor: "pointer" }}
                                 onClick={() => {
-                                    setThesaurus({ name: field.thesarus, open: true })
-                                    setNameField(`${property}.${index}`)
+                                    setThesaurus({ name: subfield.thesarus, open: true })
+                                    setNameField(`${name}.${index}`)
                                 }}
                             >
                                 <FcSearch />

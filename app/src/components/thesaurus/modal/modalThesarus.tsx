@@ -60,7 +60,6 @@ interface Props {
 
 export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField }: Props) {
 
-
     const [openCreate, setOpenCreate] = useState(false)
 
     const handleClose = () => {

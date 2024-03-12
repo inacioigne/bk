@@ -16,34 +16,35 @@ interface Props {
     setValue: Function;
     index: number | boolean;
     control: any;
-    setValue: Function;
     name: string
 }
 
 export default function BfSelect(
     { subfield, setValue, index, control, name }: Props
 ) {
-    // console.log("S:",index )
+    // console.log("S:",name, subfield )
     const commonType = bibframe.commonType[`${subfield.commonType}`]
 
 
     const handleChangeSelect = (event: ChangeEvent<HTMLInputElement>, obj: any) => {
-        const {field} = obj
+        const { field } = obj
         field.onChange(event)
 
         const commonType = obj.commonType
-        
-        
         const label = commonType.find((option: any) => option.value === event.target.value)?.label;
-        
+
         let index = event.target.name.split(".")[1]
-        // console.log(label, index)
-        setValue(`${name}.${index}.label`, label)
+        if (name == 'contribution') {
+            setValue(`${name}.${index}.role.label`, label)
+        } else {
+            setValue(`${name}.${index}.label`, label)
+        }
+        
     };
 
     return (
         <Controller
-            name={ index === false ? `${name}.${subfield.name}.value` : `${name}.${index}.${subfield.name}` }
+            name={index === false ? `${name}.${subfield.name}.value` : `${name}.${index}.${subfield.name}`}
             control={control}
             render={({ field }) => (
                 <FormControl fullWidth size="small" //required={f.required}
@@ -54,7 +55,7 @@ export default function BfSelect(
                         disabled={subfield.disabled}
                         label={subfield.label}
                         {...field}
-                        onChange={(event) => handleChangeSelect(event, {field: field, commonType: commonType } )}
+                        onChange={(event) => handleChangeSelect(event, { field: field, commonType: commonType })}
                     >
 
                         {commonType.map((e: any, index: number) =>

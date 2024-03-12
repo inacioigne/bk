@@ -7,145 +7,193 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://id.loc.gov/resources/works/100> a bf:Multimedia,
-        bf:Text,
+<http://id.loc.gov/authorities/genreForms/gf2014026781> a bf:GenreForm ;
+    rdfs:label "Easter music"@en ;
+    bflc:marcKey "155  $aEaster music" .
+
+<http://id.loc.gov/authorities/genreForms/gf2014027077> a bf:GenreForm ;
+    rdfs:label "Scores"@en ;
+    bflc:marcKey "155  $aScores" .
+
+<http://id.loc.gov/authorities/genreForms/gf2014027203> a bf:GenreForm ;
+    rdfs:label "Arrangements (Music)"@en ;
+    bflc:marcKey "155  $aArrangements (Music)" .
+
+<http://id.loc.gov/authorities/subjects/sh85040597> a bf:Topic ;
+    rdfs:label "Easter music"@en ;
+    bflc:marcKey "150  $aEaster music" .
+
+<http://id.loc.gov/resources/instances/21984730> a bf:Instance ;
+    rdfs:label "An Easter proclamation" ;
+    bf:provisionActivityStatement "[Milwaukee, Wisconsin] : Shawnee Press, [2018]" ;
+    bf:title [ a bf:Title ;
+            rdfs:label "An Easter proclamation" ;
+            bf:mainTitle "An Easter proclamation" ] .
+
+<http://id.loc.gov/resources/works/21984730> a bf:NotatedMusic,
         bf:Work ;
-    bflc:aap "Education in Colorado" ;
-    bflc:aap-normalized "educationincolorado" ;
+    rdfs:label "An Easter proclamation",
+        "Vivaldi, Antonio, 1678-1741" ;
+    bflc:aap "Vivaldi, Antonio, 1678-1741" ;
+    bflc:aap-normalized "vivaldiantonio16781741" ;
     bf:adminMetadata [ a bf:AdminMetadata ;
             bflc:encodingLevel <http://id.loc.gov/vocabulary/menclvl/f> ;
             bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
-            bf:changeDate "2018-12-28T10:35:39"^^xsd:dateTime ;
-            bf:creationDate "1999-05-27"^^xsd:date ;
-            bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/aacr> ;
-            bf:descriptionModifier <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            bf:changeDate "2021-04-07T17:18:20"^^xsd:dateTime ;
+            bf:creationDate "2021-04-07"^^xsd:date ;
+            bf:descriptionAuthentication <http://id.loc.gov/vocabulary/marcauthen/pcc> ;
+            bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/isbd>,
+                <http://id.loc.gov/vocabulary/descriptionConventions/rda> ;
+            bf:descriptionLanguage <http://id.loc.gov/vocabulary/languages/eng> ;
             bf:generationProcess [ a bf:GenerationProcess ;
-                    rdfs:label "DLC marc2bibframe2 v1.7.0" ;
-                    bf:generationDate "2022-02-02T18:05:19.122747-05:00"^^xsd:dateTime ] ;
+                    rdfs:label "DLC marc2bibframe2 v1.7.0-SNAPSHOT" ;
+                    bf:generationDate "2021-08-19T09:21:10.649147-04:00"^^xsd:dateTime ] ;
             bf:identifiedBy [ a bf:Local ;
                     bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
-                    rdf:value "100" ] ;
-            bf:status <http://id.loc.gov/vocabulary/mstatus/c> ;
-            lclocal:d906 "=906     $a 7 $b cbc $c orignew $d 3 $e ncip $f 19 $g y-gencatlg" ;
-            lclocal:d955 "=955     $a NEW INPUT; sj01 05-27-99; sj03 08-10-99; sj10 08-12-99; sj04 08-12-99; to BCCD 08-23-99" ] ;
+                    rdf:value "21984730" ] ;
+            bf:status [ a bf:Status ;
+                    rdfs:label "corrected or revised" ;
+                    bf:code "c" ] ;
+            lclocal:batch "BibframePilot2" ;
+            lclocal:d906 "=906     $a 0 $b ibc $c orignew $d 2 $e ncip $f 20 $g y-genmusic" ;
+            lclocal:d925 "=925  0  $a acquire $b 1 shelf copy $x policy default" ;
+            lclocal:d955 "=955     $i vk39 2021-04-07 situational telework" ] ;
     bf:classification [ a bf:ClassificationLcc ;
             bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
-            bf:classificationPortion "LA246" ;
-            bf:itemPortion ".E38 1885" ] ;
-    bf:content <http://id.loc.gov/vocabulary/contentTypes/txt> ;
-    bf:contribution [ a bf:Contribution ;
-            bf:agent <http://id.loc.gov/rwo/agents/n99057137> ;
+            bf:classificationPortion "M2076" ;
+            bf:itemPortion ".V" ] ;
+    bf:content <http://id.loc.gov/vocabulary/contentTypes/ntm> ;
+    bf:contribution [ a bflc:PrimaryContribution,
+                bf:Contribution ;
+            bf:agent [ a bf:Agent,
+                        bf:Person ;
+                    rdfs:label "Vivaldi, Antonio, 1678-1741." ] ;
+            bf:role <http://id.loc.gov/vocabulary/relators/ctb> ],
+        [ a bf:Contribution ;
+            bf:agent [ a bf:Agent,
+                        bf:Person ;
+                    rdfs:label "Fettke, Tom," ] ;
+            bf:role [ a bf:Role ;
+                    rdfs:label "lyricist" ],
+                [ a bf:Role ;
+                    rdfs:label "arranger of music." ] ],
+        [ a bf:Contribution ;
+            bf:agent [ a bf:Agent,
+                        bf:Person ;
+                    rdfs:label "Fettke, Tom," ] ;
+            bf:role <http://id.loc.gov/vocabulary/relators/arr>,
+                <http://id.loc.gov/vocabulary/relators/lyr> ],
+        [ a bflc:PrimaryContribution,
+                bf:Contribution ;
+            bf:agent <http://id.loc.gov/rwo/agents/n79021280> ;
             bf:role <http://id.loc.gov/vocabulary/relators/ctb> ] ;
-    bf:genreForm <http://id.loc.gov/authorities/genreForms/gf2014026049> ;
-    bf:geographicCoverage <http://id.loc.gov/vocabulary/geographicAreas/n-us-co> ;
-    bf:hasInstance <http://id.loc.gov/resources/instances/100>,
-        <http://id.loc.gov/resources/instances/100-856-21> ;
-    bf:illustrativeContent <http://id.loc.gov/vocabulary/millus/ill> ;
-    bf:language <http://id.loc.gov/vocabulary/languages/eng> ;
+    bf:expressionOf [ a bf:Work ;
+            rdfs:label "Gloria, RV 589, D major. Gloria in excelsis; arranged" ;
+            bflc:aap "Vivaldi, Antonio, 1678-1741" ;
+            bflc:aap-normalized "vivaldiantonio16781741" ;
+            bf:contribution [ a bflc:PrimaryContribution,
+                        bf:Contribution ;
+                    bf:agent <http://id.loc.gov/rwo/agents/n79021280> ;
+                    bf:role <http://id.loc.gov/vocabulary/relators/ctb> ] ;
+            bf:musicKey "D major" ;
+            bf:title [ a bf:Title ;
+                    rdfs:label "Gloria, RV 589, D major. Gloria in excelsis; arranged" ;
+                    bf:mainTitle "Gloria" ;
+                    bf:partName "Gloria in excelsis" ;
+                    bf:partNumber "RV 589" ],
+                [ a bf:Title ;
+                    bf:mainTitle "" ] ] ;
+    bf:genreForm <http://id.loc.gov/authorities/genreForms/gf2014026781>,
+        <http://id.loc.gov/authorities/genreForms/gf2014027077>,
+        <http://id.loc.gov/authorities/genreForms/gf2014027203> ;
+    bf:hasExpression <http://id.loc.gov/resources/works/21984730> ;
+    bf:hasInstance <http://id.loc.gov/resources/instances/21984730> ;
+    bf:language [ a bf:Language ;
+            bf:note [ a bf:Note ;
+                    rdfs:label "English words" ] ],
+        <http://id.loc.gov/vocabulary/languages/eng> ;
+    bf:musicFormat <http://id.loc.gov/vocabulary/mmusicformat/score> ;
+    bf:musicMedium [ a bf:MusicMedium ;
+            rdfs:label "keyboard instrument" ;
+            bf:count "1" ;
+            bf:source <http://id.loc.gov/vocabulary/musiccodeschemes/lcmpt> ],
+        [ a bf:MusicMedium ;
+            bf:note [ a bf:Note ;
+                    rdfs:label "Total ensembles: 1" ] ],
+        [ a bf:MusicMedium ;
+            rdfs:label "mixed chorus" ;
+            bf:count "1" ;
+            bf:note [ a bf:Note ;
+                    rdfs:label "SATB" ] ;
+            bf:source <http://id.loc.gov/vocabulary/musiccodeschemes/lcmpt> ],
+        [ a bf:MusicMedium ;
+            bf:note [ a bf:Note ;
+                    rdfs:label "Total performers alongside ensembles: 1" ] ] ;
+    bf:notation [ a bf:Notation ;
+            rdfs:label "Staff notation" ] ;
     bf:subject [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Education--Colorado--History--19th century." ;
-            bflc:aap-normalized "educationcoloradohistory19thcentury" ;
+                madsrdf:Topic ;
+            rdfs:label "Choruses, Sacred (Mixed voices, 4 parts) with keyboard instrument" ;
+            bflc:aap-normalized "chorusessacred(mixedvoices4parts)withkeyboardinstrument" ;
             bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Education--Colorado--History--19th century." ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85040989> <http://id.loc.gov/rwo/agents/n80125532-781> <http://id.loc.gov/authorities/subjects/sh99005024> <http://id.loc.gov/authorities/subjects/sh2002012475> ) ;
+            madsrdf:authoritativeLabel "Choruses, Sacred (Mixed voices, 4 parts) with keyboard instrument" ;
             madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            bflc:aap-normalized "coloradostateteachers'associationhistory19thcentury" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Colorado State Teachers' Association--History--19th century." ;
-            madsrdf:componentList ( <http://id.loc.gov/resources/REPLACE/100#Agent610-19> <http://id.loc.gov/authorities/subjects/sh99005024> <http://id.loc.gov/authorities/subjects/sh2002012475> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Educators--Colorado--Biography." ;
-            bflc:aap-normalized "educatorscoloradobiography" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Educators--Colorado--Biography." ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85041161> <http://id.loc.gov/rwo/agents/n80125532-781> <http://id.loc.gov/authorities/subjects/sh99001237> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ] ;
+        <http://id.loc.gov/authorities/subjects/sh85040597> ;
     bf:title [ a bf:Title ;
-            bf:mainTitle "Education in Colorado" ] ;
+            rdfs:label " Easter proclamation" ;
+            bf:mainTitle "An Easter proclamation" ],
+        [ a bf:Title ;
+            bf:mainTitle "" ],
+        [ a bf:Title ;
+            bf:mainTitle "" ],
+        [ a bf:Title ;
+            rdfs:label " Easter proclamation" ;
+            bf:mainTitle "An Easter proclamation" ] ;
     dcterms:isPartOf <http://id.loc.gov/resources/works> .
 
-<http://id.loc.gov/authorities/genreForms/gf2014026049> a bf:GenreForm ;
-    rdfs:label "Biographies"@en ;
-    bflc:marcKey "155  $aBiographies" .
+<http://id.loc.gov/vocabulary/contentTypes/ntm> a bf:Content ;
+    rdfs:label "notated music" .
 
-<http://id.loc.gov/authorities/subjects/sh85040989> a madsrdf:Topic ;
-    rdfs:label "Education"@en ;
-    bflc:marcKey "150  $aEducation" .
+<http://id.loc.gov/vocabulary/descriptionConventions/isbd> a bf:DescriptionConventions ;
+    rdfs:label "ISBD: International standard bibliographic description" .
 
-<http://id.loc.gov/authorities/subjects/sh85041161> a madsrdf:Topic ;
-    rdfs:label "Educators"@en ;
-    bflc:marcKey "150  $aEducators" .
+<http://id.loc.gov/vocabulary/descriptionConventions/rda> a bf:DescriptionConventions ;
+    rdfs:label "Resource description and access" .
 
-<http://id.loc.gov/authorities/subjects/sh99001237> a madsrdf:GenreForm ;
-    rdfs:label "Biography"@en ;
-    bflc:marcKey "185  $vBiography" .
-
-<http://id.loc.gov/resources/REPLACE/100#Agent610-19> a bf:Agent,
-        bf:Organization,
-        madsrdf:CorporateName ;
-    rdfs:label "Colorado State Teachers' Association" ;
-    bflc:name10MarcKey "61020$aColorado State Teachers' Association$xHistory$y19th century." ;
-    bflc:name10MatchKey "Colorado State Teachers' Association" ;
-    bf:source <http://id.loc.gov/authorities/subjects> ;
-    madsrdf:authoritativeLabel "Colorado State Teachers' Association" ;
-    madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> .
-
-<http://id.loc.gov/resources/instances/100> a bf:Instance ;
-    bf:title [ a bf:Title ;
-            bf:mainTitle "Education in Colorado" ;
-            bf:subtitle "1861-1885 : a brief history of the early educational interests of Colorado, together with the history of the State Teachers' Association, and short sketches of private and denominational institutions" ] .
-
-<http://id.loc.gov/rwo/agents/n99057137> a bf:Agent,
-        bf:Organization ;
-    rdfs:label "Colorado State Teachers' Association" ;
-    bflc:marcKey "1102 $aColorado State Teachers' Association" .
-
-<http://id.loc.gov/vocabulary/contentTypes/txt> a bf:Content ;
-    rdfs:label "text" .
-
-<http://id.loc.gov/vocabulary/descriptionConventions/aacr> a bf:DescriptionConventions ;
-    rdfs:label "Anglo-American cataloguing rules" .
-
-<http://id.loc.gov/vocabulary/geographicAreas/n-us-co> a bf:GeographicCoverage ;
-    rdfs:label "Colorado"@en .
-
-<http://id.loc.gov/vocabulary/languages/eng> a bf:Language ;
-    rdfs:label "English"@en .
+<http://id.loc.gov/vocabulary/marcauthen/pcc> a bf:DescriptionAuthentication ;
+    rdfs:label "Program for Cooperative Cataloging" .
 
 <http://id.loc.gov/vocabulary/menclvl/f> a bflc:EncodingLevel ;
     rdfs:label "full" .
 
-<http://id.loc.gov/vocabulary/millus/ill> a bf:Illustration ;
-    rdfs:label "Illustrations" .
+<http://id.loc.gov/vocabulary/mmusicformat/score> a bf:MusicFormat ;
+    rdfs:label "score" .
 
-<http://id.loc.gov/vocabulary/mstatus/c> a bf:Status ;
-    rdfs:label "changed" .
+<http://id.loc.gov/vocabulary/relators/arr> a bf:Role ;
+    rdfs:label "Arranger" .
 
-<http://id.loc.gov/vocabulary/relators/ctb> a bf:Role ;
-    rdfs:label "Contributor" .
-
-<http://id.loc.gov/authorities/subjects/sh2002012475> a madsrdf:Temporal ;
-    rdfs:label "19th century"@en ;
-    bflc:marcKey "182  $y19th century" .
-
-<http://id.loc.gov/authorities/subjects/sh99005024> a madsrdf:Topic ;
-    rdfs:label "History"@en ;
-    bflc:marcKey "180  $xHistory" .
-
-<http://id.loc.gov/rwo/agents/n80125532-781> a madsrdf:Geographic ;
-    rdfs:label "Colorado" ;
-    bflc:marcKey "181  $zColorado" .
-
-<http://id.loc.gov/vocabulary/organizations/dlc> a bf:Organization ;
-    rdfs:label "United States, Library of Congress" .
+<http://id.loc.gov/vocabulary/relators/lyr> a bf:Role ;
+    rdfs:label "Lyricist" .
 
 <http://id.loc.gov/authorities/subjects> a bf:Source,
         madsrdf:MADSScheme ;
     rdfs:label """Library of
             Congress Subject Headings"""@en .
+
+<http://id.loc.gov/rwo/agents/n79021280> a bf:Agent,
+        bf:Person ;
+    rdfs:label "Vivaldi, Antonio, 1678-1741" ;
+    bflc:marcKey "1001 $aVivaldi, Antonio,$d1678-1741" .
+
+<http://id.loc.gov/vocabulary/languages/eng> a bf:Language ;
+    rdfs:label "English"@en .
+
+<http://id.loc.gov/vocabulary/musiccodeschemes/lcmpt> a bf:Source ;
+    rdfs:label "Library of Congress medium of performance thesaurus for music" .
+
+<http://id.loc.gov/vocabulary/organizations/dlc> a bf:Organization ;
+    rdfs:label "United States, Library of Congress" .
+
+<http://id.loc.gov/vocabulary/relators/ctb> a bf:Role ;
+    rdfs:label "Contributor" .
 

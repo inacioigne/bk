@@ -92,7 +92,6 @@ export default function FormWork() {
                         field={field}
                         register={register}
                         control={control}
-                        // defaultValues={bibframe.defaultValues}
                         setValue={setValue}
                     />
                 ))}

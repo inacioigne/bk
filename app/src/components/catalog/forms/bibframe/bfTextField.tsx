@@ -6,12 +6,16 @@ import {
 
 interface Props {
     subfield: any;
-    register: Function
+    register: Function;
+    name: string;
+    index: number | boolean;
 }
 
 export default function BfTextField(
-    { subfield, register }: Props
+    { subfield, register, name, index }: Props
 ) {
+
+    // console.log("F: ", field)
 
     return (
         <TextField
@@ -23,7 +27,10 @@ export default function BfTextField(
             size="small"
             label={`${subfield.label}`}
             variant="outlined"
-            {...register(`adminMetadata.${subfield.name}`)}
+            {...register(index === false ? `${name}.${subfield.name}` : `${name}.${index}.${subfield.name}`)}
+            
+
+            // `${name}.${subfield.name}`
         />
     )
 

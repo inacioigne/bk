@@ -14,6 +14,7 @@ interface Props {
     register: Function;
     control: any;
     setValue: Function;
+    
 }
 
 export default function BfField(
@@ -59,7 +60,7 @@ export default function BfField(
                         <Box key={index} sx={{ display: "flex", gap: 2, }}>
                             <Grid container spacing={2}>
                                 {field.subfields.map((subfield: any, i: number) => (
-                                    <Grid item key={i} xs={12} >
+                                    <Grid item key={i} xs={subfield.width} >
                                         <BfSubField
                                             name={field.name}
                                             index={index}
@@ -88,9 +89,8 @@ export default function BfField(
                                         subfield={subfield}
                                         register={register}
                                         control={control}
-                                        setValue={setValue}
-                          
-                                    />
+                                        setValue={setValue} 
+                                       />
                                 </Grid>
                             ))}
                         </Grid>
