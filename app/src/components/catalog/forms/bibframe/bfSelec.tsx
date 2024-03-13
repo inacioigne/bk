@@ -22,7 +22,7 @@ interface Props {
 export default function BfSelect(
     { subfield, setValue, index, control, name }: Props
 ) {
-    // console.log("S:",name, subfield )
+    // console.log("S:", name, subfield )
     const commonType = bibframe.commonType[`${subfield.commonType}`]
 
 

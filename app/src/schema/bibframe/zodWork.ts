@@ -1,37 +1,64 @@
 import { z } from "zod";
 
 export const ZodWork = z.object({ 
-    contribution: z.array(
+    resourceType: z.array(
         z.object({
-            agent: z.string(),
-            label: z.string(),
-            role: z.string(),
-            roleLabel: z.string()
+        value: z.string(),
+        label: z.string()
     })),
-    subject: z.array(
-        z.object({
-            label: z.string(),
-            lang: z.string(),
-            uri: z.string(),
-            type: z.string()
-        })
-    ),
-    type: z.string(),
+    adminMetadata: z.object({
+        creationDate: z.string(),
+        status: z.object({
+            value: z.string(),
+            label: z.string()
+        }),
+        descriptionConventions: z.object({
+            value: z.string(),
+            label: z.string()
+        }),
+        identifiedBy: z.string()
+    }),
     title: z.object({
         mainTitle: z.string().min(1, {message: "O título é obrigatório."}),
         subtitle: z.string(),
         }),
-    content: z.object({
-        label: z.string(),
-        // type: z.string(),
-        uri: z.string()
-    }),
+    variantTitle: z.array(
+        z.object({
+            mainTitle: z.string(),
+            subtitle: z.string()
+        })
+    ),
     language: z.array(
         z.object({
-            label: z.string(),
-            // lang: z.string().nullable(),
-            // type: z.string(),
-            uri: z.string()
+            value: z.string(),
+            label: z.string()
+        })
+    ),
+    genreForm: z.array(
+        z.object({
+            value: z.string(),
+            label: z.string()
+        })
+    ),
+    contribution: z.array(
+        z.object({
+            term: z.object({
+                value: z.string(),
+                label: z.string()
+            }),
+            role: z.object({
+                value: z.string(),
+                label: z.string()
+            })
+    })),
+    subject: z.array(
+        z.object({
+            term: z.object({
+                value: z.string(),
+                label: z.string()
+            }),
+            lang: z.string(),
+            type: z.string()
         })
     )
 });

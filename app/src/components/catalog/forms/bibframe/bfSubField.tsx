@@ -15,22 +15,22 @@ interface Props {
 export default function BfSubField(
     { subfield, register, index, control, setValue, name }: Props
 ) {
-    
+
     if (subfield.thesarus) {
         return (
             <BfTextfieldThesarus
                 name={name}
                 control={control}
                 subfield={subfield}
-                register={register} 
-                index={index} 
-                setValue={setValue} 
-                // setField={undefined} 
-                />
+                register={register}
+                index={index}
+                setValue={setValue}
+            // setField={undefined} 
+            />
         )
     } else {
         if (subfield.type === 'select') {
-            
+
             return (
                 <BfSelect
                     subfield={subfield}
@@ -42,7 +42,11 @@ export default function BfSubField(
             )
         } else if (subfield.type === 'textField') {
             return (
-                <BfTextField subfield={subfield} register={register} name={name} index={index} />
+                <BfTextField
+                    subfield={subfield}
+                    register={register}
+                    name={name}
+                    index={index} />
             )
         }
     }

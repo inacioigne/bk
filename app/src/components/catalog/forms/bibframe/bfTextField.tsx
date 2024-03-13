@@ -15,7 +15,7 @@ export default function BfTextField(
     { subfield, register, name, index }: Props
 ) {
 
-    // console.log("F: ", field)
+    // console.log("F: ", subfield)
 
     return (
         <TextField
@@ -23,7 +23,7 @@ export default function BfTextField(
             fullWidth
             // multiline={f.multiline}
             rows={4}
-            // required={f.required}
+            required={subfield.required}
             size="small"
             label={`${subfield.label}`}
             variant="outlined"

@@ -1,195 +1,234 @@
 {
-  "fields": [
+  "sections": [
     {
-      "name": "resourceType",
-      "label": "Tipos do Recurso",
-      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
-      "repeatable": true,
-      "required": true,
-      "subfields": [
+      "name": "generalProperties",
+      "label": "Propriedades Gerais",
+      "fields": [
         {
-          "name": "value",
-          "label": "Tipo",
-          "type": "select",
-          "commonType": "resourceType",
-          "width": 12
+          "name": "adminMetadata",
+          "label": "AdminMetadata",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
+          "repeatable": false,
+          "required": true,
+          "subfields": [
+            {
+              "name": "creationDate",
+              "label": "Criação do registro",
+              "type": "textField",
+              "disabled": true,
+              "width": 3
+            },
+            {
+              "name": "status",
+              "label": "Status",
+              "type": "select",
+              "disabled": true,
+              "width": 3,
+              "commonType": "mstatus"
+            },
+            {
+              "name": "descriptionConventions",
+              "label": "Normalização",
+              "type": "select",
+              "width": 3,
+              "commonType": "descriptionConventions"
+            },
+            {
+              "name": "identifiedBy",
+              "label": "Identificador",
+              "type": "textField",
+              "disabled": true,
+              "width": 3
+            }
+          ]
+        },
+        {
+          "name": "resourceType",
+          "label": "Tipos do Recurso",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
+          "repeatable": true,
+          "required": true,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Tipo",
+              "type": "select",
+              "commonType": "resourceType",
+              "width": 12
+            }
+          ]
+        },
+        {
+          "name": "language",
+          "label": "Idioma",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_language",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Idioma",
+              "type": "select",
+              "commonType": "language",
+              "width": 12
+            }
+          ]
+        },
+        {
+          "name": "classification",
+          "label": "Classificação",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_classification",
+          "repeatable": false,
+          "required": false,
+          "subfields": [
+            {
+              "name": "cdd",
+              "label": "CDD",
+              "type": "textField",
+              "width": 6
+            },
+            {
+              "name": "cutter",
+              "label": "Cutter",
+              "type": "textField",
+              "width": 6
+            }
+          ]
         }
       ]
     },
     {
-      "name": "resourceProperties",
-      "label": "Propiedades do Recurso",
-      "doc": "https://id.loc.gov/ontologies/bibframe-category.html",
-      "repeatable": false,
-      "required": true,
-      "subfields": [
+      "name": "titleInformation",
+      "label": "Informações sobre o título",
+      "fields": [
         {
-          "name": "content",
-          "label": "Conteúdo",
-          "type": "select",
-          "commonType": "contentTypes",
-          "width": 3
+          "name": "title",
+          "label": "Informações sobre o título",
+          "doc": "http://id.loc.gov/ontologies/bibframe/title",
+          "repeatable": false,
+          "subfields": [
+            {
+              "name": "mainTitle",
+              "label": "Título principal",
+              "type": "textField",
+              "disabled": false,
+              "required": true,
+              "width": 6
+            },
+            {
+              "name": "subtitle",
+              "label": "Subtítulo",
+              "type": "textField",
+              "disabled": false,
+              "width": 6
+            }
+          ]
+        },
+        {
+          "name": "variantTitle",
+          "label": "Título alternativo",
+          "doc": "http://id.loc.gov/ontologies/bibframe/VariantTitle",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "mainTitle",
+              "label": "Título principal",
+              "type": "textField",
+              "disabled": false,
+              "width": 6
+            },
+            {
+              "name": "subtitle",
+              "label": "Subtítulo",
+              "type": "textField",
+              "disabled": false,
+              "width": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contributions",
+      "label": "Autores",
+      "fields": [
+        {
+          "name": "contribution",
+          "label": "Autoria",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_contribution",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "term",
+              "label": "Autor",
+              "type": "textField",
+              "thesarus": "names",
+              "width": 8
+            },
+            {
+              "label": "Responsabilidade",
+              "name": "role.value",
+              "type": "select",
+              "commonType": "relators",
+              "width": 4
+            }
+          ]
+        }
+      ]
+
+    },
+    {
+      "name": "subjects",
+      "label": "Assuntos",
+      "fields": [
+        {
+          "name": "subject",
+          "label": "Assunto",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_subject",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "type",
+              "label": "Tipo de assunto",
+              "type": "select",
+              "commonType": "typeSubject",
+              "width": 3
+            },
+            {
+              "label": "Assunto",
+              "name": "term",
+              "type": "textField",
+              "thesarus": "subject",
+              "width": 7
+            },
+            {
+                "name": "lang",
+                "label": "Idioma",
+                "type": "select",
+                "commonType": "language",
+                "width": 2
+              }
+          ]
         },
         {
           "name": "genreForm",
           "label": "Gênero/Forma",
-          "type": "select",
-          "commonType": "genreForms",
-          "width": 3
-        }
-      ]
-    },
-    {
-      "name": "adminMetadata",
-      "label": "AdminMetadata",
-      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
-      "repeatable": false,
-      "required": true,
-      "subfields": [
-        {
-          "name": "creationDate",
-          "label": "Criação do registro",
-          "type": "textField",
-          "disabled": true,
-          "width": 3
-        },
-        {
-          "name": "status",
-          "label": "Status",
-          "type": "select",
-          "disabled": true,
-          "width": 3,
-          "commonType": "mstatus"
-        },
-        {
-          "name": "descriptionConventions",
-          "label": "Normalização",
-          "type": "select",
-          "width": 3,
-          "commonType": "descriptionConventions"
-        },
-        {
-          "name": "identifiedBy",
-          "label": "Identificador",
-          "type": "textField",
-          "disabled": true,
-          "width": 3
-        }
-      ]
-    },
-    {
-      "name": "title",
-      "label": "Informações sobre o título",
-      "doc": "http://id.loc.gov/ontologies/bibframe/title",
-      "repeatable": false,
-      "required": true,
-      "subfields": [
-        {
-          "name": "mainTitle",
-          "label": "Título principal",
-          "type": "textField",
-          "disabled": false,
-          "width": 6
-        },
-        {
-          "name": "subtitle",
-          "label": "Subtítulo",
-          "type": "textField",
-          "disabled": false,
-          "width": 6
-        }
-      ]
-    },
-    {
-      "name": "variantTitle",
-      "label": "Título alternativo",
-      "doc": "http://id.loc.gov/ontologies/bibframe/VariantTitle",
-      "repeatable": true,
-      "required": false,
-      "subfields": [
-        {
-          "name": "mainTitle",
-          "label": "Título principal",
-          "type": "textField",
-          "disabled": false,
-          "width": 6
-        },
-        {
-          "name": "subtitle",
-          "label": "Subtítulo",
-          "type": "textField",
-          "disabled": false,
-          "width": 6
-        }
-      ]
-    },
-    {
-      "name": "language",
-      "label": "Idioma",
-      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_language",
-      "repeatable": true,
-      "required": false,
-      "subfields": [
-        {
-          "name": "value",
-          "label": "Idioma",
-          "type": "select",
-          "commonType": "language",
-          "width": 12
-        }
-      ]
-    },
-    {
-      "name": "contribution",
-      "label": "Autoria",
-      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_contribution",
-      "repeatable": true,
-      "required": false,
-      "subfields": [
-        {
-          "name": "term",
-          "label": "Autor",
-          "type": "textField",
-          "thesarus": "names",
-          "width": 8
-        },
-        {
-          "label": "Responsabilidade",
-          "name": "role.value",
-          "type": "select",
-          "commonType": "relators",
-          "width": 4
-        }
-      ]
-    },
-    {
-      "name": "subject",
-      "label": "Assunto",
-      "doc": "https://id.loc.gov/ontologies/bibframe.html#p_subject",
-      "repeatable": true,
-      "required": false,
-      "subfields": [
-        {
-          "name": "type",
-          "label": "Tipo de assunto",
-          "type": "select",
-          "commonType": "typeSubject",
-          "width": 3
-        },
-        {
-          "label": "Assunto",
-          "name": "term",
-          "type": "textField",
-          "thesarus": "subject",
-          "width": 7
-        },
-        {
-            "name": "lang",
-            "label": "Idioma",
-            "type": "select",
-            "commonType": "language",
-            "width": 2
-          }
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_language",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Gênero/Forma",
+              "type": "select",
+              "commonType": "genreForms",
+              "width": 12
+            }
+          ]
+        }     
       ]
     }
   ],
@@ -204,16 +243,6 @@
         "label": ""
       }
     ],
-    "resourceProperties": {
-      "content": {
-        "value": "http://id.loc.gov/vocabulary/contentTypes/txt",
-        "label": "Texto"
-      },
-      "genreForm": {
-        "value": "",
-        "label": ""
-      }
-    },
     "adminMetadata": {
       "creationDate": "08/03/2024",
       "status": {
@@ -240,6 +269,12 @@
       {
         "value": "por",
         "label": "Português"
+      }
+    ],
+    "genreForm": [
+      {
+        "value": "",
+        "label": ""
       }
     ],
     "contribution": [
