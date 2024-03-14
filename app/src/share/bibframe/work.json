@@ -16,29 +16,22 @@
               "label": "Criação do registro",
               "type": "textField",
               "disabled": true,
-              "width": 3
+              "width": 4
             },
             {
               "name": "status",
               "label": "Status",
               "type": "select",
               "disabled": true,
-              "width": 3,
+              "width": 4,
               "commonType": "mstatus"
             },
             {
               "name": "descriptionConventions",
               "label": "Normalização",
               "type": "select",
-              "width": 3,
+              "width": 4,
               "commonType": "descriptionConventions"
-            },
-            {
-              "name": "identifiedBy",
-              "label": "Identificador",
-              "type": "textField",
-              "disabled": true,
-              "width": 3
             }
           ]
         },
@@ -243,6 +236,10 @@
         "label": ""
       }
     ],
+    "classification": {
+      "cdd": "",
+      "cutter": ""
+    },
     "adminMetadata": {
       "creationDate": "08/03/2024",
       "status": {
@@ -252,8 +249,7 @@
       "descriptionConventions": {
         "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
         "label": "AACr"
-      },
-      "identifiedBy": "1"
+      }
     },
     "title": {
       "mainTitle": "",
@@ -291,7 +287,7 @@
     ],
     "subject": [
       {
-        "type": "",
+        "type": "Topic",
         "term": {
           "value": "",
           "label": ""

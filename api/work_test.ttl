@@ -7,33 +7,29 @@
         bf:Work ;
     bf:adminMetadata [ a bf:AdminMetadata ;
             bf:assigner <http://id.loc.gov/vocabulary/organizations/brmninpa> ;
-            bf:creationDate "2024-03-12"^^xsd:date ;
+            bf:creationDate "2024-03-13"^^xsd:date ;
             bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/aacr> ;
             bf:generationProcess [ a bf:GenerationProcess ;
                     rdfs:label "BiblioKeia" ;
-                    bf:generationDate "2024-03-12T15:21:40"^^xsd:dateTime ] ;
+                    bf:generationDate "2024-03-13T18:28:44"^^xsd:dateTime ] ;
             bf:identifiedBy [ a bf:Local ;
                     bf:assigner <http://id.loc.gov/vocabulary/organizations/brmninpa> ;
                     rdf:value "1" ] ;
             bf:status <http://id.loc.gov/vocabulary/mstatus/n> ] ;
     bf:classification [ a bf:Classification ;
-            bf:classificationPortion "O48s" ],
+            bf:classificationPortion "P831c" ],
         [ a bf:ClassificationDdc ;
-            bf:classificationPortion "548.5" ] ;
+            bf:classificationPortion "001" ] ;
     bf:contribution [ a bf:Contribution ;
             bf:agent <https://bibliokeia.com/authority/PersonalName/10> ;
-            bf:role <http://id.loc.gov/vocabulary/relators/aut> ] ;
-    bf:genreForm <http://id.loc.gov/authorities/genreForms/gf2014026074> ;
+            bf:role <http://id.loc.gov/vocabulary/relators/aut> ],
+        [ a bf:Contribution ;
+            bf:agent <https://bibliokeia.com/authority/PersonalName/12> ;
+            bf:role <http://id.loc.gov/vocabulary/relators/trl> ] ;
     bf:language <http://id.loc.gov/vocabulary/languages/por> ;
     bf:subject <https://bibliokeia.com/authority/Topic/11> ;
-    bf:title [ a bf:VariantTitle ;
-            bf:mainTitle "Título alternativo" ],
-        [ a bf:Title ;
-            bf:mainTitle "Titulo principal" ;
-            bf:subtitle "subtítulo" ] .
-
-<http://id.loc.gov/authorities/genreForms/gf2014026074> a bf:GenreForm ;
-    rdfs:label "Não ficção criativa" .
+    bf:title [ a bf:Title ;
+            bf:mainTitle "Conjecturas e refutações" ] .
 
 <http://id.loc.gov/vocabulary/descriptionConventions/aacr> a bf:DescriptionConventions ;
     rdfs:label "AACr" .
@@ -47,9 +43,16 @@
 <http://id.loc.gov/vocabulary/relators/aut> a bf:Role ;
     rdfs:label "Autor" .
 
+<http://id.loc.gov/vocabulary/relators/trl> a bf:Role ;
+    rdfs:label "Tradutor" .
+
 <https://bibliokeia.com/authority/PersonalName/10> a bf:Agent,
         bf:Person ;
     rdfs:label "Popper, Karl R." .
+
+<https://bibliokeia.com/authority/PersonalName/12> a bf:Agent,
+        bf:Person ;
+    rdfs:label "Bath, Sérgio" .
 
 <https://bibliokeia.com/authority/Topic/11> a bf:Topic ;
     rdfs:label "Metodologia"@por .

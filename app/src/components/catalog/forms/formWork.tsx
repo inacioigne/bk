@@ -1,5 +1,5 @@
 // "use client"
-import { Box, Typography, Tabs, Tab } from "@mui/material";
+import { Box, Button, Tabs, Tab } from "@mui/material";
 // React-Hook-Form
 import { useFieldArray, useWatch, useForm } from "react-hook-form";
 import bibframe from "@/share/bibframe/work.json"
@@ -20,6 +20,13 @@ import BfSubField from "./bibframe/bfSubField";
 // Schema
 import { ZodWork } from "@/schema/bibframe/zodWork"
 import BfErros from "./bibframe/bfErros";
+
+// Providers BiblioKeia
+import { useProgress } from "@/providers/progress";
+import { useAlert } from "@/providers/alert";
+
+// Nextjs
+import { useRouter } from "next/navigation";
 
 const headers = {
     accept: "application/json",
@@ -62,16 +69,13 @@ function a11yProps(index: number) {
 
 
 export default function FormWork() {
-    // const [thesaurus, setThesaurus] = useState({name:"", open: false});
-    // const [open, setOpen] = useState(false);
-    // const [field, setField] = useState("");
-    // console.log("F: ", bibframe.fields)
+
     type SchemaCreateWork = z.infer<typeof ZodWork>;
-
     const [openBfErros, setBfErros] = useState(false);
-
     const [panel, setPanel] = useState(0);
-    const [messages, setMessages] = useState(null);
+    const { setProgress } = useProgress();
+    const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
+    const router = useRouter();
 
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
         setPanel(newValue);
@@ -91,52 +95,68 @@ export default function FormWork() {
         }
     );
 
-     useEffect(() => {
+    useEffect(() => {
 
         if (Object.keys(errors).length > 0) {
             setBfErros(true)
         }
 
-     }, [errors])
+    }, [errors])
 
     function CreateWork(data: any) {
-        let obj = {
-            adminMetadata: {
-                status: {
-                    label: "novo",
-                    value: "n"
-                },
-            },
-            isPartOf: `https://bibliokeia.com/catalog/work`,
-        }
-        const request = { ...obj, ...data };
-        console.log("R", data)
-        // bkapi
-        //     .post("/catalog/work/create", request, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             console.log("RS", response.data);
-        //             request.identifiersLocal = response.data.id
-        //             // setWork(request)
-        //             // setOpenInstance(true)
+        setProgress(true)
 
-        //             // setMessage("Registro criado com sucesso!")
-        //             //   router.push(`/admin/authority/names/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         if (error.response.status === 409) {
-        //             // setTypeAlert("error")
-        //             // setMessage("Este registro já existe")
-        //             console.error("ER:", error);
-        //         }
-        //     })
-        //     .finally(function () {
-        //         // setProgress(false)
-        //         // setOpenSnack(true)
-        //     });
+        const RemovePropreites = (obj: any) => {
+            Object.entries(obj).forEach(function ([chave, valor]) {
+                if (valor === "") {
+                    delete obj[chave]
+                }
+            })
+        }
+        const RemoveEmpty = (obj: any) => {
+            Object.entries(obj).forEach(function ([chave, valor]) {
+                if (Array.isArray(valor)) {
+                    valor.forEach(element => {
+                        RemovePropreites(element)
+                    })
+                    if (Object.keys(valor[0]).length === 0) {
+                        delete obj[chave]
+                    }
+                    
+
+                } else {
+                    RemovePropreites(valor)
+                }
+            });
+        }
+        RemoveEmpty(data)
+    
+        bkapi
+            .post("/catalog/work/create", data, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    console.log("RS", response.data);
+                    // request.identifiersLocal = response.data.id
+                    // setWork(request)
+                    // setOpenInstance(true)
+
+                    setMessage("Registro criado com sucesso!")
+                      router.push(`/admin/authority/names/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 409) {
+                    setTypeAlert("error")
+                    setMessage("Este registro já existe")
+                    console.error("ER:", error);
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     return (
@@ -162,7 +182,16 @@ export default function FormWork() {
                         ))}
                     </CustomTabPanel>
                 ))}
-                <button>SALVAR</button>
+                <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1 }}>
+                    <Button variant="outlined">
+                        Cancelar
+                    </Button>
+                    <Button variant="outlined" type="submit">
+                        Salvar
+                    </Button>
+
+                </Box>
+
             </form>
             <BfErros openBfErros={openBfErros} setBfErros={setBfErros} errors={errors} />
         </Box>

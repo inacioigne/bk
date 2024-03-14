@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException
+from src.function.catalog.work.markeCreateSparql import MakeCreateSparql
 from src.function.catalog.work.parserRequestWork import ParserRequestWork
 from src.schemas.catalog.work import BfWork
 from src.db.models import DbWork 
@@ -17,7 +18,7 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 
 @router.post("/create", status_code=201)
 async def create_work(request: BfWork): 
-    request = ParserRequestWork(request)
+    # request = ParserRequestWork(request)
 
     # MariaDB
     # try:
@@ -29,18 +30,19 @@ async def create_work(request: BfWork):
     #     raise HTTPException(status_code=409, detail="Esse registro já existe")
     # finally:
     #     session.close()
-    [title] = request.title
-    w = DbWork(title=title.mainTitle) 
+    # [title] = request.title
+    w = DbWork(title=request.title.mainTitle) 
     session.add(w) 
     session.commit()
     
     # # Jena
-    graph = MakeGraphWork(request, w.id)
-    print(graph)
-    # response = fuseki.run_sparql(graph) 
+    request.adminMetadata.identifiedBy = w.id
+    graph = MakeGraphWork(request)
+    sparql = MakeCreateSparql(graph, request.adminMetadata.identifiedBy)
+    response = fuseki.run_sparql(sparql) 
 
     # # Solr
-    # responseSolr = DocWork(request, w.id) 
+    responseSolr = DocWork(request, w.id) 
 
     # if request.contribution:
     #     UpdateFusekiContribution(request, w.id)
@@ -51,9 +53,9 @@ async def create_work(request: BfWork):
     #     UpdateSolrSubject(request, w.id)
 
 
-    # return {
-    #     "id": w.id,
-    #      "jena": response.convert()['message'],
-    #     "solr": responseSolr
-    #     } 
-    return request.model_dump()
+    return {
+        "id": w.id,
+         "jena": response.convert()['message'],
+        # "solr": responseSolr
+        } 
+    # return request.model_dump()

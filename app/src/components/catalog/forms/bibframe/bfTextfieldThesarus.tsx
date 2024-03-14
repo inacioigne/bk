@@ -35,8 +35,6 @@ interface Props {
     index: number;
     setValue: Function;
     setField: Function;
-
-    // defaultValue: any;
 }
 
 export default function BfTextfieldThesarus(

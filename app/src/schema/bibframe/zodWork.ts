@@ -16,7 +16,11 @@ export const ZodWork = z.object({
             value: z.string(),
             label: z.string()
         }),
-        identifiedBy: z.string()
+        // identifiedBy: z.string()
+    }),
+    classification: z.object({
+        cdd: z.string(),
+        cutter: z.string()
     }),
     title: z.object({
         mainTitle: z.string().min(1, {message: "O título é obrigatório."}),

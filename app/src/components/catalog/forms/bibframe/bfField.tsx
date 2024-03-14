@@ -14,7 +14,7 @@ interface Props {
     register: Function;
     control: any;
     setValue: Function;
-    
+
 }
 
 export default function BfField(
@@ -37,7 +37,14 @@ export default function BfField(
             obj[item.name] = ""
             return obj
         }, {})
-        append(objAppend);
+        // console.log("F", field.subfields, objAppend)
+        // append(objAppend);
+        // { role: { value: "" }}
+        append({
+            role: { value: "" },
+            term: { value: "" },
+            value: ""
+        })
     };
 
     return (
@@ -89,20 +96,18 @@ export default function BfField(
                                         subfield={subfield}
                                         register={register}
                                         control={control}
-                                        setValue={setValue} 
-                                       />
+                                        setValue={setValue}
+                                    />
                                 </Grid>
                             ))}
                         </Grid>
                     </Box>
                 )}
-
-
-
-
                 <Box>
                     {field.repeatable &&
-                        <Button variant="outlined" sx={{ textTransform: "none" }} onClick={addField} >Adicionar</Button>
+                        <Button variant="outlined" sx={{ textTransform: "none" }}
+                            onClick={addField}
+                        >Adicionar</Button>
                     }
                 </Box>
             </Box>

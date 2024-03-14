@@ -44,8 +44,6 @@ interface Props {
 
 export default function ThesarusNames({ nameField, setValue, openCreate, setOpenCreate, setOpen }: Props) {
 
-    // console.log("T:", nameField, )
-
     const [doc, setDoc] = useState<schemaAuthorityDoc | null>(null)
     const [docs, setDocs] = useState<schemaAuthorityDoc[]>([])
     const [type, setType] = useState("*");
@@ -95,14 +93,19 @@ export default function ThesarusNames({ nameField, setValue, openCreate, setOpen
                             size="small"
                             onChange={(e) => {
                                 setSearch(e.target.value)
+                                SearchModalNames(type, e.target.value, setDocs)
                             }}
+                            // onKeyDown={(event) => {
+                            //     console.log("ENTER", event)
+                            // }}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment
                                         position="start"
                                         sx={{ cursor: "pointer" }}
                                     >
-                                        <IconButton type="submit">
+                                        <IconButton //onClick={() => {console.log("OLLLA")}}
+                                        >
                                             <FcSearch />
                                         </IconButton>
                                     </InputAdornment>
@@ -138,7 +141,8 @@ export default function ThesarusNames({ nameField, setValue, openCreate, setOpen
                             </List>
                         </Paper>
 
-                    </Grid> : <Grid item xs={12}>
+                    </Grid> : 
+                    <Grid item xs={12}>
                         <Box sx={{
                             display: "flex",
                             gap: "5px",

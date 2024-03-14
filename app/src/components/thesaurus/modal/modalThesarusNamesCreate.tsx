@@ -23,6 +23,7 @@ import { TransitionProps } from '@mui/material/transitions';
 
 // import { IoCloseSharp } from "react-icons/io5";
 import { IoIosSave } from "react-icons/io";
+import { FcCancel } from "react-icons/fc";
 
 // BiblioKeia Components
 import FormMadsNames from "@/components/thesaurus/forms/formMadsNames";
@@ -159,7 +160,15 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
                     <AppBar color="default">
                     <DialogTitle id="alert-dialog-title" sx={{ display: "flex", justifyContent: "space-between" }}>
                         Criar Autoridades - {id}
-                        {/* <IconButton onClick={handleClose} color="primary"><IoCloseSharp /></IconButton> */}
+                        <Box sx={{ display: "flex", gap: 1}}>
+                        <Button
+                            sx={{ textTransform: "none" }}
+                            variant="outlined"
+                            startIcon={<FcCancel  />}
+                            onClick={handleClose}
+                        >
+                            Cancelar
+                        </Button>
                         <Button
                             type="submit"
                             sx={{ textTransform: "none" }}
@@ -168,6 +177,9 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
                         >
                             Salvar
                         </Button>
+
+                        </Box>
+                       
                     </DialogTitle>
 
                     </AppBar>

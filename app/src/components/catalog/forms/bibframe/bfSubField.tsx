@@ -25,7 +25,6 @@ export default function BfSubField(
                 register={register}
                 index={index}
                 setValue={setValue}
-            // setField={undefined} 
             />
         )
     } else {

@@ -1,11 +1,19 @@
-def MakeContribution(contributions): 
-        listContributions = list()
-        for i in contributions:
-                c = f"""[ a bf:Contribution;
-                bf:agent <{i.uri}> ;
-                bf:role <{i.role}> ]"""
-                listContributions.append(c)
-        contribution = ", ".join(listContributions)
-        contribution = f"bf:contribution {contribution} ;"
+from rdflib import URIRef, BNode, Literal
+from rdflib.namespace import RDF, RDFS
 
-        return contribution
+def BFContribution(g, contribution, resource, BF):
+    for i in contribution:
+        contribution = BNode()
+        g.add((resource, BF.contribution, contribution))
+        g.add((contribution, RDF.type, BF.Contribution))
+        agent = URIRef(i.term.value)
+        g.add((agent, RDF.type, BF.Agent))
+        g.add((agent, RDF.type, BF.Person))
+        g.add((agent, RDFS.label, Literal(i.term.label)))
+        g.add((contribution, BF.agent, agent))
+        role = URIRef(i.role.value)
+        g.add((role, RDF.type, BF.Role))
+        g.add((role, RDFS.label, Literal(i.role.label)))
+        g.add((contribution, BF.role, role))
+
+    return g

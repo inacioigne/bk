@@ -9,7 +9,7 @@ import { useFieldArray, useWatch, Controller } from "react-hook-form";
 
 import bibframe from "@/share/bibframe/work.json"
 
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 
 interface Props {
     subfield: any;
@@ -22,7 +22,12 @@ interface Props {
 export default function BfSelect(
     { subfield, setValue, index, control, name }: Props
 ) {
-    // console.log("S:", name, subfield )
+    // if (index) {
+    //     console.log("S:", `${name}.${index}.${subfield.name}`)
+
+    // }
+
+
     const commonType = bibframe.commonType[`${subfield.commonType}`]
 
 
@@ -39,12 +44,18 @@ export default function BfSelect(
         } else {
             setValue(`${name}.${index}.label`, label)
         }
-        
     };
+
+    // useEffect(() => {
+    //     setValue(`${name}.${index}.role.value`, "http://id.loc.gov/vocabulary/relators/trl")
+    //     console.log(`${name}.${index}.role.value`)
+
+    // }, [index])
 
     return (
         <Controller
             name={index === false ? `${name}.${subfield.name}.value` : `${name}.${index}.${subfield.name}`}
+            // name={`${name}.${index}.value`}
             control={control}
             render={({ field }) => (
                 <FormControl fullWidth size="small" //required={f.required}
