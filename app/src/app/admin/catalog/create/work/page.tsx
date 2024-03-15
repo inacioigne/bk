@@ -42,10 +42,9 @@ export default function Create() {
                 currentPath="Catálogo"
             />
             <Divider sx={{ mt: "10px" }} />
-            <Paper elevation={3}
-                sx={{
-                    p: "15px", mt: "10px"
-                }}>
+            <Paper
+                elevation={3}
+                sx={{ p: "15px", mt: "10px" }}>
                 <FormWork />
             </Paper>
         </Container>

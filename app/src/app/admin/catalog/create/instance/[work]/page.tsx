@@ -13,6 +13,7 @@ import FormCreateInstance from "@/components/catalog/forms/formCreateInstance";
 // React Icons
 import { FcHome } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
+import FormInstance from "@/components/catalog/forms/formInstance";
 
 // React Hooks
 // import { useState } from "react";
@@ -36,7 +37,7 @@ interface Props {
 
 async function getData(id: string) {
 
-    const url = `http://${process.env.SOLR}:8983/solr/catalog/select?fl=*,[child]&q=id:${id}`;
+    const url = `http://${process.env.SOLR}:8983/solr/catalog/select?fl=*,[child]&q=id:work%23${id}`;
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -44,11 +45,11 @@ async function getData(id: string) {
     return res.json();
 }
 
-export default async function Create({ params }: { params: { id: string } }) {
+export default async function Create({ params }: { params: { work: string } }) {
 
-    const data = await getData(params.id);
+    const data = await getData(params.work);
     const [doc] = data.response.docs;
-    // console.log(doc)
+    console.log(doc)
 
 
 
@@ -59,10 +60,11 @@ export default async function Create({ params }: { params: { id: string } }) {
                 currentPath="Catálogo"
             />
             <Divider sx={{ mt: "10px" }} />
-            <Paper elevation={3} sx={{
-                p: "15px", mt: "10px"
-            }}>
-                <FormCreateInstance work={doc} />
+            <Paper
+                elevation={3}
+                sx={{ p: "15px", mt: "10px" }}>
+                    <FormInstance />
+                {/* <FormCreateInstance work={doc} /> */}
             </Paper>
         </Container>
     )

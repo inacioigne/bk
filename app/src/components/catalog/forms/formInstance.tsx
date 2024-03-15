@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 import { Box, Button, Tabs, Tab } from "@mui/material";
 // React-Hook-Form
 import { useFieldArray, useWatch, useForm } from "react-hook-form";
@@ -66,7 +66,7 @@ function a11yProps(index: number) {
     };
 }
 
-export default function FormWork() {
+export default function FormInstance() {
 
     type SchemaCreateWork = z.infer<typeof ZodWork>;
     const [openBfErros, setBfErros] = useState(false);

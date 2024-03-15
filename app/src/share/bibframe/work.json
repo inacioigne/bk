@@ -12,13 +12,6 @@
           "required": true,
           "subfields": [
             {
-              "name": "creationDate",
-              "label": "Criação do registro",
-              "type": "textField",
-              "disabled": true,
-              "width": 4
-            },
-            {
               "name": "status",
               "label": "Status",
               "type": "select",
@@ -241,7 +234,6 @@
       "cutter": ""
     },
     "adminMetadata": {
-      "creationDate": "08/03/2024",
       "status": {
         "value": "http://id.loc.gov/vocabulary/mstatus/n",
         "label": "Novo"
