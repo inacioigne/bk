@@ -11,6 +11,7 @@ from src.schemas.settings import Settings
 from src.function.catalog.solr.work import DocWork
 from src.function.catalog.bibframe.bfContributionOf import UpdateFusekiContribution, UpdateSolrContribution
 from src.function.catalog.bibframe.bfSubjectOf import UpdateFusekiSubject, UpdateSolrSubject
+from datetime import datetime
 
 router = APIRouter()
 settings = Settings()
@@ -35,10 +36,13 @@ async def create_work(request: BfWork):
     session.add(w) 
     session.commit()
     
-    # # Jena
+    now = datetime.now()
+    request.adminMetadata.creationDate = now
     request.adminMetadata.identifiedBy = w.id
+    
+    # # Jena
     graph = MakeGraphWork(request)
-    sparql = MakeCreateSparql(graph, request.adminMetadata.identifiedBy)
+    sparql = MakeCreateSparql(graph, w.id)
     response = fuseki.run_sparql(sparql) 
 
     # # Solr
@@ -56,6 +60,6 @@ async def create_work(request: BfWork):
     return {
         "id": w.id,
          "jena": response.convert()['message'],
-        # "solr": responseSolr
+        "solr": responseSolr
         } 
     # return request.model_dump()

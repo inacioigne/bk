@@ -11,21 +11,21 @@ def DocWork(request, work_id):
 
     doc = {
         "id": work_id,
-        "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "type": request.type,
-        # "content": [i.label for i in request.content],
-        "content": request.content.label,
+        "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"),
+        "type": [i.value for i in request.resourceType],
+        # "content": request.content.label,
         "mainTitle": request.title.mainTitle,
         'language': [i.label for i in request.language],
         "subtitle": request.title.subtitle,
-        "cdd": request.classification.classificationPortion if request.classification else None,
+        "cdd": request.classification.cdd,
+        "cutter": request.classification.cutter,
         "note": request.note,
         "summary": request.summary,
         "tableOfContents": request.tableOfContents,
-        "supplementaryContent": [i.label for i in request.supplementaryContent] if request.supplementaryContent else None,
-        "illustrativeContent": [i.label for i in request.illustrativeContent] if request.illustrativeContent else None,
-        "intendedAudience": [i.label for i in request.intendedAudience] if request.intendedAudience else None,
-        "geographicCoverage": [i.label for i in request.geographicCoverage] if request.geographicCoverage else None,
+        # "supplementaryContent": [i.label for i in request.supplementaryContent] if request.supplementaryContent else None,
+        # "illustrativeContent": [i.label for i in request.illustrativeContent] if request.illustrativeContent else None,
+        # "intendedAudience": [i.label for i in request.intendedAudience] if request.intendedAudience else None,
+        # "geographicCoverage": [i.label for i in request.geographicCoverage] if request.geographicCoverage else None,
         "isPartOf": "Work"
 
     }
@@ -33,11 +33,11 @@ def DocWork(request, work_id):
     if request.contribution:
         contributions = list()
         for i in request.contribution:
-            c = {"id": f"{work_id}/contribution/{i.agent.split('/')[-1]}",
-                 "agent": i.agent,
-                 "label": i.label,
-                 "role": i.role,
-                 "roleLabel": i.roleLabel}
+            c = {"id": f"{work_id}/contribution/{i.term.value.split('/')[-1]}",
+                 "agent": i.term.value,
+                 "label": i.term.label,
+                 "role": i.role.value,
+                 "roleLabel": i.role.label}
             contributions.append(c)
         doc['contribution'] = contributions
 
@@ -45,17 +45,15 @@ def DocWork(request, work_id):
     if request.subject:
         subjects = list()
         for i in request.subject:
-            s = {"id": f"{work_id}/subject/{i.uri.split('/')[-1]}",
+            s = {"id": f"{work_id}/subject/{i.term.value.split('/')[-1]}",
                  "type": i.type,
-                 "uri": i.uri,
-                 "label": i.label}
+                 "uri": i.term.value,
+                 "label": i.term.label}
             subjects.append(s)
         doc['subject'] = subjects
 
     if request.genreForm:
         pass
-
-    # print("DOC:", doc)
 
     responseSolr = solr.add([doc], commit=True)
 

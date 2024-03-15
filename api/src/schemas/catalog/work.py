@@ -1,9 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-# from src.schemas.adminMetadata import AdminMetadata
-# from src.schemas.catalog.bibframe.contribution import Contribution
-# from src.schemas.catalog.bibframe.element import Element
-# from src.schemas.catalog.bibframe.title import Title
+from datetime import datetime
 
 class BfElement(BaseModel):
     value: str
@@ -14,7 +11,7 @@ class ResourceProperties(BaseModel):
     genreForm: Optional[BfElement] = None
 
 class AdminMetadata(BaseModel):
-    creationDate: str
+    creationDate: datetime = None
     status: BfElement
     descriptionConventions: BfElement
     identifiedBy: Optional[str] = None
@@ -46,4 +43,7 @@ class BfWork(BaseModel):
     contribution: Optional[list[Contribution]] = None
     subject: Optional[list[Subject]] = None
     classification: Classification
+    note: Optional[str] = None
+    summary: Optional[str] = None
+    tableOfContents: Optional[str] = None
     

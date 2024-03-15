@@ -40,7 +40,7 @@ def MakeGraphWork(request):
     # resourceType
     BfType(g, resource, request.resourceType)
     # AdminMetadata
-    g = BfAdminMetadata(g, request, resource, BF) 
+    g = BfAdminMetadata(g, request.adminMetadata, resource, BF) 
     # BfClassification
     g = BfClassification(g, resource, request.classification, BF)
     # Title
