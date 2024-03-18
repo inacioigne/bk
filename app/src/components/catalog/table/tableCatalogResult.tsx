@@ -45,7 +45,6 @@ interface Props {
 export function TableCatalogResult(
   { rows, rowCount, setRows, setRowCount,
   }: Props) {
-    // console.log('CAT:', rows)
 
   const router = useRouter()
 
@@ -103,6 +102,7 @@ export function TableCatalogResult(
       setPaginationModel(paginationModel)
     }}
     pageSizeOptions={[5]}
+    sx={{ cursor: "pointer"}}
   />;
 
 }

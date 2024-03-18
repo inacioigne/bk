@@ -18,6 +18,9 @@ import FormInstance from "@/components/catalog/forms/formInstance";
 // React Hooks
 // import { useState } from "react";
 
+// Metadata
+import bibframe from "@/share/bibframe/instance.json"
+
 const previousPaths = [
     {
         link: "/admin",
@@ -44,12 +47,33 @@ async function getData(id: string) {
     }
     return res.json();
 }
+import { z } from "zod";
 
 export default async function Create({ params }: { params: { work: string } }) {
 
     const data = await getData(params.work);
     const [doc] = data.response.docs;
-    console.log(doc)
+    const work_url = `https://bibliokeia.com/works/${doc.id.split("#")[1]}`
+
+    const ParserDefaultValues = () => {
+        const defaultValues = bibframe['defaultValues']
+        defaultValues.instanceOf.value = work_url
+        const [mainTitle] = doc.mainTitle
+        defaultValues.title.mainTitle = mainTitle
+        return defaultValues
+    }
+
+    const defaultValues = ParserDefaultValues()
+
+    
+    
+    
+    // console.log(zod)
+
+    
+    
+    
+
 
 
 
@@ -63,7 +87,7 @@ export default async function Create({ params }: { params: { work: string } }) {
             <Paper
                 elevation={3}
                 sx={{ p: "15px", mt: "10px" }}>
-                    <FormInstance />
+                <FormInstance defaultValues={defaultValues}/>
                 {/* <FormCreateInstance work={doc} /> */}
             </Paper>
         </Container>

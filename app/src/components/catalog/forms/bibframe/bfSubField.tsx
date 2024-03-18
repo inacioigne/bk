@@ -1,5 +1,6 @@
 import BfModal from "./bfModal";
 import BfSelect from "./bfSelec";
+import BfTextArea from "./bfTextArea";
 import BfTextField from "./bfTextField";
 import BfTextfieldThesarus from "./bfTextfieldThesarus";
 
@@ -10,11 +11,13 @@ interface Props {
     control: any;
     setValue: Function;
     name: string;
+    commonType: any | undefined
 }
 
 export default function BfSubField(
-    { subfield, register, index, control, setValue, name }: Props
+    { subfield, register, index, control, setValue, name, commonType }: Props
 ) {
+
 
     if (subfield.thesarus) {
         return (
@@ -37,7 +40,9 @@ export default function BfSubField(
                     index={index}
                     control={control}
                     name={name}
+                    commonType={commonType}
                 />
+
             )
         } else if (subfield.type === 'textField') {
             return (
@@ -47,6 +52,17 @@ export default function BfSubField(
                     name={name}
                     index={index} />
             )
+        } else if (subfield.type === 'textarea') {
+            return (
+                <BfTextArea
+                    subfield={subfield}
+                    register={register}
+                    name={name}
+                    index={index} />
+            )
+
+
+
         }
     }
 }

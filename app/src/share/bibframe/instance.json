@@ -1,0 +1,445 @@
+{
+  "sections": [
+    {
+      "name": "generalProperties",
+      "label": "Propriedades Gerais",
+      "fields": [
+        {
+          "name": "instanceOf",
+          "label": "Instância de",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_instanceOf",
+          "repeatable": false,
+          "required": true,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Obra",
+              "type": "textField",
+              "disabled": true,
+              "width": 12
+            }
+          ]
+        },
+        {
+          "name": "adminMetadata",
+          "label": "AdminMetadata",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
+          "repeatable": false,
+          "required": true,
+          "subfields": [
+            {
+              "name": "status",
+              "label": "Status",
+              "type": "select",
+              "disabled": true,
+              "width": 4,
+              "commonType": "mstatus"
+            },
+            {
+              "name": "descriptionConventions",
+              "label": "Normalização",
+              "type": "select",
+              "width": 4,
+              "commonType": "descriptionConventions"
+            }
+          ]
+        },
+        {
+          "name": "resourceType",
+          "label": "Tipos do Recurso",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#c_Instance",
+          "repeatable": true,
+          "required": true,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Tipo",
+              "type": "select",
+              "commonType": "resourceType",
+              "width": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "titleInformation",
+      "label": "Informações sobre o título",
+      "fields": [
+        {
+          "name": "title",
+          "label": "Informações sobre o título",
+          "doc": "http://id.loc.gov/ontologies/bibframe/title",
+          "repeatable": false,
+          "subfields": [
+            {
+              "name": "mainTitle",
+              "label": "Título principal",
+              "type": "textField",
+              "disabled": false,
+              "required": true,
+              "messageError": "O título é obrigatório.",
+              "width": 6
+            },
+            {
+              "name": "subtitle",
+              "label": "Subtítulo",
+              "type": "textField",
+              "disabled": false,
+              "width": 6
+            }
+          ]
+        },
+        {
+          "name": "variantTitle",
+          "label": "Título alternativo",
+          "doc": "http://id.loc.gov/ontologies/bibframe/VariantTitle",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "mainTitle",
+              "label": "Título principal",
+              "type": "textField",
+              "disabled": false,
+              "width": 6
+            },
+            {
+              "name": "subtitle",
+              "label": "Subtítulo",
+              "type": "textField",
+              "disabled": false,
+              "width": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "physicalDetails",
+      "label": "Detalhes Físicos",
+      "fields": [
+        {
+          "name": "physicalDetails",
+          "label": "Detalhes Físicos",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html",
+          "repeatable": false,
+          "required": true,
+          "subfields": [
+            {
+              "name": "carrier",
+              "label": "Formato",
+              "type": "select",
+              "width": 3,
+              "commonType": "carrier"
+            },
+            {
+              "name": "extent",
+              "label": "Extensão",
+              "type": "textField",
+              "width": 3
+            },
+            {
+              "name": "issuance",
+              "label": "Emissão",
+              "type": "select",
+              "width": 3,
+              "commonType": "issuance"
+            },
+            {
+              "name": "media",
+              "label": "Mídia",
+              "type": "select",
+              "width": 3,
+              "commonType": "media"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "provisionActivity",
+      "label": "Edição",
+      "fields": [
+        {
+          "name": "provisionActivity",
+          "label": "Assunto",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_subject",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "place",
+              "label": "Local",
+              "type": "textField",
+              "width": 3
+            },
+            {
+              "label": "Editora",
+              "name": "agent",
+              "type": "textField",
+              "width": 6
+            },
+            {
+              "name": "date",
+              "label": "Ano de publicação",
+              "type": "textField",
+              "width": 3
+            }
+          ]
+        },
+        {
+          "name": "editionStatement",
+          "label": "Edição",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_editionStatement",
+          "repeatable": false,
+          "required": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Edição",
+              "type": "textField",
+              "width": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "responsibilityStatement",
+      "label": "Responsablidades",
+      "fields": [
+        {
+          "name": "responsibilityStatement",
+          "label": "Responsablidade",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_responsibilityStatement",
+          "repeatable": false,
+          "required": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Responsablidade",
+              "type": "textField",
+              "width": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "note",
+      "label": "Notas",
+      "fields": [
+        {
+          "name": "note",
+          "label": "Nota",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_note",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Nota",
+              "type": "textarea",
+              "width": 12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "defaultValues": {
+    "instanceOf": {
+      "value": ""
+    },
+    "resourceType": [
+      {
+        "value": "Instance",
+        "label": "Instância"
+      },
+      {
+        "value": "",
+        "label": ""
+      }
+    ],
+    "physicalDetails": {
+      "carrier": {
+        "value": "",
+        "label": ""
+      },
+      "extent": "",
+      "issuance": {
+        "value": "",
+        "label": ""
+      },
+      "media": {
+        "value": "",
+        "label": ""
+      }
+    },
+    "title": {
+      "mainTitle": "",
+      "subtitle": ""
+    },
+    "variantTitle": [
+      {
+        "mainTitle": "",
+        "subtitle": ""
+      }
+    ],
+    "adminMetadata": {
+      "status": {
+        "value": "http://id.loc.gov/vocabulary/mstatus/n",
+        "label": "Novo"
+      },
+      "descriptionConventions": {
+        "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+        "label": "AACr"
+      }
+    },
+    "responsibilityStatement": {
+      "value": ""
+    },
+    "provisionActivity": [
+      {
+        "place": "",
+        "agent": "",
+        "date": ""
+      }
+    ],
+    "editionStatement": {
+      "value": ""
+    },
+    "note": [
+      {
+        "value": ""
+      }
+    ]
+  },
+  "commonTypes": {
+    "media": [
+      {
+        "value": "http://id.loc.gov/vocabulary/mediaTypes/n",
+        "label": "Não mediado"
+      },
+      {
+        "value": "http://id.loc.gov/vocabulary/mediaTypes/v",
+        "label": "Video"
+      },
+      {
+        "value": "http://id.loc.gov/vocabulary/mediaTypes/s",
+        "label": "Audio"
+      }
+    ],
+    "issuance": [
+      {
+        "value": "http://id.loc.gov/vocabulary/issuance/mono",
+        "label": "Unidade única"
+      },
+      {
+        "value": "http://id.loc.gov/vocabulary/issuance/serl",
+        "label": "Publicação seriada"
+      }
+    ],
+    "carrier": [
+      {
+        "value": "http://id.loc.gov/vocabulary/carriers/nc",
+        "label": "Volume"
+      }
+    ],
+    "descriptionConventions": [
+      {
+        "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+        "label": "AACr"
+      },
+      {
+        "value": "http://id.loc.gov/vocabulary/descriptionConventions/rda",
+        "label": "RDA"
+      }
+    ],
+    "resourceType": [
+      {
+        "value": "Instance",
+        "label": "Instância"
+      },
+      {
+        "value": "Print",
+        "label": "Impresso"
+      },
+      {
+        "value": "Archival",
+        "label": "Arquivo"
+      },
+      {
+        "value": "Tactile",
+        "label": "Tátil"
+      }
+    ],
+    "mstatus": [
+      {
+        "value": "http://id.loc.gov/vocabulary/mstatus/n",
+        "label": "Novo"
+      },
+      {
+        "value": "http://id.loc.gov/vocabulary/mstatus/c",
+        "label": "Alterado"
+      }
+    ],
+    "genreForms": [
+      {
+        "label": "Materiais cartográficos",
+        "value": "http://id.loc.gov/authorities/genreForms/gf2011026113"
+      },
+      {
+        "label": "Obras comemorativas",
+        "value": "http://id.loc.gov/authorities/genreForms/gf2014026064"
+      },
+      {
+        "label": "Não ficção criativa",
+        "value": "http://id.loc.gov/authorities/genreForms/gf2014026074"
+      }
+    ],
+    "contentTypes": [
+      {
+        "label": "Texto",
+        "value": "http://id.loc.gov/vocabulary/contentTypes/txt"
+      },
+      {
+        "label": "Não especificado",
+        "value": "http://id.loc.gov/vocabulary/contentTypes/zzz"
+      }
+    ],
+    "relators": [
+      {
+        "label": "Autor",
+        "value": "http://id.loc.gov/vocabulary/relators/aut"
+      },
+      {
+        "label": "Tradutor",
+        "value": "http://id.loc.gov/vocabulary/relators/trl"
+      }
+    ],
+    "typeSubject": [
+      {
+        "label": "Termo Tópico",
+        "value": "Topic"
+      }
+    ],
+    "language": [
+      {
+        "label": "Português",
+        "value": "por"
+      },
+      {
+        "label": "Inglês",
+        "value": "eng"
+      }
+    ],
+    "typeWork": [
+      {
+        "label": "Texto",
+        "uri": "text"
+      }
+    ]
+  }
+}

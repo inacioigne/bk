@@ -7,7 +7,6 @@ export const ZodWork = z.object({
         label: z.string()
     })),
     adminMetadata: z.object({
-        // creationDate: z.string(),
         status: z.object({
             value: z.string(),
             label: z.string()
@@ -15,8 +14,7 @@ export const ZodWork = z.object({
         descriptionConventions: z.object({
             value: z.string(),
             label: z.string()
-        }),
-        // identifiedBy: z.string()
+        })
     }),
     classification: z.object({
         cdd: z.string(),

@@ -14,13 +14,13 @@ interface Props {
     register: Function;
     control: any;
     setValue: Function;
+    commonTypes: any
 
 }
 
 export default function BfField(
-    { field, register, control, setValue }: Props
+    { field, register, control, setValue, commonTypes }: Props
 ) {
-    // console.log("FS:", field)
 
     const {
         fields,
@@ -75,6 +75,7 @@ export default function BfField(
                                             register={register}
                                             control={control}
                                             setValue={setValue}
+                                            commonType={commonTypes[`${subfield.commonType}`]}
                                         />
                                     </Grid>
                                 ))}
@@ -97,6 +98,7 @@ export default function BfField(
                                         register={register}
                                         control={control}
                                         setValue={setValue}
+                                        commonType={commonTypes[`${subfield.commonType}`]}
                                     />
                                 </Grid>
                             ))}

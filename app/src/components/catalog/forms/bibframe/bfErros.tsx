@@ -63,7 +63,7 @@ export default function BfErros({ openBfErros, setBfErros, errors }: Props) {
       </DialogTitle>
       <Divider />
       <DialogContent>
-        <Box sx={{ display: "flex", gap: 1 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
           {messages?.map((message, index) => (
             <Alert key={index} severity="error" sx={{ width: "100%"}}>{message}</Alert>
           ))}

@@ -2,23 +2,23 @@
 import { Box, Button, Tabs, Tab } from "@mui/material";
 // React-Hook-Form
 import { useFieldArray, useWatch, useForm } from "react-hook-form";
-import bibframe from "@/share/bibframe/work.json"
+
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import BibframeField from "./bibframe/bibframeField";
+// import BibframeField from "./bibframe/bibframeField";
 import { useEffect, useState } from "react";
 
 // BiblioKeia Components
-import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarus";
-import { typeMetadata } from "@/schema/fieldMetadata";
+// import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarus";
+// import { typeMetadata } from "@/schema/fieldMetadata";
 
 // BiblioKeia Service
 import { bkapi } from "@/services/api";
 import BfField from "./bibframe/bfField";
-import BfSubField from "./bibframe/bfSubField";
+// import BfSubField from "./bibframe/bfSubField";
 
 // Schema
-import { ZodWork } from "@/schema/bibframe/zodWork"
+import  ZodInstance  from "@/schema/bibframe/zodInstance"
 import BfErros from "./bibframe/bfErros";
 
 // Providers BiblioKeia
@@ -27,6 +27,9 @@ import { useAlert } from "@/providers/alert";
 
 // Nextjs
 import { useRouter } from "next/navigation";
+
+// Metadata
+import bibframe from "@/share/bibframe/instance.json"
 
 const headers = {
     accept: "application/json",
@@ -37,6 +40,12 @@ interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
     value: number;
+    defaultValues: any;
+    
+}
+
+interface Props {
+    defaultValues: any;
 }
 
 function CustomTabPanel(props: TabPanelProps) {
@@ -66,9 +75,13 @@ function a11yProps(index: number) {
     };
 }
 
-export default function FormInstance() {
+export default function FormInstance({ defaultValues }: Props) {
 
-    type SchemaCreateWork = z.infer<typeof ZodWork>;
+    // console.log(ZodInstance)
+
+
+
+    type SchemaCreateWork = z.infer<typeof ZodInstance>;
     const [openBfErros, setBfErros] = useState(false);
     const [panel, setPanel] = useState(0);
     const { setProgress } = useProgress();
@@ -88,14 +101,17 @@ export default function FormInstance() {
         getValues
     } = useForm<SchemaCreateWork>(
         {
-            resolver: zodResolver(ZodWork),
-            defaultValues: bibframe.defaultValues
+            resolver: zodResolver(ZodInstance),
+            defaultValues: defaultValues
         }
     );
+
+    
 
     useEffect(() => {
 
         if (Object.keys(errors).length > 0) {
+            console.log("E:", errors)
             setBfErros(true)
         }
 
@@ -128,34 +144,34 @@ export default function FormInstance() {
             });
         }
         RemoveEmpty(data)
-        // console.log(data)
+        console.log("C", data)
     
-        bkapi
-            .post("/catalog/work/create", data, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    console.log("RS", response.data);
-                    // request.identifiersLocal = response.data.id
-                    // setWork(request)
-                    // setOpenInstance(true)
+        // bkapi
+        //     .post("/catalog/work/create", data, {
+        //         headers: headers,
+        //     })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             console.log("RS", response.data);
+        //             // request.identifiersLocal = response.data.id
+        //             // setWork(request)
+        //             // setOpenInstance(true)
 
-                    setMessage("Registro criado com sucesso!")
-                      router.push(`/admin/catalog/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 409) {
-                    setTypeAlert("error")
-                    setMessage("Este registro já existe")
-                    console.error("ER:", error);
-                }
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+        //             setMessage("Registro criado com sucesso!")
+        //               router.push(`/admin/catalog/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error.response.status === 409) {
+        //             setTypeAlert("error")
+        //             setMessage("Este registro já existe")
+        //             console.error("ER:", error);
+        //         }
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //     });
     }
 
     return (
@@ -177,6 +193,8 @@ export default function FormInstance() {
                                 register={register}
                                 control={control}
                                 setValue={setValue}
+                                commonTypes={bibframe.commonTypes}
+
                             />
                         ))}
                     </CustomTabPanel>

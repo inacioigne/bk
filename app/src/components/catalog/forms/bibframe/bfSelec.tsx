@@ -7,7 +7,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 import { useFieldArray, useWatch, Controller } from "react-hook-form";
 
-import bibframe from "@/share/bibframe/work.json"
+// import bibframe from "@/share/bibframe/work.json"
 
 import { ChangeEvent, useEffect } from "react";
 
@@ -16,19 +16,18 @@ interface Props {
     setValue: Function;
     index: number | boolean;
     control: any;
-    name: string
+    name: string;
+    commonType: any
 }
 
 export default function BfSelect(
-    { subfield, setValue, index, control, name }: Props
+    { subfield, setValue, index, control, name, commonType }: Props
 ) {
-    // if (index) {
-    //     console.log("S:", `${name}.${index}.${subfield.name}`)
-
-    // }
+    
 
 
-    const commonType = bibframe.commonType[`${subfield.commonType}`]
+
+    // const commonType = bibframe.commonType[`${subfield.commonType}`]
 
 
     const handleChangeSelect = (event: ChangeEvent<HTMLInputElement>, obj: any) => {
@@ -42,6 +41,7 @@ export default function BfSelect(
         if (name == 'contribution') {
             setValue(`${name}.${index}.role.label`, label)
         } else {
+            // console.log(label)
             setValue(`${name}.${index}.label`, label)
         }
     };
@@ -55,7 +55,6 @@ export default function BfSelect(
     return (
         <Controller
             name={index === false ? `${name}.${subfield.name}.value` : `${name}.${index}.${subfield.name}`}
-            // name={`${name}.${index}.value`}
             control={control}
             render={({ field }) => (
                 <FormControl fullWidth size="small" //required={f.required}
@@ -81,5 +80,6 @@ export default function BfSelect(
             )}
         />
     )
+
 
 }

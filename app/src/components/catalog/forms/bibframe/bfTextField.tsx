@@ -1,7 +1,5 @@
 import {
-    Box, TextField, InputAdornment, Chip, FormControl, InputLabel, MenuItem, Button, Accordion, AccordionSummary, Typography,
-    Grid,
-    IconButton
+   TextField
 } from "@mui/material";
 
 interface Props {
@@ -28,9 +26,6 @@ export default function BfTextField(
             label={`${subfield.label}`}
             variant="outlined"
             {...register(index === false ? `${name}.${subfield.name}` : `${name}.${index}.${subfield.name}`)}
-            
-
-            // `${name}.${subfield.name}`
         />
     )
 

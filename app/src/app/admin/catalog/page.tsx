@@ -96,9 +96,7 @@ export default function Catalog() {
                             <TextField
                                 label="Busca"
                                 variant="outlined"
-                                // value={search}
                                 fullWidth
-                                // onChange={handleChangeSearch}
                                 InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="end">
