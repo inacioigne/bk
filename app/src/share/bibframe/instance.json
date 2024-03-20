@@ -246,6 +246,27 @@
           ]
         }
       ]
+    },
+    {
+      "name": "image",
+      "label": "Imagem",
+      "fields": [
+        {
+          "name": "image",
+          "label": "Imagem",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_note",
+          "repeatable": false,
+          "required": false,
+          "subfields": [
+            {
+              "name": "cover",
+              "label": "Imagem da capa",
+              "type": "textField",
+              "width": 12
+            }
+          ]
+        }
+      ]
     }
   ],
   "defaultValues": {

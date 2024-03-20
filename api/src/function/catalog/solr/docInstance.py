@@ -5,37 +5,39 @@ settings = Settings()
 solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 
 
-def DocInstance(request, instance_id):
+def DocInstance(request):
 
-    work_id = f'work#{request.instanceOf.uri.split("/")[-1]}'
-    instance_id = f'instance#{instance_id}'
+    work_id = f'work#{request.instanceOf.value.split("/")[-1]}'
+    instance_id = f'instance#{request.adminMetadata.identifiedBy}'
+    provisionActivity = request.provisionActivity[0]
+    instanceOf = {
+    'id': f'{instance_id}/instanceOf/{work_id}', 
+    'uri': request.instanceOf.value, 
+    'label': request.instanceOf.label
+    } 
 
     doc = {
         "id": instance_id,
-        "type": request.type,
+        # "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"),
+        "type": [i.value for i in request.resourceType],
         "mainTitle": request.title.mainTitle,
         "subtitle": request.title.subtitle if request.title.subtitle != "" else None,
-        "carrier": request.carrier.label,
-        "dimensions": request.dimensions,
-        "extent": request.extent.label if request.extent else None,
-        "issuance": request.issuance.label,
-        "media": request.media.label,
-        "publicationAgent": request.publication.agent,
-        "publicationDate": request.publication.date,
-        "publicationPlace": request.publication.place,      
-        "serie": request.seriesStatement,
-        "image": request.image,
-        "instanceOf": {'id': f'{instance_id}/instanceOf/{work_id}', 'uri': request.instanceOf.uri, 'label': request.instanceOf.label} 
+        "carrier": request.physicalDetails.carrier.label,
+        "extent": request.physicalDetails.extent,
+        "issuance": request.physicalDetails.issuance.label,
+        "media": request.physicalDetails.media.label,
+        "publicationAgent": provisionActivity.agent,
+        "publicationDate": provisionActivity.date,
+        "publicationPlace": provisionActivity.place,      
+        # "serie": request.seriesStatement,
+        "image": request.image.cover,
+        "instanceOf": instanceOf
         }
- 
 
-    
     work = {
         "id": work_id,
         "hasInstance": {"add": doc }
     }
-    # print("hasInstance", work)
-
     response = solr.add([work], commit=True)
     return response
 

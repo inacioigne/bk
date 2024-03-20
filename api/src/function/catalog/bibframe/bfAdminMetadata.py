@@ -1,4 +1,3 @@
-from datetime import datetime
 from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import RDF, RDFS
 from src.schemas.settings import Settings
@@ -7,7 +6,6 @@ from rdflib.namespace import XSD
 settings = Settings()
 
 def BfAdminMetadata(g, adminMetadata, resource, BF):
-    # now = datetime.now()  
 
     bNadminMetadata = BNode()
     g.add((resource, BF.adminMetadata, bNadminMetadata))

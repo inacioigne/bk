@@ -1,19 +1,8 @@
-# from src.function.catalog.bibframe.bfTableOfContents import MakeTableOfContents
-# from src.function.catalog.bibframe.bfNote import MakeNote
-# from src.function.catalog.bibframe.bfTitle import MakeTitle
-# from src.function.catalog.bibframe.bfLanguage import MakeLanguage
-# from src.function.catalog.bibframe.bfClassification import MakeClassification
-# from src.function.catalog.bibframe.bfContribution import MakeContribution
-# from src.function.catalog.bibframe.bfSubject import MakeSubject
-# from src.function.catalog.bibframe.bfGenreForm import MakeGenreForm
-# from src.function.catalog.bibframe.bfSummary import  MakeSummary
-# from src.function.catalog.bibframe.makeUri import MakeUri
-
-from rdflib import URIRef, BNode, Literal, Namespace, Graph
-from rdflib.namespace import RDF, RDFS
-from pyfuseki import FusekiUpdate
-from rdflib.plugins.stores import sparqlstore
-from rdflib.namespace import XSD
+from rdflib import URIRef, Namespace, Graph
+# from rdflib.namespace import RDF, RDFS
+# from pyfuseki import FusekiUpdate
+# from rdflib.plugins.stores import sparqlstore
+# from rdflib.namespace import XSD
 from src.function.catalog.bibframe.bfGenreForm import BfGenreForm
 from src.function.catalog.bibframe.bfSubject import BFSubject
 from src.function.catalog.bibframe.bfContribution import BFContribution
@@ -31,14 +20,14 @@ settings = Settings()
 def MakeGraphWork(request):
 
     BF = Namespace("http://id.loc.gov/ontologies/bibframe/")
-    identifier = f"https://bibliokeia/works/{request.adminMetadata.identifiedBy}"
+    identifier = f"{settings.base_url}/works/{request.adminMetadata.identifiedBy}"
     resource = URIRef(identifier)
 
     g = Graph(identifier=identifier)
     g.bind('bf', BF)
     
     # resourceType
-    BfType(g, resource, request.resourceType)
+    g = BfType(g, resource, request.resourceType)
     # AdminMetadata
     g = BfAdminMetadata(g, request.adminMetadata, resource, BF) 
     # BfClassification

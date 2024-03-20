@@ -87,7 +87,8 @@ export function TableCatalogResult(
     rowCount={rowCount}
     onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
       setProgress(true)
-      let id = params.id.replace('#', '%23')
+      let id = params.id.replace('work#', '')
+      // console.log("ID: ", id)
 
       router.push(`/admin/catalog/${id}`)
     }}

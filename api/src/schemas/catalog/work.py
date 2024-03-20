@@ -2,23 +2,17 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
-class BfElement(BaseModel):
-    value: str
-    label: str
+from src.schemas.catalog.bibframe.title import Title
+from src.schemas.adminMetadata import AdminMetadata
+from src.schemas.catalog.bibframe.element import BfElement
 
 class ResourceProperties(BaseModel):
     content: BfElement
     genreForm: Optional[BfElement] = None
 
-class AdminMetadata(BaseModel):
-    creationDate: datetime = None
-    status: BfElement
-    descriptionConventions: BfElement
-    identifiedBy: Optional[str] = None
 
-class Title(BaseModel):
-    mainTitle: str
-    subtitle: Optional[str] = None
+
+
 
 class Contribution(BaseModel):
     term: BfElement

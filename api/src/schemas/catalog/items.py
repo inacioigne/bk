@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from typing import List
 from src.schemas.adminMetadata import AdminMetadata
-from src.schemas.catalog.bibframe.element import Element
 
 # class ItemOf(BaseModel):
 #     id: int

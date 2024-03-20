@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from src.function.catalog.work.markeCreateSparql import MakeCreateSparql
+from src.function.catalog.markeCreateSparql import MakeCreateSparql
 from src.function.catalog.work.parserRequestWork import ParserRequestWork
 from src.schemas.catalog.work import BfWork
 from src.db.models import DbWork 
@@ -42,11 +42,11 @@ async def create_work(request: BfWork):
     
     # # Jena
     graph = MakeGraphWork(request)
-    sparql = MakeCreateSparql(graph, w.id)
+    sparql = MakeCreateSparql(graph, w.id, "works")
     response = fuseki.run_sparql(sparql) 
 
     # # Solr
-    responseSolr = DocWork(request, w.id) 
+    responseSolr = DocWork(request, w.id)  
 
     # if request.contribution:
     #     UpdateFusekiContribution(request, w.id)

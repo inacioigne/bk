@@ -80,16 +80,34 @@ export default async function Page({ params }: { params: { id: string } }) {
                         <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
                             Autoria
                         </Typography>
-                        {doc.contribution.map((contribution: any, index: number) => (
-                            <Box key={index}
+                        {Array.isArray(doc.contribution) ? (
+                            doc.contribution.map((contribution: any, index: number) => (
+                                <Box key={index}
+                                    sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
+                                    <Typography variant="caption" display="block">
+                                        {contribution.roleLabel}
+                                    </Typography>
+                                    <Box>
+                                        <Chip
+                                            key={index}
+                                            label={contribution.label}
+                                            variant="outlined"
+                                            color="primary"
+                                            size="small"
+                                            sx={{ cursor: "pointer" }}
+                                        />
+                                    </Box>
+                                </Box>
+                            ))
+                        ) : (
+                            <Box
                                 sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
                                 <Typography variant="caption" display="block">
-                                    {contribution.roleLabel}
+                                    {doc.contribution.roleLabel}
                                 </Typography>
                                 <Box>
                                     <Chip
-                                        key={index}
-                                        label={contribution.label}
+                                        label={doc.contribution.label}
                                         variant="outlined"
                                         color="primary"
                                         size="small"
@@ -97,7 +115,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                                     />
                                 </Box>
                             </Box>
-                        ))}
+                        )}
+
                     </Box>
                     <Divider />
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
@@ -151,9 +170,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                 </Box>
                 <Box>
                     <Link href={`/admin/catalog/create/instance/${params.id}`}>
-                    <Button size="small" variant="outlined" sx={{ textTransform: "none" }} startIcon={<IoAddOutline />}>Criar Instâncias</Button>
+                        <Button size="small" variant="outlined" sx={{ textTransform: "none" }} startIcon={<IoAddOutline />}>Criar Instâncias</Button>
                     </Link>
-                
+
                 </Box>
             </Box>
         </Container>

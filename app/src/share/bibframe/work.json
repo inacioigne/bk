@@ -99,6 +99,7 @@
               "type": "textField",
               "disabled": false,
               "required": true,
+              "messageError": "O título é obrigatório.",
               "width": 6
             },
             {
@@ -288,7 +289,7 @@
       }
     ]
   },
-  "commonType": {
+  "commonTypes": {
     "descriptionConventions": [
       {
         "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",

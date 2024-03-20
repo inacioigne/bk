@@ -5,7 +5,6 @@ import { useFieldArray, useWatch, useForm } from "react-hook-form";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import BibframeField from "./bibframe/bibframeField";
 import { useEffect, useState } from "react";
 
 // BiblioKeia Components
@@ -78,9 +77,6 @@ function a11yProps(index: number) {
 export default function FormInstance({ defaultValues }: Props) {
 
     // console.log(ZodInstance)
-
-
-
     type SchemaCreateWork = z.infer<typeof ZodInstance>;
     const [openBfErros, setBfErros] = useState(false);
     const [panel, setPanel] = useState(0);
@@ -144,34 +140,39 @@ export default function FormInstance({ defaultValues }: Props) {
             });
         }
         RemoveEmpty(data)
-        console.log("C", data)
+        // console.log("C", data)
     
-        // bkapi
-        //     .post("/catalog/work/create", data, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             console.log("RS", response.data);
-        //             // request.identifiersLocal = response.data.id
-        //             // setWork(request)
-        //             // setOpenInstance(true)
+        bkapi
+            .post("/catalog/instance/create", data, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    console.log("RS", response.data);
+                    // request.identifiersLocal = response.data.id
+                    // setWork(request)
+                    // setOpenInstance(true)
 
-        //             setMessage("Registro criado com sucesso!")
-        //               router.push(`/admin/catalog/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         if (error.response.status === 409) {
-        //             setTypeAlert("error")
-        //             setMessage("Este registro já existe")
-        //             console.error("ER:", error);
-        //         }
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+                    setMessage("Registro criado com sucesso!")
+                    let uri = data.instanceOf.value.split("/")
+                    let id = uri[uri.length - 1]
+                    router.push(`/admin/catalog/${id}`);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 409) {
+                    setTypeAlert("error")
+                    setMessage("Este registro já existe")
+                    console.error("ER:", error);
+                } else {
+                    console.error("ER:", error);
+                    
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     return (

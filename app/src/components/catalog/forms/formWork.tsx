@@ -15,10 +15,10 @@ import { typeMetadata } from "@/schema/fieldMetadata";
 // BiblioKeia Service
 import { bkapi } from "@/services/api";
 import BfField from "./bibframe/bfField";
-import BfSubField from "./bibframe/bfSubField";
+// import BfSubField from "./bibframe/bfSubField";
 
 // Schema
-import { ZodWork } from "@/schema/bibframe/zodWork"
+import ZodWork  from "@/schema/bibframe/zodWork"
 import BfErros from "./bibframe/bfErros";
 
 // Providers BiblioKeia
@@ -97,6 +97,7 @@ export default function FormWork() {
 
         if (Object.keys(errors).length > 0) {
             setBfErros(true)
+            console.log(errors)
         }
 
     }, [errors])
@@ -177,6 +178,7 @@ export default function FormWork() {
                                 register={register}
                                 control={control}
                                 setValue={setValue}
+                                commonTypes={bibframe.commonTypes}
                             />
                         ))}
                     </CustomTabPanel>

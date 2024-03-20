@@ -65,17 +65,6 @@ export default async function Create({ params }: { params: { work: string } }) {
 
     const defaultValues = ParserDefaultValues()
 
-    
-    
-    
-    // console.log(zod)
-
-    
-    
-    
-
-
-
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
