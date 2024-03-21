@@ -5,10 +5,10 @@ settings = Settings()
 
 fuseki = FusekiUpdate(settings.fuseki, 'bk') 
 
-def HasItem(item, instance, item_id):
+def HasItem(instance, item_id):
 
-    item_uri = f'https://bibliokeia.com/catalog/item/{item_id}'
-    instance_uri = f'https://bibliokeia.com/catalog/instance/{instance}'
+    item_uri = f'{settings.base_url}/items/{item_id}'
+    instance_uri = f'{settings.base_url}/instances/{instance}'
     sparql = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
                 INSERT DATA
                 {{ GRAPH <{instance_uri}> {{ 

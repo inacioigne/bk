@@ -15,22 +15,38 @@ import ModalItems from "@/components/catalog/items/modalItems"
 
 // React
 import { useState } from "react";
+import ModalFormItems from "../items/modalFormItems";
+import { ExecSyncOptionsWithBufferEncoding } from "child_process";
 
-
+type Classification = {
+    cdd: string;
+    cutter: string;
+}
 
 interface Props {
     instance: any;
+    classification: Classification
     // setOpenItems: Function;
 }
 
-export default function CardInstance({ instance }: Props) {
+export default function CardInstance({ instance, classification }: Props) {
     const [open, setOpen] = useState(false);
+    const [formItems, setFormItems] = useState(false);
+
+    const addEx = () => {
+        setFormItems(true)
+        console.log(classification)
+    }
     return (
         <>
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                        <Chip label={instance.type} size="small" color="primary" />
+                        <Box sx={{ display: "flex", gap: 1 }}>
+                            {instance.type.map((type: any, index: number) => (
+                                <Chip label={type} size="small" color="primary" key={index} />
+                            ))}
+                        </Box>
                         <Box>
                             <Tooltip title="Editar">
                                 <IconButton //onClick={handleClose}
@@ -46,8 +62,6 @@ export default function CardInstance({ instance }: Props) {
                             </Tooltip>
 
                         </Box>
-
-
                     </Box>
 
 
@@ -112,10 +126,16 @@ export default function CardInstance({ instance }: Props) {
                 </CardContent>
                 <CardActions>
                     <Button size="small" variant="outlined" sx={{ textTransform: "none" }} onClick={() => { setOpen(true) }}>Ver Exemplares</Button>
-                    <Button size="small" variant="outlined" sx={{ textTransform: "none" }}>Adicionar Exemplares</Button>
+                    <Button size="small" variant="outlined" sx={{ textTransform: "none" }} onClick={addEx}>Adicionar Exemplares</Button>
                 </CardActions>
             </Card>
             <ModalItems items={instance.hasItem} setOpen={setOpen} open={open} />
+            <ModalFormItems 
+            setOpen={setFormItems} 
+            open={formItems} 
+            instance={instance} 
+            classification={classification}
+            />
         </>
 
 

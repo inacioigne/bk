@@ -28,7 +28,7 @@
             lclocal:d906 "=906     $a 7 $b cbc $c oclcrpl $d u $e ncip $f 19 $g y-gencatlg" ] ;
     bf:heldBy <http://id.loc.gov/vocabulary/organizations/dlc> ;
     bf:itemOf <http://id.loc.gov/resources/instances/8913635> ;
-    bf:shelfMark [ a bf:ShelfMarkLcc ;
+    bf:shelfMark [ a bf:ShelfMarkLcc ; 
             rdfs:label "BD241.P6" ;
             bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ] ;
     dcterms:isPartOf <http://id.loc.gov/resources/items> .

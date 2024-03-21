@@ -46,11 +46,17 @@ import { useRouter } from 'next/navigation'
 
 type SchemaCreateItem = z.infer<typeof ZodItem>;
 
+type Classification = {
+    cdd: string;
+    cutter: string;
+}
+
 interface Props {
     setOpen: Function;
     open: boolean;
-    work: any;
+    // work: any;
     instance: number | null
+    classification: Classification
 }
 
 const headers = {
@@ -59,7 +65,7 @@ const headers = {
 };
 
 
-export default function ModalItems({ setOpen, open, work, instance }: Props) {
+export default function ModalFormItems({ setOpen, open, instance, classification }: Props) {
 
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
     const { setProgress } = useProgress();
@@ -69,8 +75,8 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
 
     const defaultValues = {
         items: [{
-            cdd: "",
-            cutter: "",
+            cdd: classification.cdd[0],
+            cutter: classification.cutter[0],
             year: "",
             collection: "",
             shelf: "",
@@ -96,9 +102,9 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
             .get("/catalog/item/next_id")
             .then(function (response) {
                 setValue('items[0].barcode', response.data.barcode);
-                setValue('items[0].year', instance.publication.date);
+                setValue('items[0].year', instance.publicationDate);
 
-                // console.log("RD:",instance.publication);
+                // console.log("RD:",instance);
             })
             .catch(function (error) {
                 // manipula erros da requisição
@@ -133,7 +139,7 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
         append({
             cdd: lastItem.cdd,
             cutter: lastItem.cutter,
-            year: instance.publication.date,
+            year: instance.publicationDate,
             collection: lastItem.collection,
             shelf: lastItem.shelf,
             barcode: nextItem
@@ -146,18 +152,20 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
     function CreateItems(data: any) {
 
         let items = data.items.map((item: any) => {
-            item['adminMetadata'] = {
-                label: "novo",
-                value: "n"
-            }
+            let status = { status: {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            }}
+            item['adminMetadata'] = status
             return item
         })
         let request = {
             "itemOf": instance.id,
-            "instanceOf": work,
+            // "instanceOf": work,
             "items": items
         }
         setProgress(true)
+        // console.log('d', request)
 
         bkapi
             .post("catalog/items/create", request, {
@@ -165,9 +173,9 @@ export default function ModalItems({ setOpen, open, work, instance }: Props) {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    // console.log(response);
+                    console.log(response);
                     setMessage("Registro criado com sucesso!")
-                    router.push(`/admin/catalog/work%23${response.data.instanceOf}`);
+                    // router.push(`/admin/catalog/work%23${response.data.instanceOf}`);
                 }
             })
             .catch(function (error) {

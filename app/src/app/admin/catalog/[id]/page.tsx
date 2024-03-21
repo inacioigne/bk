@@ -168,7 +168,20 @@ export default async function Page({ params }: { params: { id: string } }) {
                         </Typography>
                     </Box>
                 </Box>
-                <Box>
+                <Box sx={{ display: "flex", gap: 2, flexDirection: "column" }}>
+                    <Box sx={{ display: "flex", gap: 2 }}>
+                        {doc.hasInstance.map((instance: any, index: number) => (
+                            <CardInstance 
+                            instance={instance} 
+                            key={index} 
+                            classification={{
+                                cdd: doc.cdd,
+                                cutter: doc.cutter
+                            }} />
+                        ))}
+
+                    </Box>
+
                     <Link href={`/admin/catalog/create/instance/${params.id}`}>
                         <Button size="small" variant="outlined" sx={{ textTransform: "none" }} startIcon={<IoAddOutline />}>Criar Instâncias</Button>
                     </Link>

@@ -19,10 +19,11 @@ def BfAdminMetadata(g, adminMetadata, resource, BF):
     # formatted_date = now.strftime("%Y-%m-%d")
     g.add((bNadminMetadata, BF.creationDate, Literal(adminMetadata.creationDate.strftime("%Y-%m-%d"), datatype=XSD.date) ))
     # descriptionConventions
-    descriptionConventions = URIRef(adminMetadata.descriptionConventions.value)
-    g.add((descriptionConventions, RDF.type, BF.DescriptionConventions ))
-    g.add((descriptionConventions, RDFS.label, Literal(adminMetadata.descriptionConventions.label) ))
-    g.add((bNadminMetadata, BF.descriptionConventions, descriptionConventions ))
+    if adminMetadata.descriptionConventions:
+        descriptionConventions = URIRef(adminMetadata.descriptionConventions.value)
+        g.add((descriptionConventions, RDF.type, BF.DescriptionConventions ))
+        g.add((descriptionConventions, RDFS.label, Literal(adminMetadata.descriptionConventions.label) ))
+        g.add((bNadminMetadata, BF.descriptionConventions, descriptionConventions ))
     # generationProcess
     # formatted_dateTime = now.strftime("%Y-%m-%dT%H:%M:%S")
     generationProcess = BNode() 

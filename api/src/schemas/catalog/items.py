@@ -16,6 +16,6 @@ class Item(BaseModel):
     barcode: str
 
 class Items_Schema(BaseModel):
-  itemOf: int
-  instanceOf: int
+  itemOf: str
+  # instanceOf: str
   items: List[Item]
