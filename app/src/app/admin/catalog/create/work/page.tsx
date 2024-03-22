@@ -32,8 +32,6 @@ const previousPaths = [
 
 export default function Create() {
 
-    // const [openInstance, setOpenInstance] = useState(false);
-    // const [work, setWork] = useState(null);
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>

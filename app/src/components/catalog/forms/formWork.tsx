@@ -150,8 +150,9 @@ export default function FormWork() {
                 if (error.response.status === 409) {
                     setTypeAlert("error")
                     setMessage("Este registro já existe")
-                    console.error("ER:", error);
+                    
                 }
+                console.error("ER:", error);
             })
             .finally(function () {
                 setProgress(false)
