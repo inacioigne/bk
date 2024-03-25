@@ -6,16 +6,9 @@ from src.db.models import DbItem
 settings = Settings()
 solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 
-def DocItem(item, instance, work, item_id):
+def DocItem(item, instance, work):
 
-    instance_id = f'instance#{instance}'
-    word_id = f'work#{work}'
-    # db_item = session.query(DbItem).order_by(DbItem.id.desc()).first() 
-    # if db_item:
-    #     item_id = db_item.id + 1
-    # else:
-    #     item_id = 1
-    # item_id = f'item#{item_id}'
+    item_id = f'item#{item.adminMetadata.identifiedBy}'
 
 
     doc = {
@@ -27,16 +20,15 @@ def DocItem(item, instance, work, item_id):
         "collection": item.collection,
         "shelf": item.shelf,
         "barcode": item.barcode,
-        "itemOf": {'id': f'{item_id}/itemOf/{instance_id}' #, 'uri': request.instanceOf.uri, 'label': request.instanceOf.label
+        "itemOf": {'id': f'{item_id}/itemOf/{instance}' 
                    } 
         }
     
     item_doc = {
-        "id": instance_id,
-        "_root_": word_id,
+        "id": instance,
+        "_root_": work,
         "hasItem": {"add": doc }
     }
-    # print('ITEM:', item_doc)
 
     response = solr.add([item_doc], commit=True)
     return response

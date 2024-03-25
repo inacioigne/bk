@@ -54,7 +54,7 @@ type Classification = {
 interface Props {
     setOpen: Function;
     open: boolean;
-    // work: any;
+    // work: string;
     instance: number | null
     classification: Classification
 }
@@ -75,8 +75,8 @@ export default function ModalFormItems({ setOpen, open, instance, classification
 
     const defaultValues = {
         items: [{
-            cdd: classification.cdd[0],
-            cutter: classification.cutter[0],
+            cdd: classification.cdd,
+            cutter: classification.cutter,
             year: "",
             collection: "",
             shelf: "",
@@ -148,7 +148,7 @@ export default function ModalFormItems({ setOpen, open, instance, classification
 
     };
     // console.log('E:', errors)
-
+    
     function CreateItems(data: any) {
 
         let items = data.items.map((item: any) => {
@@ -159,13 +159,15 @@ export default function ModalFormItems({ setOpen, open, instance, classification
             item['adminMetadata'] = status
             return item
         })
+        let linstanceOf = instance.instanceOf.id.split("/")
+        let instanceOf = linstanceOf[linstanceOf.length - 1]
         let request = {
             "itemOf": instance.id,
-            // "instanceOf": work,
+            "instanceOf": instanceOf,
             "items": items
         }
         setProgress(true)
-        // console.log('d', request)
+        console.log('d', request)
 
         bkapi
             .post("catalog/items/create", request, {

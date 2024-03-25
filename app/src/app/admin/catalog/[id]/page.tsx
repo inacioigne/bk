@@ -22,6 +22,7 @@ import { IoAddOutline } from "react-icons/io5";
 // Next
 import Image from 'next/image'
 import Link from "next/link";
+import WorkView from "@/components/catalog/workView";
 
 const previousPaths = [
     {
@@ -38,9 +39,8 @@ const previousPaths = [
 
 async function getData(id: string) {
 
-
     const url = `http://${process.env.SOLR}:8983/solr/catalog/select?fl=*,[child]&q=id:work%23${id}`;
-    console.log(url)
+    // console.log(url)
 
     const res = await fetch(url, { cache: "no-store" });
 
@@ -64,126 +64,25 @@ export default async function Page({ params }: { params: { id: string } }) {
                 currentPath={params.id}
             />
             <Divider sx={{ mt: "10px" }} />
+            <WorkView work={doc} />
+            <Divider sx={{ mt: "10px" }} />
             <Box sx={{ pt: "10px", display: "flex", gap: "15px" }}>
-                <Box sx={{ display: "flex", flexDirection: "column", rowGap: "10px" }}>
-                    <Box sx={{ display: "flex", gap: "5px" }}>
-                        {doc.type.map((type: string, index: number) => (
-                            <Chip key={index} size="small" label={type} variant="filled" color="primary" />
-                        ))}
-                    </Box>
-                    {/* Title */}
-                    <Typography variant="h4" gutterBottom>
-                        {doc.mainTitle}
-                    </Typography>
-                    <Divider />
-                    <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
-                            Autoria
-                        </Typography>
-                        {Array.isArray(doc.contribution) ? (
-                            doc.contribution.map((contribution: any, index: number) => (
-                                <Box key={index}
-                                    sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
-                                    <Typography variant="caption" display="block">
-                                        {contribution.roleLabel}
-                                    </Typography>
-                                    <Box>
-                                        <Chip
-                                            key={index}
-                                            label={contribution.label}
-                                            variant="outlined"
-                                            color="primary"
-                                            size="small"
-                                            sx={{ cursor: "pointer" }}
-                                        />
-                                    </Box>
-                                </Box>
-                            ))
-                        ) : (
-                            <Box
-                                sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
-                                <Typography variant="caption" display="block">
-                                    {doc.contribution.roleLabel}
-                                </Typography>
-                                <Box>
-                                    <Chip
-                                        label={doc.contribution.label}
-                                        variant="outlined"
-                                        color="primary"
-                                        size="small"
-                                        sx={{ cursor: "pointer" }}
-                                    />
-                                </Box>
-                            </Box>
-                        )}
 
-                    </Box>
-                    <Divider />
-                    <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
-                            Assunto
-                        </Typography>
-                        {Array.isArray(doc.subject) ? (
-                            <code>SUBJECT ARRAY</code>
-                        ) : (
-                            <Box sx={{ pl: 1 }}>
-                                <Typography variant="caption" display="block">
-                                    {doc.subject.type}
-                                </Typography>
-                                <Chip
-                                    label={doc.subject.label}
-                                    variant="outlined"
-                                    color="primary"
-                                    size="small"
-                                    sx={{ cursor: "pointer" }}
-                                />
-
-                            </Box>
-                        )}
-                        {/* {doc.contribution.map((contribution: any, index: number) => (
-                            <Box key={index}
-                                sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
-                                <Typography variant="caption" display="block">
-                                    {contribution.roleLabel}
-                                </Typography>
-                                <Box>
-                                    <Chip
-                                        key={index}
-                                        label={contribution.label}
-                                        variant="outlined"
-                                        color="primary"
-                                        size="small"
-                                    />
-                                </Box>
-                            </Box>
-                        ))} */}
-                    </Box>
-                    <Divider />
-                    <Box >
-                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
-                            Idioma
-                        </Typography>
-                        <Typography variant="body2" gutterBottom>
-                            {doc.language}
-                        </Typography>
-                    </Box>
-                </Box>
                 <Box sx={{ display: "flex", gap: 2, flexDirection: "column" }}>
                     {doc?.hasInstance && (
                         <Box sx={{ display: "flex", gap: 2 }}>
-                        {doc.hasInstance.map((instance: any, index: number) => (
-                            <CardInstance 
-                            instance={instance} 
-                            key={index} 
-                            classification={{
-                                cdd: doc.cdd,
-                                cutter: doc.cutter
-                            }} />
-                        ))}
-                    </Box>
-
+                            {doc.hasInstance.map((instance: any, index: number) => (
+                                <CardInstance
+                                    instance={instance}
+                                    key={index}
+                                    classification={{
+                                        cdd: doc.cdd,
+                                        cutter: doc.cutter
+                                    }} />
+                            ))}
+                        </Box>
                     )}
-                    
+
 
                     <Link href={`/admin/catalog/create/instance/${params.id}`}>
                         <Button size="small" variant="outlined" sx={{ textTransform: "none" }} startIcon={<IoAddOutline />}>Criar Instâncias</Button>

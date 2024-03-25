@@ -31,13 +31,14 @@ async def create_items(request: Items_Schema):
         graph = MakeGraphItem(item, request.itemOf)
         sparql = MakeCreateSparql(graph, i.id, "items")
         response = fuseki.run_sparql(sparql) 
-        hasItem = HasItem(request.itemOf, i.id)
-        # responseSolr = DocItem(item, request.itemOf, request.instanceOf, i.id)
+        hasItem = HasItem(instance_id, i.id)
+        responseSolr = DocItem(item, request.itemOf, request.instanceOf)
+
         # print("ITEM:", response)
 
     return {
         "id": i.id,
         "createItem": response.convert(),
         "hasItem": hasItem,
-        # "solr": responseSolr
+        "solr": responseSolr
         } 

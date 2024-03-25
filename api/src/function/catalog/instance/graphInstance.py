@@ -27,7 +27,8 @@ def MakeGraphInstance(request):
     
     # PhysicalDetails
     g = BfPhysicalDetails(g, resource, request.physicalDetails, BF)
-    g = BfNote(g, resource, request.note, BF)
+    if request.note:
+        g = BfNote(g, resource, request.note, BF)
     g = BfProvisionActivity(g, resource, request.provisionActivity, BF)
     g = BfResponsibilityStatement(g, resource, request.responsibilityStatement, BF)
     g = BfInstanceOf(g, resource, request, BF)
