@@ -27,6 +27,7 @@ import { useAlert } from "@/providers/alert";
 
 // Nextjs
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const headers = {
     accept: "application/json",
@@ -137,7 +138,7 @@ export default function FormWork() {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    console.log("RS", response.data);
+                    // console.log("RS", response.data);
                     // request.identifiersLocal = response.data.id
                     // setWork(request)
                     // setOpenInstance(true)
@@ -147,12 +148,13 @@ export default function FormWork() {
                 }
             })
             .catch(function (error) {
+                setTypeAlert("error")
                 if (error.response.status === 409) {
-                    setTypeAlert("error")
+                    
                     setMessage("Este registro já existe")
                     
                 }
-                console.error("ER:", error);
+                console.error("ERs:", error.response);
             })
             .finally(function () {
                 setProgress(false)
@@ -185,9 +187,12 @@ export default function FormWork() {
                     </CustomTabPanel>
                 ))}
                 <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1 }}>
+                    <Link href={"/admin/catalog"}>
                     <Button variant="outlined">
                         Cancelar
                     </Button>
+                    </Link>
+                    
                     <Button variant="outlined" type="submit">
                         Salvar
                     </Button>

@@ -47,7 +47,7 @@ async function getData(id: string) {
     }
     return res.json();
 }
-import { z } from "zod";
+// import { z } from "zod";
 
 export default async function Create({ params }: { params: { work: string } }) {
 
@@ -77,7 +77,6 @@ export default async function Create({ params }: { params: { work: string } }) {
                 elevation={3}
                 sx={{ p: "15px", mt: "10px" }}>
                 <FormInstance defaultValues={defaultValues}/>
-                {/* <FormCreateInstance work={doc} /> */}
             </Paper>
         </Container>
     )

@@ -11,6 +11,7 @@ import {
     Divider
 } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { useState } from "react";
 
 // React Icons
 import { IoMdClose } from "react-icons/io";
@@ -23,6 +24,12 @@ interface Props {
     open: boolean;
 }
 export default function ModalItems({ items, setOpen, open }: Props) {
+
+    const [rowsDelete, setRowsDelete] = useState(null);
+
+    const handleDelete = () => {
+        console.log(rowsDelete)
+    };
 
     const handleClose = () => {
         setOpen(false);
@@ -47,14 +54,14 @@ export default function ModalItems({ items, setOpen, open }: Props) {
             maxWidth={"lg"}
         >
             <DialogTitle id="alert-dialog-title" >
-                <Box sx={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                Items 
-                <IconButton color="primary" onClick={handleClose}>
-                    <IoMdClose />
-                </IconButton>
+                <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    Items
+                    <IconButton color="primary" onClick={handleClose}>
+                        <IoMdClose />
+                    </IconButton>
                 </Box>
 
-               
+
             </DialogTitle>
             <Divider />
             <DialogContent>
@@ -69,11 +76,21 @@ export default function ModalItems({ items, setOpen, open }: Props) {
                         },
                     }}
                     pageSizeOptions={[5]}
-                    // checkboxSelection
+                    checkboxSelection
                     disableRowSelectionOnClick
+                    onRowSelectionModelChange={(newRowSelectionModel) => {
+                        setRowsDelete(newRowSelectionModel);
+                        // console.log(newRowSelectionModel)
+                    }}
                 />
 
             </DialogContent>
+            <DialogActions>
+                <Button onClick={handleDelete} size="small" variant="outlined">Excluir items selecionados</Button>
+                <Button onClick={handleClose} autoFocus>
+                    Cancelar
+                </Button>
+            </DialogActions>
         </Dialog>
 
     )

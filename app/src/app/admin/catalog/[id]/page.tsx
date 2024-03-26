@@ -1,12 +1,12 @@
 import {
     Container,
-    Chip,
-    Typography,
+    // Chip,
+    // Typography,
     Button,
     Divider,
-    Card,
+    // Card,
     Box,
-    Grid
+    // Grid
 } from "@mui/material";
 
 // BiblioKeia Components
@@ -16,11 +16,11 @@ import CardInstance from "@/components/catalog/instance/cardInstance"
 // React Icons
 import { FcHome } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
-import { LuFileText } from "react-icons/lu";
+// import { LuFileText } from "react-icons/lu";
 import { IoAddOutline } from "react-icons/io5";
 
 // Next
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from "next/link";
 import WorkView from "@/components/catalog/workView";
 
@@ -40,10 +40,7 @@ const previousPaths = [
 async function getData(id: string) {
 
     const url = `http://${process.env.SOLR}:8983/solr/catalog/select?fl=*,[child]&q=id:work%23${id}`;
-    // console.log(url)
-
     const res = await fetch(url, { cache: "no-store" });
-
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -63,7 +60,6 @@ export default async function Page({ params }: { params: { id: string } }) {
                 previousPaths={previousPaths}
                 currentPath={params.id}
             />
-            <Divider sx={{ mt: "10px" }} />
             <WorkView work={doc} />
             <Divider sx={{ mt: "10px" }} />
             <Box sx={{ pt: "10px", display: "flex", gap: "15px" }}>
@@ -82,10 +78,14 @@ export default async function Page({ params }: { params: { id: string } }) {
                             ))}
                         </Box>
                     )}
-
-
                     <Link href={`/admin/catalog/create/instance/${params.id}`}>
-                        <Button size="small" variant="outlined" sx={{ textTransform: "none" }} startIcon={<IoAddOutline />}>Criar Instâncias</Button>
+                        <Button
+                            size="small"
+                            variant="outlined"
+                            sx={{ textTransform: "none" }}
+                            startIcon={<IoAddOutline />}>
+                            Criar Instâncias
+                        </Button>
                     </Link>
 
                 </Box>

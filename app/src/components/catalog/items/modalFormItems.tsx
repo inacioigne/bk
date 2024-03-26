@@ -83,7 +83,7 @@ export default function ModalFormItems({ setOpen, open, instance, classification
             barcode: ""
         }],
     }
-
+    const [year] = instance.publicationDate
     const {
         control,
         register,
@@ -102,13 +102,11 @@ export default function ModalFormItems({ setOpen, open, instance, classification
             .get("/catalog/item/next_id")
             .then(function (response) {
                 setValue('items[0].barcode', response.data.barcode);
-                setValue('items[0].year', instance.publicationDate);
-
-                // console.log("RD:",instance);
+                setValue('items[0].year', year);
             })
             .catch(function (error) {
                 // manipula erros da requisição
-                console.error(error);
+                console.error("Er:", error.response);
             })
             .finally(function () {
             });
@@ -135,11 +133,12 @@ export default function ModalFormItems({ setOpen, open, instance, classification
         let barcode = lastItem.barcode
         let [y, n] = barcode.split("-")
         let nextItem = `${y}-${parseInt(n) + 1}`
+        
 
         append({
             cdd: lastItem.cdd,
             cutter: lastItem.cutter,
-            year: instance.publicationDate,
+            year: year,
             collection: lastItem.collection,
             shelf: lastItem.shelf,
             barcode: nextItem
@@ -181,10 +180,13 @@ export default function ModalFormItems({ setOpen, open, instance, classification
                 }
             })
             .catch(function (error) {
+                setTypeAlert("error")
                 if (error.response.status === 409) {
-                    setTypeAlert("error")
+                    
                     setMessage("Este registro já existe")
-                    console.error("ER:", error);
+                } else {
+                    setMessage(error.response.statusText)
+                    console.error("ER:", error.response);
                 }
             })
             .finally(function () {

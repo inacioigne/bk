@@ -10,7 +10,7 @@ class Item(BaseModel):
     adminMetadata: AdminMetadata
     cdd: str
     cutter: str
-    year: str
+    year: int
     collection: str
     shelf: str
     barcode: str

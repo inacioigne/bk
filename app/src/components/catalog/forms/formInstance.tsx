@@ -132,14 +132,18 @@ export default function FormInstance({ defaultValues }: Props) {
                     if (Object.keys(valor[0]).length === 0) {
                         delete obj[chave]
                     }
-                    
-
                 } else {
                     RemovePropreites(valor)
+                    if (Object.keys(valor).length === 0) {
+                        // console.log(chave, valor)
+                        delete obj[chave]
+                    } 
+                    
                 }
             });
         }
         RemoveEmpty(data)
+
         // console.log("C", data)
     
         bkapi
@@ -148,7 +152,7 @@ export default function FormInstance({ defaultValues }: Props) {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    console.log("RS", response.data);
+                    // console.log("RS", response.data);
                     // request.identifiersLocal = response.data.id
                     // setWork(request)
                     // setOpenInstance(true)
@@ -160,13 +164,12 @@ export default function FormInstance({ defaultValues }: Props) {
                 }
             })
             .catch(function (error) {
-                if (error.response.status === 409) {
-                    setTypeAlert("error")
+                setTypeAlert("error")
+                if (error.response.status === 409) {                    
                     setMessage("Este registro já existe")
-                    console.error("ER:", error);
                 } else {
-                    console.error("ER:", error);
-                    
+                    setMessage(error.response.statusText)
+                    console.error("ER:", error.response);
                 }
             })
             .finally(function () {

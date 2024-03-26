@@ -16,7 +16,7 @@ class BfInstance(BaseModel):
     variantTitle: Optional[list[Title]] = None
     physicalDetails: PhysicalDetails
     provisionActivity: list[ProvisionActivity]
-    editionStatement: BfElement
+    editionStatement: Optional[BfElement] = None
     responsibilityStatement: BfElement
     note: Optional[list[BfElement]] = None
     instanceOf: BfElement

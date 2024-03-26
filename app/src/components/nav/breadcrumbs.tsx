@@ -1,6 +1,6 @@
 "use client";
 // MUI Components
-import { Breadcrumbs, Typography, Chip, } from "@mui/material";
+import { Breadcrumbs, Typography, Chip, Divider, Box } from "@mui/material";
 import { emphasize, styled } from "@mui/material/styles";
 
 // Next Components
@@ -49,7 +49,8 @@ export default function BreadcrumbsBK({ previousPaths, currentPath }: Props) {
   const { setProgress } = useProgress();
   
   return (
-    <Breadcrumbs separator="/">
+    <Box>
+      <Breadcrumbs separator="/">
       {previousPaths?.map((path, index) => (
         <Link key={index} href={path.link} >
           <StyledBreadcrumb
@@ -60,6 +61,12 @@ export default function BreadcrumbsBK({ previousPaths, currentPath }: Props) {
         </Link>
       ))}
       <Typography color="text.primary" variant="subtitle2">{currentPath}</Typography>
+      
     </Breadcrumbs>
+    <Divider sx={{ mt: "10px" }} />
+
+
+    </Box>
+    
   );
 }

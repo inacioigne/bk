@@ -1,6 +1,21 @@
 "use client";
 import {
-    Card, CardContent, Typography, IconButton, Box, Chip, Divider, CardActions, Button, Tooltip, CardMedia
+    Card, 
+    CardContent, 
+    Typography, 
+    IconButton, 
+    Box, 
+    Chip, 
+    Divider, 
+    CardActions, 
+    Button, 
+    Tooltip, 
+    CardMedia,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    Alert
 } from "@mui/material";
 
 // React Icons
@@ -16,7 +31,7 @@ import ModalItems from "@/components/catalog/items/modalItems"
 // React
 import { useState } from "react";
 import ModalFormItems from "../items/modalFormItems";
-import { ExecSyncOptionsWithBufferEncoding } from "child_process";
+// import { ExecSyncOptionsWithBufferEncoding } from "child_process";
 
 type Classification = {
     cdd: string;
@@ -31,13 +46,27 @@ interface Props {
 
 export default function CardInstance({ instance, classification }: Props) {
     const [open, setOpen] = useState(false);
+    const [deleteInstance, setDelete] = useState(false);
     const [formItems, setFormItems] = useState(false);
-    
+
 
     const addEx = () => {
         setFormItems(true)
-        console.log(classification)
+        // console.log(classification)
     }
+
+    const handleDelete = () => {
+        setDelete(true)
+        // console.log(instance)
+        // if (instance.hasItem.length > 0) {
+        //     console.log(instance.hasItem.length)
+        // }
+    }
+
+    const handleClose = () => {
+        setDelete(false);
+    };
+
     return (
         <>
             <Card sx={{ minWidth: 275 }} >
@@ -56,18 +85,15 @@ export default function CardInstance({ instance, classification }: Props) {
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title="Excluir">
-                                <IconButton //onClick={handleClose}
+                                <IconButton onClick={handleDelete}
                                 >
                                     <IoTrashOutline />
                                 </IconButton>
                             </Tooltip>
-
                         </Box>
                     </Box>
                     <Divider sx={{ pt: 2 }} />
                     <Box sx={{ display: "flex", pt: 1, gap: 2 }}>
-
-
                         <CardMedia
                             component="img"
                             sx={{ width: 151 }}
@@ -147,9 +173,30 @@ export default function CardInstance({ instance, classification }: Props) {
                 setOpen={setFormItems}
                 open={formItems}
                 instance={instance}
-                // work={work}
                 classification={classification}
             />
+            <Dialog
+                open={deleteInstance}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Excluir obra"}
+                </DialogTitle>
+                <DialogContent>
+                    {instance.hasItem.length > 0 &&
+                        <Alert severity="warning">Para excluir uma instância você deve excluir todos os recursos a ela relacionados</Alert>
+                    }
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancelar</Button>
+                    <Button onClick={handleClose} autoFocus>
+                        Ok
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </>
 
 

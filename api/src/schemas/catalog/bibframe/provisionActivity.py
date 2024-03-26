@@ -19,4 +19,4 @@ from src.schemas.catalog.bibframe.element import BfElement
 class ProvisionActivity(BaseModel):
     place: str
     agent: str
-    date: str  
+    date: int  
