@@ -47,7 +47,6 @@ async function getData(id: string) {
     }
     return res.json();
 }
-// import { z } from "zod";
 
 export default async function Create({ params }: { params: { work: string } }) {
 

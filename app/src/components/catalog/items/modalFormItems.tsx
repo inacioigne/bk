@@ -43,6 +43,7 @@ import { useAlert } from "@/providers/alert";
 
 // Next
 import { useRouter } from 'next/navigation'
+import action from "@/services/catalog/actions";
 
 type SchemaCreateItem = z.infer<typeof ZodItem>;
 
@@ -174,7 +175,8 @@ export default function ModalFormItems({ setOpen, open, instance, classification
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    console.log(response);
+                    action()
+                    // console.log(response);
                     setMessage("Registro criado com sucesso!")
                     // router.push(`/admin/catalog/work%23${response.data.instanceOf}`);
                 }

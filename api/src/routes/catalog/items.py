@@ -3,7 +3,7 @@ from src.function.catalog.markeCreateSparql import MakeCreateSparql
 from src.function.catalog.bibframe.bfHasItem import HasItem
 from src.function.catalog.solr.docItem import DocItem
 from src.function.catalog.item.graphItem import MakeGraphItem
-from src.schemas.catalog.items import Items_Schema
+from src.schemas.catalog.items import Items_Delete, Items_Schema
 from src.db.models import DbItem
 from src.db.init_db import session
 from pyfuseki import FusekiUpdate
@@ -34,11 +34,20 @@ async def create_items(request: Items_Schema):
         hasItem = HasItem(instance_id, i.id)
         responseSolr = DocItem(item, request.itemOf, request.instanceOf)
 
-        # print("ITEM:", response)
-
     return {
         "id": i.id,
         "createItem": response.convert(),
         "hasItem": hasItem,
         "solr": responseSolr
         } 
+
+@router.delete("/delete", status_code=201)
+async def delete_items(request: Items_Delete):
+    for item in request.items:
+        item_id = item.split("#")[1]
+        uri = f"{settings.base_url}/items/{item_id}"
+        sparql = f"DROP GRAPH <{uri}>"
+        response = fuseki.run_sparql(sparql)
+        
+
+    return request.model_dump()

@@ -9,10 +9,14 @@ from src.function.catalog.bibframe.bfTitle import BfTitle
 from src.function.catalog.bibframe.bfType import BfType
 from rdflib.namespace import RDF, RDFS, DCTERMS
 
+from src.schemas.settings import Settings
+
+settings = Settings()
+
 def MakeGraphInstance(request):
 
     BF = Namespace("http://id.loc.gov/ontologies/bibframe/")
-    identifier = f"https://bibliokeia/works/{request.adminMetadata.identifiedBy}"
+    identifier = f"{settings.base_url}/instances/{request.adminMetadata.identifiedBy}"
     resource = URIRef(identifier)
 
     g = Graph(identifier=identifier)

@@ -1,7 +1,8 @@
+import { bkapi } from "@/services/api";
 import {
     Box,
     Grid,
-    TextField,
+    Alert,
     IconButton,
     DialogContent,
     DialogTitle,
@@ -16,7 +17,10 @@ import { useState } from "react";
 // React Icons
 import { IoMdClose } from "react-icons/io";
 
-
+const headers = {
+    accept: "application/json",
+    "Content-Type": "application/json",
+};
 
 interface Props {
     items: any;
@@ -25,10 +29,44 @@ interface Props {
 }
 export default function ModalItems({ items, setOpen, open }: Props) {
 
+    // console.log(items)
     const [rowsDelete, setRowsDelete] = useState(null);
 
     const handleDelete = () => {
-        console.log(rowsDelete)
+        let item = items[0]
+        let instance = item.itemOf.id.split("#")[2]
+        let data = {
+            itemOf: instance,
+            items: rowsDelete
+        }
+        // console.log(data)
+        bkapi
+            .delete("/catalog/items/delete", {data: data} )
+            .then(function (response) {
+                if (response.status === 201) {
+                    console.log("RS", response.data);
+                    // setTypeAlert("success")
+                    // setMessage("Registro criado com sucesso!")
+                    // let uri = data.instanceOf.value.split("/")
+                    // let id = uri[uri.length - 1]
+                    // action()
+                    // router.push(`/admin/catalog/${id}`);
+                }
+            })
+            .catch(function (error) {
+                console.error("ER:", error);
+                // setTypeAlert("error")
+                // if (error.response.status === 409) {                    
+                //     setMessage("Este registro já existe")
+                // } else {
+                //     setMessage(error.response.statusText)
+                //     console.error("ER:", error.response);
+                // }
+            })
+            .finally(function () {
+                // setProgress(false)
+                // setOpenSnack(true)
+            });
     };
 
     const handleClose = () => {
@@ -65,6 +103,7 @@ export default function ModalItems({ items, setOpen, open }: Props) {
             </DialogTitle>
             <Divider />
             <DialogContent>
+                {items ? 
                 <DataGrid
                     rows={items}
                     columns={columns}
@@ -82,7 +121,13 @@ export default function ModalItems({ items, setOpen, open }: Props) {
                         setRowsDelete(newRowSelectionModel);
                         // console.log(newRowSelectionModel)
                     }}
-                />
+                /> :
+                <Box sx={{ display: "flex", justifyContent: "center"}}>
+                    <Alert severity="info">Não há item cadastrados para esta instância.</Alert>
+
+                </Box>
+                
+                }
 
             </DialogContent>
             <DialogActions>

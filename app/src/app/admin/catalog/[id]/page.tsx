@@ -1,12 +1,9 @@
+// "use client"
 import {
     Container,
-    // Chip,
-    // Typography,
     Button,
     Divider,
-    // Card,
-    Box,
-    // Grid
+    Box
 } from "@mui/material";
 
 // BiblioKeia Components
@@ -23,6 +20,7 @@ import { IoAddOutline } from "react-icons/io5";
 // import Image from 'next/image'
 import Link from "next/link";
 import WorkView from "@/components/catalog/workView";
+import action from "@/services/catalog/actions";
 
 const previousPaths = [
     {
@@ -40,7 +38,9 @@ const previousPaths = [
 async function getData(id: string) {
 
     const url = `http://${process.env.SOLR}:8983/solr/catalog/select?fl=*,[child]&q=id:work%23${id}`;
-    const res = await fetch(url, { cache: "no-store" });
+    const res = await fetch(url, { 
+        cache: 'no-store',
+        next: { tags: ['catalog'] } });
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -52,7 +52,8 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     const data = await getData(params.id);
     const [doc] = data.response.docs;
-    // console.log("D", doc.contribution)
+    // action()
+    console.log("D", doc.hasInstance)
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>

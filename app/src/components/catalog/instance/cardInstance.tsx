@@ -185,7 +185,7 @@ export default function CardInstance({ instance, classification }: Props) {
                     {"Excluir obra"}
                 </DialogTitle>
                 <DialogContent>
-                    {instance.hasItem.length > 0 &&
+                    {instance.hasItem && instance.hasItem.length > 0 &&
                         <Alert severity="warning">Para excluir uma instância você deve excluir todos os recursos a ela relacionados</Alert>
                     }
 

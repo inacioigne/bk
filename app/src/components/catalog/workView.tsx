@@ -163,7 +163,7 @@ export default function WorkView({ work }: Props) {
                     {"Excluir obra"}
                 </DialogTitle>
                 <DialogContent>
-                    {work.hasInstance.length > 0 &&
+                    {work.hasInstance && work.hasInstance.length > 0 &&
                         <Alert severity="warning">Para excluir uma obra você deve excluir todos os recursos a ela relacionados</Alert>
                     }
 

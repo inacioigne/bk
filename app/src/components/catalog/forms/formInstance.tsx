@@ -29,6 +29,7 @@ import { useRouter } from "next/navigation";
 
 // Metadata
 import bibframe from "@/share/bibframe/instance.json"
+import action from "@/services/catalog/actions";
 
 const headers = {
     accept: "application/json",
@@ -153,13 +154,11 @@ export default function FormInstance({ defaultValues }: Props) {
             .then(function (response) {
                 if (response.status === 201) {
                     // console.log("RS", response.data);
-                    // request.identifiersLocal = response.data.id
-                    // setWork(request)
-                    // setOpenInstance(true)
-
+                    setTypeAlert("success")
                     setMessage("Registro criado com sucesso!")
                     let uri = data.instanceOf.value.split("/")
                     let id = uri[uri.length - 1]
+                    action()
                     router.push(`/admin/catalog/${id}`);
                 }
             })
