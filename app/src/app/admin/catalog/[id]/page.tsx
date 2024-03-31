@@ -13,14 +13,13 @@ import CardInstance from "@/components/catalog/instance/cardInstance"
 // React Icons
 import { FcHome } from "react-icons/fc";
 import { GiBookshelf } from "react-icons/gi";
-// import { LuFileText } from "react-icons/lu";
 import { IoAddOutline } from "react-icons/io5";
 
 // Next
 // import Image from 'next/image'
 import Link from "next/link";
 import WorkView from "@/components/catalog/workView";
-import action from "@/services/catalog/actions";
+// import action from "@/services/catalog/actions";
 
 const previousPaths = [
     {
@@ -64,7 +63,6 @@ export default async function Page({ params }: { params: { id: string } }) {
             <WorkView work={doc} />
             <Divider sx={{ mt: "10px" }} />
             <Box sx={{ pt: "10px", display: "flex", gap: "15px" }}>
-
                 <Box sx={{ display: "flex", gap: 2, flexDirection: "column" }}>
                     {doc?.hasInstance && (
                         <Box sx={{ display: "flex", gap: 2 }}>

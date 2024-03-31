@@ -7,7 +7,7 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 
 def HasInstance(request, instance_id):
 
-    uri = f'{settings.base_url}/instance/{instance_id}'
+    uri = f'{settings.base_url}/instances/{instance_id}'
     sparql = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
                 INSERT DATA
                 {{ GRAPH <{request.instanceOf.value}> {{ 

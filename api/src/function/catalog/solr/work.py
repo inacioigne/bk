@@ -33,7 +33,7 @@ def DocWork(request, work_id):
     if request.contribution:
         contributions = list()
         for i in request.contribution:
-            c = {"id": f"{work_id}/contribution/{i.term.value.split('/')[-1]}",
+            c = {"id": f"{work_id}/contribution/authority#{i.term.value.split('/')[-1]}",
                  "agent": i.term.value,
                  "label": i.term.label,
                  "role": i.role.value,
@@ -45,7 +45,7 @@ def DocWork(request, work_id):
     if request.subject:
         subjects = list()
         for i in request.subject:
-            s = {"id": f"{work_id}/subject/{i.term.value.split('/')[-1]}",
+            s = {"id": f"{work_id}/subject/authority#{i.term.value.split('/')[-1]}",
                  "type": i.type,
                  "uri": i.term.value,
                  "label": i.term.label}

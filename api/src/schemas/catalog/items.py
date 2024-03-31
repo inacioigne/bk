@@ -21,5 +21,6 @@ class Items_Schema(BaseModel):
   items: List[Item]
 
 class Items_Delete(BaseModel):
+  instanceOf: str
   itemOf: str
   items: List[str]

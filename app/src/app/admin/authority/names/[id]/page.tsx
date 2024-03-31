@@ -33,7 +33,7 @@ import { Suspense } from "react";
 
 async function getData(id: string) {
 
-    const url = `http://${process.env.SOLR}:8983/solr/authority/select?fl=*,[child]&q=id:${id}`;
+    const url = `http://${process.env.SOLR}:8983/solr/authority/select?fl=*,[child]&q=id:authority%23${id}`; 
 
     const res = await fetch(url, { cache: "no-store" });
 
@@ -46,6 +46,7 @@ async function getData(id: string) {
 
 export default async function Page({ params }: { params: { id: string } }) {
     const data = await getData(params.id);
+
     const [doc] = data.response.docs;
 
     const previousPaths = [

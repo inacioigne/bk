@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException
+from src.function.catalog.work.deleteWork import DeleteWork
 from src.function.catalog.markeCreateSparql import MakeCreateSparql
 from src.function.catalog.work.parserRequestWork import ParserRequestWork
 from src.schemas.catalog.work import BfWork
@@ -9,7 +10,7 @@ from sqlalchemy import exc
 from src.function.catalog.work.graphWork import MakeGraphWork
 from src.schemas.settings import Settings
 from src.function.catalog.solr.work import DocWork
-from src.function.catalog.bibframe.bfContributionOf import UpdateFusekiContribution, UpdateSolrContribution
+from src.function.catalog.bibframe.bfContributionOf import UpdateFusekiWork, UpdateSolrWork
 from src.function.catalog.bibframe.bfSubjectOf import UpdateFusekiSubject, UpdateSolrSubject
 from datetime import datetime
 
@@ -19,8 +20,6 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 
 @router.post("/create", status_code=201)
 async def create_work(request: BfWork): 
-    # request = ParserRequestWork(request)
-
     # MariaDB
     # try:
     #     w = DbWork(title=request.title.mainTitle) 
@@ -40,7 +39,7 @@ async def create_work(request: BfWork):
     request.adminMetadata.creationDate = now
     request.adminMetadata.identifiedBy = w.id
     
-    # # Jena
+    # Jena
     graph = MakeGraphWork(request)
     sparql = MakeCreateSparql(graph, w.id, "works")
     response = fuseki.run_sparql(sparql) 
@@ -48,12 +47,15 @@ async def create_work(request: BfWork):
     # # Solr
     responseSolr = DocWork(request, w.id)  
 
-    # if request.contribution:
-    #     UpdateFusekiContribution(request, w.id)
-    #     UpdateSolrContribution(request, w.id)
+    if request.contribution:
+        UpdateFusekiWork(request.contribution, request.adminMetadata.identifiedBy, 'contributionOf')
+        UpdateSolrWork(request.contribution, request.adminMetadata.identifiedBy, request.title.mainTitle, 'contributionOf')
 
-    # if request.subject:
-    #     UpdateFusekiSubject(request, w.id)
+    if request.subject:
+        UpdateFusekiWork(request.subject, request.adminMetadata.identifiedBy, 'subjectOf')
+        UpdateSolrWork(request.subject, request.adminMetadata.identifiedBy, request.title.mainTitle, 'subjectOf')
+        
+        # UpdateFusekiSubject(request)
     #     UpdateSolrSubject(request, w.id)
 
 
@@ -63,3 +65,8 @@ async def create_work(request: BfWork):
         "solr": responseSolr
         } 
     # return request.model_dump()
+
+@router.delete("/delete/{work_id}", status_code=201)
+async def create_work(work_id: str): 
+    response = DeleteWork(work_id)
+    return response

@@ -7,29 +7,29 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
 
 
-def UpdateFusekiContribution(request, work_id):
+def UpdateFusekiWork(authoritys, id, bibframe):
 
-    uri = f'https://bibliokeia.com/catalog/work/{work_id}'
-    for contribution in request.contribution:
+    uri = f"{settings.base_url}/works/{id}"
+    for authority in authoritys:
         sparql = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
             INSERT DATA {{
-             GRAPH <{contribution.agent}> {{
-             <{contribution.agent}> bf:contributionOf <{uri}> .
+             GRAPH <{authority.term.value}> {{
+             <{authority.term.value}> bf:{bibframe} <{uri}> .
              }} }} """
         response = fuseki.run_sparql(sparql)
 
 
-def UpdateSolrContribution(request, work_id):
-    uri = f'https://bibliokeia.com/catalog/work/{work_id}'
+def UpdateSolrWork(authoritys, id, title, bibframe):
+    uri = f"{settings.base_url}/works/{id}"
     docs = list()
-    for contribution in request.contribution:
-        id = contribution.agent.split("/")[-1]
+    for authority in authoritys:
+        id = authority.term.value.split("/")[-1]
         doc = {
-            "id": id,
-            "contributionOf": {
+            "id": f'authority#{id}',
+            f"{bibframe}": {
                 "add": {
-                    "id": f'{id}/work/{work_id}',
-                    "label": request.title.mainTitle,
+                    "id": f'{id}/work/work#{id}',
+                    "label": title,
                     "uri": uri
                 }
             }

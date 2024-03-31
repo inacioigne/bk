@@ -17,6 +17,12 @@ import { useState } from "react";
 // React Icons
 import { IoMdClose } from "react-icons/io";
 
+// Providers BiblioKeia
+import { useProgress } from "@/providers/progress";
+import { useAlert } from "@/providers/alert";
+
+import action from "@/services/catalog/actions";
+
 const headers = {
     accept: "application/json",
     "Content-Type": "application/json",
@@ -24,48 +30,47 @@ const headers = {
 
 interface Props {
     items: any;
+    instanceOf: any
     setOpen: Function;
     open: boolean;
 }
-export default function ModalItems({ items, setOpen, open }: Props) {
+export default function ModalItems({ items, instanceOf, setOpen, open }: Props) {
 
-    // console.log(items)
-    const [rowsDelete, setRowsDelete] = useState(null);
+    // console.log(instanceOf)
+    const [rowsDelete, setRowsDelete] = useState([]);
+    const [btnDisabled, setBtnDisabled] = useState(true);
+    const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
+    const { setProgress } = useProgress();
 
     const handleDelete = () => {
         let item = items[0]
         let instance = item.itemOf.id.split("#")[2]
+        let instanceOf_id = instanceOf.id.split("/")[2]
         let data = {
+            instanceOf: instanceOf_id,
             itemOf: instance,
             items: rowsDelete
         }
         // console.log(data)
+        setProgress(true)
         bkapi
             .delete("/catalog/items/delete", {data: data} )
             .then(function (response) {
                 if (response.status === 201) {
+                    action()
                     console.log("RS", response.data);
-                    // setTypeAlert("success")
-                    // setMessage("Registro criado com sucesso!")
-                    // let uri = data.instanceOf.value.split("/")
-                    // let id = uri[uri.length - 1]
-                    // action()
-                    // router.push(`/admin/catalog/${id}`);
+                    setTypeAlert("success")
+                    setMessage("Item excluido com sucesso!")
                 }
             })
             .catch(function (error) {
                 console.error("ER:", error);
-                // setTypeAlert("error")
-                // if (error.response.status === 409) {                    
-                //     setMessage("Este registro já existe")
-                // } else {
-                //     setMessage(error.response.statusText)
-                //     console.error("ER:", error.response);
-                // }
+                setTypeAlert("error")
+                setMessage(error.response.statusText)
             })
             .finally(function () {
-                // setProgress(false)
-                // setOpenSnack(true)
+                setProgress(false)
+                setOpenSnack(true)
             });
     };
 
@@ -98,8 +103,6 @@ export default function ModalItems({ items, setOpen, open }: Props) {
                         <IoMdClose />
                     </IconButton>
                 </Box>
-
-
             </DialogTitle>
             <Divider />
             <DialogContent>
@@ -119,19 +122,26 @@ export default function ModalItems({ items, setOpen, open }: Props) {
                     disableRowSelectionOnClick
                     onRowSelectionModelChange={(newRowSelectionModel) => {
                         setRowsDelete(newRowSelectionModel);
+                        if (newRowSelectionModel.length > 0) {
+                            setBtnDisabled(false)
+                        } else {
+                            setBtnDisabled(true)
+                        }
                         // console.log(newRowSelectionModel)
                     }}
                 /> :
                 <Box sx={{ display: "flex", justifyContent: "center"}}>
                     <Alert severity="info">Não há item cadastrados para esta instância.</Alert>
-
                 </Box>
-                
                 }
-
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleDelete} size="small" variant="outlined">Excluir items selecionados</Button>
+                <Button 
+                onClick={handleDelete} 
+                size="small" 
+                variant="outlined"
+                disabled={btnDisabled}
+                >Excluir items selecionados</Button>
                 <Button onClick={handleClose} autoFocus>
                     Cancelar
                 </Button>

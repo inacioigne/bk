@@ -7,9 +7,9 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
 
 
-def UpdateFusekiSubject(request, word_id):
+def UpdateFusekiSubject(request):
 
-    uri = f'https://bibliokeia.com/catalog/works/{word_id}'
+    uri = f'https://bibliokeia.com/catalog/works/{request.adminMetadata.identifiedBy}'
     for subject in request.subject:
         sparql = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
             INSERT DATA {{

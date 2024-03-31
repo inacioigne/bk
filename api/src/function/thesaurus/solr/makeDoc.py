@@ -1,10 +1,10 @@
-def MakeDoc(request, id):
+def MakeDoc(request):
     authority = request.elementList[0].elementValue.value
     authority = authority.removesuffix(',')
     isMemberOfMADSCollection = request.isMemberOfMADSCollection.split("/")[-1]
 
     doc = { 
-            'id': id,
+            'id': f'authority#{request.identifiersLocal}',
             'type': request.type,
             "creationDate": request.adminMetadata.creationDate.strftime('%Y-%m-%d'), 
             "label": request.authoritativeLabel,

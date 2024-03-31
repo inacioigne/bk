@@ -11,12 +11,19 @@ import {
     DialogContent,
     DialogActions,
     Button,
-    Alert
+    Alert,
+    DialogContentText
 } from "@mui/material";
 import { useState } from "react";
 
 import { CiEdit } from "react-icons/ci";
 import { IoTrashOutline } from "react-icons/io5";
+
+// Providers BiblioKeia
+import { useProgress } from "@/providers/progress";
+import { useAlert } from "@/providers/alert";
+// BiblioKeia Service
+import { bkapi } from "@/services/api";
 
 interface Props {
     work: any
@@ -24,11 +31,34 @@ interface Props {
 
 export default function WorkView({ work }: Props) {
     const [open, setOpen] = useState(false);
+    const { setProgress } = useProgress();
+    const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
+
     const handleDelete = () => {
-        setOpen(true)
-        if (work.hasInstance.length > 0) {
-            console.log(work.hasInstance.length)
-        }
+        // console.log(work)
+        setProgress(true)
+        setOpen(false)
+        let id = work.id.split("#")[1]
+        bkapi
+            .delete(`/catalog/work/delete/${id}`)
+            .then(function (response) {
+                if (response.status === 201) {
+                    // action()
+                    console.log("RS", response.data);
+                    setTypeAlert("success")
+                    setMessage("Instância excluida com sucesso!")
+                }
+            })
+            .catch(function (error) {
+                console.error("ER:", error);
+                setTypeAlert("error")
+                setMessage(error.response.statusText)
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
+
     }
     const handleClose = () => {
         setOpen(false);
@@ -50,7 +80,7 @@ export default function WorkView({ work }: Props) {
                             </IconButton>
                         </Tooltip>
                         <Tooltip title="Excluir">
-                            <IconButton onClick={handleDelete}
+                            <IconButton onClick={() => {setOpen(true)}}
                             >
                                 <IoTrashOutline />
                             </IconButton>
@@ -163,14 +193,17 @@ export default function WorkView({ work }: Props) {
                     {"Excluir obra"}
                 </DialogTitle>
                 <DialogContent>
-                    {work.hasInstance && work.hasInstance.length > 0 &&
-                        <Alert severity="warning">Para excluir uma obra você deve excluir todos os recursos a ela relacionados</Alert>
+                    {work.hasInstance && work.hasInstance.length > 0 ?
+                        <Alert severity="warning">Para excluir uma obra você deve excluir todos os recursos a ela relacionados</Alert> :
+                        <DialogContentText id="alert-dialog-description">
+                        Tem certeza que deseja excluir esta obra?
+                    </DialogContentText>
                     }
 
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancelar</Button>
-                    <Button onClick={handleClose} autoFocus>
+                    <Button onClick={handleDelete} autoFocus>
                         Ok
                     </Button>
                 </DialogActions>

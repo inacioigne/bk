@@ -1,9 +1,10 @@
 from fastapi import APIRouter, HTTPException
+from src.function.catalog.instance.deleteInstance import DeleteInstance
 from src.function.catalog.markeCreateSparql import MakeCreateSparql
 from src.function.catalog.solr.docInstance import DocInstance
 from src.function.catalog.bibframe.bfHasInstance import HasInstance
 from src.function.catalog.instance.graphInstance import MakeGraphInstance
-from src.schemas.catalog.instance import BfInstance
+from src.schemas.catalog.instance import BfInstance, Instance_Delete
 from src.db.models import DbInstance
 from src.db.init_db import session
 from pyfuseki import FusekiUpdate
@@ -40,3 +41,8 @@ async def create_instance(request: BfInstance):
         "hasInstance": hasInstance,
         "solr": responseSolr
         } 
+
+@router.delete("/delete", status_code=201)
+async def delete_instance(request: Instance_Delete):  
+    response = DeleteInstance(request)
+    return response

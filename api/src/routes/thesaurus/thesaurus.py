@@ -42,17 +42,14 @@ async def post_authority(request: SchemaMads):
     session.add(a) 
     session.commit()
     request.identifiersLocal = str(a.id)
-    # uri = f'https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}'
-
-
     
     # Jena
     graph = MakeGraphName(request)
     response = authorityUpdate.run_sparql(graph)   
     UpdateJena(request) 
 
-    # # Solr
-    doc = MakeDoc(request, request.identifiersLocal)
+    # Solr
+    doc = MakeDoc(request)
     responseSolr = solr.add([doc], commit=True)
     UpdateSolr(request)
     # print('TESTE: ', responseSolr)

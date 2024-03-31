@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from src.function.catalog.item.deleteItem import DeleteItem
 from src.function.catalog.markeCreateSparql import MakeCreateSparql
 from src.function.catalog.bibframe.bfHasItem import HasItem
 from src.function.catalog.solr.docItem import DocItem
@@ -28,9 +29,10 @@ async def create_items(request: Items_Schema):
         session.commit()
         item.adminMetadata.identifiedBy = i.id
 
-        graph = MakeGraphItem(item, request.itemOf)
+        graph = MakeGraphItem(item, instance_id)
         sparql = MakeCreateSparql(graph, i.id, "items")
         response = fuseki.run_sparql(sparql) 
+        # print("HasItem", instance_id)
         hasItem = HasItem(instance_id, i.id)
         responseSolr = DocItem(item, request.itemOf, request.instanceOf)
 
@@ -44,10 +46,6 @@ async def create_items(request: Items_Schema):
 @router.delete("/delete", status_code=201)
 async def delete_items(request: Items_Delete):
     for item in request.items:
-        item_id = item.split("#")[1]
-        uri = f"{settings.base_url}/items/{item_id}"
-        sparql = f"DROP GRAPH <{uri}>"
-        response = fuseki.run_sparql(sparql)
-        
+        response = DeleteItem(item, request.itemOf, request.instanceOf)        
 
-    return request.model_dump()
+    return response

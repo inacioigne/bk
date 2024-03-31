@@ -130,7 +130,7 @@ export default function FormWork() {
             });
         }
         RemoveEmpty(data)
-        // console.log(data)
+        console.log(data)
     
         bkapi
             .post("/catalog/work/create", data, {
@@ -138,11 +138,6 @@ export default function FormWork() {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    // console.log("RS", response.data);
-                    // request.identifiersLocal = response.data.id
-                    // setWork(request)
-                    // setOpenInstance(true)
-
                     setMessage("Registro criado com sucesso!")
                       router.push(`/admin/catalog/${response.data.id}`);
                 }
@@ -150,9 +145,7 @@ export default function FormWork() {
             .catch(function (error) {
                 setTypeAlert("error")
                 if (error.response.status === 409) {
-                    
                     setMessage("Este registro já existe")
-                    
                 }
                 console.error("ERs:", error.response);
             })

@@ -39,7 +39,8 @@ export default function CardBkTheasaurs({ doc, setDoc, setValue, field, setOpen 
         setValue(`${field}.term.label`, doc.authority[0])
         setValue(`${field}.base`, "bk")
         setValue(`${field}.lang`, doc.lang)
-        setValue(`${field}.term.value`, `https://bibliokeia.com/authority/${doc.type}/${doc.id}`)
+        let id = doc.id.split("#")[1]
+        setValue(`${field}.term.value`, `https://bibliokeia.com/authority/${doc.type}/${id}`)
         setOpen({name: "", open: false})
     }
 

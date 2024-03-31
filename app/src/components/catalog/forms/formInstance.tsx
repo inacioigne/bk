@@ -8,8 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 
 // BiblioKeia Components
-// import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarus";
-// import { typeMetadata } from "@/schema/fieldMetadata";
 
 // BiblioKeia Service
 import { bkapi } from "@/services/api";
@@ -41,7 +39,6 @@ interface TabPanelProps {
     index: number;
     value: number;
     defaultValues: any;
-    
 }
 
 interface Props {
@@ -103,15 +100,12 @@ export default function FormInstance({ defaultValues }: Props) {
         }
     );
 
-    
-
     useEffect(() => {
 
         if (Object.keys(errors).length > 0) {
             console.log("E:", errors)
             setBfErros(true)
         }
-
     }, [errors])
 
     function CreateWork(data: any) {
@@ -139,12 +133,10 @@ export default function FormInstance({ defaultValues }: Props) {
                         // console.log(chave, valor)
                         delete obj[chave]
                     } 
-                    
                 }
             });
         }
         RemoveEmpty(data)
-
         // console.log("C", data)
     
         bkapi

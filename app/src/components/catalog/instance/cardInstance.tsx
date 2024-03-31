@@ -1,21 +1,22 @@
 "use client";
 import {
-    Card, 
-    CardContent, 
-    Typography, 
-    IconButton, 
-    Box, 
-    Chip, 
-    Divider, 
-    CardActions, 
-    Button, 
-    Tooltip, 
+    Card,
+    CardContent,
+    Typography,
+    IconButton,
+    Box,
+    Chip,
+    Divider,
+    CardActions,
+    Button,
+    Tooltip,
     CardMedia,
     Dialog,
     DialogTitle,
     DialogContent,
     DialogActions,
-    Alert
+    Alert,
+    DialogContentText
 } from "@mui/material";
 
 // React Icons
@@ -31,7 +32,12 @@ import ModalItems from "@/components/catalog/items/modalItems"
 // React
 import { useState } from "react";
 import ModalFormItems from "../items/modalFormItems";
-// import { ExecSyncOptionsWithBufferEncoding } from "child_process";
+// BiblioKeia Service
+import { bkapi } from "@/services/api";
+import { headers } from "@/share/acepts";
+import { useProgress } from "@/providers/progress";
+import { useAlert } from "@/providers/alert";
+import action from "@/services/catalog/actions";
 
 type Classification = {
     cdd: string;
@@ -48,6 +54,8 @@ export default function CardInstance({ instance, classification }: Props) {
     const [open, setOpen] = useState(false);
     const [deleteInstance, setDelete] = useState(false);
     const [formItems, setFormItems] = useState(false);
+    const { setProgress } = useProgress();
+    const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
 
 
     const addEx = () => {
@@ -56,11 +64,34 @@ export default function CardInstance({ instance, classification }: Props) {
     }
 
     const handleDelete = () => {
-        setDelete(true)
-        // console.log(instance)
-        // if (instance.hasItem.length > 0) {
-        //     console.log(instance.hasItem.length)
-        // }
+        
+        let data = {
+            instance: instance.id,
+            instanceOf: instance.instanceOf.id
+        }
+        // console.log(data)
+
+        setProgress(true)
+        setDelete(false)
+        bkapi
+            .delete("/catalog/instance/delete", {data: data} )
+            .then(function (response) {
+                if (response.status === 201) {
+                    action()
+                    console.log("RS", response.data);
+                    setTypeAlert("success")
+                    setMessage("Instância excluida com sucesso!")
+                }
+            })
+            .catch(function (error) {
+                console.error("ER:", error);
+                setTypeAlert("error")
+                setMessage(error.response.statusText)
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     const handleClose = () => {
@@ -85,7 +116,7 @@ export default function CardInstance({ instance, classification }: Props) {
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title="Excluir">
-                                <IconButton onClick={handleDelete}
+                                <IconButton onClick={() => {setDelete(true)}}
                                 >
                                     <IoTrashOutline />
                                 </IconButton>
@@ -168,7 +199,11 @@ export default function CardInstance({ instance, classification }: Props) {
                     <Button size="small" variant="outlined" sx={{ textTransform: "none" }} onClick={addEx}>Adicionar Exemplares</Button>
                 </CardActions>
             </Card>
-            <ModalItems items={instance.hasItem} setOpen={setOpen} open={open} />
+            <ModalItems
+                items={instance.hasItem}
+                instanceOf={instance.instanceOf}
+                setOpen={setOpen}
+                open={open} />
             <ModalFormItems
                 setOpen={setFormItems}
                 open={formItems}
@@ -185,14 +220,17 @@ export default function CardInstance({ instance, classification }: Props) {
                     {"Excluir obra"}
                 </DialogTitle>
                 <DialogContent>
-                    {instance.hasItem && instance.hasItem.length > 0 &&
-                        <Alert severity="warning">Para excluir uma instância você deve excluir todos os recursos a ela relacionados</Alert>
+                    {instance.hasItem && instance.hasItem.length > 0 ?
+                        <Alert severity="warning">Para excluir uma instância você deve excluir todos os recursos a ela relacionados</Alert> :
+                        <DialogContentText id="alert-dialog-description">
+                            Tem certeza que deseja excluir essa instância?
+                        </DialogContentText>
                     }
 
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancelar</Button>
-                    <Button onClick={handleClose} autoFocus>
+                    <Button onClick={handleDelete} autoFocus>
                         Ok
                     </Button>
                 </DialogActions>
