@@ -1,6 +1,10 @@
 from src.schemas.settings import Settings
 from pysolr import Solr
 from pyfuseki import FusekiUpdate
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+from src.db.models import DbItem
+from src.db.init_db import session
 
 settings = Settings()
 solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
@@ -23,6 +27,12 @@ def DeleteItem(item, itemOf, instanceOf):
       "hasItem": { "remove": { "id": item } }
     } 
     resSolr = solr.add([d], commit='True')
+     # Delete DB
+    dbItem = session.query(DbItem).filter_by(id=item_id).first()
+    session.delete(dbItem)
+    session.commit()
+    session.close()
+    
     return {
         'resDropItem': resDropItem.convert(),
         'resHasItem': resHasItem.convert(),

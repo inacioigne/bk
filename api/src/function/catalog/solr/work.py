@@ -5,9 +5,9 @@ settings = Settings()
 solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 
 
-def DocWork(request, work_id):
+def DocWork(request):
 
-    work_id = f'work#{work_id}'
+    work_id = f'work#{request.adminMetadata.identifiedBy}'
 
     doc = {
         "id": work_id,
@@ -34,7 +34,7 @@ def DocWork(request, work_id):
         contributions = list()
         for i in request.contribution:
             c = {"id": f"{work_id}/contribution/authority#{i.term.value.split('/')[-1]}",
-                 "agent": i.term.value,
+                 "uri": i.term.value,
                  "label": i.term.label,
                  "role": i.role.value,
                  "roleLabel": i.role.label}

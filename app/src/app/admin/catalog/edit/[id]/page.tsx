@@ -17,6 +17,7 @@ import { IoAddOutline } from "react-icons/io5";
 // Next
 import Link from "next/link";
 import WorkView from "@/components/catalog/workView";
+import FormWorkEdit from "@/components/catalog/forms/formWorkEdit";
 // import action from "@/services/catalog/actions";
 
 const previousPaths = [
@@ -37,7 +38,7 @@ async function getData(id: string) {
     const url = `http://${process.env.SOLR}:8983/solr/catalog/select?fl=*,[child]&q=id:work%23${id}`;
     const res = await fetch(url, {
         cache: 'no-store',
-        next: { tags: ['catalog'] }
+        next: { tags: ['catalog', 'edit'] }
     });
 
     if (!res.ok) {
@@ -50,42 +51,16 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     const data = await getData(params.id);
     const [doc] = data.response.docs;
+    console.log(doc)
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
             <BreadcrumbsBK
                 previousPaths={previousPaths}
-                currentPath={params.id}
+                currentPath={"Edit"}
             />
-            <WorkView work={doc} />
-            <Divider sx={{ mt: "10px" }} />
-            <Box sx={{ pt: "10px", display: "flex", gap: "15px" }}>
-                <Box sx={{ display: "flex", gap: 2, flexDirection: "column" }}>
-                    {doc?.hasInstance && (
-                        <Box sx={{ display: "flex", gap: 2 }}>
-                            {doc.hasInstance.map((instance: any, index: number) => (
-                                <CardInstance
-                                    instance={instance}
-                                    key={index}
-                                    classification={{
-                                        cdd: doc.cdd,
-                                        cutter: doc.cutter
-                                    }} />
-                            ))}
-                        </Box>
-                    )}
-                    <Link href={`/admin/catalog/create/instance/${params.id}`}>
-                        <Button
-                            size="small"
-                            variant="outlined"
-                            sx={{ textTransform: "none" }}
-                            startIcon={<IoAddOutline />}>
-                            Criar Instâncias
-                        </Button>
-                    </Link>
-
-                </Box>
-            </Box>
+            <FormWorkEdit doc={doc}/>
+            
         </Container>
     )
 }

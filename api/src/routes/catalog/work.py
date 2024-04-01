@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException
+from src.function.catalog.work.editWork import EditWork
 from src.function.catalog.work.deleteWork import DeleteWork
 from src.function.catalog.markeCreateSparql import MakeCreateSparql
 from src.function.catalog.work.parserRequestWork import ParserRequestWork
@@ -44,8 +45,8 @@ async def create_work(request: BfWork):
     sparql = MakeCreateSparql(graph, w.id, "works")
     response = fuseki.run_sparql(sparql) 
 
-    # # Solr
-    responseSolr = DocWork(request, w.id)  
+    # Solr
+    responseSolr = DocWork(request)  
 
     if request.contribution:
         UpdateFusekiWork(request.contribution, request.adminMetadata.identifiedBy, 'contributionOf')
@@ -54,19 +55,35 @@ async def create_work(request: BfWork):
     if request.subject:
         UpdateFusekiWork(request.subject, request.adminMetadata.identifiedBy, 'subjectOf')
         UpdateSolrWork(request.subject, request.adminMetadata.identifiedBy, request.title.mainTitle, 'subjectOf')
-        
-        # UpdateFusekiSubject(request)
-    #     UpdateSolrSubject(request, w.id)
-
 
     return {
         "id": w.id,
          "jena": response.convert()['message'],
         "solr": responseSolr
         } 
-    # return request.model_dump()
 
 @router.delete("/delete/{work_id}", status_code=201)
-async def create_work(work_id: str): 
+async def delete_work(work_id: str): 
     response = DeleteWork(work_id)
     return response
+
+@router.put("/edit/{work_id}", status_code=201)
+async def edit_work(request: BfWork, work_id: str): 
+    request.adminMetadata.identifiedBy = work_id
+    EditWork(request)
+    # Solr
+    responseSolr = DocWork(request)  
+    if request.contribution:
+        UpdateFusekiWork(request.contribution, request.adminMetadata.identifiedBy, 'contributionOf')
+        UpdateSolrWork(request.contribution, request.adminMetadata.identifiedBy, request.title.mainTitle, 'contributionOf')
+
+    if request.subject:
+        UpdateFusekiWork(request.subject, request.adminMetadata.identifiedBy, 'subjectOf')
+        UpdateSolrWork(request.subject, request.adminMetadata.identifiedBy, request.title.mainTitle, 'subjectOf')
+
+
+    return {
+        "id": work_id,
+        #  "jena": response.convert()['message'],
+        "solr": responseSolr
+        } 

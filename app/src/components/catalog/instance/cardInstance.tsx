@@ -52,6 +52,7 @@ interface Props {
 
 export default function CardInstance({ instance, classification }: Props) {
     const [open, setOpen] = useState(false);
+    const [btnDisabled, setBtnDisabled] = useState(true);
     const [deleteInstance, setDelete] = useState(false);
     const [formItems, setFormItems] = useState(false);
     const { setProgress } = useProgress();
@@ -60,7 +61,6 @@ export default function CardInstance({ instance, classification }: Props) {
 
     const addEx = () => {
         setFormItems(true)
-        // console.log(classification)
     }
 
     const handleDelete = () => {
@@ -78,7 +78,7 @@ export default function CardInstance({ instance, classification }: Props) {
             .then(function (response) {
                 if (response.status === 201) {
                     action()
-                    console.log("RS", response.data);
+                    // console.log("RS", response.data);
                     setTypeAlert("success")
                     setMessage("Instância excluida com sucesso!")
                 }
@@ -96,6 +96,12 @@ export default function CardInstance({ instance, classification }: Props) {
 
     const handleClose = () => {
         setDelete(false);
+    };
+
+    const handleOpen = () => {
+        // if (instance.hasItem && instance.hasItem.length > 0 )
+        // setBtnDisabled()
+        setDelete(true);
     };
 
     return (
@@ -116,7 +122,7 @@ export default function CardInstance({ instance, classification }: Props) {
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title="Excluir">
-                                <IconButton onClick={() => {setDelete(true)}}
+                                <IconButton onClick={handleOpen}
                                 >
                                     <IoTrashOutline />
                                 </IconButton>
@@ -203,6 +209,7 @@ export default function CardInstance({ instance, classification }: Props) {
                 items={instance.hasItem}
                 instanceOf={instance.instanceOf}
                 setOpen={setOpen}
+                setFormItems={setFormItems}
                 open={open} />
             <ModalFormItems
                 setOpen={setFormItems}
@@ -230,7 +237,10 @@ export default function CardInstance({ instance, classification }: Props) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancelar</Button>
-                    <Button onClick={handleDelete} autoFocus>
+                    <Button 
+                    disabled={instance.hasItem && instance.hasItem.length > 0 ? true : false}
+                    onClick={handleDelete} 
+                    autoFocus>
                         Ok
                     </Button>
                 </DialogActions>

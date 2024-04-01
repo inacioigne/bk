@@ -52,14 +52,12 @@ async def post_authority(request: SchemaMads):
     doc = MakeDoc(request)
     responseSolr = solr.add([doc], commit=True)
     UpdateSolr(request)
-    # print('TESTE: ', responseSolr)
 
     return {
         "id": request.identifiersLocal,
          "jena": response.convert()['message'],
         "solr": responseSolr
         } 
-    # return request.model_dump()
 
 # Delete Autority
 @router.delete("/delete", status_code=200) 

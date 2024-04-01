@@ -24,6 +24,9 @@ import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
 // BiblioKeia Service
 import { bkapi } from "@/services/api";
+// Nextjs
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Props {
     work: any
@@ -33,6 +36,7 @@ export default function WorkView({ work }: Props) {
     const [open, setOpen] = useState(false);
     const { setProgress } = useProgress();
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
+    const router = useRouter();
 
     const handleDelete = () => {
         // console.log(work)
@@ -43,10 +47,10 @@ export default function WorkView({ work }: Props) {
             .delete(`/catalog/work/delete/${id}`)
             .then(function (response) {
                 if (response.status === 201) {
-                    // action()
-                    console.log("RS", response.data);
+                    // console.log("RS", response.data);
+                    router.push(`/admin/catalog/`);
                     setTypeAlert("success")
-                    setMessage("Instância excluida com sucesso!")
+                    setMessage("Obra excluida com sucesso!")
                 }
             })
             .catch(function (error) {
@@ -63,6 +67,12 @@ export default function WorkView({ work }: Props) {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleEdit = () => {
+        console.log(work)
+        // setOpen(false);
+    };
+
     return (
         <>
             <Box sx={{ pt: "10px", display: "flex", flexDirection: "column", rowGap: "10px" }}>
@@ -74,10 +84,13 @@ export default function WorkView({ work }: Props) {
                     </Box>
                     <Box>
                         <Tooltip title="Editar">
-                            <IconButton //onClick={handleClose}
+                            <Link href={`/admin/catalog/edit/${work.id.split("#")[1]}`}>
+                            <IconButton //onClick={handleEdit}
                             >
                                 <CiEdit />
                             </IconButton>
+                            </Link>
+                            
                         </Tooltip>
                         <Tooltip title="Excluir">
                             <IconButton onClick={() => {setOpen(true)}}
@@ -203,7 +216,10 @@ export default function WorkView({ work }: Props) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancelar</Button>
-                    <Button onClick={handleDelete} autoFocus>
+                    <Button 
+                    disabled={work.hasInstance && work.hasInstance.length > 0 ? true : false}
+                    onClick={handleDelete} 
+                    autoFocus>
                         Ok
                     </Button>
                 </DialogActions>

@@ -20,11 +20,9 @@ import { useEffect, useState } from "react";
 import { IoRemove, IoAddOutline } from "react-icons/io5";
 import { FcCancel } from "react-icons/fc";
 import { IoIosSave } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 
 // Services BiblioKeia
-// import { SearchModalSubjects } from "@/services/thesarus/searchModalSubjects"
-
-// import { schemaAuthorityDoc } from "@/schema/solr"
 
 // React-Hook-Form
 import { useForm } from "react-hook-form";
@@ -111,7 +109,7 @@ export default function ModalFormItems({ setOpen, open, instance, classification
             })
             .finally(function () {
             });
-    }, []);
+    }, [open]);
 
     const {
         fields,
@@ -134,7 +132,7 @@ export default function ModalFormItems({ setOpen, open, instance, classification
         let barcode = lastItem.barcode
         let [y, n] = barcode.split("-")
         let nextItem = `${y}-${parseInt(n) + 1}`
-        
+
 
         append({
             cdd: lastItem.cdd,
@@ -148,14 +146,16 @@ export default function ModalFormItems({ setOpen, open, instance, classification
 
     };
     // console.log('E:', errors)
-    
+
     function CreateItems(data: any) {
 
         let items = data.items.map((item: any) => {
-            let status = { status: {
-                "value": "http://id.loc.gov/vocabulary/mstatus/n",
-                "label": "Novo"
-            }}
+            let status = {
+                status: {
+                    "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                    "label": "Novo"
+                }
+            }
             item['adminMetadata'] = status
             return item
         })
@@ -167,7 +167,7 @@ export default function ModalFormItems({ setOpen, open, instance, classification
             "items": items
         }
         setProgress(true)
-        console.log('d', request)
+        // console.log('d', request)
 
         bkapi
             .post("catalog/items/create", request, {
@@ -184,7 +184,7 @@ export default function ModalFormItems({ setOpen, open, instance, classification
             .catch(function (error) {
                 setTypeAlert("error")
                 if (error.response.status === 409) {
-                    
+
                     setMessage("Este registro já existe")
                 } else {
                     setMessage(error.response.statusText)
@@ -208,7 +208,12 @@ export default function ModalFormItems({ setOpen, open, instance, classification
             maxWidth={"lg"}
         >
             <DialogTitle id="alert-dialog-title">
-                Criar Items {id?.barcode}
+                <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                Criar Items
+                    <IconButton color="primary" onClick={handleClose}>
+                        <IoMdClose />
+                    </IconButton>
+                </Box>
             </DialogTitle>
             <Divider />
             <form onSubmit={handleSubmit(CreateItems)}>
@@ -295,7 +300,6 @@ export default function ModalFormItems({ setOpen, open, instance, classification
                 <DialogActions>
                     <Box sx={{ display: "flex", gap: "10px", alignItems: "center", pb: "10px", pr: "10px" }}>
                         <Button
-                            // type="submit"
                             sx={{ textTransform: "none" }}
                             variant="outlined"
                             size="small"

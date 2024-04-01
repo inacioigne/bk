@@ -60,7 +60,7 @@ def MakeDoc(request):
         for i in request.hasAffiliation:
             if i.organization.uri:
                 a = {
-                'id': f"{id}/hasAffiliation#{i.organization.uri.split('/')[-1]}",
+                'id': f"authority#{request.identifiersLocal}/hasAffiliation#{i.organization.uri.split('/')[-1]}",
                 'organization': {
                     "label": i.organization.label,
                     'uri': i.organization.uri,
@@ -69,7 +69,7 @@ def MakeDoc(request):
                 'affiliationStart': i.affiliationStart }
             else:
                 a = {
-                'id': f"{id}/hasAffiliation#{i.organization.label}",
+                'id': f"authority#{request.identifiersLocal}/hasAffiliation#{i.organization.label}",
                 'organization': {
                     "label": i.organization.label,
                     # 'uri': i.organization.uri,
@@ -103,7 +103,7 @@ def MakeDoc(request):
         uris = list()
         for i in request.hasCloseExternalAuthority:
             uri = {
-                    'id': f"{id}/hasCloseExternalAuthority#{i.uri.split('/')[-1]}",
+                    'id': f"authority#{request.identifiersLocal}/hasCloseExternalAuthority#{i.uri.split('/')[-1]}",
                     'uri': i.uri, 
                     'label': i.label, 
                     'base': i.base }
@@ -116,13 +116,13 @@ def MakeDoc(request):
         for i in request.hasBroaderAuthority:
             if i.uri:
                 uri = {
-                    'id': f"{id}/hasBroaderAuthority#{i.uri.split('/')[-1]}",
+                    'id': f"authority#{request.identifiersLocal}/hasBroaderAuthority#{i.uri.split('/')[-1]}",
                     'label': i.label,
                     'uri': i.uri,
                     'base': i.base }
             else:
                 uri = {
-                    'id': f"{id}/hasBroaderAuthority#{i.label}",
+                    'id': f"authority#{request.identifiersLocal}/hasBroaderAuthority#{i.label}",
                     'label': i.label,
                     'base': i.base }
 
@@ -136,13 +136,13 @@ def MakeDoc(request):
         for i in request.hasNarrowerAuthority:
             if i.uri:
                 uri = {
-                    'id': f"{id}/hasNarrowerAuthority#{i.uri.split('/')[-1]}",
+                    'id': f"authority#{request.identifiersLocal}/hasNarrowerAuthority#{i.uri.split('/')[-1]}",
                     'label': i.label,
                     'uri': i.uri,
                     'base': i.base }
             else:
                 uri = {
-                    'id': f"{id}/hasNarrowerAuthority#{i.label}",
+                    'id': f"authority#{request.identifiersLocal}/hasNarrowerAuthority#{i.label}",
                     'label': i.label,
                     'base': i.base }
 
@@ -156,13 +156,13 @@ def MakeDoc(request):
         for i in request.hasReciprocalAuthority:
             if i.uri:
                 uri = {
-                    'id': f"{id}/hasReciprocalAuthority#{i.uri.split('/')[-1]}",
+                    'id': f"authority#{request.identifiersLocal}/hasReciprocalAuthority#{i.uri.split('/')[-1]}",
                     'label': i.label,
                     'uri': i.uri,
                     'base': i.base }
             else:
                 uri = {
-                    'id': f"{id}/hasReciprocalAuthority#{i.label}",
+                    'id': f"authority#{request.identifiersLocal}/hasReciprocalAuthority#{i.label}",
                     'label': i.label,
                     'base': i.base }
 
@@ -176,13 +176,13 @@ def MakeDoc(request):
         for i in request.occupation:
             if i.uri:
                 uri = {
-                    'id': f"{id}/occupation#{i.uri.split('/')[-1]}",
+                    'id': f"authority#{request.identifiersLocal}/occupation#{i.uri.split('/')[-1]}",
                     'label': i.label,
                     'uri': i.uri,
                     'base': i.base }
             else:
                 uri = {
-                    'id': f"{id}/occupation#{i.label}",
+                    'id': f"authority#{request.identifiersLocal}/occupation#{i.label}",
                     'label': i.label,
                     'base': i.base }
 
@@ -195,7 +195,7 @@ def MakeDoc(request):
         fields = list()
         for i in request.fieldOfActivity:
             uri = {
-                    'id': f"{id}/fieldOfActivity#{i.uri.split('/')[-1]}",
+                    'id': f"authority#{request.identifiersLocal}/fieldOfActivity#{i.uri.split('/')[-1]}",
                     'uri': i.uri, 
                     'label': i.label, 
                     'base': i.base }
@@ -208,7 +208,7 @@ def MakeDoc(request):
         for i in request.identifiesRWO:
             identifier = i.uri.split("/")[-1]
             uri = {
-                    'id': f"{id}/identifiesRWO#{identifier}",
+                    'id': f"authority#{request.identifiersLocal}/identifiesRWO#{identifier}",
                     'uri': i.uri, 
                     'label': i.label, 
                     'base': i.base}

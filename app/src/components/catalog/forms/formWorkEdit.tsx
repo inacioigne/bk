@@ -5,12 +5,9 @@ import { useFieldArray, useWatch, useForm } from "react-hook-form";
 import bibframe from "@/share/bibframe/work.json"
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import BibframeField from "./bibframe/bibframeField";
 import { useEffect, useState } from "react";
 
 // BiblioKeia Components
-// import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarus";
-// import { typeMetadata } from "@/schema/fieldMetadata";
 
 // BiblioKeia Service
 import { bkapi } from "@/services/api";
@@ -28,6 +25,7 @@ import { useAlert } from "@/providers/alert";
 // Nextjs
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import action from "@/services/catalog/actions";
 
 const headers = {
     accept: "application/json",
@@ -38,6 +36,10 @@ interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
     value: number;
+}
+
+interface Props {
+    doc: any;
 }
 
 function CustomTabPanel(props: TabPanelProps) {
@@ -67,7 +69,111 @@ function a11yProps(index: number) {
     };
 }
 
-export default function FormWork() {
+function ParserDoc(doc: any, commonTypes: any) {
+
+    let obj = {
+        adminMetadata: {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/c",
+                "label": "Editado"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        classification: {
+            cdd: doc.cdd,
+            cutter: doc.cutter
+        },
+        title: {
+            mainTitle: doc.mainTitle[0],
+            "subtitle": ""
+        },
+        "variantTitle": [
+            {
+                "mainTitle": "",
+                "subtitle": ""
+            }
+        ],
+    }
+
+    let types = doc.type.map((e: string, i: number) => {
+        const [resourceType] = commonTypes.resourceType.filter(element => element.value === e);
+        return resourceType
+    })
+    obj['resourceType'] = types
+    
+    
+    let languages = doc.language.map((e: string, i: number) => {
+        const [language] = commonTypes.language.filter(element => element.label === e);
+        return language
+    })
+    obj['language'] = languages
+
+    
+    if (Array.isArray(doc.contribution)) {
+        const contributions = doc.contribution.map((e: any, i: number) => {
+            let contribution = {
+                term: {
+                    value: e.uri,
+                    label: e.label[0]
+                },
+                role: {
+                    value: e.role[0],
+                    label: e.roleLabel
+                }
+            }
+            return contribution
+            
+        })
+        obj['contribution'] = contributions
+    } else {
+        let contribution = {
+            term: {
+                value: doc.contribution.uri,
+                label: doc.contribution.label[0]
+            },
+            role: {
+                value: doc.contribution.role[0],
+                label: doc.contribution.roleLabel
+            }
+        }
+        obj['contribution'] = [contribution]
+        
+    }
+    if (typeof doc.subject === "object") {
+        let subject = {
+            type: doc.subject.type[0],
+            term: {
+                value: doc.subject.uri,
+                label: doc.subject.label[0]
+            },
+            lang: "por"
+        }
+        obj['subject'] = [subject]
+    }
+    if (doc.genreForm) {
+        console.log(doc.genreForm)
+
+    } else {
+        obj["genreForm"] = [
+            {
+                "value": "",
+                "label": ""
+            }
+        ]
+    }
+    
+
+    
+    return obj
+    
+}
+
+export default function FormWorkEdit({ doc }: Props) {
+
+    // console.log(doc, bibframe.defaultValues)
 
     type SchemaCreateWork = z.infer<typeof ZodWork>;
     const [openBfErros, setBfErros] = useState(false);
@@ -80,6 +186,9 @@ export default function FormWork() {
         setPanel(newValue);
     };
 
+    const obj = ParserDoc(doc, bibframe.commonTypes)
+
+
     const {
         control,
         register,
@@ -90,7 +199,7 @@ export default function FormWork() {
     } = useForm<SchemaCreateWork>(
         {
             resolver: zodResolver(ZodWork),
-            defaultValues: bibframe.defaultValues
+            defaultValues: obj
         }
     );
 
@@ -128,14 +237,19 @@ export default function FormWork() {
             });
         }
         RemoveEmpty(data)
-        // console.log(data)    
+        // request.adminMetadata.creationDate
+        let id = doc.id.split("#")[1]
+        data.adminMetadata.creationDate = doc.creationDate[0]
+        // console.log(data)
         bkapi
-            .post("/catalog/work/create", data, {
+            .put(`/catalog/work/edit/${id}`, data, {
                 headers: headers,
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    setMessage("Registro criado com sucesso!")
+                    console.log(response.data)
+                    action()
+                    setMessage("Registro editado com sucesso!")
                     router.push(`/admin/catalog/${response.data.id}`);
                 }
             })

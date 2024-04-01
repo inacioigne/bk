@@ -16,6 +16,7 @@ import { useState } from "react";
 
 // React Icons
 import { IoMdClose } from "react-icons/io";
+import { FcCancel } from "react-icons/fc";
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
@@ -32,9 +33,10 @@ interface Props {
     items: any;
     instanceOf: any
     setOpen: Function;
+    setFormItems: Function;
     open: boolean;
 }
-export default function ModalItems({ items, instanceOf, setOpen, open }: Props) {
+export default function ModalItems({ items, instanceOf, setOpen, setFormItems, open }: Props) {
 
     // console.log(instanceOf)
     const [rowsDelete, setRowsDelete] = useState([]);
@@ -54,13 +56,15 @@ export default function ModalItems({ items, instanceOf, setOpen, open }: Props) 
         // console.log(data)
         setProgress(true)
         bkapi
-            .delete("/catalog/items/delete", {data: data} )
+            .delete("/catalog/items/delete", { data: data })
             .then(function (response) {
                 if (response.status === 201) {
                     action()
-                    console.log("RS", response.data);
+                    // console.log("RS", response.data);
                     setTypeAlert("success")
                     setMessage("Item excluido com sucesso!")
+                    setBtnDisabled(true)
+                    setOpen(false)
                 }
             })
             .catch(function (error) {
@@ -77,6 +81,11 @@ export default function ModalItems({ items, instanceOf, setOpen, open }: Props) 
     const handleClose = () => {
         setOpen(false);
     };
+
+    const addEx = () => {
+        setOpen(false);
+        setFormItems(true)
+    }
 
     const columns: GridColDef[] = [
         { field: 'cdd', headerName: 'CDD', width: 90 },
@@ -106,43 +115,58 @@ export default function ModalItems({ items, instanceOf, setOpen, open }: Props) 
             </DialogTitle>
             <Divider />
             <DialogContent>
-                {items ? 
-                <DataGrid
-                    rows={items}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: {
-                                pageSize: 5,
+                {items ?
+                    <DataGrid
+                        rows={items}
+                        columns={columns}
+                        initialState={{
+                            pagination: {
+                                paginationModel: {
+                                    pageSize: 5,
+                                },
                             },
-                        },
-                    }}
-                    pageSizeOptions={[5]}
-                    checkboxSelection
-                    disableRowSelectionOnClick
-                    onRowSelectionModelChange={(newRowSelectionModel) => {
-                        setRowsDelete(newRowSelectionModel);
-                        if (newRowSelectionModel.length > 0) {
-                            setBtnDisabled(false)
-                        } else {
-                            setBtnDisabled(true)
-                        }
-                        // console.log(newRowSelectionModel)
-                    }}
-                /> :
-                <Box sx={{ display: "flex", justifyContent: "center"}}>
-                    <Alert severity="info">Não há item cadastrados para esta instância.</Alert>
-                </Box>
+                        }}
+                        pageSizeOptions={[5]}
+                        checkboxSelection
+                        disableRowSelectionOnClick
+                        onRowSelectionModelChange={(newRowSelectionModel) => {
+                            setRowsDelete(newRowSelectionModel);
+                            if (newRowSelectionModel.length > 0) {
+                                setBtnDisabled(false)
+                            } else {
+                                setBtnDisabled(true)
+                            }
+                            // console.log(newRowSelectionModel)
+                        }}
+                    /> :
+                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                        <Alert severity="info">Não há item cadastrados para esta instância.</Alert>
+                    </Box>
                 }
             </DialogContent>
             <DialogActions>
-                <Button 
-                onClick={handleDelete} 
-                size="small" 
-                variant="outlined"
-                disabled={btnDisabled}
+                <Button
+                    onClick={handleDelete}
+                    size="small"
+                    variant="outlined"
+                    sx={{ textTransform: "none" }}
+                    disabled={btnDisabled}
                 >Excluir items selecionados</Button>
-                <Button onClick={handleClose} autoFocus>
+
+                <Button
+                    size="small"
+                    variant="outlined"
+                    sx={{ textTransform: "none" }}
+                    
+                    onClick={addEx}>Adicionar Exemplares</Button>
+
+                <Button
+                    sx={{ textTransform: "none" }}
+                    variant="outlined"
+                    size="small"
+                    onClick={handleClose}
+                    startIcon={<FcCancel />}
+                >
                     Cancelar
                 </Button>
             </DialogActions>

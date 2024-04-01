@@ -16,8 +16,11 @@ def BfAdminMetadata(g, adminMetadata, resource, BF):
     g.add((assigner_uri, RDFS.label, Literal(settings.organization)))
     g.add((bNadminMetadata, BF.assigner, assigner_uri ))
     # creationDate
-    # formatted_date = now.strftime("%Y-%m-%d")
     g.add((bNadminMetadata, BF.creationDate, Literal(adminMetadata.creationDate.strftime("%Y-%m-%d"), datatype=XSD.date) ))
+    # changeDate
+    if adminMetadata.changeDate:
+        g.add((bNadminMetadata, BF.changeDate, Literal(adminMetadata.changeDate.strftime("%Y-%m-%d"), datatype=XSD.date) ))
+
     # descriptionConventions
     if adminMetadata.descriptionConventions:
         descriptionConventions = URIRef(adminMetadata.descriptionConventions.value)

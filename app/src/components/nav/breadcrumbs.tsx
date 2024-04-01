@@ -63,7 +63,7 @@ export default function BreadcrumbsBK({ previousPaths, currentPath }: Props) {
       <Typography color="text.primary" variant="subtitle2">{currentPath}</Typography>
       
     </Breadcrumbs>
-    <Divider sx={{ mt: "10px" }} />
+    <Divider sx={{ my: "10px" }} />
 
 
     </Box>

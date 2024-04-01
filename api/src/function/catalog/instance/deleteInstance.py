@@ -4,15 +4,16 @@ from pyfuseki import FusekiUpdate
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from src.db.models import DbInstance
+from src.db.init_db import session
 
 settings = Settings()
 solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 fuseki = FusekiUpdate(settings.fuseki , 'bk') 
 
-engine = create_engine(
-     f"mariadb+mariadbconnector://{settings.db_user}:{settings.db_pass}@{settings.mariadb}:3306/bk")
-session = scoped_session(
-    sessionmaker(autocommit=False, autoflush=False, bind=engine))
+# engine = create_engine(
+#      f"mariadb+mariadbconnector://{settings.db_user}:{settings.db_pass}@{settings.mariadb}:3306/bk")
+# session = scoped_session(
+#     sessionmaker(autocommit=False, autoflush=False, bind=engine))
 
 def DeleteInstance(request):
     
@@ -24,11 +25,11 @@ def DeleteInstance(request):
     # Update Work
     work_id = request.instanceOf.split("/")[-1].split("#")[1]
     work = f'{settings.base_url}/works/{work_id}'
-    sparqlHasItem = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
+    sparqlHasInstance = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
             DELETE DATA
             {{ GRAPH <{work}> 
             {{ <{work}>  bf:hasInstance  <{uri}> }} }} ;"""
-    resHasItem = fuseki.run_sparql(sparqlHasItem)
+    resHasItem = fuseki.run_sparql(sparqlHasInstance)
     # Update Solr
     d = {
       "id": f"work#{work_id}",

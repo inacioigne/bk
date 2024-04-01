@@ -19,13 +19,15 @@ def UpdateFusekiWork(authoritys, id, bibframe):
         response = fuseki.run_sparql(sparql)
 
 
-def UpdateSolrWork(authoritys, id, title, bibframe):
-    uri = f"{settings.base_url}/works/{id}"
+def UpdateSolrWork(authoritys, id_work, title, bibframe):
+
+    uri = f"{settings.base_url}/works/{id_work}"
     docs = list()
     for authority in authoritys:
         id = authority.term.value.split("/")[-1]
+        id = f'authority#{id}'
         doc = {
-            "id": f'authority#{id}',
+            "id": id,
             f"{bibframe}": {
                 "add": {
                     "id": f'{id}/work/work#{id}',

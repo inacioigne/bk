@@ -6,6 +6,7 @@ from src.schemas.catalog.bibframe.element import BfElement
 
 class AdminMetadata(BaseModel):
     creationDate: datetime = None
+    changeDate: Optional[datetime] = None
     status: BfElement
     descriptionConventions: Optional[BfElement] = None
     identifiedBy: Optional[str] = None
