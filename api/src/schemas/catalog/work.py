@@ -11,9 +11,6 @@ class ResourceProperties(BaseModel):
     genreForm: Optional[BfElement] = None
 
 
-
-
-
 class Contribution(BaseModel):
     term: BfElement
     role: BfElement
@@ -38,6 +35,22 @@ class BfWork(BaseModel):
     subject: Optional[list[Subject]] = None
     classification: Classification
     note: Optional[str] = None
-    summary: Optional[str] = None
+    summary: Optional[BfElement] = None
     tableOfContents: Optional[str] = None
+
+class BfWorkEdit(BaseModel):
+    resourceType: list[BfElement]
+    adminMetadata: AdminMetadata
+    title: Title
+    variantTitle: Optional[list[Title]] = None
+    language: list[BfElement]
+    genreForm: list[BfElement] = None
+    contribution: Optional[list[Contribution]] = None
+    subject: Optional[list[Subject]] = None
+    classification: Classification
+    note: Optional[str] = None
+    summary: Optional[BfElement] = None
+    tableOfContents: Optional[str] = None
+    authorityExclude: Optional[list[BfElement]] = None
+
     

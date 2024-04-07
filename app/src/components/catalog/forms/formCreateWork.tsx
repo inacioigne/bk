@@ -115,37 +115,35 @@ export default function FormCreateWork(
         }
 
         const request = { ...obj, ...data };
-        // console.log("WK", request)
+        console.log("WK", request)
         setProgress(true)
 
+        // bkapi
+        //     .post("/catalog/work/create", request, {
+        //         headers: headers,
+        //     })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             // console.log("RS", response.data);
+        //             request.identifiersLocal = response.data.id
+        //             setWork(request)
+        //             setOpenInstance(true)
 
-
-        bkapi
-            .post("/catalog/work/create", request, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    // console.log("RS", response.data);
-                    request.identifiersLocal = response.data.id
-                    setWork(request)
-                    setOpenInstance(true)
-
-                    setMessage("Registro criado com sucesso!")
-                    //   router.push(`/admin/authority/names/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 409) {
-                    setTypeAlert("error")
-                    setMessage("Este registro já existe")
-                    // console.error("ER:", error);
-                }
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+        //             setMessage("Registro criado com sucesso!")
+        //             //   router.push(`/admin/authority/names/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error.response.status === 409) {
+        //             setTypeAlert("error")
+        //             setMessage("Este registro já existe")
+        //             // console.error("ER:", error);
+        //         }
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //     });
 
     }
     // console.log("ER:", errors)

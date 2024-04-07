@@ -68,10 +68,10 @@ export default function WorkView({ work }: Props) {
         setOpen(false);
     };
 
-    const handleEdit = () => {
-        console.log(work)
-        // setOpen(false);
-    };
+    // const handleEdit = () => {
+    //     console.log(work)
+    //     // setOpen(false);
+    // };
 
     return (
         <>
@@ -85,15 +85,15 @@ export default function WorkView({ work }: Props) {
                     <Box>
                         <Tooltip title="Editar">
                             <Link href={`/admin/catalog/edit/${work.id.split("#")[1]}`}>
-                            <IconButton //onClick={handleEdit}
-                            >
-                                <CiEdit />
-                            </IconButton>
+                                <IconButton //onClick={handleEdit}
+                                >
+                                    <CiEdit />
+                                </IconButton>
                             </Link>
-                            
+
                         </Tooltip>
                         <Tooltip title="Excluir">
-                            <IconButton onClick={() => {setOpen(true)}}
+                            <IconButton onClick={() => { setOpen(true) }}
                             >
                                 <IoTrashOutline />
                             </IconButton>
@@ -106,74 +106,95 @@ export default function WorkView({ work }: Props) {
                 </Typography>
                 <Divider />
                 <Box sx={{ display: "flex", gap: 3 }}>
-                    <Box
-                        sx={{ display: "flex", flexDirection: "column", gap: 1 }}
-                    >
-                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
-                            Autoria
-                        </Typography>
-                        {Array.isArray(work.contribution) ? (
-                            work.contribution.map((contribution: any, index: number) => (
-                                <Box key={index}
-                                    sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
-                                    <Typography variant="caption" display="block">
-                                        {contribution.roleLabel}
-                                    </Typography>
-                                    <Box>
+                    {work.contribution &&
+                        <>
+                            <Box
+                                sx={{ display: "flex", flexDirection: "column", gap: 1 }}
+                            >
+                                <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
+                                    Autoria
+                                </Typography>
+                                {Array.isArray(work.contribution) ? (
+                                    work.contribution.map((contribution: any, index: number) => (
+                                        <Box key={index}
+                                            sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
+                                            <Typography variant="caption" display="block">
+                                                {contribution.roleLabel}
+                                            </Typography>
+                                            <Box>
+                                                <Chip
+                                                    key={index}
+                                                    label={contribution.label}
+                                                    variant="outlined"
+                                                    color="primary"
+                                                    size="small"
+                                                    sx={{ cursor: "pointer" }}
+                                                />
+                                            </Box>
+                                        </Box>
+                                    ))
+                                ) : (
+                                    <Box
+                                        sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
+                                        <Typography variant="caption" display="block">
+                                            {work.contribution.roleLabel}
+                                        </Typography>
+                                        <Box>
+                                            <Chip
+                                                label={work.contribution.label}
+                                                variant="outlined"
+                                                color="primary"
+                                                size="small"
+                                                sx={{ cursor: "pointer" }}
+                                            />
+                                        </Box>
+                                    </Box>
+                                )}
+                            </Box>
+                            <Divider orientation="vertical" flexItem />  </>}
+
+                    {work.subject &&
+                        <>
+                            <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
+                                    Assunto
+                                </Typography>
+                                {Array.isArray(work.subject) ? (
+                                    work.subject.map((subject: any, index: number) => (
+                                        <Box key={index}
+                                            sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
+                                            <Typography variant="caption" display="block">
+                                                {subject.type}
+                                            </Typography>
+                                            <Box>
+                                                <Chip
+                                                    key={index}
+                                                    label={subject.label}
+                                                    variant="outlined"
+                                                    color="primary"
+                                                    size="small"
+                                                    sx={{ cursor: "pointer" }}
+                                                />
+                                            </Box>
+                                        </Box>
+                                    ))
+                                ) : (
+                                    <Box sx={{ pl: 1 }}>
+                                        <Typography variant="caption" display="block">
+                                            {work.subject.type}
+                                        </Typography>
                                         <Chip
-                                            key={index}
-                                            label={contribution.label}
+                                            label={work.subject.label}
                                             variant="outlined"
                                             color="primary"
                                             size="small"
                                             sx={{ cursor: "pointer" }}
                                         />
+
                                     </Box>
-                                </Box>
-                            ))
-                        ) : (
-                            <Box
-                                sx={{ pt: 1, pl: 1, display: "flex", flexDirection: "column" }}>
-                                <Typography variant="caption" display="block">
-                                    {work.contribution.roleLabel}
-                                </Typography>
-                                <Box>
-                                    <Chip
-                                        label={work.contribution.label}
-                                        variant="outlined"
-                                        color="primary"
-                                        size="small"
-                                        sx={{ cursor: "pointer" }}
-                                    />
-                                </Box>
+                                )}
                             </Box>
-                        )}
-                    </Box>
-                    <Divider orientation="vertical" flexItem />
-
-                    <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
-                            Assunto
-                        </Typography>
-                        {Array.isArray(work.subject) ? (
-                            <code>SUBJECT ARRAY</code>
-                        ) : (
-                            <Box sx={{ pl: 1 }}>
-                                <Typography variant="caption" display="block">
-                                    {work.subject.type}
-                                </Typography>
-                                <Chip
-                                    label={work.subject.label}
-                                    variant="outlined"
-                                    color="primary"
-                                    size="small"
-                                    sx={{ cursor: "pointer" }}
-                                />
-
-                            </Box>
-                        )}
-                    </Box>
-                    <Divider orientation="vertical" flexItem />
+                            <Divider orientation="vertical" flexItem /> </>}
                     <Box >
                         <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
                             Idioma
@@ -195,6 +216,18 @@ export default function WorkView({ work }: Props) {
                         </Typography>
                     </Box>
                 </Box>
+                <Box>
+                    {work.summary &&
+                        <>
+                            <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
+                                Resumo
+                            </Typography>
+                            <Typography variant="body2" gutterBottom>
+                                {work.summary}
+                            </Typography>
+                        </>
+                    }
+                </Box>
             </Box>
             <Dialog
                 open={open}
@@ -209,17 +242,17 @@ export default function WorkView({ work }: Props) {
                     {work.hasInstance && work.hasInstance.length > 0 ?
                         <Alert severity="warning">Para excluir uma obra você deve excluir todos os recursos a ela relacionados</Alert> :
                         <DialogContentText id="alert-dialog-description">
-                        Tem certeza que deseja excluir esta obra?
-                    </DialogContentText>
+                            Tem certeza que deseja excluir esta obra?
+                        </DialogContentText>
                     }
 
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancelar</Button>
-                    <Button 
-                    disabled={work.hasInstance && work.hasInstance.length > 0 ? true : false}
-                    onClick={handleDelete} 
-                    autoFocus>
+                    <Button
+                        disabled={work.hasInstance && work.hasInstance.length > 0 ? true : false}
+                        onClick={handleDelete}
+                        autoFocus>
                         Ok
                     </Button>
                 </DialogActions>

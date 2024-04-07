@@ -25,12 +25,11 @@ def UpdateSolrWork(authoritys, id_work, title, bibframe):
     docs = list()
     for authority in authoritys:
         id = authority.term.value.split("/")[-1]
-        id = f'authority#{id}'
         doc = {
-            "id": id,
+            "id": f'authority#{id}',
             f"{bibframe}": {
                 "add": {
-                    "id": f'{id}/work/work#{id}',
+                    "id": f'authority#{id}/work/work#{id_work}',
                     "label": title,
                     "uri": uri
                 }

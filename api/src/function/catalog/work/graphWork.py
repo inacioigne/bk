@@ -1,8 +1,5 @@
 from rdflib import URIRef, Namespace, Graph
-# from rdflib.namespace import RDF, RDFS
-# from pyfuseki import FusekiUpdate
-# from rdflib.plugins.stores import sparqlstore
-# from rdflib.namespace import XSD
+from src.function.catalog.bibframe.bfSummary import BFSummary
 from src.function.catalog.bibframe.bfGenreForm import BfGenreForm
 from src.function.catalog.bibframe.bfSubject import BFSubject
 from src.function.catalog.bibframe.bfContribution import BFContribution
@@ -37,9 +34,14 @@ def MakeGraphWork(request):
     # Language
     g = BFLanguage(g, request.language, resource, BF)
     # Contribution
-    g = BFContribution(g, request.contribution, resource, BF)
+    if request.contribution:
+        g = BFContribution(g, request.contribution, resource, BF)
     # Subject
-    g = BFSubject(g, request.subject, resource, BF) 
+    if request.subject:
+        g = BFSubject(g, request.subject, resource, BF) 
+    if request.summary:
+        g = BFSummary(g, request.summary, resource, BF)
+
     # GenreForm
     if request.genreForm and request.genreForm.valeu != "":
         g = BfGenreForm(g, resource, request.genreForm, BF)    

@@ -52,7 +52,7 @@ export default function BfSubField(
                     name={name}
                     index={index} />
             )
-        } else if (subfield.type === 'textarea') {
+        } else if (subfield.type === 'textArea') {
             return (
                 <BfTextArea
                     subfield={subfield}

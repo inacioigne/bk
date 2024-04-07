@@ -7,6 +7,7 @@ const mads = "http://www.loc.gov/mads/rdf/v1#";
 
 export async function  ParserData(response: any, uri: string) {
     const data = response.data;
+    
 
     const [a] = data.filter(function (elemento: any) {
         return elemento["@id"] === uri;
@@ -200,16 +201,24 @@ export async function  ParserData(response: any, uri: string) {
 
         // Field of Activity
         if (metadado.hasOwnProperty(`${mads}fieldOfActivity`)) {
+            
             let foa = metadado[`${mads}fieldOfActivity`];
-            let fieldOfActivity = foa.map((e: any) => {
+            let fields = foa.filter((e: any) => e["@id"].startsWith('http'))            
+            
+            let fieldOfActivity = fields.map((e: any) => {
+                
                 let id = e["@id"];
-                let [obj] = data.filter(function (e: any) {
-                    return e["@id"] === id;
-                });
-                let [label] = obj[`${mads}authoritativeLabel`];
-                let uri = { label: label["@value"], base: "loc", uri: obj["@id"] };
-                return uri;
+                if (!id.includes('_:')) {   
+                    let [obj] = data.filter(function (e: any) {
+                        return e["@id"] === id;
+                    });
+                    let [label] = obj[`${mads}authoritativeLabel`];
+                    let uri = { label: label["@value"], base: "loc", uri: obj["@id"] };
+                    return uri;  
+                }
             });
+            // console.log(fieldOfActivity)
+            
             let arrCheck = await CheckLoc(fieldOfActivity)
             let uris = await Promise.all(arrCheck)
             authority["fieldOfActivity"] = uris;

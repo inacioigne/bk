@@ -217,6 +217,43 @@
           ]
         }     
       ]
+    },
+    {
+      "name": "notes",
+      "label": "Notas sobre a obra",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "Resumo",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#c_Summary",
+          "repeatable": false,
+          "required": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Resumo",
+              "type": "textArea",
+              "width": 12
+            }
+          ]
+        },
+        {
+          "name": "genreForm",
+          "label": "Gênero/Forma",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_language",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Gênero/Forma",
+              "type": "select",
+              "commonType": "genreForms",
+              "width": 12
+            }
+          ]
+        }     
+      ]
     }
   ],
   "defaultValues": {

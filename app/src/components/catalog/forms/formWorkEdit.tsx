@@ -15,7 +15,7 @@ import BfField from "./bibframe/bfField";
 // import BfSubField from "./bibframe/bfSubField";
 
 // Schema
-import ZodWork  from "@/schema/bibframe/zodWork"
+import ZodWork from "@/schema/bibframe/zodWork"
 import BfErros from "./bibframe/bfErros";
 
 // Providers BiblioKeia
@@ -26,6 +26,7 @@ import { useAlert } from "@/providers/alert";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import action from "@/services/catalog/actions";
+import { RemoveEmptyAuthority } from "@/services/catalog/removeEmptyAuthority";
 
 const headers = {
     accept: "application/json",
@@ -69,9 +70,98 @@ function a11yProps(index: number) {
     };
 }
 
+function ParserContribution(contribution: any, obj: any) {
+    if (contribution) {
+        if (Array.isArray(contribution)) {
+            const contributions = contribution.map((e: any, i: number) => {
+                let authority = {
+                    term: {
+                        value: e.uri,
+                        label: e.label[0]
+                    },
+                    role: {
+                        value: e.role[0],
+                        label: e.roleLabel
+                    }
+                }
+                return authority
+            })
+            obj['contribution'] = contributions
+        } else {
+            let authority = {
+                term: {
+                    value: contribution.uri,
+                    label: contribution.label[0]
+                },
+                role: {
+                    value: contribution.role[0],
+                    label: contribution.roleLabel
+                }
+            }
+            obj['contribution'] = [authority]
+        }
+    } else {
+        let authority = {
+            term: {
+                value: "",
+                label: ""
+            },
+            role: {
+                value: "",
+                label: ""
+            }
+        }
+        obj['contribution'] = [authority]
+    }
+
+}
+
+function ParserSubject(subject: any, obj: any) {
+    if (subject) {
+        if (Array.isArray(subject)) {
+            let authority = subject.map((e: any) => {
+                let obj = {
+                    type: e.type[0],
+                    term: {
+                        value: e.uri,
+                        label: e.label[0]
+                    },
+                    lang: e.lang
+                }
+                return obj
+            })
+            obj['subject'] = authority
+        } else {
+            let authority = {
+                type: subject.type[0],
+                term: {
+                    value: subject.uri,
+                    label: subject.label[0]
+                },
+                lang: subject.lang
+            }
+            obj['subject'] = [authority]
+
+        }
+    } else {
+        let authority = {
+            type: "Topic",
+            term: {
+                value: "",
+                label: ""
+            },
+            lang: ""
+        }
+        obj['subject'] = [authority]
+
+    }
+
+}
+
+
 function ParserDoc(doc: any, commonTypes: any) {
 
-    let obj = {
+    let obj: any = {
         adminMetadata: {
             "status": {
                 "value": "http://id.loc.gov/vocabulary/mstatus/c",
@@ -96,6 +186,9 @@ function ParserDoc(doc: any, commonTypes: any) {
                 "subtitle": ""
             }
         ],
+        summary: {
+            value: doc.summary
+        }
     }
 
     let types = doc.type.map((e: string, i: number) => {
@@ -103,56 +196,23 @@ function ParserDoc(doc: any, commonTypes: any) {
         return resourceType
     })
     obj['resourceType'] = types
-    
-    
+
+
     let languages = doc.language.map((e: string, i: number) => {
         const [language] = commonTypes.language.filter(element => element.label === e);
         return language
     })
     obj['language'] = languages
 
-    
-    if (Array.isArray(doc.contribution)) {
-        const contributions = doc.contribution.map((e: any, i: number) => {
-            let contribution = {
-                term: {
-                    value: e.uri,
-                    label: e.label[0]
-                },
-                role: {
-                    value: e.role[0],
-                    label: e.roleLabel
-                }
-            }
-            return contribution
-            
-        })
-        obj['contribution'] = contributions
-    } else {
-        let contribution = {
-            term: {
-                value: doc.contribution.uri,
-                label: doc.contribution.label[0]
-            },
-            role: {
-                value: doc.contribution.role[0],
-                label: doc.contribution.roleLabel
-            }
-        }
-        obj['contribution'] = [contribution]
-        
-    }
-    if (typeof doc.subject === "object") {
-        let subject = {
-            type: doc.subject.type[0],
-            term: {
-                value: doc.subject.uri,
-                label: doc.subject.label[0]
-            },
-            lang: "por"
-        }
-        obj['subject'] = [subject]
-    }
+    // contribution
+    ParserContribution(doc.contribution, obj)
+    // subject
+    ParserSubject(doc.subject, obj)
+
+
+
+
+
     if (doc.genreForm) {
         console.log(doc.genreForm)
 
@@ -164,16 +224,58 @@ function ParserDoc(doc: any, commonTypes: any) {
             }
         ]
     }
-    
 
-    
+
+
     return obj
-    
+
+}
+
+function ParserAuthorityExclude(data: any, doc: any) {
+    let authorityExclude = new Array
+    function makeArray(authority: any) {
+        if (Array.isArray(authority)) {
+            return authority
+        } else {
+            return [authority]
+        }
+    }
+    // contribution
+    if (doc.contribution) {
+        let urisA = data.contribution.map((e: any) => e.term.value)
+        let authority = makeArray(doc.contribution).filter((e: any) => !urisA.includes(e.uri))
+        if (authority.length > 0) {
+            let autContribution = authority.map((e: any) => {
+                return {
+                    value: e.uri,
+                    metadata: 'contributionOf'
+                }
+            })
+            authorityExclude.push(...autContribution)
+            data['authorityExclude'] = authorityExclude
+        }
+    }
+    // subject
+    if (doc.subject) {
+        let subjectA = data.subject.map((e: any) => e.term.value)
+        let autSubject = makeArray(doc.subject).filter((e: any) => !subjectA.includes(e.uri))
+        if (autSubject.length > 0) {
+            let autSubjectExclude = autSubject.map((e: any) => {
+                return {
+                    value: e.uri,
+                    metadata: 'subjectOf'
+                }
+            })
+            authorityExclude.push(...autSubjectExclude)
+            data['authorityExclude'] = authorityExclude
+        }
+    }
+
+
+
 }
 
 export default function FormWorkEdit({ doc }: Props) {
-
-    // console.log(doc, bibframe.defaultValues)
 
     type SchemaCreateWork = z.infer<typeof ZodWork>;
     const [openBfErros, setBfErros] = useState(false);
@@ -209,7 +311,6 @@ export default function FormWorkEdit({ doc }: Props) {
             setBfErros(true)
             console.log(errors)
         }
-
     }, [errors])
 
     function CreateWork(data: any) {
@@ -237,10 +338,16 @@ export default function FormWorkEdit({ doc }: Props) {
             });
         }
         RemoveEmpty(data)
-        // request.adminMetadata.creationDate
-        let id = doc.id.split("#")[1]
+        RemoveEmptyAuthority('contribution', data)
+        RemoveEmptyAuthority('subject', data)
+        
         data.adminMetadata.creationDate = doc.creationDate[0]
-        // console.log(data)
+
+        // authorityExclude
+        ParserAuthorityExclude(data, doc)
+
+        console.log(data)
+        let id = doc.id.split("#")[1]
         bkapi
             .put(`/catalog/work/edit/${id}`, data, {
                 headers: headers,
@@ -292,11 +399,11 @@ export default function FormWorkEdit({ doc }: Props) {
                 ))}
                 <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1 }}>
                     <Link href={"/admin/catalog"}>
-                    <Button variant="outlined">
-                        Cancelar
-                    </Button>
+                        <Button variant="outlined">
+                            Cancelar
+                        </Button>
                     </Link>
-                    
+
                     <Button variant="outlined" type="submit">
                         Salvar
                     </Button>

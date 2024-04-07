@@ -18,6 +18,20 @@ interface Props {
 
 }
 
+const appendField: any = {
+    contribution: {
+        role: { value: "" },
+        term: { value: "" },
+        value: ""
+    },
+    subject: {
+        type: "Topic",
+        term: { value: "" },
+        lang: ""
+    }
+
+}
+
 export default function BfField(
     { field, register, control, setValue, commonTypes }: Props
 ) {
@@ -32,19 +46,7 @@ export default function BfField(
     });
 
     const addField = () => {
-
-        const objAppend = field.subfields.reduce((obj: object, item: object) => {
-            obj[item.name] = ""
-            return obj
-        }, {})
-        // console.log("F", field.subfields, objAppend)
-        // append(objAppend);
-        // { role: { value: "" }}
-        append({
-            role: { value: "" },
-            term: { value: "" },
-            value: ""
-        })
+        append(appendField[`${field.name}`])
     };
 
     return (

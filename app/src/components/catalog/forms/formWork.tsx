@@ -18,7 +18,7 @@ import BfField from "./bibframe/bfField";
 // import BfSubField from "./bibframe/bfSubField";
 
 // Schema
-import ZodWork  from "@/schema/bibframe/zodWork"
+import ZodWork from "@/schema/bibframe/zodWork"
 import BfErros from "./bibframe/bfErros";
 
 // Providers BiblioKeia
@@ -28,6 +28,7 @@ import { useAlert } from "@/providers/alert";
 // Nextjs
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { RemoveEmptyAuthority } from "@/services/catalog/removeEmptyAuthority";
 
 const headers = {
     accept: "application/json",
@@ -127,14 +128,25 @@ export default function FormWork() {
                 }
             });
         }
+        // const RemoveEmptyAuthority = (authority: string) => {
+        //     let auth = data[`${authority}`].filter((e: any) => e.term.value !== "")
+        //     if (auth.length > 0) {
+        //         data[`${authority}`] = auth
+        //     } else {
+        //         delete data[`${authority}`]
+        //     }
+        // }
         RemoveEmpty(data)
-        // console.log(data)    
+        RemoveEmptyAuthority('contribution', data)
+        RemoveEmptyAuthority('subject', data)
+        console.log(data)
         bkapi
             .post("/catalog/work/create", data, {
                 headers: headers,
             })
             .then(function (response) {
                 if (response.status === 201) {
+                    setTypeAlert("success")
                     setMessage("Registro criado com sucesso!")
                     router.push(`/admin/catalog/${response.data.id}`);
                 }
@@ -178,11 +190,11 @@ export default function FormWork() {
                 ))}
                 <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1 }}>
                     <Link href={"/admin/catalog"}>
-                    <Button variant="outlined">
-                        Cancelar
-                    </Button>
+                        <Button variant="outlined">
+                            Cancelar
+                        </Button>
                     </Link>
-                    
+
                     <Button variant="outlined" type="submit">
                         Salvar
                     </Button>

@@ -12,6 +12,7 @@ def DocWork(request):
     doc = {
         "id": work_id,
         "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"),
+        "changeDate": request.adminMetadata.changeDate.strftime("%Y-%m-%dT%H:%M:%S") if request.adminMetadata.changeDate else None,
         "type": [i.value for i in request.resourceType],
         # "content": request.content.label,
         "mainTitle": request.title.mainTitle,
@@ -20,7 +21,7 @@ def DocWork(request):
         "cdd": request.classification.cdd,
         "cutter": request.classification.cutter,
         "note": request.note,
-        "summary": request.summary,
+        "summary": request.summary.value if request.summary else None,
         "tableOfContents": request.tableOfContents,
         # "supplementaryContent": [i.label for i in request.supplementaryContent] if request.supplementaryContent else None,
         # "illustrativeContent": [i.label for i in request.illustrativeContent] if request.illustrativeContent else None,
@@ -48,7 +49,9 @@ def DocWork(request):
             s = {"id": f"{work_id}/subject/authority#{i.term.value.split('/')[-1]}",
                  "type": i.type,
                  "uri": i.term.value,
-                 "label": i.term.label}
+                 "label": i.term.label,
+                 "lang": i.lang
+                 }
             subjects.append(s)
         doc['subject'] = subjects
 

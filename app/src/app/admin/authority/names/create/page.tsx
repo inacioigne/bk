@@ -102,7 +102,7 @@ export default function Create() {
   const [id, setId] = useState(null);
   const [field, setField] = useState("");
   const [openSubjects, setOpenSubjects] = useState(false);
-  const { setOpenSnack, setMessage } = useAlert();
+  const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
   const { setProgress } = useProgress();
   const router = useRouter();
 
@@ -159,7 +159,7 @@ export default function Create() {
       })
       .then(function (response) {
         if (response.status === 201) {
-          // console.log(response);
+          setTypeAlert("success")
           setMessage("Registro criado com sucesso!")
           router.push(`/admin/authority/names/${response.data.id}`);
         }

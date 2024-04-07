@@ -28,8 +28,6 @@ const previousPaths = [
 ];
 
 export default function Create() {
-
-
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
             <BreadcrumbsBK
