@@ -85,8 +85,7 @@ export default function WorkView({ work }: Props) {
                     <Box>
                         <Tooltip title="Editar">
                             <Link href={`/admin/catalog/edit/${work.id.split("#")[1]}`}>
-                                <IconButton //onClick={handleEdit}
-                                >
+                                <IconButton>
                                     <CiEdit />
                                 </IconButton>
                             </Link>

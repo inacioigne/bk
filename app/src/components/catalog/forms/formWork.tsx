@@ -139,7 +139,7 @@ export default function FormWork() {
         RemoveEmpty(data)
         RemoveEmptyAuthority('contribution', data)
         RemoveEmptyAuthority('subject', data)
-        console.log(data)
+        // console.log(data)
         bkapi
             .post("/catalog/work/create", data, {
                 headers: headers,

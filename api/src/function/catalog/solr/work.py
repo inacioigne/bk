@@ -8,6 +8,7 @@ solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 def DocWork(request):
 
     work_id = f'work#{request.adminMetadata.identifiedBy}'
+    print("DATE:", request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"))
 
     doc = {
         "id": work_id,

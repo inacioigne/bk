@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 // BiblioKeia Service
 import { bkapi } from "@/services/api";
 import BfField from "./bibframe/bfField";
-// import BfSubField from "./bibframe/bfSubField";
 
 // Schema
 import  ZodInstance  from "@/schema/bibframe/zodInstance"
@@ -75,7 +74,7 @@ function a11yProps(index: number) {
 export default function FormInstance({ defaultValues }: Props) {
 
     // console.log(ZodInstance)
-    type SchemaCreateWork = z.infer<typeof ZodInstance>;
+    type SchemaCreateInstance = z.infer<typeof ZodInstance>;
     const [openBfErros, setBfErros] = useState(false);
     const [panel, setPanel] = useState(0);
     const { setProgress } = useProgress();
@@ -93,7 +92,7 @@ export default function FormInstance({ defaultValues }: Props) {
         formState: { errors },
         setValue,
         getValues
-    } = useForm<SchemaCreateWork>(
+    } = useForm<SchemaCreateInstance>(
         {
             resolver: zodResolver(ZodInstance),
             defaultValues: defaultValues

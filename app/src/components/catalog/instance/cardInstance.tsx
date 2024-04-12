@@ -38,6 +38,7 @@ import { headers } from "@/share/acepts";
 import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
 import action from "@/services/catalog/actions";
+import Link from "next/link";
 
 type Classification = {
     cdd: string;
@@ -51,8 +52,9 @@ interface Props {
 }
 
 export default function CardInstance({ instance, classification }: Props) {
+    // console.log(instance)
     const [open, setOpen] = useState(false);
-    const [btnDisabled, setBtnDisabled] = useState(true);
+    // const [btnDisabled, setBtnDisabled] = useState(true);
     const [deleteInstance, setDelete] = useState(false);
     const [formItems, setFormItems] = useState(false);
     const { setProgress } = useProgress();
@@ -64,21 +66,18 @@ export default function CardInstance({ instance, classification }: Props) {
     }
 
     const handleDelete = () => {
-        
+
         let data = {
             instance: instance.id,
             instanceOf: instance.instanceOf.id
         }
-        // console.log(data)
-
         setProgress(true)
         setDelete(false)
         bkapi
-            .delete("/catalog/instance/delete", {data: data} )
+            .delete("/catalog/instance/delete", { data: data })
             .then(function (response) {
                 if (response.status === 201) {
                     action()
-                    // console.log("RS", response.data);
                     setTypeAlert("success")
                     setMessage("Instância excluida com sucesso!")
                 }
@@ -116,10 +115,11 @@ export default function CardInstance({ instance, classification }: Props) {
                         </Box>
                         <Box>
                             <Tooltip title="Editar">
-                                <IconButton //onClick={handleClose}
-                                >
-                                    <CiEdit />
-                                </IconButton>
+                                <Link href={`/admin/catalog/edit/instance/${instance.id.split("#")[1]}`}>
+                                    <IconButton>
+                                        <CiEdit />
+                                    </IconButton>
+                                </Link>
                             </Tooltip>
                             <Tooltip title="Excluir">
                                 <IconButton onClick={handleOpen}
@@ -237,10 +237,10 @@ export default function CardInstance({ instance, classification }: Props) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancelar</Button>
-                    <Button 
-                    disabled={instance.hasItem && instance.hasItem.length > 0 ? true : false}
-                    onClick={handleDelete} 
-                    autoFocus>
+                    <Button
+                        disabled={instance.hasItem && instance.hasItem.length > 0 ? true : false}
+                        onClick={handleDelete}
+                        autoFocus>
                         Ok
                     </Button>
                 </DialogActions>

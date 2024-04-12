@@ -227,24 +227,24 @@
       ]
     },
     {
-      "name": "note",
+      "name": "notes",
       "label": "Notas",
       "fields": [
         {
           "name": "note",
           "label": "Nota",
-          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_note",
-          "repeatable": true,
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#c_Summary",
+          "repeatable": false,
           "required": false,
           "subfields": [
             {
               "name": "value",
               "label": "Nota",
-              "type": "textarea",
+              "type": "textArea",
               "width": 12
             }
           ]
-        }
+        } 
       ]
     },
     {
@@ -331,11 +331,10 @@
     "editionStatement": {
       "value": ""
     },
-    "note": [
+    "note": 
       {
         "value": ""
       }
-    ]
   },
   "commonTypes": {
     "media": [

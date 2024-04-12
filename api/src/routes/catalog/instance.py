@@ -46,3 +46,48 @@ async def create_instance(request: BfInstance):
 async def delete_instance(request: Instance_Delete):  
     response = DeleteInstance(request)
     return response
+
+@router.put("/edit/{instance_id}", status_code=201)
+async def edit_instance(request: BfInstance, instance_id: str):
+    request.adminMetadata.identifiedBy = instance_id
+    now = datetime.now()
+    request.adminMetadata.changeDate = now
+    EditWork(request)
+    # # Solr
+    # responseSolr = DocWork(request)
+    # if request.contribution:
+    #     UpdateFusekiWork(request.contribution,
+    #                      request.adminMetadata.identifiedBy, 'contributionOf')
+    #     UpdateSolrWork(request.contribution, request.adminMetadata.identifiedBy,
+    #                    request.title.mainTitle, 'contributionOf')
+
+    # if request.subject:
+    #     UpdateFusekiWork(
+    #         request.subject, request.adminMetadata.identifiedBy, 'subjectOf')
+    #     UpdateSolrWork(request.subject, request.adminMetadata.identifiedBy,
+    #                    request.title.mainTitle, 'subjectOf')
+
+    # # Update Delete authority
+    # if request.authorityExclude:
+    #     uri_work = f"{settings.base_url}/works/{work_id}"
+    #     docs = list()
+    #     for i in request.authorityExclude:
+    #         sparql = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
+    #                 DELETE DATA
+    #                 {{ GRAPH <{i.value}>
+    #                 {{ <{i.value}>  bf:{i.metadata}  <{uri_work}> }} }} ;"""
+    #         fuseki.run_sparql(sparql)
+    #         id = i.value.split("/")[-1]
+    #         doc = {
+    #             "id": f"authority#{id}",
+    #             f"{i.metadata}": {"remove": {"id": f"authority#{id}/work/work#{work_id}"}}
+    #         }
+    #         docs.append(doc)
+    #     resSolr = solr.add(docs, commit=True)
+
+    # return {
+    #     "id": work_id,
+    #     #  "jena": response.convert()['message'],
+    #     "solr": responseSolr
+    # }
+    return request.model_dump()

@@ -224,9 +224,6 @@ function ParserDoc(doc: any, commonTypes: any) {
             }
         ]
     }
-
-
-
     return obj
 
 }
@@ -270,9 +267,6 @@ function ParserAuthorityExclude(data: any, doc: any) {
             data['authorityExclude'] = authorityExclude
         }
     }
-
-
-
 }
 
 export default function FormWorkEdit({ doc }: Props) {
