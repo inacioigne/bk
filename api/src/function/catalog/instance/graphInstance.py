@@ -34,7 +34,8 @@ def MakeGraphInstance(request):
     if request.note:
         g = BfNote(g, resource, request.note, BF)
     g = BfProvisionActivity(g, resource, request.provisionActivity, BF)
-    g = BfResponsibilityStatement(g, resource, request.responsibilityStatement, BF)
+    if request.responsibilityStatement:
+        g = BfResponsibilityStatement(g, resource, request.responsibilityStatement, BF)
     g = BfInstanceOf(g, resource, request, BF)
     g.add((resource, DCTERMS.isPartOf, URIRef("http://bibliokeia/resources/instances")))
 

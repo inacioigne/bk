@@ -2,6 +2,7 @@ from rdflib import URIRef, BNode, Literal
 from rdflib.namespace import RDF, RDFS
 from src.schemas.settings import Settings
 from rdflib.namespace import XSD
+from datetime import datetime
 
 settings = Settings()
 
@@ -33,7 +34,8 @@ def BfAdminMetadata(g, adminMetadata, resource, BF):
     g.add((bNadminMetadata, BF.generationProcess, generationProcess))
     g.add((generationProcess, RDF.type, BF.GenerationProcess))
     g.add((generationProcess, RDFS.label, Literal(settings.app_name) ))
-    g.add((generationProcess, BF.generationDate, Literal(adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"), datatype=XSD.dateTime) ))
+    now = datetime.now()
+    g.add((generationProcess, BF.generationDate, Literal(now.strftime("%Y-%m-%dT%H:%M:%S"), datatype=XSD.dateTime) ))
     # identifiedBy
     identifiedBy =  BNode() 
     g.add((bNadminMetadata, BF.identifiedBy, identifiedBy))

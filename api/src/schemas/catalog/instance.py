@@ -18,7 +18,7 @@ class BfInstance(BaseModel):
     provisionActivity: list[ProvisionActivity]
     editionStatement: Optional[BfElement] = None
     responsibilityStatement: Optional[BfElement] = None
-    note: Optional[list[BfElement]] = None
+    note: Optional[BfElement] = None
     instanceOf: BfElement
     image: Optional[Image] = None
     

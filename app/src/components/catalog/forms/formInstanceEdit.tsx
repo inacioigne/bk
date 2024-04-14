@@ -346,17 +346,15 @@ export default function FormInstanceEdit({ doc }: Props) {
             });
         }
         RemoveEmpty(data)
-        console.log(doc)
-        // RemoveEmptyAuthority('contribution', data)
-        // RemoveEmptyAuthority('subject', data)
 
         data.adminMetadata.creationDate = doc.creationDate[0]
 
-        // authorityExclude
-        // ParserAuthorityExclude(data, doc)
+        
 
         
         let id = doc.id.split("#")[1]
+        let work_id = doc.instanceOf.uri.split("/")[4]
+        // console.log(work_id)
         bkapi
             .put(`/catalog/instance/edit/${id}`, data, {
                 headers: headers,
@@ -364,9 +362,9 @@ export default function FormInstanceEdit({ doc }: Props) {
             .then(function (response) {
                 if (response.status === 201) {
                     console.log(response.data)
-                    // action()
+                    action()
                     setMessage("Registro editado com sucesso!")
-                    // router.push(`/admin/catalog/${response.data.id}`);
+                    router.push(`/admin/catalog/${work_id}`);
                 }
             })
             .catch(function (error) {

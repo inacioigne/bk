@@ -11,7 +11,16 @@ import {
     Button,
     Divider
 } from "@mui/material";
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { 
+    DataGrid, 
+    GridColDef, 
+    GridRowModesModel,
+    GridEventListener,
+    GridRowEditStopReasons,
+    GridRowModel,
+    GridRowsProp,
+    GridValueGetterParams,
+ } from '@mui/x-data-grid';
 import { useState } from "react";
 
 // React Icons
@@ -36,11 +45,40 @@ interface Props {
     setFormItems: Function;
     open: boolean;
 }
+
+interface EditToolbarProps {
+    setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void;
+    setRowModesModel: (
+      newModel: (oldModel: GridRowModesModel) => GridRowModesModel,
+    ) => void;
+  }
+
+  function EditToolbar(props: EditToolbarProps) {
+    const { setRows, setRowModesModel } = props;
+  
+    const handleClick = () => {
+      const id = randomId();
+      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
+      setRowModesModel((oldModel) => ({
+        ...oldModel,
+        [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
+      }));
+    };
+  
+    return (
+      <GridToolbarContainer>
+        <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+          Add record
+        </Button>
+      </GridToolbarContainer>
+    );
+  }
+
 export default function ModalItems({ items, instanceOf, setOpen, setFormItems, open }: Props) {
 
-    // console.log(instanceOf)
     const [rowsDelete, setRowsDelete] = useState([]);
     const [btnDisabled, setBtnDisabled] = useState(true);
+    const [rowModesModel, setRowModesModel] = useState<GridRowModesModel>({});
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
     const { setProgress } = useProgress();
 
@@ -96,6 +134,23 @@ export default function ModalItems({ items, instanceOf, setOpen, setFormItems, o
         { field: 'barcode', headerName: 'Registro', width: 90 }
     ]
 
+    const handleRowModesModelChange = (newRowModesModel: GridRowModesModel) => {
+        console.log('hrm: ', newRowModesModel)
+        setRowModesModel(newRowModesModel);
+      };
+
+      const handleRowEditStop: GridEventListener<'rowEditStop'> = (params, event) => {
+        if (params.reason === GridRowEditStopReasons.rowFocusOut) {
+          event.defaultMuiPrevented = true;
+        }
+      };
+
+      const processRowUpdate = (newRow: GridRowModel) => {
+        const updatedRow = { ...newRow, isNew: false };
+        setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+        return updatedRow;
+      };
+
     return (
         <Dialog
             open={open}
@@ -119,6 +174,11 @@ export default function ModalItems({ items, instanceOf, setOpen, setFormItems, o
                     <DataGrid
                         rows={items}
                         columns={columns}
+                        editMode="row"
+                        rowModesModel={rowModesModel}
+                        onRowModesModelChange={handleRowModesModelChange}
+                        onRowEditStop={handleRowEditStop}
+                        processRowUpdate={processRowUpdate}
                         initialState={{
                             pagination: {
                                 paginationModel: {
