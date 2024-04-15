@@ -1,10 +1,11 @@
 from fastapi import APIRouter
+from src.function.catalog.item.editItem import EditItem
 from src.function.catalog.item.deleteItem import DeleteItem
 from src.function.catalog.markeCreateSparql import MakeCreateSparql
 from src.function.catalog.bibframe.bfHasItem import HasItem
 from src.function.catalog.solr.docItem import DocItem
 from src.function.catalog.item.graphItem import MakeGraphItem
-from src.schemas.catalog.items import Items_Delete, Items_Schema
+from src.schemas.catalog.items import Item, ItemEdit, Items_Delete, Items_Schema
 from src.db.models import DbItem
 from src.db.init_db import session
 from pyfuseki import FusekiUpdate
@@ -49,3 +50,11 @@ async def delete_items(request: Items_Delete):
         response = DeleteItem(item, request.itemOf, request.instanceOf)        
 
     return response
+
+@router.put("/edit", status_code=201)
+async def edit_items(request: ItemEdit):
+
+    response = EditItem(request)
+        
+
+    return request.model_dump()

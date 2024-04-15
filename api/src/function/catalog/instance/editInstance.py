@@ -1,6 +1,5 @@
 from src.function.catalog.instance.graphInstance import MakeGraphInstance
 from src.function.catalog.markeCreateSparql import MakeCreateSparql
-from src.function.catalog.work.graphWork import MakeGraphWork
 from src.schemas.settings import Settings
 from pyfuseki import FusekiUpdate
 

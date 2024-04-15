@@ -348,10 +348,6 @@ export default function FormInstanceEdit({ doc }: Props) {
         RemoveEmpty(data)
 
         data.adminMetadata.creationDate = doc.creationDate[0]
-
-        
-
-        
         let id = doc.id.split("#")[1]
         let work_id = doc.instanceOf.uri.split("/")[4]
         // console.log(work_id)

@@ -10,9 +10,9 @@ def DocItem(item, instance, work):
 
     item_id = f'item#{item.adminMetadata.identifiedBy}'
 
-
     doc = {
         "id": item_id,
+        "creationDate": item.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "type": "item",
         "cdd": item.cdd,
         "cutter": item.cutter,
