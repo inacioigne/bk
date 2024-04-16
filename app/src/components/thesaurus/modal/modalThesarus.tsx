@@ -44,6 +44,7 @@ import ModalThesarusNamesCreate from "@/components/thesaurus/modal/modalThesarus
 import { schemaAuthorityDoc } from "@/schema/solr"
 import ThesarusNames from "./thesarusNames";
 import ThesarusSubjects from "./thesarusSubjects";
+import SearchThesaurus from "./searchThesarus";
 
 type Typethesaurus = {
     name: string | undefined;
@@ -56,9 +57,12 @@ interface Props {
     thesaurus: Typethesaurus;
     defaultValues: any
     nameField: string
+    nameSubField: string
 }
 
-export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField }: Props) {
+export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField, nameSubField }: Props) {
+
+    // console.log("SUB: ", thesaurus.name)  
 
     const [openCreate, setOpenCreate] = useState(false)
 
@@ -82,7 +86,16 @@ export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField 
                 </DialogTitle>
                 <Divider />
                 <DialogContent>
-                    {thesaurus.name === 'names' ?
+                    <SearchThesaurus 
+                        openCreate={openCreate}
+                        collection={thesaurus?.name}
+                        setOpenCreate={setOpenCreate} 
+                        setValue={setValue} 
+                        nameField={nameField} 
+                        setOpen={setOpen}
+                        nameSubField={nameSubField} />
+                        
+                    {/* {thesaurus.name === 'names' ?
                         <ThesarusNames
                             nameField={nameField}
                             setValue={setValue}
@@ -95,7 +108,7 @@ export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField 
                             setOpenCreate={setOpenCreate}
                             openCreate={openCreate}
                             setOpen={setOpen} />
-                    }
+                    } */}
 
 
                 </DialogContent>

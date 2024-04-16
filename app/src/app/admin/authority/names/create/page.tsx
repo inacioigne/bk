@@ -10,7 +10,7 @@ import {
 // react Icons
 import { FcHome } from "react-icons/fc";
 import { BsPersonPlus } from "react-icons/bs";
-import { IoIosSave } from "react-icons/io";
+import { IoIosSave } from "react-icons/io"; 
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
@@ -152,6 +152,7 @@ export default function Create() {
     }
 
     const request = { ...obj, ...formData };
+    console.log(request)
 
     bkapi
       .post("/thesarus/create", request, {

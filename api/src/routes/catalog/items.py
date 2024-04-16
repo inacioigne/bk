@@ -21,8 +21,7 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 async def create_items(request: Items_Schema):
     for item in request.items:
         now = datetime.now()
-        item.adminMetadata.creationDate = now
-        
+        item.adminMetadata.creationDate = now  
         instance_id = request.itemOf.split("#")[1]
         
         i = DbItem(barcode=item.barcode, instance_id=instance_id)
@@ -57,4 +56,4 @@ async def edit_items(request: ItemEdit):
     response = EditItem(request)
         
 
-    return request.model_dump()
+    return response

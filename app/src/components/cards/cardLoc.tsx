@@ -70,6 +70,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
             // setForm(true)
           } else {
             setForm(true)
+            // router.push(`/admin/authority/create`);
           }
         }
       })

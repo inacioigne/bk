@@ -1,0 +1,518 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix cs: <http://purl.org/vocab/changeset/schema#> .
+@prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ri: <http://id.loc.gov/ontologies/RecordInfo#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://id.loc.gov/resources/works/10413435> a bf:Work ;
+    bflc:aap "Reis Filho, Nestor Goulart, 1931- Metropolização" .
+
+<http://id.loc.gov/resources/works/10761080> a bf:Work ;
+    bflc:aap "Portugal. Comissão do IV Centenario da Fundação de São Paulo. IV centenàrio da fundação de São Paulo" .
+
+<http://id.loc.gov/resources/works/11037354> a bf:Work ;
+    bflc:aap "S. Paulo" .
+
+<http://id.loc.gov/resources/works/11203484> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Orçamento programa. Execução orçamentária, legislação" .
+
+<http://id.loc.gov/resources/works/11203485> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Orçamento programa" .
+
+<http://id.loc.gov/resources/works/11204061> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Lei orçamentária e anexos" .
+
+<http://id.loc.gov/resources/works/11238398> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Leis do município de São Paulo" .
+
+<http://id.loc.gov/resources/works/11238399> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Decretos do município de São Paulo" .
+
+<http://id.loc.gov/resources/works/11246819> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Ementário da legislação municipal, leis e decretos" .
+
+<http://id.loc.gov/resources/works/11393100> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Plano de governo" .
+
+<http://id.loc.gov/resources/works/12720285> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Orça a receita e fixa a despesa do municipio de São Paulo, para o exercicio de .." .
+
+<http://id.loc.gov/resources/works/12723176> a bf:Work ;
+    bflc:aap "Nikkei shinbun" .
+
+<http://id.loc.gov/resources/works/13778187> a bf:Work ;
+    bflc:aap "Ó Freguesia, quantas histórias" .
+
+<http://id.loc.gov/resources/works/14380112> a bf:Work ;
+    bflc:aap "Desenhando a cidade do século XX" .
+
+<http://id.loc.gov/resources/works/14462876> a bf:Work ;
+    bflc:aap "Subprefeituras" .
+
+<http://id.loc.gov/resources/works/1454624> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Ensino municipal de São Paulo" .
+
+<http://id.loc.gov/resources/works/1456695> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Decretos-leis e decretos do município de São Paulo do ano de 1943" .
+
+<http://id.loc.gov/resources/works/15023632> a bf:Work ;
+    bflc:aap "Aeroporto - cidade - metrópole" .
+
+<http://id.loc.gov/resources/works/16225084> a bf:Work ;
+    bflc:aap "Um homem de moral" .
+
+<http://id.loc.gov/resources/works/16864596> a bf:Work ;
+    bflc:aap "Cancioneiro da imigração" .
+
+<http://id.loc.gov/resources/works/17232101> a bf:Work ;
+    bflc:aap "Ação para o centro de São Paulo" .
+
+<http://id.loc.gov/resources/works/17342415> a bf:Work ;
+    bflc:aap "Sumário de dados" .
+
+<http://id.loc.gov/resources/works/17593889> a bf:Work ;
+    bflc:aap "Lloyd, David, 1945- São Paulo" .
+
+<http://id.loc.gov/resources/works/17625933> a bf:Work ;
+    bflc:aap "Iconografia paulistana" .
+
+<http://id.loc.gov/resources/works/17663702> a bf:Work ;
+    bflc:aap "História da saúde em São Paulo" .
+
+<http://id.loc.gov/resources/works/17987175> a bf:Work ;
+    bflc:aap "Urbanização de favelas em foco" .
+
+<http://id.loc.gov/resources/works/1900775> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Normas para segurança de edificações" .
+
+<http://id.loc.gov/resources/works/20786690> a bf:Work ;
+    bflc:aap "Soares Lara, Antonio O direito dominial em face do art. 526 do Código civil" .
+
+<http://id.loc.gov/resources/works/20786710> a bf:Work ;
+    bflc:aap "Ramos de Oliveira, Paulo Recurso de revista na apelação n. 18.252" .
+
+<http://id.loc.gov/resources/works/20916432> a bf:Work ;
+    bflc:aap "Torres, Brenda Identidade e força ancestral" .
+
+<http://id.loc.gov/resources/works/21433013> a bf:Work ;
+    bflc:aap "Russo, Juliana Pequenos acasos cotidianos" .
+
+<http://id.loc.gov/resources/works/22425421> a bf:Work ;
+    bflc:aap "Assumpção Ladeira, Francisco Agravo n.o 12.016 (capital)" .
+
+<http://id.loc.gov/resources/works/22425462> a bf:Work ;
+    bflc:aap "São Paulo (Brazil). Departamento juridico. Embargos no recurso extraordinário n.o 10.042" .
+
+<http://id.loc.gov/resources/works/22492391> a bf:Work ;
+    bflc:aap "Coutinho, Oswaldo de Oliveira Desapropriação" .
+
+<http://id.loc.gov/resources/works/2259653> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Código de edificações do Município de São Paulo" .
+
+<http://id.loc.gov/resources/works/22730028> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Decreto no. 6,979 de 20 de abril de 1967, regulamenta as disposições legais relativas ao impôsto sôbre serviços de qualquer natureza" .
+
+<http://id.loc.gov/resources/works/2355847> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Código de edificações" .
+
+<http://id.loc.gov/resources/works/2774422> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) São Paulo, 1975-1979" .
+
+<http://id.loc.gov/resources/works/2844472> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Estatuto dos funcionários públicos do Município de São Paulo" .
+
+<http://id.loc.gov/resources/works/2865290> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Estatuto dos funcionários do Município de São Paulo" .
+
+<http://id.loc.gov/resources/works/3248431> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Código de edificações do Município de São Paulo" .
+
+<http://id.loc.gov/resources/works/3337974> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Coletânea da legislação de licitação do Município de São Paulo" .
+
+<http://id.loc.gov/resources/works/3343170> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Coletânea das leis e decretos de parcelamento, uso e ocupação do solo" .
+
+<http://id.loc.gov/resources/works/3644580> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Código de edificações" .
+
+<http://id.loc.gov/resources/works/4336586> a bf:Work ;
+    bflc:aap "América Latina" .
+
+<http://id.loc.gov/resources/works/4653469> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Código de edificações" .
+
+<http://id.loc.gov/resources/works/4737984> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Manual de legislação" .
+
+<http://id.loc.gov/resources/works/542536> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Acervo pictórico da Prefeitura do Município de São Paulo" .
+
+<http://id.loc.gov/resources/works/5548748> a bf:Work ;
+    bflc:aap "Diagnóstico cartográfico ambiental, município de São Paulo" .
+
+<http://id.loc.gov/resources/works/6001939> a bf:Work ;
+    bflc:aap "Moura, Paulo Cursino de, 1897-1943 São Paulo de outrora" .
+
+<http://id.loc.gov/resources/works/6048294> a bf:Work ;
+    bflc:aap "Taunay, Afonso de E. (Afonso de Escragnolle), 1876-1958 Velho São Paulo" .
+
+<http://id.loc.gov/resources/works/6516966> a bf:Work ;
+    bflc:aap "Pérez Guevara de Boccalandro, Ada Sao Paulo" .
+
+<http://id.loc.gov/resources/works/6554487> a bf:Work ;
+    bflc:aap "Camara de Comercio Italo-Brasileira Numero unico dedicato al IVo centenario di fondazione della città di S. Paolo, 1554-1954" .
+
+<http://id.loc.gov/resources/works/6639184> a bf:Work ;
+    bflc:aap "George, Pierre, 1909- Aire métropolitaine, conurbation ou rĕgion industrielle?" .
+
+<http://id.loc.gov/resources/works/6984590> a bf:Work ;
+    bflc:aap "Instituto Histórico e Geográfico de São Paulo São Paulo em quatro séculos" .
+
+<http://id.loc.gov/resources/works/7780211> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Estatutos" .
+
+<http://id.loc.gov/resources/works/7860401> a bf:Work ;
+    bflc:aap "Maia, Prestes, 1896-1965 Os melhoramentos de São Paulo" .
+
+<http://id.loc.gov/resources/works/7932009> a bf:Work ;
+    bflc:aap "Banco do Brasil Estado de São Paulo" .
+
+<http://id.loc.gov/resources/works/7992626> a bf:Work ;
+    bflc:aap "Wise, Gene H. Sao Paulo hears the gospel" .
+
+<http://id.loc.gov/resources/works/8309622> a bf:Work ;
+    bflc:aap "Freitas, Affonso Antonio de, 1868-1930 Diccionario historico" .
+
+<http://id.loc.gov/resources/works/8323590> a bf:Work ;
+    bflc:aap "Barbosa de Campos, Paulo Crédito fiscal .." .
+
+<http://id.loc.gov/resources/works/8338074> a bf:Work ;
+    bflc:aap "Maia, Prestes, 1896-1965 Os melhoramentos de São Paulo" .
+
+<http://id.loc.gov/resources/works/8794457> a bf:Work ;
+    bflc:aap "Pinto, Carlos Alberto de Andrade Discriminação de rendas" .
+
+<http://id.loc.gov/resources/works/8869810> a bf:Work ;
+    bflc:aap "Eckschmidt, Jan São Paulo no limiar do seu quinto século" .
+
+<http://id.loc.gov/resources/works/8883399> a bf:Work ;
+    bflc:aap "São Paulo, Brazil (State) Ensaios paulistas" .
+
+<http://id.loc.gov/resources/works/8930394> a bf:Work ;
+    bflc:aap "Americano, Jorge, 1891- São Paulo atual. 1935-1962" .
+
+<http://id.loc.gov/resources/works/8975542> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Código de obras" .
+
+<http://id.loc.gov/resources/works/8978945> a bf:Work ;
+    bflc:aap "Americano, Jorge, 1891- São Paulo atual (1935-1962)" .
+
+<http://id.loc.gov/resources/works/941053> a bf:Work ;
+    bflc:aap "São Paulo (Brazil) Administrações regionais legislação" .
+
+<http://id.loc.gov/resources/works/9833975> a bf:Work ;
+    bflc:aap "Azevedo, Aroldo de, 1910- A cidade de São Paulo" .
+
+<http://id.loc.gov/resources/works/9890620> a bf:Work ;
+    bflc:aap "Barros, Gilberto Leite de A cidade e o planalto" .
+
+<http://id.loc.gov/rwo/agents/n79077404> a madsrdf:RWO,
+        <http://www.loc.gov/standards/mads/rdf/v1#Geographic> ;
+    rdfs:label "São Paulo (Brazil)" ;
+    bflc:contributorTo <http://id.loc.gov/resources/works/11203484>,
+        <http://id.loc.gov/resources/works/11203485>,
+        <http://id.loc.gov/resources/works/11204061>,
+        <http://id.loc.gov/resources/works/11238398>,
+        <http://id.loc.gov/resources/works/11238399>,
+        <http://id.loc.gov/resources/works/11246819>,
+        <http://id.loc.gov/resources/works/11393100>,
+        <http://id.loc.gov/resources/works/12720285>,
+        <http://id.loc.gov/resources/works/14462876>,
+        <http://id.loc.gov/resources/works/1454624>,
+        <http://id.loc.gov/resources/works/1456695>,
+        <http://id.loc.gov/resources/works/15023632>,
+        <http://id.loc.gov/resources/works/17232101>,
+        <http://id.loc.gov/resources/works/17342415>,
+        <http://id.loc.gov/resources/works/1900775>,
+        <http://id.loc.gov/resources/works/20786690>,
+        <http://id.loc.gov/resources/works/20786710>,
+        <http://id.loc.gov/resources/works/22425421>,
+        <http://id.loc.gov/resources/works/22425462>,
+        <http://id.loc.gov/resources/works/22492391>,
+        <http://id.loc.gov/resources/works/2259653>,
+        <http://id.loc.gov/resources/works/22730028>,
+        <http://id.loc.gov/resources/works/2355847>,
+        <http://id.loc.gov/resources/works/2774422>,
+        <http://id.loc.gov/resources/works/2844472>,
+        <http://id.loc.gov/resources/works/2865290>,
+        <http://id.loc.gov/resources/works/3248431>,
+        <http://id.loc.gov/resources/works/3337974>,
+        <http://id.loc.gov/resources/works/3343170>,
+        <http://id.loc.gov/resources/works/3644580>,
+        <http://id.loc.gov/resources/works/4336586>,
+        <http://id.loc.gov/resources/works/4653469>,
+        <http://id.loc.gov/resources/works/4737984>,
+        <http://id.loc.gov/resources/works/542536>,
+        <http://id.loc.gov/resources/works/5548748>,
+        <http://id.loc.gov/resources/works/7780211>,
+        <http://id.loc.gov/resources/works/7860401>,
+        <http://id.loc.gov/resources/works/8323590>,
+        <http://id.loc.gov/resources/works/8338074>,
+        <http://id.loc.gov/resources/works/8794457>,
+        <http://id.loc.gov/resources/works/8975542>,
+        <http://id.loc.gov/resources/works/941053> ;
+    bflc:subjectOf <http://id.loc.gov/resources/works/10413435>,
+        <http://id.loc.gov/resources/works/10761080>,
+        <http://id.loc.gov/resources/works/11037354>,
+        <http://id.loc.gov/resources/works/12723176>,
+        <http://id.loc.gov/resources/works/13778187>,
+        <http://id.loc.gov/resources/works/14380112>,
+        <http://id.loc.gov/resources/works/16225084>,
+        <http://id.loc.gov/resources/works/16864596>,
+        <http://id.loc.gov/resources/works/17593889>,
+        <http://id.loc.gov/resources/works/17625933>,
+        <http://id.loc.gov/resources/works/17663702>,
+        <http://id.loc.gov/resources/works/17987175>,
+        <http://id.loc.gov/resources/works/20916432>,
+        <http://id.loc.gov/resources/works/21433013>,
+        <http://id.loc.gov/resources/works/6001939>,
+        <http://id.loc.gov/resources/works/6048294>,
+        <http://id.loc.gov/resources/works/6516966>,
+        <http://id.loc.gov/resources/works/6554487>,
+        <http://id.loc.gov/resources/works/6639184>,
+        <http://id.loc.gov/resources/works/6984590>,
+        <http://id.loc.gov/resources/works/7932009>,
+        <http://id.loc.gov/resources/works/7992626>,
+        <http://id.loc.gov/resources/works/8309622>,
+        <http://id.loc.gov/resources/works/8869810>,
+        <http://id.loc.gov/resources/works/8883399>,
+        <http://id.loc.gov/resources/works/8930394>,
+        <http://id.loc.gov/resources/works/8978945>,
+        <http://id.loc.gov/resources/works/9833975>,
+        <http://id.loc.gov/resources/works/9890620> ;
+    madsrdf:associatedLocale [ a madsrdf:Geographic ;
+            rdfs:label "Brazil" ;
+            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/names> ] ;
+    madsrdf:entityDescriptor [ a skos:Concept ;
+            rdfs:label "Cities and towns" ] .
+
+<http://datos.bne.es/resource/XX452424> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "São Paulo (Brasil)"@es ;
+    skos:prefLabel "São Paulo (Brasil)"@es .
+
+<http://id.loc.gov/authorities/demographicTerms/dg2022060324> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Paulistanos"@en ;
+    skos:prefLabel "Paulistanos"@en .
+
+<http://id.loc.gov/authorities/names/n79077404> a madsrdf:Authority,
+        madsrdf:Geographic,
+        skos:Concept ;
+    bflc:marcKey "151  $aSão Paulo (Brazil)" ;
+    identifiers:lccn "n 79077404" ;
+    identifiers:local "(OCoLC)oca00310068" ;
+    madsrdf:adminMetadata [ a ri:RecordInfo ;
+            ri:languageOfCataloging <http://id.loc.gov/vocabulary/iso639-2/eng> ;
+            ri:recordChangeDate "2015-07-11T07:37:37"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/wau> ;
+            ri:recordStatus "revised"^^xsd:string ],
+        [ a ri:RecordInfo ;
+            ri:languageOfCataloging <http://id.loc.gov/vocabulary/iso639-2/eng> ;
+            ri:recordChangeDate "1980-04-18T00:00:00"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            ri:recordStatus "new"^^xsd:string ] ;
+    madsrdf:authoritativeLabel "São Paulo (Brazil)" ;
+    madsrdf:code "s-bl---"^^<http://id.loc.gov/datatypes/codes/gac> ;
+    madsrdf:editorialNote "[Prefeitura refers to the entire municipal govt. administration and is not a subordinate corporate entity.]" ;
+    madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                madsrdf:elementValue "São Paulo (Brazil)" ] ) ;
+    madsrdf:hasCloseExternalAuthority <http://datos.bne.es/resource/XX452424>,
+        <http://id.worldcat.org/fast/1205761>,
+        <http://id.worldcat.org/fast/1342513>,
+        <http://id.worldcat.org/fast/1342514>,
+        <http://id.worldcat.org/fast/1342516>,
+        <http://www.wikidata.org/entity/Q174> ;
+    madsrdf:hasDemonym <http://id.loc.gov/authorities/demographicTerms/dg2022060324> ;
+    madsrdf:hasExactExternalAuthority <http://viaf.org/viaf/sourceID/LC%7Cn++79077404#skos:Concept> ;
+    madsrdf:hasSource [ a madsrdf:Source ;
+            madsrdf:citationNote "t.p. (Istituto italiano di cultura, San Paolo; p. 216: São Paulo)" ;
+            madsrdf:citationSource "Quaderni (Istituto italiano di cultura (São Paulo, Brazil)), Giugno 1993 :" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "p. 9, 1st group (São Paulo) p. 10, 2nd group (San-Paʼulo)" ;
+            madsrdf:citationSource "Israel. Ḳonsulyah kelalit (São Paulo, Brazil). 25 anos de consulado, 1982:" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "(MLC usage: Prefeitura do Município de São Paulo)" ;
+            madsrdf:citationSource "LC data base, 1/3/86 Administrações regionais legislação, 1975" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "(São Paulo; a municipality, metropolis and global city located in southeastern Brazil; capital of the state of São Paulo; Município de São Paulo; Municipality of São Paulo; 23°33ʹS 46°38ʹW)" ;
+            madsrdf:citationSource "Wikipedia, July 9, 2015" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "p. 1 of PDF file (Prefeitura da Cidade de Sao Paulo)" ;
+            madsrdf:citationSource "Slum upgrading up close, c2008:" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "p. 89 (San Pablo, Brasil) p. 88 (São Paulo)" ;
+            madsrdf:citationSource "Bilbao, L. La izquierdo latinoamericana frente a la crisis mundial, 1990:" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "t.p. (Prefeitura do Município de São Paulo; PMSP)" ;
+            madsrdf:citationSource "América Latina, 1985:" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "CD container (Prefeitura de São Paulo) text (PMSP; Prefeitura Municipal de São Paulo)" ;
+            madsrdf:citationSource "Acão para o centro de São Paulo [electronic resource], 2004:" ;
+            madsrdf:citationStatus "found" ] ;
+    madsrdf:hasVariant [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "San-Paʼulo (Brazil)" ] ) ;
+            madsrdf:variantLabel "San-Paʼulo (Brazil)" ],
+        [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "Prefeitura Municipal de São Paulo (Brazil)" ] ) ;
+            madsrdf:variantLabel "Prefeitura Municipal de São Paulo (Brazil)" ],
+        [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "Municipality of São Paulo (Brazil)" ] ) ;
+            madsrdf:variantLabel "Municipality of São Paulo (Brazil)" ],
+        [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "PMSP (Brazil)" ] ) ;
+            madsrdf:variantLabel "PMSP (Brazil)" ],
+        [ a madsrdf:CorporateName,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:NameElement ;
+                        madsrdf:elementValue "São Paulo (Brazil)." ] [ a madsrdf:NameElement ;
+                        madsrdf:elementValue "Prefeitura Municipal" ] ) ;
+            madsrdf:variantLabel "São Paulo (Brazil). Prefeitura Municipal" ],
+        [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "Prefeitura do Município de São Paulo (Brazil)" ] ) ;
+            madsrdf:variantLabel "Prefeitura do Município de São Paulo (Brazil)" ],
+        [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "Município de São Paulo (Brazil)" ] ) ;
+            madsrdf:variantLabel "Município de São Paulo (Brazil)" ],
+        [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "San Paolo (Brazil)" ] ) ;
+            madsrdf:variantLabel "San Paolo (Brazil)" ],
+        [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "Prefeitura da Cidade de São Paulo (Brazil)" ] ) ;
+            madsrdf:variantLabel "Prefeitura da Cidade de São Paulo (Brazil)" ],
+        [ a madsrdf:Geographic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                        madsrdf:elementValue "San Pablo (Brazil)" ] ) ;
+            madsrdf:variantLabel "San Pablo (Brazil)" ],
+        [ a madsrdf:CorporateName,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:NameElement ;
+                        madsrdf:elementValue "São Paulo (Brazil)." ] [ a madsrdf:NameElement ;
+                        madsrdf:elementValue "Prefeitura" ] ) ;
+            madsrdf:variantLabel "São Paulo (Brazil). Prefeitura" ] ;
+    madsrdf:identifiesRWO <http://id.loc.gov/rwo/agents/n79077404> ;
+    madsrdf:isMemberOfMADSCollection <http://id.loc.gov/authorities/names/collection_LCNAF>,
+        <http://id.loc.gov/authorities/names/collection_NamesAuthorizedHeadings> ;
+    madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/names> ;
+    rdfs:related <http://id.loc.gov/authorities/demographicTerms/dg2022060324> ;
+    skos:altLabel "Municipality of São Paulo (Brazil)",
+        "Município de São Paulo (Brazil)",
+        "PMSP (Brazil)",
+        "Prefeitura Municipal de São Paulo (Brazil)",
+        "Prefeitura da Cidade de São Paulo (Brazil)",
+        "Prefeitura do Município de São Paulo (Brazil)",
+        "San Pablo (Brazil)",
+        "San Paolo (Brazil)",
+        "San-Paʼulo (Brazil)",
+        "São Paulo (Brazil). Prefeitura",
+        "São Paulo (Brazil). Prefeitura Municipal" ;
+    skos:changeNote [ a cs:ChangeSet ;
+            cs:changeReason "revised"^^xsd:string ;
+            cs:createdDate "2015-07-11T07:37:37"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/wau> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/names/n79077404> ],
+        [ a cs:ChangeSet ;
+            cs:changeReason "new"^^xsd:string ;
+            cs:createdDate "1980-04-18T00:00:00"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/names/n79077404> ] ;
+    skos:closeMatch <http://datos.bne.es/resource/XX452424>,
+        <http://id.worldcat.org/fast/1205761>,
+        <http://id.worldcat.org/fast/1342513>,
+        <http://id.worldcat.org/fast/1342514>,
+        <http://id.worldcat.org/fast/1342516>,
+        <http://www.wikidata.org/entity/Q174> ;
+    skos:editorialNote "[Prefeitura refers to the entire municipal govt. administration and is not a subordinate corporate entity.]" ;
+    skos:exactMatch <http://viaf.org/viaf/sourceID/LC%7Cn++79077404#skos:Concept> ;
+    skos:inScheme <http://id.loc.gov/authorities/names> ;
+    skos:notation "s-bl---"^^<http://id.loc.gov/datatypes/codes/gac> ;
+    skos:prefLabel "São Paulo (Brazil)" ;
+    skosxl:altLabel [ a skosxl:Label ;
+            skosxl:literalForm "Prefeitura Municipal de São Paulo (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "Município de São Paulo (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "San Paolo (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "San-Paʼulo (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "San Pablo (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "São Paulo (Brazil). Prefeitura Municipal" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "Municipality of São Paulo (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "Prefeitura do Município de São Paulo (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "Prefeitura da Cidade de São Paulo (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "PMSP (Brazil)" ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "São Paulo (Brazil). Prefeitura" ] .
+
+<http://id.worldcat.org/fast/1205761> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Brazil São Paulo" ;
+    skos:prefLabel "Brazil São Paulo" .
+
+<http://id.worldcat.org/fast/1342513> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Brazil São Paulo Metropolitan Area" ;
+    skos:prefLabel "Brazil São Paulo Metropolitan Area" .
+
+<http://id.worldcat.org/fast/1342514> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Brazil São Paulo Region" ;
+    skos:prefLabel "Brazil São Paulo Region" .
+
+<http://id.worldcat.org/fast/1342516> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Brazil São Paulo Suburban Area" ;
+    skos:prefLabel "Brazil São Paulo Suburban Area" .
+
+<http://www.wikidata.org/entity/Q174> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "São Paulo" ;
+    skos:prefLabel "São Paulo" .
+

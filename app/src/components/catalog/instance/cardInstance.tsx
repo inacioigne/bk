@@ -52,9 +52,7 @@ interface Props {
 }
 
 export default function CardInstance({ instance, classification }: Props) {
-    // console.log(instance)
     const [open, setOpen] = useState(false);
-    // const [btnDisabled, setBtnDisabled] = useState(true);
     const [deleteInstance, setDelete] = useState(false);
     const [formItems, setFormItems] = useState(false);
     const { setProgress } = useProgress();
@@ -98,8 +96,6 @@ export default function CardInstance({ instance, classification }: Props) {
     };
 
     const handleOpen = () => {
-        // if (instance.hasItem && instance.hasItem.length > 0 )
-        // setBtnDisabled()
         setDelete(true);
     };
 

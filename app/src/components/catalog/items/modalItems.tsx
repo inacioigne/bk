@@ -131,7 +131,7 @@ const initialRows: GridRowsProp = [
 ];
 
 export default function ModalItems({ items, instanceOf, setOpen, setFormItems, open }: Props) {
-    // console.log(items)
+    
 
     const [rowsDelete, setRowsDelete] = useState([]);
     const [btnDisabled, setBtnDisabled] = useState(true);
@@ -315,14 +315,7 @@ export default function ModalItems({ items, instanceOf, setOpen, setFormItems, o
         const updatedRow = { ...newRow, isNew: false };
         setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
 
-        // let data = {
-        //     id: updatedRow.id,
-        //     creationDate: updatedRow.creationDate,
-        //     collection: updatedRow.collection,
-        //     shelf: updatedRow.shelf,
-        //     barcode: updatedRow.barcode,
-        //     itemOf: updatedRow.itemOf.id
-        // }
+        let work = instanceOf.id.split("/")[2]
         let data = {
             adminMetadata: {
                 creationDate: updatedRow.creationDate[0],
@@ -338,33 +331,35 @@ export default function ModalItems({ items, instanceOf, setOpen, setFormItems, o
             collection: updatedRow.collection,
             shelf: updatedRow.shelf,
             barcode: updatedRow.barcode,
-            itemOf: updatedRow.itemOf.id
+            itemOf: updatedRow.itemOf.id,
+            instanceOf: work
         }
 
-        // bkapi
-        //     .put(`/catalog/items/edit/`, updatedRow, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             console.log(response.data)
-        //             // action()
-        //             setMessage("Registro editado com sucesso!")
-        //             // router.push(`/admin/catalog/${work_id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         setTypeAlert("error")
-        //         if (error.response.status === 409) {
-        //             setMessage("Este registro já existe")
-        //         }
-        //         console.error("ERs:", error.response);
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
-        console.log(data)
+        setProgress(true)
+        bkapi
+            .put(`/catalog/items/edit/`, data, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    // console.log(response.data)
+                    action()
+                    setTypeAlert("success")
+                    setMessage("Registro editado com sucesso!")
+                }
+            })
+            .catch(function (error) {
+                setTypeAlert("error")
+                if (error.response.status === 409) {
+                    setMessage("Este registro já existe")
+                }
+                console.error("ERs:", error.response);
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
+        // console.log(data)
         return updatedRow;
     };
 

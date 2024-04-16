@@ -23,7 +23,7 @@ import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
 import bibframe from "@/share/bibframe/work.json"
 
 type Typethesaurus = {
-    name: string|undefined;
+    name: string | undefined;
     open: boolean;
 }
 
@@ -49,7 +49,7 @@ export default function BfTextfieldThesarus(
 
     }: Props
 ) {
-    const [thesaurus, setThesaurus] = useState<Typethesaurus>({name:"", open: false});
+    const [thesaurus, setThesaurus] = useState<Typethesaurus>({ name: "", open: false });
     const [nameField, setNameField] = useState("");
 
     const watchFields = useWatch({
@@ -57,7 +57,7 @@ export default function BfTextfieldThesarus(
         name: `${name}`
     });
 
-    // console.log("SUB: ", watchFields)    
+    console.log("T", watchFields )      
 
     return (
         <>
@@ -74,7 +74,7 @@ export default function BfTextfieldThesarus(
                 }}
                 {...register(`${name}.${index}.${subfield.name}.value`)}
                 InputProps={
-                    watchFields[index]?.term.value === "" ? {
+                    watchFields[index][`${subfield.name}`].value === "" ? {
                         endAdornment: (
                             <InputAdornment
                                 position="start"
@@ -91,7 +91,7 @@ export default function BfTextfieldThesarus(
                         startAdornment: (
                             <InputAdornment
                                 position="start" >
-                                <Chip label={watchFields[index]?.term.label} size="small"
+                                <Chip label={watchFields[index][`${subfield.name}`].label} size="small"
                                     color="info"
                                     avatar={<FcLock />}
                                 />
@@ -116,6 +116,7 @@ export default function BfTextfieldThesarus(
                 thesaurus={thesaurus}
                 defaultValues={bibframe.defaultValues}
                 nameField={nameField}
+                nameSubField={subfield.name}
                 setValue={setValue} />
         </>
 

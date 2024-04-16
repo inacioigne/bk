@@ -20,6 +20,7 @@ import { BsPersonPlus, BsPersonFillDown } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams  } from 'next/navigation'
 import { LocAuthority } from "@/services/importation/locAuthority"
+import FormMads from "@/components/madsrdf/formMads";
 
 const previousPaths = [
   {
@@ -78,9 +79,10 @@ export default function LOC() {
         </Box>
 
       ) :  
-     ( names.includes(hit?.type) ? 
-      <FormLocName hit={hit} setForm={setForm} /> : 
-      <FormLocSubject hit={hit} setForm={setForm} /> )
+      <FormMads authority={hit} />
+    //  ( names.includes(hit?.type) ? 
+    //   <FormLocName hit={hit} setForm={setForm} /> : 
+    //   <FormLocSubject hit={hit} setForm={setForm} /> )
 }  
     </Container>
   );

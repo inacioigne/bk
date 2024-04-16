@@ -44,6 +44,11 @@ const headers = {
     "Content-Type": "application/json",
 };
 
+const isMemberOfMADSCollection = {
+    Geographic: 'place',
+    Topic: 'subject'
+}
+
 function GetValue(hit: any) {
 
     let elementList = hit.elementList[0]
@@ -127,7 +132,7 @@ export default function FormLocSubject({ hit, setForm }: Props) {
                     value: "n"
                 },
             },
-            isMemberOfMADSCollection: 'subjects',
+            isMemberOfMADSCollection: isMemberOfMADSCollection[`${hit.type}`],
             authoritativeLabel: data.birthYearDate ?
                 `${data.elementList[0].elementValue.value}, ${data.birthYearDate}` : data.elementList[0].elementValue.value,
         }

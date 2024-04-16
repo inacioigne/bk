@@ -172,6 +172,7 @@
               "name": "place",
               "label": "Local",
               "type": "textField",
+              "thesarus": "place", 
               "width": 3
             },
             {
@@ -323,7 +324,10 @@
     },
     "provisionActivity": [
       {
-        "place": "",
+        "place": {
+          "value": "",
+          "label": ""
+        },
         "agent": "",
         "date": ""
       }

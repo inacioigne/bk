@@ -41,7 +41,7 @@ export default function BfSelect(
         if (name == 'contribution') {
             setValue(`${name}.${index}.role.label`, label)
         } else {
-            // console.log(label)
+            console.log(label)
             setValue(`${name}.${index}.label`, label)
         }
     };

@@ -20,7 +20,8 @@ class ItemEdit(BaseModel):
     collection: str
     shelf: str
     barcode: str
-    itemOf: Optional[str] = None
+    itemOf: str
+    instanceOf: str
 
 class Items_Schema(BaseModel):
   itemOf: str

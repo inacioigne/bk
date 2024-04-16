@@ -1,11 +1,11 @@
 import { z } from "zod";
 
 // Metadata
-import bibframe from "@/share/bibframe/work.json";
+import mads from "@/share/mads/mads.json"
 
 const obj = {};
 
-bibframe.sections.forEach((section) => {
+mads.sections.forEach((section) => {
     section.fields.forEach((field) => {
       if (field.repeatable) {
         let zSub = field.subfields.reduce((acc: any, item) => {
@@ -76,7 +76,7 @@ bibframe.sections.forEach((section) => {
     });
   });
 
-const ZodWork = z.object(obj);
+const ZodMads = z.object(obj);
 
-export default ZodWork;
+export default ZodMads;
 

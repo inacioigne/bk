@@ -21,6 +21,7 @@ import { FcCheckmark } from "react-icons/fc";
 
 import HasVariant from "@/components/madsrdf/view/hasVariant";
 import MadsUri from "@/components/madsrdf/view/madsUri";
+import { string } from "zod";
 // import ListMadsBk from "@/components/madsrdf/view/listMadsBk"
 
 interface Props {
@@ -29,15 +30,16 @@ interface Props {
     setValue: Function;
     field: String;
     setOpen: Function
+    nameSubField: string
 
 }
-export default function CardBkNames({ doc, setDoc, setValue, field, setOpen }: Props) {
+export default function CardBkNames({ doc, setDoc, setValue, field, setOpen, nameSubField }: Props) {
     // console.log("C:", field, )
     const handleChoose = () => {
         
-        setValue(`${field}.term.label`, doc.authority[0])
+        setValue(`${field}.${nameSubField}.label`, doc.authority[0])
         let id = doc.id.split("#")[1]
-        setValue(`${field}.term.value`, `https://bibliokeia.com/authority/${doc.type}/${id}`)
+        setValue(`${field}.${nameSubField}.value`, `https://bibliokeia.com/authority/${doc.type}/${id}`)
         setOpen({name: "", open: false})
     }
 
