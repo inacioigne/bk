@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ZodWork from "@/schema/bibframe/zodWork";
 import { z } from "zod";
 import ZodMads from "@/schema/mads/zodMads";
+import Link from "next/link";
 
 interface Props {
     authority: any | null;
@@ -60,14 +61,19 @@ export default function FormMads(
         getValues
     } = useForm<SchemaCreateMads>(
         {
-            resolver: zodResolver(ZodWork),
+            resolver: zodResolver(ZodMads),
             defaultValues: defaultValues
         }
     );
-    console.log(authority, mads.defaultValues)
+    console.log("er", errors)
+    function CreateAuthority(data: any) {
+        console.log("Dt", data)
+
+
+    }
     return (
         <Box sx={{ width: "100%" }}>
-            <form //onSubmit={handleSubmit(CreateWork)} 
+            <form onSubmit={handleSubmit(CreateAuthority)} 
             >
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={panel} onChange={handleChangePanel} aria-label="basic tabs example">
@@ -90,7 +96,16 @@ export default function FormMads(
                         ))}
                     </CustomTabPanel>
                 ))}
-
+                <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, paddingBottom: 2}}>
+                    <Link href={"/admin/authority"}>
+                        <Button variant="outlined" size="small">
+                            Cancelar
+                        </Button>
+                    </Link>
+                    <Button variant="outlined" type="submit" size="small">
+                        Salvar
+                    </Button>
+                </Box>
             </form>
 
 

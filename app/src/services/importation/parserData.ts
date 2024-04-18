@@ -1,7 +1,7 @@
 import { CheckLoc } from "@/services/importation/checkLoc";
 import { schemaMads, schemaAffiliation } from "@/schema/authority";
 import { ParserUri } from "@/services/importation/parserUri";
-import { Console } from "console";
+import madsrdf from "@/share/mads/mads.json"
 
 const mads = "http://www.loc.gov/mads/rdf/v1#";
 
@@ -17,7 +17,6 @@ export async function ParserData(response: any, uri: string) {
   const [type] = a["@type"].filter(function (elemento: any) {
     return elemento !== `${mads}Authority`;
   });
-  //   console.log(a["@type"])
 
   // identifiersLccn
   let uriArray = uri.split("/");
@@ -36,8 +35,9 @@ export async function ParserData(response: any, uri: string) {
     const [type] = metadado["@type"];
     const [value] = metadado[`${mads}elementValue`];
     const obj = {
-      type: type.split("#")[1],
-      elementValue: { value: value["@value"], lang: value["@language"] },
+      type: type,
+      value: value["@value"], 
+      lang: value["@language"] ? value["@language"] : "" ,
     };
     return obj;
   });
@@ -45,8 +45,8 @@ export async function ParserData(response: any, uri: string) {
   const authority: any = {
     type: type.split("#")[1],
     identifiersLccn: identifiersLccn,
-    authoritativeLabel: authoritativeLabel["@value"],
-    elementList: obj,
+    // authoritativeLabel: authoritativeLabel["@value"],
+    // elementList: obj,
     adminMetadata: {
       status: {
         value: "http://id.loc.gov/vocabulary/mstatus/n",
@@ -73,7 +73,28 @@ export async function ParserData(response: any, uri: string) {
         label: "",
       },
     ],
+    authoritativeLabel: {
+      label: authoritativeLabel["@value"]
+    },
+    elementList: [
+      {
+          "type": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+          label: "FullNameElement",
+          "value": "Borges, Jorge Luis,",
+          "lang": ""
+      },
+      {
+          "type": "http://www.loc.gov/mads/rdf/v1#DateNameElement",
+          label: "DateNameElement",
+          "value": "1899-1986",
+          "lang": ""
+      }
+  ],
+    
+
+    
   };
+  console.log(obj)
   // hasBroaderAuthority
   if (a.hasOwnProperty(`${mads}hasBroaderAuthority`)) {
     let uris = ParserUri(a, data, "hasBroaderAuthority");
@@ -107,21 +128,21 @@ export async function ParserData(response: any, uri: string) {
   // hasVariant
   if (a.hasOwnProperty(`${mads}hasVariant`)) {
     let hv = a[`${mads}hasVariant`];
+    
     let hasVariant = hv.map((e: any) => {
       let id = e["@id"];
-
       let [obj] = data.filter(function (e: any) {
         return e["@id"] === id;
       });
-
+      
       let types = obj["@type"];
       let [type] = types.filter((e: string) => {
         return e !== `${mads}Variant`;
       });
 
       if (obj.hasOwnProperty(`${mads}elementList`)) {
-        let [el] = obj[`${mads}elementList`];
 
+        let [el] = obj[`${mads}elementList`];
         let elementList = el["@list"].map((e: any) => {
           let id = e["@id"];
           let [obj] = data.filter(function (e: any) {
@@ -130,15 +151,17 @@ export async function ParserData(response: any, uri: string) {
           let [type] = obj["@type"];
           let [elementValue] = obj[`${mads}elementValue`];
           let element = {
-            type: type.split("#")[1],
-            elementValue: { value: elementValue["@value"] },
+            // type: type.split("#")[1],
+            type: type,
+            // elementValue: { value: elementValue["@value"] },
+            value: elementValue["@value"],
+            lang: ""
           };
           return element;
         });
-
         let [variantLabel] = obj[`${mads}variantLabel`];
         let hasVariant = {
-          type: type.split("#")[1],
+          typeVariant: type.split("#")[1],
           elementList: elementList,
           variantLabel: variantLabel["@value"],
         };
@@ -179,9 +202,13 @@ export async function ParserData(response: any, uri: string) {
         };
         return hasVariant;
       }
+
     });
+    
 
     authority["hasVariant"] = hasVariant;
+    authority["variant"] = hasVariant
+    
   }
   // hasCloseExternalAuthority
   if (a.hasOwnProperty(`${mads}hasCloseExternalAuthority`)) {
@@ -243,28 +270,51 @@ export async function ParserData(response: any, uri: string) {
       let uris = await Promise.all(arrCheck);
       authority["fieldOfActivity"] = uris;
     }
+
+    authority["birth"] = {
+      month: { value: ""},
+    };
+
     // birthPlace
     if (metadado.hasOwnProperty(`${mads}birthPlace`)) {
       let [bp] = metadado[`${mads}birthPlace`];
       let [birthPlace] = data.filter(function (elemento: any) {
         return elemento["@id"] === bp["@id"];
       });
+      // console.log(birthPlace)
       let [label] = birthPlace["http://www.w3.org/2000/01/rdf-schema#label"];
       authority["birthPlace"] = label["@value"];
+      authority.birth['place'] = label["@value"]
     }
     // birthDate
+    let months = madsrdf.commonTypes.month
     if (metadado.hasOwnProperty(`${mads}birthDate`)) {
       let [bd] = metadado[`${mads}birthDate`];
       let date = bd["@value"].split("-");
       if (date.length === 1) {
         let [year] = date;
         authority["birthYearDate"] = year;
-        authority["birthDate"] = year;
+        authority["birthDate"] = {
+          month: { value: ""},
+          year: year
+        };
+        authority.birth['year'] = year
       } else if (date.length === 3) {
         authority["birthYearDate"] = date[0];
         authority["birthMonthDate"] = date[1];
+        let [month] = months.filter((e) => e.value === date[1] )
+        // console.log(month)
         authority["birthDayDate"] = date[2];
-        authority["birthDate"] = `${date[2]}-${date[1]}-${date[0]}`;
+        // authority["birthDate"] = `${date[2]}-${date[1]}-${date[0]}`;
+        authority["birthDate"] =  {
+          day: date[2],
+          month:month,
+          year: date[0]
+        }
+        authority.birth['day'] = date[2]
+        authority.birth['month'] = month
+        authority.birth['year'] = date[0]
+        
       }
     }
     // deathPlace
@@ -278,12 +328,30 @@ export async function ParserData(response: any, uri: string) {
       if (date.length === 1) {
         let [year] = date;
         authority["deathYearDate"] = year;
-        authority["deathDate"] = year;
+        authority["deathDate"] = {
+          month: { value: ""},
+          year: year
+        };
+        authority["death"] = {
+          month: { value: ""},
+          year: year
+        };
       } else if (date.length === 3) {
         authority["deathYearDate"] = date[0];
         authority["deathMonthDate"] = date[1];
         authority["deathDayDate"] = date[2];
-        authority["deathDate"] = `${date[2]}-${date[1]}-${date[0]}`;
+        // authority["deathDate"] = `${date[2]}-${date[1]}-${date[0]}`;
+        let [deathMonth] = months.filter((e) => e.value === date[1] )
+        authority["deathDate"] = {
+          day: date[2],
+          month: { "value": date[1]},
+          year: date[0]
+        }
+        authority["death"] = {
+          day: date[2],
+          month:deathMonth,
+          year: date[0]
+        }
       }
     }
     // hasAffiliation
@@ -363,5 +431,7 @@ export async function ParserData(response: any, uri: string) {
       authority["occupation"] = occupation;
     }
   }
+  
+  
   return authority;
 }

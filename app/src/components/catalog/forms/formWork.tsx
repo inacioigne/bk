@@ -104,7 +104,6 @@ export default function FormWork() {
 
     function CreateWork(data: any) {
         setProgress(true)
-
         const RemovePropreites = (obj: any) => {
             Object.entries(obj).forEach(function ([chave, valor]) {
                 if (valor === "") {
@@ -126,14 +125,7 @@ export default function FormWork() {
                 }
             });
         }
-        // const RemoveEmptyAuthority = (authority: string) => {
-        //     let auth = data[`${authority}`].filter((e: any) => e.term.value !== "")
-        //     if (auth.length > 0) {
-        //         data[`${authority}`] = auth
-        //     } else {
-        //         delete data[`${authority}`]
-        //     }
-        // }
+
         RemoveEmpty(data)
         RemoveEmptyAuthority('contribution', data)
         RemoveEmptyAuthority('subject', data)
@@ -192,13 +184,10 @@ export default function FormWork() {
                             Cancelar
                         </Button>
                     </Link>
-
                     <Button variant="outlined" type="submit">
                         Salvar
-                    </Button>
-
+                    </Button> 
                 </Box>
-
             </form>
             <BfErros openBfErros={openBfErros} setBfErros={setBfErros} errors={errors} />
         </Box>

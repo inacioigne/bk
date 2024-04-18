@@ -63,93 +63,211 @@
         ]
       },
       {
-        "name": "titleInformation",
-        "label": "Informações sobre o título",
+        "name": "authorityInformation",
+        "label": "Autoridade",
         "fields": [
           {
-            "name": "title",
-            "label": "Informações sobre o título",
-            "doc": "http://id.loc.gov/ontologies/bibframe/title",
+            "name": "authoritativeLabel",
+            "label": "Label",
+            "doc": "https://id.loc.gov/ontologies/madsrdf/v1.html#p_authoritativeLabel",
             "repeatable": false,
             "subfields": [
               {
-                "name": "mainTitle",
-                "label": "Título principal",
+                "name": "label",
+                "label": "Nome",
                 "type": "textField",
                 "disabled": false,
                 "required": true,
-                "messageError": "O título é obrigatório.",
-                "width": 6
-              },
-              {
-                "name": "subtitle",
-                "label": "Subtítulo",
-                "type": "textField",
-                "disabled": false,
-                "width": 6
+                "messageError": "O nome da autoridade é obrigatório.",
+                "width": 12
               }
             ]
           },
           {
-            "name": "variantTitle",
-            "label": "Título alternativo",
-            "doc": "http://id.loc.gov/ontologies/bibframe/VariantTitle",
+            "name": "elementList",
+            "label": "Nome controlado",
+            "doc": "https://id.loc.gov/ontologies/madsrdf/v1.html#p_authoritativeLabel",
             "repeatable": true,
-            "required": false,
             "subfields": [
               {
-                "name": "mainTitle",
-                "label": "Título principal",
+                "name": "type",
+                "label": "Tipo",
+                "type": "select",
+                "commonType": "madsTypes",
+                "disabled": false,
+                "required": true,
+                "messageError": "O tipo da autoridade é obrigatório.",
+                "width": 3
+              },
+              {
+                "name": "value",
+                "label": "Nome",
                 "type": "textField",
                 "disabled": false,
+                "required": true,
+                "messageError": "O nome da autoridade é obrigatório.",
                 "width": 6
               },
               {
-                "name": "subtitle",
-                "label": "Subtítulo",
-                "type": "textField",
+                "name": "lang",
+                "label": "Idioma",
+                "type": "select",
+                "commonType": "language",
                 "disabled": false,
-                "width": 6
+                "required": false,
+                "width": 3
               }
             ]
+          },
+          {
+            "name": "birth",
+            "label": "Nascimento",
+            "repeatable": false,
+            "subfields": [
+              {
+                "name": "place",
+                "label": "Local",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 3
+              },
+              {
+                "name": "day",
+                "label": "Dia",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 1
+              },
+              {
+                "name": "month",
+                "label": "Mês",
+                "type": "select",
+                "disabled": false,
+                "required": false,
+                "commonType": "month",
+                "width": 2
+              },
+              {
+                "name": "year",
+                "label": "Ano",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 2
+              }
+            ]
+
+          },
+          {
+            "name": "death",
+            "label": "Morte",
+            "repeatable": false,
+            "subfields": [
+              {
+                "name": "place",
+                "label": "Local",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 3
+              },
+              {
+                "name": "day",
+                "label": "Dia",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 1
+              },
+              {
+                "name": "month",
+                "label": "Mês",
+                "type": "select",
+                "disabled": false,
+                "required": false,
+                "commonType": "month",
+                "width": 2
+              },
+              {
+                "name": "year",
+                "label": "Ano",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 2
+              }
+            ]
+
           }
         ]
       },
       {
-        "name": "notes",
-        "label": "Notas sobre a obra",
+        "name": "hasVariant",
+        "label": "Variantes",
         "fields": [
           {
-            "name": "summary",
-            "label": "Resumo",
-            "doc": "https://id.loc.gov/ontologies/bibframe.html#c_Summary",
-            "repeatable": false,
-            "required": false,
-            "subfields": [
-              {
-                "name": "value",
-                "label": "Resumo",
-                "type": "textArea",
-                "width": 12
-              }
-            ]
-          },
-          {
-            "name": "genreForm",
-            "label": "Gênero/Forma",
-            "doc": "https://id.loc.gov/ontologies/bibframe.html#p_language",
+            "name": "variant",
+            "label": "Variante",
             "repeatable": true,
             "required": false,
             "subfields": [
               {
-                "name": "value",
-                "label": "Gênero/Forma",
+                "name": "typeVariant",
+                "label": "Tipo de Variante",
                 "type": "select",
-                "commonType": "genreForms",
+                "commonType": "resourceType",
+                "disabled": false,
+                "required": true,
+                "messageError": "O tipo da autoridade é obrigatório.",
                 "width": 12
+              },
+              {
+                "name": "elementList",
+                "label": "Nome",
+                "repeatable": true,
+                "type": "fieldChild",
+                "childs": [
+                  {
+                    "name": "type",
+                    "label": "Tipo",
+                    "type": "select",
+                    "commonType": "madsTypes",
+                    "disabled": false,
+                    "required": true,
+                    "messageError": "O tipo da autoridade é obrigatório.",
+                    "width": 3
+                  },
+                  {
+                    "name": "value",
+                    "label": "Nome",
+                    "type": "textField",
+                    "disabled": false,
+                    "required": true,
+                    "messageError": "O nome da autoridade é obrigatório.",
+                    "width": 6
+                  },
+                  {
+                    "name": "lang",
+                    "label": "Idioma",
+                    "type": "select",
+                    "commonType": "language",
+                    "disabled": false,
+                    "required": false,
+                    "width": 3
+                  }
+
+                ],
+                "disabled": false,
+                "required": false,
+                "width": 12
+
               }
+              
+             
             ]
-          }     
+          } 
         ]
       }
     ],
@@ -173,17 +291,7 @@
           "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
           "label": "AACr"
         }
-      },
-      "title": {
-        "mainTitle": "",
-        "subtitle": ""
-      },
-      "variantTitle": [
-        {
-          "mainTitle": "",
-          "subtitle": ""
-        }
-      ],
+      }, 
       "isMemberOfMADSCollection": [
         {
           "value": "publisher",
@@ -196,28 +304,15 @@
           "label": ""
         }
       ],
-      "contribution": [
+      "elementList": [
         {
-          "term": {
-            "value": "",
-            "label": ""
-          },
-          "role": {
-            "value": "",
-            "label": ""
-          }
+          "type": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+          "value": ""
         }
       ],
-      "subject": [
-        {
-          "type": "Topic",
-          "term": {
-            "value": "",
-            "label": ""
-          },
-          "lang": ""
-        }
-      ]
+      "birthDate": {
+        "month": { "value": ""}
+      }
     },
     "commonTypes": {
       "descriptionConventions": [
@@ -238,7 +333,11 @@
         {
           "value": "CorporateName",
           "label": "CorporateName"
-        }
+        },
+        {
+          "value": "PersonalName",
+          "label": "PersonalName"
+      }
       ],
       "mstatus": [
         {
@@ -250,44 +349,62 @@
           "label": "Alterado"
         }
       ],
-      "genreForms": [
+      "madsTypes": [
         {
-          "label": "Materiais cartográficos",
-          "value": "http://id.loc.gov/authorities/genreForms/gf2011026113"
+          "label": "FullNameElement",
+          "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement"
         },
         {
-          "label": "Obras comemorativas",
-          "value": "http://id.loc.gov/authorities/genreForms/gf2014026064"
+          "label": "DateNameElement",
+          "value": "http://www.loc.gov/mads/rdf/v1#DateNameElement"
         },
         {
-          "label": "Não ficção criativa",
-          "value": "http://id.loc.gov/authorities/genreForms/gf2014026074"
+          "label": "TermsOfAddressNameElement",
+          "value": "http://www.loc.gov/mads/rdf/v1#TermsOfAddressNameElement"
         }
       ],
-      "contentTypes": [
+      "month": [
         {
-          "label": "Texto",
-          "value": "http://id.loc.gov/vocabulary/contentTypes/txt"
+          "label": "Janeiro",
+          "value": "01"
         },
         {
-          "label": "Não especificado",
-          "value": "http://id.loc.gov/vocabulary/contentTypes/zzz"
-        }
-      ],
-      "relators": [
-        {
-          "label": "Autor",
-          "value": "http://id.loc.gov/vocabulary/relators/aut"
+          "label": "Fevereiro",
+          "value": "02"
         },
         {
-          "label": "Tradutor",
-          "value": "http://id.loc.gov/vocabulary/relators/trl"
+          "label": "Março",
+          "value": "03"
+        },
+        {
+          "label": "Abril",
+          "value": "04"
+        },
+        {
+          "label": "Maio",
+          "value": "05"
+        },
+        {
+          "label": "Junho",
+          "value": "06"
+        },
+        {
+          "label": "Julho",
+          "value": "07"
+        },
+        {
+          "label": "Agosto",
+          "value": "08"
         }
       ],
       "isMemberOfMADSCollection": [
         {
-          "label": "Editora",
-          "value": "publisher"
+          "label": "Editoras",
+          "value": "publishers"
+        },
+        {
+          "label": "Nomes",
+          "value": "names"
         }
       ],
       "language": [

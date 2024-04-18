@@ -134,10 +134,12 @@ export default function BibframeField({ metadado, control, register, setThesauru
                             ))
                             }
                         </Grid>
-                        {fields.length > 1 && 
-                        <IconButton onClick={() => {
-                            remove(index);
-                        }}> <FaTrashCan /></IconButton>}
+                        {fields.length > 1 &&
+                            <IconButton onClick={() => {
+                                remove(index);
+                            }}> <FaTrashCan />
+                            </IconButton>
+                            }
                     </Box>
                 ))}
                 <Box>

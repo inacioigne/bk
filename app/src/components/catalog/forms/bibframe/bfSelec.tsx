@@ -16,18 +16,15 @@ interface Props {
     setValue: Function;
     index: number | boolean;
     control: any;
-    name: string;
-    commonType: any
+    nameField: string;
+    commonType: any;
+    nestIndex: number|null;
 }
 
 export default function BfSelect(
-    { subfield, setValue, index, control, name, commonType }: Props
+    { subfield, setValue, index, control, nameField, commonType, nestIndex }: Props
 ) {
-    
-
-
-
-    // const commonType = bibframe.commonType[`${subfield.commonType}`]
+    // console.log("BfSelect", nameField, subfield.name, index, nestIndex  )
 
 
     const handleChangeSelect = (event: ChangeEvent<HTMLInputElement>, obj: any) => {
@@ -38,27 +35,19 @@ export default function BfSelect(
         const label = commonType.find((option: any) => option.value === event.target.value)?.label;
 
         let index = event.target.name.split(".")[1]
-        if (name == 'contribution') {
-            setValue(`${name}.${index}.role.label`, label)
+        if (nameField == 'contribution') {
+            setValue(`${nameField}.${index}.role.label`, label)
         } else {
-            console.log(label)
-            setValue(`${name}.${index}.label`, label)
+            setValue(`${nameField}.${index}.label`, label)
         }
     };
 
-    // useEffect(() => {
-    //     setValue(`${name}.${index}.role.value`, "http://id.loc.gov/vocabulary/relators/trl")
-    //     console.log(`${name}.${index}.role.value`)
-
-    // }, [index])
-
     return (
         <Controller
-            name={index === false ? `${name}.${subfield.name}.value` : `${name}.${index}.${subfield.name}`}
+            name={index === false ? `${nameField}.${subfield.name}.value` : `${nameField}.${index}.${subfield.name}`}
             control={control}
             render={({ field }) => (
-                <FormControl fullWidth size="small" //required={f.required}
-                >
+                <FormControl fullWidth size="small">
                     <InputLabel id="label">{subfield.label}</InputLabel>
                     <Select
                         id="role"

@@ -1,3 +1,4 @@
+import FieldChild from "../fieldChild";
 import BfModal from "./bfModal";
 import BfSelect from "./bfSelec";
 import BfTextArea from "./bfTextArea";
@@ -18,7 +19,6 @@ export default function BfSubField(
     { subfield, register, index, control, setValue, name, commonType }: Props
 ) {
 
-
     if (subfield.thesarus) {
         return (
             <BfTextfieldThesarus
@@ -32,24 +32,22 @@ export default function BfSubField(
         )
     } else {
         if (subfield.type === 'select') {
-
             return (
                 <BfSelect
                     subfield={subfield}
                     setValue={setValue}
                     index={index}
                     control={control}
-                    name={name}
-                    commonType={commonType}
-                />
-
+                    nameField={name}
+                    commonType={commonType} 
+                    nestIndex={null} />
             )
         } else if (subfield.type === 'textField') {
             return (
                 <BfTextField
                     subfield={subfield}
                     register={register}
-                    name={name}
+                    nameField={name}
                     index={index} />
             )
         } else if (subfield.type === 'textArea') {
@@ -60,8 +58,20 @@ export default function BfSubField(
                     name={name}
                     index={index} />
             )
+        } else if (subfield.type === 'fieldChild') {
+            // console.log("fieldChild", index)
 
+            return (
+                <FieldChild
+                    subfield={subfield}
+                    register={register}
+                    control={control}
+                    setValue={setValue}
+                    nameField={name}
+                    nestIndex={index}
+                />
 
+            )
 
         }
     }

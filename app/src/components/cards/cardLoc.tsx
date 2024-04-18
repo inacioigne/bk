@@ -53,7 +53,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
   const router = useRouter();
   const { setProgress } = useProgress();
   const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-  // console.log("H: ", hit)
+  // console.log("H: ", hit?.birthDate)
 
   function LocExist(identifiersLccn: any) {
     setProgress(true)
@@ -85,19 +85,20 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
 
   }
 
+
   return (
     <Card variant="outlined">
       <CardContent>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {hit.authoritativeLabel[0]}
+              {hit.authoritativeLabel.label[0]}
             </Avatar>
           }
           title={
             <>
               <Typography variant="h5" component="div">
-                {hit.authoritativeLabel}
+                {hit.authoritativeLabel.label}
               </Typography>
               <Chip label={hit.type} color="primary" size="small" />
             </>
@@ -135,7 +136,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
                   }}
                 >
                   {hit?.birthPlace && (<BtnIcon icon={<FaTreeCity />} label={hit?.birthPlace} />)}
-                  {hit?.birthDate && (<BtnIcon icon={<FcCalendar />} label={hit?.birthDate} />)}
+                  {hit?.birthDate && (<BtnIcon icon={<FcCalendar />} label={hit?.birthDate.year} />)}
                 </Box>
               </Box>
             </Grid>
@@ -158,7 +159,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
                   }}
                 >
                   {hit?.deathPlace && (<BtnIcon icon={<FaTreeCity />} label={hit.deathPlace} />)}
-                  {hit?.deathDate && (<BtnIcon icon={<FcCalendar />} label={hit?.deathDate} />)}
+                  {hit?.deathDate && (<BtnIcon icon={<FcCalendar />} label={hit?.deathDate.year} />)}
                 </Box>
               </Box>
             </Grid>

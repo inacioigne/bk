@@ -1,6 +1,7 @@
 import {
     Box, Accordion, AccordionSummary, Typography, Button, IconButton, Grid
 } from "@mui/material";
+import { blueGrey } from '@mui/material/colors';
 import { IoIosArrowDown } from "react-icons/io";
 import BfSubField from "./bfSubField";
 
@@ -28,13 +29,23 @@ const appendField: any = {
         type: "Topic",
         term: { value: "" },
         lang: ""
+    },
+    variant: {
+        typeVariant: 'PersonalName',
+        elementList: [
+            {
+                type: "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                value: "",
+                lang: ""
+            }
+        ]
     }
-
 }
 
 export default function BfField(
     { field, register, control, setValue, commonTypes }: Props
 ) {
+    // console.log(field)
 
     const {
         fields,
@@ -46,7 +57,8 @@ export default function BfField(
     });
 
     const addField = () => {
-        append(appendField[`${field.name}`])
+        let appendValue = appendField[`${field.name}`] ? appendField[`${field.name}`] : { value: "" }
+        append(appendValue)
     };
 
     return (
@@ -66,7 +78,17 @@ export default function BfField(
             }}>
                 {field.repeatable ? (
                     fields.map((item, index) => (
-                        <Box key={index} sx={{ display: "flex", gap: 2, }}>
+                        <Box
+                            key={index}
+                            sx={{
+                                display: "flex", gap: 2, 
+                                alignItems: 'center',
+                                bgcolor: blueGrey[50],
+                                borderRadius: 2,
+                                padding: 3
+                            }}
+
+                        >
                             <Grid container spacing={2}>
                                 {field.subfields.map((subfield: any, i: number) => (
                                     <Grid item key={i} xs={subfield.width} >
@@ -82,10 +104,16 @@ export default function BfField(
                                     </Grid>
                                 ))}
                             </Grid>
-                            {fields.length > 1 &&
-                                <IconButton onClick={() => {
-                                    remove(index);
-                                }}> <FaTrashCan /></IconButton>}
+                            <Box>
+                                {fields.length > 1 &&
+                                    <IconButton onClick={() => {
+                                        remove(index);
+                                    }}> <FaTrashCan />
+                                    </IconButton>
+                                }
+
+                            </Box>
+
                         </Box>
                     ))
                 ) : (
