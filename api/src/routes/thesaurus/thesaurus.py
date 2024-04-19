@@ -31,33 +31,39 @@ router = APIRouter()
 # Post Authority
 @router.post("/create", status_code=201) 
 async def post_authority(request: SchemaMads):
-    # item_id = NextId()
-    if request.identifiersLccn:
-        loc = GraphExistLoc(request.identifiersLccn)
-        if loc["exist"]:
-            raise HTTPException(status_code=409, detail="Esse registro já existe")
+
+    # if request.identifiersLccn:
+    #     loc = GraphExistLoc(request.identifiersLccn)
+    #     if loc["exist"]:
+    #         raise HTTPException(status_code=409, detail="Esse registro já existe")
 
     # MariaDB
-    a = DbAuthority(type=request.type) 
+    authorityType = request.resourceType[1]
+    a = DbAuthority(type=authorityType.value) 
     session.add(a) 
     session.commit()
-    request.identifiersLocal = str(a.id)
+
+    now = datetime.now()
+    request.adminMetadata.creationDate = now
+    request.adminMetadata.identifiedBy = a.id
+    request.identifiersLocal = a.id
     
-    # Jena
-    graph = MakeGraphName(request)
-    response = authorityUpdate.run_sparql(graph)   
-    UpdateJena(request) 
+    # # Jena
+    # graph = MakeGraphName(request)
+    # response = authorityUpdate.run_sparql(graph)   
+    # UpdateJena(request) 
 
-    # Solr
-    doc = MakeDoc(request)
-    responseSolr = solr.add([doc], commit=True)
-    UpdateSolr(request)
+    # # Solr
+    # doc = MakeDoc(request)
+    # responseSolr = solr.add([doc], commit=True)
+    # UpdateSolr(request)
 
-    return {
-        "id": request.identifiersLocal,
-         "jena": response.convert()['message'],
-        "solr": responseSolr
-        } 
+    # return {
+    #     "id": request.identifiersLocal,
+    #      "jena": response.convert()['message'],
+    #     "solr": responseSolr
+    #     } 
+    return request.model_dump()
 
 # Delete Autority
 @router.delete("/delete", status_code=200) 

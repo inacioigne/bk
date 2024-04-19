@@ -29,14 +29,14 @@
             ]
           },
           {
-            "name": "resourceType",
+            "name": "resource",
             "label": "Tipos da Autoridade",
             "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
             "repeatable": true,
             "required": true,
             "subfields": [
               {
-                "name": "value",
+                "name": "type",
                 "label": "Tipo",
                 "type": "select",
                 "commonType": "resourceType",
@@ -52,7 +52,7 @@
             "required": true,
             "subfields": [
               {
-                "name": "value",
+                "name": "collection",
                 "label": "Coleção",
                 "type": "select",
                 "commonType": "isMemberOfMADSCollection",
@@ -73,7 +73,7 @@
             "repeatable": false,
             "subfields": [
               {
-                "name": "label",
+                "name": "value",
                 "label": "Nome",
                 "type": "textField",
                 "disabled": false,
@@ -90,7 +90,7 @@
             "repeatable": true,
             "subfields": [
               {
-                "name": "type",
+                "name": "elementType",
                 "label": "Tipo",
                 "type": "select",
                 "commonType": "madsTypes",
@@ -100,7 +100,7 @@
                 "width": 3
               },
               {
-                "name": "value",
+                "name": "elementValue",
                 "label": "Nome",
                 "type": "textField",
                 "disabled": false,
@@ -109,7 +109,7 @@
                 "width": 6
               },
               {
-                "name": "lang",
+                "name": "elementLang",
                 "label": "Idioma",
                 "type": "select",
                 "commonType": "language",
@@ -224,7 +224,7 @@
                 "width": 12
               },
               {
-                "name": "elementList",
+                "name": "elementList", 
                 "label": "Nome",
                 "repeatable": true,
                 "type": "fieldChild",

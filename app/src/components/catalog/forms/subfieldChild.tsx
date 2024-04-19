@@ -1,3 +1,4 @@
+import ChildSelectField from "./ChildSelectField";
 import BfSelect from "./bibframe/bfSelec";
 import BfTextField from "./bibframe/bfTextField";
 import mads from "@/share/mads/mads.json"
@@ -9,15 +10,15 @@ interface Props {
     control: any;
     setValue: Function;
     nameField: string;
-    nestIndex: number
+    // nestIndex: number
     // commonType: any | undefined
     // childs: [any]
 }
 
 export default function SubfieldChild(
-    { subfield, register, control, setValue, nameField, index, nestIndex }: Props
+    { subfield, register, control, setValue, nameField, index }: Props
 ) {
-    // console.log("SubfieldChild", nameField)
+    // console.log("SubfieldChild", nameField, subfield.name, index)
     
 
     if (subfield.thesarus) {
@@ -37,14 +38,13 @@ export default function SubfieldChild(
             // console.log("select", `${nameField}.${index}.${subfield.name}`)
 
             return (
-                <BfSelect
+                <ChildSelectField
                     subfield={subfield}
                     setValue={setValue}
                     index={index}
                     control={control}
                     nameField={nameField}
                     commonType={mads.commonTypes[`${subfield.commonType}`]}
-                    nestIndex={nestIndex}
                 />
             )
 

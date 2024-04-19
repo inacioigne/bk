@@ -34,9 +34,15 @@ const appendField: any = {
         typeVariant: 'PersonalName',
         elementList: [
             {
-                type: "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                type: {
+                    value: "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                    label: "FullNameElement",
+                  },
                 value: "",
-                lang: ""
+                lang: {
+                    value: "",
+                    label: "",
+                  }
             }
         ]
     }

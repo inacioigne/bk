@@ -40,7 +40,7 @@ export default function BfSubField(
                     control={control}
                     nameField={name}
                     commonType={commonType} 
-                    nestIndex={null} />
+                 />
             )
         } else if (subfield.type === 'textField') {
             return (

@@ -11,7 +11,7 @@ interface Props {
     control: any;
     setValue: Function;
     nameField: string;
-    nestIndex: number;
+    nestIndex: number|null;
     // commonType: any | undefined
     // childs: [any]
 }
@@ -59,7 +59,7 @@ export default function FieldChild({ subfield, register, control, setValue, name
                                                         control={control}
                                                         setValue={setValue}
                                                         nameField={`${nameField}.${nestIndex}.${subfield.name}`}
-                                                        nestIndex={nestIndex}
+                                                        // nestIndex={nestIndex}
                                                         index={index} />
                                                 </Grid>
                                             ))

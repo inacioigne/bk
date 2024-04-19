@@ -92,13 +92,13 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {hit.authoritativeLabel.label[0]}
+              {hit.authoritativeLabel.value[0]}
             </Avatar>
           }
           title={
             <>
               <Typography variant="h5" component="div">
-                {hit.authoritativeLabel.label}
+                {hit.authoritativeLabel.value}
               </Typography>
               <Chip label={hit.type} color="primary" size="small" />
             </>

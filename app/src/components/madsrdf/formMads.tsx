@@ -4,10 +4,14 @@ import { useState } from "react";
 import BfField from "../catalog/forms/bibframe/bfField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ZodWork from "@/schema/bibframe/zodWork";
+// import ZodWork from "@/schema/bibframe/zodWork";
 import { z } from "zod";
 import ZodMads from "@/schema/mads/zodMads";
 import Link from "next/link";
+import { bkapi } from "@/services/api";
+import { headers } from "@/share/acepts";
+import { useAlert } from "@/providers/alert";
+import { useProgress } from "@/providers/progress";
 
 interface Props {
     authority: any | null;
@@ -46,6 +50,8 @@ export default function FormMads(
     { authority }: Props
 ) {
     const [panel, setPanel] = useState(0);
+    const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
+    const { setProgress } = useProgress();
     type SchemaCreateMads = z.infer<typeof ZodMads>;
 
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
@@ -67,13 +73,44 @@ export default function FormMads(
     );
     console.log("er", errors)
     function CreateAuthority(data: any) {
-        console.log("Dt", data)
+
+        if (authority) {
+            data['identifiersLccn'] = authority.identifiersLccn
+            console.log("Dt", data)
+
+        }
+
+        setProgress(true)
+        bkapi
+            .post("/thesarus/create", data, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    setTypeAlert("success")
+                    setMessage("Registro criado com sucesso!")
+                    console.log(response.data)
+                    // router.push(`/admin/catalog/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                setTypeAlert("error")
+                if (error.response.status === 409) {
+                    setMessage("Este registro já existe")
+                }
+                console.error("ERs:", error.response);
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
+
 
 
     }
     return (
         <Box sx={{ width: "100%" }}>
-            <form onSubmit={handleSubmit(CreateAuthority)} 
+            <form onSubmit={handleSubmit(CreateAuthority)}
             >
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={panel} onChange={handleChangePanel} aria-label="basic tabs example">
@@ -96,7 +133,7 @@ export default function FormMads(
                         ))}
                     </CustomTabPanel>
                 ))}
-                <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, paddingBottom: 2}}>
+                <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, paddingBottom: 2 }}>
                     <Link href={"/admin/authority"}>
                         <Button variant="outlined" size="small">
                             Cancelar

@@ -18,10 +18,9 @@ interface Props {
     control: any;
     nameField: string;
     commonType: any;
-    // nestIndex: number|null;
 }
 
-export default function BfSelect(
+export default function ChildSelectField(
     { subfield, setValue, index, control, nameField, commonType }: Props
 ) {
     
@@ -33,26 +32,23 @@ export default function BfSelect(
 
         const commonType = obj.commonType
         const label = commonType.find((option: any) => option.value === event.target.value)?.label;
+        setValue(`${nameField}.${index}.${subfield.name}.label`, label)  
+        // console.log("label", label )
+        // let i = event.target.name.split(".")[1]
+        // console.log("ChildSelectField", `${nameField}.${index}.${subfield.name}.label`, label )
 
-        let i = event.target.name.split(".")[1]
-
-            if (nameField == 'contribution') {
-                setValue(`${nameField}.${index}.role.label`, label)
-            } else {
-                setValue(`${nameField}.${index}.label`, label)   
-                
-            }
+            // if (nameField == 'contribution') {
+            //     setValue(`${nameField}.${index}.role.label`, label)
+            // } else {
+            //     setValue(`${nameField}.${index}.label`, label)   
+            //     console.log("BfSelect", `${nameField}.${index}.label`, subfield )
+            // }
         
     };
-    // if (index === false ) {
-    //     console.log("BfSelect", nameField,  index)
-    // } else {
-    //     console.log("else", nameField,  index)
-    // }
 
     return (
         <Controller
-            name={index === false ? `${nameField}.${subfield.name}.value` : `${nameField}.${index}.${subfield.name}.value`}
+            name={`${nameField}.${index}.${subfield.name}.value`}
             control={control}
             render={({ field }) => (
                 <FormControl fullWidth size="small">
