@@ -81,29 +81,29 @@ export default function FormMads(
         }
 
         setProgress(true)
-        bkapi
-            .post("/thesarus/create", data, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    setTypeAlert("success")
-                    setMessage("Registro criado com sucesso!")
-                    console.log(response.data)
-                    // router.push(`/admin/catalog/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                setTypeAlert("error")
-                if (error.response.status === 409) {
-                    setMessage("Este registro já existe")
-                }
-                console.error("ERs:", error.response);
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+        // bkapi
+        //     .post("/thesarus/create", data, {
+        //         headers: headers,
+        //     })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             setTypeAlert("success")
+        //             setMessage("Registro criado com sucesso!")
+        //             console.log(response.data)
+        //             // router.push(`/admin/catalog/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         setTypeAlert("error")
+        //         if (error.response.status === 409) {
+        //             setMessage("Este registro já existe")
+        //         }
+        //         console.error("ERs:", error.response);
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //     });
 
 
 

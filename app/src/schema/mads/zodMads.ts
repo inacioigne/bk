@@ -31,22 +31,21 @@ mads.sections.forEach((section) => {
       }, {});
 
 
-      if (field.name === "variant") {
-        obj["variant"] = z.array(
+      if (field.name === "hasVariant") {
+        obj["hasVariant"] = z.array(
           z.object({
-            typeVariant: z.string(),
-            // typeVariant: z.object({
-            //   value: z.string(),
-            //   label: z.string(),
-            // }),
+            typeVariant: z.object({
+              value: z.string(),
+              label: z.string(),
+            }),
             elementList: z.array(
               z.object({
-                type: z.object({
+                elementType: z.object({
                   value: z.string(),
                   label: z.string()
                 }),
-                value: z.string(),
-                lang: z.object({
+                elementValue: z.string(),
+                elementLang: z.object({
                   value: z.string(),
                   label: z.string()
                 }),

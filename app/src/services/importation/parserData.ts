@@ -28,19 +28,23 @@ export async function ParserData(response: any, uri: string) {
 
   // elementList
   let [elementList] = a[`${mads}elementList`];
-  let obj = elementList["@list"].map((e: any) => {
+  let objElementList = elementList["@list"].map((e: any) => {
     let [metadado] = data.filter(function (elemento: any) {
       return elemento["@id"] === e["@id"];
     });
     const [type] = metadado["@type"];
     const [value] = metadado[`${mads}elementValue`];
     const obj = {
-      type: type,
-      value: value["@value"],
-      lang: value["@language"] ? value["@language"] : "",
+      elementType: {
+        value: type,
+        label: type.split("#")[1]
+      },
+      elementValue: value["@value"],
+      elementLang: value["@language"] ? {value: value["@language"], label: ""} : {value: "", label: ""},
     };
     return obj;
   });
+  // console.log(obj);
 
   const authority: any = {
     type: type.split("#")[1],
@@ -60,13 +64,13 @@ export async function ParserData(response: any, uri: string) {
     resource: [
       {
         type: {
-          value: "Authority",
+          value: "http://www.loc.gov/mads/rdf/v1#Authority",
           label: "Authority",
         },
       },
       {
         type: {
-          value: type.split("#")[1],
+          value: type,
           label: type.split("#")[1],
         },
       },
@@ -82,30 +86,8 @@ export async function ParserData(response: any, uri: string) {
     authoritativeLabel: {
       value: authoritativeLabel["@value"],
     },
-    elementList: [
-      {
-        elementType: {
-          value: "http://www.loc.gov/mads/rdf/v1#FullNameElement",
-          label: "FullNameElement",
-        },
-        elementValue: "Borges, Jorge Luis,",
-        elementLang: {
-          value: "",
-          label: "",
-        },
-      },
-      {
-        elementType: {
-          value: "http://www.loc.gov/mads/rdf/v1#DateNameElement",
-          label: "DateNameElement",
-        },
-        elementValue: "1899-1986",
-        elementLang: {
-          value: "",
-          label: "",
-        },
-      },
-    ],
+    elementList: objElementList
+
   };
 
   // hasBroaderAuthority
@@ -163,12 +145,12 @@ export async function ParserData(response: any, uri: string) {
           let [type] = obj["@type"];
           let [elementValue] = obj[`${mads}elementValue`];
           let element = {
-            type: {
+            elementType: {
               value: type,
               label: type.split("#")[1],
             },
-            value: elementValue["@value"],
-            lang: {
+            elementValue: elementValue["@value"],
+            elementLang: {
               value: "",
               label: "",
             },
@@ -177,7 +159,10 @@ export async function ParserData(response: any, uri: string) {
         });
         let [variantLabel] = obj[`${mads}variantLabel`];
         let hasVariant = {
-          typeVariant: type.split("#")[1],
+          typeVariant: {
+            value: type,
+            label: type.split("#")[1]
+          },
           elementList: elementList,
           variantLabel: variantLabel["@value"],
         };
@@ -221,47 +206,9 @@ export async function ParserData(response: any, uri: string) {
     });
 
     authority["hasVariant"] = hasVariant;
-    authority["variant"] = hasVariant;
-    // [
-    //   {
-    //     typeVariant: "PersonalName",
-    //     elementList: [
-    //       {
-    //         type: {
-    //           value: "http://www.loc.gov/mads/rdf/v1#FullNameElement",
-    //           label: "FullNameElement",
-    //         },
-    //         value: "Borges, J. L.",
-    //         lang: {
-    //           value: "",
-    //           label: "",
-    //         },
-    //       },
-    //       {
-    //         type: {
-    //           value: "http://www.loc.gov/mads/rdf/v1#FullNameElement",
-    //           label: "FullNameElement",
-    //         },
-    //         value: "(Jorge Luis),",
-    //         lang: {
-    //           value: "",
-    //           label: "",
-    //         },
-    //       },
-    //       {
-    //         type: {
-    //           value: "http://www.loc.gov/mads/rdf/v1#DateNameElement",
-    //           label: "DateNameElement",
-    //         },
-    //         value: "1899-1986",
-    //         lang: {
-    //           value: "",
-    //           label: "",
-    //         }
-    //       },
-    //     ],
-    //   },
-    // ];
+    // authority["variant"] = hasVariant;
+    
+   
   }
   // hasCloseExternalAuthority
   if (a.hasOwnProperty(`${mads}hasCloseExternalAuthority`)) {
@@ -317,7 +264,6 @@ export async function ParserData(response: any, uri: string) {
           return uri;
         }
       });
-      // console.log(fieldOfActivity)
 
       let arrCheck = await CheckLoc(fieldOfActivity);
       let uris = await Promise.all(arrCheck);
@@ -483,7 +429,7 @@ export async function ParserData(response: any, uri: string) {
       authority["occupation"] = occupation;
     }
   }
-  console.log(authority);
+  
 
   return authority;
 }

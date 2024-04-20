@@ -13,10 +13,6 @@ class Element(BaseModel):
     value: str
     label: str
 
-# class Element(BaseModel):
-#     type: str
-#     elementValue: Label 
-
 class MadsElement(BaseModel):
     elementType: Element
     elementValue: str 
@@ -44,8 +40,8 @@ class Affiliation(BaseModel):
     affiliationEnd: Optional[str] = None
 
 class Variant(BaseModel): 
-    type: str
-    elementList: list[Element]
+    typeVariant: Element
+    elementList: list[MadsElement]
     # variantLabel: str
 
 class Status(BaseModel):
@@ -65,8 +61,9 @@ class SchemaMads(BaseModel):
     identifiersLocal: Optional[str] = None    
     authoritativeLabel: BfElement
     elementList: list[MadsElement]
+    hasVariant: Optional[list[Variant]] = None
     # fullerName: Optional[str] = None
-    # hasVariant: Optional[list[Variant]] = None
+    
     # identifiesRWO: Optional[list[Uri]] = None
     # birthPlace: Optional[str] = None
     # birthDayDate: Optional[str] = None

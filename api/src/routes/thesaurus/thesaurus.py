@@ -38,18 +38,18 @@ async def post_authority(request: SchemaMads):
     #         raise HTTPException(status_code=409, detail="Esse registro já existe")
 
     # MariaDB
-    authorityType = request.resourceType[1]
-    a = DbAuthority(type=authorityType.value) 
+    authorityType = request.resource[1] 
+    a = DbAuthority(type=authorityType.type.label) 
     session.add(a) 
     session.commit()
 
     now = datetime.now()
     request.adminMetadata.creationDate = now
     request.adminMetadata.identifiedBy = a.id
-    request.identifiersLocal = a.id
+    # request.identifiersLocal = a.id
     
     # # Jena
-    # graph = MakeGraphName(request)
+    graph = MakeGraphName(request)
     # response = authorityUpdate.run_sparql(graph)   
     # UpdateJena(request) 
 
