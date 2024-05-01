@@ -1,6 +1,6 @@
 import { Box, Divider, Typography, Button, Tabs, Tab } from "@mui/material";
 import mads from "@/share/mads/mads.json"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BfField from "../catalog/forms/bibframe/bfField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +12,7 @@ import { bkapi } from "@/services/api";
 import { headers } from "@/share/acepts";
 import { useAlert } from "@/providers/alert";
 import { useProgress } from "@/providers/progress";
+import BfErros from "../catalog/forms/bibframe/bfErros";
 
 interface Props {
     authority: any | null;
@@ -53,6 +54,7 @@ export default function FormMads(
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
     const { setProgress } = useProgress();
     type SchemaCreateMads = z.infer<typeof ZodMads>;
+    const [openBfErros, setBfErros] = useState(false);
 
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
         setPanel(newValue);
@@ -71,16 +73,48 @@ export default function FormMads(
             defaultValues: defaultValues
         }
     );
-    console.log("er", errors)
+    
+    useEffect(() => {
+        if (Object.keys(errors).length > 0) {
+            setBfErros(true)
+            console.log("er", errors)
+        }
+    }, [errors])
+
     function CreateAuthority(data: any) {
 
         if (authority) {
             data['identifiersLccn'] = authority.identifiersLccn
-            console.log("Dt", data)
-
         }
 
         setProgress(true)
+        const RemovePropreites = (obj: any) => {
+            Object.entries(obj).forEach(function ([chave, valor]) {
+                if (valor === "") {
+                    delete obj[chave]
+                }
+            })
+        }
+        const RemoveEmpty = (obj: any) => {
+            Object.entries(obj).forEach(function ([chave, valor]) {
+                if (Array.isArray(valor)) {
+                    valor.forEach(element => {
+                        RemovePropreites(element)
+                    })
+                    if (Object.keys(valor[0]).length === 0) {
+                        delete obj[chave]
+                    }
+                } else {
+                    RemovePropreites(valor)
+                    if (Object.keys(valor).length === 0) {
+                        // console.log(chave, valor)
+                        delete obj[chave]
+                    } 
+                }
+            });
+        }
+        RemoveEmpty(data)
+        console.log("Dt", data)
         // bkapi
         //     .post("/thesarus/create", data, {
         //         headers: headers,
@@ -104,9 +138,6 @@ export default function FormMads(
         //         setProgress(false)
         //         setOpenSnack(true)
         //     });
-
-
-
     }
     return (
         <Box sx={{ width: "100%" }}>
@@ -144,8 +175,7 @@ export default function FormMads(
                     </Button>
                 </Box>
             </form>
-
-
+            <BfErros openBfErros={openBfErros} setBfErros={setBfErros} errors={errors} />
         </Box>
     )
 

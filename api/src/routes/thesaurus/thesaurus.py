@@ -3,6 +3,8 @@ from fastapi import APIRouter, HTTPException
 from pyfuseki import FusekiUpdate
 from pysolr import Solr
 from datetime import datetime
+from src.function.catalog.markeCreateSparql import MakeCreateSparql
+from src.function.thesaurus.jena.makeGraphAuthority import MakeGraphAuthority
 from src.function.thesaurus.jena.editJena import EditJena 
 
 # Bibliokeia Functions
@@ -46,24 +48,25 @@ async def post_authority(request: SchemaMads):
     now = datetime.now()
     request.adminMetadata.creationDate = now
     request.adminMetadata.identifiedBy = a.id
-    # request.identifiersLocal = a.id
+    request.identifiersLocal = a.id
     
     # # Jena
-    graph = MakeGraphName(request)
-    # response = authorityUpdate.run_sparql(graph)   
+    graph = MakeGraphAuthority(request) 
+    sparql = MakeCreateSparql(graph, a.id, "authorities")
+    response = authorityUpdate.run_sparql(sparql)   
     # UpdateJena(request) 
 
     # # Solr
-    # doc = MakeDoc(request)
+    doc = MakeDoc(request)
     # responseSolr = solr.add([doc], commit=True)
     # UpdateSolr(request)
 
-    # return {
-    #     "id": request.identifiersLocal,
-    #      "jena": response.convert()['message'],
-    #     "solr": responseSolr
-    #     } 
-    return request.model_dump()
+    return {
+        "id": request.identifiersLocal,
+         "jena": response.convert()['message'],
+        # "solr": responseSolr
+        } 
+    # return request.model_dump()
 
 # Delete Autority
 @router.delete("/delete", status_code=200) 

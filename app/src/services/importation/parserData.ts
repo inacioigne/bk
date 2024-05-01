@@ -118,7 +118,10 @@ export async function ParserData(response: any, uri: string) {
       return elemento["@id"] === name["@id"];
     });
     let [value] = metadado["http://www.w3.org/2000/01/rdf-schema#label"];
-    authority["fullerName"] = value["@value"];
+    authority["fullerName"] = {"value": value["@value"]};
+  } else {
+    authority["fullerName"] = {"value": "" };
+
   }
   // hasVariant
   if (a.hasOwnProperty(`${mads}hasVariant`)) {
@@ -429,6 +432,7 @@ export async function ParserData(response: any, uri: string) {
       authority["occupation"] = occupation;
     }
   }
+  console.log(authority)
   
 
   return authority;

@@ -49,12 +49,13 @@
           "label": "Coleção Mads",
           "doc": "https://id.loc.gov/ontologies/bibframe.html#p_language",
           "repeatable": true,
-          "required": true,
           "subfields": [
             {
               "name": "collection",
               "label": "Coleção",
               "type": "select",
+              "required": true,
+              "messageError": "Informe a coleção a qual pertence a autoridade",
               "commonType": "isMemberOfMADSCollection",
               "width": 12
             }
@@ -66,23 +67,7 @@
       "name": "authorityInformation",
       "label": "Autoridade",
       "fields": [
-        {
-          "name": "authoritativeLabel",
-          "label": "Label",
-          "doc": "https://id.loc.gov/ontologies/madsrdf/v1.html#p_authoritativeLabel",
-          "repeatable": false,
-          "subfields": [
-            {
-              "name": "value",
-              "label": "Nome",
-              "type": "textField",
-              "disabled": false,
-              "required": true,
-              "messageError": "O nome da autoridade é obrigatório.",
-              "width": 12
-            }
-          ]
-        },
+        
         {
           "name": "elementList",
           "label": "Nome controlado",
@@ -116,6 +101,39 @@
               "disabled": false,
               "required": false,
               "width": 3
+            }
+          ]
+        },
+        {
+          "name": "authoritativeLabel",
+          "label": "Nome autorizado",
+          "doc": "https://id.loc.gov/ontologies/madsrdf/v1.html#p_authoritativeLabel",
+          "repeatable": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Nome",
+              "type": "textField",
+              "disabled": false,
+              "required": true,
+              "messageError": "O nome da autoridade é obrigatório.",
+              "width": 12
+            }
+          ]
+        },
+        {
+          "name": "fullerName",
+          "label": "Nome completo",
+          "doc": "https://id.loc.gov/ontologies/madsrdf/v1.html#p_fullerName",
+          "repeatable": false,
+          "subfields": [
+            {
+              "name": "value",
+              "label": "Nome",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 12
             }
           ]
         },
@@ -259,6 +277,44 @@
               "disabled": false,
               "required": false,
               "width": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "externalAuthority",
+      "label": "Recursos Externos",
+      "fields": [
+        {
+          "name": "hasCloseExternalAuthority",
+          "label": "Ocorrências em outras bases",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "base",
+              "label": "Tipo de Variante",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 3
+            },
+            {
+              "name": "label",
+              "label": "Nome",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 4
+            },
+            {
+              "name": "uri",
+              "label": "url",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 4
             }
           ]
         }

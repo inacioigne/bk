@@ -13,8 +13,8 @@ def MakeDoc(request):
         }
     # Lang
     element = request.elementList[0]
-    lang = element.elementValue.lang
-    if lang:
+    lang = element.elementLang.label
+    if lang != "":
         doc['lang'] = lang
 
     if request.identifiersLccn:

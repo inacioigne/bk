@@ -66,8 +66,8 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
             setTypeAlert("error");
             setMessage("Registro já existe")
             setOpenSnack(true);
-            router.push(`/admin/authority/${response.data.id}`);
-            // setForm(true)
+            // router.push(`/admin/authority/${response.data.id}`);
+            setForm(true)
           } else {
             setForm(true)
             // router.push(`/admin/authority/create`);
@@ -166,14 +166,14 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           )}
 
           {/* fullerName */}
-          {hit?.fullerName && (
+          {hit?.fullerName.value !== "" && (
             <Grid item xs={6}>
               <Box sx={{ pl: "10px" }}>
                 <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
                   Nome completo:
                 </Typography>
                 <Typography variant="subtitle1" gutterBottom>
-                  {hit.fullerName}
+                  {hit.fullerName.value}
                 </Typography>
               </Box>
             </Grid>

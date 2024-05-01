@@ -18,7 +18,7 @@ import FormLocSubject from "@/components/thesaurus/loc/formLocSubject";
 import { FcHome } from "react-icons/fc";
 import { BsPersonPlus, BsPersonFillDown } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams  } from 'next/navigation'
+import { useParams, useSearchParams } from 'next/navigation'
 import { LocAuthority } from "@/services/importation/locAuthority"
 import FormMads from "@/components/madsrdf/formMads";
 
@@ -40,7 +40,7 @@ const previousPaths = [
   },
 ];
 
-const names = ["PersonalName",  "CorporateName"]
+const names = ["PersonalName", "CorporateName"]
 
 export default function LOC() {
   const [hit, setHit] = useState(null)
@@ -53,7 +53,7 @@ export default function LOC() {
     if (uri) {
       LocAuthority(setHit, uri)
     }
-  },[])
+  }, [])
 
 
   return (
@@ -61,7 +61,7 @@ export default function LOC() {
       <Box my={"1rem"}>
         <BreadcrumbsBK previousPaths={previousPaths} currentPath="LOC" />
       </Box>
-     
+
       {!form ? (
         <Box>
           <Typography variant="h4" gutterBottom>
@@ -78,12 +78,9 @@ export default function LOC() {
           </Grid>
         </Box>
 
-      ) :  
-      <FormMads authority={hit} />
-    //  ( names.includes(hit?.type) ? 
-    //   <FormLocName hit={hit} setForm={setForm} /> : 
-    //   <FormLocSubject hit={hit} setForm={setForm} /> )
-}  
+      ) :
+        <FormMads authority={hit} />
+      }
     </Container>
   );
 }

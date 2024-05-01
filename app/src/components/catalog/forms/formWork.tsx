@@ -94,12 +94,10 @@ export default function FormWork() {
     );
 
     useEffect(() => {
-
         if (Object.keys(errors).length > 0) {
             setBfErros(true)
             console.log(errors)
         }
-
     }, [errors])
 
     function CreateWork(data: any) {
@@ -125,7 +123,6 @@ export default function FormWork() {
                 }
             });
         }
-
         RemoveEmpty(data)
         RemoveEmptyAuthority('contribution', data)
         RemoveEmptyAuthority('subject', data)

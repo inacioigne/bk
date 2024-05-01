@@ -4,14 +4,13 @@ from datetime import datetime, date
 from src.schemas.catalog.bibframe.element import BfElement
 from src.schemas.adminMetadata import AdminMetadata
 
-
 class Label(BaseModel):
     value: str
     lang: Optional[str] = None
 
 class Element(BaseModel):
     value: str
-    label: str
+    label: Optional[str] = None
 
 class MadsElement(BaseModel):
     elementType: Element
@@ -48,10 +47,17 @@ class Status(BaseModel):
     value: str = Field(default="n")
     label: str = Field(default="novo")
 
-
-
 class Resource(BaseModel):
     type: Element
+
+class MADSCollection(BaseModel):
+    collection: Element
+
+class BirthDeath(BaseModel):
+    place: Optional[str] = None
+    day: Optional[str] = None
+    month: Element
+    year: str
 
 
 class SchemaMads(BaseModel):
@@ -60,9 +66,15 @@ class SchemaMads(BaseModel):
     identifiersLccn: Optional[str] = None
     identifiersLocal: Optional[str] = None    
     authoritativeLabel: BfElement
+    fullerName: Optional[BfElement] = None
     elementList: list[MadsElement]
     hasVariant: Optional[list[Variant]] = None
-    # fullerName: Optional[str] = None
+    isMemberOfMADSCollection: list[MADSCollection]
+    birth: Optional[BirthDeath] = None
+    death: Optional[BirthDeath] = None
+    hasCloseExternalAuthority: Optional[list[Uri]] = None
+    imagem: Optional[str] = None
+    
     
     # identifiesRWO: Optional[list[Uri]] = None
     # birthPlace: Optional[str] = None
@@ -76,13 +88,13 @@ class SchemaMads(BaseModel):
     # deathMonthDate: Optional[str] = None
     # deathYearDate: Optional[str] = None
     # occupation: Optional[list[Uri]] = None
-    # hasCloseExternalAuthority: Optional[list[Uri]] = None
+    # 
     # hasExactExternalAuthority: Optional[list[Uri]] = None
     # hasBroaderAuthority: Optional[list[Uri]] = None
     # hasNarrowerAuthority: Optional[list[Uri]] = None
     # hasReciprocalAuthority: Optional[list[Uri]] = None
-    # imagem: Optional[str] = None
-    # isMemberOfMADSCollection: str
+    # 
+    # 
 
     # subjectOf: Optional[list[Uri]] = None
     # contributorOf: Optional[list[Uri]] = None

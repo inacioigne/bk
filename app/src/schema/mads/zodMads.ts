@@ -10,14 +10,21 @@ mads.sections.forEach((section) => {
     if (field.repeatable) {
       let zSub = field.subfields.reduce((acc: any, item) => {
         if (item.type === "select") {
-          acc[`${item.name}`] = z.object({
-            value: z.string(),
-            label: z.string(),
-          });
-          // console.log(item)
-          // acc[`${item.name}`] = z.string();
-          // acc["label"] = z.string();
-          // console.log(acc)
+          if (item.required) {
+            acc[`${item.name}`] = z.object({
+              value: z.string().min(3, { message: item.messageError }),
+              label: z.string(),
+            });
+            console.log("s", item)
+          } else {
+            acc[`${item.name}`] = z.object({
+              value: z.string(),
+              label: z.string(),
+            });
+
+          }
+          
+          
         } else {
           if (item.required) {
             acc[`${item.name}`] = z
