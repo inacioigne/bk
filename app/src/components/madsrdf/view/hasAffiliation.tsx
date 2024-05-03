@@ -196,7 +196,7 @@ export default function HasAffiliation({ hasAffiliation }: Props) {
           <StyledTreeItemChild
             key={index}
             nodeId={`${index + 5}`}
-            labelText={affiliation.organization.label}
+            labelText={affiliation.label}
             affiliationStart={affiliation?.affiliationStart}
             affiliationEnd={affiliation?.affiliationEnd}
             color="#1a73e8"

@@ -15,7 +15,7 @@ class Element(BaseModel):
 class MadsElement(BaseModel):
     elementType: Element
     elementValue: str 
-    elementLang: Element
+    elementLang: Optional[Element] = None
 
 class FullerName(BaseModel):
     type: str
@@ -34,14 +34,15 @@ class Organization(BaseModel):
     base: Optional[str] = None 
 
 class Affiliation(BaseModel):
-    organization: Organization
+    base: str
+    label: str
+    uri: str
     affiliationStart: Optional[str] = None
     affiliationEnd: Optional[str] = None
 
 class Variant(BaseModel): 
     typeVariant: Element
     elementList: list[MadsElement]
-    # variantLabel: str
 
 class Status(BaseModel):
     value: str = Field(default="n")
@@ -72,27 +73,21 @@ class SchemaMads(BaseModel):
     isMemberOfMADSCollection: list[MADSCollection]
     birth: Optional[BirthDeath] = None
     death: Optional[BirthDeath] = None
+    hasAffiliation: Optional[list[Affiliation]] = None
     hasCloseExternalAuthority: Optional[list[Uri]] = None
+    hasBroaderAuthority: Optional[list[Uri]] = None
+    hasNarrowerAuthority: Optional[list[Uri]] = None
+    hasReciprocalAuthority: Optional[list[Uri]] = None
+    occupation: Optional[list[Uri]] = None
+    fieldOfActivity: Optional[list[Uri]] = None
+    identifiesRWO: Optional[list[Uri]] = None
     imagem: Optional[str] = None
     
     
-    # identifiesRWO: Optional[list[Uri]] = None
-    # birthPlace: Optional[str] = None
-    # birthDayDate: Optional[str] = None
-    # birthMonthDate: Optional[str] = None
-    # birthYearDate: Optional[str] = None
-    # hasAffiliation: Optional[list[Affiliation]] = None
-    # fieldOfActivity: Optional[list[Uri]] = None
-    # deathPlace: Optional[str] = None
-    # deathDayDate: Optional[str] = None
-    # deathMonthDate: Optional[str] = None
-    # deathYearDate: Optional[str] = None
-    # occupation: Optional[list[Uri]] = None
-    # 
     # hasExactExternalAuthority: Optional[list[Uri]] = None
-    # hasBroaderAuthority: Optional[list[Uri]] = None
-    # hasNarrowerAuthority: Optional[list[Uri]] = None
-    # hasReciprocalAuthority: Optional[list[Uri]] = None
+    # 
+    # 
+    # 
     # 
     # 
 

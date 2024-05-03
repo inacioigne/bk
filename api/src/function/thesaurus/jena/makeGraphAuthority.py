@@ -1,4 +1,5 @@
 from rdflib import URIRef, Namespace, Graph, Literal, BNode
+from src.function.metadata.mads.hasAffiliation import HasAffiliation
 from src.function.metadata.mads.hasCloseExternalAuthority import HasCloseExternalAuthority
 from src.function.metadata.mads.death import Death
 from src.function.metadata.mads.birth import Birth
@@ -30,10 +31,15 @@ def MakeGraphAuthority(request):
     g = BfAdminMetadata(g, request.adminMetadata, resource, BF)
     g.add((resource, MDASRDF.authoritativeLabel, Literal(request.authoritativeLabel.value)))
     g = MadsrdfElementList(g, resource, request.elementList, MDASRDF)
-    if request.fullerName:
+    if request.fullerName: 
         g.add((resource, MDASRDF.fullerName, Literal(request.fullerName.value)))
 
     g = HasVariant(g, resource, request.hasVariant, MDASRDF)
+
+    # HasAffiliation
+    if request.hasAffiliation:
+        g = HasAffiliation(g, resource, request.hasAffiliation, MDASRDF)
+
     # isMemberOfMADSCollection
     for i in request.isMemberOfMADSCollection:
         collection = f'{settings.base_url}/authorities/{i.collection.value}'

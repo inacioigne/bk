@@ -1,11 +1,16 @@
+from src.function.thesaurus.solr.hasAffiliationDoc import HasAffiliationDoc
+from src.function.thesaurus.solr.hasVariantDoc import HasVariantDoc
+from src.function.thesaurus.solr.birthDoc import BirthDoc
+from src.function.thesaurus.solr.deathDoc import DeathDoc
+
 def MakeDoc(request):
-    authority = request.elementList[0].elementValue.value
+    authority = request.elementList[0].elementValue
     authority = authority.removesuffix(',')
-    isMemberOfMADSCollection = request.isMemberOfMADSCollection.split("/")[-1]
+    isMemberOfMADSCollection = [i.collection.value for i in request.isMemberOfMADSCollection]
 
     doc = { 
             'id': f'authority#{request.identifiersLocal}',
-            'type': request.type,
+            'type': [i.type.label for i in request.resource],
             "creationDate": request.adminMetadata.creationDate.strftime('%Y-%m-%d'), 
             "label": request.authoritativeLabel,
             "authority": authority,
@@ -13,9 +18,9 @@ def MakeDoc(request):
         }
     # Lang
     element = request.elementList[0]
-    lang = element.elementLang.label
-    if lang != "":
-        doc['lang'] = lang
+    lang = element.elementLang
+    if lang:
+        doc['lang'] = lang.label
 
     if request.identifiersLccn:
         doc['identifiersLccn'] = request.identifiersLccn
@@ -36,67 +41,20 @@ def MakeDoc(request):
         if value:
             doc[metadado] = value
 
-    if request.birthDayDate and request.birthMonthDate and request.birthYearDate:
-        date = f"{request.birthDayDate}-{request.birthMonthDate}-{request.birthYearDate}"
-        doc['birthDate'] = date
-    elif request.birthMonthDate and request.birthYearDate:
-        date = f"{request.birthMonthDate}-{request.birthYearDate}"
-        doc['birthDate'] = date 
-    elif request.birthYearDate:
-        doc['birthDate'] = request.birthYearDate 
+    if request.birth:
+        doc = BirthDoc(doc, request.birth)
 
-    if request.deathDayDate and request.deathMonthDate and request.deathYearDate:
-        date = f"{request.deathDayDate}-{request.deathMonthDate}-{request.deathYearDate}"
-        doc['deathDate'] = date
-    elif request.deathMonthDate and request.deathYearDate:
-        date = f"{request.deathMonthDate}-{request.deathDayDate}"
-        doc['deathDate'] = date 
-    elif request.deathYearDate:
-        doc['deathDate'] = request.deathYearDate 
+    if request.death:
+        doc = DeathDoc(doc, request.death)
     
     # hasAffiliation  
     if request.hasAffiliation:
-        affiliations = list()
-        for i in request.hasAffiliation:
-            if i.organization.uri:
-                a = {
-                'id': f"authority#{request.identifiersLocal}/hasAffiliation#{i.organization.uri.split('/')[-1]}",
-                'organization': {
-                    "label": i.organization.label,
-                    'uri': i.organization.uri,
-                    "base": i.organization.base
-                    },                
-                'affiliationStart': i.affiliationStart }
-            else:
-                a = {
-                'id': f"authority#{request.identifiersLocal}/hasAffiliation#{i.organization.label}",
-                'organization': {
-                    "label": i.organization.label,
-                    # 'uri': i.organization.uri,
-                    "base": i.organization.base
-                    },                
-                'affiliationStart': i.affiliationStart }
-
-            if i.affiliationEnd:
-                a['affiliationEnd'] = i.affiliationEnd
-            affiliations.append(a)
+        affiliations = HasAffiliationDoc(request.hasAffiliation, request.adminMetadata.identifiedBy)
         doc['hasAffiliation'] = affiliations
-        doc['affiliation']  = [i['organization'] for i in affiliations]
 
     # hasVariant
     if request.hasVariant:
-        variants = list()
-        hasVariants = list()
-        for i in request.hasVariant:
-            print(i) 
-            label = [j.elementValue.value for j in i.elementList]
-            variantLabel = " ".join(label)
-            variants.append(variantLabel)
-            hasVariant = i.model_dump()
-            hasVariant['variantLabel'] = variantLabel
-            hasVariants.append(hasVariant)
-        doc['variant'] = variants
-        doc['hasVariant'] = hasVariants
+        doc = HasVariantDoc(request.hasVariant, doc)
 
     # hasCloseExternalAuthority
     if request.hasCloseExternalAuthority:

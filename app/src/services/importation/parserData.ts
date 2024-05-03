@@ -37,10 +37,12 @@ export async function ParserData(response: any, uri: string) {
     const obj = {
       elementType: {
         value: type,
-        label: type.split("#")[1]
+        label: type.split("#")[1],
       },
       elementValue: value["@value"],
-      elementLang: value["@language"] ? {value: value["@language"], label: ""} : {value: "", label: ""},
+      elementLang: value["@language"]
+        ? { value: value["@language"], label: "" }
+        : { value: "", label: "" },
     };
     return obj;
   });
@@ -86,8 +88,7 @@ export async function ParserData(response: any, uri: string) {
     authoritativeLabel: {
       value: authoritativeLabel["@value"],
     },
-    elementList: objElementList
-
+    elementList: objElementList,
   };
 
   // hasBroaderAuthority
@@ -118,10 +119,9 @@ export async function ParserData(response: any, uri: string) {
       return elemento["@id"] === name["@id"];
     });
     let [value] = metadado["http://www.w3.org/2000/01/rdf-schema#label"];
-    authority["fullerName"] = {"value": value["@value"]};
+    authority["fullerName"] = { value: value["@value"] };
   } else {
-    authority["fullerName"] = {"value": "" };
-
+    authority["fullerName"] = { value: "" };
   }
   // hasVariant
   if (a.hasOwnProperty(`${mads}hasVariant`)) {
@@ -164,7 +164,7 @@ export async function ParserData(response: any, uri: string) {
         let hasVariant = {
           typeVariant: {
             value: type,
-            label: type.split("#")[1]
+            label: type.split("#")[1],
           },
           elementList: elementList,
           variantLabel: variantLabel["@value"],
@@ -210,8 +210,6 @@ export async function ParserData(response: any, uri: string) {
 
     authority["hasVariant"] = hasVariant;
     // authority["variant"] = hasVariant;
-    
-   
   }
   // hasCloseExternalAuthority
   if (a.hasOwnProperty(`${mads}hasCloseExternalAuthority`)) {
@@ -283,7 +281,6 @@ export async function ParserData(response: any, uri: string) {
       let [birthPlace] = data.filter(function (elemento: any) {
         return elemento["@id"] === bp["@id"];
       });
-      // console.log(birthPlace)
       let [label] = birthPlace["http://www.w3.org/2000/01/rdf-schema#label"];
       authority["birthPlace"] = label["@value"];
       authority.birth["place"] = label["@value"];
@@ -305,9 +302,7 @@ export async function ParserData(response: any, uri: string) {
         authority["birthYearDate"] = date[0];
         authority["birthMonthDate"] = date[1];
         let [month] = months.filter((e) => e.value === date[1]);
-        // console.log(month)
         authority["birthDayDate"] = date[2];
-        // authority["birthDate"] = `${date[2]}-${date[1]}-${date[0]}`;
         authority["birthDate"] = {
           day: date[2],
           month: month,
@@ -341,7 +336,6 @@ export async function ParserData(response: any, uri: string) {
         authority["deathYearDate"] = date[0];
         authority["deathMonthDate"] = date[1];
         authority["deathDayDate"] = date[2];
-        // authority["deathDate"] = `${date[2]}-${date[1]}-${date[0]}`;
         let [deathMonth] = months.filter((e) => e.value === date[1]);
         authority["deathDate"] = {
           day: date[2],
@@ -354,6 +348,13 @@ export async function ParserData(response: any, uri: string) {
           year: date[0],
         };
       }
+    } else {
+      authority["death"] = {
+        day: "",
+        month: { value: "", label: "" },
+        year: "",
+      };
+
     }
     // hasAffiliation
     if (metadado.hasOwnProperty(`${mads}hasAffiliation`)) {
@@ -384,56 +385,58 @@ export async function ParserData(response: any, uri: string) {
           objOrg["label"] = label["@value"];
         }
 
-        let objA: schemaAffiliation = {
-          organization: objOrg,
-        };
+        // let objA: schemaAffiliation = {
+        //   organization: objOrg,
+        // };
 
         // affiliationStart
         if (metadado.hasOwnProperty(`${mads}affiliationStart`)) {
           let [start] = metadado[`${mads}affiliationStart`];
-          objA["affiliationStart"] = start["@value"];
+          objOrg["affiliationStart"] = start["@value"]; 
+        } else {
+          objOrg["affiliationStart"] = ''
         }
         // affiliationEnd
         if (metadado.hasOwnProperty(`${mads}affiliationEnd`)) {
           let [end] = metadado[`${mads}affiliationEnd`];
-          objA["affiliationEnd"] = end["@value"];
+          objOrg["affiliationEnd"] = end["@value"];
+        } else {
+          objOrg["affiliationEnd"] = ''
         }
-        return objA;
+        return objOrg;
       });
 
       authority["hasAffiliation"] = affiliations;
-    }
-    // occupation
-    if (metadado.hasOwnProperty(`${mads}occupation`)) {
-      let occ = metadado[`${mads}occupation`];
-      let occupation = occ.map((e: any) => {
-        let id = e["@id"];
-        let [obj] = data.filter(function (e: any) {
-          return e["@id"] === id;
-        });
+      // occupation
+      if (metadado.hasOwnProperty(`${mads}occupation`)) {
+        let occ = metadado[`${mads}occupation`];
+        let occupation = occ.map((e: any) => {
+          let id = e["@id"];
+          let [obj] = data.filter(function (e: any) {
+            return e["@id"] === id;
+          });
 
-        if (id.includes("http://")) {
-          let [label] = obj[`${mads}authoritativeLabel`];
-          let objOcc: any = {
-            label: label["@value"],
-            base: "loc",
-            uri: obj["@id"],
-          };
-          return objOcc;
-        } else {
-          let [label] = obj["http://www.w3.org/2000/01/rdf-schema#label"];
-          let objOcc: any = {
-            label: label["@value"],
-            base: "loc",
-          };
-          return objOcc;
-        }
-      });
-      authority["occupation"] = occupation;
+          if (id.includes("http://")) {
+            let [label] = obj[`${mads}authoritativeLabel`];
+            let objOcc: any = {
+              label: label["@value"],
+              base: "loc",
+              uri: obj["@id"],
+            };
+            return objOcc;
+          } else {
+            let [label] = obj["http://www.w3.org/2000/01/rdf-schema#label"];
+            let objOcc: any = {
+              label: label["@value"],
+              base: "loc",
+            };
+            return objOcc;
+          }
+        });
+        authority["occupation"] = occupation;
+      }
     }
   }
-  console.log(authority)
-  
-
+  // console.log(authority)
   return authority;
 }

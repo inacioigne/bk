@@ -120,7 +120,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
         <Grid container spacing={2} sx={{ mt: "5px" }}>
 
           {/* Nascimento */}
-          {(hit?.birthPlace || hit?.birthDate) && (
+          {(hit?.birthPlace || hit?.birthDate.year) && (
             <Grid item xs={6}>
               <Box sx={{ pl: "10px" }}>
                 <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
@@ -136,14 +136,14 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
                   }}
                 >
                   {hit?.birthPlace && (<BtnIcon icon={<FaTreeCity />} label={hit?.birthPlace} />)}
-                  {hit?.birthDate && (<BtnIcon icon={<FcCalendar />} label={hit?.birthDate.year} />)}
+                  {hit?.birthDate?.year !== "" && (<BtnIcon icon={<FcCalendar />} label={hit?.birthDate.year} />)}
                 </Box>
               </Box>
             </Grid>
           )}
 
           {/* Falecimento */}
-          {(hit?.deathPlace || hit?.deathDate) && (
+          {(hit?.deathPlace || hit?.deathDate?.year) && (
             <Grid item xs={6}>
               <Box sx={{ pl: "10px" }}>
                 <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>

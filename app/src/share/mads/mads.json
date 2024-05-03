@@ -283,6 +283,65 @@
       ]
     },
     {
+      "name": "affiliation",
+      "label": "Afiliação",
+      "fields": [
+        {
+          "name": "hasAffiliation",
+          "label": "Afiliação",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "base",
+              "label": "Base",
+              "repeatable": true,
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 2
+            },
+            {
+              "name": "label",
+              "label": "Organização",
+              "repeatable": true,
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 5
+            },
+            {
+              "name": "uri",
+              "label": "Url",
+              "repeatable": true,
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 5
+            },
+            {
+              "name": "affiliationStart",
+              "label": "Início do vínculo",
+              "repeatable": true,
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 3
+            },
+            {
+              "name": "affiliationEnd",
+              "label": "Fim do vínculo",
+              "repeatable": true,
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "externalAuthority",
       "label": "Recursos Externos",
       "fields": [
@@ -445,6 +504,22 @@
       {
         "label": "Agosto",
         "value": "08"
+      },
+      {
+        "label": "Setembro",
+        "value": "09"
+      },
+      {
+        "label": "Outubro",
+        "value": "10"
+      },
+      {
+        "label": "Novembro",
+        "value": "11"
+      },
+      {
+        "label": "Dezembro",
+        "value": "12"
       }
     ],
     "isMemberOfMADSCollection": [

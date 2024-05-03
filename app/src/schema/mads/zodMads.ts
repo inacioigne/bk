@@ -9,22 +9,19 @@ mads.sections.forEach((section) => {
   section.fields.forEach((field) => {
     if (field.repeatable) {
       let zSub = field.subfields.reduce((acc: any, item) => {
+
         if (item.type === "select") {
           if (item.required) {
             acc[`${item.name}`] = z.object({
               value: z.string().min(3, { message: item.messageError }),
               label: z.string(),
             });
-            console.log("s", item)
           } else {
             acc[`${item.name}`] = z.object({
               value: z.string(),
               label: z.string(),
             });
-
           }
-          
-          
         } else {
           if (item.required) {
             acc[`${item.name}`] = z
@@ -62,10 +59,7 @@ mads.sections.forEach((section) => {
         );
       } else {
         obj[`${field.name}`] = z.array(z.object(zSub));
-
       }
-      
-      // console.log("zod", field.name, zSub);
     } else {
       let zSub = field.subfields.reduce((acc: any, item) => {
         if (item.type === "select") {
