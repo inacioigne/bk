@@ -20,7 +20,8 @@ import { BsPersonPlus, BsPersonFillDown } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from 'next/navigation'
 import { LocAuthority } from "@/services/importation/locAuthority"
-import FormMads from "@/components/madsrdf/formMads";
+import FormMadsNames from "@/components/madsrdf/formMadsNames";
+import FormMadsSubjects from "@/components/madsrdf/formMadsSubjects";
 
 const previousPaths = [
   {
@@ -40,7 +41,7 @@ const previousPaths = [
   },
 ];
 
-const names = ["PersonalName", "CorporateName"]
+// const names = ["PersonalName", "CorporateName"]
 
 export default function LOC() {
   const [hit, setHit] = useState(null)
@@ -54,6 +55,8 @@ export default function LOC() {
       LocAuthority(setHit, uri)
     }
   }, [])
+
+  
 
 
   return (
@@ -78,8 +81,9 @@ export default function LOC() {
           </Grid>
         </Box>
 
-      ) :
-        <FormMads authority={hit} />
+      ) : (hit?.isMemberOfMADSCollection[0].collection.value === 'name' ?
+        <FormMadsNames authority={hit} /> : <FormMadsSubjects authority={hit} />
+      )
       }
     </Container>
   );

@@ -51,20 +51,20 @@ async def post_authority(request: SchemaMads):
     request.identifiersLocal = a.id
     
     # # Jena
-    graph = MakeGraphAuthority(request) 
+    graph = MakeGraphAuthority(request)  
     sparql = MakeCreateSparql(graph, a.id, "authorities")
     response = authorityUpdate.run_sparql(sparql)   
     # UpdateJena(request) 
 
     # # Solr
     doc = MakeDoc(request)
-    # responseSolr = solr.add([doc], commit=True)
-    # UpdateSolr(request)
+    responseSolr = solr.add([doc], commit=True)
+    UpdateSolr(request)
 
     return {
         "id": request.identifiersLocal,
          "jena": response.convert()['message'],
-        # "solr": responseSolr
+        "solr": responseSolr
         } 
     # return request.model_dump()
 

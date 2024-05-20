@@ -3,7 +3,7 @@ import { bkapi } from "@/services/api"
 
 const mads = "http://www.loc.gov/mads/rdf/v1#";
 
-export function ParserUri(authority: any, data: any, metadado: string) {
+export function ParserUri(authority: any, data: any, metadado: string, objLanguage: any) {
     let items = authority[`${mads}${metadado}`];
 
     let arr = items.map((item: any) => {
@@ -19,6 +19,7 @@ export function ParserUri(authority: any, data: any, metadado: string) {
             type: type.split("#")[1],
             label: authoritativeLabel["@value"],
             lang: authoritativeLabel["@language"],
+            elementLang: { value: authoritativeLabel["@language"], label: objLanguage[`${authoritativeLabel["@language"]}`] },
             base: "loc",
         };
         return obj;

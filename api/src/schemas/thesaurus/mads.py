@@ -22,11 +22,12 @@ class FullerName(BaseModel):
     elementValue: Label
 
 class Uri(BaseModel):
+    base: Optional[str] = None
     uri: Optional[str] = None
     label: str
-    type: Optional[str] = None
-    base: Optional[str] = None
-    lang: Optional[str] = None    
+    elementLang: Optional[Element] = None
+    # type: Optional[str] = None
+    # lang: Optional[str] = None    
 
 class Organization(BaseModel):
     uri: Optional[str] = None

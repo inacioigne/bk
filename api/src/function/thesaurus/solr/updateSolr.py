@@ -8,7 +8,7 @@ def UpdateSolr(request):
     docs = list()
 
     loc_uri = f'http://id.loc.gov/authorities/{request.isMemberOfMADSCollection}/{request.identifiersLccn}'
-    bk_uri =  f'https://bibliokeia.com/authority/{request.type}/{request.identifiersLocal}'
+    bk_uri =  f'https://bibliokeia.com/authorities/{request.adminMetadata.identifiedBy}'
     # hasReciprocalAuthority
     if request.hasReciprocalAuthority:
         for i in request.hasReciprocalAuthority:

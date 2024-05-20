@@ -21,7 +21,19 @@ export async function ParserData(response: any, uri: string) {
   // identifiersLccn
   let uriArray = uri.split("/");
   let identifiersLccn = uriArray[uriArray.length - 1];
-  let collection = uriArray[4];
+  let collection: string = uriArray[4];
+  type ObjCollection = {
+    names: string,
+    subjects: string
+  }
+  let objCollection: ObjCollection = {
+    names: 'Nomes',
+    subjects: 'Assuntos'
+  }
+  let objLanguage = {
+    en: 'Inglês'
+  }
+  
 
   // authoritativeLabel
   let [authoritativeLabel] = a[`${mads}authoritativeLabel`];
@@ -41,18 +53,17 @@ export async function ParserData(response: any, uri: string) {
       },
       elementValue: value["@value"],
       elementLang: value["@language"]
-        ? { value: value["@language"], label: "" }
+        ? { value: value["@language"], label: objLanguage[`${value["@language"]}`] }
         : { value: "", label: "" },
     };
     return obj;
   });
-  // console.log(obj);
+  
 
   const authority: any = {
     type: type.split("#")[1],
     identifiersLccn: identifiersLccn,
-    // authoritativeLabel: authoritativeLabel["@value"],
-    // elementList: obj,
+
     adminMetadata: {
       status: {
         value: "http://id.loc.gov/vocabulary/mstatus/n",
@@ -80,8 +91,8 @@ export async function ParserData(response: any, uri: string) {
     isMemberOfMADSCollection: [
       {
         collection: {
-          value: "",
-          label: "",
+          value: collection,
+          label: objCollection[`${collection}`],
         },
       },
     ],
@@ -90,24 +101,27 @@ export async function ParserData(response: any, uri: string) {
     },
     elementList: objElementList,
   };
-
+  
   // hasBroaderAuthority
   if (a.hasOwnProperty(`${mads}hasBroaderAuthority`)) {
-    let uris = ParserUri(a, data, "hasBroaderAuthority");
+    let uris = ParserUri(a, data, "hasBroaderAuthority", objLanguage);
     let arrCheck = await CheckLoc(uris);
     let hasBroaderAuthority = await Promise.all(arrCheck);
     authority["hasBroaderAuthority"] = hasBroaderAuthority;
+    // console.log(hasBroaderAuthority);
+    
+
   }
   // Narrower Terms
   if (a.hasOwnProperty(`${mads}hasNarrowerAuthority`)) {
-    let uris = ParserUri(a, data, "hasNarrowerAuthority");
+    let uris = ParserUri(a, data, "hasNarrowerAuthority", objLanguage);
     let arrCheck = await CheckLoc(uris);
     let hasNarrowerAuthority = await Promise.all(arrCheck);
     authority["hasNarrowerAuthority"] = hasNarrowerAuthority;
   }
   // hasReciprocalAuthority
   if (a.hasOwnProperty(`${mads}hasReciprocalAuthority`)) {
-    let uris = ParserUri(a, data, "hasReciprocalAuthority");
+    let uris = ParserUri(a, data, "hasReciprocalAuthority", objLanguage);
     let arrCheck = await CheckLoc(uris);
     let hasReciprocalAuthority = await Promise.all(arrCheck);
     authority["hasReciprocalAuthority"] = hasReciprocalAuthority;
@@ -126,7 +140,7 @@ export async function ParserData(response: any, uri: string) {
   // hasVariant
   if (a.hasOwnProperty(`${mads}hasVariant`)) {
     let hv = a[`${mads}hasVariant`];
-
+    
     let hasVariant = hv.map((e: any) => {
       let id = e["@id"];
       let [obj] = data.filter(function (e: any) {
@@ -154,8 +168,8 @@ export async function ParserData(response: any, uri: string) {
             },
             elementValue: elementValue["@value"],
             elementLang: {
-              value: "",
-              label: "",
+              value: elementValue["@language"],
+              label: objLanguage[`${elementValue["@language"]}`],
             },
           };
           return element;
@@ -184,32 +198,36 @@ export async function ParserData(response: any, uri: string) {
             return e["@id"] === list["@id"];
           });
 
-          let [typeList] = objList["@type"];
+          // let [typeList] = objList["@type"];
           let [elementValue] = objList[`${mads}elementValue`];
           let element = {
-            type: typeList.split("#")[1],
-            elementValue: {
-              value: elementValue["@value"],
-              lang: elementValue["@language"],
+            elementType: {
+              value: type,
+              label: type.split("#")[1],
+            },
+            elementValue: elementValue["@value"],
+            elementLang: {
+              value: elementValue["@language"],
+              label: objLanguage[`${elementValue["@language"]}`],
             },
           };
           return element;
         });
-
         let [type] = obj["@type"];
         let [variantLabel] = obj[`${mads}variantLabel`];
 
         let hasVariant = {
-          type: type.split("#")[1],
+          typeVariant: {
+            value: type,
+            label: type.split("#")[1],
+          },
           elementList: elementList,
           variantLabel: variantLabel["@value"],
         };
         return hasVariant;
       }
     });
-
     authority["hasVariant"] = hasVariant;
-    // authority["variant"] = hasVariant;
   }
   // hasCloseExternalAuthority
   if (a.hasOwnProperty(`${mads}hasCloseExternalAuthority`)) {
@@ -227,6 +245,7 @@ export async function ParserData(response: any, uri: string) {
       return obj;
     });
     authority["hasCloseExternalAuthority"] = hasCloseExternalAuthority;
+    
   }
   // identifiesRWO
   if (a.hasOwnProperty(`${mads}identifiesRWO`)) {
@@ -354,7 +373,6 @@ export async function ParserData(response: any, uri: string) {
         month: { value: "", label: "" },
         year: "",
       };
-
     }
     // hasAffiliation
     if (metadado.hasOwnProperty(`${mads}hasAffiliation`)) {
@@ -385,58 +403,66 @@ export async function ParserData(response: any, uri: string) {
           objOrg["label"] = label["@value"];
         }
 
-        // let objA: schemaAffiliation = {
-        //   organization: objOrg,
-        // };
-
         // affiliationStart
         if (metadado.hasOwnProperty(`${mads}affiliationStart`)) {
           let [start] = metadado[`${mads}affiliationStart`];
-          objOrg["affiliationStart"] = start["@value"]; 
+          objOrg["affiliationStart"] = start["@value"];
         } else {
-          objOrg["affiliationStart"] = ''
+          objOrg["affiliationStart"] = "";
         }
         // affiliationEnd
         if (metadado.hasOwnProperty(`${mads}affiliationEnd`)) {
           let [end] = metadado[`${mads}affiliationEnd`];
           objOrg["affiliationEnd"] = end["@value"];
         } else {
-          objOrg["affiliationEnd"] = ''
+          objOrg["affiliationEnd"] = "";
         }
         return objOrg;
       });
-
       authority["hasAffiliation"] = affiliations;
-      // occupation
-      if (metadado.hasOwnProperty(`${mads}occupation`)) {
-        let occ = metadado[`${mads}occupation`];
-        let occupation = occ.map((e: any) => {
-          let id = e["@id"];
-          let [obj] = data.filter(function (e: any) {
-            return e["@id"] === id;
-          });
-
-          if (id.includes("http://")) {
-            let [label] = obj[`${mads}authoritativeLabel`];
-            let objOcc: any = {
-              label: label["@value"],
-              base: "loc",
-              uri: obj["@id"],
-            };
-            return objOcc;
-          } else {
-            let [label] = obj["http://www.w3.org/2000/01/rdf-schema#label"];
-            let objOcc: any = {
-              label: label["@value"],
-              base: "loc",
-            };
-            return objOcc;
-          }
+    } else {
+      authority["hasAffiliation"] = [
+        {
+          base: "",
+          uri: "",
+          label: "",
+          affiliationStart: "",
+          affiliationEnd: "",
+        },
+      ];
+    }
+    // occupation
+    if (metadado.hasOwnProperty(`${mads}occupation`)) {
+      let occ = metadado[`${mads}occupation`];
+      let occupation = occ.map((e: any) => {
+        let id = e["@id"];
+        let [obj] = data.filter(function (e: any) {
+          return e["@id"] === id;
         });
-        authority["occupation"] = occupation;
-      }
+
+        if (id.includes("http://")) {
+          let [label] = obj[`${mads}authoritativeLabel`];
+          let objOcc: any = {
+            label: label["@value"],
+            base: "loc",
+            uri: obj["@id"],
+          };
+          return objOcc;
+        } else {
+          let [label] = obj["http://www.w3.org/2000/01/rdf-schema#label"];
+          let objOcc: any = {
+            label: label["@value"],
+            base: "loc",
+          };
+          return objOcc;
+        }
+      });
+      authority["occupation"] = occupation;
     }
   }
-  // console.log(authority)
+  
+  
+  
+  
   return authority;
 }

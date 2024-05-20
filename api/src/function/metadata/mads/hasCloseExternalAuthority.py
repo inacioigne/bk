@@ -1,5 +1,5 @@
-from rdflib import URIRef, Namespace, Graph, Literal, BNode
-from rdflib.namespace import RDF, RDFS
+from rdflib import URIRef, Literal
+from rdflib.namespace import RDF
 
 def HasCloseExternalAuthority(g, resource, hasCloseExternalAuthority, MDASRDF):
     for i in hasCloseExternalAuthority:

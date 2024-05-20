@@ -1,22 +1,21 @@
-import { Box, Divider, Typography, Button, Tabs, Tab } from "@mui/material";
-import mads from "@/share/mads/mads.json"
+import { Box, Button, Tabs, Tab } from "@mui/material";
+import mads from "@/share/mads/madsSubjects.json"
 import { useEffect, useState } from "react";
 import BfField from "../catalog/forms/bibframe/bfField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import ZodWork from "@/schema/bibframe/zodWork";
 import { z } from "zod";
-import ZodMads from "@/schema/mads/zodMads";
+import ZodMadsSubjects from "@/schema/mads/zodSubject";
 import Link from "next/link";
 import { bkapi } from "@/services/api";
 import { headers } from "@/share/acepts";
 import { useAlert } from "@/providers/alert";
 import { useProgress } from "@/providers/progress";
 import BfErros from "../catalog/forms/bibframe/bfErros";
+import { useRouter } from 'next/navigation'
 
 interface Props {
     authority: any | null;
-    // setForm: Function;
 }
 
 function a11yProps(index: number) {
@@ -25,7 +24,6 @@ function a11yProps(index: number) {
         'aria-controls': `simple-tabpanel-${index}`,
     };
 }
-
 
 function CustomTabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
@@ -47,13 +45,15 @@ function CustomTabPanel(props: TabPanelProps) {
     );
 }
 
-export default function FormMads(
+export default function FormMadsSubjects(
     { authority }: Props
 ) {
+    console.log("authority", authority)
+    const router = useRouter()
     const [panel, setPanel] = useState(0);
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
     const { setProgress } = useProgress();
-    type SchemaCreateMads = z.infer<typeof ZodMads>;
+    type SchemaCreateMads = z.infer<typeof ZodMadsSubjects>;
     const [openBfErros, setBfErros] = useState(false);
 
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
@@ -69,7 +69,7 @@ export default function FormMads(
         getValues
     } = useForm<SchemaCreateMads>(
         {
-            resolver: zodResolver(ZodMads),
+            resolver: zodResolver(ZodMadsSubjects),
             defaultValues: defaultValues
         }
     );
@@ -89,10 +89,10 @@ export default function FormMads(
 
         setProgress(true)
         const RemovePropreites = (obj: any) => {
-            
+
             Object.entries(obj).forEach(function ([chave, valor]) {
 
-                if (typeof valor === 'object' ) {
+                if (typeof valor === 'object') {
                     RemovePropreites(valor)
                     if (Object.keys(valor).length === 0) {
                         delete obj[chave]
@@ -109,7 +109,7 @@ export default function FormMads(
 
                 if (Array.isArray(valor)) {
                     valor.forEach(element => {
-                        
+
                         RemovePropreites(element)
                     })
                     if (Object.keys(valor[0]).length === 0) {
@@ -135,25 +135,25 @@ export default function FormMads(
                     setTypeAlert("success")
                     setMessage("Registro criado com sucesso!")
                     console.log(response.data)
-                    // router.push(`/admin/catalog/${response.data.id}`);
+                    router.push(`/admin/authority/${response.data.id}`);
                 }
             })
             .catch(function (error) {
+                console.error("ERs:", error);
                 setTypeAlert("error")
                 if (error.response.status === 409) {
                     setMessage("Este registro já existe")
                 }
-                console.error("ERs:", error.response);
             })
             .finally(function () {
                 setProgress(false)
                 setOpenSnack(true)
             });
     }
+
     return (
         <Box sx={{ width: "100%" }}>
-            <form onSubmit={handleSubmit(CreateAuthority)}
-            >
+            <form onSubmit={handleSubmit(CreateAuthority)}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={panel} onChange={handleChangePanel} aria-label="basic tabs example">
                         {mads.sections.map((section: any, index) => (
@@ -189,5 +189,4 @@ export default function FormMads(
             <BfErros openBfErros={openBfErros} setBfErros={setBfErros} errors={errors} />
         </Box>
     )
-
 }

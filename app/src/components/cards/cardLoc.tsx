@@ -27,7 +27,6 @@ import { bkapi } from "@/services/api"
 
 // BiblioKeia Components
 import MadsUri from "@/components/madsrdf/view/madsUri"
-// import FieldOfActivity from "@/components/madsrdf/view/fieldOfActivity"
 import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
 import HasCloseExternalAuthority from "@/components/madsrdf/view/hasCloseExternalAuthority";
@@ -53,16 +52,16 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
   const router = useRouter();
   const { setProgress } = useProgress();
   const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
-  // console.log("H: ", hit?.birthDate)
 
   function LocExist(identifiersLccn: any) {
     setProgress(true)
     bkapi
       .get(`/thesarus/loc/exist/${identifiersLccn}`)
       .then(function (response) {
+        // console.log(response)
         if (response.status === 200) {
           if (response.data.exist) {
-            // console.log(response.data)
+            
             setTypeAlert("error");
             setMessage("Registro já existe")
             setOpenSnack(true);
@@ -120,7 +119,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
         <Grid container spacing={2} sx={{ mt: "5px" }}>
 
           {/* Nascimento */}
-          {(hit?.birthPlace || hit?.birthDate.year) && (
+          {(hit?.birthPlace || hit?.birthDate?.year) && (
             <Grid item xs={6}>
               <Box sx={{ pl: "10px" }}>
                 <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>

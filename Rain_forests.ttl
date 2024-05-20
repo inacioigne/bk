@@ -1,0 +1,717 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix cs: <http://purl.org/vocab/changeset/schema#> .
+@prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
+@prefix lcc: <http://id.loc.gov/ontologies/lcc#> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ri: <http://id.loc.gov/ontologies/RecordInfo#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://id.loc.gov/resources/works/1010521> a bf:Work ;
+    bflc:aap "La Déforestation" .
+
+<http://id.loc.gov/resources/works/10272931> a bf:Work ;
+    bflc:aap "Allen, Paul Hamilton, 1911-1963 The rain forests of Golfo Dulce" .
+
+<http://id.loc.gov/resources/works/10275969> a bf:Work ;
+    bflc:aap "Herbert, Desmond Andrew, 1898- Enclosing of vines by trunks of rain forest trees" .
+
+<http://id.loc.gov/resources/works/115284> a bf:Work ;
+    bflc:aap "Tropical rain forest" .
+
+<http://id.loc.gov/resources/works/11764408> a bf:Work ;
+    bflc:aap "Martínez, Eleuterio Los bosques tropicales" .
+
+<http://id.loc.gov/resources/works/12061360> a bf:Work ;
+    bflc:aap "Amazon days, Amazon nights" .
+
+<http://id.loc.gov/resources/works/12136869> a bf:Work ;
+    bflc:aap "Chinery, Michael Resources and conservation" .
+
+<http://id.loc.gov/resources/works/12230222> a bf:Work ;
+    bflc:aap "Newman, Arnold, 1941- Tropical rainforest" .
+
+<http://id.loc.gov/resources/works/12360328> a bf:Work ;
+    bflc:aap "The rainforest" .
+
+<http://id.loc.gov/resources/works/12402237> a bf:Work ;
+    bflc:aap "Gay, Kathlyn Rainforests of the world" .
+
+<http://id.loc.gov/resources/works/12484097> a bf:Work ;
+    bflc:aap "Kiuchi, Tachi, 1935- What we learned in the rainforest" .
+
+<http://id.loc.gov/resources/works/12497998> a bf:Work ;
+    bflc:aap "Young, Allen M. Tropical rainforests" .
+
+<http://id.loc.gov/resources/works/12560211> a bf:Work ;
+    bflc:aap "Ganeri, Anita, 1961- Tropical rain forests" .
+
+<http://id.loc.gov/resources/works/12685104> a bf:Work ;
+    bflc:aap "Under the canopy" .
+
+<http://id.loc.gov/resources/works/12705717> a bf:Work ;
+    bflc:aap "EcoNews. A look at: City of Thousand Oaks-- Open space preservation [and] The faceless ones: wildlife tribute [and] The Penan's forest blockade in Borneo" .
+
+<http://id.loc.gov/resources/works/12712416> a bf:Work ;
+    bflc:aap "EcoNews. Amazonia Foundation's Michael Stuart Ani-- helping the indigenous people of the Amazon" .
+
+<http://id.loc.gov/resources/works/12713071> a bf:Work ;
+    bflc:aap "EcoNews. Costa Rican rainforest artists, Rosita Gottlieb & Kenya's \"Rhino man\" Michael Werikhe" .
+
+<http://id.loc.gov/resources/works/12737364> a bf:Work ;
+    bflc:aap "EcoNews. Carlos Maya's painting of the Amazon's Yanomamo Indians [and] Brazil's Golden Lion Tamarin monkeys [and] Costa Rica's rainforest [and] The Judds sing \"Love can build a bridge\"" .
+
+<http://id.loc.gov/resources/works/12799887> a bf:Work ;
+    bflc:aap "EcoNews. Leon Kolankiewicz, a naturalist in Alaska's rainforest and his salmon research and bear encounters [and] Texas' Peregrine falcons and bats" .
+
+<http://id.loc.gov/resources/works/12875660> a bf:Work ;
+    bflc:aap "Oldfield, Sara Rainforest" .
+
+<http://id.loc.gov/resources/works/12964963> a bf:Work ;
+    bflc:aap "Rainforests" .
+
+<http://id.loc.gov/resources/works/12992025> a bf:Work ;
+    bflc:aap "Environmental directions. 1991-03-18" .
+
+<http://id.loc.gov/resources/works/12995073> a bf:Work ;
+    bflc:aap "Environmental directions. 1991-10-07" .
+
+<http://id.loc.gov/resources/works/13002187> a bf:Work ;
+    bflc:aap "Environmental directions. 1991-08-19" .
+
+<http://id.loc.gov/resources/works/13122865> a bf:Work ;
+    bflc:aap "Environmental directions. 1986-07-20" .
+
+<http://id.loc.gov/resources/works/13163177> a bf:Work ;
+    bflc:aap "EcoNews. British Columbia, Canada's temperate rainforests with a look at: Clearcutting in \"Legacy,\" Winderness in \"Raincoast North among the Fjords\" and demonstrations Clayoquot Sound in the music video \"Sulphur Passage\"" .
+
+<http://id.loc.gov/resources/works/13163584> a bf:Work ;
+    bflc:aap "EcoNews. Northern and Central coast of British Columbia-- a look at: \"Raincoast: wild salmon, wild spirit,\"\"Watershed, Canada's threatened rainforest\" [and] Texas' Guadalupe river trout [and] Return of horses to Texan native Americans" .
+
+<http://id.loc.gov/resources/works/13210206> a bf:Work ;
+    bflc:aap "Hopkins, Ellen Canopies in the clouds" .
+
+<http://id.loc.gov/resources/works/13445764> a bf:Work ;
+    bflc:aap "Forests, water, and people in the humid tropics" .
+
+<http://id.loc.gov/resources/works/13573391> a bf:Work ;
+    bflc:aap "Primack, Richard B., 1950- Tropical rain forests" .
+
+<http://id.loc.gov/resources/works/1406236> a bf:Work ;
+    bflc:aap "Myers, Norman The primary source" .
+
+<http://id.loc.gov/resources/works/1426023> a bf:Work ;
+    bflc:aap "Caufield, Catherine In the rainforest" .
+
+<http://id.loc.gov/resources/works/14276658> a bf:Work ;
+    bflc:aap "Marent, Thomas Rainforest" .
+
+<http://id.loc.gov/resources/works/14592127> a bf:Work ;
+    bflc:aap "Stability of tropical rainforest margins" .
+
+<http://id.loc.gov/resources/works/1467706> a bf:Work ;
+    bflc:aap "Alternativas para el uso del suelo en áreas forestales del trópico húmedo" .
+
+<http://id.loc.gov/resources/works/14897350> a bf:Work ;
+    bflc:aap "Harris, Nicholas, 1956- Rainforest" .
+
+<http://id.loc.gov/resources/works/1523698> a bf:Work ;
+    bflc:aap "Newman, Arnold, 1941- Tropical rainforest" .
+
+<http://id.loc.gov/resources/works/1526839> a bf:Work ;
+    bflc:aap "Borota, Ján, 1925- Tropical forests" .
+
+<http://id.loc.gov/resources/works/15340451> a bf:Work ;
+    bflc:aap "Holzman, Barbara A. Tropical forest biomes" .
+
+<http://id.loc.gov/resources/works/1536585> a bf:Work ;
+    bflc:aap "The Last rain forests" .
+
+<http://id.loc.gov/resources/works/15374107> a bf:Work ;
+    bflc:aap "Pink, Michael Rainforest strategy" .
+
+<http://id.loc.gov/resources/works/1541428> a bf:Work ;
+    bflc:aap "Johnson, Brian D. G. Responding to tropical deforestation" .
+
+<http://id.loc.gov/resources/works/15592423> a bf:Work ;
+    bflc:aap "Parry, James, 1962- Rainforest safari" .
+
+<http://id.loc.gov/resources/works/16045576> a bf:Work ;
+    bflc:aap "Tropical rainforests and agroforests under global change" .
+
+<http://id.loc.gov/resources/works/16194041> a bf:Work ;
+    bflc:aap "Cassel, Keith Land clearing and reclamation of ultisols and oxisols" .
+
+<http://id.loc.gov/resources/works/1625033> a bf:Work ;
+    bflc:aap "International Tropical Timber Agreement, 1994" .
+
+<http://id.loc.gov/resources/works/16347823> a bf:Work ;
+    bflc:aap "Desarrollo sustentable del bosque húmedo tropical" .
+
+<http://id.loc.gov/resources/works/1639753> a bf:Work ;
+    bflc:aap "Schmidt, A. J. The disappearing rain forests" .
+
+<http://id.loc.gov/resources/works/16468638> a bf:Work ;
+    bflc:aap "Corlett, Richard Tropical rain forests" .
+
+<http://id.loc.gov/resources/works/16750198> a bf:Work ;
+    bflc:aap "Chemical biology of the tropics" .
+
+<http://id.loc.gov/resources/works/1716358> a bf:Work ;
+    bflc:aap "Tricart, Jean The landforms of the humid tropics, forests, and savannas" .
+
+<http://id.loc.gov/resources/works/18112907> a bf:Work ;
+    bflc:aap "Burgan, Michael Lost in a rain forest" .
+
+<http://id.loc.gov/resources/works/1816846> a bf:Work ;
+    bflc:aap "Rollet, B. (Bernard) L'Architecture des forêts denses humides sempervirentes de plaine" .
+
+<http://id.loc.gov/resources/works/18519490> a bf:Work ;
+    bflc:aap "Conservation and management of tropical rainforests" .
+
+<http://id.loc.gov/resources/works/19181632> a bf:Work ;
+    bflc:aap "Martin, Claude, 1945- On the edge" .
+
+<http://id.loc.gov/resources/works/19280128> a bf:Work ;
+    bflc:aap "Jungle" .
+
+<http://id.loc.gov/resources/works/19626568> a bf:Work ;
+    bflc:aap "The Rainforests" .
+
+<http://id.loc.gov/resources/works/2000117> a bf:Work ;
+    bflc:aap "Lewis, Scott, 1959- The rainforest book" .
+
+<http://id.loc.gov/resources/works/2014052> a bf:Work ;
+    bflc:aap "Vanishing Eden" .
+
+<http://id.loc.gov/resources/works/2052509> a bf:Work ;
+    bflc:aap "Gay, Kathlyn Rainforests of the world" .
+
+<http://id.loc.gov/resources/works/20574479> a bf:Work ;
+    bflc:aap "Roberts, Patrick, 1991- Tropical forests in prehistory, history, and modernity" .
+
+<http://id.loc.gov/resources/works/2073454> a bf:Work ;
+    bflc:aap "MacKerron, Conrad B. Business in the rain forests" .
+
+<http://id.loc.gov/resources/works/2094997> a bf:Work ;
+    bflc:aap "Rettet den Tropenwald!" .
+
+<http://id.loc.gov/resources/works/22058992> a bf:Work ;
+    bflc:aap "Webb, Kinari Guardians of the trees" .
+
+<http://id.loc.gov/resources/works/22262792> a bf:Work ;
+    bflc:aap "Blair, James P. A booming, makeshift gold mine in Brazil is carved out of a former rainforest" .
+
+<http://id.loc.gov/resources/works/2283479> a bf:Work ;
+    bflc:aap "Howes, Paul Griswold, 1892- Photographer in the rain-forests" .
+
+<http://id.loc.gov/resources/works/2356352> a bf:Work ;
+    bflc:aap "Caufield, Catherine Tropical moist forests" .
+
+<http://id.loc.gov/resources/works/2453661> a bf:Work ;
+    bflc:aap "Lessons of the rainforest" .
+
+<http://id.loc.gov/resources/works/2470112> a bf:Work ;
+    bflc:aap "Dalton, Stephen Vanishing paradise" .
+
+<http://id.loc.gov/resources/works/2506525> a bf:Work ;
+    bflc:aap "Rainforests" .
+
+<http://id.loc.gov/resources/works/2564257> a bf:Work ;
+    bflc:aap "Nichol, John The mighty rain forest" .
+
+<http://id.loc.gov/resources/works/2692114> a bf:Work ;
+    bflc:aap "Tricart, Jean Le modelé des régions chaudes, forêts et savanes" .
+
+<http://id.loc.gov/resources/works/3069207> a bf:Work ;
+    bflc:aap "Wolfe, Art Rainforests of the world" .
+
+<http://id.loc.gov/resources/works/312534> a bf:Work ;
+    bflc:aap "Tricart, Jean The landforms of the humid tropics, forests and savannas" .
+
+<http://id.loc.gov/resources/works/3356879> a bf:Work ;
+    bflc:aap "Kahlschlag im Paradies" .
+
+<http://id.loc.gov/resources/works/3403393> a bf:Work ;
+    bflc:aap "Neil, P. E. Problems and opportunities in tropical rain-forest management" .
+
+<http://id.loc.gov/resources/works/3452759> a bf:Work ;
+    bflc:aap "Rain forest" .
+
+<http://id.loc.gov/resources/works/3643381> a bf:Work ;
+    bflc:aap "Tricart, Jean Le modelé des régions chaudes" .
+
+<http://id.loc.gov/resources/works/3806104> a bf:Work ;
+    bflc:aap "Caufield, Catherine In the rainforest" .
+
+<http://id.loc.gov/resources/works/3887078> a bf:Work ;
+    bflc:aap "The Emerald realm" .
+
+<http://id.loc.gov/resources/works/390745> a bf:Work ;
+    bflc:aap "Sandved, Kjell Bloch, 1922- Rain forests and cloud forests" .
+
+<http://id.loc.gov/resources/works/3953804> a bf:Work ;
+    bflc:aap "Tropischer Regenwald als Ökosystem" .
+
+<http://id.loc.gov/resources/works/4017310> a bf:Work ;
+    bflc:aap "Whitmore, T. C. (Timothy Charles) An introduction to tropical rain forests" .
+
+<http://id.loc.gov/resources/works/402344> a bf:Work ;
+    bflc:aap "Tropical moist forest" .
+
+<http://id.loc.gov/resources/works/4059746> a bf:Work ;
+    bflc:aap "Sanderson, Ivan Terence, 1911-1973 Ivan Sanderson's book of great jungles" .
+
+<http://id.loc.gov/resources/works/4220863> a bf:Work ;
+    bflc:aap "United States. Congress. House. Committee on Foreign Affairs. Subcommittee on International Organizations. Tropical deforestation" .
+
+<http://id.loc.gov/resources/works/4302337> a bf:Work ;
+    bflc:aap "Flor, Hildebrando de Miranda Florestas tropicais" .
+
+<http://id.loc.gov/resources/works/4313664> a bf:Work ;
+    bflc:aap "Jacobs, Marius, 1929-1983 The tropical rain forest" .
+
+<http://id.loc.gov/resources/works/4314556> a bf:Work ;
+    bflc:aap "People of the tropical rain forest" .
+
+<http://id.loc.gov/resources/works/4360917> a bf:Work ;
+    bflc:aap "Miller, Kenton Trees of life" .
+
+<http://id.loc.gov/resources/works/4371504> a bf:Work ;
+    bflc:aap "Die Bedrohung tropischer Wälder" .
+
+<http://id.loc.gov/resources/works/4387937> a bf:Work ;
+    bflc:aap "Forsyth, Adrian Portraits of the rainforest" .
+
+<http://id.loc.gov/resources/works/4400843> a bf:Work ;
+    bflc:aap "Whitmore, T. C. (Timothy Charles) An introduction to tropical rain forests" .
+
+<http://id.loc.gov/resources/works/4529453> a bf:Work ;
+    bflc:aap "Bünning, Erwin, 1906- Der tropische Regenwald" .
+
+<http://id.loc.gov/resources/works/4629596> a bf:Work ;
+    bflc:aap "Flenley, John The equatorial rain forest" .
+
+<http://id.loc.gov/resources/works/4857332> a bf:Work ;
+    bflc:aap "Balázs, Dénes Az őserdők világa" .
+
+<http://id.loc.gov/resources/works/4859431> a bf:Work ;
+    bflc:aap "Regenwald" .
+
+<http://id.loc.gov/resources/works/4885480> a bf:Work ;
+    bflc:aap "Shiva, Vandana Forestry crisis and forestry myths" .
+
+<http://id.loc.gov/resources/works/4885615> a bf:Work ;
+    bflc:aap "Rainforest destruction" .
+
+<http://id.loc.gov/resources/works/4897223> a bf:Work ;
+    bflc:aap "Myers, Norman The primary source" .
+
+<http://data.bnf.fr/ark:/12148/cb11931438h> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Forêts pluviales"@fr ;
+    skos:prefLabel "Forêts pluviales"@fr .
+
+<http://datos.bne.es/resource/XX535690> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Bosques tropicales"@es ;
+    skos:prefLabel "Bosques tropicales"@es .
+
+<http://id.loc.gov/authorities/subjects/sh2010012571> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Temperate rain forests"@en ;
+    skos:prefLabel "Temperate rain forests"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85050707> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Forests and forestry"@en ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Forests and forestry"@en ] ) ;
+    skos:prefLabel "Forests and forestry"@en .
+
+<http://id.loc.gov/authorities/subjects/sh85111193> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    bflc:marcKey "150  $aRain forests" ;
+    bflc:subjectOf <http://id.loc.gov/resources/works/1010521>,
+        <http://id.loc.gov/resources/works/10272931>,
+        <http://id.loc.gov/resources/works/10275969>,
+        <http://id.loc.gov/resources/works/115284>,
+        <http://id.loc.gov/resources/works/11764408>,
+        <http://id.loc.gov/resources/works/12061360>,
+        <http://id.loc.gov/resources/works/12136869>,
+        <http://id.loc.gov/resources/works/12230222>,
+        <http://id.loc.gov/resources/works/12360328>,
+        <http://id.loc.gov/resources/works/12402237>,
+        <http://id.loc.gov/resources/works/12484097>,
+        <http://id.loc.gov/resources/works/12497998>,
+        <http://id.loc.gov/resources/works/12560211>,
+        <http://id.loc.gov/resources/works/12685104>,
+        <http://id.loc.gov/resources/works/12705717>,
+        <http://id.loc.gov/resources/works/12712416>,
+        <http://id.loc.gov/resources/works/12713071>,
+        <http://id.loc.gov/resources/works/12737364>,
+        <http://id.loc.gov/resources/works/12799887>,
+        <http://id.loc.gov/resources/works/12875660>,
+        <http://id.loc.gov/resources/works/12964963>,
+        <http://id.loc.gov/resources/works/12992025>,
+        <http://id.loc.gov/resources/works/12995073>,
+        <http://id.loc.gov/resources/works/13002187>,
+        <http://id.loc.gov/resources/works/13122865>,
+        <http://id.loc.gov/resources/works/13163177>,
+        <http://id.loc.gov/resources/works/13163584>,
+        <http://id.loc.gov/resources/works/13210206>,
+        <http://id.loc.gov/resources/works/13445764>,
+        <http://id.loc.gov/resources/works/13573391>,
+        <http://id.loc.gov/resources/works/1406236>,
+        <http://id.loc.gov/resources/works/1426023>,
+        <http://id.loc.gov/resources/works/14276658>,
+        <http://id.loc.gov/resources/works/14592127>,
+        <http://id.loc.gov/resources/works/1467706>,
+        <http://id.loc.gov/resources/works/14897350>,
+        <http://id.loc.gov/resources/works/1523698>,
+        <http://id.loc.gov/resources/works/1526839>,
+        <http://id.loc.gov/resources/works/15340451>,
+        <http://id.loc.gov/resources/works/1536585>,
+        <http://id.loc.gov/resources/works/15374107>,
+        <http://id.loc.gov/resources/works/1541428>,
+        <http://id.loc.gov/resources/works/15592423>,
+        <http://id.loc.gov/resources/works/16045576>,
+        <http://id.loc.gov/resources/works/16194041>,
+        <http://id.loc.gov/resources/works/1625033>,
+        <http://id.loc.gov/resources/works/16347823>,
+        <http://id.loc.gov/resources/works/1639753>,
+        <http://id.loc.gov/resources/works/16468638>,
+        <http://id.loc.gov/resources/works/16750198>,
+        <http://id.loc.gov/resources/works/1716358>,
+        <http://id.loc.gov/resources/works/18112907>,
+        <http://id.loc.gov/resources/works/1816846>,
+        <http://id.loc.gov/resources/works/18519490>,
+        <http://id.loc.gov/resources/works/19181632>,
+        <http://id.loc.gov/resources/works/19280128>,
+        <http://id.loc.gov/resources/works/19626568>,
+        <http://id.loc.gov/resources/works/2000117>,
+        <http://id.loc.gov/resources/works/2014052>,
+        <http://id.loc.gov/resources/works/2052509>,
+        <http://id.loc.gov/resources/works/20574479>,
+        <http://id.loc.gov/resources/works/2073454>,
+        <http://id.loc.gov/resources/works/2094997>,
+        <http://id.loc.gov/resources/works/22058992>,
+        <http://id.loc.gov/resources/works/22262792>,
+        <http://id.loc.gov/resources/works/2283479>,
+        <http://id.loc.gov/resources/works/2356352>,
+        <http://id.loc.gov/resources/works/2453661>,
+        <http://id.loc.gov/resources/works/2470112>,
+        <http://id.loc.gov/resources/works/2506525>,
+        <http://id.loc.gov/resources/works/2564257>,
+        <http://id.loc.gov/resources/works/2692114>,
+        <http://id.loc.gov/resources/works/3069207>,
+        <http://id.loc.gov/resources/works/312534>,
+        <http://id.loc.gov/resources/works/3356879>,
+        <http://id.loc.gov/resources/works/3403393>,
+        <http://id.loc.gov/resources/works/3452759>,
+        <http://id.loc.gov/resources/works/3643381>,
+        <http://id.loc.gov/resources/works/3806104>,
+        <http://id.loc.gov/resources/works/3887078>,
+        <http://id.loc.gov/resources/works/390745>,
+        <http://id.loc.gov/resources/works/3953804>,
+        <http://id.loc.gov/resources/works/4017310>,
+        <http://id.loc.gov/resources/works/402344>,
+        <http://id.loc.gov/resources/works/4059746>,
+        <http://id.loc.gov/resources/works/4220863>,
+        <http://id.loc.gov/resources/works/4302337>,
+        <http://id.loc.gov/resources/works/4313664>,
+        <http://id.loc.gov/resources/works/4314556>,
+        <http://id.loc.gov/resources/works/4360917>,
+        <http://id.loc.gov/resources/works/4371504>,
+        <http://id.loc.gov/resources/works/4387937>,
+        <http://id.loc.gov/resources/works/4400843>,
+        <http://id.loc.gov/resources/works/4529453>,
+        <http://id.loc.gov/resources/works/4629596>,
+        <http://id.loc.gov/resources/works/4857332>,
+        <http://id.loc.gov/resources/works/4859431>,
+        <http://id.loc.gov/resources/works/4885480>,
+        <http://id.loc.gov/resources/works/4885615>,
+        <http://id.loc.gov/resources/works/4897223> ;
+    identifiers:lccn "sh 85111193" ;
+    madsrdf:adminMetadata [ a ri:RecordInfo ;
+            ri:recordChangeDate "2001-05-07T00:00:00"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            ri:recordStatus "new"^^xsd:string ],
+        [ a ri:RecordInfo ;
+            ri:recordChangeDate "2001-06-20T14:34:14"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/wau> ;
+            ri:recordStatus "revised"^^xsd:string ] ;
+    madsrdf:authoritativeLabel "Rain forests"@en ;
+    madsrdf:classification [ a lcc:ClassNumber ;
+            madsrdf:code "QH86" ;
+            madsrdf:hasExactExternalAuthority <http://id.loc.gov/authorities/classification/QH86> ],
+        [ a lcc:ClassNumber ;
+            madsrdf:code "SD131-SD247.5" ;
+            madsrdf:hasExactExternalAuthority <http://id.loc.gov/authorities/classification/SD131-SD247.5> ] ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Rain forests"@en ] ) ;
+    madsrdf:exampleNote "Note under [Jungles]" ;
+    madsrdf:hasBroaderAuthority <http://id.loc.gov/authorities/subjects/sh85050707> ;
+    madsrdf:hasCloseExternalAuthority <http://data.bnf.fr/ark:/12148/cb11931438h>,
+        <http://datos.bne.es/resource/XX535690>,
+        <http://id.ndl.go.jp/auth/ndlsh/00568116>,
+        <http://id.worldcat.org/fast/1089466>,
+        <http://purl.org/bncf/tid/6301>,
+        <http://vocab.getty.edu/aat/300008871>,
+        <http://www.wikidata.org/entity/Q9444>,
+        <http://www.yso.fi/onto/yso/p3487>,
+        <https://d-nb.info/gnd/4061016-0>,
+        <https://d-nb.info/gnd/4131965-5> ;
+    madsrdf:hasNarrowerAuthority <http://id.loc.gov/authorities/subjects/sh2010012571> ;
+    madsrdf:hasNarrowerExternalAuthority <http://id.worldcat.org/fast/1089467>,
+        <http://id.worldcat.org/fast/1089468>,
+        <http://id.worldcat.org/fast/1089469>,
+        <http://id.worldcat.org/fast/1089470>,
+        <http://id.worldcat.org/fast/1089471>,
+        <http://id.worldcat.org/fast/1089472>,
+        <http://id.worldcat.org/fast/1089473>,
+        <http://id.worldcat.org/fast/1089475>,
+        <http://id.worldcat.org/fast/1089480>,
+        <http://id.worldcat.org/fast/1089481>,
+        <http://id.worldcat.org/fast/1089482>,
+        <http://id.worldcat.org/fast/1089483>,
+        <http://id.worldcat.org/fast/1089484>,
+        <http://id.worldcat.org/fast/1089485>,
+        <http://id.worldcat.org/fast/1089486>,
+        <http://id.worldcat.org/fast/1089487>,
+        <http://id.worldcat.org/fast/1089488> ;
+    madsrdf:hasReciprocalAuthority <http://id.loc.gov/authorities/subjects/sh94003224> ;
+    madsrdf:hasSource [ a madsrdf:Source ;
+            madsrdf:citationNote "(tropical rainforests; tropical rain forests)"@en ;
+            madsrdf:citationSource "LC database, May 7, 2001" ;
+            madsrdf:citationStatus "found" ] ;
+    madsrdf:hasVariant [ a madsrdf:Topic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                        madsrdf:elementValue "Tropical rain forests"@en ] ) ;
+            madsrdf:variantLabel "Tropical rain forests"@en ],
+        [ a madsrdf:Topic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                        madsrdf:elementValue "Rainforests"@en ] ) ;
+            madsrdf:variantLabel "Rainforests"@en ],
+        [ a madsrdf:Topic,
+                madsrdf:Variant ;
+            madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                        madsrdf:elementValue "Tropical rainforests"@en ] ) ;
+            madsrdf:variantLabel "Tropical rainforests"@en ],
+        [ a madsrdf:ComplexSubject,
+                madsrdf:Variant ;
+            madsrdf:componentList ( [ a madsrdf:Topic,
+                            madsrdf:Variant ;
+                        madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                                    madsrdf:elementValue "Rain forests"@en ] ) ;
+                        madsrdf:variantLabel "Rain forests"@en ] [ a madsrdf:Geographic,
+                            madsrdf:Variant ;
+                        madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                                    madsrdf:elementValue "Tropics"@en ] ) ;
+                        madsrdf:variantLabel "Tropics"@en ] ) ;
+            madsrdf:variantLabel "Rain forests--Tropics"@en ] ;
+    madsrdf:isMemberOfMADSCollection <http://id.loc.gov/authorities/subjects/collection_LCSHAuthorizedHeadings>,
+        <http://id.loc.gov/authorities/subjects/collection_LCSH_General>,
+        <http://id.loc.gov/authorities/subjects/collection_SubdivideGeographically> ;
+    madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ;
+    madsrdf:note "Here are entered works on forests consisting primarily of tall, broad-leaved evergreen trees located in areas of high annual rainfall chiefly, but not exclusively, in the tropics. Works on areas of luxuriant, impenetrable vegetation occurring where light penetrates along tracks or riverbanks in tropical areas or as second growth vegetation where tropical forests have been cleared are entered under [Jungles.]" ;
+    owl:sameAs <http://id.loc.gov/authorities/sh85111193#concept>,
+        <info:lc/authorities/sh85111193> ;
+    skos:altLabel "Rain forests--Tropics"@en,
+        "Rainforests"@en,
+        "Tropical rain forests"@en,
+        "Tropical rainforests"@en ;
+    skos:broader <http://id.loc.gov/authorities/subjects/sh85050707> ;
+    skos:changeNote [ a cs:ChangeSet ;
+            cs:changeReason "new"^^xsd:string ;
+            cs:createdDate "2001-05-07T00:00:00"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/subjects/sh85111193> ],
+        [ a cs:ChangeSet ;
+            cs:changeReason "revised"^^xsd:string ;
+            cs:createdDate "2001-06-20T14:34:14"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/wau> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/subjects/sh85111193> ] ;
+    skos:closeMatch <http://data.bnf.fr/ark:/12148/cb11931438h>,
+        <http://datos.bne.es/resource/XX535690>,
+        <http://id.ndl.go.jp/auth/ndlsh/00568116>,
+        <http://id.worldcat.org/fast/1089466>,
+        <http://purl.org/bncf/tid/6301>,
+        <http://vocab.getty.edu/aat/300008871>,
+        <http://www.wikidata.org/entity/Q9444>,
+        <http://www.yso.fi/onto/yso/p3487>,
+        <https://d-nb.info/gnd/4061016-0>,
+        <https://d-nb.info/gnd/4131965-5> ;
+    skos:example "Note under [Jungles]" ;
+    skos:inScheme <http://id.loc.gov/authorities/subjects> ;
+    skos:narrowMatch <http://id.worldcat.org/fast/1089467>,
+        <http://id.worldcat.org/fast/1089468>,
+        <http://id.worldcat.org/fast/1089469>,
+        <http://id.worldcat.org/fast/1089470>,
+        <http://id.worldcat.org/fast/1089471>,
+        <http://id.worldcat.org/fast/1089472>,
+        <http://id.worldcat.org/fast/1089473>,
+        <http://id.worldcat.org/fast/1089475>,
+        <http://id.worldcat.org/fast/1089480>,
+        <http://id.worldcat.org/fast/1089481>,
+        <http://id.worldcat.org/fast/1089482>,
+        <http://id.worldcat.org/fast/1089483>,
+        <http://id.worldcat.org/fast/1089484>,
+        <http://id.worldcat.org/fast/1089485>,
+        <http://id.worldcat.org/fast/1089486>,
+        <http://id.worldcat.org/fast/1089487>,
+        <http://id.worldcat.org/fast/1089488> ;
+    skos:narrower <http://id.loc.gov/authorities/subjects/sh2010012571> ;
+    skos:note "Here are entered works on forests consisting primarily of tall, broad-leaved evergreen trees located in areas of high annual rainfall chiefly, but not exclusively, in the tropics. Works on areas of luxuriant, impenetrable vegetation occurring where light penetrates along tracks or riverbanks in tropical areas or as second growth vegetation where tropical forests have been cleared are entered under [Jungles.]" ;
+    skos:prefLabel "Rain forests"@en ;
+    skos:related <http://id.loc.gov/authorities/subjects/sh94003224> ;
+    skosxl:altLabel [ a skosxl:Label ;
+            skosxl:literalForm "Rainforests"@en ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "Rain forests--Tropics"@en ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "Tropical rain forests"@en ],
+        [ a skosxl:Label ;
+            skosxl:literalForm "Tropical rainforests"@en ] .
+
+<http://id.loc.gov/authorities/subjects/sh94003224> a madsrdf:Authority,
+        madsrdf:Topic,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Cloud forests"@en ;
+    madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                madsrdf:elementValue "Cloud forests"@en ] ) ;
+    skos:prefLabel "Cloud forests"@en .
+
+<http://id.ndl.go.jp/auth/ndlsh/00568116> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "熱帯林" ;
+    skos:prefLabel "熱帯林" .
+
+<http://id.worldcat.org/fast/1089466> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests" ;
+    skos:prefLabel "Rain forests" .
+
+<http://id.worldcat.org/fast/1089467> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Computer-assisted instruction" ;
+    skos:prefLabel "Rain forests--Computer-assisted instruction" .
+
+<http://id.worldcat.org/fast/1089468> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Economic aspects" ;
+    skos:prefLabel "Rain forests--Economic aspects" .
+
+<http://id.worldcat.org/fast/1089469> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Environmental aspects" ;
+    skos:prefLabel "Rain forests--Environmental aspects" .
+
+<http://id.worldcat.org/fast/1089470> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Experiments" ;
+    skos:prefLabel "Rain forests--Experiments" .
+
+<http://id.worldcat.org/fast/1089471> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Government policy" ;
+    skos:prefLabel "Rain forests--Government policy" .
+
+<http://id.worldcat.org/fast/1089472> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Government policy--International cooperation" ;
+    skos:prefLabel "Rain forests--Government policy--International cooperation" .
+
+<http://id.worldcat.org/fast/1089473> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Health aspects" ;
+    skos:prefLabel "Rain forests--Health aspects" .
+
+<http://id.worldcat.org/fast/1089475> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Information services" ;
+    skos:prefLabel "Rain forests--Information services" .
+
+<http://id.worldcat.org/fast/1089480> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Remote sensing" ;
+    skos:prefLabel "Rain forests--Remote sensing" .
+
+<http://id.worldcat.org/fast/1089481> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Research" ;
+    skos:prefLabel "Rain forests--Research" .
+
+<http://id.worldcat.org/fast/1089482> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Societies, etc" ;
+    skos:prefLabel "Rain forests--Societies, etc" .
+
+<http://id.worldcat.org/fast/1089483> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Sounds" ;
+    skos:prefLabel "Rain forests--Sounds" .
+
+<http://id.worldcat.org/fast/1089484> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Study and teaching" ;
+    skos:prefLabel "Rain forests--Study and teaching" .
+
+<http://id.worldcat.org/fast/1089485> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Study and teaching--Activity programs" ;
+    skos:prefLabel "Rain forests--Study and teaching--Activity programs" .
+
+<http://id.worldcat.org/fast/1089486> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Study and teaching (Elementary)" ;
+    skos:prefLabel "Rain forests--Study and teaching (Elementary)" .
+
+<http://id.worldcat.org/fast/1089487> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Study and teaching (Middle school)" ;
+    skos:prefLabel "Rain forests--Study and teaching (Middle school)" .
+
+<http://id.worldcat.org/fast/1089488> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Rain forests--Study and teaching (Primary)" ;
+    skos:prefLabel "Rain forests--Study and teaching (Primary)" .
+
+<http://purl.org/bncf/tid/6301> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Foreste equatoriali"@it ;
+    skos:prefLabel "Foreste equatoriali"@it .
+
+<http://vocab.getty.edu/aat/300008871> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "rainforests"@en ;
+    skos:prefLabel "rainforests"@en .
+
+<http://www.wikidata.org/entity/Q9444> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "rainforest" ;
+    skos:prefLabel "rainforest" .
+
+<http://www.yso.fi/onto/yso/p3487> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "sademetsät"@fi ;
+    skos:prefLabel "sademetsät"@fi .
+
+<https://d-nb.info/gnd/4061016-0> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Tropischer Regenwald" ;
+    skos:prefLabel "Tropischer Regenwald" .
+
+<https://d-nb.info/gnd/4131965-5> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Regenwald" ;
+    skos:prefLabel "Regenwald" .
+

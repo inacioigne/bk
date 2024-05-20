@@ -67,7 +67,6 @@
       "name": "authorityInformation",
       "label": "Autoridade",
       "fields": [
-        
         {
           "name": "elementList",
           "label": "Nome controlado",
@@ -122,55 +121,81 @@
           ]
         },
         {
-          "name": "fullerName",
-          "label": "Nome completo",
-          "doc": "https://id.loc.gov/ontologies/madsrdf/v1.html#p_fullerName",
-          "repeatable": false,
+            "name": "hasReciprocalAuthority",
+            "label": "Termo Relacionado",
+            "repeatable": true,
+            "required": false,
+            "subfields": [
+              {
+                "name": "base",
+                "label": "Base",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 2
+              },
+              {
+                "name": "uri",
+                "label": "url",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 4
+              },
+              {
+                "name": "label",
+                "label": "Nome",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 4
+              },
+              {
+                "name": "elementLang",
+                "label": "Idioma",
+                "type": "select",
+                "commonType": "language",
+                "disabled": false,
+                "required": false,
+                "width": 2
+              }
+            ]
+          },
+        {
+          "name": "hasBroaderAuthority",
+          "label": "Termo Geral",
+          "repeatable": true,
+          "required": false,
           "subfields": [
             {
-              "name": "value",
+              "name": "base",
+              "label": "Base",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 2
+            },
+            {
+              "name": "uri",
+              "label": "url",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 4
+            },
+            {
+              "name": "label",
               "label": "Nome",
               "type": "textField",
               "disabled": false,
               "required": false,
-              "width": 12
-            }
-          ]
-        },
-        {
-          "name": "birth",
-          "label": "Nascimento",
-          "repeatable": false,
-          "subfields": [
-            {
-              "name": "place",
-              "label": "Local",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 3
+              "width": 4
             },
             {
-              "name": "day",
-              "label": "Dia",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 1
-            },
-            {
-              "name": "month",
-              "label": "Mês",
+              "name": "elementLang",
+              "label": "Idioma",
               "type": "select",
-              "disabled": false,
-              "required": false,
-              "commonType": "month",
-              "width": 2
-            },
-            {
-              "name": "year",
-              "label": "Ano",
-              "type": "textField",
+              "commonType": "language",
               "disabled": false,
               "required": false,
               "width": 2
@@ -178,45 +203,46 @@
           ]
         },
         {
-          "name": "death",
-          "label": "Morte",
-          "repeatable": false,
-          "subfields": [
-            {
-              "name": "place",
-              "label": "Local",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 3
-            },
-            {
-              "name": "day",
-              "label": "Dia",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 1
-            },
-            {
-              "name": "month",
-              "label": "Mês",
-              "type": "select",
-              "disabled": false,
-              "required": false,
-              "commonType": "month",
-              "width": 2
-            },
-            {
-              "name": "year",
-              "label": "Ano",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 2
-            }
-          ]
-        }
+            "name": "hasNarrowerAuthority",
+            "label": "Termo Especifíco",
+            "repeatable": true,
+            "required": false,
+            "subfields": [
+              {
+                "name": "base",
+                "label": "Base",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 2
+              },
+              {
+                "name": "uri",
+                "label": "url",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 4
+              },
+              {
+                "name": "label",
+                "label": "Nome",
+                "type": "textField",
+                "disabled": false,
+                "required": false,
+                "width": 4
+              },
+              {
+                "name": "elementLang",
+                "label": "Idioma",
+                "type": "select",
+                "commonType": "language",
+                "disabled": false,
+                "required": false,
+                "width": 2
+              }
+            ]
+          }
       ]
     },
     {
@@ -277,65 +303,6 @@
               "disabled": false,
               "required": false,
               "width": 12
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "affiliation",
-      "label": "Afiliação",
-      "fields": [
-        {
-          "name": "hasAffiliation",
-          "label": "Afiliação",
-          "repeatable": true,
-          "required": false,
-          "subfields": [
-            {
-              "name": "base",
-              "label": "Base",
-              "repeatable": true,
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 2
-            },
-            {
-              "name": "label",
-              "label": "Organização",
-              "repeatable": true,
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 5
-            },
-            {
-              "name": "uri",
-              "label": "Url",
-              "repeatable": true,
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 5
-            },
-            {
-              "name": "affiliationStart",
-              "label": "Início do vínculo",
-              "repeatable": true,
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 3
-            },
-            {
-              "name": "affiliationEnd",
-              "label": "Fim do vínculo",
-              "repeatable": true,
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 3
             }
           ]
         }
@@ -446,6 +413,14 @@
       {
         "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
         "label": "PersonalName"
+      },
+      {
+        "value": "http://www.loc.gov/mads/rdf/v1#Topic",
+        "label": "Topic"
+      },
+      {
+        "value": "http://www.loc.gov/mads/rdf/v1#ComplexSubject",
+        "label": "ComplexSubject"
       }
     ],
     "mstatus": [
@@ -470,6 +445,10 @@
       {
         "label": "TermsOfAddressNameElement",
         "value": "http://www.loc.gov/mads/rdf/v1#TermsOfAddressNameElement"
+      },
+      {
+        "label": "TopicElement",
+        "value": "http://www.loc.gov/mads/rdf/v1#TopicElement"
       },
       {
         "label": "Topic",

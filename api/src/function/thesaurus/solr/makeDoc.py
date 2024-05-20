@@ -9,10 +9,10 @@ def MakeDoc(request):
     isMemberOfMADSCollection = [i.collection.value for i in request.isMemberOfMADSCollection]
 
     doc = { 
-            'id': f'authority#{request.identifiersLocal}',
+            'id': f'authority#{request.adminMetadata.identifiedBy}',
             'type': [i.type.label for i in request.resource],
             "creationDate": request.adminMetadata.creationDate.strftime('%Y-%m-%d'), 
-            "label": request.authoritativeLabel,
+            # "label": request.authoritativeLabel.value,
             "authority": authority,
             "isMemberOfMADSCollection": isMemberOfMADSCollection
         }
@@ -32,7 +32,7 @@ def MakeDoc(request):
         doc['changeDate'] = request.adminMetadata.changeDate.strftime("%Y-%m-%dT%H:%M:%S")
     
     if request.fullerName:
-        doc['fullerName'] = request.fullerName
+        doc['fullerName'] = request.fullerName.value
     
     metadados = ['birthDayDate', 'birthMonthDate','birthYearDate', 'birthDate', 'birthPlace', 'deathDate', 'deathPlace',
                  'deathDayDate', 'deathMonthDate', 'deathYearDate']

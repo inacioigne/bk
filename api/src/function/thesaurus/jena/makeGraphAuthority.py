@@ -1,4 +1,7 @@
 from rdflib import URIRef, Namespace, Graph, Literal, BNode
+from src.function.metadata.mads.HasReciprocal import HasReciprocal
+from src.function.metadata.mads.hasNarrower import HasNarrower
+from src.function.metadata.mads.hasBroader import HasBroader
 from src.function.metadata.mads.hasAffiliation import HasAffiliation
 from src.function.metadata.mads.hasCloseExternalAuthority import HasCloseExternalAuthority
 from src.function.metadata.mads.death import Death
@@ -53,6 +56,15 @@ def MakeGraphAuthority(request):
     # HasCloseExternalAuthority
     if request.hasCloseExternalAuthority:
         g = HasCloseExternalAuthority(g, resource, request.hasCloseExternalAuthority, MDASRDF)
+    # hasBroaderAuthority
+    if request.hasBroaderAuthority:
+        g = HasBroader(g, resource, request.hasBroaderAuthority, MDASRDF)
+    # hasBroaderAuthority
+    if request.hasNarrowerAuthority:
+        g = HasNarrower(g, resource, request.hasNarrowerAuthority, MDASRDF)
+    if request.hasReciprocalAuthority:
+        g = HasReciprocal(g, resource, request.hasNarrowerAuthority, MDASRDF)
+
 
 
     graph = g.serialize(format='ttl')
