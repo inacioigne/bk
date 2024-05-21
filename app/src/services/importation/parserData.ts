@@ -1,5 +1,5 @@
 import { CheckLoc } from "@/services/importation/checkLoc";
-import { schemaMads, schemaAffiliation } from "@/schema/authority";
+// import { schemaMads, schemaAffiliation } from "@/schema/authority";
 import { ParserUri } from "@/services/importation/parserUri";
 import madsrdf from "@/share/mads/mads.json";
 
@@ -107,10 +107,14 @@ export async function ParserData(response: any, uri: string) {
     let uris = ParserUri(a, data, "hasBroaderAuthority", objLanguage);
     let arrCheck = await CheckLoc(uris);
     let hasBroaderAuthority = await Promise.all(arrCheck);
-    authority["hasBroaderAuthority"] = hasBroaderAuthority;
-    // console.log(hasBroaderAuthority);
-    
-
+    authority["hasBroaderAuthority"] = hasBroaderAuthority;   
+  } else {
+    authority["hasBroaderAuthority"] = [{
+      base: '',
+      uri: '',
+      label: '',
+      elementLang: {value: '', label: ''}
+    }]; 
   }
   // Narrower Terms
   if (a.hasOwnProperty(`${mads}hasNarrowerAuthority`)) {
@@ -166,12 +170,21 @@ export async function ParserData(response: any, uri: string) {
               value: type,
               label: type.split("#")[1],
             },
-            elementValue: elementValue["@value"],
-            elementLang: {
+            elementValue: elementValue["@value"]
+          };
+          if (elementValue.hasOwnProperty("@language")) {
+            let elementLang = {
               value: elementValue["@language"],
               label: objLanguage[`${elementValue["@language"]}`],
-            },
-          };
+            }
+            element['elementLang'] = elementLang
+            
+          } else {
+            element['elementLang'] = {
+              value: "",
+              label: "",
+            }
+          }
           return element;
         });
         let [variantLabel] = obj[`${mads}variantLabel`];
@@ -198,7 +211,6 @@ export async function ParserData(response: any, uri: string) {
             return e["@id"] === list["@id"];
           });
 
-          // let [typeList] = objList["@type"];
           let [elementValue] = objList[`${mads}elementValue`];
           let element = {
             elementType: {
@@ -331,6 +343,12 @@ export async function ParserData(response: any, uri: string) {
         authority.birth["month"] = month;
         authority.birth["year"] = date[0];
       }
+    } else {
+      authority["birth"] = {
+        day: "",
+        month: { value: "", label: "" },
+        year: "",
+      };
     }
     // deathPlace
     if (metadado.hasOwnProperty(`${mads}deathPlace`)) {
@@ -460,9 +478,7 @@ export async function ParserData(response: any, uri: string) {
       authority["occupation"] = occupation;
     }
   }
-  
-  
-  
+  console.log(authority)
   
   return authority;
 }

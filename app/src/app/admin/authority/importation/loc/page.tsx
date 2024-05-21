@@ -11,8 +11,8 @@ import {
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
 import FormLCSH from "@/components/forms/formLocSearch"
 import CardLoc from "@/components/cards/cardLoc"
-import FormLocName from "@/components/thesaurus/loc/formLocName";
-import FormLocSubject from "@/components/thesaurus/loc/formLocSubject";
+// import FormLocName from "@/components/thesaurus/loc/formLocName";
+// import FormLocSubject from "@/components/thesaurus/loc/formLocSubject";
 
 // react-icons
 import { FcHome } from "react-icons/fc";
@@ -41,9 +41,8 @@ const previousPaths = [
   },
 ];
 
-// const names = ["PersonalName", "CorporateName"]
-
 export default function LOC() {
+  
   const [hit, setHit] = useState(null)
   const [form, setForm] = useState(false)
 
@@ -55,9 +54,6 @@ export default function LOC() {
       LocAuthority(setHit, uri)
     }
   }, [])
-
-  
-
 
   return (
     <Container maxWidth="xl">
@@ -81,7 +77,7 @@ export default function LOC() {
           </Grid>
         </Box>
 
-      ) : (hit?.isMemberOfMADSCollection[0].collection.value === 'name' ?
+      ) : (hit?.isMemberOfMADSCollection[0].collection.value === 'names' ?
         <FormMadsNames authority={hit} /> : <FormMadsSubjects authority={hit} />
       )
       }

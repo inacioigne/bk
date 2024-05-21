@@ -85,7 +85,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                                         Importar
                                     </Button>
                                 </Link>
-                                <Link href={"/admin/authority/names/create"}>
+                                <Link href={"/admin/authority/create"}>
                                     <Button
                                         sx={{ textTransform: "none" }}
                                         variant="outlined"

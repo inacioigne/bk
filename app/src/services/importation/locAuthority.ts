@@ -9,7 +9,6 @@ export async function LocAuthority(setHit: Function, uri: string) {
     const response = await axios.get(url);
     const a = await ParserData(response, uri);
     setHit(a);
-    // console.log("TS", a);
   } catch (error) {
     console.error(error);
   }
