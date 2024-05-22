@@ -11,7 +11,7 @@ import {
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
-import DeleteItem from "@/app/admin/authority/names/[id]/deleteItem";
+// import DeleteItem from "@/app/admin/authority/names/[id]/deleteItem";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
 import MadsUri from "@/components/madsrdf/view/madsUri"
 import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";
@@ -30,6 +30,7 @@ import Image from "next/image";
 
 // React Hooks
 import { Suspense } from "react";
+import DeleteItem from "./deleteItem";
 
 async function getData(id: string) {
 
@@ -57,7 +58,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             icon: <FcHome fontSize="small" />,
         },
         {
-            link: `/admin/authority/${doc.isMemberOfMADSCollection}`,
+            link: `/admin/authority`,
             label: "Autoridades",
             icon: <BsFillPersonLinesFill fontSize="small" />,
         },

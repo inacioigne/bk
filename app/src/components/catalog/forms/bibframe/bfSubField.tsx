@@ -18,8 +18,10 @@ interface Props {
 export default function BfSubField(
     { subfield, register, index, control, setValue, name, commonType }: Props
 ) {
+    
 
     if (subfield.thesarus) {
+        // console.log("S: ", subfield)
         return (
             <BfTextfieldThesarus
                 name={name}

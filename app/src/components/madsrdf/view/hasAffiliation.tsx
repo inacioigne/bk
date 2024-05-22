@@ -205,12 +205,10 @@ export default function HasAffiliation({ hasAffiliation }: Props) {
             bgColorForDarkMode="#071318"
           />
         ))
-        // <h1>ARRAY</h1>
-
       ): (
         <StyledTreeItemChild
             nodeId={"6"}
-            labelText={hasAffiliation.organization.label}
+            labelText={hasAffiliation.label}
             affiliationStart={hasAffiliation?.affiliationStart}
             affiliationEnd={hasAffiliation?.affiliationEnd}
             color="#1a73e8"

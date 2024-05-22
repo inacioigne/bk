@@ -1,4 +1,4 @@
-// "use client"
+// 
 import {
     Container,
     Box
@@ -9,8 +9,9 @@ import { FcHome } from "react-icons/fc";
 import { BsPersonPlus } from "react-icons/bs";
 
 // BiblioKeia Components
-import FormMadsNames from "@/components/madsrdf/formMadsNames";
+// import FormMadsNames from "@/components/madsrdf/formMadsNames";
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
+import FormMadsSubjects from "@/components/madsrdf/formMadsSubjects";
 
 
 const previousPaths = [
@@ -59,15 +60,15 @@ const defaultValues = {
     "isMemberOfMADSCollection": [{
         "collection":
         {
-            "value": "names",
-            "label": "Nomes"
+            "value": "subjects",
+            "label": "Assuntos"
         }
     }],
     "elementList": [
         {
             "elementType": {
-                "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
-                "label": "FullNameElement"
+                "value": "http://www.loc.gov/mads/rdf/v1#TopicElement",
+                "label": "TopicElement"
             },
             "elementValue": "",
             "elementLang": {
@@ -76,12 +77,42 @@ const defaultValues = {
             }
         }
     ],
-    "birth": {
-        "month": { "value": "", "label": "" }
-    },
-    "death": {
-        "month": { "value": "", "label": "" }
-    },
+    "hasReciprocalAuthority": [
+        {
+            "uri": "",
+            "type": "",
+            "label": "",
+            "elementLang": {
+                "value": "",
+                "label": ""
+            },
+            "base": ""
+        }
+    ],
+    "hasBroaderAuthority": [
+        {
+            "uri": "",
+            "type": "",
+            "label": "",
+            "elementLang": {
+                "value": "",
+                "label": ""
+            },
+            "base": ""
+        }
+    ],
+    "hasNarrowerAuthority": [
+        {
+            "uri": "",
+            "type": "",
+            "label": "",
+            "elementLang": {
+                "value": "",
+                "label": ""
+            },
+            "base": ""
+        }
+    ],
     "hasVariant": [
         {
             "typeVariant": {
@@ -103,30 +134,7 @@ const defaultValues = {
             ]
         }
     ],
-    "hasAffiliation": [
-        {
-            "base": "",
-            "uri": "",
-            "label": "",
-            "affiliationStart": "",
-            "affiliationEnd": ""
-        }
-    ],
     "hasCloseExternalAuthority": [
-        {
-            "label": "",
-            "base": "",
-            "uri": ""
-        }
-    ],
-    "fieldOfActivity": [
-        {
-            "label": "",
-            "base": "",
-            "uri": ""
-        }
-    ],
-    "occupation": [
         {
             "label": "",
             "base": "",
@@ -141,9 +149,9 @@ export default function Create() {
     return (
         <Container maxWidth="xl">
             <Box my={"1rem"}>
-                <BreadcrumbsBK previousPaths={previousPaths} currentPath={"Nome"} />
+                <BreadcrumbsBK previousPaths={previousPaths} currentPath={"Assunto"} />
             </Box>
-            <FormMadsNames authority={defaultValues} />
+            <FormMadsSubjects authority={defaultValues} />
         </Container>
     )
 }

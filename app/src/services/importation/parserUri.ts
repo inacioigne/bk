@@ -12,13 +12,13 @@ export function ParserUri(authority: any, data: any, metadado: string, objLangua
         });
         let [type] = meta["@type"];
         let [authoritativeLabel] = meta[`${mads}authoritativeLabel`];
-        let uri = meta["@id"]
+        // let uri = meta["@id"]
 
         let obj = {
             uri: meta["@id"],
             type: type.split("#")[1],
             label: authoritativeLabel["@value"],
-            lang: authoritativeLabel["@language"],
+            // lang: authoritativeLabel["@language"],
             elementLang: { value: authoritativeLabel["@language"], label: objLanguage[`${authoritativeLabel["@language"]}`] },
             base: "loc",
         };

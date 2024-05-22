@@ -9,31 +9,41 @@ mads.sections.forEach((section) => {
   section.fields.forEach((field) => {
     if (field.repeatable) {
       let zSub = field.subfields.reduce((acc: any, item) => {
-
-        if (item.type === "select") {
-          if (item.required) {
-            acc[`${item.name}`] = z.object({
-              value: z.string().min(3, { message: item.messageError }),
-              label: z.string(),
-            });
-          } else {
-            acc[`${item.name}`] = z.object({
-              value: z.string(),
-              label: z.string(),
-            });
-          }
+        if (item.thesarus) {
+          acc[`${item.name}`] = z.object({
+            base: z.string(),
+            uri: z.string(),
+            label: z.string()
+          });
+          // console.log(item)
         } else {
-          if (item.required) {
-            acc[`${item.name}`] = z
-              .string()
-              .min(1, { message: item.messageError });
+          if (item.type === "select") {
+            if (item.required) {
+              acc[`${item.name}`] = z.object({
+                value: z.string().min(3, { message: item.messageError }),
+                label: z.string(),
+              });
+            } else {
+              acc[`${item.name}`] = z.object({
+                value: z.string(),
+                label: z.string(),
+              });
+            }
           } else {
-            acc[`${item.name}`] = z.string();
+            if (item.required) {
+              acc[`${item.name}`] = z
+                .string()
+                .min(1, { message: item.messageError });
+            } else {
+              acc[`${item.name}`] = z.string();
+            }
           }
+
         }
+        
+        
         return acc;
       }, {});
-
 
       if (field.name === "hasVariant") {
         obj["hasVariant"] = z.array(
@@ -69,7 +79,6 @@ mads.sections.forEach((section) => {
           });
         } else {
           if (item.required) {
-            // console.log(item)
             acc[`${item.name}`] = z
               .string()
               .min(1, { message: item.messageError });

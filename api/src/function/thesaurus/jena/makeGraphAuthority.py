@@ -1,4 +1,6 @@
 from rdflib import URIRef, Namespace, Graph, Literal, BNode
+from src.function.metadata.mads.occupation import Occupation
+from src.function.metadata.mads.fieldOfActivity import FieldOfActivity
 from src.function.metadata.mads.HasReciprocal import HasReciprocal
 from src.function.metadata.mads.hasNarrower import HasNarrower
 from src.function.metadata.mads.hasBroader import HasBroader
@@ -36,8 +38,9 @@ def MakeGraphAuthority(request):
     g = MadsrdfElementList(g, resource, request.elementList, MDASRDF)
     if request.fullerName: 
         g.add((resource, MDASRDF.fullerName, Literal(request.fullerName.value)))
-
-    g = HasVariant(g, resource, request.hasVariant, MDASRDF)
+    # HasVariant    
+    if request.hasVariant:
+        g = HasVariant(g, resource, request.hasVariant, MDASRDF)
 
     # HasAffiliation
     if request.hasAffiliation:
@@ -64,8 +67,11 @@ def MakeGraphAuthority(request):
         g = HasNarrower(g, resource, request.hasNarrowerAuthority, MDASRDF)
     if request.hasReciprocalAuthority:
         g = HasReciprocal(g, resource, request.hasNarrowerAuthority, MDASRDF)
-
-
+    # fieldOfActivity    
+    if request.fieldOfActivity:
+        g = FieldOfActivity(g, resource, request.fieldOfActivity, MDASRDF)
+    if request.occupation:
+        g = Occupation(g, resource, request.occupation, MDASRDF)
 
     graph = g.serialize(format='ttl')
 

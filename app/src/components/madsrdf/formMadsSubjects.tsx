@@ -1,3 +1,4 @@
+"use client"
 import { Box, Button, Tabs, Tab } from "@mui/material";
 import mads from "@/share/mads/madsSubjects.json"
 import { useEffect, useState } from "react";
@@ -48,7 +49,6 @@ function CustomTabPanel(props: TabPanelProps) {
 export default function FormMadsSubjects(
     { authority }: Props
 ) {
-    console.log("authority", authority)
     const router = useRouter()
     const [panel, setPanel] = useState(0);
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
@@ -59,7 +59,7 @@ export default function FormMadsSubjects(
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
         setPanel(newValue);
     };
-    const defaultValues = authority ? authority : mads.defaultValues
+    // const defaultValues = authority ? authority : mads.defaultValues
     const {
         control,
         register,
@@ -70,7 +70,7 @@ export default function FormMadsSubjects(
     } = useForm<SchemaCreateMads>(
         {
             resolver: zodResolver(ZodMadsSubjects),
-            defaultValues: defaultValues
+            defaultValues: authority
         }
     );
 
@@ -83,15 +83,14 @@ export default function FormMadsSubjects(
 
     function CreateAuthority(data: any) {
 
-        if (authority) {
+        if (authority.identifiersLccn) {
             data['identifiersLccn'] = authority.identifiersLccn
         }
 
         setProgress(true)
+        
         const RemovePropreites = (obj: any) => {
-
             Object.entries(obj).forEach(function ([chave, valor]) {
-
                 if (typeof valor === 'object') {
                     RemovePropreites(valor)
                     if (Object.keys(valor).length === 0) {
@@ -104,7 +103,6 @@ export default function FormMadsSubjects(
             })
         }
         const RemoveEmpty = (obj: any) => {
-
             Object.entries(obj).forEach(function ([chave, valor]) {
 
                 if (Array.isArray(valor)) {
@@ -126,29 +124,29 @@ export default function FormMadsSubjects(
         }
         RemoveEmpty(data)
         console.log("Dt", data)
-        bkapi
-            .post("/thesarus/create", data, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    setTypeAlert("success")
-                    setMessage("Registro criado com sucesso!")
-                    console.log(response.data)
-                    router.push(`/admin/authority/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                console.error("ERs:", error);
-                setTypeAlert("error")
-                if (error.response.status === 409) {
-                    setMessage("Este registro já existe")
-                }
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+        // bkapi
+        //     .post("/thesarus/create", data, {
+        //         headers: headers,
+        //     })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             setTypeAlert("success")
+        //             setMessage("Registro criado com sucesso!")
+        //             console.log(response.data)
+        //             router.push(`/admin/authority/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         console.error("ERs:", error);
+        //         setTypeAlert("error")
+        //         if (error.response.status === 409) {
+        //             setMessage("Este registro já existe")
+        //         }
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //     });
     }
 
     return (

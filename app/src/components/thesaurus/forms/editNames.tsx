@@ -11,7 +11,7 @@ import {
 // Schema
 import { schemaAuthorityDoc } from "@/schema/solr";
 // import { SchemaMads } from "@/schema/mads/schemaMads"
-import { ZodNames } from "@/schema/mads/zodNames"
+import { ZodNames } from "@/schema/mads/OLDER-zodNames"
 
 
 // Next

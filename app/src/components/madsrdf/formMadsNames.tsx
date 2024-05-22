@@ -1,11 +1,12 @@
+"use client"
 import { Box, Button, Tabs, Tab } from "@mui/material";
-import mads from "@/share/mads/mads.json"
+import mads from "@/share/mads/madsNames.json"
 import { useEffect, useState } from "react";
 import BfField from "../catalog/forms/bibframe/bfField";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import ZodMads from "@/schema/mads/zodMads";
+import ZodMads from "@/schema/mads/zodNames";
 import Link from "next/link";
 import { bkapi } from "@/services/api";
 import { headers } from "@/share/acepts";
@@ -59,7 +60,6 @@ export default function FormMadsNames(
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
         setPanel(newValue);
     };
-    const defaultValues = authority ? authority : mads.defaultValues
     const {
         control,
         register,
@@ -70,7 +70,7 @@ export default function FormMadsNames(
     } = useForm<SchemaCreateMads>(
         {
             resolver: zodResolver(ZodMads),
-            defaultValues: defaultValues
+            defaultValues: authority
         }
     );
 
@@ -83,15 +83,14 @@ export default function FormMadsNames(
 
     function CreateAuthority(data: any) {
 
-        if (authority) {
+        if (authority.identifiersLccn) {
             data['identifiersLccn'] = authority.identifiersLccn
         }
 
         setProgress(true)
         const RemovePropreites = (obj: any) => {
-
+            // console.log("Dt", obj)
             Object.entries(obj).forEach(function ([chave, valor]) {
-
                 if (typeof valor === 'object') {
                     RemovePropreites(valor)
                     if (Object.keys(valor).length === 0) {
@@ -104,12 +103,9 @@ export default function FormMadsNames(
             })
         }
         const RemoveEmpty = (obj: any) => {
-
             Object.entries(obj).forEach(function ([chave, valor]) {
-
                 if (Array.isArray(valor)) {
                     valor.forEach(element => {
-
                         RemovePropreites(element)
                     })
                     if (Object.keys(valor[0]).length === 0) {
@@ -117,7 +113,6 @@ export default function FormMadsNames(
                     }
                 } else {
                     RemovePropreites(valor)
-
                     if (Object.keys(valor).length === 0) {
                         delete obj[chave]
                     }

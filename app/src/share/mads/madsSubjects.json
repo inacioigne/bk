@@ -127,37 +127,13 @@
             "required": false,
             "subfields": [
               {
-                "name": "base",
-                "label": "Base",
-                "type": "textField",
-                "disabled": false,
-                "required": false,
-                "width": 2
-              },
-              {
-                "name": "uri",
-                "label": "url",
-                "type": "textField",
-                "disabled": false,
-                "required": false,
-                "width": 4
-              },
-              {
-                "name": "label",
+                "name": "authority",
                 "label": "Nome",
                 "type": "textField",
                 "disabled": false,
                 "required": false,
-                "width": 4
-              },
-              {
-                "name": "elementLang",
-                "label": "Idioma",
-                "type": "select",
-                "commonType": "language",
-                "disabled": false,
-                "required": false,
-                "width": 2
+                "width": 12,
+                "thesarus": "names"
               }
             ]
           },
@@ -457,10 +433,6 @@
       {
         "label": "Geographic",
         "value": "http://www.loc.gov/mads/rdf/v1#Geographic"
-      },
-      {
-        "label": "TopicElement",
-        "value": "http://www.loc.gov/mads/rdf/v1#TopicElement"
       }
     ],
     "month": [

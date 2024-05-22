@@ -108,66 +108,64 @@ export default function SideBar({ open }: Props) {
 
     return (
         <Drawer variant="permanent" open={open}>
-            <Box sx={{ height: "100%", pl: "5px", display: "flex", flexDirection: "column", justifyContent: "space-between"  }}>
+            <Box sx={{ height: "100%", pl: "5px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
-                <Box
-                    sx={{
-                        minHeight: "60px",
-                        display: "flex",
-                        gap: "1rem",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                        pl: "10px",
-                        fontWeight: 600,
-                        borderBottom: "solid 1px gray"
-                    }}
-                >
-                    <Avatar sx={{ bgcolor: red[500] }}>BK</Avatar>
-                    <Typography
-                        variant="h6"
-                        gutterBottom
-                        sx={{ mb: 0, mt: "0.5rem", fontWeight: 600 }}
+                    <Box
+                        sx={{
+                            minHeight: "60px",
+                            display: "flex",
+                            gap: "1rem",
+                            alignItems: "center",
+                            justifyContent: "flex-start",
+                            pl: "10px",
+                            fontWeight: 600,
+                            borderBottom: "solid 1px gray"
+                        }}
                     >
-                        BiblioKeia
-                    </Typography>
-                </Box>
-                <MenuList sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                    <Link href="/admin" >
-                        <MenuItem sx={pathname === "/admin" ? styleMenuActive : styleMenu}>
-                            <ListItemIcon>
-                                <FcHome />
-                            </ListItemIcon>
-                            <ListItemText>
-                                <Typography
-                                    variant="h6"
-                                    sx={styleMenuText}
-                                >
-                                    Inicio
-                                </Typography>
-                            </ListItemText>
-                        </MenuItem>
-                    </Link>
-                    <Link href="/admin/authority/names" >
-
-                   
-                    <MenuItem
-                        sx={pathname.includes('authority') ? styleMenuActive : styleMenu}
-                        onClick={handleClick}
-                    >
-                        <ListItemIcon>
-                            <FcBusinessman />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography
-                                variant="h6"
-                                sx={styleMenuText}
+                        <Avatar sx={{ bgcolor: red[500] }}>BK</Avatar>
+                        <Typography
+                            variant="h6"
+                            gutterBottom
+                            sx={{ mb: 0, mt: "0.5rem", fontWeight: 600 }}
+                        >
+                            BiblioKeia
+                        </Typography>
+                    </Box>
+                    <MenuList sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                        <Link href="/admin" >
+                            <MenuItem sx={pathname === "/admin" ? styleMenuActive : styleMenu}>
+                                <ListItemIcon>
+                                    <FcHome />
+                                </ListItemIcon>
+                                <ListItemText>
+                                    <Typography
+                                        variant="h6"
+                                        sx={styleMenuText}
+                                    >
+                                        Inicio
+                                    </Typography>
+                                </ListItemText>
+                            </MenuItem>
+                        </Link>
+                        <Link href="/admin/authority" >
+                            <MenuItem
+                                sx={pathname.includes('authority') ? styleMenuActive : styleMenu}
+                                onClick={handleClick}
                             >
-                                Autoridades
-                            </Typography>
-                        </ListItemText>
-                    </MenuItem>
-                    </Link>
-                    {/* <Menu
+                                <ListItemIcon>
+                                    <FcBusinessman />
+                                </ListItemIcon>
+                                <ListItemText>
+                                    <Typography
+                                        variant="h6"
+                                        sx={styleMenuText}
+                                    >
+                                        Autoridades
+                                    </Typography>
+                                </ListItemText>
+                            </MenuItem>
+                        </Link>
+                        {/* <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={openSubMenu}
@@ -183,24 +181,24 @@ export default function SideBar({ open }: Props) {
                             <MenuItem onClick={handleClose}>Assuntos</MenuItem>
                         </Link>
                     </Menu> */}
-                    <Link href="/admin/catalog" >
-                    <MenuItem sx={pathname === "/admin/catalog" ? styleMenuActive : styleMenu}>
-                        <ListItemIcon //sx={{ color: "black"}}
-                        >
-                            <GiBookshelf />
-                        </ListItemIcon>
-                        <ListItemText>
-                            <Typography
-                                variant="h6"
-                                sx={styleMenuText}
-                            >
-                                Catalogo
-                            </Typography>
-                        </ListItemText>
-                    </MenuItem>
-                    </Link>
+                        <Link href="/admin/catalog" >
+                            <MenuItem sx={pathname === "/admin/catalog" ? styleMenuActive : styleMenu}>
+                                <ListItemIcon //sx={{ color: "black"}}
+                                >
+                                    <GiBookshelf />
+                                </ListItemIcon>
+                                <ListItemText>
+                                    <Typography
+                                        variant="h6"
+                                        sx={styleMenuText}
+                                    >
+                                        Catalogo
+                                    </Typography>
+                                </ListItemText>
+                            </MenuItem>
+                        </Link>
 
-                </MenuList>
+                    </MenuList>
                 </div>
                 <DarkMode />
 

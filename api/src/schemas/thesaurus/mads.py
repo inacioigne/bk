@@ -26,8 +26,6 @@ class Uri(BaseModel):
     uri: Optional[str] = None
     label: str
     elementLang: Optional[Element] = None
-    # type: Optional[str] = None
-    # lang: Optional[str] = None    
 
 class Organization(BaseModel):
     uri: Optional[str] = None
@@ -83,15 +81,7 @@ class SchemaMads(BaseModel):
     fieldOfActivity: Optional[list[Uri]] = None
     identifiesRWO: Optional[list[Uri]] = None
     imagem: Optional[str] = None
-    
-    
     # hasExactExternalAuthority: Optional[list[Uri]] = None
-    # 
-    # 
-    # 
-    # 
-    # 
-
     # subjectOf: Optional[list[Uri]] = None
     # contributorOf: Optional[list[Uri]] = None
     # 

@@ -1,7 +1,7 @@
 import ChildSelectField from "./ChildSelectField";
-import BfSelect from "./bibframe/bfSelec";
+// import BfSelect from "./bibframe/bfSelec";
 import BfTextField from "./bibframe/bfTextField";
-import mads from "@/share/mads/mads.json"
+import mads from "@/share/mads/madsNames.json"
 
 interface Props {
     subfield: any;
@@ -10,9 +10,6 @@ interface Props {
     control: any;
     setValue: Function;
     nameField: string;
-    // nestIndex: number
-    // commonType: any | undefined
-    // childs: [any]
 }
 
 export default function SubfieldChild(
@@ -35,7 +32,6 @@ export default function SubfieldChild(
                     index={index} />
             )
         } else if (subfield.type === 'select') {
-            // console.log("select", `${nameField}.${index}.${subfield.name}`)
 
             return (
                 <ChildSelectField

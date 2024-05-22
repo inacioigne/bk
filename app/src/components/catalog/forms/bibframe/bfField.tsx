@@ -37,12 +37,12 @@ const appendField: any = {
                 type: {
                     value: "http://www.loc.gov/mads/rdf/v1#FullNameElement",
                     label: "FullNameElement",
-                  },
+                },
                 value: "",
                 lang: {
                     value: "",
                     label: "",
-                  }
+                }
             }
         ]
     }
@@ -51,8 +51,6 @@ const appendField: any = {
 export default function BfField(
     { field, register, control, setValue, commonTypes }: Props
 ) {
-    // console.log(field)
-
     const {
         fields,
         append,
@@ -87,7 +85,7 @@ export default function BfField(
                         <Box
                             key={index}
                             sx={{
-                                display: "flex", gap: 2, 
+                                display: "flex", gap: 2,
                                 alignItems: 'center',
                                 bgcolor: blueGrey[50],
                                 borderRadius: 2,

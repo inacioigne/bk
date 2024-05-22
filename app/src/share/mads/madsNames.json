@@ -260,7 +260,7 @@
                   "label": "Nome",
                   "type": "textField",
                   "disabled": false,
-                  "required": true,
+                  "required": false,
                   "messageError": "O nome da autoridade é obrigatório.",
                   "width": 6
                 },
@@ -342,6 +342,76 @@
       ]
     },
     {
+      "name": "details",
+      "label": "Detalhes",
+      "fields": [
+        {
+          "name": "fieldOfActivity",
+          "label": "Campos de atividades",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "base",
+              "label": "Base",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 3
+            },
+            {
+              "name": "label",
+              "label": "Nome",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 4
+            },
+            {
+              "name": "uri",
+              "label": "url",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 4
+            }
+          ]
+        },
+        {
+          "name": "occupation",
+          "label": "Ocupações",
+          "repeatable": true,
+          "required": false,
+          "subfields": [
+            {
+              "name": "base",
+              "label": "Base",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 3
+            },
+            {
+              "name": "label",
+              "label": "Nome",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 4
+            },
+            {
+              "name": "uri",
+              "label": "url",
+              "type": "textField",
+              "disabled": false,
+              "required": false,
+              "width": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "externalAuthority",
       "label": "Recursos Externos",
       "fields": [
@@ -353,7 +423,7 @@
           "subfields": [
             {
               "name": "base",
-              "label": "Tipo de Variante",
+              "label": "Base",
               "type": "textField",
               "disabled": false,
               "required": false,

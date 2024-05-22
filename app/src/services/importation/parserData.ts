@@ -1,7 +1,6 @@
 import { CheckLoc } from "@/services/importation/checkLoc";
-// import { schemaMads, schemaAffiliation } from "@/schema/authority";
 import { ParserUri } from "@/services/importation/parserUri";
-import madsrdf from "@/share/mads/mads.json";
+import madsrdf from "@/share/mads/madsNames.json";
 
 const mads = "http://www.loc.gov/mads/rdf/v1#";
 
@@ -23,17 +22,16 @@ export async function ParserData(response: any, uri: string) {
   let identifiersLccn = uriArray[uriArray.length - 1];
   let collection: string = uriArray[4];
   type ObjCollection = {
-    names: string,
-    subjects: string
-  }
+    names: string;
+    subjects: string;
+  };
   let objCollection: ObjCollection = {
-    names: 'Nomes',
-    subjects: 'Assuntos'
-  }
+    names: "Nomes",
+    subjects: "Assuntos",
+  };
   let objLanguage = {
-    en: 'Inglês'
-  }
-  
+    en: "Inglês",
+  };
 
   // authoritativeLabel
   let [authoritativeLabel] = a[`${mads}authoritativeLabel`];
@@ -53,12 +51,14 @@ export async function ParserData(response: any, uri: string) {
       },
       elementValue: value["@value"],
       elementLang: value["@language"]
-        ? { value: value["@language"], label: objLanguage[`${value["@language"]}`] }
+        ? {
+            value: value["@language"],
+            label: objLanguage[`${value["@language"]}`],
+          }
         : { value: "", label: "" },
     };
     return obj;
   });
-  
 
   const authority: any = {
     type: type.split("#")[1],
@@ -101,20 +101,22 @@ export async function ParserData(response: any, uri: string) {
     },
     elementList: objElementList,
   };
-  
+
   // hasBroaderAuthority
   if (a.hasOwnProperty(`${mads}hasBroaderAuthority`)) {
     let uris = ParserUri(a, data, "hasBroaderAuthority", objLanguage);
     let arrCheck = await CheckLoc(uris);
     let hasBroaderAuthority = await Promise.all(arrCheck);
-    authority["hasBroaderAuthority"] = hasBroaderAuthority;   
+    authority["hasBroaderAuthority"] = hasBroaderAuthority;
   } else {
-    authority["hasBroaderAuthority"] = [{
-      base: '',
-      uri: '',
-      label: '',
-      elementLang: {value: '', label: ''}
-    }]; 
+    authority["hasBroaderAuthority"] = [
+      {
+        base: "",
+        uri: "",
+        label: "",
+        elementLang: { value: "", label: "" },
+      },
+    ];
   }
   // Narrower Terms
   if (a.hasOwnProperty(`${mads}hasNarrowerAuthority`)) {
@@ -144,7 +146,7 @@ export async function ParserData(response: any, uri: string) {
   // hasVariant
   if (a.hasOwnProperty(`${mads}hasVariant`)) {
     let hv = a[`${mads}hasVariant`];
-    
+
     let hasVariant = hv.map((e: any) => {
       let id = e["@id"];
       let [obj] = data.filter(function (e: any) {
@@ -170,20 +172,19 @@ export async function ParserData(response: any, uri: string) {
               value: type,
               label: type.split("#")[1],
             },
-            elementValue: elementValue["@value"]
+            elementValue: elementValue["@value"],
           };
           if (elementValue.hasOwnProperty("@language")) {
             let elementLang = {
               value: elementValue["@language"],
               label: objLanguage[`${elementValue["@language"]}`],
-            }
-            element['elementLang'] = elementLang
-            
+            };
+            element["elementLang"] = elementLang;
           } else {
-            element['elementLang'] = {
+            element["elementLang"] = {
               value: "",
               label: "",
-            }
+            };
           }
           return element;
         });
@@ -240,6 +241,28 @@ export async function ParserData(response: any, uri: string) {
       }
     });
     authority["hasVariant"] = hasVariant;
+  } else {
+    authority["hasVariant"] = [
+      {
+        typeVariant: {
+          value: "",
+          label: "",
+        },
+        elementList: [
+          {
+            elementType: {
+              value: "",
+              label: "",
+            },
+            elementValue: "",
+            elementLang: {
+              value: "",
+              label: "",
+            },
+          },
+        ],
+      },
+    ];
   }
   // hasCloseExternalAuthority
   if (a.hasOwnProperty(`${mads}hasCloseExternalAuthority`)) {
@@ -257,7 +280,6 @@ export async function ParserData(response: any, uri: string) {
       return obj;
     });
     authority["hasCloseExternalAuthority"] = hasCloseExternalAuthority;
-    
   }
   // identifiesRWO
   if (a.hasOwnProperty(`${mads}identifiesRWO`)) {
@@ -323,22 +345,22 @@ export async function ParserData(response: any, uri: string) {
       let date = bd["@value"].split("-");
       if (date.length === 1) {
         let [year] = date;
-        authority["birthYearDate"] = year;
-        authority["birthDate"] = {
-          month: { value: "" },
-          year: year,
-        };
+        // authority["birthYearDate"] = year;
+        // authority["birthDate"] = {
+        //   month: { value: "" },
+        //   year: year,
+        // };
         authority.birth["year"] = year;
       } else if (date.length === 3) {
-        authority["birthYearDate"] = date[0];
-        authority["birthMonthDate"] = date[1];
+        // authority["birthYearDate"] = date[0];
+        // authority["birthMonthDate"] = date[1];
         let [month] = months.filter((e) => e.value === date[1]);
-        authority["birthDayDate"] = date[2];
-        authority["birthDate"] = {
-          day: date[2],
-          month: month,
-          year: date[0],
-        };
+        // authority["birthDayDate"] = date[2];
+        // authority["birthDate"] = {
+        //   day: date[2],
+        //   month: month,
+        //   year: date[0],
+        // };
         authority.birth["day"] = date[2];
         authority.birth["month"] = month;
         authority.birth["year"] = date[0];
@@ -360,25 +382,21 @@ export async function ParserData(response: any, uri: string) {
       let date = dd["@value"].split("-");
       if (date.length === 1) {
         let [year] = date;
-        authority["deathYearDate"] = year;
-        authority["deathDate"] = {
-          month: { value: "" },
-          year: year,
-        };
+        // authority["deathYearDate"] = year;
+        // authority["deathDate"] = {
+        //   month: { value: "" },
+        //   year: year,
+        // };
         authority["death"] = {
           month: { value: "" },
           year: year,
         };
       } else if (date.length === 3) {
-        authority["deathYearDate"] = date[0];
-        authority["deathMonthDate"] = date[1];
-        authority["deathDayDate"] = date[2];
+        // authority["deathYearDate"] = date[0];
+        // authority["deathMonthDate"] = date[1];
+        // authority["deathDayDate"] = date[2];
         let [deathMonth] = months.filter((e) => e.value === date[1]);
-        authority["deathDate"] = {
-          day: date[2],
-          month: { value: date[1] },
-          year: date[0],
-        };
+
         authority["death"] = {
           day: date[2],
           month: deathMonth,
@@ -478,7 +496,7 @@ export async function ParserData(response: any, uri: string) {
       authority["occupation"] = occupation;
     }
   }
-  console.log(authority)
-  
+  console.log(authority);
+
   return authority;
 }
