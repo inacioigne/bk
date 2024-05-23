@@ -34,7 +34,6 @@ import BtnIcon from "@/components/buttons/btnIcon";
 import ListMads from "@/components/loc/listMads"
 import MadsLoc from "@/components/madsrdf/view/madsLoc";
 
-
 // React Icons
 import { FaTreeCity } from "react-icons/fa6";
 import { FcCalendar } from "react-icons/fc";
@@ -83,7 +82,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
       });
 
   }
-
+  // console.log(hit?.birthDate)
 
   return (
     <Card variant="outlined">
@@ -119,7 +118,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
         <Grid container spacing={2} sx={{ mt: "5px" }}>
 
           {/* Nascimento */}
-          {(hit?.birthPlace || hit?.birthDate?.year) && (
+          {(hit?.birth) && (
             <Grid item xs={6}>
               <Box sx={{ pl: "10px" }}>
                 <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}>
@@ -134,8 +133,8 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
                     p: "5px",
                   }}
                 >
-                  {hit?.birthPlace && (<BtnIcon icon={<FaTreeCity />} label={hit?.birthPlace} />)}
-                  {hit?.birthDate?.year !== "" && (<BtnIcon icon={<FcCalendar />} label={hit?.birthDate.year} />)}
+                  {hit?.birth?.place && (<BtnIcon icon={<FaTreeCity />} label={hit?.birth?.place} />)}
+                  {hit?.birth?.year !== "" && (<BtnIcon icon={<FcCalendar />} label={hit?.birth.year} />)}
                 </Box>
               </Box>
             </Grid>
@@ -193,7 +192,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           )}
 
           {/* hasAffiliation */}
-          {hit?.hasAffiliation && (
+          {hit?.hasAffiliation[0].authority.uri !== "" && (
             <Grid item xs={6}>
               <HasAffiliation hasAffiliation={hit.hasAffiliation} />
             </Grid>
@@ -202,7 +201,6 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           {/* fieldOfActivity */}
           {hit?.fieldOfActivity && (
             <Grid item xs={6}>
-              {/* <FieldOfActivity fieldOfActivity={hit.fieldOfActivity} setHit={setHit} /> */}
               <MadsLoc uri={hit.fieldOfActivity} label={"Campos de Atividade:"} setHit={setHit} />
             </Grid>
           )}
@@ -215,11 +213,12 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           )}
 
           {/* hasReciprocalAuthority */}
-          {hit?.hasReciprocalAuthority && (
+          { hit?.hasReciprocalAuthority[0].authority.uri !== "" && (
             <Grid item xs={6}>
               <ListMads label="Termo Relacionado" setHit={setHit} items={hit?.hasReciprocalAuthority} />
             </Grid>
-          )}
+          ) 
+        }
 
           {/* hasBroaderAuthority  */}
           {hit?.hasBroaderAuthority && (

@@ -6,11 +6,9 @@ const mads = "http://www.loc.gov/mads/rdf/v1#";
 
 export async function ParserData(response: any, uri: string) {
   const data = response.data;
-
   const [a] = data.filter(function (elemento: any) {
     return elemento["@id"] === uri;
   });
-  //
 
   // Type
   const [type] = a["@type"].filter(function (elemento: any) {
@@ -111,10 +109,12 @@ export async function ParserData(response: any, uri: string) {
   } else {
     authority["hasBroaderAuthority"] = [
       {
-        base: "",
-        uri: "",
-        label: "",
-        elementLang: { value: "", label: "" },
+        authority: {
+          uri: "",
+          type: "",
+          label: "",
+          base: "",
+        },
       },
     ];
   }
@@ -124,6 +124,17 @@ export async function ParserData(response: any, uri: string) {
     let arrCheck = await CheckLoc(uris);
     let hasNarrowerAuthority = await Promise.all(arrCheck);
     authority["hasNarrowerAuthority"] = hasNarrowerAuthority;
+  } else {
+    authority["hasNarrowerAuthority"] = [
+      {
+        authority: {
+          uri: "",
+          type: "",
+          label: "",
+          base: "",
+        },
+      },
+    ];
   }
   // hasReciprocalAuthority
   if (a.hasOwnProperty(`${mads}hasReciprocalAuthority`)) {
@@ -131,6 +142,17 @@ export async function ParserData(response: any, uri: string) {
     let arrCheck = await CheckLoc(uris);
     let hasReciprocalAuthority = await Promise.all(arrCheck);
     authority["hasReciprocalAuthority"] = hasReciprocalAuthority;
+  } else {
+    authority["hasReciprocalAuthority"] = [
+      {
+        authority: {
+          uri: "",
+          type: "",
+          label: "",
+          base: "",
+        },
+      },
+    ];
   }
   // fullerName
   if (a.hasOwnProperty(`${mads}fullerName`)) {
@@ -306,7 +328,6 @@ export async function ParserData(response: any, uri: string) {
     if (metadado.hasOwnProperty(`${mads}fieldOfActivity`)) {
       let foa = metadado[`${mads}fieldOfActivity`];
       let fields = foa.filter((e: any) => e["@id"].startsWith("http"));
-
       let fieldOfActivity = fields.map((e: any) => {
         let id = e["@id"];
         if (!id.includes("_:")) {
@@ -314,14 +335,28 @@ export async function ParserData(response: any, uri: string) {
             return e["@id"] === id;
           });
           let [label] = obj[`${mads}authoritativeLabel`];
-          let uri = { label: label["@value"], base: "loc", uri: obj["@id"] };
+          let uri = {
+            authority: { label: label["@value"], base: "loc", uri: obj["@id"] },
+          };
           return uri;
         }
       });
+      // console.log(fieldOfActivity);
 
       let arrCheck = await CheckLoc(fieldOfActivity);
       let uris = await Promise.all(arrCheck);
       authority["fieldOfActivity"] = uris;
+    } else {
+      authority["fieldOfActivity"] = [
+        {
+          authority: {
+            uri: "",
+            type: "",
+            label: "",
+            base: "",
+          },
+        },
+      ];
     }
 
     authority["birth"] = {
@@ -413,25 +448,24 @@ export async function ParserData(response: any, uri: string) {
     // hasAffiliation
     if (metadado.hasOwnProperty(`${mads}hasAffiliation`)) {
       let hasAffiliation = metadado[`${mads}hasAffiliation`];
-
       let affiliations = hasAffiliation.map((affiliation: any) => {
         let id = affiliation["@id"];
         let [metadado] = data.filter(function (elemento: any) {
           return elemento["@id"] === id;
         });
-
         let [org] = metadado[`${mads}organization`];
         let orgId = org["@id"];
         let [organization] = data.filter(function (elemento: any) {
           return elemento["@id"] === orgId;
         });
         let uri = organization["@id"];
-        const objOrg: any = { base: "loc" };
-
+        const objOrg: any = {};
         if (uri.includes("http://")) {
+          const authority: any = { base: "loc" };
           let [label] = organization[`${mads}authoritativeLabel`];
-          objOrg["uri"] = uri;
-          objOrg["label"] = label["@value"];
+          authority["uri"] = uri;
+          authority["label"] = label["@value"];
+          objOrg["authority"] = authority;
         } else {
           let [label] = organization[
             "http://www.w3.org/2000/01/rdf-schema#label"
@@ -453,15 +487,19 @@ export async function ParserData(response: any, uri: string) {
         } else {
           objOrg["affiliationEnd"] = "";
         }
+        console.log(objOrg);
         return objOrg;
       });
+
       authority["hasAffiliation"] = affiliations;
     } else {
       authority["hasAffiliation"] = [
         {
-          base: "",
-          uri: "",
-          label: "",
+          authority: {
+            base: "",
+            uri: "",
+            label: "",
+          },
           affiliationStart: "",
           affiliationEnd: "",
         },
@@ -479,9 +517,11 @@ export async function ParserData(response: any, uri: string) {
         if (id.includes("http://")) {
           let [label] = obj[`${mads}authoritativeLabel`];
           let objOcc: any = {
-            label: label["@value"],
-            base: "loc",
-            uri: obj["@id"],
+            authority: {
+              label: label["@value"],
+              base: "loc",
+              uri: obj["@id"],
+            },
           };
           return objOcc;
         } else {
@@ -494,6 +534,17 @@ export async function ParserData(response: any, uri: string) {
         }
       });
       authority["occupation"] = occupation;
+    } else {
+      authority["occupation"] = [
+        {
+          authority: {
+            uri: "",
+            type: "",
+            label: "",
+            base: "",
+          },
+        },
+      ];
     }
   }
   console.log(authority);

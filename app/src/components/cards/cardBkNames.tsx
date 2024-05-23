@@ -34,12 +34,13 @@ interface Props {
 
 }
 export default function CardBkNames({ doc, setDoc, setValue, field, setOpen, nameSubField }: Props) {
-    // console.log("C:", field, )
+    // console.log("C:", field, nameSubField, doc.authority)
     const handleChoose = () => {
         
         setValue(`${field}.${nameSubField}.label`, doc.authority[0])
         let id = doc.id.split("#")[1]
-        setValue(`${field}.${nameSubField}.value`, `https://bibliokeia.com/authority/${doc.type}/${id}`)
+        setValue(`${field}.${nameSubField}.uri`, `https://bibliokeia.com/authority/${id}`)
+        setValue(`${field}.${nameSubField}.base`, `bk`)
         setOpen({name: "", open: false})
     }
 

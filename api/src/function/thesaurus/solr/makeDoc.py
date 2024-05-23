@@ -72,17 +72,17 @@ def MakeDoc(request):
     if request.hasBroaderAuthority:
         listMads = list()
         for i in request.hasBroaderAuthority:
-            if i.uri:
+            if i.authority.uri:
                 uri = {
-                    'id': f"authority#{request.identifiersLocal}/hasBroaderAuthority#{i.uri.split('/')[-1]}",
-                    'label': i.label,
-                    'uri': i.uri,
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/hasBroaderAuthority#{i.authority.uri.split('/')[-1]}",
+                    'label': i.authority.label,
+                    'uri': i.authority.uri,
+                    'base': i.authority.base }
             else:
                 uri = {
-                    'id': f"authority#{request.identifiersLocal}/hasBroaderAuthority#{i.label}",
-                    'label': i.label,
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/hasBroaderAuthority#{i.authority.label}",
+                    'label': i.authority.label,
+                    'base': i.authority.base }
 
             listMads.append(uri)
         doc['hasBroaderAuthority'] = listMads
@@ -92,17 +92,17 @@ def MakeDoc(request):
     if request.hasNarrowerAuthority:
         listMads = list()
         for i in request.hasNarrowerAuthority:
-            if i.uri:
+            if i.authority.uri:
                 uri = {
-                    'id': f"authority#{request.identifiersLocal}/hasNarrowerAuthority#{i.uri.split('/')[-1]}",
-                    'label': i.label,
-                    'uri': i.uri,
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/hasNarrowerAuthority#{i.authority.uri.split('/')[-1]}",
+                    'label': i.authority.label,
+                    'uri': i.authority.uri,
+                    'base': i.authority.base }
             else:
                 uri = {
-                    'id': f"authority#{request.identifiersLocal}/hasNarrowerAuthority#{i.label}",
-                    'label': i.label,
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/hasNarrowerAuthority#{i.authority.label}",
+                    'label': i.authority.label,
+                    'base': i.authority.base }
 
             listMads.append(uri)
         doc['hasNarrowerAuthority'] = listMads
@@ -112,17 +112,17 @@ def MakeDoc(request):
     if request.hasReciprocalAuthority:
         listMads = list()
         for i in request.hasReciprocalAuthority:
-            if i.uri:
+            if i.authority.uri:
                 uri = {
-                    'id': f"authority#{request.identifiersLocal}/hasReciprocalAuthority#{i.uri.split('/')[-1]}",
-                    'label': i.label,
-                    'uri': i.uri,
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/hasReciprocalAuthority#{i.authority.uri.split('/')[-1]}",
+                    'label': i.authority.label,
+                    'uri': i.authority.uri,
+                    'base': i.authority.base }
             else:
                 uri = {
-                    'id': f"authority#{request.identifiersLocal}/hasReciprocalAuthority#{i.label}",
-                    'label': i.label,
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/hasReciprocalAuthority#{i.authority.label}",
+                    'label': i.authority.label,
+                    'base': i.authority.base }
 
             listMads.append(uri)
         doc['hasReciprocalAuthority'] = listMads
@@ -132,17 +132,17 @@ def MakeDoc(request):
     if request.occupation:
         occupations = list()
         for i in request.occupation:
-            if i.uri:
+            if i.authority.uri:
                 uri = {
-                    'id': f"authority#{request.identifiersLocal}/occupation#{i.uri.split('/')[-1]}",
-                    'label': i.label,
-                    'uri': i.uri,
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/occupation#{i.authority.uri.split('/')[-1]}",
+                    'label': i.authority.label,
+                    'uri': i.authority.uri,
+                    'base': i.authority.base }
             else:
                 uri = {
-                    'id': f"authority#{request.identifiersLocal}/occupation#{i.label}",
-                    'label': i.label,
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/occupation#{i.authority.label}",
+                    'label': i.authority.label,
+                    'base': i.authority.base }
 
             occupations.append(uri)
         doc['occupation'] = occupations
@@ -153,10 +153,10 @@ def MakeDoc(request):
         fields = list()
         for i in request.fieldOfActivity:
             uri = {
-                    'id': f"authority#{request.identifiersLocal}/fieldOfActivity#{i.uri.split('/')[-1]}",
-                    'uri': i.uri, 
-                    'label': i.label, 
-                    'base': i.base }
+                    'id': f"authority#{request.identifiersLocal}/fieldOfActivity#{i.authority.uri.split('/')[-1]}",
+                    'uri': i.authority.uri, 
+                    'label': i.authority.label, 
+                    'base': i.authority.base }
             fields.append(uri)
         doc['fieldOfActivity'] = fields
 

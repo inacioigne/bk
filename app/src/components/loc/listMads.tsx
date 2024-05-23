@@ -47,17 +47,15 @@ export default function ListMads({ label, setHit, items }: Props) {
                         overflowY: "auto",
                     }}
                 >
-
-
                     {items.map((e, index) => (
                         <div key={index} onClick={() => {
-                            LocAuthority(setHit, e.uri)
+                            LocAuthority(setHit, e.authority.uri)
                             // console.log(e)
                         }}>
                             <StyledTreeItem
                                 nodeId={`${index + 5}`}
-                                labelText={e.label}
-                                labelIcon={logos[`${e.base}`]}
+                                labelText={e.authority.label}
+                                labelIcon={logos[`${e.authority.base}`]}
                                 color="#1a73e8"
                                 bgColor="#e8f0fe"
                                 colorForDarkMode="#B8E7FB"
@@ -67,9 +65,7 @@ export default function ListMads({ label, setHit, items }: Props) {
                         </div>
                     ))}
                 </Box>
-
             </TreeItem>
-
         </TreeView>
 
     )

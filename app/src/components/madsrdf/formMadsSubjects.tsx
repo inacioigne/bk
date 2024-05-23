@@ -59,7 +59,6 @@ export default function FormMadsSubjects(
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
         setPanel(newValue);
     };
-    // const defaultValues = authority ? authority : mads.defaultValues
     const {
         control,
         register,
@@ -88,7 +87,6 @@ export default function FormMadsSubjects(
         }
 
         setProgress(true)
-        
         const RemovePropreites = (obj: any) => {
             Object.entries(obj).forEach(function ([chave, valor]) {
                 if (typeof valor === 'object') {
@@ -104,10 +102,8 @@ export default function FormMadsSubjects(
         }
         const RemoveEmpty = (obj: any) => {
             Object.entries(obj).forEach(function ([chave, valor]) {
-
                 if (Array.isArray(valor)) {
                     valor.forEach(element => {
-
                         RemovePropreites(element)
                     })
                     if (Object.keys(valor[0]).length === 0) {
@@ -115,7 +111,6 @@ export default function FormMadsSubjects(
                     }
                 } else {
                     RemovePropreites(valor)
-
                     if (Object.keys(valor).length === 0) {
                         delete obj[chave]
                     }
@@ -124,29 +119,29 @@ export default function FormMadsSubjects(
         }
         RemoveEmpty(data)
         console.log("Dt", data)
-        // bkapi
-        //     .post("/thesarus/create", data, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             setTypeAlert("success")
-        //             setMessage("Registro criado com sucesso!")
-        //             console.log(response.data)
-        //             router.push(`/admin/authority/${response.data.id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.error("ERs:", error);
-        //         setTypeAlert("error")
-        //         if (error.response.status === 409) {
-        //             setMessage("Este registro já existe")
-        //         }
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+        bkapi
+            .post("/thesarus/create", data, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    setTypeAlert("success")
+                    setMessage("Registro criado com sucesso!")
+                    console.log(response.data)
+                    router.push(`/admin/authority/${response.data.id}`);
+                }
+            })
+            .catch(function (error) {
+                console.error("ERs:", error);
+                setTypeAlert("error")
+                if (error.response.status === 409) {
+                    setMessage("Este registro já existe")
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     return (

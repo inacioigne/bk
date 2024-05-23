@@ -173,7 +173,7 @@ type Props = {
 };
 
 export default function HasAffiliation({ hasAffiliation }: Props) {
-  // console.log(hasAffiliation)
+  console.log(hasAffiliation)
   return (
     <TreeView
       aria-label="hasAffiliation"
@@ -196,7 +196,7 @@ export default function HasAffiliation({ hasAffiliation }: Props) {
           <StyledTreeItemChild
             key={index}
             nodeId={`${index + 5}`}
-            labelText={affiliation.label}
+            labelText={affiliation.authority.label}
             affiliationStart={affiliation?.affiliationStart}
             affiliationEnd={affiliation?.affiliationEnd}
             color="#1a73e8"
@@ -208,7 +208,7 @@ export default function HasAffiliation({ hasAffiliation }: Props) {
       ): (
         <StyledTreeItemChild
             nodeId={"6"}
-            labelText={hasAffiliation.label}
+            labelText={hasAffiliation.authority.label}
             affiliationStart={hasAffiliation?.affiliationStart}
             affiliationEnd={hasAffiliation?.affiliationEnd}
             color="#1a73e8"

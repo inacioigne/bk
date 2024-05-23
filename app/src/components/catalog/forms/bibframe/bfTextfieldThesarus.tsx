@@ -57,7 +57,7 @@ export default function BfTextfieldThesarus(
         name: `${name}`
     });
 
-    // console.log("T", watchFields[index]['label'])
+    // console.log("T", watchFields[index])
     // console.log("T", subfield)
 
     return (
@@ -75,7 +75,7 @@ export default function BfTextfieldThesarus(
                 }}
                 {...register(`${name}.${index}.${subfield.name}.value`)}
                 InputProps={
-                    watchFields[index][`${subfield.name}`].value === "" ? {
+                    watchFields[index].authority.uri === "" ? {
                         endAdornment: (
                             <InputAdornment
                                 position="start"
@@ -92,7 +92,7 @@ export default function BfTextfieldThesarus(
                         startAdornment: (
                             <InputAdornment
                                 position="start" >
-                                <Chip label={watchFields[index].label} size="small"
+                                <Chip label={watchFields[index].authority.label} size="small"
                                     color="info"
                                     avatar={<FcLock />}
                                 />

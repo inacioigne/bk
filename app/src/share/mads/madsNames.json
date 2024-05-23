@@ -293,31 +293,13 @@
           "required": false,
           "subfields": [
             {
-              "name": "base",
-              "label": "Base",
-              "repeatable": true,
+              "name": "authority",
+              "label": "Nome",
               "type": "textField",
               "disabled": false,
               "required": false,
-              "width": 2
-            },
-            {
-              "name": "label",
-              "label": "Organização",
-              "repeatable": true,
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 5
-            },
-            {
-              "name": "uri",
-              "label": "Url",
-              "repeatable": true,
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 5
+              "width": 12,
+              "thesarus": "names"
             },
             {
               "name": "affiliationStart",
@@ -352,28 +334,13 @@
           "required": false,
           "subfields": [
             {
-              "name": "base",
-              "label": "Base",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 3
-            },
-            {
-              "name": "label",
+              "name": "authority",
               "label": "Nome",
               "type": "textField",
               "disabled": false,
               "required": false,
-              "width": 4
-            },
-            {
-              "name": "uri",
-              "label": "url",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 4
+              "width": 12,
+              "thesarus": "names"
             }
           ]
         },
@@ -384,28 +351,13 @@
           "required": false,
           "subfields": [
             {
-              "name": "base",
-              "label": "Base",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 3
-            },
-            {
-              "name": "label",
+              "name": "authority",
               "label": "Nome",
               "type": "textField",
               "disabled": false,
               "required": false,
-              "width": 4
-            },
-            {
-              "name": "uri",
-              "label": "url",
-              "type": "textField",
-              "disabled": false,
-              "required": false,
-              "width": 4
+              "width": 12,
+              "thesarus": "names"
             }
           ]
         }

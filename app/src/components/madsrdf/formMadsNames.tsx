@@ -26,7 +26,6 @@ function a11yProps(index: number) {
     };
 }
 
-
 function CustomTabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
 

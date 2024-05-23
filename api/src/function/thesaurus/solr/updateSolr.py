@@ -12,8 +12,8 @@ def UpdateSolr(request):
     # hasReciprocalAuthority
     if request.hasReciprocalAuthority:
         for i in request.hasReciprocalAuthority:
-            if i.base == 'bk':
-                id = i.uri.split("/")[-1]
+            if i.authority.base == 'bk':
+                id = i.authority.uri.split("/")[-1]
                 res = solr.search(q=f"id:{id}", fl="*,[child]")
                 [doc] = res.docs
                 hasReciprocalAuthority = doc.get('hasReciprocalAuthority')
@@ -74,8 +74,8 @@ def UpdateSolr(request):
     # hasNarrowerAuthority
     if request.hasNarrowerAuthority:
         for i in request.hasNarrowerAuthority:
-            if i.base == "bk":
-                id = i.uri.split("/")[-1]
+            if i.authority.base == "bk":
+                id = i.authority.uri.split("/")[-1]
                 res = solr.search(q=f"id:{id}", fl="*,[child]")
                 [doc] = res.docs
                 hasBroaderAuthority = doc.get('hasBroaderAuthority')
@@ -134,9 +134,10 @@ def UpdateSolr(request):
     # hasBroaderAuthority
     if request.hasBroaderAuthority:
         for i in request.hasBroaderAuthority:
-            if i.base == 'bk':
-                id = i.uri.split("/")[-1]
-                res = solr.search(q=f"id:{id}", fl="*,[child]")
+            if i.authority.base == 'bk':
+                id = i.authority.uri.split("/")[-1]
+                # print('ID:', id)
+                res = solr.search(q=f"id:authority#{id}", fl="*,[child]")
                 [doc] = res.docs
                 hasNarrowerAuthority = doc.get('hasNarrowerAuthority')
                 if hasNarrowerAuthority:

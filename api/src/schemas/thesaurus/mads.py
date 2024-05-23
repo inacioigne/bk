@@ -27,15 +27,16 @@ class Uri(BaseModel):
     label: str
     elementLang: Optional[Element] = None
 
+class Authority(BaseModel):
+    authority: Uri
+
 class Organization(BaseModel):
     uri: Optional[str] = None
     label: str
     base: Optional[str] = None 
 
 class Affiliation(BaseModel):
-    base: str
-    label: str
-    uri: str
+    authority: Uri
     affiliationStart: Optional[str] = None
     affiliationEnd: Optional[str] = None
 
@@ -74,11 +75,11 @@ class SchemaMads(BaseModel):
     death: Optional[BirthDeath] = None
     hasAffiliation: Optional[list[Affiliation]] = None
     hasCloseExternalAuthority: Optional[list[Uri]] = None
-    hasBroaderAuthority: Optional[list[Uri]] = None
-    hasNarrowerAuthority: Optional[list[Uri]] = None
-    hasReciprocalAuthority: Optional[list[Uri]] = None
-    occupation: Optional[list[Uri]] = None
-    fieldOfActivity: Optional[list[Uri]] = None
+    hasBroaderAuthority: Optional[list[Authority]] = None
+    hasNarrowerAuthority: Optional[list[Authority]] = None
+    hasReciprocalAuthority: Optional[list[Authority]] = None
+    occupation: Optional[list[Authority]] = None
+    fieldOfActivity: Optional[list[Authority]] = None
     identifiesRWO: Optional[list[Uri]] = None
     imagem: Optional[str] = None
     # hasExactExternalAuthority: Optional[list[Uri]] = None
