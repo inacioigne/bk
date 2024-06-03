@@ -17,7 +17,7 @@ import {
     Divider,
     Slide,
     Toolbar,
-    AppBar 
+    AppBar
 } from "@mui/material";
 import { TransitionProps } from '@mui/material/transitions';
 
@@ -35,14 +35,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 // Schema
-import { ZodNames } from "@/schema/mads/OLDER-zodNames"
+import ZodMads from "@/schema/mads/zodNames";
 
 // Share
 import defaultValues from "@/share/defaultValues/formNames.json" assert { type: "json" };
 
 import { forwardRef, useEffect, useState } from "react"
 
-type SchemaCreateAuthority = z.infer<typeof ZodNames>;
+type SchemaCreateAuthority = z.infer<typeof ZodMads>;
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
@@ -87,7 +87,7 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
         setValue,
         getValues
     } = useForm<SchemaCreateAuthority>({
-        resolver: zodResolver(ZodNames),
+        resolver: zodResolver(ZodMads),
         defaultValues: defaultValues,
     });
 
@@ -132,7 +132,6 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    // console.log(response);
                     setMessage("Registro criado com sucesso!")
                     setOpen(false)
                 }
@@ -158,35 +157,35 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
                 <form onSubmit={handleSubmit(CreateName)}
                 >
                     <AppBar color="default">
-                    <DialogTitle id="alert-dialog-title" sx={{ display: "flex", justifyContent: "space-between" }}>
-                        Criar Autoridades - {id}
-                        <Box sx={{ display: "flex", gap: 1}}>
-                        <Button
-                            sx={{ textTransform: "none" }}
-                            variant="outlined"
-                            startIcon={<FcCancel  />}
-                            onClick={handleClose}
-                        >
-                            Cancelar
-                        </Button>
-                        <Button
-                            type="submit"
-                            sx={{ textTransform: "none" }}
-                            variant="outlined"
-                            startIcon={<IoIosSave />}
-                        >
-                            Salvar
-                        </Button>
+                        <DialogTitle id="alert-dialog-title" sx={{ display: "flex", justifyContent: "space-between" }}>
+                            Criar Autoridades - {id}
+                            <Box sx={{ display: "flex", gap: 1 }}>
+                                <Button
+                                    sx={{ textTransform: "none" }}
+                                    variant="outlined"
+                                    startIcon={<FcCancel />}
+                                    onClick={handleClose}
+                                >
+                                    Cancelar
+                                </Button>
+                                <Button
+                                    type="submit"
+                                    sx={{ textTransform: "none" }}
+                                    variant="outlined"
+                                    startIcon={<IoIosSave />}
+                                >
+                                    Salvar
+                                </Button>
 
-                        </Box>
-                       
-                    </DialogTitle>
+                            </Box>
+
+                        </DialogTitle>
 
                     </AppBar>
-                    
+
                     {/* <Divider /> */}
 
-                    <DialogContent sx={{mt: "10px"}} >
+                    <DialogContent sx={{ mt: "10px" }} >
                         <FormMadsNames
                             control={control}
                             register={register}
@@ -206,8 +205,8 @@ export default function ModalThesarusNamesCreate({ setOpen, open }: Props) {
             <ModalSubjects
                 setOpen={setOpenSubjects}
                 open={openSubjects}
-                defaultValues={defaultValues} 
-                field={field} 
+                defaultValues={defaultValues}
+                field={field}
                 setValue={setValue} />
 
         </>

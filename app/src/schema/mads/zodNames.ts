@@ -38,7 +38,6 @@ mads.sections.forEach((section) => {
             }
           }
         }
-
         return acc;
       }, {});
 

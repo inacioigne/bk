@@ -24,9 +24,6 @@ interface Props {
 export default function BfSelect(
     { subfield, setValue, index, control, nameField, commonType }: Props
 ) {
-    
-
-
     const handleChangeSelect = (event: ChangeEvent<HTMLInputElement>, obj: any) => {
         const { field } = obj
         field.onChange(event)
@@ -36,19 +33,15 @@ export default function BfSelect(
 
         let i = event.target.name.split(".")[1]
 
-            if (nameField == 'contribution') {
-                setValue(`${nameField}.${index}.role.label`, label)
-            } else {
-                setValue(`${nameField}.${index}.label`, label)   
-                
-            }
-        
+        // if (nameField == 'contribution') {
+        //     setValue(`${nameField}.${index}.role.label`, label)
+        // } else {
+        //     console.log(`${nameField}.${index}.${subfield.name}.label`)
+        //     setValue(`${nameField}.${index}.${subfield.name}.label`, label)
+        // }
+        setValue(`${nameField}.${index}.${subfield.name}.label`, label)
     };
-    // if (index === false ) {
-    //     console.log("BfSelect", nameField,  index)
-    // } else {
-    //     console.log("else", nameField,  index)
-    // }
+
 
     return (
         <Controller

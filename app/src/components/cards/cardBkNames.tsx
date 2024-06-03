@@ -34,9 +34,9 @@ interface Props {
 
 }
 export default function CardBkNames({ doc, setDoc, setValue, field, setOpen, nameSubField }: Props) {
-    // console.log("C:", field, nameSubField, doc.authority)
+    // 
     const handleChoose = () => {
-        
+        // console.log("C:", `${field}.${nameSubField}.label`)        
         setValue(`${field}.${nameSubField}.label`, doc.authority[0])
         let id = doc.id.split("#")[1]
         setValue(`${field}.${nameSubField}.uri`, `https://bibliokeia.com/authority/${id}`)

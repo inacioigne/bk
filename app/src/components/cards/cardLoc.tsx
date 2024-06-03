@@ -82,7 +82,6 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
       });
 
   }
-  // console.log(hit?.birthDate)
 
   return (
     <Card variant="outlined">
@@ -192,11 +191,16 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           )}
 
           {/* hasAffiliation */}
-          {hit?.hasAffiliation[0].authority.uri !== "" && (
+          { hit?.hasAffiliation && hit?.hasAffiliation[0].authority.uri !== "" && (
             <Grid item xs={6}>
               <HasAffiliation hasAffiliation={hit.hasAffiliation} />
             </Grid>
-          )}
+          ) }
+          {/* {hit?.hasAffiliation[0].authority.uri !== "" && (
+            <Grid item xs={6}>
+              <HasAffiliation hasAffiliation={hit.hasAffiliation} />
+            </Grid>
+          )} */}
 
           {/* fieldOfActivity */}
           {hit?.fieldOfActivity && (

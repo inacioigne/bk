@@ -27,6 +27,7 @@ import { useAlert } from "@/providers/alert";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { RemoveEmptyAuthority } from "@/services/catalog/removeEmptyAuthority";
+import RemoveEmpty from "@/lib/removeEmpty"
 
 const headers = {
     accept: "application/json",
@@ -102,53 +103,53 @@ export default function FormWork() {
 
     function CreateWork(data: any) {
         setProgress(true)
-        const RemovePropreites = (obj: any) => {
-            Object.entries(obj).forEach(function ([chave, valor]) {
-                if (valor === "") {
-                    delete obj[chave]
-                }
-            })
-        }
-        const RemoveEmpty = (obj: any) => {
-            Object.entries(obj).forEach(function ([chave, valor]) {
-                if (Array.isArray(valor)) {
-                    valor.forEach(element => {
-                        RemovePropreites(element)
-                    })
-                    if (Object.keys(valor[0]).length === 0) {
-                        delete obj[chave]
-                    }
-                } else {
-                    RemovePropreites(valor)
-                }
-            });
-        }
+        // const RemovePropreites = (obj: any) => {
+        //     Object.entries(obj).forEach(function ([chave, valor]) {
+        //         if (valor === "") {
+        //             delete obj[chave]
+        //         }
+        //     })
+        // }
+        // const RemoveEmpty = (obj: any) => {
+        //     Object.entries(obj).forEach(function ([chave, valor]) {
+        //         if (Array.isArray(valor)) {
+        //             valor.forEach(element => {
+        //                 RemovePropreites(element)
+        //             })
+        //             if (Object.keys(valor[0]).length === 0) {
+        //                 delete obj[chave]
+        //             }
+        //         } else {
+        //             RemovePropreites(valor)
+        //         }
+        //     });
+        // }
         RemoveEmpty(data)
-        RemoveEmptyAuthority('contribution', data)
-        RemoveEmptyAuthority('subject', data)
-        // console.log(data)
-        bkapi
-            .post("/catalog/work/create", data, {
-                headers: headers,
-            })
-            .then(function (response) {
-                if (response.status === 201) {
-                    setTypeAlert("success")
-                    setMessage("Registro criado com sucesso!")
-                    router.push(`/admin/catalog/${response.data.id}`);
-                }
-            })
-            .catch(function (error) {
-                setTypeAlert("error")
-                if (error.response.status === 409) {
-                    setMessage("Este registro já existe")
-                }
-                console.error("ERs:", error.response);
-            })
-            .finally(function () {
-                setProgress(false)
-                setOpenSnack(true)
-            });
+        // RemoveEmptyAuthority('contribution', data)
+        // RemoveEmptyAuthority('subject', data)
+        console.log(data)
+        // bkapi
+        //     .post("/catalog/work/create", data, {
+        //         headers: headers,
+        //     })
+        //     .then(function (response) {
+        //         if (response.status === 201) {
+        //             setTypeAlert("success")
+        //             setMessage("Registro criado com sucesso!")
+        //             router.push(`/admin/catalog/${response.data.id}`);
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         setTypeAlert("error")
+        //         if (error.response.status === 409) {
+        //             setMessage("Este registro já existe")
+        //         }
+        //         console.error("ERs:", error.response);
+        //     })
+        //     .finally(function () {
+        //         setProgress(false)
+        //         setOpenSnack(true)
+        //     });
     }
 
     return (
@@ -183,7 +184,7 @@ export default function FormWork() {
                     </Link>
                     <Button variant="outlined" type="submit">
                         Salvar
-                    </Button> 
+                    </Button>
                 </Box>
             </form>
             <BfErros openBfErros={openBfErros} setBfErros={setBfErros} errors={errors} />

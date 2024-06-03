@@ -79,38 +79,29 @@ const defaultValues = {
     ],
     "hasReciprocalAuthority": [
         {
-            "uri": "",
-            "type": "",
-            "label": "",
-            "elementLang": {
-                "value": "",
-                "label": ""
-            },
-            "base": ""
+            "authority": {
+                "uri": "",
+                "label": "",
+                "base": ""
+            }
         }
     ],
     "hasBroaderAuthority": [
         {
-            "uri": "",
-            "type": "",
-            "label": "",
-            "elementLang": {
-                "value": "",
-                "label": ""
-            },
-            "base": ""
+            "authority": {
+                "uri": "",
+                "label": "",
+                "base": ""
+            }
         }
     ],
     "hasNarrowerAuthority": [
         {
-            "uri": "",
-            "type": "",
-            "label": "",
-            "elementLang": {
-                "value": "",
-                "label": ""
-            },
-            "base": ""
+            "authority": {
+                "uri": "",
+                "label": "",
+                "base": ""
+            }
         }
     ],
     "hasVariant": [

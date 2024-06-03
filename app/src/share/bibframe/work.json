@@ -29,14 +29,14 @@
           ]
         },
         {
-          "name": "resourceType",
+          "name": "resource",
           "label": "Tipos do Recurso",
           "doc": "https://id.loc.gov/ontologies/bibframe.html#p_adminMetadata",
           "repeatable": true,
           "required": true,
           "subfields": [
             {
-              "name": "value",
+              "name": "type",
               "label": "Tipo",
               "type": "select",
               "commonType": "resourceType",
@@ -52,7 +52,7 @@
           "required": false,
           "subfields": [
             {
-              "name": "value",
+              "name": "lang",
               "label": "Idioma",
               "type": "select",
               "commonType": "language",
@@ -148,7 +148,7 @@
           "required": false,
           "subfields": [
             {
-              "name": "term",
+              "name": "authority",
               "label": "Autor",
               "type": "textField",
               "thesarus": "names",
@@ -156,7 +156,7 @@
             },
             {
               "label": "Responsabilidade",
-              "name": "role.value",
+              "name": "role",
               "type": "select",
               "commonType": "relators",
               "width": 4
@@ -164,7 +164,6 @@
           ]
         }
       ]
-
     },
     {
       "name": "subjects",
@@ -186,18 +185,18 @@
             },
             {
               "label": "Assunto",
-              "name": "term",
+              "name": "authority",
               "type": "textField",
-              "thesarus": "subject",
+              "thesarus": "subjects",
               "width": 7
             },
             {
-                "name": "lang",
-                "label": "Idioma",
-                "type": "select",
-                "commonType": "language",
-                "width": 2
-              }
+              "name": "lang",
+              "label": "Idioma",
+              "type": "select",
+              "commonType": "language",
+              "width": 2
+            }
           ]
         },
         {
@@ -208,14 +207,14 @@
           "required": false,
           "subfields": [
             {
-              "name": "value",
+              "name": "genre",
               "label": "Gênero/Forma",
               "type": "select",
               "commonType": "genreForms",
               "width": 12
             }
           ]
-        }     
+        }
       ]
     },
     {
@@ -236,35 +235,23 @@
               "width": 12
             }
           ]
-        },
-        {
-          "name": "genreForm",
-          "label": "Gênero/Forma",
-          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_language",
-          "repeatable": true,
-          "required": false,
-          "subfields": [
-            {
-              "name": "value",
-              "label": "Gênero/Forma",
-              "type": "select",
-              "commonType": "genreForms",
-              "width": 12
-            }
-          ]
-        }     
+        }
       ]
     }
   ],
   "defaultValues": {
-    "resourceType": [
+    "resource": [
       {
-        "value": "Work",
-        "label": "Obra"
+        "type": {
+          "value": "Work",
+          "label": "Obra"
+        }
       },
       {
-        "value": "",
-        "label": ""
+        "type": {
+          "value": "",
+          "label": ""
+        }
       }
     ],
     "classification": {
@@ -293,21 +280,26 @@
     ],
     "language": [
       {
-        "value": "por",
-        "label": "Português"
+        "lang": {
+          "value": "por",
+          "label": "Português"
+        }
       }
     ],
     "genreForm": [
       {
-        "value": "",
-        "label": ""
+        "genre": {
+          "value": "",
+          "label": ""
+        }
       }
     ],
     "contribution": [
       {
-        "term": {
-          "value": "",
-          "label": ""
+        "authority": {
+          "uri": "",
+          "label": "",
+          "base": ""
         },
         "role": {
           "value": "",
@@ -317,14 +309,22 @@
     ],
     "subject": [
       {
-        "type": "Topic",
-        "term": {
+        "type": {
           "value": "",
           "label": ""
         },
-        "lang": ""
+        "authority": {
+          "uri": "",
+          "label": "",
+          "base": ""
+        },
+        "lang": {
+          "value": "",
+          "label": ""
+        }
       }
-    ]
+    ],
+    "summary": {"value": ""}
   },
   "commonTypes": {
     "descriptionConventions": [
