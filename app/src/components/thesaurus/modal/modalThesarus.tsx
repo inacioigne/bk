@@ -94,21 +94,6 @@ export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField,
                         nameField={nameField} 
                         setOpen={setOpen}
                         nameSubField={nameSubField} />
-                        
-                    {/* {thesaurus.name === 'names' ?
-                        <ThesarusNames
-                            nameField={nameField}
-                            setValue={setValue}
-                            setOpenCreate={setOpenCreate}
-                            openCreate={openCreate}
-                            setOpen={setOpen} /> :
-                        <ThesarusSubjects
-                            setValue={setValue}
-                            nameField={nameField}
-                            setOpenCreate={setOpenCreate}
-                            openCreate={openCreate}
-                            setOpen={setOpen} />
-                    } */}
 
 
                 </DialogContent>

@@ -8,16 +8,15 @@ solr = Solr(f'{settings.solr}/solr/catalog/', timeout=10)
 def DocWork(request):
 
     work_id = f'work#{request.adminMetadata.identifiedBy}'
-    print("DATE:", request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"))
+    # print("DATE:", request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"))
 
     doc = {
         "id": work_id,
         "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"),
         "changeDate": request.adminMetadata.changeDate.strftime("%Y-%m-%dT%H:%M:%S") if request.adminMetadata.changeDate else None,
-        "type": [i.value for i in request.resourceType],
-        # "content": request.content.label,
+        "type": [i.type.value for i in request.resource],
         "mainTitle": request.title.mainTitle,
-        'language': [i.label for i in request.language],
+        'language': [i.lang.label for i in request.language],
         "subtitle": request.title.subtitle,
         "cdd": request.classification.cdd,
         "cutter": request.classification.cutter,
@@ -35,9 +34,9 @@ def DocWork(request):
     if request.contribution:
         contributions = list()
         for i in request.contribution:
-            c = {"id": f"{work_id}/contribution/authority#{i.term.value.split('/')[-1]}",
-                 "uri": i.term.value,
-                 "label": i.term.label,
+            c = {"id": f"{work_id}/contribution/authority#{i.authority.value.split('/')[-1]}",
+                 "uri": i.authority.value,
+                 "label": i.authority.label,
                  "role": i.role.value,
                  "roleLabel": i.role.label}
             contributions.append(c)
@@ -47,17 +46,17 @@ def DocWork(request):
     if request.subject:
         subjects = list()
         for i in request.subject:
-            s = {"id": f"{work_id}/subject/authority#{i.term.value.split('/')[-1]}",
-                 "type": i.type,
-                 "uri": i.term.value,
-                 "label": i.term.label,
-                 "lang": i.lang
+            s = {"id": f"{work_id}/subject/authority#{i.authority.value.split('/')[-1]}",
+                 "type": i.type.value,
+                 "uri": i.authority.value,
+                 "label": i.authority.label,
+                 "lang": i.lang.label
                  }
             subjects.append(s)
         doc['subject'] = subjects
 
-    if request.genreForm:
-        pass
+    # if request.genreForm:
+    #     pass
 
     responseSolr = solr.add([doc], commit=True)
 

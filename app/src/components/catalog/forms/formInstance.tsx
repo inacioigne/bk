@@ -73,7 +73,6 @@ function a11yProps(index: number) {
 
 export default function FormInstance({ defaultValues }: Props) {
 
-    // console.log(ZodInstance)
     type SchemaCreateInstance = z.infer<typeof ZodInstance>;
     const [openBfErros, setBfErros] = useState(false);
     const [panel, setPanel] = useState(0);
@@ -136,7 +135,6 @@ export default function FormInstance({ defaultValues }: Props) {
             });
         }
         RemoveEmpty(data)
-        // console.log("C", data)
     
         bkapi
             .post("/catalog/instance/create", data, {

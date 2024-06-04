@@ -75,7 +75,7 @@ export default function BfTextfieldThesarus(
                 }}
                 {...register(`${name}.${index}.${subfield.name}.value`)}
                 InputProps={
-                    watchFields[index].authority.uri === "" ? {
+                    watchFields[index].authority.value === "" ? {
                         endAdornment: (
                             <InputAdornment
                                 position="start"

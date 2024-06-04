@@ -24,7 +24,7 @@ def MakeGraphWork(request):
     g.bind('bf', BF)
     
     # resourceType
-    g = BfType(g, resource, request.resourceType)
+    g = BfType(g, resource, request.resource)
     # AdminMetadata
     g = BfAdminMetadata(g, request.adminMetadata, resource, BF) 
     # BfClassification
@@ -43,11 +43,10 @@ def MakeGraphWork(request):
         g = BFSummary(g, request.summary, resource, BF)
 
     # GenreForm
-    if request.genreForm and request.genreForm.valeu != "":
-        g = BfGenreForm(g, resource, request.genreForm, BF)    
+    # if request.genreForm and request.genreForm.valeu != "":
+    #     g = BfGenreForm(g, resource, request.genreForm, BF)    
  
     graph = g.serialize(format='ttl')
-    # g.serialize(destination="work_test.ttl", format='ttl')
 
     return graph
 

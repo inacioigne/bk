@@ -482,6 +482,10 @@
     ],
     "madsElementTypes": [
       {
+        "label": "GeographicElement",
+        "value": "http://www.loc.gov/mads/rdf/v1#GeographicElement"
+      },
+      {
         "label": "FullNameElement",
         "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement"
       },

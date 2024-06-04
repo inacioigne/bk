@@ -45,7 +45,7 @@
           ]
         },
         {
-          "name": "resourceType",
+          "name": "resource", 
           "label": "Tipos do Recurso",
           "doc": "https://id.loc.gov/ontologies/bibframe.html#c_Instance",
           "repeatable": true,

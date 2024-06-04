@@ -12,25 +12,30 @@ class ResourceProperties(BaseModel):
 
 
 class Contribution(BaseModel):
-    term: BfElement
+    authority: BfElement
     role: BfElement
 
 class Subject(BaseModel):
-    type: str
-    lang: str
-    term: BfElement
+    type: BfElement
+    lang: BfElement
+    authority: BfElement
 
 class Classification(BaseModel):
     cdd: str
     cutter: str
 
+class Language(BaseModel):
+    lang: BfElement
+
+class Resource(BaseModel):
+    type: BfElement
+
 class BfWork(BaseModel):
-    resourceType: list[BfElement]
     adminMetadata: AdminMetadata
+    resource: list[Resource]
     title: Title
     variantTitle: Optional[list[Title]] = None
-    language: list[BfElement]
-    genreForm: list[BfElement] = None
+    language: list[Language]
     contribution: Optional[list[Contribution]] = None
     subject: Optional[list[Subject]] = None
     classification: Classification

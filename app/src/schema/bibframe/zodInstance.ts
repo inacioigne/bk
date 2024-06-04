@@ -3,12 +3,6 @@ import { z } from "zod";
 // Metadata
 import bibframe from "@/share/bibframe/instance.json";
 
-// function isRequerid(acc: any, item: any) {
-//   acc[`${item.name}`] = z.string().min(1, {message: "O título é obrigatório."})
-//   // return acc
-
-// }
-
 const obj = {};
 bibframe.sections.forEach((section) => {
   section.fields.forEach((field) => {

@@ -13,8 +13,8 @@ def UpdateFusekiWork(authoritys, id, bibframe):
     for authority in authoritys:
         sparql = f"""PREFIX bf: <http://id.loc.gov/ontologies/bibframe/>
             INSERT DATA {{
-             GRAPH <{authority.term.value}> {{
-             <{authority.term.value}> bf:{bibframe} <{uri}> .
+             GRAPH <{authority.authority.value}> {{
+             <{authority.authority.value}> bf:{bibframe} <{uri}> .
              }} }} """
         response = fuseki.run_sparql(sparql)
 
@@ -24,7 +24,7 @@ def UpdateSolrWork(authoritys, id_work, title, bibframe):
     uri = f"{settings.base_url}/works/{id_work}"
     docs = list()
     for authority in authoritys:
-        id = authority.term.value.split("/")[-1]
+        id = authority.authority.value.split("/")[-1]
         doc = {
             "id": f'authority#{id}',
             f"{bibframe}": {

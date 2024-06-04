@@ -39,7 +39,7 @@ export default function CardBkNames({ doc, setDoc, setValue, field, setOpen, nam
         // console.log("C:", `${field}.${nameSubField}.label`)        
         setValue(`${field}.${nameSubField}.label`, doc.authority[0])
         let id = doc.id.split("#")[1]
-        setValue(`${field}.${nameSubField}.uri`, `https://bibliokeia.com/authority/${id}`)
+        setValue(`${field}.${nameSubField}.value`, `https://bibliokeia.com/authority/${id}`)
         setValue(`${field}.${nameSubField}.base`, `bk`)
         setOpen({name: "", open: false})
     }

@@ -335,6 +335,10 @@
         "label": "Authority"
       },
       {
+        "value": "http://www.loc.gov/mads/rdf/v1#Geographic",
+        "label": "Geographic"
+      },
+      {
         "value": "http://www.loc.gov/mads/rdf/v1#CorporateName",
         "label": "CorporateName"
       },
@@ -365,6 +369,10 @@
       {
         "label": "FullNameElement",
         "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement"
+      },
+      {
+        "value": "http://www.loc.gov/mads/rdf/v1#GeographicElement",
+        "label": "GeographicElement"
       },
       {
         "label": "DateNameElement",
