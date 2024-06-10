@@ -30,6 +30,7 @@ export default function BfSelect(
 
         const commonType = obj.commonType
         const label = commonType.find((option: any) => option.value === event.target.value)?.label;
+        // console.log("lb:", label)
 
         let i = event.target.name.split(".")[1]
 

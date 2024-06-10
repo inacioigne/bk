@@ -52,7 +52,7 @@
           "required": true,
           "subfields": [
             {
-              "name": "value",
+              "name": "type", 
               "label": "Tipo",
               "type": "select",
               "commonType": "resourceType",
@@ -179,6 +179,7 @@
               "label": "Editora",
               "name": "agent",
               "type": "textField",
+              "thesarus": "publisher", 
               "width": 6
             },
             {
@@ -274,14 +275,18 @@
     "instanceOf": {
       "value": ""
     },
-    "resourceType": [
+    "resource": [
       {
-        "value": "Instance",
-        "label": "Instância"
+        "type": {
+          "value": "Instance",
+          "label": "Instância"
+        }
       },
       {
-        "value": "",
-        "label": ""
+        "type": {
+          "value": "",
+          "label": ""
+        }
       }
     ],
     "physicalDetails": {
@@ -326,9 +331,14 @@
       {
         "place": {
           "value": "",
-          "label": ""
+          "label": "",
+          "base": ""
         },
-        "agent": "",
+        "agent": {
+          "value": "",
+          "label": "",
+          "base": ""
+        },
         "date": ""
       }
     ],

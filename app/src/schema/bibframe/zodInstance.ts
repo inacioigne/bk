@@ -10,10 +10,17 @@ bibframe.sections.forEach((section) => {
       let zSub = field.subfields.reduce((acc: any, item) => {
 
         if (item.type === "select") {
-
-        acc[`${item.name}`] = z.string()
-        acc["label"] = z.string()
-
+          if (item.required) {
+            acc[`${item.name}`] = z.object({
+              value: z.string().min(3, { message: item.messageError }),
+              label: z.string(),
+            });
+          } else {
+            acc[`${item.name}`] = z.object({
+              value: z.string(),
+              label: z.string(),
+            });
+          }
         } else {
           if (item.required) {
             acc[`${item.name}`] = z.string().min(1, {message: item.messageError})

@@ -457,6 +457,10 @@
       {
         "label": "Assuntos",
         "value": "subjects"
+      },
+      {
+        "label": "Local",
+        "value": "place"
       }
     ],
     "language": [

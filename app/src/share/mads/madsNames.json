@@ -456,10 +456,14 @@
         "label": "RDA"
       }
     ],
-    "madsTypes": [
+    "madsTypes": [ 
       {
         "value": "http://www.loc.gov/mads/rdf/v1#Authority",
         "label": "Authority"
+      },
+      {
+        "value": "http://www.loc.gov/mads/rdf/v1#Geographic",
+        "label": "Geographic"
       },
       {
         "value": "http://www.loc.gov/mads/rdf/v1#CorporateName",
@@ -484,6 +488,10 @@
       {
         "label": "GeographicElement",
         "value": "http://www.loc.gov/mads/rdf/v1#GeographicElement"
+      },
+      {
+        "label": "NameElement",
+        "value": "http://www.loc.gov/mads/rdf/v1#NameElement"
       },
       {
         "label": "FullNameElement",
@@ -562,8 +570,8 @@
     ],
     "isMemberOfMADSCollection": [
       {
-        "label": "Editoras",
-        "value": "publishers"
+        "label": "Editora",
+        "value": "publisher"
       },
       {
         "label": "Nomes",
@@ -572,6 +580,10 @@
       {
         "label": "Assuntos",
         "value": "subjects"
+      },
+      {
+        "label": "Local",
+        "value": "place"
       }
     ],
     "language": [
