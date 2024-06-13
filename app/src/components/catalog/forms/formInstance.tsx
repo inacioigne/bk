@@ -14,7 +14,8 @@ import { bkapi } from "@/services/api";
 import BfField from "./bibframe/bfField";
 
 // Schema
-import  ZodInstance  from "@/schema/bibframe/zodInstance"
+// import  ZodInstance  from "@/schema/bibframe/zodInstance"
+import ZodInstance from "@/lib/resolvers/zodInstance";
 import BfErros from "./bibframe/bfErros";
 
 // Providers BiblioKeia
@@ -138,34 +139,34 @@ export default function FormInstance({ defaultValues }: Props) {
         RemoveEmpty(data)
         console.log("IN:", data)
     
-        // bkapi
-        //     .post("/catalog/instance/create", data, {
-        //         headers: headers,
-        //     })
-        //     .then(function (response) {
-        //         if (response.status === 201) {
-        //             // console.log("RS", response.data);
-        //             setTypeAlert("success")
-        //             setMessage("Registro criado com sucesso!")
-        //             let uri = data.instanceOf.value.split("/")
-        //             let id = uri[uri.length - 1]
-        //             action()
-        //             router.push(`/admin/catalog/${id}`);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         setTypeAlert("error")
-        //         if (error.response.status === 409) {                    
-        //             setMessage("Este registro já existe")
-        //         } else {
-        //             setMessage(error.response.statusText)
-        //             console.error("ER:", error.response);
-        //         }
-        //     })
-        //     .finally(function () {
-        //         setProgress(false)
-        //         setOpenSnack(true)
-        //     });
+        bkapi
+            .post("/catalog/instance/create", data, {
+                headers: headers,
+            })
+            .then(function (response) {
+                if (response.status === 201) {
+                    // console.log("RS", response.data);
+                    setTypeAlert("success")
+                    setMessage("Registro criado com sucesso!")
+                    let uri = data.instanceOf.value.split("/")
+                    let id = uri[uri.length - 1]
+                    action()
+                    router.push(`/admin/catalog/${id}`);
+                }
+            })
+            .catch(function (error) {
+                setTypeAlert("error")
+                if (error.response.status === 409) {                    
+                    setMessage("Este registro já existe")
+                } else {
+                    setMessage(error.response.statusText)
+                    console.error("ER:", error.response);
+                }
+            })
+            .finally(function () {
+                setProgress(false)
+                setOpenSnack(true)
+            });
     }
 
     return (

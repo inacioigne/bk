@@ -23,7 +23,7 @@ def MakeGraphInstance(request):
     g.bind('bf', BF)
     
     # resourceType
-    g = BfType(g, resource, request.resourceType)
+    g = BfType(g, resource, request.resource)
     # AdminMetadata
     g = BfAdminMetadata(g, request.adminMetadata, resource, BF) 
     # Title

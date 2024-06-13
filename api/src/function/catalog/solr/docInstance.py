@@ -15,22 +15,21 @@ def DocInstance(request):
     'uri': request.instanceOf.value, 
     'label': request.instanceOf.label
     } 
-    # print("DATE:", request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"))
 
     doc = {
         "id": instance_id,
         "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%SZ"), 
         # request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"),
-        "type": [i.value for i in request.resourceType],
+        "type": [i.type.value for i in request.resource],
         "mainTitle": request.title.mainTitle,
         "subtitle": request.title.subtitle if request.title.subtitle != "" else None,
         "carrier": request.physicalDetails.carrier.label,
         "extent": request.physicalDetails.extent,
         "issuance": request.physicalDetails.issuance.label,
         "media": request.physicalDetails.media.label,
-        "publicationAgent": provisionActivity.agent,
+        "publicationAgent": provisionActivity.place.label,
         "publicationDate": provisionActivity.date,
-        "publicationPlace": provisionActivity.place,      
+        "publicationPlace": provisionActivity.place.label,      
         # "serie": request.seriesStatement,
         "image": request.image.cover,
         "instanceOf": instanceOf

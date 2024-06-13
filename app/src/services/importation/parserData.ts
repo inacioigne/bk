@@ -350,7 +350,7 @@ export async function ParserData(response: any, uri: string) {
       authority["fieldOfActivity"] = [
         {
           authority: {
-            uri: "",
+            value: "",
             type: "",
             label: "",
             base: "",
@@ -463,7 +463,7 @@ export async function ParserData(response: any, uri: string) {
         if (uri.includes("http://")) {
           const authority: any = { base: "loc" };
           let [label] = organization[`${mads}authoritativeLabel`];
-          authority["uri"] = uri;
+          authority["value"] = uri;
           authority["label"] = label["@value"];
           objOrg["authority"] = authority;
         } else {
@@ -497,7 +497,7 @@ export async function ParserData(response: any, uri: string) {
         {
           authority: {
             base: "",
-            uri: "",
+            value: "",
             label: "",
           },
           affiliationStart: "",
@@ -520,7 +520,7 @@ export async function ParserData(response: any, uri: string) {
             authority: {
               label: label["@value"],
               base: "loc",
-              uri: obj["@id"],
+              value: obj["@id"],
             },
           };
           return objOcc;
@@ -538,7 +538,7 @@ export async function ParserData(response: any, uri: string) {
       authority["occupation"] = [
         {
           authority: {
-            uri: "",
+            value: "",
             type: "",
             label: "",
             base: "",
@@ -547,7 +547,7 @@ export async function ParserData(response: any, uri: string) {
       ];
     }
   }
-  console.log(authority);
+  // console.log(authority);
 
   return authority;
 }

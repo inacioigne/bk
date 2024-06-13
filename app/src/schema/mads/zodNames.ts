@@ -12,7 +12,7 @@ mads.sections.forEach((section) => {
         if (item.thesarus) {
           acc[`${item.name}`] = z.object({
             base: z.string(),
-            uri: z.string(),
+            value: z.string(),
             label: z.string(),
           });
         } else {
@@ -68,7 +68,7 @@ mads.sections.forEach((section) => {
           z.object({
             authority: z.object({
               base: z.string(),
-              uri: z.string(),
+              value: z.string(),
               label: z.string(),
             }),
             affiliationStart: z.string(),

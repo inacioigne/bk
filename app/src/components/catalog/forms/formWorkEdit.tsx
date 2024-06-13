@@ -200,7 +200,7 @@ function ParserDoc(doc: any, commonTypes: any) {
 
     let languages = doc.language.map((e: string, i: number) => {
         const [language] = commonTypes.language.filter(element => element.label === e);
-        return language
+        return {lang: language}
     })
     obj['language'] = languages
 
@@ -283,6 +283,7 @@ export default function FormWorkEdit({ doc }: Props) {
     };
 
     const obj = ParserDoc(doc, bibframe.commonTypes)
+    console.log(obj)
 
 
     const {

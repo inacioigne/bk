@@ -1,0 +1,237 @@
+[
+    {
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Authority",
+                    "label": "Authority"
+                }
+            },
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                }
+            }
+        ],
+        "isMemberOfMADSCollection": [
+            {
+                "collection": {
+                    "value": "names",
+                    "label": "Nomes"
+                }
+            }
+        ],
+        "elementList": [
+            {
+                "elementType": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                    "label": "FullNameElement"
+                },
+                "elementValue": "Val, Adalberto Luís"
+            }
+        ],
+        "authoritativeLabel": {
+            "value": "Val, Adalberto Luís"
+        },
+        "birth": {
+            "day": "31",
+            "month": {
+                "value": "07",
+                "label": "Julho"
+            },
+            "year": "1956"
+        },
+        "hasCloseExternalAuthority": [
+            {
+                "base": "www.wikidata.org",
+                "label": "Adalberto Luis Val",
+                "uri": "http://www.wikidata.org/entity/Q69897681"
+            }
+        ],
+        "identifiersLccn": "n92112273"
+    },
+    {
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Authority",
+                    "label": "Authority"
+                }
+            },
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                }
+            }
+        ],
+        "isMemberOfMADSCollection": [
+            {
+                "collection": {
+                    "value": "names",
+                    "label": "Nomes"
+                }
+            }
+        ],
+        "elementList": [
+            {
+                "elementType": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                    "label": "FullNameElement"
+                },
+                "elementValue": "Val, Vera Maria Almeida "
+            },
+            {
+                "elementType": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#DateNameElement",
+                    "label": "DateNameElement"
+                },
+                "elementValue": "1956-"
+            }
+        ],
+        "authoritativeLabel": {
+            "value": "Val, Vera Maria Almeida "
+        },
+        "birth": {
+            "day": "30",
+            "month": {
+                "value": "12",
+                "label": "Dezembro"
+            },
+            "year": "1956"
+        },
+        "hasVariant": [
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "Val, V. M. F. de Almeida-"
+                    },
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "(Vera M. F.),"
+                    },
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#DateNameElement",
+                            "label": "DateNameElement"
+                        },
+                        "elementValue": "1956-"
+                    }
+                ]
+            },
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "De Almeida-Val, V. M. F."
+                    },
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "(Vera M. F.),"
+                    },
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#DateNameElement",
+                            "label": "DateNameElement"
+                        },
+                        "elementValue": "1956-"
+                    }
+                ]
+            },
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "Almeida-Val, Vera Maria F. de,"
+                    },
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#DateNameElement",
+                            "label": "DateNameElement"
+                        },
+                        "elementValue": "1956-"
+                    }
+                ]
+            },
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "Fonseca de Almeida e Val, Vera Maria,"
+                    },
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#DateNameElement",
+                            "label": "DateNameElement"
+                        },
+                        "elementValue": "1956-"
+                    }
+                ]
+            }
+        ],
+        "hasCloseExternalAuthority": [
+            {
+                "base": "d-nb.info",
+                "label": "Almeida-Val, Vera M F de",
+                "uri": "https://d-nb.info/gnd/17288165X"
+            }
+        ],
+        "identifiersLccn": "n95007556"
+    }
+]

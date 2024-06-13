@@ -11,7 +11,6 @@ import {
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
-// import DeleteItem from "@/app/admin/authority/names/[id]/deleteItem";
 import HasVariant from "@/components/madsrdf/view/hasVariant";
 import MadsUri from "@/components/madsrdf/view/madsUri"
 import HasAffiliation from "@/components/madsrdf/view/hasAffiliation";

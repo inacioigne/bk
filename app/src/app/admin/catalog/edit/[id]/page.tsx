@@ -16,7 +16,6 @@ import { GiBookshelf } from "react-icons/gi";
 
 // Next
 // import Link from "next/link";
-// import WorkView from "@/components/catalog/workView";
 import FormWorkEdit from "@/components/catalog/forms/formWorkEdit";
 // import action from "@/services/catalog/actions";
 

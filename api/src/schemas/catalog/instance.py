@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+from src.schemas.catalog.work import Resource
 from src.schemas.catalog.bibframe.physicalDetails import PhysicalDetails
 from src.schemas.catalog.bibframe.provisionActivity import ProvisionActivity
 from src.schemas.adminMetadata import AdminMetadata
@@ -10,7 +11,7 @@ class Image(BaseModel):
     cover: str
 
 class BfInstance(BaseModel):
-    resourceType: list[BfElement]
+    resource: list[Resource]
     adminMetadata: AdminMetadata
     title: Title
     variantTitle: Optional[list[Title]] = None

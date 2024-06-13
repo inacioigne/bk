@@ -75,7 +75,6 @@ export default function SearchThesaurus(
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        console.log(type, search,collection)
         MakeSearch(type, search, setDocs, collection)
     }, [open, openCreate])
 
