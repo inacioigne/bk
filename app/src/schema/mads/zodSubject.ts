@@ -12,7 +12,7 @@ mads.sections.forEach((section) => {
         if (item.thesarus) {
           acc[`${item.name}`] = z.object({
             base: z.string(),
-            uri: z.string(),
+            value: z.string(),
             label: z.string()
           });
           // console.log(item)
@@ -95,6 +95,6 @@ mads.sections.forEach((section) => {
   });
 });
 
-const ZodMadsSubjects = z.object(obj);
+const ZodMadsSubjects = z.object(obj); 
 
 export default ZodMadsSubjects;

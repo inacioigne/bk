@@ -20,7 +20,7 @@ export function ParserUri(
 
     let obj = {
       authority: {
-        uri: meta["@id"],
+        value: meta["@id"],
         type: type.split("#")[1],
         label: authoritativeLabel["@value"],
         base: "loc",

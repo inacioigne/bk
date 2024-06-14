@@ -100,7 +100,7 @@
                     "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
                     "label": "FullNameElement"
                 },
-                "elementValue": "Val, Vera Maria Almeida "
+                "elementValue": "Val, Vera Maria Almeida"
             },
             {
                 "elementType": {
@@ -111,7 +111,7 @@
             }
         ],
         "authoritativeLabel": {
-            "value": "Val, Vera Maria Almeida "
+            "value": "Val, Vera Maria Almeida"
         },
         "birth": {
             "day": "30",

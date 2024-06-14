@@ -28,7 +28,7 @@ class Uri(BaseModel):
     elementLang: Optional[Element] = None
 
 class Authority(BaseModel):
-    authority: Uri
+    authority: BfElement
 
 class Organization(BaseModel):
     uri: Optional[str] = None
@@ -36,7 +36,7 @@ class Organization(BaseModel):
     base: Optional[str] = None 
 
 class Affiliation(BaseModel):
-    authority: Uri
+    authority: BfElement
     affiliationStart: Optional[str] = None
     affiliationEnd: Optional[str] = None
 
@@ -85,4 +85,3 @@ class SchemaMads(BaseModel):
     # hasExactExternalAuthority: Optional[list[Uri]] = None
     # subjectOf: Optional[list[Uri]] = None
     # contributorOf: Optional[list[Uri]] = None
-    # 

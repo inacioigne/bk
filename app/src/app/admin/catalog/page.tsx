@@ -51,7 +51,6 @@ export default function Catalog() {
     const [params, setParams] = useState(new URLSearchParams());
 
     useEffect(() => {
-
         params.set("q", "*:*");
         params.set("fq", "isPartOf:Work");
         params.set("fl", "*,[child]");
@@ -61,7 +60,6 @@ export default function Catalog() {
             setRows,
             setRowCount
         );
-
     }, [])
 
     return (

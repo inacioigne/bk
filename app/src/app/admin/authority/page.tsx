@@ -56,6 +56,7 @@ export default function Authority() {
     const [cleanOn, setCleanOn] = useState(false)
     const [facetAffiliation, setFacetAffiliation] = useState([]);
     const [facetOccupation, setOccupation] = useState([]);
+    const [params, setParams] = useState(new URLSearchParams());
 
     const handleChangeField = (event: SelectChangeEvent) => {
         setField(event.target.value as string);
@@ -95,6 +96,19 @@ export default function Authority() {
         // );
         setCleanOn(false)
     };
+
+    // useEffect(() => {
+    //     params.set("q", "*:*");
+    //     params.set("fq", "isPartOf:Work");
+    //     params.set("fl", "*,[child]");
+    //     setParams(params)
+    //     SearchCatalog(
+    //         params,
+    //         setRows,
+    //         setRowCount
+    //     );
+    // }, [])
+
 
     return (
         <Container maxWidth="xl">

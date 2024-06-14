@@ -3,7 +3,7 @@ from rdflib.namespace import RDF
 
 def HasNarrower(g, resource, hasNarrower, MDASRDF):
     for i in hasNarrower:
-        authority = URIRef(i.authority.uri)
+        authority = URIRef(i.authority.value)
         g.add((authority, RDF.type, MDASRDF.Authority))
         g.add((authority, RDF.type, MDASRDF.Topic))
         g.add((authority, MDASRDF.authoritativeLabel, Literal(i.authority.label)))

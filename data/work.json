@@ -1,0 +1,100 @@
+[
+    {
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "Work",
+                    "label": "Obra"
+                }
+            },
+            {
+                "type": {
+                    "value": "Text",
+                    "label": "Texto"
+                }
+            },
+            {
+                "type": {
+                    "value": "Monograph",
+                    "label": "Monografia"
+                }
+            }
+        ],
+        "language": [
+            {
+                "lang": {
+                    "value": "eng",
+                    "label": "Português"
+                }
+            }
+        ],
+        "classification": {
+            "cdd": "597 ",
+            "cutter": "B615"
+        },
+        "title": {
+            "mainTitle": "Biology of tropical fishes"
+        },
+        "contribution": [
+            {
+                "authority": {
+                    "base": "bk",
+                    "value": "https://bibliokeia.com/authority/88",
+                    "label": "Val, Adalberto Luís"
+                },
+                "role": {
+                    "value": "http://id.loc.gov/vocabulary/relators/aut"
+                }
+            },
+            {
+                "authority": {
+                    "base": "bk",
+                    "value": "https://bibliokeia.com/authority/89",
+                    "label": "Val, Vera Maria Almeida"
+                },
+                "role": {
+                    "value": "http://id.loc.gov/vocabulary/relators/aut",
+                    "label": "Autor"
+                }
+            }
+        ],
+        "subject": [
+            {
+                "type": {
+                    "value": "Topic"
+                },
+                "authority": {
+                    "base": "bk",
+                    "value": "https://bibliokeia.com/authority/94",
+                    "label": "Peixes"
+                },
+                "lang": {
+                    "value": "por"
+                }
+            }
+        ],
+        "genreForm": [
+            {
+                "genre": {
+                    "value": "http://id.loc.gov/authorities/genreForms/gf2014026068"
+                }
+            }
+        ],
+        "illustrativeContent": {
+            "millus": {
+                "value": "http://id.loc.gov/vocabulary/millus/ill",
+                "label": "Ilustração"
+            }
+        }
+    }
+]

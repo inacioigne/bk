@@ -105,11 +105,13 @@ const defaultValues = {
     ],
     "hasAffiliation": [
         {
-            "base": "",
-            "uri": "",
-            "label": "",
             "affiliationStart": "",
-            "affiliationEnd": ""
+            "affiliationEnd": "",
+            "authority": {
+                "base": "",
+                "value": "",
+                "label": ""
+            }
         }
     ],
     "hasCloseExternalAuthority": [
@@ -121,16 +123,20 @@ const defaultValues = {
     ],
     "fieldOfActivity": [
         {
-            "label": "",
-            "base": "",
-            "uri": ""
+            "authority": {
+                "value": "",
+                "label": "",
+                "base": "",
+            }
         }
     ],
     "occupation": [
         {
-            "label": "",
-            "base": "",
-            "uri": ""
+            "authority": {
+                "value": "",
+                "label": "",
+                "base": "",
+            }
         }
     ]
 }

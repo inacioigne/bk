@@ -79,6 +79,7 @@ export default function FormWork() {
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
         setPanel(newValue);
     };
+    // console.log(bibframe.defaultValues)
 
     const {
         control,
@@ -105,7 +106,7 @@ export default function FormWork() {
         setProgress(true)
 
         RemoveEmpty(data)
-        // console.log(data)
+        console.log("DT", data)
         
         bkapi
             .post("/catalog/work/create", data, {

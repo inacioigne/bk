@@ -52,7 +52,7 @@ export default function LOC() {
       LocAuthority(setHit, uri)
     }
   }, [])
-  // console.log(hit)
+  // console.log(hit.type)
 
   return (
     <Container maxWidth="xl">
@@ -76,7 +76,7 @@ export default function LOC() {
           </Grid>
         </Box>
 
-      ) : (hit?.isMemberOfMADSCollection[0].collection.value === 'names' ?
+      ) : (hit?.type === 'PersonalName' ?
         <FormMadsNames authority={hit} /> : <FormMadsSubjects authority={hit} />
       )
       }

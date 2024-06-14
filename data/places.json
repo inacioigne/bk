@@ -1,0 +1,120 @@
+[
+    {
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Authority",
+                    "label": "Authority"
+                }
+            },
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Geographic",
+                    "label": "Geographic"
+                }
+            }
+        ],
+        "isMemberOfMADSCollection": [
+            {
+                "collection": {
+                    "value": "place",
+                    "label": "Local"
+                }
+            }
+        ],
+        "elementList": [
+            {
+                "elementType": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#GeographicElement",
+                    "label": "GeographicElement"
+                },
+                "elementValue": "Manaus (Brasil)"
+            }
+        ],
+        "authoritativeLabel": {
+            "value": "Manaus (Brasil)"
+        },
+        "hasVariant": [
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Geographic",
+                    "label": "Geographic"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#GeographicElement",
+                            "label": "GeographicElement"
+                        },
+                        "elementValue": "Manáos (Brazil)"
+                    }
+                ]
+            },
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#CorporateName",
+                    "label": "CorporateName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#NameElement",
+                            "label": "NameElement"
+                        },
+                        "elementValue": "Manaus (Brazil)."
+                    },
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#NameElement",
+                            "label": "NameElement"
+                        },
+                        "elementValue": "Prefeitura"
+                    }
+                ]
+            },
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Geographic",
+                    "label": "Geographic"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#GeographicElement",
+                            "label": "GeographicElement"
+                        },
+                        "elementValue": "Prefeitura de Manaus (Brazil)"
+                    }
+                ]
+            }
+        ],
+        "hasCloseExternalAuthority": [
+            {
+                "base": "id.worldcat.org",
+                "label": "Brazil--Manaus",
+                "uri": "http://id.worldcat.org/fast/1206503"
+            },
+            {
+                "base": "www.wikidata.org",
+                "label": "Manaus",
+                "uri": "http://www.wikidata.org/entity/Q40236"
+            },
+            {
+                "base": "datos.bne.es",
+                "label": "Manaus (Brasil)",
+                "uri": "http://datos.bne.es/resource/XX458107"
+            }
+        ],
+        "identifiersLccn": "n79113930"
+    }
+]

@@ -6,8 +6,6 @@ from datetime import datetime
 from src.function.catalog.markeCreateSparql import MakeCreateSparql
 from src.function.thesaurus.jena.makeGraphAuthority import MakeGraphAuthority
 from src.function.thesaurus.jena.editJena import EditJena 
-
-# Bibliokeia Functions
 from src.schemas.settings import Settings
 from src.db.init_db import session
 from src.db.models import DbAuthority

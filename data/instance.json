@@ -1,0 +1,70 @@
+[
+    {
+        "instanceOf": {
+            "value": "https://bibliokeia.com/works/11"
+        },
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "Instance",
+                    "label": "Instância"
+                }
+            },
+            {
+                "type": {
+                    "value": "Instance",
+                    "label": "Instância"
+                }
+            }
+        ],
+        "title": {
+            "mainTitle": "Biology of tropical fishes"
+        },
+        "physicalDetails": {
+            "carrier": {
+                "value": "http://id.loc.gov/vocabulary/carriers/nc",
+                "label": "Volume"
+            },
+            "extent": "xx, 460 p.",
+            "issuance": {
+                "value": "http://id.loc.gov/vocabulary/issuance/mono",
+                "label": "Unidade única"
+            },
+            "media": {
+                "value": "http://id.loc.gov/vocabulary/mediaTypes/n",
+                "label": "Não mediado"
+            }
+        },
+        "provisionActivity": [
+            {
+                "place": {
+                    "base": "bk",
+                    "value": "https://bibliokeia.com/authority/96",
+                    "label": "Manaus (Brasil)"
+                },
+                "agent": {
+                    "base": "bk",
+                    "value": "https://bibliokeia.com/authority/95",
+                    "label": "Editora INPA"
+                },
+                "date": "1999"
+            }
+        ],
+        "responsibilityStatement": {
+            "value": "edited by, Adalberto Luís Val, Vera Maria Fonseca Almeida-Val"
+        },
+        "image": {
+            "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ20rQYSgN5dMH2n0qyx71v3h8FPPrR7vUPzA&s"
+        }
+    }
+]

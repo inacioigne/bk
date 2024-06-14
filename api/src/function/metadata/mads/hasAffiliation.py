@@ -6,7 +6,7 @@ def HasAffiliation(g, resource, hasAffiliation, MDASRDF):
         bNaffiliation = BNode()
         g.add((resource, MDASRDF.hasAffiliation, bNaffiliation))
         g.add((bNaffiliation, RDF.type, MDASRDF.Affiliation))
-        uri = URIRef(i.authority.uri)
+        uri = URIRef(i.authority.value)
         g.add((uri, RDF.type, MDASRDF.Organization))
         g.add((uri, MDASRDF.authoritativeLabel, Literal(i.authority.label)))
         g.add((bNaffiliation, MDASRDF.organization, uri))

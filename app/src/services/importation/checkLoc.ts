@@ -2,7 +2,7 @@ import { bkapi } from "@/services/api";
 
 export async function CheckLoc(arrLoc: any) {
   let arr = await arrLoc.map(async (e: any) => {
-    let uri = e.authority.uri;
+    let uri = e.authority.value;
     let aUri = uri.split("/");
     let identifiersLccn = aUri[aUri.length - 1];
 
@@ -13,7 +13,7 @@ export async function CheckLoc(arrLoc: any) {
       if (response.data.exist) {
         // console.log(response.data)
         let obj = {authority :{
-          uri: response.data.uri,
+          value: response.data.uri,
           label: response.data.label,
           base: response.data.base,
         }};
@@ -25,6 +25,5 @@ export async function CheckLoc(arrLoc: any) {
       console.error(error);
     }
   });
-
   return arr;
 }

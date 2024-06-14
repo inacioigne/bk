@@ -1,0 +1,173 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://id.loc.gov/resources/works/17646852> a bf:Monograph,
+        bf:Text,
+        bf:Work ;
+    bflc:aap "Insetos do Brasil" ;
+    bflc:aap-normalized "insetosdobrasil" ;
+    bf:adminMetadata [ a bf:AdminMetadata ;
+            bflc:encodingLevel <http://id.loc.gov/vocabulary/menclvl/f> ;
+            bf:assigner <http://id.loc.gov/vocabulary/organizations/tmv> ;
+            bf:changeDate "2013-05-07T13:59:03"^^xsd:dateTime ;
+            bf:creationDate "2013-03-04"^^xsd:date ;
+            bf:descriptionAuthentication <http://id.loc.gov/vocabulary/marcauthen/lccopycat>,
+                <http://id.loc.gov/vocabulary/marcauthen/lcode> ;
+            bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/aacr> ;
+            bf:descriptionModifier <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            bf:generationProcess [ a bf:GenerationProcess ;
+                    rdfs:label "DLC marc2bibframe2 v2.5.0" ;
+                    bf:generationDate "2024-03-30T18:09:35.793577-04:00"^^xsd:dateTime ] ;
+            bf:identifiedBy [ a bf:Local ;
+                    bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
+                    rdf:value "17646852" ] ;
+            bf:status <http://id.loc.gov/vocabulary/mstatus/c> ] ;
+    bf:classification [ a bf:ClassificationLcc ;
+            bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            bf:classificationPortion "QL481.B8" ;
+            bf:itemPortion "I57 2012" ;
+            bf:status <http://id.loc.gov/vocabulary/mstatus/uba> ],
+        [ a bf:ClassificationDdc ;
+            bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            bf:classificationPortion "595.70981" ;
+            bf:edition "full" ;
+            bf:source [ a bf:Source ;
+                    bf:code "23" ] ] ;
+    bf:content <http://id.loc.gov/vocabulary/contentTypes/txt> ;
+    bf:contribution [ a bf:Contribution ;
+            bf:agent <http://id.loc.gov/rwo/agents/n2013200155> ;
+            bf:role <http://id.loc.gov/vocabulary/relators/ctb> ] ;
+    bf:geographicCoverage <http://id.loc.gov/vocabulary/geographicAreas/s-bl> ;
+    bf:hasInstance <http://id.loc.gov/resources/instances/17646852> ;
+    bf:illustrativeContent <http://id.loc.gov/vocabulary/millus/ill>,
+        <http://id.loc.gov/vocabulary/millus/map> ;
+    bf:language <http://id.loc.gov/vocabulary/languages/por> ;
+    bf:subject [ a bf:Topic,
+                madsrdf:ComplexSubject ;
+            rdfs:label "Entomology--Brazil" ;
+            bflc:aap-normalized "entomologybrazil" ;
+            bf:source <http://id.loc.gov/authorities/subjects> ;
+            madsrdf:authoritativeLabel "Entomology--Brazil" ;
+            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85044125> <http://id.loc.gov/rwo/agents/n79128015-781> ) ;
+            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
+        [ a bf:Topic,
+                madsrdf:ComplexSubject ;
+            rdfs:label "Biodiversity--Brazil" ;
+            bflc:aap-normalized "biodiversitybrazil" ;
+            bf:source <http://id.loc.gov/authorities/subjects> ;
+            madsrdf:authoritativeLabel "Biodiversity--Brazil" ;
+            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh87005569> <http://id.loc.gov/rwo/agents/n79128015-781> ) ;
+            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
+        [ a bf:Topic,
+                madsrdf:ComplexSubject ;
+            rdfs:label "Insects--Brazil" ;
+            bflc:aap-normalized "insectsbrazil" ;
+            bf:source <http://id.loc.gov/authorities/subjects> ;
+            madsrdf:authoritativeLabel "Insects--Brazil" ;
+            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85066670> <http://id.loc.gov/rwo/agents/n79128015-781> ) ;
+            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
+        <http://id.loc.gov/authorities/subjects/sh2008124325> ;
+    bf:supplementaryContent <http://id.loc.gov/vocabulary/msupplcont/bibliography>,
+        <http://id.loc.gov/vocabulary/msupplcont/index> ;
+    bf:title [ a bf:Title ;
+            bf:mainTitle "Insetos do Brasil" ] ;
+    dcterms:isPartOf <http://id.loc.gov/resources/works> .
+
+<http://id.loc.gov/authorities/subjects/sh2008124325> a bf:Topic ;
+    rdfs:label "Zoology--Brazil"@en ;
+    bflc:marcKey "150  $aZoology$zBrazil" ;
+    madsrdf:componentList ( [ a madsrdf:Authority,
+                    madsrdf:Topic ;
+                madsrdf:authoritativeLabel "Zoology"@en ;
+                madsrdf:elementList ( [ a madsrdf:TopicElement ;
+                            madsrdf:elementValue "Zoology"@en ] ) ] [ a madsrdf:Authority,
+                    madsrdf:Geographic ;
+                madsrdf:authoritativeLabel "Brazil"@en ;
+                madsrdf:elementList ( [ a madsrdf:GeographicElement ;
+                            madsrdf:elementValue "Brazil"@en ] ) ] ) .
+
+<http://id.loc.gov/authorities/subjects/sh85044125> a madsrdf:Topic ;
+    rdfs:label "Entomology"@en ;
+    bflc:marcKey "150 0$aEntomology" .
+
+<http://id.loc.gov/authorities/subjects/sh85066670> a madsrdf:Topic ;
+    rdfs:label "Insects"@en ;
+    bflc:marcKey "150  $aInsects" .
+
+<http://id.loc.gov/authorities/subjects/sh87005569> a madsrdf:Topic ;
+    rdfs:label "Biodiversity"@en ;
+    bflc:marcKey "150  $aBiodiversity" .
+
+<http://id.loc.gov/resources/instances/17646852> a bf:Instance ;
+    bflc:publicationStatement "Ribeirão Preto, SP: Holos Editora; 2012" ;
+    bf:title [ a bf:Title ;
+            bf:mainTitle "Insetos do Brasil" ;
+            bf:subtitle "diversidade e taxonomia" ] .
+
+<http://id.loc.gov/rwo/agents/n2013200155> a bf:Agent,
+        bf:Person ;
+    rdfs:label "Rafael, José Albertino" ;
+    bflc:marcKey "1001 $aRafael, José Albertino" .
+
+<http://id.loc.gov/vocabulary/contentTypes/txt> a bf:Content ;
+    rdfs:label "text" .
+
+<http://id.loc.gov/vocabulary/descriptionConventions/aacr> a bf:DescriptionConventions ;
+    rdfs:label "Anglo-American cataloguing rules" .
+
+<http://id.loc.gov/vocabulary/geographicAreas/s-bl> a bf:GeographicCoverage ;
+    rdfs:label "Brazil"@en .
+
+<http://id.loc.gov/vocabulary/languages/por> a bf:Language ;
+    rdfs:label "Portuguese"@en .
+
+<http://id.loc.gov/vocabulary/marcauthen/lccopycat> a bf:DescriptionAuthentication ;
+    rdfs:label "LC Copy Cataloging" .
+
+<http://id.loc.gov/vocabulary/marcauthen/lcode> a bf:DescriptionAuthentication ;
+    rdfs:label "LC Overseas Data Entry" .
+
+<http://id.loc.gov/vocabulary/menclvl/f> a bflc:EncodingLevel ;
+    rdfs:label "full" .
+
+<http://id.loc.gov/vocabulary/millus/ill> a bf:Illustration ;
+    rdfs:label "Illustrations" .
+
+<http://id.loc.gov/vocabulary/millus/map> a bf:Illustration ;
+    rdfs:label "Maps" .
+
+<http://id.loc.gov/vocabulary/mstatus/c> a bf:Status ;
+    rdfs:label "changed" .
+
+<http://id.loc.gov/vocabulary/mstatus/uba> a bf:Status ;
+    rdfs:label "used by assigner" .
+
+<http://id.loc.gov/vocabulary/msupplcont/bibliography> a bf:SupplementaryContent ;
+    rdfs:label "bibliography" .
+
+<http://id.loc.gov/vocabulary/msupplcont/index> a bf:SupplementaryContent ;
+    rdfs:label "index" .
+
+<http://id.loc.gov/vocabulary/organizations/tmv> a bf:Organization ;
+    rdfs:label "United States, Veterans Administration Hospital" .
+
+<http://id.loc.gov/vocabulary/relators/ctb> a bf:Role ;
+    rdfs:label "Contributor" .
+
+<http://id.loc.gov/rwo/agents/n79128015-781> a madsrdf:Geographic ;
+    rdfs:label "Brazil" ;
+    bflc:marcKey "181  $zBrazil" .
+
+<http://id.loc.gov/vocabulary/organizations/dlc> a bf:Organization ;
+    rdfs:label "United States, Library of Congress" .
+
+<http://id.loc.gov/authorities/subjects> a bf:Source,
+        madsrdf:MADSScheme ;
+    rdfs:label """Library of
+            Congress Subject Headings"""@en .
+

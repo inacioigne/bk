@@ -1,4 +1,5 @@
 from rdflib import URIRef, Namespace, Graph
+from src.function.catalog.bibframe.bfIllustrativeContent import BfllustrativeContent
 from src.function.catalog.bibframe.bfSummary import BFSummary
 from src.function.catalog.bibframe.bfGenreForm import BfGenreForm
 from src.function.catalog.bibframe.bfSubject import BFSubject
@@ -41,10 +42,13 @@ def MakeGraphWork(request):
         g = BFSubject(g, request.subject, resource, BF) 
     if request.summary:
         g = BFSummary(g, request.summary, resource, BF)
-
     # GenreForm
-    # if request.genreForm and request.genreForm.valeu != "":
-    #     g = BfGenreForm(g, resource, request.genreForm, BF)    
+    if request.genreForm:
+        g = BfGenreForm(g, resource, request.genreForm, BF)    
+    # illustrativeContent
+    if request.illustrativeContent:
+        g = BfllustrativeContent(g, resource, request.illustrativeContent, BF)
+
  
     graph = g.serialize(format='ttl')
 

@@ -52,21 +52,21 @@
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85048666",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85048666",
                     "label": "Fisheries"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85064050",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85064050",
                     "label": "Ichthyology"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85048830",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85048830",
                     "label": "Fishing"
                 }
             }
@@ -75,14 +75,14 @@
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85006228",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85006228",
                     "label": "Aquatic animals"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85142902",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85142902",
                     "label": "Vertebrates"
                 }
             }
@@ -91,210 +91,210 @@
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85095701",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85095701",
                     "label": "Ornamental fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85011047",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85011047",
                     "label": "Baitfish"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85095954",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85095954",
                     "label": "Osteichthyes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85101345",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85101345",
                     "label": "Photography of fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh96010213",
+                    "value": "http://id.loc.gov/authorities/subjects/sh96010213",
                     "label": "Air-breathing fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85024672",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85024672",
                     "label": "Chondrichthyes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85048826",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85048826",
                     "label": "Freshwater fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85103943",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85103943",
                     "label": "Poisonous fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh96006425",
+                    "value": "http://id.loc.gov/authorities/subjects/sh96006425",
                     "label": "Introduced fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh2016001562",
+                    "value": "http://id.loc.gov/authorities/subjects/sh2016001562",
                     "label": "Cleaner fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh99000756",
+                    "value": "http://id.loc.gov/authorities/subjects/sh99000756",
                     "label": "Piscivorous fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh2016001564",
+                    "value": "http://id.loc.gov/authorities/subjects/sh2016001564",
                     "label": "Native fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh2003011245",
+                    "value": "http://id.loc.gov/authorities/subjects/sh2003011245",
                     "label": "Groundfishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85006221",
-                    "label": "Aquarium fishes"
-                }
-            },
-            {
-                "authority": {
-                    "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh89003521",
+                    "value": "http://id.loc.gov/authorities/subjects/sh89003521",
                     "label": "Rare fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh88002555",
-                    "label": "Diadromous fishes"
+                    "value": "http://id.loc.gov/authorities/subjects/sh85006221",
+                    "label": "Aquarium fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85048822",
-                    "label": "Anadromous fishes"
-                }
-            },
-            {
-                "authority": {
-                    "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85002220",
-                    "label": "Agnatha"
-                }
-            },
-            {
-                "authority": {
-                    "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh95009146",
+                    "value": "http://id.loc.gov/authorities/subjects/sh95009146",
                     "label": "Electric fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh93001709",
+                    "value": "http://id.loc.gov/authorities/subjects/sh88002555",
+                    "label": "Diadromous fishes"
+                }
+            },
+            {
+                "authority": {
+                    "base": "loc",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85048822",
+                    "label": "Anadromous fishes"
+                }
+            },
+            {
+                "authority": {
+                    "base": "loc",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85002220",
+                    "label": "Agnatha"
+                }
+            },
+            {
+                "authority": {
+                    "base": "loc",
+                    "value": "http://id.loc.gov/authorities/subjects/sh93001709",
                     "label": "Extinct fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh92006321",
+                    "value": "http://id.loc.gov/authorities/subjects/sh92006321",
                     "label": "Brackish water fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh92000591",
+                    "value": "http://id.loc.gov/authorities/subjects/sh92000591",
                     "label": "Transgenic fish"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85035711",
-                    "label": "Dangerous fishes"
-                }
-            },
-            {
-                "authority": {
-                    "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh2004001319",
-                    "label": "Fish pests"
-                }
-            },
-            {
-                "authority": {
-                    "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh2009008591",
-                    "label": "Migratory fishes"
-                }
-            },
-            {
-                "authority": {
-                    "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh91006307",
+                    "value": "http://id.loc.gov/authorities/subjects/sh91006307",
                     "label": "Exotic fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh2001009600",
-                    "label": "Warmwater fishes"
+                    "value": "http://id.loc.gov/authorities/subjects/sh85035711",
+                    "label": "Dangerous fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85050433",
+                    "value": "http://id.loc.gov/authorities/subjects/sh2009008591",
+                    "label": "Migratory fishes"
+                }
+            },
+            {
+                "authority": {
+                    "base": "loc",
+                    "value": "http://id.loc.gov/authorities/subjects/sh2004001319",
+                    "label": "Fish pests"
+                }
+            },
+            {
+                "authority": {
+                    "base": "loc",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85050433",
                     "label": "Forage fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh85081173",
+                    "value": "http://id.loc.gov/authorities/subjects/sh2001009600",
+                    "label": "Warmwater fishes"
+                }
+            },
+            {
+                "authority": {
+                    "base": "loc",
+                    "value": "http://id.loc.gov/authorities/subjects/sh85081173",
                     "label": "Marine fishes"
                 }
             },
             {
                 "authority": {
                     "base": "loc",
-                    "uri": "http://id.loc.gov/authorities/subjects/sh93000050",
+                    "value": "http://id.loc.gov/authorities/subjects/sh93000050",
                     "label": "Hatchery fishes"
                 }
             }
@@ -340,6 +340,11 @@
             }
         ],
         "hasCloseExternalAuthority": [
+            {
+                "base": "lod.nal.usda.gov",
+                "label": "fish",
+                "uri": "https://lod.nal.usda.gov/nalt/845"
+            },
             {
                 "base": "d-nb.info",
                 "label": "Fische",

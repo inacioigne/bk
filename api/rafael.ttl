@@ -1,0 +1,61 @@
+@prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
+@prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
+@prefix cs: <http://purl.org/vocab/changeset/schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ri: <http://id.loc.gov/ontologies/RecordInfo#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://id.loc.gov/authorities/names/n82139358> a madsrdf:Organization ;
+    madsrdf:authoritativeLabel "Instituto Nacional de Pesquisas da Amazônia" .
+
+<http://id.loc.gov/resources/works/17646852> a bf:Work ;
+    bflc:aap "Insetos do Brasil" .
+
+<http://id.loc.gov/rwo/agents/n2013200155> a bf:Person,
+        madsrdf:RWO,
+        foaf:Person ;
+    rdfs:label "Rafael, José Albertino" ;
+    bflc:contributorTo <http://id.loc.gov/resources/works/17646852> ;
+    madsrdf:hasAffiliation [ a madsrdf:Affiliation ;
+            madsrdf:organization <http://id.loc.gov/authorities/names/n82139358> ],
+        [ a madsrdf:Affiliation ;
+            madsrdf:email "jarafael@inpa.gov.br" ;
+            madsrdf:hasAffiliationAddress [ a madsrdf:Address ] ] ;
+    madsrdf:isIdentifiedByAuthority <http://id.loc.gov/authorities/names/n2013200155> .
+
+<http://id.loc.gov/authorities/names/n2013200155> a madsrdf:Authority,
+        madsrdf:PersonalName,
+        skos:Concept ;
+    bflc:marcKey "1001 $aRafael, José Albertino" ;
+    identifiers:lccn "n 2013200155" ;
+    madsrdf:adminMetadata [ a ri:RecordInfo ;
+            ri:languageOfCataloging <http://id.loc.gov/vocabulary/iso639-2/eng> ;
+            ri:recordChangeDate "2013-03-04T00:00:00"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            ri:recordStatus "new"^^xsd:string ] ;
+    madsrdf:authoritativeLabel "Rafael, José Albertino" ;
+    madsrdf:elementList ( [ a madsrdf:FullNameElement ;
+                madsrdf:elementValue "Rafael, José Albertino" ] ) ;
+    madsrdf:hasExactExternalAuthority <http://viaf.org/viaf/sourceID/LC%7Cn+2013200155#skos:Concept> ;
+    madsrdf:hasSource [ a madsrdf:Source ;
+            madsrdf:citationNote "t.p. (José Albertino Rafael) p. vii (works at Instituto Nacional de Pesquisas da Amazônia, Coordenação de Biodiversidade, Manaus-AM; e-mail: jarafael@inpa.gov.br)" ;
+            madsrdf:citationSource "Insetos do Brasil, 2012:" ;
+            madsrdf:citationStatus "found" ] ;
+    madsrdf:identifiesRWO <http://id.loc.gov/rwo/agents/n2013200155> ;
+    madsrdf:isMemberOfMADSCollection <http://id.loc.gov/authorities/names/collection_LCNAF>,
+        <http://id.loc.gov/authorities/names/collection_NamesAuthorizedHeadings> ;
+    madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/names> ;
+    skos:changeNote [ a cs:ChangeSet ;
+            cs:changeReason "new"^^xsd:string ;
+            cs:createdDate "2013-03-04T00:00:00"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/names/n2013200155> ] ;
+    skos:exactMatch <http://viaf.org/viaf/sourceID/LC%7Cn+2013200155#skos:Concept> ;
+    skos:inScheme <http://id.loc.gov/authorities/names> ;
+    skos:prefLabel "Rafael, José Albertino" .
+

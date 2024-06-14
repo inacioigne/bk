@@ -67,7 +67,6 @@
       "name": "authorityInformation",
       "label": "Autoridade",
       "fields": [
-        
         {
           "name": "elementList",
           "label": "Nome controlado",

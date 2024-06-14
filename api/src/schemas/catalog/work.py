@@ -30,6 +30,12 @@ class Language(BaseModel):
 class Resource(BaseModel):
     type: BfElement
 
+class GenreForm(BaseModel):
+    genre: BfElement
+
+class IllustrativeContent(BaseModel):
+    millus: BfElement
+
 class BfWork(BaseModel):
     adminMetadata: AdminMetadata
     resource: list[Resource]
@@ -42,6 +48,8 @@ class BfWork(BaseModel):
     note: Optional[str] = None
     summary: Optional[BfElement] = None
     tableOfContents: Optional[str] = None
+    genreForm: Optional[list[GenreForm]] = None
+    illustrativeContent: Optional[list[IllustrativeContent]] = None
 
 class BfWorkEdit(BaseModel):
     resourceType: list[BfElement]

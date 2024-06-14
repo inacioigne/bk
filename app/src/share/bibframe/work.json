@@ -218,6 +218,26 @@
       ]
     },
     {
+      "name": "details",
+      "label": "Detalhes",
+      "fields": [
+        {
+          "name": "illustrativeContent",
+          "label": "Ilustração",
+          "repeatable": true,
+          "subfields": [
+            {
+              "name": "millus",
+              "label": "Conteúdo",
+              "type": "select",
+              "commonType": "millus",
+              "width": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "notes",
       "label": "Notas sobre a obra",
       "fields": [
@@ -324,9 +344,27 @@
         }
       }
     ],
-    "summary": {"value": ""}
+    "summary": { "value": "" },
+    "illustrativeContent": [
+      {
+        "millus": {
+          "value": "",
+          "label": ""
+        }
+      }
+    ]
   },
   "commonTypes": {
+    "millus": [
+      {
+        "value": "http://id.loc.gov/vocabulary/millus/ill",
+        "label": "Ilustração"
+      },
+      {
+        "value": "http://id.loc.gov/vocabulary/millus/map",
+        "label": "Mapas"
+      }
+    ],
     "descriptionConventions": [
       {
         "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
@@ -345,6 +383,10 @@
       {
         "value": "Text",
         "label": "Texto"
+      },
+      {
+        "value": "Monograph",
+        "label": "Monografia"
       }
     ],
     "mstatus": [
@@ -369,6 +411,10 @@
       {
         "label": "Não ficção criativa",
         "value": "http://id.loc.gov/authorities/genreForms/gf2014026074"
+      },
+      {
+        "label": "Anais",
+        "value": "http://id.loc.gov/authorities/genreForms/gf2014026068"
       }
     ],
     "contentTypes": [

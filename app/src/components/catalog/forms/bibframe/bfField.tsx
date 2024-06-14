@@ -22,8 +22,10 @@ interface Props {
 const appendField: any = {
     contribution: {
         role: { value: "" },
-        term: { value: "" },
-        value: ""
+        authority: {
+            value: "",
+            label: ""
+        }
     },
     subject: {
         type: "Topic",
@@ -45,6 +47,12 @@ const appendField: any = {
                 }
             }
         ]
+    },
+    resource: {
+        type: {value: "", label: ""}
+    },
+    illustrativeContent: {
+        millus: {value: "", label: ""}
     }
 }
 
@@ -62,6 +70,7 @@ export default function BfField(
 
     const addField = () => {
         let appendValue = appendField[`${field.name}`] ? appendField[`${field.name}`] : { value: "" }
+        // console.log(field)
         append(appendValue)
     };
 
@@ -91,7 +100,6 @@ export default function BfField(
                                 borderRadius: 2,
                                 padding: 3
                             }}
-
                         >
                             <Grid container spacing={2}>
                                 {field.subfields.map((subfield: any, i: number) => (
@@ -115,9 +123,7 @@ export default function BfField(
                                     }}> <FaTrashCan />
                                     </IconButton>
                                 }
-
                             </Box>
-
                         </Box>
                     ))
                 ) : (

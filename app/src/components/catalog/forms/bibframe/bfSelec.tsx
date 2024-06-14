@@ -30,7 +30,6 @@ export default function BfSelect(
 
         const commonType = obj.commonType
         const label = commonType.find((option: any) => option.value === event.target.value)?.label;
-        // console.log("lb:", label)
 
         let i = event.target.name.split(".")[1]
 
@@ -40,7 +39,13 @@ export default function BfSelect(
         //     console.log(`${nameField}.${index}.${subfield.name}.label`)
         //     setValue(`${nameField}.${index}.${subfield.name}.label`, label)
         // }
-        setValue(`${nameField}.${index}.${subfield.name}.label`, label)
+        if (index) {
+            setValue(`${nameField}.${index}.${subfield.name}.label`, label)
+        } else {
+            setValue(`${nameField}.${subfield.name}.label`, label)
+        }
+
+        
     };
 
 
