@@ -1,173 +1,201 @@
 @prefix bf: <http://id.loc.gov/ontologies/bibframe/> .
 @prefix bflc: <http://id.loc.gov/ontologies/bflc/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix cs: <http://purl.org/vocab/changeset/schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix identifiers: <http://id.loc.gov/vocabulary/identifiers/> .
+@prefix lcc: <http://id.loc.gov/ontologies/lcc#> .
 @prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ri: <http://id.loc.gov/ontologies/RecordInfo#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://id.loc.gov/resources/works/17646852> a bf:Monograph,
-        bf:Text,
-        bf:Work ;
-    bflc:aap "Insetos do Brasil" ;
-    bflc:aap-normalized "insetosdobrasil" ;
-    bf:adminMetadata [ a bf:AdminMetadata ;
-            bflc:encodingLevel <http://id.loc.gov/vocabulary/menclvl/f> ;
-            bf:assigner <http://id.loc.gov/vocabulary/organizations/tmv> ;
-            bf:changeDate "2013-05-07T13:59:03"^^xsd:dateTime ;
-            bf:creationDate "2013-03-04"^^xsd:date ;
-            bf:descriptionAuthentication <http://id.loc.gov/vocabulary/marcauthen/lccopycat>,
-                <http://id.loc.gov/vocabulary/marcauthen/lcode> ;
-            bf:descriptionConventions <http://id.loc.gov/vocabulary/descriptionConventions/aacr> ;
-            bf:descriptionModifier <http://id.loc.gov/vocabulary/organizations/dlc> ;
-            bf:generationProcess [ a bf:GenerationProcess ;
-                    rdfs:label "DLC marc2bibframe2 v2.5.0" ;
-                    bf:generationDate "2024-03-30T18:09:35.793577-04:00"^^xsd:dateTime ] ;
-            bf:identifiedBy [ a bf:Local ;
-                    bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
-                    rdf:value "17646852" ] ;
-            bf:status <http://id.loc.gov/vocabulary/mstatus/c> ] ;
-    bf:classification [ a bf:ClassificationLcc ;
+<http://id.loc.gov/authorities/subjects/sh85040752> a skos:Concept ;
+    madsrdf:authoritativeLabel "Ecology" .
+
+<http://id.loc.gov/authorities/subjects/sh85050707> a skos:Concept ;
+    madsrdf:authoritativeLabel "Forests and forestry" .
+
+<http://id.loc.gov/authorities/subjects/sh85062868> a skos:Concept ;
+    madsrdf:authoritativeLabel "Human evolution" .
+
+<http://id.loc.gov/authorities/subjects/sh85137241> a skos:Concept ;
+    madsrdf:authoritativeLabel "Trees" .
+
+<http://id.loc.gov/resources/works/20152736> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The inner life of animals" .
+
+<http://id.loc.gov/resources/works/20641636> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The weather detective" .
+
+<http://id.loc.gov/resources/works/20721920> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The secret network of nature" .
+
+<http://id.loc.gov/resources/works/20976998> a bf:Work ;
+    bflc:aap "Suzuki, David, 1936- Tree" .
+
+<http://id.loc.gov/resources/works/21983452> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The hidden life of trees" .
+
+<http://id.loc.gov/resources/works/22100793> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The heartbeat of trees" .
+
+<http://id.loc.gov/resources/works/22177071> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The heartbeat of trees" .
+
+<http://id.loc.gov/resources/works/22407614> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- Peter and the tree children" .
+
+<http://id.loc.gov/resources/works/22407715> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The secret wisdom of nature" .
+
+<http://id.loc.gov/resources/works/22410076> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- Can you hear the trees talking?" .
+
+<http://id.loc.gov/resources/works/22425723> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The hidden life of trees" .
+
+<http://id.loc.gov/resources/works/22435994> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The hidden life of trees" .
+
+<http://id.loc.gov/resources/works/22456790> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- Do you know where the animals live?" .
+
+<http://id.loc.gov/resources/works/22540736> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The inner life of animals" .
+
+<http://id.loc.gov/resources/works/22743610> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The inner life of animals" .
+
+<http://id.loc.gov/resources/works/22901253> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- Forest walking" .
+
+<http://id.loc.gov/resources/works/23054439> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- Xeebis idumali cʻxovreba" .
+
+<http://id.loc.gov/resources/works/23070119> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The secret network of nature" .
+
+<http://id.loc.gov/resources/works/23155348> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The power of trees" .
+
+<http://id.loc.gov/resources/works/23184787> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- What's wild outside your door?" .
+
+<http://id.loc.gov/resources/works/23641745> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- The power of trees" .
+
+<http://id.loc.gov/resources/works/23695450> a bf:Work ;
+    bflc:aap "Wohlleben, Peter, 1964- Be a nature explorer!" .
+
+<http://id.loc.gov/rwo/agents/no2011070109> a bf:Person,
+        madsrdf:RWO,
+        foaf:Person ;
+    rdfs:label "Wohlleben, Peter, 1964-" ;
+    bflc:contributorTo <http://id.loc.gov/resources/works/20152736>,
+        <http://id.loc.gov/resources/works/20641636>,
+        <http://id.loc.gov/resources/works/20721920>,
+        <http://id.loc.gov/resources/works/20976998>,
+        <http://id.loc.gov/resources/works/21983452>,
+        <http://id.loc.gov/resources/works/22100793>,
+        <http://id.loc.gov/resources/works/22177071>,
+        <http://id.loc.gov/resources/works/22407614>,
+        <http://id.loc.gov/resources/works/22407715>,
+        <http://id.loc.gov/resources/works/22410076>,
+        <http://id.loc.gov/resources/works/22425723>,
+        <http://id.loc.gov/resources/works/22435994>,
+        <http://id.loc.gov/resources/works/22456790>,
+        <http://id.loc.gov/resources/works/22540736>,
+        <http://id.loc.gov/resources/works/22743610>,
+        <http://id.loc.gov/resources/works/22901253>,
+        <http://id.loc.gov/resources/works/23054439>,
+        <http://id.loc.gov/resources/works/23070119>,
+        <http://id.loc.gov/resources/works/23155348>,
+        <http://id.loc.gov/resources/works/23184787>,
+        <http://id.loc.gov/resources/works/23641745>,
+        <http://id.loc.gov/resources/works/23695450> ;
+    madsrdf:associatedLanguage <http://id.loc.gov/vocabulary/languages/ger> ;
+    madsrdf:associatedLocale [ a madsrdf:Geographic ;
+            rdfs:label "Germany" ;
+            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/names> ] ;
+    madsrdf:birthDate "1964-06-03"^^<http://id.loc.gov/datatypes/edtf/EDTF> ;
+    madsrdf:fieldOfActivity <http://id.loc.gov/authorities/subjects/sh85040752>,
+        <http://id.loc.gov/authorities/subjects/sh85050707>,
+        <http://id.loc.gov/authorities/subjects/sh85062868>,
+        <http://id.loc.gov/authorities/subjects/sh85137241> ;
+    madsrdf:isIdentifiedByAuthority <http://id.loc.gov/authorities/names/no2011070109> .
+
+<http://id.loc.gov/vocabulary/languages/ger> a madsrdf:Language ;
+    madsrdf:authoritativeLabel "German"@en .
+
+<http://id.worldcat.org/fast/1973529> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Wohlleben, Peter, 1964-" ;
+    skos:prefLabel "Wohlleben, Peter, 1964-" .
+
+<http://www.wikidata.org/entity/Q2079095> a madsrdf:Authority,
+        skos:Concept ;
+    madsrdf:authoritativeLabel "Peter Wohlleben" ;
+    skos:prefLabel "Peter Wohlleben" .
+
+<http://id.loc.gov/authorities/names/no2011070109> a madsrdf:Authority,
+        madsrdf:PersonalName,
+        skos:Concept ;
+    bflc:marcKey "1001 $aWohlleben, Peter,$d1964-" ;
+    identifiers:lccn "no2011070109" ;
+    identifiers:local "(OCoLC)oca08846592" ;
+    madsrdf:adminMetadata [ a ri:RecordInfo ;
+            ri:languageOfCataloging <http://id.loc.gov/vocabulary/iso639-2/eng> ;
+            ri:recordChangeDate "2024-05-11T09:45:03"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            ri:recordStatus "revised"^^xsd:string ],
+        [ a ri:RecordInfo ;
+            ri:languageOfCataloging <http://id.loc.gov/vocabulary/iso639-2/eng> ;
+            ri:recordChangeDate "2011-05-04T00:00:00"^^xsd:dateTime ;
+            ri:recordContentSource <http://id.loc.gov/vocabulary/organizations/njp> ;
+            ri:recordStatus "new"^^xsd:string ] ;
+    madsrdf:authoritativeLabel "Wohlleben, Peter, 1964-" ;
+    madsrdf:classification [ a lcc:ClassNumber ;
             bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
-            bf:classificationPortion "QL481.B8" ;
-            bf:itemPortion "I57 2012" ;
-            bf:status <http://id.loc.gov/vocabulary/mstatus/uba> ],
-        [ a bf:ClassificationDdc ;
-            bf:assigner <http://id.loc.gov/vocabulary/organizations/dlc> ;
-            bf:classificationPortion "595.70981" ;
-            bf:edition "full" ;
-            bf:source [ a bf:Source ;
-                    bf:code "23" ] ] ;
-    bf:content <http://id.loc.gov/vocabulary/contentTypes/txt> ;
-    bf:contribution [ a bf:Contribution ;
-            bf:agent <http://id.loc.gov/rwo/agents/n2013200155> ;
-            bf:role <http://id.loc.gov/vocabulary/relators/ctb> ] ;
-    bf:geographicCoverage <http://id.loc.gov/vocabulary/geographicAreas/s-bl> ;
-    bf:hasInstance <http://id.loc.gov/resources/instances/17646852> ;
-    bf:illustrativeContent <http://id.loc.gov/vocabulary/millus/ill>,
-        <http://id.loc.gov/vocabulary/millus/map> ;
-    bf:language <http://id.loc.gov/vocabulary/languages/por> ;
-    bf:subject [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Entomology--Brazil" ;
-            bflc:aap-normalized "entomologybrazil" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Entomology--Brazil" ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85044125> <http://id.loc.gov/rwo/agents/n79128015-781> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Biodiversity--Brazil" ;
-            bflc:aap-normalized "biodiversitybrazil" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Biodiversity--Brazil" ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh87005569> <http://id.loc.gov/rwo/agents/n79128015-781> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        [ a bf:Topic,
-                madsrdf:ComplexSubject ;
-            rdfs:label "Insects--Brazil" ;
-            bflc:aap-normalized "insectsbrazil" ;
-            bf:source <http://id.loc.gov/authorities/subjects> ;
-            madsrdf:authoritativeLabel "Insects--Brazil" ;
-            madsrdf:componentList ( <http://id.loc.gov/authorities/subjects/sh85066670> <http://id.loc.gov/rwo/agents/n79128015-781> ) ;
-            madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/subjects> ],
-        <http://id.loc.gov/authorities/subjects/sh2008124325> ;
-    bf:supplementaryContent <http://id.loc.gov/vocabulary/msupplcont/bibliography>,
-        <http://id.loc.gov/vocabulary/msupplcont/index> ;
-    bf:title [ a bf:Title ;
-            bf:mainTitle "Insetos do Brasil" ] ;
-    dcterms:isPartOf <http://id.loc.gov/resources/works> .
-
-<http://id.loc.gov/authorities/subjects/sh2008124325> a bf:Topic ;
-    rdfs:label "Zoology--Brazil"@en ;
-    bflc:marcKey "150  $aZoology$zBrazil" ;
-    madsrdf:componentList ( [ a madsrdf:Authority,
-                    madsrdf:Topic ;
-                madsrdf:authoritativeLabel "Zoology"@en ;
-                madsrdf:elementList ( [ a madsrdf:TopicElement ;
-                            madsrdf:elementValue "Zoology"@en ] ) ] [ a madsrdf:Authority,
-                    madsrdf:Geographic ;
-                madsrdf:authoritativeLabel "Brazil"@en ;
-                madsrdf:elementList ( [ a madsrdf:GeographicElement ;
-                            madsrdf:elementValue "Brazil"@en ] ) ] ) .
-
-<http://id.loc.gov/authorities/subjects/sh85044125> a madsrdf:Topic ;
-    rdfs:label "Entomology"@en ;
-    bflc:marcKey "150 0$aEntomology" .
-
-<http://id.loc.gov/authorities/subjects/sh85066670> a madsrdf:Topic ;
-    rdfs:label "Insects"@en ;
-    bflc:marcKey "150  $aInsects" .
-
-<http://id.loc.gov/authorities/subjects/sh87005569> a madsrdf:Topic ;
-    rdfs:label "Biodiversity"@en ;
-    bflc:marcKey "150  $aBiodiversity" .
-
-<http://id.loc.gov/resources/instances/17646852> a bf:Instance ;
-    bflc:publicationStatement "Ribeirão Preto, SP: Holos Editora; 2012" ;
-    bf:title [ a bf:Title ;
-            bf:mainTitle "Insetos do Brasil" ;
-            bf:subtitle "diversidade e taxonomia" ] .
-
-<http://id.loc.gov/rwo/agents/n2013200155> a bf:Agent,
-        bf:Person ;
-    rdfs:label "Rafael, José Albertino" ;
-    bflc:marcKey "1001 $aRafael, José Albertino" .
-
-<http://id.loc.gov/vocabulary/contentTypes/txt> a bf:Content ;
-    rdfs:label "text" .
-
-<http://id.loc.gov/vocabulary/descriptionConventions/aacr> a bf:DescriptionConventions ;
-    rdfs:label "Anglo-American cataloguing rules" .
-
-<http://id.loc.gov/vocabulary/geographicAreas/s-bl> a bf:GeographicCoverage ;
-    rdfs:label "Brazil"@en .
-
-<http://id.loc.gov/vocabulary/languages/por> a bf:Language ;
-    rdfs:label "Portuguese"@en .
-
-<http://id.loc.gov/vocabulary/marcauthen/lccopycat> a bf:DescriptionAuthentication ;
-    rdfs:label "LC Copy Cataloging" .
-
-<http://id.loc.gov/vocabulary/marcauthen/lcode> a bf:DescriptionAuthentication ;
-    rdfs:label "LC Overseas Data Entry" .
-
-<http://id.loc.gov/vocabulary/menclvl/f> a bflc:EncodingLevel ;
-    rdfs:label "full" .
-
-<http://id.loc.gov/vocabulary/millus/ill> a bf:Illustration ;
-    rdfs:label "Illustrations" .
-
-<http://id.loc.gov/vocabulary/millus/map> a bf:Illustration ;
-    rdfs:label "Maps" .
-
-<http://id.loc.gov/vocabulary/mstatus/c> a bf:Status ;
-    rdfs:label "changed" .
-
-<http://id.loc.gov/vocabulary/mstatus/uba> a bf:Status ;
-    rdfs:label "used by assigner" .
-
-<http://id.loc.gov/vocabulary/msupplcont/bibliography> a bf:SupplementaryContent ;
-    rdfs:label "bibliography" .
-
-<http://id.loc.gov/vocabulary/msupplcont/index> a bf:SupplementaryContent ;
-    rdfs:label "index" .
-
-<http://id.loc.gov/vocabulary/organizations/tmv> a bf:Organization ;
-    rdfs:label "United States, Veterans Administration Hospital" .
-
-<http://id.loc.gov/vocabulary/relators/ctb> a bf:Role ;
-    rdfs:label "Contributor" .
-
-<http://id.loc.gov/rwo/agents/n79128015-781> a madsrdf:Geographic ;
-    rdfs:label "Brazil" ;
-    bflc:marcKey "181  $zBrazil" .
-
-<http://id.loc.gov/vocabulary/organizations/dlc> a bf:Organization ;
-    rdfs:label "United States, Library of Congress" .
-
-<http://id.loc.gov/authorities/subjects> a bf:Source,
-        madsrdf:MADSScheme ;
-    rdfs:label """Library of
-            Congress Subject Headings"""@en .
+            madsrdf:code "PZ7.1.W619" ] ;
+    madsrdf:elementList ( [ a madsrdf:FullNameElement ;
+                madsrdf:elementValue "Wohlleben, Peter," ] [ a madsrdf:DateNameElement ;
+                madsrdf:elementValue "1964-" ] ) ;
+    madsrdf:hasCloseExternalAuthority <http://id.worldcat.org/fast/1973529>,
+        <http://www.wikidata.org/entity/Q2079095> ;
+    madsrdf:hasExactExternalAuthority <http://viaf.org/viaf/sourceID/LC%7Cno2011070109#skos:Concept> ;
+    madsrdf:hasSource [ a madsrdf:Source ;
+            madsrdf:citationNote "t.p. (Peter Wohlleben) cover flap (b. 1964)" ;
+            madsrdf:citationSource "Evolution 2.0, 2010:" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "CIP title page (Peter Wohlleben) LAC CIP application (born June 3, 1964; German)" ;
+            madsrdf:citationSource "The secret wisdom of nature, 2019:" ;
+            madsrdf:citationStatus "found" ],
+        [ a madsrdf:Source ;
+            madsrdf:citationNote "jacket (spent over twenty years working for the forestry commission in Germany before leaving to put his ideas about ecology into practice)" ;
+            madsrdf:citationSource "The hidden life of trees, [2016]:" ;
+            madsrdf:citationStatus "found" ] ;
+    madsrdf:identifiesRWO <http://id.loc.gov/rwo/agents/no2011070109>,
+        <https://d-nb.info/gnd/13378195X>,
+        <https://isni.org/isni/0000000119501022> ;
+    madsrdf:isMemberOfMADSCollection <http://id.loc.gov/authorities/names/collection_LCNAF>,
+        <http://id.loc.gov/authorities/names/collection_NamesAuthorizedHeadings> ;
+    madsrdf:isMemberOfMADSScheme <http://id.loc.gov/authorities/names> ;
+    skos:changeNote [ a cs:ChangeSet ;
+            cs:changeReason "revised"^^xsd:string ;
+            cs:createdDate "2024-05-11T09:45:03"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/dlc> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/names/no2011070109> ],
+        [ a cs:ChangeSet ;
+            cs:changeReason "new"^^xsd:string ;
+            cs:createdDate "2011-05-04T00:00:00"^^xsd:dateTime ;
+            cs:creatorName <http://id.loc.gov/vocabulary/organizations/njp> ;
+            cs:subjectOfChange <http://id.loc.gov/authorities/names/no2011070109> ] ;
+    skos:closeMatch <http://id.worldcat.org/fast/1973529>,
+        <http://www.wikidata.org/entity/Q2079095> ;
+    skos:exactMatch <http://viaf.org/viaf/sourceID/LC%7Cno2011070109#skos:Concept> ;
+    skos:inScheme <http://id.loc.gov/authorities/names> ;
+    skos:prefLabel "Wohlleben, Peter, 1964-" .
 

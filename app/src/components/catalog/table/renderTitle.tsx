@@ -13,28 +13,14 @@ type Title = {
 
 }
 
-export function RenderTitle(props: GridRenderCellParams<any, Title>) {
+export function RenderTitle(props: GridRenderCellParams<any, string>) {
     const { hasFocus, value } = props;
-    // console.log(hasFocus, value)
-    return (
-        <Box
-            sx={{
-                // display: "flex",
-                // alignItems: "center",
-                // gap: "5px",
-                // flexDirection: "column"
-                // cursor: "pointer",
-            }}
-        >
-            {/* <Link href={"/admin"}> */}
-            <Typography
-                variant="subtitle2"
-                sx={{ fontSize: "12px" }}
-            >
-                {value?.mainTitle}
-            </Typography>
-            {/* </Link> */}
 
+    return (
+        <Box sx={{pt: 3}}>
+            <Typography variant="h6" component="h6">
+                {value}
+            </Typography>
         </Box>
     );
 }

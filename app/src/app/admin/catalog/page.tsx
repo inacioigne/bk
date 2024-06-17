@@ -17,7 +17,7 @@ import {
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // React Hooks
-import { useState, useEffect, FormEvent } from "react";
+import { ChangeEvent, useState, useEffect, FormEvent } from "react";
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
@@ -32,9 +32,10 @@ import { FaBookOpenReader } from "react-icons/fa6";
 import { SearchCatalog } from "@/services/catalog/searchCatalog";
 
 // Providers BiblioKeia
-// import { useParmasAutority } from "@/providers/paramsAuthority";
+import { useFieldArray, useWatch, Controller } from "react-hook-form";
 
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 const previousPaths = [
     {
@@ -62,6 +63,13 @@ export default function Catalog() {
         );
     }, [])
 
+    const { register, control, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = (data: any) => {
+        console.log(data);
+    };
+
+
+
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
             <BreadcrumbsBK
@@ -72,26 +80,58 @@ export default function Catalog() {
             <Paper elevation={3} sx={{
                 p: "15px", mt: "10px"
             }}>
-                <form >
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={2}>
                         <Grid item xs={2}>
-                            <FormControl fullWidth>
-                                <InputLabel id="field-label">Filtro</InputLabel>
-                                <Select
-                                    labelId="field-label"
-                                    id="field-select"
-                                    value={field}
-                                    label="Filtro" >
-                                    <MenuItem value="search_general">Todos</MenuItem>
-                                    <MenuItem value="authority">Nome Autorizado</MenuItem>
-                                    <MenuItem value="fullerName">Nome completo</MenuItem>
-                                    <MenuItem value="variant">Variantes</MenuItem>
-                                    <MenuItem value="organization">Afiliação</MenuItem>
-                                </Select>
-                            </FormControl>
+                            <Controller
+                                name="filter"
+                                control={control}
+                                defaultValue="search_general"
+                                render={({ field }) => (
+                                    <FormControl fullWidth>
+                                        <InputLabel id="select-label">Filtro</InputLabel>
+                                        <Select
+                                            labelId="select-label"
+                                            label="Filtro"
+                                            {...field}
+                                            error={!!errors.option}
+                                        >
+                                            <MenuItem value="search_general">Todos</MenuItem>
+                                            <MenuItem value="title">Título</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                )}
+                            />
                         </Grid>
                         <Grid item xs={7}>
-                            <TextField
+                            <Controller
+                                name="search"
+                                control={control}
+                                defaultValue=""
+                                rules={{ required: 'Este campo é obrigatório', minLength: { value: 3, message: 'Mínimo de 3 caracteres' } }}
+                                render={({ field }) => (
+                                    <TextField
+                                        label="Busca"
+                                        {...field}
+                                        error={!!errors.textField}
+                                        fullWidth
+                                        InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                        color="primary"
+                                                        aria-label="Search"
+                                                        type="submit"
+                                                    >
+                                                        <FcSearch />
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                    />
+                                )}
+                            />
+                            {/* <TextField
                                 label="Busca"
                                 variant="outlined"
                                 fullWidth
@@ -108,7 +148,7 @@ export default function Catalog() {
                                         </InputAdornment>
                                     ),
                                 }}
-                            />
+                            /> */}
                         </Grid>
                         <Grid
                             item

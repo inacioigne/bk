@@ -346,7 +346,7 @@ export async function ParserData(response: any, uri: string) {
           });
           let [label] = obj[`${mads}authoritativeLabel`];
           let uri = {
-            authority: { label: label["@value"], base: "loc", uri: obj["@id"] },
+            authority: { label: label["@value"], base: "loc", value: obj["@id"] },
           };
           return uri;
         }

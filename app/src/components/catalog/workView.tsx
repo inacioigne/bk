@@ -68,10 +68,7 @@ export default function WorkView({ work }: Props) {
         setOpen(false);
     };
 
-    // const handleEdit = () => {
-    //     console.log(work)
-    //     // setOpen(false);
-    // };
+   console.log(work)
 
     return (
         <>
@@ -123,7 +120,7 @@ export default function WorkView({ work }: Props) {
                                             <Box>
                                                 <Chip
                                                     key={index}
-                                                    label={contribution.label}
+                                                    label={contribution.contribution_label}
                                                     variant="outlined"
                                                     color="primary"
                                                     size="small"
@@ -140,7 +137,7 @@ export default function WorkView({ work }: Props) {
                                         </Typography>
                                         <Box>
                                             <Chip
-                                                label={work.contribution.label}
+                                                label={work.contribution.contribution_label}
                                                 variant="outlined"
                                                 color="primary"
                                                 size="small"

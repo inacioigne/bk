@@ -1,5 +1,6 @@
 // BiblioKeia Services
 import { solr } from "@/services/solr";
+import { SolrCatalog } from "@/types/solrCatalog";
 
 // import { useProgress } from "@/providers/progress";
 
@@ -17,15 +18,21 @@ function TransformFacet(facets: any) {
   return listFacets;
 }
 
-function ParserDoc(docs: any) {
-  const r = docs.map((doc: any, index: number) => {
-    let title = {mainTitle: doc.mainTitle, subtitle: doc.subtitle}
-    // let authors = {name: doc.contribution}
+function ParserDoc(docs: SolrCatalog[]) {
+  const r = docs.map((doc, index) => {
+    let [title] = doc.mainTitle
+    // let title = {mainTitle: doc.mainTitle, subtitle: doc.subtitle}
+    let [firstInstance] = doc.hasInstance
+    // console.log(doc.contribution)
+    
+
     return { 
-      id: doc.id, 
+      id: doc.id.split("#")[1], 
+      cover: firstInstance.image,
       title: title, 
       authors: doc.contribution,
-      type: doc.type };
+      subjects: doc.subject,
+      hasInstance: doc.hasInstance };
   });
   return r
 
@@ -49,9 +56,9 @@ export function SearchCatalog(
     .then(function (response) { 
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
+      console.log("RES:", response.data)
       let r = ParserDoc(docs)
-     
-      // console.log("RES:", response.data)
+      
 
       setRows(r);
     })

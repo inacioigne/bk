@@ -32,22 +32,12 @@ export default function BfSelect(
         const label = commonType.find((option: any) => option.value === event.target.value)?.label;
 
         let i = event.target.name.split(".")[1]
-
-        // if (nameField == 'contribution') {
-        //     setValue(`${nameField}.${index}.role.label`, label)
-        // } else {
-        //     console.log(`${nameField}.${index}.${subfield.name}.label`)
-        //     setValue(`${nameField}.${index}.${subfield.name}.label`, label)
-        // }
         if (index) {
             setValue(`${nameField}.${index}.${subfield.name}.label`, label)
         } else {
             setValue(`${nameField}.${subfield.name}.label`, label)
-        }
-
-        
+        }        
     };
-
 
     return (
         <Controller
@@ -63,7 +53,6 @@ export default function BfSelect(
                         {...field}
                         onChange={(event) => handleChangeSelect(event, { field: field, commonType: commonType })}
                     >
-
                         {commonType.map((e: any, index: number) =>
                         (<MenuItem
                             key={e.value}

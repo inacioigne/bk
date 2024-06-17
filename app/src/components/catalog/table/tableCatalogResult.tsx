@@ -22,17 +22,20 @@ import { RenderTitle } from "@/components/catalog/table/renderTitle"
 import { RenderCover } from "@/components/catalog/table/renderCover"
 import { RenderAuthors } from "@/components/catalog/table/renderAuthors"
 
-
-
-
-
 // Nextjs
 import { useRouter } from 'next/navigation'
 // import Link from 'next/link'
 
 // Providers BiblioKeia
 import { useProgress } from "@/providers/progress";
-// import { useParmasAutority } from "@/providers/paramsAuthority"
+import { useDemoData } from '@mui/x-data-grid-generator';
+import { title } from "process";
+import {
+  GridRenderCellParams,
+} from "@mui/x-data-grid";
+import { RenderId } from "./renderId";
+import { RenderInstances } from "./renderInstances";
+import { RenderSubjects } from "./renderSubjects";
 
 interface Props {
   rows: any[];
@@ -42,68 +45,125 @@ interface Props {
   // setFacetType: Function;
 }
 
+export function RenderTest(props: GridRenderCellParams) {
+  const { hasFocus, value } = props;
+
+  return (
+    <div>{value}</div>
+  );
+}
+
 export function TableCatalogResult(
   { rows, rowCount, setRows, setRowCount,
   }: Props) {
+  const VISIBLE_FIELDS = ['name', 'rating', 'country', 'dateCreated', 'isAdmin'];
+  const { data } = useDemoData({
+    dataSet: 'Employee',
+    visibleFields: VISIBLE_FIELDS,
+    rowLength: 10,
+  });
+  // console.log(data)
 
   const router = useRouter()
 
   const { setProgress } = useProgress();
 
+  // const columns: GridColDef[] = [
+  //   {
+  //     field: "cover",
+  //     width: 140,
+  //     renderHeader: () => "",
+  //     renderCell: RenderCover,
+  //   },
+  //   {
+  //     field: "title",
+  //     flex: 2,
+  //     renderHeader: () => <strong>{"Título"}</strong>,
+  //     renderCell: RenderTitle,
+  //   },
+  //   {
+  //     field: "authors",
+  //     flex: 1,
+  //     renderHeader: () => <strong>{"Autores"}</strong>,
+  //     renderCell: RenderAuthors,
+  //   },
+  //   {
+  //     field: "year",
+  //     flex: 1,
+  //     renderHeader: () => <strong>{"Ano"}</strong>,
+  //     // renderCell: RenderType,
+  //   },
+  // ];
+
   const columns: GridColDef[] = [
     {
       field: "cover",
+      width: 140,
       renderHeader: () => "",
       renderCell: RenderCover,
     },
     {
       field: "title",
-      flex: 2,
       renderHeader: () => <strong>{"Título"}</strong>,
       renderCell: RenderTitle,
+      flex: 2
     },
     {
       field: "authors",
-      flex: 1,
-      renderHeader: () => <strong>{"Autores"}</strong>,
+      renderHeader: () => <strong>{"Autoria"}</strong>,
       renderCell: RenderAuthors,
+      flex: 1
     },
     {
-      field: "year",
-      flex: 1,
-      renderHeader: () => <strong>{"Ano"}</strong>,
-      // renderCell: RenderType,
+      field: "subjects",
+      renderHeader: () => <strong>{"Assunto"}</strong>,
+      renderCell: RenderSubjects,
+      flex: 1
     },
-  ];
+    {
+      field: "hasInstance",
+      renderHeader: () => <strong>{"Edições"}</strong>,
+      renderCell: RenderInstances,
+      width: 300
+    }
+  ]
 
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
     pageSize: 5,
   });
 
-  return <DataGrid
-    rows={rows}
-    getRowHeight={() => 'auto'}
-    rowCount={rowCount}
-    onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
-      setProgress(true)
-      let id = params.id.replace('work#', '')
-      // console.log("ID: ", id)
 
-      router.push(`/admin/catalog/${id}`)
-    }}
-    columns={columns}
-    paginationModel={paginationModel}
-    paginationMode="server"
-    onPaginationModelChange={(paginationModel) => {
-      // console.log(paginationModel)
-      let page = paginationModel.page == 0 ? 0 : paginationModel.page + 4
-      // paramsAuthority.set('start', page)
-      // SearchSubjects(paramsAuthority, setRows, setRowCount, setFacetType);
-      setPaginationModel(paginationModel)
-    }}
-    pageSizeOptions={[5]}
-    sx={{ cursor: "pointer"}}
-  />;
+  return <div style={{ height: 'auto', width: '100%' }}>
+    <DataGrid
+      columns={columns}
+      rows={rows}
+      getRowHeight={() => 'auto'}
+    />
+  </div>
+
+  // return <DataGrid
+  //   rows={rows}
+  //   getRowHeight={() => 'auto'}
+  //   rowCount={rowCount}
+  //   onRowClick={(params: GridRowParams, event: MuiEvent, details: GridCallbackDetails) => {
+  //     setProgress(true)
+  //     let id = params.id.replace('work#', '')
+  //     // console.log("ID: ", id)
+  //     router.push(`/admin/catalog/${id}`)
+  //   }}
+  //   columns={columns}
+  //   paginationModel={paginationModel}
+  //   paginationMode="server"
+  //   onPaginationModelChange={(paginationModel) => {
+  //     // console.log(paginationModel)
+  //     let page = paginationModel.page == 0 ? 0 : paginationModel.page + 4
+  //     // paramsAuthority.set('start', page)
+  //     // SearchSubjects(paramsAuthority, setRows, setRowCount, setFacetType);
+  //     setPaginationModel(paginationModel)
+  //   }}
+  //   pageSizeOptions={[5]}
+  //   sx={{ cursor: "pointer" }}
+  // />;
 
 }

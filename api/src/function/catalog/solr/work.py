@@ -36,7 +36,7 @@ def DocWork(request):
         for i in request.contribution:
             c = {"id": f"{work_id}/contribution/authority#{i.authority.value.split('/')[-1]}",
                  "uri": i.authority.value,
-                 "label": i.authority.label,
+                 "contribution_label": i.authority.label,
                  "role": i.role.value,
                  "roleLabel": i.role.label}
             contributions.append(c)
@@ -49,7 +49,7 @@ def DocWork(request):
             s = {"id": f"{work_id}/subject/authority#{i.authority.value.split('/')[-1]}",
                  "type": i.type.value,
                  "uri": i.authority.value,
-                 "label": i.authority.label,
+                 "subject_label": i.authority.label,
                  "lang": i.lang.label
                  }
             subjects.append(s)

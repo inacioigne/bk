@@ -4,7 +4,7 @@ const nextConfig = {
         domains: [
           'localhost', 
           "m.media-amazon.com",
-          "commons.wikimedia.org", "upload.wikimedia.org"]
+          "commons.wikimedia.org", "upload.wikimedia.org", "encrypted-tbn0.gstatic.com"]
       }
 }
 

@@ -1,6 +1,7 @@
 import { bkapi } from "@/services/api";
 
 export async function CheckLoc(arrLoc: any) {
+  
   let arr = await arrLoc.map(async (e: any) => {
     let uri = e.authority.value;
     let aUri = uri.split("/");
