@@ -20,19 +20,26 @@ function TransformFacet(facets: any) {
 
 function ParserDoc(docs: SolrCatalog[]) {
   const r = docs.map((doc, index) => {
-    let [title] = doc.mainTitle
-    // let title = {mainTitle: doc.mainTitle, subtitle: doc.subtitle}
-    let [firstInstance] = doc.hasInstance
-    // console.log(doc.contribution)
+    let [mainTitle] = doc.mainTitle
+    let subtitle = doc?.subtitle ? doc.subtitle[0] : false
+    let id = doc.id.split("#")[1]
+    let title = {
+      href: id,
+      mainTitle: mainTitle,
+      subtitle: subtitle
+    }
+    let hasInstance = doc?.hasInstance ? doc.hasInstance: false
+    
+    // console.log(doc)
     
 
     return { 
       id: doc.id.split("#")[1], 
-      cover: firstInstance.image,
+      cover: hasInstance ? hasInstance[0].image : false,
       title: title, 
       authors: doc.contribution,
       subjects: doc.subject,
-      hasInstance: doc.hasInstance };
+      hasInstance: hasInstance };
   });
   return r
 
@@ -44,22 +51,14 @@ export function SearchCatalog(
   setRowCount:Function,
   // setFacetType: Function
 ) {
-  // console.log(params.toString())
 
-  // params.getAll('fq').includes("isMemberOfMADSCollection:subjects") && params.delete("fq", "isMemberOfMADSCollection:subjects")
-
-  // if (!params.getAll('fq').includes("isMemberOfMADSCollection:names")) {
-  //   params.append("fq", "isMemberOfMADSCollection:names");    
-  // }
 
   solr.get("catalog/query?", {params: params})
     .then(function (response) { 
       const docs = response.data.response.docs;
       setRowCount(response.data.response.numFound)
-      console.log("RES:", response.data)
-      let r = ParserDoc(docs)
-      
-
+      // console.log("RES:", response.data)
+      let r = ParserDoc(docs)    
       setRows(r);
     })
     .catch(function (error) {

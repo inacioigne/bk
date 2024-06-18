@@ -68,8 +68,6 @@ export default function Catalog() {
         console.log(data);
     };
 
-
-
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>
             <BreadcrumbsBK
@@ -131,24 +129,7 @@ export default function Catalog() {
                                     />
                                 )}
                             />
-                            {/* <TextField
-                                label="Busca"
-                                variant="outlined"
-                                fullWidth
-                                InputProps={{
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                color="primary"
-                                                aria-label="Search"
-                                                type="submit"
-                                            >
-                                                <FcSearch />
-                                            </IconButton>
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            /> */}
+                       
                         </Grid>
                         <Grid
                             item

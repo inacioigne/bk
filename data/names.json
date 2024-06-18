@@ -233,5 +233,175 @@
             }
         ],
         "identifiersLccn": "n95007556"
+    },
+    {
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Authority",
+                    "label": "Authority"
+                }
+            },
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                }
+            }
+        ],
+        "isMemberOfMADSCollection": [
+            {
+                "collection": {
+                    "value": "names",
+                    "label": "Nomes"
+                }
+            }
+        ],
+        "elementList": [
+            {
+                "elementType": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                    "label": "FullNameElement"
+                },
+                "elementValue": "Bruno, Ana Carla"
+            }
+        ],
+        "authoritativeLabel": {
+            "value": "Bruno, Ana Carla"
+        },
+        "fullerName": {
+            "value": "Ana Carla dos Santos"
+        },
+        "hasVariant": [
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "Santos Bruno, Ana Carla dos"
+                    }
+                ]
+            },
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "Dos Santos Bruno, Ana Carla"
+                    }
+                ]
+            }
+        ],
+        "hasAffiliation": [
+            {
+                "authority": {
+                    "base": "loc",
+                    "value": "http://id.loc.gov/authorities/names/n82139358",
+                    "label": "Instituto Nacional de Pesquisas da Amazônia"
+                }
+            }
+        ],
+        "identifiersLccn": "no2011002402"
+    },
+    {
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Authority",
+                    "label": "Authority"
+                }
+            },
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                }
+            }
+        ],
+        "isMemberOfMADSCollection": [
+            {
+                "collection": {
+                    "value": "names",
+                    "label": "Nomes"
+                }
+            }
+        ],
+        "elementList": [
+            {
+                "elementType": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                    "label": "FullNameElement"
+                },
+                "elementValue": "Carmo Gomes, Simone do"
+            }
+        ],
+        "authoritativeLabel": {
+            "value": "Carmo Gomes, Simone do"
+        },
+        "hasVariant": [
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "Gomes, Simone do Carmo"
+                    }
+                ]
+            },
+            {
+                "typeVariant": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
+                    "label": "PersonalName"
+                },
+                "elementList": [
+                    {
+                        "elementType": {
+                            "value": "http://www.loc.gov/mads/rdf/v1#FullNameElement",
+                            "label": "FullNameElement"
+                        },
+                        "elementValue": "do Carmo Gomes, Simone"
+                    }
+                ]
+            }
+        ],
+        "identifiersLccn": "no2016168377"
     }
 ]

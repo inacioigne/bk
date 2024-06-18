@@ -50,6 +50,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     const data = await getData(params.id);
     const [doc] = data.response.docs;
+    console.log(doc)
 
     return (
         <Container maxWidth="xl" sx={{ py: "1rem" }}>

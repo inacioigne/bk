@@ -49,7 +49,6 @@ function CustomTabPanel(props: TabPanelProps) {
 export default function FormMadsSubjects(
     { authority }: Props
 ) {
-    // console.log(authority)
     const router = useRouter()
     const [panel, setPanel] = useState(0);
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();

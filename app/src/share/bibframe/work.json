@@ -330,8 +330,8 @@
     "subject": [
       {
         "type": {
-          "value": "",
-          "label": ""
+          "value": "Topic",
+          "label": "Termo Tópico"
         },
         "authority": {
           "value": "",
@@ -339,8 +339,8 @@
           "base": ""
         },
         "lang": {
-          "value": "",
-          "label": ""
+          "value": "por",
+          "label": "Português"
         }
       }
     ],
@@ -431,6 +431,10 @@
       {
         "label": "Autor",
         "value": "http://id.loc.gov/vocabulary/relators/aut"
+      },
+      {
+        "label": "Organizador",
+        "value": "http://id.loc.gov/vocabulary/relators/org"
       },
       {
         "label": "Tradutor",

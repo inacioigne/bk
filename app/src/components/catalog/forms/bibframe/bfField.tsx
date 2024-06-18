@@ -28,10 +28,20 @@ const appendField: any = {
         }
     },
     subject: {
-        type: "Topic",
-        term: { value: "" },
-        lang: ""
-    },
+        "type": {
+          "value": "Topic",
+          "label": "Termo Tópico"
+        },
+        "authority": {
+          "value": "",
+          "label": "",
+          "base": ""
+        },
+        "lang": {
+          "value": "por",
+          "label": "Português"
+        }
+      },
     variant: {
         typeVariant: 'PersonalName',
         elementList: [
@@ -49,10 +59,10 @@ const appendField: any = {
         ]
     },
     resource: {
-        type: {value: "", label: ""}
+        type: { value: "", label: "" }
     },
     illustrativeContent: {
-        millus: {value: "", label: ""}
+        millus: { value: "", label: "" }
     }
 }
 
@@ -70,7 +80,6 @@ export default function BfField(
 
     const addField = () => {
         let appendValue = appendField[`${field.name}`] ? appendField[`${field.name}`] : { value: "" }
-        // console.log(field)
         append(appendValue)
     };
 

@@ -68,7 +68,7 @@ export default function WorkView({ work }: Props) {
         setOpen(false);
     };
 
-   console.log(work)
+//    console.log(work)
 
     return (
         <>
@@ -165,7 +165,7 @@ export default function WorkView({ work }: Props) {
                                             <Box>
                                                 <Chip
                                                     key={index}
-                                                    label={subject.label}
+                                                    label={subject.subject_label}
                                                     variant="outlined"
                                                     color="primary"
                                                     size="small"
@@ -180,13 +180,12 @@ export default function WorkView({ work }: Props) {
                                             {work.subject.type}
                                         </Typography>
                                         <Chip
-                                            label={work.subject.label}
+                                            label={work.subject.subject_label}
                                             variant="outlined"
                                             color="primary"
                                             size="small"
                                             sx={{ cursor: "pointer" }}
                                         />
-
                                     </Box>
                                 )}
                             </Box>

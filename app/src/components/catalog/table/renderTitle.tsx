@@ -8,19 +8,24 @@ import {
 import Link from "next/link";
 
 type Title = {
-    mainTitle: string,
+    href: string
+    mainTitle: string
     subtitle: string
 
 }
 
-export function RenderTitle(props: GridRenderCellParams<any, string>) {
-    const { hasFocus, value } = props;
+export function RenderTitle(props: GridRenderCellParams<any, Title>) {
+    const { value } = props;
+    // console.log(value)
 
     return (
+        <Link href={`/admin/catalog/${value?.href}`}>
         <Box sx={{pt: 3}}>
-            <Typography variant="h6" component="h6">
-                {value}
+            <Typography variant="subtitle1" component="p">
+                {value?.mainTitle} {value?.subtitle}
             </Typography>
         </Box>
+        </Link>
+        
     );
 }

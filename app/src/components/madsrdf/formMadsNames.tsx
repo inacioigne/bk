@@ -108,7 +108,9 @@ export default function FormMadsNames(
                     valor.forEach(element => {
                         RemovePropreites(element)
                     })
-                    if (Object.keys(valor[0]).length === 0) {
+                    if (valor.length === 0) {
+                        delete obj[chave]
+                    } else if (Object.keys(valor[0]).length === 0) {
                         delete obj[chave]
                     }
                 } else {
@@ -121,6 +123,7 @@ export default function FormMadsNames(
         }
         RemoveEmpty(data)
         console.log("Dt", data)
+        
         bkapi
             .post("/thesarus/create", data, {
                 headers: headers,

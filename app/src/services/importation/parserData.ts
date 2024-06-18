@@ -458,7 +458,6 @@ export async function ParserData(response: any, uri: string) {
     if (metadado.hasOwnProperty(`${mads}hasAffiliation`)) {
       let affiliations = ParserAffiliation(metadado[`${mads}hasAffiliation`], data)
       authority["hasAffiliation"]  = affiliations
-      // console.log(affiliations);
     } else {
       authority["hasAffiliation"] = [
         {
@@ -494,8 +493,11 @@ export async function ParserData(response: any, uri: string) {
         } else {
           let [label] = obj["http://www.w3.org/2000/01/rdf-schema#label"];
           let objOcc: any = {
-            label: label["@value"],
-            base: "loc",
+            authority: {
+              label: "",
+              base: "",
+              value: "",
+            },
           };
           return objOcc;
         }

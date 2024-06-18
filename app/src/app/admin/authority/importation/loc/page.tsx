@@ -52,7 +52,6 @@ export default function LOC() {
       LocAuthority(setHit, uri)
     }
   }, [])
-  // console.log(hit.type)
 
   return (
     <Container maxWidth="xl">

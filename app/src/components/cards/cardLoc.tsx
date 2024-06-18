@@ -191,7 +191,7 @@ export default function CardLoc({ hit, setHit, setForm }: Props) {
           )}
 
           {/* hasAffiliation */}
-          { hit?.hasAffiliation && hit?.hasAffiliation[0].authority.uri !== "" && (
+          { hit?.hasAffiliation && hit?.hasAffiliation[0].label !== "" && (
             <Grid item xs={6}>
               <HasAffiliation hasAffiliation={hit.hasAffiliation} />
             </Grid>

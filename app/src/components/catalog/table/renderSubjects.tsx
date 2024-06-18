@@ -12,7 +12,7 @@ export function RenderSubjects(props: GridRenderCellParams) {
             <Box sx={{ mt: 2, display: "flex", gap: 1, flexDirection: "column"}} >
                 { value.map((contribution, index) => (
                     <div key={index}>
-                        <Chip  label={contribution.label} sx={{ backgroundColor: amber[500]}} size="small"/>
+                        <Chip  label={contribution.subject_label} sx={{ backgroundColor: amber[500]}} size="small"/>
                     </div>
                 ))}
             </Box>
@@ -20,7 +20,7 @@ export function RenderSubjects(props: GridRenderCellParams) {
     } else {
         return (
             <Box sx={{ mt: 2}}>
-                <Chip label={value.label} sx={{ backgroundColor: amber[500]}} size="small"/>
+                <Chip label={value.subject_label} sx={{ backgroundColor: amber[500]}} size="small"/>
             </Box>
         );
     }

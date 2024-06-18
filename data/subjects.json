@@ -387,5 +387,103 @@
             }
         ],
         "identifiersLccn": "sh85048726"
+    },
+    {
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Authority",
+                    "label": "Authority"
+                }
+            },
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Topic",
+                    "label": "Topic"
+                }
+            }
+        ],
+        "isMemberOfMADSCollection": [
+            {
+                "collection": {
+                    "value": "subjects",
+                    "label": "Assuntos"
+                }
+            }
+        ],
+        "elementList": [
+            {
+                "elementType": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#TopicElement",
+                    "label": "TopicElement"
+                },
+                "elementValue": "Arte plumária",
+                "elementLang": {
+                    "value": "por"
+                }
+            }
+        ],
+        "authoritativeLabel": {
+            "value": "Arte plumária"
+        }
+    },
+    {
+        "adminMetadata": {
+            "status": {
+                "value": "http://id.loc.gov/vocabulary/mstatus/n",
+                "label": "Novo"
+            },
+            "descriptionConventions": {
+                "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+                "label": "AACr"
+            }
+        },
+        "resource": [
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Authority",
+                    "label": "Authority"
+                }
+            },
+            {
+                "type": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#Topic",
+                    "label": "Topic"
+                }
+            }
+        ],
+        "isMemberOfMADSCollection": [
+            {
+                "collection": {
+                    "value": "subjects",
+                    "label": "Assuntos"
+                }
+            }
+        ],
+        "elementList": [
+            {
+                "elementType": {
+                    "value": "http://www.loc.gov/mads/rdf/v1#TopicElement",
+                    "label": "TopicElement"
+                },
+                "elementValue": "Povo Kagwahíva",
+                "elementLang": {
+                    "value": "por"
+                }
+            }
+        ],
+        "authoritativeLabel": {
+            "value": "Povo Kagwahíva"
+        }
     }
 ]

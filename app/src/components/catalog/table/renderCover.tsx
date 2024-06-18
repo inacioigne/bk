@@ -6,7 +6,6 @@ import Image from 'next/image'
 
 export function RenderCover(props: GridRenderCellParams<any, String>) {
     const { value } = props;
-    // console.log(props)
     return (
         <Box
             sx={{
@@ -15,7 +14,7 @@ export function RenderCover(props: GridRenderCellParams<any, String>) {
         >
             <Image
                 alt="cover"
-                src={value as string}
+                src={value ? value as string : '/cover.png'}
                 width={100}
                 height={130}
             />

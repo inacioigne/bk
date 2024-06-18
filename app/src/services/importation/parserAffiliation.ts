@@ -15,7 +15,7 @@ export function ParserAffiliation(hasAffiliation: any, data: any) {
     let [metadado] = data.filter(function (elemento: any) {
       return elemento["@id"] === id;
     });
-    
+
     let [org] = metadado[`${mads}organization`];
     let orgId = org["@id"];
     let [organization] = data.filter(function (elemento: any) {
@@ -29,25 +29,34 @@ export function ParserAffiliation(hasAffiliation: any, data: any) {
       authority["value"] = uri;
       authority["label"] = label["@value"];
       objOrg["authority"] = authority;
+
+      // affiliationStart
+      if (metadado.hasOwnProperty(`${mads}affiliationStart`)) {
+        let [start] = metadado[`${mads}affiliationStart`];
+        objOrg["affiliationStart"] = start["@value"];
+      } else {
+        objOrg["affiliationStart"] = "";
+      }
+      // affiliationEnd
+      if (metadado.hasOwnProperty(`${mads}affiliationEnd`)) {
+        let [end] = metadado[`${mads}affiliationEnd`];
+        objOrg["affiliationEnd"] = end["@value"];
+      } else {
+        objOrg["affiliationEnd"] = "";
+      }
     } else {
-      let [label] = organization["http://www.w3.org/2000/01/rdf-schema#label"];
-      objOrg["label"] = label["@value"];
-    }
-    // affiliationStart
-    if (metadado.hasOwnProperty(`${mads}affiliationStart`)) {
-      let [start] = metadado[`${mads}affiliationStart`];
-      objOrg["affiliationStart"] = start["@value"];
-    } else {
+      // let [label] = organization["http://www.w3.org/2000/01/rdf-schema#label"];
+      // objOrg["label"] = label["@value"];
+      objOrg["authority"] = {
+        base: "",
+        value: "",
+        label: "",
+      };
       objOrg["affiliationStart"] = "";
-    }
-    // affiliationEnd
-    if (metadado.hasOwnProperty(`${mads}affiliationEnd`)) {
-      let [end] = metadado[`${mads}affiliationEnd`];
-      objOrg["affiliationEnd"] = end["@value"];
-    } else {
       objOrg["affiliationEnd"] = "";
     }
+
     return objOrg;
   });
-  return affiliations
+  return affiliations;
 }

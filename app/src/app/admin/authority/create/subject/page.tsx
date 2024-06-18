@@ -43,7 +43,7 @@ const defaultValues = {
         {
             "type": {
                 "value": "http://www.loc.gov/mads/rdf/v1#PersonalName",
-                "label": "PersonalName"
+                "label": "Topic"
             }
         }
     ],
@@ -80,7 +80,7 @@ const defaultValues = {
     "hasReciprocalAuthority": [
         {
             "authority": {
-                "uri": "",
+                "value": "",
                 "label": "",
                 "base": ""
             }
@@ -89,7 +89,7 @@ const defaultValues = {
     "hasBroaderAuthority": [
         {
             "authority": {
-                "uri": "",
+                "value": "",
                 "label": "",
                 "base": ""
             }
@@ -98,7 +98,7 @@ const defaultValues = {
     "hasNarrowerAuthority": [
         {
             "authority": {
-                "uri": "",
+                "value": "",
                 "label": "",
                 "base": ""
             }
@@ -129,7 +129,7 @@ const defaultValues = {
         {
             "label": "",
             "base": "",
-            "uri": ""
+            "value": ""
         }
     ]
 }

@@ -6,12 +6,13 @@ import Link from "next/link";
 
 export function RenderAuthors(props: GridRenderCellParams) {
     const { value } = props;
+    // console.log(value)
     if (Array.isArray(value)) {
         return (
             <Box sx={{ mt: 2, display: "flex", gap: 1, flexDirection: "column"}} >
                 { value.map((contribution, index) => (
                     <div key={index}>
-                        <Chip  label={contribution.label} color="primary" size="small"/>
+                        <Chip  label={contribution.contribution_label} color="primary" size="small"/>
                     </div>
                     
                 ))}
@@ -20,7 +21,7 @@ export function RenderAuthors(props: GridRenderCellParams) {
     } else {
         return (
             <Box sx={{ mt: 2}}>
-                <Chip label={value.label} color="primary" size="small"/>
+                <Chip label={value.contribution_label} color="primary" size="small"/>
             </Box>
         );
     }

@@ -56,46 +56,15 @@ export function RenderTest(props: GridRenderCellParams) {
 export function TableCatalogResult(
   { rows, rowCount, setRows, setRowCount,
   }: Props) {
-  const VISIBLE_FIELDS = ['name', 'rating', 'country', 'dateCreated', 'isAdmin'];
-  const { data } = useDemoData({
-    dataSet: 'Employee',
-    visibleFields: VISIBLE_FIELDS,
-    rowLength: 10,
-  });
-  // console.log(data)
 
   const router = useRouter()
 
   const { setProgress } = useProgress();
 
-  // const columns: GridColDef[] = [
-  //   {
-  //     field: "cover",
-  //     width: 140,
-  //     renderHeader: () => "",
-  //     renderCell: RenderCover,
-  //   },
-  //   {
-  //     field: "title",
-  //     flex: 2,
-  //     renderHeader: () => <strong>{"Título"}</strong>,
-  //     renderCell: RenderTitle,
-  //   },
-  //   {
-  //     field: "authors",
-  //     flex: 1,
-  //     renderHeader: () => <strong>{"Autores"}</strong>,
-  //     renderCell: RenderAuthors,
-  //   },
-  //   {
-  //     field: "year",
-  //     flex: 1,
-  //     renderHeader: () => <strong>{"Ano"}</strong>,
-  //     // renderCell: RenderType,
-  //   },
-  // ];
-
   const columns: GridColDef[] = [
+    {
+      field: "id",
+    },
     {
       field: "cover",
       width: 140,
@@ -112,7 +81,7 @@ export function TableCatalogResult(
       field: "authors",
       renderHeader: () => <strong>{"Autoria"}</strong>,
       renderCell: RenderAuthors,
-      flex: 1
+      flex: 2
     },
     {
       field: "subjects",

@@ -19,7 +19,6 @@ def DocInstance(request):
     doc = {
         "id": instance_id,
         "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%SZ"), 
-        # request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%S"),
         "type": [i.type.value for i in request.resource],
         "mainTitle": request.title.mainTitle,
         "subtitle": request.title.subtitle if request.title.subtitle != "" else None,
@@ -27,7 +26,7 @@ def DocInstance(request):
         "extent": request.physicalDetails.extent,
         "issuance": request.physicalDetails.issuance.label,
         "media": request.physicalDetails.media.label,
-        "publicationAgent": provisionActivity.place.label,
+        "publicationAgent": provisionActivity.agent.label,
         "publicationDate": provisionActivity.date,
         "publicationPlace": provisionActivity.place.label,      
         # "serie": request.seriesStatement,

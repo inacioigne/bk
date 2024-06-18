@@ -58,7 +58,9 @@ export default async function Create({ params }: { params: { work: string } }) {
         const defaultValues = bibframe['defaultValues']
         defaultValues.instanceOf.value = work_url
         const [mainTitle] = doc.mainTitle
+        const subtitle = doc?.subtitle ? doc?.subtitle[0] : ""
         defaultValues.title.mainTitle = mainTitle
+        defaultValues.title.subtitle = subtitle
         return defaultValues
     }
 
