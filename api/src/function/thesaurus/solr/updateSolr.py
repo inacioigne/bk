@@ -13,8 +13,8 @@ def UpdateSolr(request):
     if request.hasReciprocalAuthority:
         for i in request.hasReciprocalAuthority:
             if i.authority.base == 'bk':
-                id = i.authority.uri.split("/")[-1]
-                res = solr.search(q=f"id:{id}", fl="*,[child]")
+                id = i.authority.value.split("/")[-1]
+                res = solr.search(q=f"id:authority#{id}", fl="*,[child]")
                 [doc] = res.docs
                 hasReciprocalAuthority = doc.get('hasReciprocalAuthority')
                 if hasReciprocalAuthority:

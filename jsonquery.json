@@ -1,0 +1,5 @@
+{
+    "query": "*:*" ,
+    "filter": "{!parent which=isPartOf:Work}contribution_label:\"Val, Adalberto Luís\""
+  }
+  

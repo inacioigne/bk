@@ -12,7 +12,8 @@ import {
     IconButton,
     Divider,
     Button,
-    Alert
+    Alert,
+    Collapse
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
@@ -36,6 +37,9 @@ import { useFieldArray, useWatch, Controller } from "react-hook-form";
 
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import FacetContribution from "@/components/facets/facetContribution";
+import BtnRefine from "@/components/catalog/btnRefine";
+import FacetSubject from "@/components/facets/facetSubject";
 
 const previousPaths = [
     {
@@ -45,27 +49,80 @@ const previousPaths = [
     }
 ];
 
+interface Buckets {
+    val: string
+    count: number
+}
+
 export default function Catalog() {
     const [field, setField] = useState("search_general");
+    const [facet, setFacet] = useState(null);
     const [rows, setRows] = useState([]);
     const [rowCount, setRowCount] = useState(5);
     const [params, setParams] = useState(new URLSearchParams());
+    const [refine, setRefine] = useState(false);
+    const [checked, setChecked] = useState([]);
+    const [filters, setFilters] = useState([]);
+
 
     useEffect(() => {
         params.set("q", "*:*");
         params.set("fq", "isPartOf:Work");
         params.set("fl", "*,[child]");
+        let facet = JSON.stringify({
+            contribution: {
+                domain: { blockChildren: "type:Work" },
+                type: 'terms',
+                field: 'contribution_label_str',
+                limit: -1,
+                facet: {
+                    uri: {
+                        type: "terms",
+                        field: "uri"
+                    }
+                }
+            },
+            subject: {
+                domain: { blockChildren: "type:Work" },
+                type: 'terms',
+                field: 'subject_label_str',
+                limit: -1,
+                facet: {
+                    uri: {
+                        type: "terms",
+                        field: "uri"
+                    }
+                }
+            }
+        })
+        params.set('json.facet', facet)
+        // console.log(facet)
         setParams(params)
         SearchCatalog(
             params,
             setRows,
-            setRowCount
+            setRowCount,
+            setFacet
         );
     }, [])
 
     const { register, control, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data: any) => {
-        console.log(data);
+        if (data.filter.includes('label')) {
+            params.set("q", `{!parent which=isPartOf:Work}${data.filter}:${data.search}`);
+            console.log(data);
+        } else {
+            params.set("q", `${data.filter}:${data.search}`);
+        }
+
+        setParams(params)
+        SearchCatalog(
+            params,
+            setRows,
+            setRowCount,
+            setFacet
+        );
+
     };
 
     return (
@@ -95,7 +152,9 @@ export default function Catalog() {
                                             error={!!errors.option}
                                         >
                                             <MenuItem value="search_general">Todos</MenuItem>
-                                            <MenuItem value="title">Título</MenuItem>
+                                            <MenuItem value="mainTitle">Título Principal</MenuItem>
+                                            <MenuItem value="contribution_label">Autor</MenuItem>
+                                            <MenuItem value="subject_label">Assunto</MenuItem>
                                         </Select>
                                     </FormControl>
                                 )}
@@ -129,7 +188,7 @@ export default function Catalog() {
                                     />
                                 )}
                             />
-                       
+
                         </Grid>
                         <Grid
                             item
@@ -164,7 +223,54 @@ export default function Catalog() {
                 <Divider sx={{ mt: "10px" }} />
                 <Box sx={{ mt: "10px" }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={2}>Refine sua busca:</Grid>
+                        <Grid item xs={2}>
+                            <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                <Box>
+                                    <p>Refine sua busca:</p>
+                                    {facet?.contribution &&
+                                        <FacetContribution
+                                            facet={facet}
+                                            buckets={facet?.contribution.buckets}
+                                            setParams={setParams}
+                                            params={params}
+                                            setRows={setRows}
+                                            setRowCount={setRowCount}
+                                            setFacet={setFacet}
+                                            setRefine={setRefine}
+                                            checked={checked}
+                                            setChecked={setChecked}
+                                            filters={filters}
+                                            setFilters={setFilters} />}
+                                    {facet?.subject &&
+                                        <FacetSubject
+                                            facet={facet}
+                                            buckets={facet?.subject.buckets}
+                                            setParams={setParams}
+                                            params={params}
+                                            setRows={setRows}
+                                            setRowCount={setRowCount}
+                                            setFacet={setFacet}
+                                            setRefine={setRefine}
+                                            checked={checked}
+                                            setChecked={setChecked}
+                                            filters={filters}
+                                            setFilters={setFilters} />}
+                                </Box>
+                                <BtnRefine
+                                    refine={refine}
+                                    setRefine={setRefine}
+                                    params={params}
+                                    setParams={setParams}
+                                    setRows={setRows}
+                                    setRowCount={setRowCount}
+                                    setFacet={setFacet}
+                                    checked={checked}
+                                    setChecked={setChecked}
+                                    filters={filters}
+                                    setFilters={setFilters} />
+
+                            </Box>
+                        </Grid>
                         {rows.length > 0 ? (
                             <Grid item xs={10} >
                                 <TableCatalogResult

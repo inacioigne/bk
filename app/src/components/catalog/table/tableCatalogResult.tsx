@@ -9,7 +9,7 @@ import {
   // GridRenderCellParams,
 } from "@mui/x-data-grid";
 // import { Avatar, Box } from "@mui/material";
-import { GridRowParams, MuiEvent, GridCallbackDetails } from '@mui/x-data-grid';
+import { GridRowParams, MuiEvent, GridCallbackDetails, GridCellParams, GridValueGetter } from '@mui/x-data-grid';
 
 // React Icons
 // import { TbUserSearch } from "react-icons/tb";
@@ -36,6 +36,7 @@ import {
 import { RenderId } from "./renderId";
 import { RenderInstances } from "./renderInstances";
 import { RenderSubjects } from "./renderSubjects";
+import GetTitle from "./getTitile";
 
 interface Props {
   rows: any[];
@@ -53,6 +54,8 @@ export function RenderTest(props: GridRenderCellParams) {
   );
 }
 
+
+
 export function TableCatalogResult(
   { rows, rowCount, setRows, setRowCount,
   }: Props) {
@@ -63,9 +66,6 @@ export function TableCatalogResult(
 
   const columns: GridColDef[] = [
     {
-      field: "id",
-    },
-    {
       field: "cover",
       width: 140,
       renderHeader: () => "",
@@ -75,6 +75,7 @@ export function TableCatalogResult(
       field: "title",
       renderHeader: () => <strong>{"Título"}</strong>,
       renderCell: RenderTitle,
+      valueGetter: GetTitle,
       flex: 2
     },
     {
@@ -102,12 +103,18 @@ export function TableCatalogResult(
     pageSize: 5,
   });
 
+  const handleCellClick = (params: GridCellParams) => {
+    console.log(params)
+
+  }
+
 
   return <div style={{ height: 'auto', width: '100%' }}>
     <DataGrid
       columns={columns}
       rows={rows}
       getRowHeight={() => 'auto'}
+      // onCellClick={handleCellClick}
     />
   </div>
 
