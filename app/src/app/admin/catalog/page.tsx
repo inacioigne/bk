@@ -13,12 +13,15 @@ import {
     Divider,
     Button,
     Alert,
-    Collapse
+    useScrollTrigger,
+    Slide,
+    Typography
 } from "@mui/material";
+import { grey, purple } from '@mui/material/colors';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // React Hooks
-import { ChangeEvent, useState, useEffect, FormEvent } from "react";
+import React, { ChangeEvent, useState, useEffect, FormEvent, useRef, MutableRefObject } from "react";
 
 // BiblioKeia Components
 import BreadcrumbsBK from "@/components/nav/breadcrumbs";
@@ -40,6 +43,8 @@ import { useForm } from "react-hook-form";
 import FacetContribution from "@/components/facets/facetContribution";
 import BtnRefine from "@/components/catalog/btnRefine";
 import FacetSubject from "@/components/facets/facetSubject";
+import FacetYear from "@/components/facets/facetYear";
+import FacetCatalog from "@/components/facets/facetCatalog";
 
 const previousPaths = [
     {
@@ -52,29 +57,71 @@ const previousPaths = [
 interface Buckets {
     val: string
     count: number
+    uri: { buckets: Buckets[] }
 }
+interface Facets {
+    contribution: { buckets: Buckets[] }
+    subject: { buckets: Buckets[] }
+    year: { buckets: Buckets[] }
+}
+const useIntersectionObserver = (
+    options: IntersectionObserverInit
+): [MutableRefObject<HTMLDivElement | null>, boolean] => {
+    const [isIntersecting, setIsIntersecting] = useState(false);
+    const ref = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsIntersecting(entry.isIntersecting);
+        }, options);
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, [ref, options]);
+
+    return [ref, isIntersecting];
+};
+
+
 
 export default function Catalog() {
+    const elementRef = useRef(null);
     const [field, setField] = useState("search_general");
-    const [facet, setFacet] = useState(null);
+    const [facet, setFacet] = useState<Facets | null>(null);
     const [rows, setRows] = useState([]);
     const [rowCount, setRowCount] = useState(5);
     const [params, setParams] = useState(new URLSearchParams());
     const [refine, setRefine] = useState(false);
     const [checked, setChecked] = useState([]);
     const [filters, setFilters] = useState([]);
+    const [clear, setClear] = useState(false);
+
+
+    const [ref, isVisible] = useIntersectionObserver({
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+    });
 
 
     useEffect(() => {
         params.set("q", "*:*");
         params.set("fq", "isPartOf:Work");
         params.set("fl", "*,[child]");
+        params.set("rows", "5");
         let facet = JSON.stringify({
             contribution: {
                 domain: { blockChildren: "type:Work" },
                 type: 'terms',
                 field: 'contribution_label_str',
-                limit: -1,
+                limit: 10,
                 facet: {
                     uri: {
                         type: "terms",
@@ -86,7 +133,19 @@ export default function Catalog() {
                 domain: { blockChildren: "type:Work" },
                 type: 'terms',
                 field: 'subject_label_str',
-                limit: -1,
+                limit: 10,
+                facet: {
+                    uri: {
+                        type: "terms",
+                        field: "uri"
+                    }
+                }
+            },
+            "year": {
+                "domain": { "blockChildren": "type:Work" },
+                "type": "terms",
+                "field": "publicationDate",
+                "limit": 10,
                 facet: {
                     uri: {
                         type: "terms",
@@ -96,7 +155,6 @@ export default function Catalog() {
             }
         })
         params.set('json.facet', facet)
-        // console.log(facet)
         setParams(params)
         SearchCatalog(
             params,
@@ -104,9 +162,10 @@ export default function Catalog() {
             setRowCount,
             setFacet
         );
+
     }, [])
 
-    const { register, control, handleSubmit, formState: { errors } } = useForm();
+    const { setValue, control, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data: any) => {
         if (data.filter.includes('label')) {
             params.set("q", `{!parent which=isPartOf:Work}${data.filter}:${data.search}`);
@@ -125,16 +184,48 @@ export default function Catalog() {
 
     };
 
+    const handleClear = () => {
+        params.delete('fq')
+        params.set("fq", "isPartOf:Work");
+        SearchCatalog(
+            params,
+            setRows,
+            setRowCount,
+            setFacet
+        );
+        setClear(false)
+        setChecked([])
+    }
+
+    const handleClearSearch = () => {
+        setValue('search', '')
+        params.set("q", "*:*");
+        params.delete('fq')
+        params.set("fq", "isPartOf:Work");
+        SearchCatalog(
+            params,
+            setRows,
+            setRowCount,
+            setFacet
+        );
+        setClear(false)
+        setChecked([])
+    }
+
+
     return (
-        <Container maxWidth="xl" sx={{ py: "1rem" }}>
+        <Container maxWidth="xl" sx={{ py: "1rem" }}
+            ref={elementRef}>
             <BreadcrumbsBK
                 previousPaths={previousPaths}
                 currentPath="Catálogo"
             />
-            <Divider sx={{ mt: "10px" }} />
-            <Paper elevation={3} sx={{
-                p: "15px", mt: "10px"
-            }}>
+            <Paper
+                elevation={3}
+                sx={{
+                    p: "15px", mt: "10px"
+                }}
+            >
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={2}>
                         <Grid item xs={2}>
@@ -188,7 +279,6 @@ export default function Catalog() {
                                     />
                                 )}
                             />
-
                         </Grid>
                         <Grid
                             item
@@ -223,69 +313,102 @@ export default function Catalog() {
                 <Divider sx={{ mt: "10px" }} />
                 <Box sx={{ mt: "10px" }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={2}>
-                            <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                                <Box>
-                                    <p>Refine sua busca:</p>
-                                    {facet?.contribution &&
-                                        <FacetContribution
-                                            facet={facet}
-                                            buckets={facet?.contribution.buckets}
-                                            setParams={setParams}
-                                            params={params}
-                                            setRows={setRows}
-                                            setRowCount={setRowCount}
-                                            setFacet={setFacet}
-                                            setRefine={setRefine}
-                                            checked={checked}
-                                            setChecked={setChecked}
-                                            filters={filters}
-                                            setFilters={setFilters} />}
-                                    {facet?.subject &&
-                                        <FacetSubject
-                                            facet={facet}
-                                            buckets={facet?.subject.buckets}
-                                            setParams={setParams}
-                                            params={params}
-                                            setRows={setRows}
-                                            setRowCount={setRowCount}
-                                            setFacet={setFacet}
-                                            setRefine={setRefine}
-                                            checked={checked}
-                                            setChecked={setChecked}
-                                            filters={filters}
-                                            setFilters={setFilters} />}
-                                </Box>
-                                <BtnRefine
-                                    refine={refine}
-                                    setRefine={setRefine}
-                                    params={params}
-                                    setParams={setParams}
-                                    setRows={setRows}
-                                    setRowCount={setRowCount}
-                                    setFacet={setFacet}
-                                    checked={checked}
-                                    setChecked={setChecked}
-                                    filters={filters}
-                                    setFilters={setFilters} />
-
-                            </Box>
-                        </Grid>
                         {rows.length > 0 ? (
-                            <Grid item xs={10} >
-                                <TableCatalogResult
-                                    rows={rows}
-                                    rowCount={rowCount}
-                                    setRowCount={setRowCount}
-                                    setRows={setRows}
-                                />
-                            </Grid>
+                            <>
+                                <Grid item xs={2}>
+                                    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                        <Box>
+                                            <Box sx={{ display: 'flex' }}>
+                                                <Typography variant="subtitle1" gutterBottom>
+                                                    Refine sua busca:
+                                                </Typography>
+                                                {clear && <Button
+                                                    size="small"
+                                                    sx={{ textTransform: 'none' }}
+                                                    onClick={handleClear}
+                                                >
+                                                    Limpar Filtros
+                                                </Button>}
+
+                                            </Box>
+                                            {facet?.contribution &&
+                                                <FacetCatalog
+                                                    type={"contribution"}
+                                                    label={"Autores"}
+                                                    buckets={facet.contribution.buckets}
+                                                    checked={checked}
+                                                    filters={filters}
+                                                    setFilters={setFilters}
+                                                    setChecked={setChecked}
+                                                    setRefine={setRefine}
+                                                />}
+                                            {facet?.subject &&
+                                                <FacetCatalog
+                                                    type={"subject"}
+                                                    label={"Assuntos"}
+                                                    buckets={facet.subject.buckets}
+                                                    checked={checked}
+                                                    filters={filters}
+                                                    setFilters={setFilters}
+                                                    setChecked={setChecked}
+                                                    setRefine={setRefine}
+                                                />}
+                                            {facet?.year?.buckets && facet.year.buckets.length > 0 &&
+                                                <FacetCatalog
+                                                    type={"year"}
+                                                    label={"Ano"}
+                                                    buckets={facet.year.buckets}
+                                                    checked={checked}
+                                                    filters={filters}
+                                                    setFilters={setFilters}
+                                                    setChecked={setChecked}
+                                                    setRefine={setRefine}
+                                                />}
+                                        </Box>
+                                        <div ref={ref}>
+                                        </div>
+                                        <Box
+                                            sx={isVisible ?
+                                                { position: "relative" } :
+                                                { position: "fixed", bottom: 0, pb: 1, pr: 1, bgcolor: grey[50] }
+                                            }
+                                        >
+                                            <BtnRefine
+                                                refine={refine}
+                                                setRefine={setRefine}
+                                                params={params}
+                                                setParams={setParams}
+                                                setRows={setRows}
+                                                setRowCount={setRowCount}
+                                                setFacet={setFacet}
+                                                checked={checked}
+                                                setChecked={setChecked}
+                                                filters={filters}
+                                                setFilters={setFilters}
+                                                setClear={setClear}
+                                            />
+                                        </Box>
+                                    </Box>
+                                </Grid>
+                                <Grid item xs={10} >
+                                    <TableCatalogResult
+                                        rows={rows}
+                                        rowCount={rowCount}
+                                        setRowCount={setRowCount}
+                                        setRows={setRows}
+                                        params={params}
+                                        setParams={setParams}
+                                        setFacet={setFacet}
+                                    />
+                                </Grid>
+                            </>
                         ) : (
-                            <Grid item xs={10}>
-                                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                            <Grid item xs={12}>
+                                <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
                                     <Alert severity="info">
                                         Sua busca não retorno nenhum resultado.
                                     </Alert>
+                                    <Button variant="outlined" onClick={handleClearSearch}>Limpar Busca</Button>
                                 </Box>
                             </Grid>
                         )}

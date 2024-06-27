@@ -1,6 +1,8 @@
+"use client"
 import { SearchCatalog } from "@/services/catalog/searchCatalog";
 import { Box, Button, Collapse, Divider } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { grey } from '@mui/material/colors';
 
 interface Props {
     refine: boolean
@@ -14,6 +16,7 @@ interface Props {
     setChecked: Function
     filters: string[]
     setFilters: Function
+    setClear: Function
 }
 
 export default function BtnRefine({
@@ -27,12 +30,9 @@ export default function BtnRefine({
     checked,
     setChecked,
     filters,
-    setFilters }: Props) {
-
-    useEffect(() => {
-
-
-    }, [params])
+    setFilters,
+    setClear }: Props) {
+    
     const handleExclude = () => {
         filters.forEach(filter => {
             if (!params.has('fq', `{!parent which=isPartOf:Work}uri:"${filter.uri}"`)) {
@@ -51,7 +51,7 @@ export default function BtnRefine({
         params.append("fq", stringFilters);
         setParams(params)
         console.log(filters)
-        console.log(params.getAll('fq'))
+        
         SearchCatalog(
             params,
             setRows,
@@ -61,32 +61,27 @@ export default function BtnRefine({
         setChecked([])
         setRefine(false)
     }
+
     const handleLimit = (params: URLSearchParams, filters: any[]) => () => {
         let fqs = new Array
         filters.forEach(filter => {
             let fq = `{!parent which=isPartOf:Work}uri:"${filter.uri}"`
             fqs.push(fq)
             filter['status'] = 'active'
-            // if (filter.status === 'inative') {
-            //     fqs.push(fq)
-            //     filter['status'] = 'active'
-            // }
         });
         let stringFilters = `(${fqs.join(' OR ')})`
         params.delete('fq')
         params.append("fq", 'isPartOf:Work');
         params.append("fq", stringFilters);
         setParams(params)
-        // console.log(filters)
-        // 
         SearchCatalog(
             params,
             setRows,
             setRowCount,
             setFacet
         );
+        console.log(params.getAll('fq'))
         const newChecked = filters.map((filter, index) => {
-            // console.log(filter)
             if (filter.status === 'active') {
                 return filter.uri
             } else {
@@ -95,7 +90,9 @@ export default function BtnRefine({
         })
         setChecked(newChecked)
         setRefine(false)
+        setClear(true)
     }
+
     const handleCancel = () => {
         console.log(filters)
         const newChecked = filters.map((filter) => {
@@ -112,8 +109,9 @@ export default function BtnRefine({
 
 
     return (
-        <Collapse in={refine}>
-            <Box sx={refine ? { display: 'block' } : { display: 'none' }}>
+        <Collapse in={refine} >
+            <Box
+                sx={refine ? { display: 'block' } : { display: 'none' }}>
                 <Divider sx={{ mb: 1 }} />
                 <Box sx={{ display: 'flex', gap: 1 }}>
                     <Button
@@ -128,7 +126,6 @@ export default function BtnRefine({
                         size="small"
                         sx={{ textTransform: 'none' }}
                         onClick={handleExclude}
-
                     >
                         Excluir
                     </Button>

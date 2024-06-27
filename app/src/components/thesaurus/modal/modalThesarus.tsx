@@ -62,8 +62,6 @@ interface Props {
 
 export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField, nameSubField }: Props) {
 
-    // console.log("SUB: ", thesaurus.name)  
-
     const [openCreate, setOpenCreate] = useState(false)
 
     const handleClose = () => {
@@ -94,8 +92,6 @@ export default function ModalThesarus({ setOpen, setValue, thesaurus, nameField,
                         nameField={nameField} 
                         setOpen={setOpen}
                         nameSubField={nameSubField} />
-
-
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancelar</Button>

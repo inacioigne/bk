@@ -21,7 +21,6 @@ export default function BfSubField(
     
 
     if (subfield.thesarus) {
-        // console.log("T: ", subfield)
         return (
             <BfTextfieldThesarus
                 name={name}

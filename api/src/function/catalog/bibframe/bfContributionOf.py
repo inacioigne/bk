@@ -7,7 +7,7 @@ fuseki = FusekiUpdate(settings.fuseki, 'bk')
 solr = Solr(f'{settings.solr}/solr/authority/', timeout=10)
 
 
-def UpdateFusekiWork(authoritys, id, bibframe):
+def UpdateFusekiWork(authoritys, id, bibframe): 
 
     uri = f"{settings.base_url}/works/{id}"
     for authority in authoritys:

@@ -1,0 +1,33 @@
+.main {
+    margin-top: 60px;
+    width: calc(100% - 260px);
+    /* height: calc(100vh - 60px); */
+    /* overflow: auto; */
+    flex-grow: 1;
+    /* border: solid; */
+   /*  backgroundColor: "background.bgBk"; */
+
+  }
+  
+  .parent {
+    position: relative;
+    min-height: 100vh;
+    /* Outros estilos */
+  }
+  
+  .content {
+    /* Estilos para o conteúdo da div pai */
+  }
+  
+  .footer {
+    width: 100%;
+    background-color: #f1f1f1;
+    /* Outros estilos */
+  }
+  
+  .sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  

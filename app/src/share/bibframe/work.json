@@ -445,6 +445,10 @@
       {
         "label": "Termo Tópico",
         "value": "Topic"
+      },
+      {
+        "label": "Termo Geográfico",
+        "value": "Geographic"
       }
     ],
     "language": [

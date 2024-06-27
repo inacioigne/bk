@@ -54,7 +54,7 @@ export function SearchCatalog(
       const facets = response.data.facets
       setFacet(facets)
       setRowCount(response.data.response.numFound);
-      console.log("RES:", facets)
+      // console.log("RES:", facets)
       let r = ParserDoc(docs);
       setRows(r);
       // params.delete('fq')

@@ -2,6 +2,8 @@ from src.function.thesaurus.solr.hasAffiliationDoc import HasAffiliationDoc
 from src.function.thesaurus.solr.hasVariantDoc import HasVariantDoc
 from src.function.thesaurus.solr.birthDoc import BirthDoc
 from src.function.thesaurus.solr.deathDoc import DeathDoc
+from src.schemas.settings import Settings
+settings = Settings()
 
 def MakeDoc(request):
     authority = request.elementList[0].elementValue
@@ -10,6 +12,7 @@ def MakeDoc(request):
 
     doc = { 
             'id': f'authority#{request.adminMetadata.identifiedBy}',
+            'uri': f'{settings.base_url}/authorities/{request.adminMetadata.identifiedBy}',
             'type': [i.type.label for i in request.resource],
             "creationDate": request.adminMetadata.creationDate.strftime('%Y-%m-%d'), 
             # "label": request.authoritativeLabel.value,

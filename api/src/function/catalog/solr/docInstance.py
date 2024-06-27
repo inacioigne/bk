@@ -18,6 +18,7 @@ def DocInstance(request):
 
     doc = {
         "id": instance_id,
+        "uri": f'{settings.base_url}/instances/{instance_id}',
         "creationDate": request.adminMetadata.creationDate.strftime("%Y-%m-%dT%H:%M:%SZ"), 
         "type": [i.type.value for i in request.resource],
         "mainTitle": request.title.mainTitle,

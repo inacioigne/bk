@@ -18,7 +18,7 @@ interface Props {
     setFilters: Function
 }
 
-export default function FacetSubject({
+export default function FacetYear({
     facet,
     setRefine,
     checked,
@@ -37,16 +37,14 @@ export default function FacetSubject({
         } else {
             newChecked.splice(currentIndex, 1);
             filters.splice(currentIndex, 1);
-            // console.log("e",filters)
         }
-        // console.log(newChecked)
         setChecked(newChecked);
         setFilters(filters)
         newChecked.length > 0 ? setRefine(true) : setRefine(false)
     };
 
     return (
-        <Box sx={{mt: 1}}>
+        <Box>
             <Accordion
                 defaultExpanded
             >
@@ -61,31 +59,33 @@ export default function FacetSubject({
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <List dense >
-                        {facet.subject.buckets.map((bucket, index) => (
-                            <ListItem
-                                key={index}
-                                secondaryAction={bucket.count}
-                                disablePadding
-                                dense
-                            >
-                                <ListItemButton dense onClick={handleToggle(bucket, index)} >
-                                    <ListItemIcon sx={{ minWidth: 0 }}>
-                                        <Checkbox
-                                            edge="start"
-                                            checked={checked.indexOf(bucket.uri.buckets[0].val) !== -1}
-                                            disableRipple
-                                        />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={bucket.val}
-                                    />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
+                <List dense >
+                {facet.year.buckets.map((bucket, index) => (
+                    <ListItem
+                        key={index}
+                        secondaryAction={bucket.count}
+                        disablePadding
+                        dense
+                    >
+                        <ListItemButton dense
+                            onClick={handleToggle(bucket, index)} >
+                            <ListItemIcon sx={{ minWidth: 0 }}>
+                                <Checkbox
+                                    edge="start"
+                                    checked={checked.indexOf(bucket.uri.buckets[0].val) !== -1}
+                                    // disableRipple
+                                />
+                            </ListItemIcon>
+                            <ListItemText
+                                primary={bucket.val}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
                 </AccordionDetails>
-            </Accordion>
+            </Accordion>            
         </Box>
+
     )
 }

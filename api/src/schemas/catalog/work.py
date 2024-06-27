@@ -13,7 +13,7 @@ class ResourceProperties(BaseModel):
 
 class Contribution(BaseModel):
     authority: BfElement
-    role: BfElement
+    role: Optional[BfElement] = None
 
 class Subject(BaseModel):
     type: BfElement

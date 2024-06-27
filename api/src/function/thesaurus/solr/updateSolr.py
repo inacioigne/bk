@@ -70,13 +70,12 @@ def UpdateSolr(request):
                             "hasReciprocalAuthority": { "set": [obj] } }
                     docs.append(hra)
                     
-
     # hasNarrowerAuthority
     if request.hasNarrowerAuthority:
         for i in request.hasNarrowerAuthority:
             if i.authority.base == "bk":
-                id = i.authority.uri.split("/")[-1]
-                res = solr.search(q=f"id:{id}", fl="*,[child]")
+                id = i.authority.value.split("/")[-1]
+                res = solr.search(q=f"id:authority#{id}", fl="*,[child]")
                 [doc] = res.docs
                 hasBroaderAuthority = doc.get('hasBroaderAuthority')
                 if hasBroaderAuthority:

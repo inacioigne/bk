@@ -62,15 +62,14 @@ export default function DeleteItem({ id, type, isMemberOfMADSCollection }: Props
       id: id,
       type: type,
     };
-    
-
     const headers = {
       "Content-Type": "application/json",
     };
-    // console.log(data)
+    console.log(data)
 
     bkapi
-      .delete("/thesarus/delete", { data, headers })
+      .delete(`/thesarus/delete/${id}`) 
+        // { data, headers })
       .then(function (response) {
         // console.log(response);
         if (response.status === 200) {

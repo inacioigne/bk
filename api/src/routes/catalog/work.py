@@ -2,7 +2,6 @@ from fastapi import APIRouter, HTTPException
 from src.function.catalog.work.editWork import EditWork
 from src.function.catalog.work.deleteWork import DeleteWork
 from src.function.catalog.markeCreateSparql import MakeCreateSparql
-# from src.function.catalog.work.parserRequestWork import ParserRequestWork
 from src.schemas.catalog.work import BfWork, BfWorkEdit
 from src.db.models import DbWork
 from src.db.init_db import session

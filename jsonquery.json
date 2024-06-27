@@ -1,5 +1,38 @@
 {
-    "query": "*:*" ,
-    "filter": "{!parent which=isPartOf:Work}contribution_label:\"Val, Adalberto Luís\""
+  "contribution": {
+    "domain": { "blockChildren": "type:Work" },
+    "type": "terms",
+    "field": "contribution_label_str",
+    "limit": 5,
+    "facet": {
+      "uri": {
+        "type": "terms",
+        "field": "uri"
+      }
+    }
+  },
+  "subject": {
+    "domain": { "blockChildren": "type:Work" },
+    "type": "terms",
+    "field": "subject_label_str",
+    "limit": -1,
+    "facet": {
+      "uri": {
+        "type": "terms",
+        "field": "uri"
+      }
+    }
+  },
+  "year": {
+    "domain": { "blockChildren": "type:Work" },
+    "type": "terms",
+    "field": "publicationDate",
+    "limit": -1,
+    "facet": {
+      "uri": {
+        "type": "terms",
+        "field": "uri"
+      }
+    }
   }
-  
+}

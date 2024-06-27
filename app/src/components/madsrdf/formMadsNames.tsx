@@ -49,7 +49,6 @@ function CustomTabPanel(props: TabPanelProps) {
 export default function FormMadsNames(
     { authority }: Props
 ) {
-    // console.log("a", authority)
     const router = useRouter()
     const [panel, setPanel] = useState(0);
     const { setOpenSnack, setMessage, setTypeAlert } = useAlert();
@@ -122,7 +121,7 @@ export default function FormMadsNames(
             });
         }
         RemoveEmpty(data)
-        console.log("Dt", data)
+        // console.log("Dt", data)
         
         bkapi
             .post("/thesarus/create", data, {

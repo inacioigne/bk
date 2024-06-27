@@ -11,6 +11,7 @@ import { Suspense, useState } from "react";
 
 import { useProgress } from "@/providers/progress";
 import { useAlert } from "@/providers/alert";
+import styles from '@/app/admin/page.module.css'
 
 export default function AdminLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -51,13 +52,16 @@ export default function AdminLayout({ children }) {
         sx={{
           mt: "60px",
           width: "calc(100% - 260px)",
-          height: "calc(100vh - 60px)",
+          // height: "calc(100vh - 60px)",
           overflow: "auto",
           flexGrow: 1,
-          backgroundColor: "background.bgBk",
         }}
       >
-        {children}
+      {/* <main className={styles.main} > */}
+      {children}
+
+      {/* </main> */}
+       
       </Box>
     </Box>
   );

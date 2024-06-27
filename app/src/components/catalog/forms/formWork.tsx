@@ -8,8 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 
 // BiblioKeia Components
-// import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarus";
-// import { typeMetadata } from "@/schema/fieldMetadata";
+
 
 // BiblioKeia Service
 import { bkapi } from "@/services/api";
@@ -79,7 +78,6 @@ export default function FormWork() {
     const handleChangePanel = (event: React.SyntheticEvent, newValue: number) => {
         setPanel(newValue);
     };
-    // console.log(bibframe.defaultValues)
 
     const {
         control,
@@ -104,7 +102,6 @@ export default function FormWork() {
 
     function CreateWork(data: any) {
         setProgress(true)
-
         RemoveEmpty(data)
         console.log("DT", data)
         

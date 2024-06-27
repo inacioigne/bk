@@ -68,9 +68,10 @@ async def post_authority(request: SchemaMads):
 
 # Delete Autority
 @router.delete("/delete", status_code=200) 
-async def delete_authority(request: SchemaDeleteAuthority ):
+async def delete_authority(id: str):
+    # request: SchemaDeleteAuthority ):
     # Jena
-    authority = f'https://bibliokeia.com/authority/{request.type.value}/{request.id}'
+    authority = f'{settings.base_url}/authorities/{id}'
     d = f"""DELETE {{ graph <{authority}> {{ ?s ?p ?o }} }}
             WHERE {{
             graph <{authority}> {{ ?s ?p ?o. }}
@@ -78,7 +79,7 @@ async def delete_authority(request: SchemaDeleteAuthority ):
     responseJena = authorityUpdate.run_sparql(d)
      
     # Solr
-    r = solr.search(q=f'id:{request.id}', **{'fl': '*,[child]'})
+    r = solr.search(q=f'id:authority#{id}', **{'fl': '*,[child]'})
     [doc] = r.docs
     responseSolr = DeleteAuthoritySolr(doc) 
     response = {'jena': responseJena.convert()['message'], 'solr': responseSolr}

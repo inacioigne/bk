@@ -44,7 +44,7 @@ function MakeSearch(type: String, search: String, setDocs: Function, collection:
 
     solr.get("authority/query?", { params: params })
         .then(function (response) {
-            // console.log("RENames:", response.data)
+            console.log("RENames:", response.data)
             const docs = response.data.response.docs;
             setDocs(docs)
         })
@@ -78,15 +78,22 @@ export default function SearchThesaurus(
         MakeSearch(type, search, setDocs, collection)
     }, [open, openCreate])
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+    // const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    //     event.preventDefault()
+    //     setDoc(null)
+    //     MakeSearch(type, search, setDocs, collection)
+    // };
+
+    const handleSearch = () => {
+        // console.log(type, search, collection)
         setDoc(null)
         MakeSearch(type, search, setDocs, collection)
-    };
+    }
+
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <form onSubmit={handleSubmit}>
+                <form>
                     <Box sx={{ display: "flex", gap: "10px" }}>
                         <FormControl
                             sx={{ width: "30%" }}
@@ -115,18 +122,18 @@ export default function SearchThesaurus(
                             size="small"
                             onChange={(e) => {
                                 setSearch(e.target.value)
-                                // SearchModalNames(type, e.target.value, setDocs)
                             }}
-                            // onKeyDown={(event) => {
-                            //     console.log("ENTER", event)
-                            // }}
+                            onKeyDown={handleSearch}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment
                                         position="start"
                                         sx={{ cursor: "pointer" }}
+                                        // onClick={handleSubmit}
                                     >
-                                        <IconButton >
+                                        <IconButton //type="submit"
+                                        onClick={handleSearch} 
+                                        >
                                             <FcSearch />
                                         </IconButton>
                                     </InputAdornment>

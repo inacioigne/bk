@@ -57,9 +57,6 @@ export default function BfTextfieldThesarus(
         name: `${name}`
     });
 
-    // console.log("T", watchFields[index])
-    // console.log("T", `${name}.${index}.${subfield.name}.value`, watchFields[index][`${subfield.name}`].value)
-
     return (
         <>
             <TextField

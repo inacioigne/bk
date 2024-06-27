@@ -14,6 +14,7 @@ import { NavigationEvents } from "@/components/utils/navigation-events";
 
 // React Hooks
 import { Suspense } from "react";
+import { Box } from "@mui/material";
 // import ProgressBar from "@/components/loadings/progressBar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,12 +35,16 @@ export default function RootLayout({
         <ModeProvider>
           <AlertProvider>
             <ParamsAuthorityProvider>
-              <body className={inter.className}>
+            <Box component="body" sx={{backgroundColor: "background.bgBk"}}>
+
+           
+              {/* <body className={inter.className} style={{ backgroundColor: 'red'}}> */}
                 {children}
                 <Suspense fallback={null}>
                   <NavigationEvents />
                 </Suspense>
-              </body>
+              {/* </body> */}
+              </Box>
             </ParamsAuthorityProvider>
           </AlertProvider>
         </ModeProvider>

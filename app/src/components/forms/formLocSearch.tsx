@@ -17,6 +17,8 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Alert,
+  Button,
 } from "@mui/material";
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
@@ -33,6 +35,7 @@ import { LocAuthority } from "@/services/importation/locAuthority"
 import { FcHome, FcSearch } from "react-icons/fc";
 import { BsPersonCircle } from "react-icons/bs";
 import { MdOutlineSubject, MdChildCare } from "react-icons/md";
+import Link from "next/link";
 
 
 
@@ -78,7 +81,7 @@ export default function FormLCSH(props: Props) {
 
   return (
     <>
-      <form onSubmit={(e) => {e.preventDefault()}}>
+      <form onSubmit={(e) => { e.preventDefault() }}>
         <Paper sx={{ p: "1rem" }}>
           <FormControl fullWidth sx={{ mb: "0.5rem" }}>
             <InputLabel id="label">Selecione uma opção</InputLabel>
@@ -148,9 +151,13 @@ export default function FormLCSH(props: Props) {
 
               </div>
             ) : (
-              <Typography variant="subtitle2" sx={{ p: "5px" }}>
-                Nenhum resultado encontrado
-              </Typography>
+              <Box sx={{ p: 2, display: 'flex', gap:  1 }}>
+                  <Alert severity="warning" sx={{width: '100%'}}>Nenhum resultado encontrado.</Alert>
+                  <Link href={'/admin/authority/create'}>
+                  <Button variant="outlined" size="large" sx={{ textTransform: 'none' }}>Criar</Button>
+                  </Link>
+                
+              </Box>
             )}
           </Paper>
         )

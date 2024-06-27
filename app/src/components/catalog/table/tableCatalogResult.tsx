@@ -38,26 +38,32 @@ import { RenderInstances } from "./renderInstances";
 import { RenderSubjects } from "./renderSubjects";
 import GetTitle from "./getTitile";
 
+// BiblioKeia Services
+import { SearchCatalog } from "@/services/catalog/searchCatalog";
+
 interface Props {
   rows: any[];
   rowCount: number;
   setRows: Function;
   setRowCount: Function;
-  // setFacetType: Function;
+  params: URLSearchParams;
+  setParams: Function
+  setFacet: Function
+
 }
 
-export function RenderTest(props: GridRenderCellParams) {
-  const { hasFocus, value } = props;
+// export function RenderTest(props: GridRenderCellParams) {
+//   const { hasFocus, value } = props;
 
-  return (
-    <div>{value}</div>
-  );
-}
+//   return (
+//     <div>{value}</div>
+//   );
+// }
 
 
 
 export function TableCatalogResult(
-  { rows, rowCount, setRows, setRowCount,
+  { rows, rowCount, setRows, setRowCount, params, setParams, setFacet
   }: Props) {
 
   const router = useRouter()
@@ -81,13 +87,13 @@ export function TableCatalogResult(
     {
       field: "authors",
       renderHeader: () => <strong>{"Autoria"}</strong>,
-      renderCell: RenderAuthors,
+      renderCell: RenderAuthors, 
       flex: 2
     },
     {
       field: "subjects",
       renderHeader: () => <strong>{"Assunto"}</strong>,
-      renderCell: RenderSubjects,
+      renderCell: RenderSubjects, 
       flex: 1
     },
     {
@@ -108,13 +114,30 @@ export function TableCatalogResult(
 
   }
 
-
   return <div style={{ height: 'auto', width: '100%' }}>
     <DataGrid
       columns={columns}
       rows={rows}
+      autoHeight={true}
       getRowHeight={() => 'auto'}
-      // onCellClick={handleCellClick}
+      paginationMode="server"
+      rowCount={rowCount}
+      paginationModel={paginationModel}
+      pageSizeOptions={[5]}
+      onPaginationModelChange={(paginationModel) => {
+        console.log(paginationModel)
+        let page = paginationModel.page == 0 ? 0 : paginationModel.page + 4
+        params.set('start', `${page}`)
+        setParams(params)
+        SearchCatalog(
+          params,
+          setRows,
+          setRowCount,
+          setFacet
+      );
+        setPaginationModel(paginationModel)
+      }}
+
     />
   </div>
 
@@ -140,6 +163,7 @@ export function TableCatalogResult(
   //   }}
   //   pageSizeOptions={[5]}
   //   sx={{ cursor: "pointer" }}
+  // onCellClick={handleCellClick}
   // />;
 
 }

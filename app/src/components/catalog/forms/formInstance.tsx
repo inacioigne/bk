@@ -145,7 +145,6 @@ export default function FormInstance({ defaultValues }: Props) {
             })
             .then(function (response) {
                 if (response.status === 201) {
-                    // console.log("RS", response.data);
                     setTypeAlert("success")
                     setMessage("Registro criado com sucesso!")
                     let uri = data.instanceOf.value.split("/")

@@ -16,6 +16,7 @@ def DocWork(request):
         "changeDate": request.adminMetadata.changeDate.strftime("%Y-%m-%dT%H:%M:%S") if request.adminMetadata.changeDate else None,
         "type": [i.type.value for i in request.resource],
         "mainTitle": request.title.mainTitle,
+        # "variantTitle": request.
         'language': [i.lang.label for i in request.language],
         "subtitle": request.title.subtitle,
         "cdd": request.classification.cdd,
