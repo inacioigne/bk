@@ -36,3 +36,9 @@
     }
   }
 }
+{
+  "type": {
+    "type": "terms",
+    "field": "type"
+  }
+}

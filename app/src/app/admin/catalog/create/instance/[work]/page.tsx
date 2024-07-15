@@ -73,7 +73,6 @@ export default async function Create({ params }: { params: { work: string } }) {
                 previousPaths={previousPaths}
                 currentPath="Catálogo"
             />
-            <Divider sx={{ mt: "10px" }} />
             <Paper
                 elevation={3}
                 sx={{ p: "15px", mt: "10px" }}>

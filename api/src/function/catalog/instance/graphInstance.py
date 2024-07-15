@@ -1,4 +1,5 @@
 from rdflib import URIRef, Namespace, Graph
+from src.function.catalog.bibframe.bfIdentifiedBy import BfIdentifiedBy
 from src.function.catalog.bibframe.bfResponsibilityStatement import BfResponsibilityStatement
 from src.function.catalog.bibframe.bfInstanceOf import BfInstanceOf
 from src.function.catalog.bibframe.bfProvisionActivity import BfProvisionActivity
@@ -26,6 +27,8 @@ def MakeGraphInstance(request):
     g = BfType(g, resource, request.resource)
     # AdminMetadata
     g = BfAdminMetadata(g, request.adminMetadata, resource, BF) 
+    # IdentifiedBy
+    g = BfIdentifiedBy(g, resource, request.identifiedBy, BF)
     # Title
     g = BfTitle(g, request, resource, BF)  
     

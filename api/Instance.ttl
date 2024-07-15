@@ -30,10 +30,10 @@
     bf:identifiedBy [ a bf:Local ;
             bf:assigner <http://id.loc.gov/vocabulary/organizations/ocolc> ;
             rdf:value "ocm71195481" ],
-        [ a bf:Lccn ;
-            rdf:value "  2006452208" ],
         [ a bf:Isbn ;
-            rdf:value "8521100191" ] ;
+            rdf:value "8521100191" ],
+        [ a bf:Lccn ;
+            rdf:value "  2006452208" ] ;
     bf:instanceOf <http://id.loc.gov/resources/works/14562666> ;
     bf:issuance <http://id.loc.gov/vocabulary/issuance/mono> ;
     bf:media <http://id.loc.gov/vocabulary/mediaTypes/n> ;

@@ -2,7 +2,7 @@ import { Box, Divider, Typography, Button } from "@mui/material";
 
 // BiblioKeia Components
 import FormBibframeWork from "@/components/catalog/forms/formBibframeWork"
-import ModalThesarus from "@/components/thesaurus/modal/tmp-modalThesarus";
+import ModalThesarus from "@/components/authorities/modal/tmp-modalThesarus";
 
 // React-Hook-Form
 import { useForm, Controller } from "react-hook-form";

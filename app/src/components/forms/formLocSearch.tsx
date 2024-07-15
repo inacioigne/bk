@@ -148,15 +148,13 @@ export default function FormLCSH(props: Props) {
                     </ListItem>
                   ))}
                 </List>
-
               </div>
             ) : (
-              <Box sx={{ p: 2, display: 'flex', gap:  1 }}>
-                  <Alert severity="warning" sx={{width: '100%'}}>Nenhum resultado encontrado.</Alert>
-                  <Link href={'/admin/authority/create'}>
+              <Box sx={{ p: 2, display: 'flex', gap: 1 }}>
+                <Alert severity="warning" sx={{ width: '100%' }}>Nenhum resultado encontrado.</Alert>
+                <Link href={'/admin/authorities/create'}>
                   <Button variant="outlined" size="large" sx={{ textTransform: 'none' }}>Criar</Button>
-                  </Link>
-                
+                </Link>
               </Box>
             )}
           </Paper>

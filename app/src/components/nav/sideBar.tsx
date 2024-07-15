@@ -147,9 +147,9 @@ export default function SideBar({ open }: Props) {
                                 </ListItemText>
                             </MenuItem>
                         </Link>
-                        <Link href="/admin/authority" >
+                        <Link href="/admin/authorities" >
                             <MenuItem
-                                sx={pathname.includes('authority') ? styleMenuActive : styleMenu}
+                                sx={pathname.includes('authorities') ? styleMenuActive : styleMenu}
                                 onClick={handleClick}
                             >
                                 <ListItemIcon>

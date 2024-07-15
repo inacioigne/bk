@@ -1,8 +1,7 @@
 "use client"
+import { SearchAuthority } from "@/services/authorities/searchAuthority";
 import { SearchCatalog } from "@/services/catalog/searchCatalog";
 import { Box, Button, Collapse, Divider } from "@mui/material";
-// import { useEffect, useState } from "react";
-// import { grey } from '@mui/material/colors';
 
 interface Props {
     refine: boolean
@@ -19,7 +18,7 @@ interface Props {
     setClear: Function
 }
 
-export default function BtnRefine({
+export default function BtnRefineAuthority({
     refine,
     setRefine,
     params,
@@ -32,7 +31,7 @@ export default function BtnRefine({
     filters,
     setFilters,
     setClear }: Props) {
-    
+
     const handleExclude = () => {
         filters.forEach(filter => {
             if (!params.has('fq', `{!parent which=isPartOf:Work}uri:"${filter.uri}"`)) {
@@ -51,7 +50,7 @@ export default function BtnRefine({
         params.append("fq", stringFilters);
         setParams(params)
         console.log(filters)
-        
+
         SearchCatalog(
             params,
             setRows,
@@ -65,16 +64,19 @@ export default function BtnRefine({
     const handleLimit = (params: URLSearchParams, filters: any[]) => () => {
         let fqs = new Array
         filters.forEach(filter => {
-            let fq = `{!parent which=isPartOf:Work}uri:"${filter.uri}"`
-            fqs.push(fq)
-            filter['status'] = 'active'
+            if (filter.status === 'inative') {
+                let fq = `type:${filter.val}`
+                fqs.push(fq)
+                filter['status'] = 'active'
+            }
+            // console.log(filter)
         });
         let stringFilters = `(${fqs.join(' OR ')})`
-        // params.delete('fq')
-        // params.append("fq", 'isPartOf:Work');
+        params.delete('fq')
+        // params.append("fq", 'type:Authority');
         params.append("fq", stringFilters);
         setParams(params)
-        SearchCatalog(
+        SearchAuthority(
             params,
             setRows,
             setRowCount,
@@ -83,7 +85,7 @@ export default function BtnRefine({
         console.log(params.getAll('fq'))
         const newChecked = filters.map((filter, index) => {
             if (filter.status === 'active') {
-                return filter.uri
+                return filter.val
             } else {
                 return -1
             }

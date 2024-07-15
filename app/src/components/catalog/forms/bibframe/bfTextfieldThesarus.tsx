@@ -17,7 +17,7 @@ import { FcLock } from "react-icons/fc";
 import { useEffect, useState } from "react";
 
 // BiblioKeia Components
-import ModalThesarus from "@/components/thesaurus/modal/modalThesarus";
+import ModalThesarus from "@/components/authorities/modal/modalThesarus";
 
 // Share
 import bibframe from "@/share/bibframe/work.json"

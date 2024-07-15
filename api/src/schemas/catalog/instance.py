@@ -10,9 +10,15 @@ from src.schemas.catalog.bibframe.title import Title
 class Image(BaseModel):
     cover: str
 
+class IdentifiedBy(BaseModel):
+    local: Optional[str] = None
+    isbn: Optional[str] = None
+    
+
 class BfInstance(BaseModel):
     resource: list[Resource]
     adminMetadata: AdminMetadata
+    identifiedBy: Optional[IdentifiedBy] = None
     title: Title
     variantTitle: Optional[list[Title]] = None
     physicalDetails: PhysicalDetails

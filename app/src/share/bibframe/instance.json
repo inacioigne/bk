@@ -15,7 +15,7 @@
               "name": "value",
               "label": "Obra",
               "type": "textField",
-              "disabled": true,
+              "disabled": true, 
               "width": 12
             }
           ]
@@ -41,6 +41,20 @@
               "type": "select",
               "width": 4,
               "commonType": "descriptionConventions"
+            }
+          ]
+        },
+        {
+          "name": "identifiedBy", 
+          "label": "Identificadores",
+          "doc": "https://id.loc.gov/ontologies/bibframe.html#p_identifiedBy",
+          "required": true,
+          "subfields": [
+            {
+              "name": "isbn", 
+              "label": "ISBN",
+              "type": "textField",
+              "width": 6
             }
           ]
         },
@@ -275,6 +289,20 @@
     "instanceOf": {
       "value": ""
     },
+    "adminMetadata": {
+      "status": {
+        "value": "http://id.loc.gov/vocabulary/mstatus/n",
+        "label": "Novo"
+      },
+      "descriptionConventions": {
+        "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
+        "label": "AACr"
+      }
+    },
+    "identifiedBy":
+      {
+        "isbn": ""
+      },
     "resource": [
       {
         "type": {
@@ -314,16 +342,6 @@
         "subtitle": ""
       }
     ],
-    "adminMetadata": {
-      "status": {
-        "value": "http://id.loc.gov/vocabulary/mstatus/n",
-        "label": "Novo"
-      },
-      "descriptionConventions": {
-        "value": "http://id.loc.gov/vocabulary/descriptionConventions/aacr",
-        "label": "AACr"
-      }
-    },
     "responsibilityStatement": {
       "value": ""
     },

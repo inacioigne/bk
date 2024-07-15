@@ -128,7 +128,7 @@ export default function FormMadsSubjects(
                     setTypeAlert("success")
                     setMessage("Registro criado com sucesso!")
                     console.log(response.data)
-                    router.push(`/admin/authority/${response.data.id}`);
+                    router.push(`/admin/authorities/${response.data.id}`);
                 }
             })
             .catch(function (error) {

@@ -17,7 +17,7 @@ import {
     Slide,
     Typography
 } from "@mui/material";
-import { grey, purple } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // React Hooks
@@ -64,6 +64,7 @@ interface Facets {
     subject: { buckets: Buckets[] }
     year: { buckets: Buckets[] }
 }
+
 const useIntersectionObserver = (
     options: IntersectionObserverInit
 ): [MutableRefObject<HTMLDivElement | null>, boolean] => {
@@ -89,8 +90,6 @@ const useIntersectionObserver = (
     return [ref, isIntersecting];
 };
 
-
-
 export default function Catalog() {
     const elementRef = useRef(null);
     const [field, setField] = useState("search_general");
@@ -109,7 +108,6 @@ export default function Catalog() {
         rootMargin: '0px',
         threshold: 0.1,
     });
-
 
     useEffect(() => {
         params.set("q", "*:*");
@@ -173,7 +171,6 @@ export default function Catalog() {
         } else {
             params.set("q", `${data.filter}:${data.search}`);
         }
-
         setParams(params)
         SearchCatalog(
             params,
@@ -329,7 +326,6 @@ export default function Catalog() {
                                                 >
                                                     Limpar Filtros
                                                 </Button>}
-
                                             </Box>
                                             {facet?.contribution &&
                                                 <FacetCatalog
@@ -391,6 +387,15 @@ export default function Catalog() {
                                     </Box>
                                 </Grid>
                                 <Grid item xs={10} >
+                                    <Box sx={{ display: 'flex', gap: 2 }}>
+                                        <Typography variant="h6" gutterBottom>
+                                            {rowCount} Registros encontrados
+                                        </Typography>
+                                        <Button 
+                                        sx={{ textTransform: 'none' }}
+                                        onClick={handleClearSearch}
+                                        >Limpar Busca</Button>
+                                    </Box>
                                     <TableCatalogResult
                                         rows={rows}
                                         rowCount={rowCount}
@@ -400,6 +405,9 @@ export default function Catalog() {
                                         setParams={setParams}
                                         setFacet={setFacet}
                                     />
+
+
+
                                 </Grid>
                             </>
                         ) : (

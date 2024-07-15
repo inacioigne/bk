@@ -29,8 +29,8 @@ import { IoIosSave } from "react-icons/io";
 import FormBibframeWork from "@/components/catalog/forms/formBibframeWork";
 
 // BiblioKeia Components
-import ModalThesarusNames from "@/components/thesaurus/modal/modalThesarus";
-import ModalThesarus from "@/components/thesaurus/modal/tmp-modalThesarus";
+import ModalThesarusNames from "@/components/authorities/modal/modalThesarus";
+import ModalThesarus from "@/components/authorities/modal/tmp-modalThesarus";
 
 // Next
 import Link from 'next/link'

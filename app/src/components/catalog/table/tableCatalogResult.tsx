@@ -2,12 +2,7 @@
 // React Hooks
 import { useState } from "react";
 // MUI
-import {
-  DataGrid,
-  // GridRowsProp,
-  GridColDef,
-  // GridRenderCellParams,
-} from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 // import { Avatar, Box } from "@mui/material";
 import { GridRowParams, MuiEvent, GridCallbackDetails, GridCellParams, GridValueGetter } from '@mui/x-data-grid';
 
@@ -20,7 +15,7 @@ import { GridRowParams, MuiEvent, GridCallbackDetails, GridCellParams, GridValue
 
 import { RenderTitle } from "@/components/catalog/table/renderTitle"
 import { RenderCover } from "@/components/catalog/table/renderCover"
-import { RenderAuthors } from "@/components/catalog/table/renderAuthors"
+import RenderAuthors from "@/components/catalog/table/renderAuthors"
 
 // Nextjs
 import { useRouter } from 'next/navigation'
@@ -49,18 +44,7 @@ interface Props {
   params: URLSearchParams;
   setParams: Function
   setFacet: Function
-
 }
-
-// export function RenderTest(props: GridRenderCellParams) {
-//   const { hasFocus, value } = props;
-
-//   return (
-//     <div>{value}</div>
-//   );
-// }
-
-
 
 export function TableCatalogResult(
   { rows, rowCount, setRows, setRowCount, params, setParams, setFacet
@@ -87,13 +71,18 @@ export function TableCatalogResult(
     {
       field: "authors",
       renderHeader: () => <strong>{"Autoria"}</strong>,
-      renderCell: RenderAuthors, 
+      renderCell: RenderAuthors(
+        params, 
+        setParams,
+        setRows,
+        setRowCount,
+        setFacet),
       flex: 2
     },
     {
       field: "subjects",
       renderHeader: () => <strong>{"Assunto"}</strong>,
-      renderCell: RenderSubjects, 
+      renderCell: RenderSubjects,
       flex: 1
     },
     {
@@ -134,10 +123,9 @@ export function TableCatalogResult(
           setRows,
           setRowCount,
           setFacet
-      );
+        );
         setPaginationModel(paginationModel)
       }}
-
     />
   </div>
 
